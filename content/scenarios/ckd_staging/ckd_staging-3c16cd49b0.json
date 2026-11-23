@@ -1,5 +1,5 @@
 {
-  "id": "ckd_staging-b65c7c1653",
+  "id": "ckd_staging-3c16cd49b0",
   "table": "ckd_staging",
   "title": "Chronic kidney disease: stage, hypertension and dialysis status",
   "status": "draft",
@@ -9,7 +9,7 @@
     "dialysis": "no"
   },
   "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
-  "note": "Chief Complaint\nFollow-up for worsening shortness of breath.\n\nHistory of Present Illness\nThe patient presents for follow-up regarding increasing shortness of breath over the past two weeks. He reports the shortness of breath is worse with exertion and has necessitated decreased activity levels at home. He also reports occasional ankle swelling. He has a history of hypertension, which he manages regularly. His current estimated GFR places him at stage 3a.\n\nMedication List\nLisinopril 10 mg daily\nFurosemide 40 mg daily\n\nExam\nVitals are stable. Lungs reveal bilateral crackles in the lower lobes. Cardiovascular exam is unremarkable aside from slight bilateral pitting edema noted.\n\nAssessment\nThe patient presents with symptoms suggestive of fluid overload, complicated by his known hypertension and current renal status of stage 3a.\n\nPlan\nContinue current medications, titrating furosemide as needed for swelling. Educate patient on low-sodium diet and weight monitoring. Follow up in four weeks or sooner if symptoms worsen.",
+  "note": "Chief Complaint\nFollow-up for management of chronic kidney disease and hypertension.\n\nHPI\nThe patient is a 62-year-old male who presents today for a routine follow-up of his chronic kidney disease. He reports feeling well overall and denies any recent episodes of edema, fatigue, or changes in urinary output. He is currently adherent to his prescribed medications for hypertension and reports stable blood pressure readings at home. He notes no new symptoms related to his renal function.\n\nMedication List\nLisinopril 20mg daily, Amlodipine 5mg daily.\n\nExam\nThe patient is alert and oriented. Vital signs are stable. Blood pressure is 128/82 mmHg. Heart rate is 72 bpm. Lungs are clear to auscultation. No peripheral edema noted. Renal palpation is non-tender.\n\nAssessment\n1. Chronic kidney disease, stage 3a.\n2. Hypertension.\n\nPlan\nContinue current medications for hypertension and chronic kidney disease. The patient will continue to monitor blood pressure and maintain a low-sodium diet. Follow up in three months for laboratory work and blood pressure check.",
   "answer": [
     "I12.9",
     "N18.31"
@@ -120,8 +120,8 @@
     "dropped": []
   },
   "generator": {
-    "model": "gemma4:e4b",
+    "model": "gemma4:12b",
     "attempts": 1,
-    "created": "2026-11-23T17:51:41+00:00"
+    "created": "2026-11-23T22:45:59+00:00"
   }
 }

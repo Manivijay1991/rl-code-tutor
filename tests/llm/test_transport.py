@@ -49,6 +49,26 @@ def test_errors_never_include_the_key(monkeypatch, error, message):
     assert exc.value.__cause__ is None
 
 
+@pytest.mark.parametrize(
+    ("body", "detail"),
+    [
+        (b'{"error":"model \'gemma4:e4b\' not found"}', "model 'gemma4:e4b' not found"),  # Ollama
+        (b'{"error":{"message":"Invalid API key","type":"auth"}}', "Invalid API key"),  # OpenAI-compatible
+        (b"Service   Unavailable\n", "Service Unavailable"),
+    ],
+    ids=["ollama", "openai", "text"],
+)
+def test_http_error_includes_server_detail(monkeypatch, body, detail):
+    def fake_urlopen(req, timeout):
+        raise urllib.error.HTTPError("http://x", 404, "Not Found", {}, io.BytesIO(body))
+
+    monkeypatch.setattr(transport.urllib.request, "urlopen", fake_urlopen)
+    with pytest.raises(LLMError) as exc:
+        http_post_json("http://x", {}, {"Authorization": "Bearer sk-secret"}, 1)
+    assert str(exc.value) == f"http://x returned HTTP 404: {detail}"
+    assert "sk-secret" not in str(exc.value)
+
+
 def test_non_json_reply(monkeypatch):
     monkeypatch.setattr(transport.urllib.request, "urlopen", lambda req, timeout: FakeResponse(b"<html>"))
     with pytest.raises(LLMError, match="non-JSON"):

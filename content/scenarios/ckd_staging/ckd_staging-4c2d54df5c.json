@@ -1,0 +1,52 @@
+{
+  "id": "ckd_staging-4c2d54df5c",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease.\n\nHPI\nThe patient is a 62-year-old male presenting today for a routine evaluation of chronic kidney disease. He reports feeling well overall and denies any new symptoms such as edema, fatigue, or changes in urination. He has been adherent to his current treatment plan and maintains a balanced diet. Laboratory results from last month show stable glomerular filtration rates.\n\nMedication List\nLisinopril 10mg daily, Atorvastatin 20mg daily.\n\nExam\nThe patient appears well-nourished and in no acute distress. Blood pressure is 128/82 mmHg. Heart rate is 72 bpm. Lungs are clear to auscultation. No peripheral edema noted in lower extremities. Skin is intact without lesions.\n\nAssessment\n1. Chronic kidney disease, stage 1. The patient's renal function remains stable at this time.\n\nPlan\n1. Continue current medication regimen as prescribed.\n2. Order follow-up laboratory work including serum creatinine and electrolytes in three months.\n3. Patient instructed to maintain adequate hydration and continue monitoring blood pressure at home.",
+  "answer": [
+    "N18.1"
+  ],
+  "explanations": [
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-23T22:46:01+00:00"
+  }
+}

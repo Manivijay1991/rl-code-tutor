@@ -18,6 +18,24 @@ class LLMError(RuntimeError):
     """The LLM endpoint could not be reached or returned an unusable response."""
 
 
+def _error_detail(err: urllib.error.HTTPError, limit: int = 200) -> str:
+    """Return the server's error message from a failed response (JSON "error" field or text), shortened.
+
+    Only the server's reply is used, never our request, so API keys cannot appear in it.
+    """
+    try:
+        raw = err.read().decode("utf-8", "replace")
+    except (AttributeError, OSError, TypeError):
+        return ""
+    try:
+        parsed = json.loads(raw)
+        error = parsed.get("error", "") if isinstance(parsed, dict) else ""
+        message = error.get("message", "") if isinstance(error, dict) else str(error)
+    except json.JSONDecodeError:
+        message = raw
+    return " ".join(message.split())[:limit]
+
+
 def http_post_json(url: str, body: dict, headers: dict[str, str], timeout: int) -> dict:
     """POST `body` as JSON and return the decoded JSON response.
 
@@ -30,7 +48,8 @@ def http_post_json(url: str, body: dict, headers: dict[str, str], timeout: int) 
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read())
     except urllib.error.HTTPError as e:
-        raise LLMError(f"{url} returned HTTP {e.code}") from None
+        detail = _error_detail(e)
+        raise LLMError(f"{url} returned HTTP {e.code}" + (f": {detail}" if detail else "")) from None
     except urllib.error.URLError as e:
         raise LLMError(f"{url} is not reachable: {e.reason}") from None
     except json.JSONDecodeError:

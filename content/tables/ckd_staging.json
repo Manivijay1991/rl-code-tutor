@@ -33,6 +33,10 @@
     }
   },
   "note_forbid": ["diabetes", "diabetic", "not due to hypertension", "unrelated to hypertension", "heart failure"],
+  "note_rules": [
+    {"when": {}, "require": [["CKD", "chronic kidney disease", "end stage renal disease", "ESRD"]],
+     "describe": "Name the kidney disease itself (CKD or chronic kidney disease, or ESRD), not just the stage number."}
+  ],
   "exclude": [
     {"stage": ["1", "2", "3a", "3b", "3_unspecified", "4", "5"], "dialysis": "yes"}
   ],
