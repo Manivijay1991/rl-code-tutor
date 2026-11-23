@@ -1,0 +1,9 @@
+{
+  "name": "coding-tutor-web",
+  "private": true,
+  "description": "Static coach-mode UI. No dependencies; tests use Node's built-in runner.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\""
+  }
+}

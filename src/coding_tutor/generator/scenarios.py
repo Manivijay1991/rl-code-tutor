@@ -56,7 +56,7 @@ def _groups(evidence: list) -> list[list[str]]:
     return [list(g) for g in evidence] if isinstance(evidence[0], list) else [list(evidence)]
 
 
-def _flat(evidence: list) -> list[str]:
+def flat_evidence(evidence: list) -> list[str]:
     """Return every phrase in an evidence list."""
     return [p for g in _groups(evidence) for p in g]
 
@@ -76,8 +76,8 @@ def _exclusive_forbid(spec: dict, value: str) -> list[str]:
     if not spec.get("exclusive", True):
         return []
     ev = spec.get("evidence", {})
-    own = {p.lower() for p in _flat(ev.get(value, []))}
-    return [p for v, phrases in ev.items() if v != value for p in _flat(phrases) if p.lower() not in own]
+    own = {p.lower() for p in flat_evidence(ev.get(value, []))}
+    return [p for v, phrases in ev.items() if v != value for p in flat_evidence(phrases) if p.lower() not in own]
 
 
 def requirements(t: Table, slots: Slots) -> Requirements:

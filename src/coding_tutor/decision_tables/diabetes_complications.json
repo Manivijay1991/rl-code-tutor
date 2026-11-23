@@ -7,10 +7,14 @@
   "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
   "slots": {
     "dm_type": {
+      "label": "Diabetes type",
+      "labels": {"type1": "Type 1", "type2": "Type 2"},
       "values": ["type1", "type2"],
       "evidence": {"type1": ["type 1 diabetes", "type 1 diabetes mellitus", "T1DM"], "type2": ["type 2 diabetes", "type 2 diabetes mellitus", "T2DM"]}
     },
     "complication": {
+      "label": "Complication documented",
+      "labels": {"none": "None documented", "ckd_stage4": "CKD stage 4", "polyneuropathy": "Polyneuropathy", "hyperglycemia": "Hyperglycemia / poor control", "hypoglycemia": "Hypoglycemia"},
       "values": ["none", "ckd_stage4", "polyneuropathy", "hyperglycemia", "hypoglycemia"],
       "evidence": {
         "none": ["without complications", "no complications"],
@@ -21,12 +25,16 @@
       }
     },
     "provider_says_unrelated": {
+      "label": "Provider's statement about the link",
+      "labels": {"no": "No statement that it is unrelated", "yes": "Provider says it is NOT caused by the diabetes"},
       "values": ["no", "yes"],
       "evidence": {"no": [], "yes": ["not due to diabetes", "not related to diabetes", "unrelated to diabetes"]},
       "describe": {"no": "Do not say whether the complication is or is not caused by the diabetes.",
                    "yes": "The provider explicitly states the complication is not caused by the diabetes."}
     },
     "meds": {
+      "label": "Long-term diabetes medication",
+      "labels": {"diet_only": "Diet only", "insulin": "Insulin", "oral": "Oral drug", "insulin_and_oral": "Insulin and an oral drug"},
       "values": ["diet_only", "insulin", "oral", "insulin_and_oral"],
       "evidence": {
         "diet_only": ["diet controlled", "diet and exercise"],

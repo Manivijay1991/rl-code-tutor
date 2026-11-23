@@ -96,7 +96,7 @@ def _validate_slots(t: Table) -> list[str]:
     for name, spec in t["slots"].items():
         if not spec.get("values"):
             problems.append(f"slot {name} has no values")
-        for key in ("evidence", "describe"):
+        for key in ("evidence", "describe", "labels"):
             problems += [
                 f"slot {name} {key} has undeclared value {v}" for v in spec.get(key, {}) if v not in spec["values"]
             ]

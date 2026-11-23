@@ -21,6 +21,9 @@
           "values": {"type": "array", "items": {"type": "string"}, "minItems": 1},
           "evidence": {"type": "object", "description": "value -> phrases a generated note must contain so the deciding detail is present: a list of strings = any one; a list of lists = one from EACH inner list",
                        "additionalProperties": {"type": "array", "items": {"anyOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}}]}}},
+          "label": {"type": "string", "description": "student-facing name of the deciding detail (UI hints)"},
+          "labels": {"type": "object", "description": "value -> student-facing wording (UI hints); never names a code",
+                     "additionalProperties": {"type": "string"}},
           "exclusive": {"type": "boolean", "description": "default true: a note for one value must not contain phrases that belong only to the slot's other values"},
           "describe": {"type": "object", "description": "value -> plain instruction for the note writer",
                        "additionalProperties": {"type": "string"}}

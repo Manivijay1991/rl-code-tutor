@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coding Tutor</title>
+    <meta name="description" content="Free practice for CRC risk adjustment coding: read the note, find the evidence, pick the codes, and get coached when you miss." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' rx='5' fill='%230f766e'/%3E%3Cpath d='M5 10.5 8.5 14 15 6.5' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#bench">Skip to the coding workbench</a>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <div class="brand-name">Coding Tutor</div>
+          <div class="brand-sub">CRC practice · coach mode</div>
+        </div>
+      </div>
+      <nav class="topics" id="topics" aria-label="Topics"></nav>
+      <div class="top-actions">
+        <div class="pill streak" id="streak" title="First-try streak"></div>
+        <div class="goal" id="goal" title="Today's questions"></div>
+        <button class="icon-btn" id="btn-progress" type="button" aria-label="Your progress (P)" title="Your progress (P)"></button>
+        <button class="icon-btn" id="btn-keys" type="button" aria-label="Keyboard shortcuts (?)" title="Keyboard shortcuts (?)"></button>
+        <button class="icon-btn" id="btn-theme" type="button" aria-label="Switch theme" title="Switch theme"></button>
+      </div>
+    </header>
+
+    <main class="layout" id="main">
+      <section class="chart" aria-labelledby="chart-title">
+        <div class="chart-head">
+          <div>
+            <h2 id="chart-title" class="chart-title">Encounter note</h2>
+            <div class="chart-meta" id="chart-meta"></div>
+          </div>
+          <button class="tool" id="btn-marker" type="button" aria-pressed="false" title="Highlighter (M): tap sentences that decide the codes"></button>
+        </div>
+        <div class="find-banner" id="find-banner" hidden></div>
+        <article class="note" id="note" aria-live="off"></article>
+      </section>
+
+      <section class="bench" id="bench" aria-labelledby="question" tabindex="-1">
+        <div class="bench-inner" id="bench-inner"></div>
+      </section>
+    </main>
+
+    <aside class="drawer" id="drawer" aria-labelledby="drawer-title" hidden>
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+        <div class="drawer-head">
+          <h2 id="drawer-title">Your progress</h2>
+          <button class="icon-btn" id="btn-drawer-close" type="button" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body" id="drawer-body"></div>
+      </div>
+    </aside>
+
+    <div class="overlay" id="overlay" hidden></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="sr-only" id="announce" aria-live="assertive"></div>
+
+    <footer class="foot">
+      Free and non-commercial. Not affiliated with or endorsed by AAPC, AHIMA, AMA or CMS.
+      Scenarios are <strong>drafts</strong> until reviewed by a certified coder. ICD-10-CM and CMS-HCC data from CMS.
+      <span id="code-set"></span>
+    </footer>
+  </body>
+</html>

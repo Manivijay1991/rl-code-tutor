@@ -21,7 +21,8 @@ Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated sc
 3. `llm/` — LLM clients: `config.py` (LLMConfig: provider, model, URL, API key; `config_from_env`), `transport.py` (injectable HTTP), `providers.py` (`ollama`, `openai_compatible`, `make_llm`). An LLM is any `(system, user, seed) -> str` function. API keys only via parameters or env vars, never CLI values, logs or files.
    `generator/scenarios.py` — picks slots, engine computes answer, the injected LLM (default: local Ollama) writes the note, a check confirms deciding details are present (and answer-changing phrases absent), output saved to `scenarios/<table>/<id>.json`. Note-writing hints live in the tables: `describe`, `exclusive`, `note_forbid`, `note_rules`, `question`.
 4. `rl/` — simulator (`simulator.py`), policies (`policies.py`), experiment (`experiment.py`).
-5. UI (TODO) — coach mode (hints, feedback, summary) and exam mode (sections, flag for review, countdown timer).
+5. UI — `ui/export.py` rebuilds every scenario's answer, distractors (with trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine into `web/data/bundle.json`; `ui/serve.py` serves `web/` on localhost. `web/` is static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward), `selector.js` (pending reward → due review → unseen → weakest), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `app.js` (controller). Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
+   Slot `label`/`labels` in the tables are the student-facing wording used by hints.
 
 ## RL design
 - **Use a contextual Thompson-sampling bandit only** to choose *how to teach* after a wrong answer. Context = (confusion, miss count bucketed 1/2/3+).
@@ -60,13 +61,14 @@ Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated sc
 - Fixed random seeds in all RL and simulation tests; mark long runs `@pytest.mark.slow`.
 - Commands (PowerShell):
   - `.\.venv\Scripts\python.exe -m ruff check .` and `.\.venv\Scripts\python.exe -m ruff format --check .`
-  - `.\.venv\Scripts\python.exe -m pytest` (quick run: add `-m "not slow"`)
+  - `.\.venv\Scripts\python.exe -m pytest` (quick run: add `-m "not slow"`); this also runs the web JS tests via Node when installed (`web/test/*.test.mjs`, Node's built-in runner, no npm packages)
+  - After changing tables or scenarios: `coding-tutor-export-ui` to refresh `web/data/bundle.json`.
 - Before calling a task done: ruff clean and all tests passing; report both results.
 - Refactors must not change behavior: existing tests stay green without editing them,
   unless I approve a test change.
 
 ## Next tasks
-1. Static UI from the mockup (coach mode first), reading `scenarios/*.json`. HCC weights appear only in feedback (`risk_score_gap`), never in grading.
+1. Exam mode in the web UI (sections, flag for review, countdown timer); real-student testing of coach mode.
 2. Decision tables for CRC: acceptable sources, status codes; more MEAT conditions.
 3. Certified-coder review of tables and generated scenarios.
 4. Later: AWS backend (API Gateway + Lambda + DynamoDB) for logging and the live bandit.

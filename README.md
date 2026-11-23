@@ -22,6 +22,28 @@ coding-tutor-experiment   # compare teaching policies in the simulator
 
 Each command is also available as a module, e.g. `python -m coding_tutor.engine.rules`.
 
+## Practice (web UI, coach mode)
+
+```powershell
+coding-tutor-export-ui    # scenarios + rules engine -> web\data\bundle.json
+coding-tutor-serve        # opens http://127.0.0.1:8765
+```
+
+The UI is static HTML/CSS/JS (no build step, no dependencies, no LLM at runtime). It can be hosted
+on any static host. Progress stays in the student's browser.
+
+- **Read like an auditor:** a highlighter (`M`) marks the sentences that decide the codes; the debrief
+  scores how many deciding details you found.
+- **Coached, not told:** a wrong pick unlocks up to 3 escalating hints (rule refresher, contrast pair,
+  find the evidence, guiding question, walkthrough, narrow it down) with a re-pick after each. No hint
+  names the correct code; the answer appears only if you ask.
+- **Adaptive:** a Thompson-sampling bandit picks the coaching style per (trap, miss count) and learns
+  from the next NEW case with the same trap. Spaced review brings traps back.
+- **Know your lean:** overcoding vs undercoding meter, confidence check, trap map, "what helps you".
+- **Why it matters:** the debrief shows how the miss moves the CMS-HCC V28 risk score (feedback only).
+
+JavaScript tests use Node's built-in runner (`cd web; node --test "test/*.test.mjs"`) and also run inside `pytest`.
+
 Resolve a single case:
 
 ```powershell
@@ -81,6 +103,8 @@ src/coding_tutor/
   generator/            scenarios.py (LLM writes the note; the engine decides the answer)
   rl/                   simulator.py, policies.py, experiment.py
   cms/                  fetch.py, build_db.py
+  ui/                   export.py (bundle for the web UI), serve.py (localhost server)
+web/                    static coach-mode UI: index.html, css/, js/ (bandit, selector, hints, progress, note, app), test/
 tests/                  mirrors src/coding_tutor/
 docs/python-style.md    coding standards
 data/                   CMS downloads and codes.sqlite (not committed)

@@ -1,4 +1,4 @@
-﻿.venv/
+.venv/
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -8,4 +8,4 @@ dist/
 *.egg-info/
 # CMS downloads and the derived database
 # (recreate with: python -m coding_tutor.cms.fetch && python -m coding_tutor.cms.build_db)
-data/
+/data/

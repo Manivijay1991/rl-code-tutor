@@ -8,6 +8,8 @@
   "note": "MEAT (Monitor, Evaluate, Assess/Address, Treat) is an industry mnemonic, not CMS wording. The underlying rule is coding conditions that coexist and affect care at the encounter.",
   "slots": {
     "condition": {
+      "label": "Chronic condition",
+      "labels": {"copd": "COPD", "chf_chronic_systolic": "Chronic systolic heart failure", "mdd_recurrent_moderate": "Major depression, recurrent, moderate"},
       "values": ["copd", "chf_chronic_systolic", "mdd_recurrent_moderate"],
       "evidence": {
         "copd": ["COPD", "chronic obstructive pulmonary disease"],
@@ -16,6 +18,8 @@
       }
     },
     "documentation": {
+      "label": "Where the condition appears",
+      "labels": {"meat_supported": "Addressed at this visit (MEAT)", "problem_list_only": "Problem list only", "med_list_only": "A medication on the list only"},
       "values": ["meat_supported", "problem_list_only", "med_list_only"],
       "evidence": {
         "meat_supported": ["stable", "continue", "reviewed", "will monitor", "plan"],

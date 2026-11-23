@@ -7,6 +7,8 @@
   "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
   "slots": {
     "stage": {
+      "label": "CKD stage",
+      "labels": {"1": "Stage 1", "2": "Stage 2", "3a": "Stage 3a", "3b": "Stage 3b", "3_unspecified": "Stage 3, unspecified", "4": "Stage 4", "5": "Stage 5", "esrd": "End stage renal disease"},
       "values": ["1", "2", "3a", "3b", "3_unspecified", "4", "5", "esrd"],
       "evidence": {
         "1": ["stage 1"], "2": ["stage 2"], "3a": ["stage 3a"], "3b": ["stage 3b"],
@@ -16,11 +18,15 @@
       "describe": {"3_unspecified": "Write 'stage 3' only; never say 3a or 3b."}
     },
     "hypertension": {
+      "label": "Hypertension",
+      "labels": {"no": "Not documented", "yes": "Documented"},
       "values": ["no", "yes"],
       "evidence": {"no": [], "yes": ["hypertension", "HTN"]},
       "describe": {"yes": "The patient also has hypertension. Do not say whether the CKD is or is not caused by it."}
     },
     "dialysis": {
+      "label": "Dialysis status",
+      "labels": {"no": "Not on dialysis", "yes": "On maintenance dialysis"},
       "values": ["no", "yes"],
       "evidence": {"no": [], "yes": ["dialysis", "hemodialysis"]},
       "describe": {"yes": "The patient is on maintenance hemodialysis."}
