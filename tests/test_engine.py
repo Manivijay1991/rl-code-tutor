@@ -103,6 +103,37 @@ def test_v28_hierarchy(db):
     assert [d["hcc"] for d in s["dropped"]] == ["38"]
 
 
+def test_official_hierarchy_loaded(db):
+    drops = hcc.hierarchy(db)
+    assert drops["35"] == ["36", "37", "38"]
+    assert drops["326"] == ["327", "328", "329"]
+    assert "155" in drops["151"]
+
+
+def test_v28_weights(db):
+    w = hcc.weights(db, "CNA")
+    assert len(w) == 115  # V28 payment HCCs
+    assert w["37"] == 0.166 and w["327"] == 0.514
+    with pytest.raises(ValueError):
+        hcc.weights(db, "XYZ")
+
+
+def test_score_applies_hierarchy(db):
+    s = hcc.score(["E1122", "Z794", "N184"], db)
+    assert s["total"] == 0.68
+    assert [h["hcc"] for h in s["hccs"]] == ["37", "327"]
+
+
+def test_score_gap_directions(db):
+    under = hcc.score_gap(["E1122"], ["E1122", "N184"], db)
+    assert (under["gap"], under["direction"], under["missing_hccs"]) == (-0.514, "under", ["327"])
+    over = hcc.score_gap(["E1122", "N184"], ["E1122"], db)
+    assert (over["gap"], over["direction"], over["extra_hccs"]) == (0.514, "over", ["327"])
+    # wrong diabetes code, but V28 weights HCC 37 and 38 the same
+    same = hcc.score_gap(["E119"], ["E1122"], db)
+    assert (same["gap"], same["direction"], same["missing_hccs"]) == (0.0, "none", ["37"])
+
+
 def test_unspecified_mdd_has_no_v28_hcc(db):
     assert codedb.hccs(db, "F339") == []
     assert codedb.hccs(db, "F331") == ["155"]

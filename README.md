@@ -30,6 +30,7 @@ python -m engine.rules_engine diabetes_complications dm_type=type2 complication=
 |---|---|---|
 | CMS ICD-10-CM code descriptions (order file) | FY2027 | code validity, billable flag |
 | CMS ICD-10 mappings (CMS-HCC V28, RxHCC V08, ESRD V24) | PY2026 midyear final | ICD → HCC |
+| CMS-HCC model software (V2826.115.T1) | PY2026 midyear final | V28 hierarchies, labels, weights |
 | ICD-10-CM Official Guidelines | FY2027 | cited by section in explanations |
 
 No CPT, CDT, NUBC or NCCI content, and no third-party exam questions.
@@ -42,7 +43,9 @@ No CPT, CDT, NUBC or NCCI content, and no third-party exam questions.
 | `ckd_staging` | 18 | draft |
 | `meat_support` | 9 | draft |
 
-`hcc_v28_hierarchy.json` holds hand-entered HCC labels and hierarchies (draft; verify against the CMS model software).
+V28 hierarchies, labels and weights come from the CMS model software (see `engine/hcc.py`).
+Weights are shown in coach feedback only (`hcc.score_gap`: risk-score error, over or under);
+they never affect grading, the bandit reward or what to practice next.
 
 ## Licenses
 

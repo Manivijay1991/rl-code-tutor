@@ -21,6 +21,8 @@ SOURCES = {
     "icd10cm_fy2027/codes.zip": "https://www.cms.gov/files/zip/2027-code-descriptions-tabular-order.zip",
     # CMS-HCC / RxHCC / ESRD ICD-10 mappings, payment year 2026 midyear final.
     "hcc_map_py2026/map.zip": "https://www.cms.gov/files/zip/2026-midyear-final-icd-10-mappings.zip",
+    # CMS-HCC model software (SAS), payment year 2026 midyear final: V28 weights + hierarchies.
+    "model_software_py2026/software.zip": "https://www.cms.gov/files/zip/2026-midyear-final-model-software.zip",
 }
 
 
