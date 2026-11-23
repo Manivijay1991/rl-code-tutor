@@ -67,12 +67,31 @@ export function sampleBeta(alpha, beta, rng = Math.random) {
   return x / (x + sampleGamma(beta, rng));
 }
 
-/** Pick the action with the highest posterior sample for this context. */
-export function chooseAction(bandit, confusion, b, rng = Math.random) {
+// Shared (all-student) evidence is capped at this many pseudo-trials per arm, so it acts as a
+// strong prior while each student's own results can still move the choice.
+export const SHARED_CAP = 20;
+
+/**
+ * Combine this student's [alpha, beta] with shared [successes, failures] from the API.
+ * Shared evidence above SHARED_CAP trials is scaled down, keeping its success rate.
+ */
+export function combinedCounts(bandit, shared, confusion, b, action) {
+  const [alpha, beta] = counts(bandit, confusion, b, action);
+  const [s, f] = shared?.[key(confusion, b, action)] ?? [0, 0];
+  const n = s + f;
+  const scale = n > SHARED_CAP ? SHARED_CAP / n : 1;
+  return [alpha + s * scale, beta + f * scale];
+}
+
+/**
+ * Pick the action with the highest posterior sample for this context.
+ * `shared` = arms from GET /v1/policy ({key: [successes, failures]}) or null when offline.
+ */
+export function chooseAction(bandit, confusion, b, rng = Math.random, shared = null) {
   let best = ACTIONS[0];
   let bestDraw = -1;
   for (const a of ACTIONS) {
-    const draw = sampleBeta(...counts(bandit, confusion, b, a), rng);
+    const draw = sampleBeta(...combinedCounts(bandit, shared, confusion, b, a), rng);
     if (draw > bestDraw) [best, bestDraw] = [a, draw];
   }
   return best;

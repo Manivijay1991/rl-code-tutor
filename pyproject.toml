@@ -29,6 +29,7 @@ coding-tutor-generate = "coding_tutor.generator.scenarios:main"
 coding-tutor-experiment = "coding_tutor.rl.experiment:main"
 coding-tutor-export-ui = "coding_tutor.ui.export:main"
 coding-tutor-serve = "coding_tutor.ui.serve:main"
+coding-tutor-api = "coding_tutor.api.server:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

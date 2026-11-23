@@ -23,6 +23,7 @@ Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated sc
 4. `rl/` — simulator (`simulator.py`), policies (`policies.py`), experiment (`experiment.py`).
 5. UI — `ui/export.py` rebuilds every scenario's answer, distractors (with trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine into `web/data/bundle.json`; `ui/serve.py` serves `web/` on localhost. `web/` is static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward), `selector.js` (pending reward → due review → unseen → weakest), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `app.js` (controller). Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
    Slot `label`/`labels` in the tables are the student-facing wording used by hints.
+6. `api/` — live bandit (optional; `web/config.json` `api` URL, null = offline). Browser still chooses actions with Thompson sampling over its own counts + shared counts from `GET /v1/policy` (capped at `SHARED_CAP`=20 pseudo-trials). Settled rewards go to `POST /v1/events` as exactly `{confusion, bucket, action, reward}`; `policy.py` rejects any other field. Stdlib WSGI `make_app` (injected storage connection, confusions, CORS allowlist, rate limiter, clock); `storage.py` SQLite (arms totals + append-only event log, no identifiers, day granularity). Hosting adapter + hosted DB TODO.
 
 ## RL design
 - **Use a contextual Thompson-sampling bandit only** to choose *how to teach* after a wrong answer. Context = (confusion, miss count bucketed 1/2/3+).
@@ -71,4 +72,4 @@ Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated sc
 1. Exam mode in the web UI (sections, flag for review, countdown timer); real-student testing of coach mode.
 2. Decision tables for CRC: acceptable sources, status codes; more MEAT conditions.
 3. Certified-coder review of tables and generated scenarios.
-4. Later: AWS backend (API Gateway + Lambda + DynamoDB) for logging and the live bandit.
+4. Deploy the live bandit API: pick a host (Vercel Python functions + Postgres, or AWS Lambda + DynamoDB), add a storage adapter with the same functions as `api/storage.py`, set the CORS origin and `web/config.json`. Then offline evaluation in `rl/` from the event log.

@@ -76,7 +76,7 @@ function settleRewards(progress, scenario, confusions, firstCorrect) {
     if (!p || p.scenarioId === scenario.id) continue;
     const reward = firstCorrect ? 1 : 0;
     bandit = updateBandit(bandit, c, p.bucket, p.action, reward);
-    settled.push({ confusion: c, action: p.action, reward });
+    settled.push({ confusion: c, bucket: p.bucket, action: p.action, reward });
     delete pending[c];
   }
   return { bandit, pending, settled };

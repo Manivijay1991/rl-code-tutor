@@ -3,6 +3,7 @@
 
 export const PROGRESS_KEY = "coding-tutor.progress.v1";
 export const PREFS_KEY = "coding-tutor.prefs.v1";
+export const OUTBOX_KEY = "coding-tutor.outbox.v1";
 
 function storage() {
   try {

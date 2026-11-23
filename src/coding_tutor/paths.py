@@ -17,6 +17,7 @@ TABLES_DIR = PACKAGE_DIR / "decision_tables"
 DATA_DIR = Path(os.environ.get("CODING_TUTOR_DATA", REPO_ROOT / "data"))
 RAW_DIR = DATA_DIR / "raw"
 DB_PATH = DATA_DIR / "codes.sqlite"
+API_DB_PATH = DATA_DIR / "api.sqlite"
 SCENARIOS_DIR = Path(os.environ.get("CODING_TUTOR_SCENARIOS", REPO_ROOT / "scenarios"))
 WEB_DIR = REPO_ROOT / "web"
 BUNDLE_PATH = WEB_DIR / "data" / "bundle.json"

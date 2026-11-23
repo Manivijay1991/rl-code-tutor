@@ -1,6 +1,7 @@
 // Coach-mode controller: renders the note and workbench, runs the hint ladder, records progress.
 // Answers come from the exported bundle (built by the rules engine); nothing here decides codes.
 
+import { enqueue, fetchPolicy, flush, loadConfig, toEvents } from "./api.js";
 import { ACTION_LABELS, chooseAction, learnedContexts } from "./bandit.js";
 import { h, icon, mount, svg } from "./dom.js";
 import { LADDERS, LEAN_MESSAGES, buildHint, narrowRemovals } from "./hints.js";
@@ -17,7 +18,7 @@ import {
 } from "./progress.js";
 import { shuffled } from "./random.js";
 import { REASONS, nextScenario } from "./selector.js";
-import { PREFS_KEY, PROGRESS_KEY, loadJSON, removeKey, saveJSON } from "./store.js";
+import { OUTBOX_KEY, PREFS_KEY, PROGRESS_KEY, loadJSON, removeKey, saveJSON } from "./store.js";
 
 const DAILY_GOAL = 10;
 const MAX_HINTS = 3;
@@ -26,7 +27,9 @@ const $ = (id) => document.getElementById(id);
 const app = {
   bundle: null,
   progress: emptyProgress(),
-  prefs: { theme: null, showDesc: true, topic: null, onboarded: false },
+  prefs: { theme: null, showDesc: true, topic: null, onboarded: false, share: true },
+  api: null, // live bandit API base URL from config.json, or null (offline)
+  shared: null, // {arms, events} from GET /v1/policy
   focus: null,
   q: null,
 };
@@ -54,6 +57,33 @@ async function boot() {
   document.addEventListener("keydown", onKey);
   nextQuestion();
   if (!app.prefs.onboarded) showWelcome();
+  connectApi();
+}
+
+// ---------------------------------------------------------------- live bandit API (optional)
+async function connectApi() {
+  app.api = (await loadConfig()).api;
+  if (!app.api || !app.prefs.share) return;
+  app.shared = await fetchPolicy(app.api);
+  await sendOutbox();
+}
+
+async function sendOutbox(events = []) {
+  if (!app.api || !app.prefs.share) return;
+  const outbox = enqueue(loadJSON(OUTBOX_KEY, []), events);
+  saveJSON(OUTBOX_KEY, outbox);
+  saveJSON(OUTBOX_KEY, await flush(app.api, outbox));
+}
+
+function setShare(on) {
+  app.prefs.share = on;
+  savePrefs();
+  if (on) connectApi();
+  else {
+    app.shared = null;
+    removeKey(OUTBOX_KEY);
+  }
+  renderDrawer();
 }
 
 function savePrefs() {
@@ -408,7 +438,7 @@ function submit() {
   if (q.action === null) {
     const conf = `${q.scenario.table}:${opt.confusion}`;
     q.missBucket = nextMissBucket(app.progress, conf);
-    q.action = chooseAction(app.progress.bandit, conf, q.missBucket);
+    q.action = chooseAction(app.progress.bandit, conf, q.missBucket, Math.random, app.prefs.share ? app.shared?.arms : null);
   }
   if (q.hintsUsed < MAX_HINTS) showHint(opt);
   else q.phase = "stuck";
@@ -465,6 +495,7 @@ function finish(result) {
   renderHeaderStats(result === "first");
   renderNote();
   renderBench();
+  if (settled.length) sendOutbox(toEvents(settled));
   for (const s of settled) {
     toast(s.reward
       ? `Your tutor learned: "${ACTION_LABELS[s.action]}" helped with this trap.`
@@ -661,9 +692,12 @@ function renderDrawer() {
         : h("p", { class: "note-small" }, "Use the highlighter (M) to mark evidence and see your evidence eye here.")),
     trapMap(),
     insights(),
+    sharingCard(),
     h("div", { class: "card" },
       h("h3", { style: "margin:0 0 6px;font-size:15px" }, "Your data"),
-      h("p", { class: "note-small" }, "Progress is stored only in this browser. No account, no server, nothing sent anywhere."),
+      h("p", { class: "note-small" }, app.api && app.prefs.share
+        ? "Progress is stored only in this browser, with no account. Only the anonymous coaching results described above are shared."
+        : "Progress is stored only in this browser. No account, and nothing is sent anywhere."),
       h("button", { class: "btn ghost danger", type: "button", style: "margin-top:8px", on: { click: resetProgress } }, icon("reset", 16), "Reset progress")),
   ];
   mount($("drawer-body"), sections);
@@ -702,6 +736,24 @@ function insights() {
           h("span", {}, h("b", {}, ACTION_LABELS[c.best]), ` works best for "${trapName(c.confusion)}"`,
             c.bucket > 1 ? ` after ${c.bucket === 3 ? "3+" : c.bucket} misses` : "", ` (${Math.round(c.mean * 100)}%, ${c.trials} cases).`)))
       : h("p", { class: "note-small" }, "Your tutor tries different coaching styles after a miss and learns which ones help you on the next new case. Insights appear here as you practice."));
+}
+
+function sharingCard() {
+  const status = !app.api
+    ? "This copy runs offline: your tutor learns from your answers only."
+    : !app.prefs.share
+      ? "Off. Your tutor learns from your answers only."
+      : app.shared
+        ? `On. Your tutor also learns from ${app.shared.events.toLocaleString()} anonymous results from other students.`
+        : "On. Waiting for the shared tutor (offline right now).";
+  return h("div", { class: "card" },
+    h("h3", { style: "margin:0 0 6px;font-size:15px" }, "Learning together"),
+    h("p", { class: "note-small" },
+      "When a coaching style is tested on your next case, this app can share one anonymous result: the trap, how many times you missed it (1, 2 or 3+), the coaching style, and whether it helped. No name, no account, no answers, no notes."),
+    app.api ? h("label", { class: "switch", style: "margin-top:8px" },
+      h("input", { type: "checkbox", checked: app.prefs.share, on: { change: (e) => setShare(e.target.checked) } }),
+      "Share anonymous results to improve coaching for everyone") : null,
+    h("p", { class: "note-small" }, status));
 }
 
 function practiceTrap(id) {

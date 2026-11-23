@@ -64,7 +64,7 @@ test("reward is settled only by a NEW question with the same trap", () => {
   // a new scenario with the trap, answered right first try: reward 1
   const s2 = scenario("s2");
   const r = recordOutcome(progress, s2, { ...base, firstOption: right(s2) });
-  assert.deepEqual(r.settled, [{ confusion: "t:a", action: "walkthrough", reward: 1 }]);
+  assert.deepEqual(r.settled, [{ confusion: "t:a", bucket: 1, action: "walkthrough", reward: 1 }]);
   assert.equal(r.progress.pending["t:a"], undefined);
   assert.deepEqual(counts(r.progress.bandit, "t:a", 1, "walkthrough"), [2, 1]);
 });
@@ -74,7 +74,7 @@ test("a failed reward question records 0", () => {
   let { progress } = recordOutcome(emptyProgress(), s1, { ...base, firstOption: wrong(s1), action: "rule_refresh", missBucket: 1 });
   const s2 = scenario("s2");
   const r = recordOutcome(progress, s2, { ...base, firstOption: wrong(s2, 2), action: "find_meat", missBucket: 1 });
-  assert.deepEqual(r.settled, [{ confusion: "t:a", action: "rule_refresh", reward: 0 }]);
+  assert.deepEqual(r.settled, [{ confusion: "t:a", bucket: 1, action: "rule_refresh", reward: 0 }]);
   assert.deepEqual(counts(r.progress.bandit, "t:a", 1, "rule_refresh"), [1, 2]);
   assert.equal(r.progress.pending["t:b"].action, "find_meat");
 });

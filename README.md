@@ -42,6 +42,23 @@ on any static host. Progress stays in the student's browser.
 - **Know your lean:** overcoding vs undercoding meter, confidence check, trap map, "what helps you".
 - **Why it matters:** the debrief shows how the miss moves the CMS-HCC V28 risk score (feedback only).
 
+### Live bandit API (optional): the tutor learns from every student
+
+```powershell
+coding-tutor-api          # http://127.0.0.1:8780, SQLite at data\api.sqlite
+```
+
+Set `web/config.json` to `{"api": "http://127.0.0.1:8780"}` (or your deployed URL). Without it the app
+runs fully offline and each browser learns alone.
+
+- The browser still chooses the coaching style. It combines the student's own results with the shared
+  counts from `GET /v1/policy`, capped at 20 pseudo-trials per arm so personal results still matter.
+- When a reward settles (next NEW case with the same trap), it sends `POST /v1/events` with exactly
+  `{confusion, bucket, action, reward}`. No ids, answers, notes or IPs are stored; days are the finest time grain.
+- Students can turn sharing off in Progress → Learning together. Unsent events wait in an outbox.
+- Server: standard-library WSGI (`coding_tutor.api.app.make_app`), CORS allowlist, 64 KB body limit,
+  per-client rate limit. Storage is SQLite (`api/storage.py`); swap it for a hosted database to deploy.
+
 JavaScript tests use Node's built-in runner (`cd web; node --test "test/*.test.mjs"`) and also run inside `pytest`.
 
 Resolve a single case:
@@ -104,6 +121,7 @@ src/coding_tutor/
   rl/                   simulator.py, policies.py, experiment.py
   cms/                  fetch.py, build_db.py
   ui/                   export.py (bundle for the web UI), serve.py (localhost server)
+  api/                  live bandit API: policy.py (validate events), storage.py (SQLite), app.py (WSGI), server.py
 web/                    static coach-mode UI: index.html, css/, js/ (bandit, selector, hints, progress, note, app), test/
 tests/                  mirrors src/coding_tutor/
 docs/python-style.md    coding standards
