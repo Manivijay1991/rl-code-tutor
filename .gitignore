@@ -1,3 +1,7 @@
 ﻿.venv/
 __pycache__/
 *.pyc
+# CMS downloads and derived databases (recreate with data/fetch_cms.py + data/build_db.py)
+data/raw/
+data/*.sqlite
+data/*.tmp

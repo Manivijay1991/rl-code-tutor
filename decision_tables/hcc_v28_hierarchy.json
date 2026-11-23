@@ -1,0 +1,26 @@
+{
+  "status": "draft",
+  "model": "CMS-HCC V28",
+  "note": "Hand-entered for the HCC families used by the starter tables. Verify labels and hierarchies against the CMS V28 model software / Rate Announcement before trusting.",
+  "labels": {
+    "35": "Pancreas Transplant Status",
+    "36": "Diabetes with Severe Acute Complications",
+    "37": "Diabetes with Chronic Complications",
+    "38": "Diabetes with Glycemic, Unspecified, or No Complications",
+    "155": "Major Depression, Moderate or Severe, without Psychosis",
+    "226": "Heart Failure, Except End-Stage and Acute",
+    "280": "Chronic Obstructive Pulmonary Disease, Interstitial Lung Disorders, and Other Chronic Lung Disorders",
+    "326": "Chronic Kidney Disease, Stage 5",
+    "327": "Chronic Kidney Disease, Severe (Stage 4)",
+    "328": "Chronic Kidney Disease, Moderate (Stage 3B)",
+    "329": "Chronic Kidney Disease, Moderate (Stage 3, Except 3B)"
+  },
+  "drops": {
+    "35": ["36", "37", "38"],
+    "36": ["37", "38"],
+    "37": ["38"],
+    "326": ["327", "328", "329"],
+    "327": ["328", "329"],
+    "328": ["329"]
+  }
+}

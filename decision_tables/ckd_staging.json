@@ -1,0 +1,89 @@
+{
+  "id": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "topic": "Genitourinary / CKD",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "slots": {
+    "stage": {
+      "values": ["1", "2", "3a", "3b", "3_unspecified", "4", "5", "esrd"],
+      "evidence": {
+        "1": ["stage 1"], "2": ["stage 2"], "3a": ["stage 3a"], "3b": ["stage 3b"],
+        "3_unspecified": ["stage 3"], "4": ["stage 4"], "5": ["stage 5"],
+        "esrd": ["end stage renal disease", "ESRD"]
+      }
+    },
+    "hypertension": {
+      "values": ["no", "yes"],
+      "evidence": {"no": [], "yes": ["hypertension", "HTN"]}
+    },
+    "dialysis": {
+      "values": ["no", "yes"],
+      "evidence": {"no": [], "yes": ["dialysis", "hemodialysis"]}
+    }
+  },
+  "exclude": [
+    {"stage": ["1", "2", "3a", "3b", "3_unspecified", "4", "5"], "dialysis": "yes"}
+  ],
+  "confusions": {
+    "wrong_ckd_stage": {"description": "Picked a different CKD stage than documented.", "lean": "neutral"},
+    "under_staged": {"description": "Picked a lower or less specific stage than documented.", "lean": "under"},
+    "nonbillable_code": {"description": "Reported a subcategory that needs more characters.", "lean": "neutral"},
+    "both_stage_and_esrd": {"description": "Reported a CKD stage together with ESRD.", "lean": "over"},
+    "missed_htn_ckd_link": {"description": "Coded hypertension and CKD separately instead of hypertensive CKD.", "lean": "under"},
+    "wrong_htn_ckd_code": {"description": "Used the hypertensive CKD code for the wrong stage range.", "lean": "neutral"},
+    "missed_dialysis_status": {"description": "Left out dialysis status Z99.2.", "lean": "under"}
+  },
+  "components": [
+    {
+      "id": "htn",
+      "rules": [
+        {"when": {"hypertension": "yes", "stage": ["1", "2", "3a", "3b", "3_unspecified", "4"]}, "codes": ["I12.9"],
+         "explain": "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+         "refs": ["OCG I.C.9.a.2"],
+         "wrong": [{"codes": ["I10"], "confusion": "missed_htn_ckd_link", "why": "The classification presumes a link between hypertension and CKD."},
+                   {"codes": ["I12.0"], "confusion": "wrong_htn_ckd_code", "why": "I12.0 is for stage 5 or ESRD only."}]},
+        {"when": {"hypertension": "yes"}, "codes": ["I12.0"],
+         "explain": "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+         "refs": ["OCG I.C.9.a.2"],
+         "wrong": [{"codes": ["I12.9"], "confusion": "wrong_htn_ckd_code", "why": "I12.9 is for stage 1-4 or unspecified CKD."},
+                   {"codes": ["I10"], "confusion": "missed_htn_ckd_link", "why": "The classification presumes a link between hypertension and CKD."}]},
+        {"codes": []}
+      ]
+    },
+    {
+      "id": "ckd",
+      "rules": [
+        {"when": {"stage": "1"}, "codes": ["N18.1"], "explain": "CKD stage 1: N18.1.", "refs": ["OCG I.C.14.a"],
+         "wrong": [{"codes": ["N18.2"], "confusion": "wrong_ckd_stage", "why": "The note documents stage 1."}]},
+        {"when": {"stage": "2"}, "codes": ["N18.2"], "explain": "CKD stage 2: N18.2.", "refs": ["OCG I.C.14.a"],
+         "wrong": [{"codes": ["N18.1"], "confusion": "under_staged", "why": "The note documents stage 2."}]},
+        {"when": {"stage": "3a"}, "codes": ["N18.31"], "explain": "CKD stage 3a: N18.31.", "refs": ["OCG I.C.14.a"],
+         "wrong": [{"codes": ["N18.30"], "confusion": "under_staged", "why": "Stage 3a is documented; do not use unspecified stage 3."},
+                   {"codes": ["N18.32"], "confusion": "wrong_ckd_stage", "why": "3b is a different (more severe) stage."}]},
+        {"when": {"stage": "3b"}, "codes": ["N18.32"], "explain": "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a).", "refs": ["OCG I.C.14.a"],
+         "wrong": [{"codes": ["N18.31"], "confusion": "under_staged", "why": "3a is less severe than the documented 3b."},
+                   {"codes": ["N18.30"], "confusion": "under_staged", "why": "Stage 3b is documented; do not use unspecified stage 3."}]},
+        {"when": {"stage": "3_unspecified"}, "codes": ["N18.30"], "explain": "Stage 3 without a 3a/3b specification: N18.30.", "refs": ["OCG I.C.14.a"],
+         "wrong": [{"codes": ["N18.3"], "confusion": "nonbillable_code", "why": "N18.3 needs a 5th character."},
+                   {"codes": ["N18.32"], "confusion": "wrong_ckd_stage", "why": "3b is not documented."}]},
+        {"when": {"stage": "4"}, "codes": ["N18.4"], "explain": "CKD stage 4: N18.4.", "refs": ["OCG I.C.14.a"],
+         "wrong": [{"codes": ["N18.32"], "confusion": "under_staged", "why": "Stage 4 is documented."}]},
+        {"when": {"stage": "5"}, "codes": ["N18.5"], "explain": "CKD stage 5 (not documented as ESRD): N18.5.", "refs": ["OCG I.C.14.a"],
+         "wrong": [{"codes": ["N18.6"], "confusion": "wrong_ckd_stage", "why": "ESRD is not documented."},
+                   {"codes": ["N18.4"], "confusion": "under_staged", "why": "Stage 5 is documented."}]},
+        {"when": {"stage": "esrd"}, "codes": ["N18.6"], "explain": "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only.", "refs": ["OCG I.C.14.a.1"],
+         "wrong": [{"codes": ["N18.5", "N18.6"], "confusion": "both_stage_and_esrd", "why": "Assign N18.6 only when ESRD is documented."},
+                   {"codes": ["N18.5"], "confusion": "wrong_ckd_stage", "why": "ESRD is documented."}]}
+      ]
+    },
+    {
+      "id": "status",
+      "rules": [
+        {"when": {"dialysis": "yes"}, "codes": ["Z99.2"], "explain": "Patient on dialysis: add Z99.2 dependence on renal dialysis.", "refs": ["OCG I.C.14.a.1", "OCG I.C.21.c.3"],
+         "wrong": [{"codes": [], "confusion": "missed_dialysis_status", "why": "Dialysis status is reported with Z99.2."}]},
+        {"codes": []}
+      ]
+    }
+  ]
+}

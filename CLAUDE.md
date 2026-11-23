@@ -10,6 +10,7 @@ A free, open-source practice tool for medical coding certification candidates, b
 - **Disclaimer:** not affiliated with or endorsed by AAPC, AHIMA, AMA or CMS.
 - **Answers come from the rules engine, never the LLM.** The LLM only writes the clinical note and wording from slot values.
 - **All decision tables are drafts** until a certified coder reviews them.
+- **Coach mode never gives the answer directly.** Feedback guides the student to pick it themselves: up to 3 escalating hints with a re-pick after each; no hint names the correct code. The answer is shown only if the student asks after the hints run out. Getting it right on these re-picks is not the bandit reward (reward stays: next NEW question with the same confusion).
 
 ## Architecture
 1. `decision_tables/*.json` — rules as slots (deciding details) → correct codes, with confusions tagged per wrong answer.
@@ -29,6 +30,7 @@ A free, open-source practice tool for medical coding certification candidates, b
 
 ## Conventions
 - Python 3.12, standard library first; Windows host (PowerShell), Ollama available locally on GPU.
+- Tests use **pytest** (dev-only dependency, in `.venv`): `.\.venv\Scripts\python.exe -m pytest`.
 - Keep everything runnable offline; no API keys in a public page.
 - Verify codes against the current fiscal-year CMS files before trusting them.
 
