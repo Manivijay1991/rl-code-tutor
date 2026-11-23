@@ -1,0 +1,114 @@
+{
+  "id": "diabetes_complications-913ee78931",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\n\"My feet have been feeling tingly lately.\"\n\nHPI\nThe patient presents today regarding paresthesias in both feet. Symptoms have been gradually worsening over the last several months. They report numbness and tingling that is worse at night. The patient has a history of type 2 diabetes mellitus and has been managed with long-term insulin therapy. They are also concerned about the ongoing symptoms related to peripheral neuropathy. They deny any recent trauma to the lower extremities.\n\nMedication List\nInsulin (long-term)\n\nExam\nVitals are stable. Neurological exam reveals decreased sensation to light touch in a stocking distribution, consistent with peripheral neuropathy. Peripheral pulses are 2+ in all extremities. Skin assessment is intact.\n\nAssessment\nThe patient is a known case of type 2 diabetes mellitus presenting with worsening symptoms of polyneuropathy.\n\nPlan\nContinue current insulin regimen as prescribed. Patient education provided regarding foot care and warning signs to report to the clinic. Follow up as needed.",
+  "answer": [
+    "E11.42",
+    "Z79.4"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: the combination code E11.42 captures both.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding the two separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.42"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1142"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "by": "37"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:24+00:00"
+  }
+}

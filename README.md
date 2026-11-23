@@ -1,28 +1,102 @@
-# rl-code-tutor
+# Coding Tutor
 
 A free, non-commercial practice tool for **CRC (risk adjustment) coding** candidates. A rules engine
 decides every answer; a Thompson-sampling bandit chooses *how to teach* after a wrong answer.
 
-> Not affiliated with or endorsed by AAPC, AHIMA, AMA or CMS. All decision tables are **drafts**
-> until reviewed by a certified coder. Not for production coding.
+> Not affiliated with or endorsed by AAPC, AHIMA, AMA or CMS. All decision tables and generated
+> scenarios are **drafts** until reviewed by a certified coder. Not for production coding.
 
 ## Setup (Windows / PowerShell)
 
-```powershell
-python data\fetch_cms.py          # download CMS files into data\raw\ (not committed)
-python data\build_db.py           # build data\codes.sqlite
-python -m engine.rules_engine     # check every decision table
-python -m rl.run_experiment       # compare teaching policies in the simulator
+Requires Python 3.13.
 
-python -m venv .venv; .\.venv\Scripts\python.exe -m pip install pytest
-.\.venv\Scripts\python.exe -m pytest
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"   # package + pytest + ruff
+
+coding-tutor-fetch        # download CMS files into data\raw\ (not committed)
+coding-tutor-build-db     # build data\codes.sqlite
+coding-tutor-check        # check every decision table
+coding-tutor-experiment   # compare teaching policies in the simulator
 ```
+
+Each command is also available as a module, e.g. `python -m coding_tutor.engine.rules`.
 
 Resolve a single case:
 
 ```powershell
-python -m engine.rules_engine diabetes_complications dm_type=type2 complication=ckd_stage4 provider_says_unrelated=no meds=insulin
+coding-tutor-check diabetes_complications dm_type=type2 complication=ckd_stage4 provider_says_unrelated=no meds=insulin
 ```
+
+## Generate practice scenarios
+
+Uses a local LLM through [Ollama](https://ollama.com) by default (model `gemma4:e4b`):
+
+```powershell
+coding-tutor-generate --n 2                          # 2 per table
+coding-tutor-generate --all                          # every slot combination once
+coding-tutor-generate --table ckd_staging --dry-run  # print prompts only
+```
+
+### Choosing the model
+
+The client lives in `coding_tutor.llm` (providers: `ollama`, and `openai` for any OpenAI-compatible
+`/chat/completions` endpoint such as LM Studio, vLLM or llama.cpp). Settings come from flags or environment:
+
+| Flag | Environment variable | Default |
+|---|---|---|
+| `--provider` | `CODING_TUTOR_LLM_PROVIDER` | `ollama` |
+| `--model` | `CODING_TUTOR_LLM_MODEL` | `gemma4:e4b` |
+| `--url` | `CODING_TUTOR_LLM_URL` | provider's local URL |
+| `--api-key-env VAR` | `CODING_TUTOR_LLM_API_KEY` | none |
+
+API keys are read only from environment variables (never a command-line value), sent as a Bearer
+token, and never written to logs, errors or scenario files.
+
+```powershell
+$env:CODING_TUTOR_LLM_MODEL = "llama3.1:8b"; coding-tutor-generate --n 1
+coding-tutor-generate --provider openai --url http://localhost:1234/v1 --model qwen2.5-7b-instruct
+```
+
+In code, inject the client (or any `(system, user, seed) -> str` function):
+
+```python
+from coding_tutor.llm import LLMConfig, make_llm
+
+llm = make_llm(LLMConfig(provider="openai", model="m", base_url="http://gpu:8000/v1", api_key=key))
+```
+
+The LLM only writes the note. The answer, distractors and explanations come from the rules engine.
+A note is kept only if it contains every deciding detail and none of the phrases that would change
+the answer; otherwise it is retried with the problems listed. Output: `scenarios/<table>/<id>.json` (draft).
+
+## Project layout
+
+```
+src/coding_tutor/
+  paths.py              where data, tables and scenarios live (override with CODING_TUTOR_DATA / CODING_TUTOR_SCENARIOS)
+  decision_tables/      rules as JSON (slots -> codes, tagged wrong answers)
+  engine/               rules.py (answers), codes.py (ICD-10-CM lookups), hcc.py (V28 hierarchy + weights)
+  llm/                  config.py (provider, model, URL, API key), transport.py (HTTP), providers.py (Ollama, OpenAI-compatible)
+  generator/            scenarios.py (LLM writes the note; the engine decides the answer)
+  rl/                   simulator.py, policies.py, experiment.py
+  cms/                  fetch.py, build_db.py
+tests/                  mirrors src/coding_tutor/
+docs/python-style.md    coding standards
+data/                   CMS downloads and codes.sqlite (not committed)
+scenarios/              generated practice scenarios
+```
+
+## Development
+
+```powershell
+.\.venv\Scripts\python.exe -m ruff check .
+.\.venv\Scripts\python.exe -m ruff format --check .
+.\.venv\Scripts\python.exe -m pytest              # quick run: -m "not slow"
+```
+
+Style: functional (plain functions over plain data), single-responsibility functions, type hints,
+Google-style docstrings. See [docs/python-style.md](docs/python-style.md).
 
 ## Code sources (free, public)
 

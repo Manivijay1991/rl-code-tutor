@@ -1,0 +1,110 @@
+{
+  "id": "diabetes_complications-e8d2813958",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up evaluation for peripheral neuropathy.\n\nHistory of Present Illness\nThe patient presents for routine follow-up. He has a history of type 2 diabetes mellitus, managed long-term with insulin. The patient denies any recent changes to his diabetes management. The primary concern today is the ongoing peripheral neuropathy. The provider examined the patient and explicitly stated that the current polyneuropathy is not due to diabetes.\n\nMedication List\nInsulin (long-term use).\n\nExam\nNeurological exam was performed; noted decreased sensation in a stocking distribution, consistent with peripheral neuropathy. Cardiovascular and pulmonary exams were unremarkable.\n\nAssessment\n1. Type 2 diabetes mellitus, managed with insulin.\n2. Polyneuropathy, noted as unrelated to diabetes.\n\nPlan\nContinue current insulin regimen for management of type 2 diabetes mellitus. Continue monitoring of peripheral neuropathy, with the understanding that this condition is not related to diabetes. Follow up as needed.",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.4"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:29+00:00"
+  }
+}

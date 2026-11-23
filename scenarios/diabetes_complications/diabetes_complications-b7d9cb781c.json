@@ -1,0 +1,109 @@
+{
+  "id": "diabetes_complications-b7d9cb781c",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up evaluation for peripheral neuropathy.\n\nHPI\nThe patient presents for a routine follow-up. He has a history of type 2 diabetes mellitus and reports his current medication regimen of metformin. On review of symptoms, the patient denies any new numbness or tingling since the last visit. He acknowledges the diagnosis of peripheral neuropathy but states that his primary care physician recently advised that this condition is unrelated to diabetes. He reports adherence to his oral hypoglycemic agent.\n\nMedication List\nMetformin\n\nExam\nVitals are stable. Neurological exam is performed and reveals symmetrical diminished sensation noted in the distal lower extremities, consistent with his known neuropathy. Gait and strength are otherwise intact.\n\nAssessment\n1. Type 2 diabetes mellitus: Stable on oral therapy.\n2. Peripheral neuropathy: Diagnosis acknowledged; provider confirms current understanding that this condition is not related to diabetes.\n\nPlan\nContinue current oral hypoglycemic regimen. Patient educated on the management of peripheral neuropathy, emphasizing that the current findings are not attributable to his type 2 diabetes. Follow up as scheduled.",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:31+00:00"
+  }
+}

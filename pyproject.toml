@@ -1,14 +1,60 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "coding-tutor"
 version = "0.1.0"
 description = "Free practice tool for CRC risk adjustment coding, with a Thompson-sampling teaching agent."
-requires-python = ">=3.12"
+readme = "README.md"
+requires-python = ">=3.13"
 license = "Apache-2.0"
+keywords = ["medical coding", "ICD-10-CM", "risk adjustment", "HCC", "education", "reinforcement learning"]
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Education",
+    "Topic :: Education",
+    "Development Status :: 2 - Pre-Alpha",
+]
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+coding-tutor-fetch = "coding_tutor.cms.fetch:main"
+coding-tutor-build-db = "coding_tutor.cms.build_db:main"
+coding-tutor-check = "coding_tutor.engine.rules:main"
+coding-tutor-generate = "coding_tutor.generator.scenarios:main"
+coding-tutor-experiment = "coding_tutor.rl.experiment:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+coding_tutor = ["decision_tables/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]
+pythonpath = ["src"]
+markers = ["slow: long simulation runs (skip with -m \"not slow\")"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+extend-exclude = [".venv", "scenarios", "data"]
+
+[tool.ruff.lint]
+# E/W pycodestyle, F pyflakes, I isort, N naming, UP pyupgrade, B bugbear, SIM simplify,
+# C4 comprehensions, RET returns, ARG unused args, D docstrings (Google), PL pylint subset.
+select = ["E", "W", "F", "I", "N", "UP", "B", "SIM", "C4", "RET", "ARG", "D", "PLC", "PLE", "PLW"]
+ignore = ["PLW2901"]  # loop variable overwrite is idiomatic in parsers
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D", "ARG"]  # test names describe intent; fakes ignore some args
+
+[tool.ruff.lint.isort]
+known-first-party = ["coding_tutor"]

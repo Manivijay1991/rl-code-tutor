@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-1d5d246a75",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\n\"Shortness of breath\" for the past two days.\n\nHPI\nMr. Smith presents today complaining of increased shortness of breath since yesterday. He reports the dyspnea is worse with exertion and has been noticeable at rest this morning. He denies any fever, chills, or productive cough. He states his shortness of breath is worse when climbing stairs. He has been managing his symptoms at home with his usual regimen.\n\nMedication List\nAlbuterol inhaler, Tiotropium bromide inhaler.\n\nExam\nVitals are stable today. Lungs are diminished bilaterally with expiratory wheezing noted throughout. Cardiovascular exam is unremarkable.\n\nAssessment\nThe patient is presenting with an acute exacerbation of respiratory symptoms.\n\nProblem List\nCOPD. The patient’s history includes a diagnosis of COPD, which is noted in the problem list.\n\nPlan\nContinue current inhaled bronchodilator regimen. Instructed patient on increased rest and to use his rescue inhaler prn dyspnea. Follow up in one week or sooner if symptoms worsen.",
+  "answer": [],
+  "explanations": [
+    "COPD appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:44+00:00"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "ckd_staging-03edbdd35f",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nPatient presents today for routine follow-up regarding known kidney impairment.\n\nHistory of Present Illness\nThe patient reports feeling generally well since the last visit, with no new complaints of swelling or shortness of breath. The primary focus remains on the management of chronic kidney disease, specifically noted at stage 3b. He denies any recent changes in diet or activity level. He reports adequate fluid intake and continues to monitor his blood pressure as instructed.\n\nMedication List\nLisinopril 10 mg daily\nFurosemide 20 mg daily\n\nExam\nVitals are stable, with blood pressure reading of 138/84 mmHg. Cardiac exam reveals regular rhythm with no murmurs or rubs. Pulmonary exam is clear to auscultation bilaterally. Abdominal exam is soft and non-tender. Skin exam reveals no rashes or signs of acute distress.\n\nAssessment\nChronic kidney disease, stage 3b.\n\nPlan\nContinue current medications as prescribed. Follow up in three months to recheck labs and vital signs. Patient educated on maintaining a low-sodium diet and ensuring adequate hydration status.",
+  "answer": [
+    "N18.32"
+  ],
+  "explanations": [
+    "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a)."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "3a is less severe than the documented 3b.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3b is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:51:43+00:00"
+  }
+}

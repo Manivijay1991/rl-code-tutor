@@ -1,0 +1,65 @@
+{
+  "id": "ckd_staging-6099ecc684",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nPatient presents today for follow-up regarding their skin condition.\n\nHistory of Present Illness\nThe patient reports the skin lesion has been present for several months and has shown progressive changes. Examination confirms the current lesion is consistent with a highly concerning finding, classified as stage 4. The patient denies any recent trauma or changes in bowel habits. They report occasional mild itching but no drainage or pain. The provider reviewed the pathology reports confirming the advanced nature of the condition, specifically noting the stage 4 involvement.\n\nMedication List\nLisinopril 10 mg daily\nAmlodipine 5 mg daily\n\nExam\nVitals are stable. Skin examination reveals the lesion remains visually concerning, consistent with stage 4 disease process. The rest of the skin appears intact without other significant findings.\n\nAssessment\nSkin condition, stage 4.\n\nPlan\nContinue current medications. Schedule a biopsy follow-up appointment in two weeks for further management planning. Patient educated on signs of worsening and instructed to call office immediately if bleeding or rapid spread occurs.",
+  "answer": [
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD stage 4: N18.4."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 4 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.514,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.514,
+    "hccs": [
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:51:48+00:00"
+  }
+}

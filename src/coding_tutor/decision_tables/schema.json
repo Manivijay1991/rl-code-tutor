@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coding Tutor decision table",
+  "description": "Slots (deciding details) -> codes. Each component has an ordered rule list; the first matching rule wins; the answer is the union across components. Structural checks live in engine/rules_engine.py.",
+  "type": "object",
+  "required": ["id", "status", "slots", "confusions", "components"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "title": {"type": "string"},
+    "topic": {"type": "string"},
+    "status": {"enum": ["draft", "reviewed"]},
+    "code_set": {"type": "string"},
+    "question": {"type": "string", "description": "what the student is asked; sets the scope so codes outside the table are not expected"},
+    "note": {"type": "string"},
+    "slots": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["values"],
+        "properties": {
+          "values": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "evidence": {"type": "object", "description": "value -> phrases a generated note must contain so the deciding detail is present: a list of strings = any one; a list of lists = one from EACH inner list",
+                       "additionalProperties": {"type": "array", "items": {"anyOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}}]}}},
+          "exclusive": {"type": "boolean", "description": "default true: a note for one value must not contain phrases that belong only to the slot's other values"},
+          "describe": {"type": "object", "description": "value -> plain instruction for the note writer",
+                       "additionalProperties": {"type": "string"}}
+        }
+      }
+    },
+    "note_forbid": {"type": "array", "items": {"type": "string"}, "description": "phrases no generated note may contain (they would change the answer)"},
+    "note_rules": {
+      "type": "array",
+      "description": "per-case overrides for note generation; every rule whose `when` matches applies",
+      "items": {
+        "type": "object",
+        "required": ["when"],
+        "properties": {
+          "when": {"type": "object"},
+          "skip_evidence": {"type": "array", "items": {"type": "string"}, "description": "slots whose evidence/exclusive checks are skipped"},
+          "require": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}, "description": "groups; one phrase from each"},
+          "forbid": {"type": "array", "items": {"type": "string"}},
+          "describe": {"type": "string"}
+        }
+      }
+    },
+    "exclude": {"type": "array", "description": "Partial slot assignments that are unrealistic; values may be strings or lists",
+                "items": {"type": "object"}},
+    "confusions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["description", "lean"],
+        "properties": {"description": {"type": "string"}, "lean": {"enum": ["over", "under", "neutral"]}}
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "rules"],
+        "properties": {
+          "id": {"type": "string"},
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["codes"],
+              "properties": {
+                "when": {"type": "object", "description": "slot -> value or [values]; omitted slots match anything"},
+                "codes": {"type": "array", "items": {"type": "string"}},
+                "explain": {"type": "string"},
+                "refs": {"type": "array", "items": {"type": "string"}},
+                "wrong": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["codes", "confusion"],
+                    "properties": {
+                      "codes": {"type": "array", "items": {"type": "string"}, "description": "replaces this component's codes"},
+                      "also": {"type": "array", "items": {"type": "string"}, "description": "extra codes added to the distractor"},
+                      "confusion": {"type": "string"},
+                      "why": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

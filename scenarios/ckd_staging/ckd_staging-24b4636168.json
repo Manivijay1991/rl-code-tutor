@@ -1,0 +1,82 @@
+{
+  "id": "ckd_staging-24b4636168",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nPatient presents today for routine follow-up evaluation of kidney function.\n\nHPI\nThe patient reports no acute complaints today. He states that his diet remains consistent with recommendations. Review of his recent labs confirms his current kidney status, which is noted as stage 5. He denies any changes in urine output or swelling since the last visit. He understands the importance of managing his care for this stage 5 condition and reports adherence to his medication regimen.\n\nMedication List\nLisinopril 10 mg daily\nFurosemide 40 mg daily\n\nExam\nVitals are stable. Cardiovascular exam is unremarkable with no murmurs or rubs appreciated. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended. Lower extremities show no signs of edema.\n\nAssessment\nChronic kidney disease, stage 5.\n\nPlan\nContinue current medications as prescribed. Patient instructed to continue low sodium diet and weight-bearing exercise. Follow up with nephrology clinic in four weeks for further monitoring of the stage 5 condition.",
+  "answer": [
+    "N18.5"
+  ],
+  "explanations": [
+    "CKD stage 5 (not documented as ESRD): N18.5."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.6"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 5 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.815,
+        "gap": -0.301,
+        "direction": "under",
+        "extra_hccs": [
+          "327"
+        ],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:51:51+00:00"
+  }
+}

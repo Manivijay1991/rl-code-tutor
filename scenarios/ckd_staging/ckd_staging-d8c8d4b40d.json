@@ -1,0 +1,82 @@
+{
+  "id": "ckd_staging-d8c8d4b40d",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3a",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nAnnual follow-up for chronic kidney disease management.\n\nHistory of Present Illness\nThe patient presents for routine follow-up care. Current kidney function status is stable, with the known classification of stage 3a. The patient reports no acute complaints since the last visit and denies any new swelling or increased fatigue. Diet remains consistent with low-phosphorus recommendations. The patient understands the implications of having stage 3a renal impairment and adheres to prescribed lifestyle modifications.\n\nMedication List\nLisinopril 10 mg daily\nPotassium binder 300 mg daily\n\nExam\nVitals stable. Lungs clear to auscultation bilaterally. Cardiovascular exam reveals regular rhythm, no murmurs, rubs, or gallops. Abdomen is soft, non-tender, and non-distended. Peripheral pulses 2+ bilaterally. Skin assessment unremarkable.\n\nAssessment\nChronic kidney disease, stage 3a. Condition remains stable at this visit.\n\nPlan\nContinue current medication regimen. Emphasize adherence to dietary restrictions, particularly potassium and phosphorus intake, given the stage 3a status. Follow up in six months or sooner if symptoms change.",
+  "answer": [
+    "N18.31"
+  ],
+  "explanations": [
+    "CKD stage 3a: N18.31."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3a is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is a different (more severe) stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1831"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:51:40+00:00"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "ckd_staging-ff0de93528",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\n\"Routine follow-up for blood pressure monitoring.\"\n\nHistory of Present Illness\nPatient presents for routine follow-up. The patient reports generally feeling well since the last visit. They deny any acute symptoms, including shortness of breath, chest pain, or swelling. Blood pressure readings taken today were stable. The patient was counseled again regarding the importance of diet and activity to manage risk factors. Current assessment indicates the patient remains in \"stage 1\" management guidelines for their vascular health.\n\nMedication List\nLisinopril 10 mg daily\nAmlodipine 5 mg daily\n\nExam\nVitals are stable. Blood pressure measured today was 128/76 mmHg. Physical exam is unremarkable; heart sounds are regular in rate and rhythm, and peripheral pulses are 2+ bilaterally. Skin exam shows no rashes or signs of acute infection.\n\nAssessment\nThe patient is stable. Management remains focused on maintaining current lifestyle modifications appropriate for \"stage 1\" disease progression.\n\nPlan\nContinue current medications as prescribed. Reinforce low-sodium diet and daily aerobic exercise. Follow up in three months, or sooner if symptoms develop.",
+  "answer": [
+    "N18.1"
+  ],
+  "explanations": [
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:51:34+00:00"
+  }
+}

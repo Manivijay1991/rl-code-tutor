@@ -1,7 +1,11 @@
 ﻿.venv/
 __pycache__/
 *.pyc
-# CMS downloads and derived databases (recreate with data/fetch_cms.py + data/build_db.py)
-data/raw/
-data/*.sqlite
-data/*.tmp
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+# CMS downloads and the derived database
+# (recreate with: python -m coding_tutor.cms.fetch && python -m coding_tutor.cms.build_db)
+data/

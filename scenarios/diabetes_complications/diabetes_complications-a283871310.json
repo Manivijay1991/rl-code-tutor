@@ -1,0 +1,106 @@
+{
+  "id": "diabetes_complications-a283871310",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nPatient presents for follow-up regarding management of T1DM and peripheral neuropathy.\n\nHistory of Present Illness\nThe patient reports stable management of their type 1 diabetes mellitus. They continue to use long-term insulin therapy as prescribed. The patient also reports ongoing management of peripheral neuropathy symptoms. They deny any acute changes to these conditions since the last visit.\n\nMedication List\nInsulin (long-term use)\n\nExam\nVitals are stable. Neurological exam reveals mild diminished sensation noted in a stocking distribution consistent with peripheral neuropathy. Skin exam is intact.\n\nAssessment\n1. Type 1 diabetes mellitus: Stable on insulin regimen.\n2. Peripheral neuropathy: Stable status.\n\nPlan\nContinue current insulin regimen. Follow up in three months for routine assessment of T1DM and peripheral neuropathy. Patient educated on signs and symptoms requiring immediate medical attention.",
+  "answer": [
+    "E10.42"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: E10.42.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "G62.9"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1042"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:03+00:00"
+  }
+}

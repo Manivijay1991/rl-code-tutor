@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-69a826d7bb",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nRoutine follow-up appointment today.\n\nHPI\nPatient presents for routine follow-up as scheduled. He reports feeling generally stable since the last visit. He denies any new shortness of breath, swelling, or palpitations. He confirms adherence to all prescribed medications and reports taking the full dose of all items on his medication list. He denies any recent changes in diet or activity level.\n\nMedication List\nCurrent medications include: sacubitril-valsartan, carvedilol, metoprolol succinate, furosemide, spironolactone.\n\nExam\nVitals: Blood pressure 128/78, pulse 72, respiratory rate 16. Lungs are clear to auscultation bilaterally. Peripheral edema is 1+ bilaterally. The patient appears comfortable at rest.\n\nAssessment\nPatient is stable on current regimen. No acute changes noted today.\n\nPlan\nContinue current medication list as prescribed. Encourage continued monitoring of weight and daily activity. Return to clinic as scheduled for next follow-up.",
+  "answer": [],
+  "explanations": [
+    "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:50+00:00"
+  }
+}

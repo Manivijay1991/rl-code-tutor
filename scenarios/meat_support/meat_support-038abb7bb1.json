@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-038abb7bb1",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nThe patient presented today for follow-up regarding persistent cough and shortness of breath over the last week.\n\nHPI\nThe patient reports the cough started gradually and has been worse in the mornings. Shortness of breath occurs primarily with exertion, such as climbing two flights of stairs. He denies any fever, chest pain, or sputum change. He reports using his rescue inhaler, albuterol, three times yesterday.\n\nMedication List\nCurrent medications include: lisinopril, furosemide, and fluticasone-salmeterol.\n\nExam\nVitals are stable. Lungs were auscultated bilaterally with diffuse expiratory wheezing noted. Heart sounds were regular in rate and rhythm without murmurs. The patient tolerated ambulation well in the clinic hallway.\n\nAssessment\nStable presentation.\n\nPlan\nContinue current management plan. Ensure adherence to the medication list, specifically using the fluticasone-salmeterol as prescribed. Use albuterol as needed for acute symptoms. Follow up as needed.",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:46+00:00"
+  }
+}

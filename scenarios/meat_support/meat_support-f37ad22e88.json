@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-f37ad22e88",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nRoutine follow-up for evaluation of chronic back discomfort.\n\nHistory of Present Illness\nPatient reports that the back discomfort has been a persistent issue for approximately six months, which is currently rated 5/10 in severity. The pain is worse with prolonged sitting and improves with gentle stretching. Patient denies any recent trauma or exacerbating events. He reports occasional stiffness in the morning that resolves within an hour of getting out of bed. He states he has continued his usual activity level despite the discomfort.\n\nMedication List\nCurrent medications reviewed include: lisinopril, multivitamin, and sertraline.\n\nExam\nVitals are stable. Abdomen is soft and non-tender. Musculoskeletal exam reveals mild tenderness over the lumbar paraspinal muscles without objective signs of acute radiculopathy on movement testing. Gait is steady.\n\nAssessment\nChronic lumbar discomfort requiring ongoing management.\n\nPlan\nContinue with current conservative management plan, emphasizing core strengthening exercises. Patient is advised to schedule a follow-up in three months or sooner if symptoms significantly worsen. Continue all medications listed on the medication list, including sertraline.",
+  "answer": [],
+  "explanations": [
+    "An antidepressant on the list does not establish major depression; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:e4b",
+    "attempts": 1,
+    "created": "2026-11-23T17:52:54+00:00"
+  }
+}
