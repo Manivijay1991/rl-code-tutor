@@ -1,6 +1,6 @@
 """Rules engine: decision table + slot values -> correct codes, tagged distractors, explanation.
 
-Table model (see decision_tables/schema.json):
+Table model (see schemas/table.schema.json; files in content/tables/):
   slots       name -> {values: [...], evidence: {value: [phrases]}}
   exclude     list of partial slot assignments that are not realistic (skipped everywhere)
   confusions  id -> {description, lean: over|under|neutral}

@@ -580,10 +580,16 @@ function debriefCard() {
     revealed: ["Here is the answer", "Worth another look: this trap will come back in a new case."],
   };
   const [title, sub] = titles[q.result];
+  const confidence = !first.correct && q.sure
+    ? "You were sure on your first pick, so this is a misconception worth fixing. This trap comes back soon."
+    : first.correct && !q.sure
+      ? "You were not sure, so this trap comes back for review even though you got it right."
+      : null;
   const parts = [
     h("div", { class: `result ${q.result}` },
       h("div", { class: "big-icon" }, icon(q.result === "revealed" ? "book" : "check", 24)),
       h("div", {}, h("h3", {}, title), h("p", {}, sub))),
+    confidence ? h("div", { class: "coach-line", style: "margin-top:12px" }, icon("target", 16), confidence) : null,
     h("div", { class: "section-k" }, "Correct answer"),
     h("div", { class: "answer-rows" }, correct.codes.length
       ? correct.codes.map((c) => h("div", { class: "answer-row" }, h("span", { class: "code" }, c), h("span", {}, app.bundle.codes[c]?.desc ?? "")))

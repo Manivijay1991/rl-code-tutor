@@ -1,9 +1,9 @@
 {
   "name": "coding-tutor-web",
   "private": true,
-  "description": "Static coach-mode UI. No dependencies; tests use Node's built-in runner.",
+  "description": "Static coach-mode UI. No dependencies. Tests live in ../tests/web (Node's built-in runner) and also run inside pytest.",
   "type": "module",
   "scripts": {
-    "test": "node --test \"test/*.test.mjs\""
+    "test": "node --test \"../tests/web/*.test.mjs\""
   }
 }

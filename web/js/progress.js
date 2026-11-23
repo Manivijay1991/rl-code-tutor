@@ -58,13 +58,29 @@ export function nextMissBucket(progress, confusion) {
   return bucket(confStats(progress, confusion).misses + 1);
 }
 
-function updateConf(stats, { contains, fellFor, firstCorrect, qIndex }) {
-  if (!contains) return stats;
-  const seen = stats.seen + 1;
-  const right = stats.right + (firstCorrect ? 1 : 0);
-  const misses = stats.misses + (fellFor ? 1 : 0);
-  const interval = fellFor || !firstCorrect ? 1 : Math.min(MAX_INTERVAL, Math.max(2, stats.interval * 2));
-  return { seen, right, misses, interval, due: qIndex + interval + (fellFor ? 1 : 0) };
+/**
+ * Spaced-review gap (in questions) after one more question containing a trap. Confidence matters:
+ *   sure and fell for it    -> a misconception: back after 1 question
+ *   unsure and fell for it  -> back after 2
+ *   unsure but right        -> not mastered yet: keep the current gap (at least 2), do not grow it
+ *   sure and right          -> double the gap (2, 4, 8 ... MAX_INTERVAL)
+ */
+export function reviewGap(interval, { fellFor, firstCorrect, sure }) {
+  if (fellFor) return sure ? 1 : 2;
+  if (!firstCorrect) return 2; // missed, but on a different trap in this case
+  if (!sure) return Math.max(2, interval);
+  return Math.min(MAX_INTERVAL, Math.max(2, interval * 2));
+}
+
+function updateConf(stats, { fellFor, firstCorrect, sure, qIndex }) {
+  const gap = reviewGap(stats.interval, { fellFor, firstCorrect, sure });
+  return {
+    seen: stats.seen + 1,
+    right: stats.right + (firstCorrect ? 1 : 0),
+    misses: stats.misses + (fellFor ? 1 : 0),
+    interval: gap,
+    due: qIndex + gap,
+  };
 }
 
 function settleRewards(progress, scenario, confusions, firstCorrect) {
@@ -110,7 +126,12 @@ export function recordOutcome(progress, scenario, outcome) {
 
   const conf = { ...progress.conf };
   for (const c of confusions) {
-    conf[c] = updateConf(confStats(progress, c), { contains: true, fellFor: c === fellFor, firstCorrect, qIndex });
+    conf[c] = updateConf(confStats(progress, c), {
+      fellFor: c === fellFor,
+      firstCorrect,
+      sure: Boolean(outcome.sure),
+      qIndex,
+    });
   }
 
   const lean = { ...progress.lean };

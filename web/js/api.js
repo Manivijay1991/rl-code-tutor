@@ -8,14 +8,18 @@ export const CLIENT = "web/0.1";
 export const OUTBOX_LIMIT = 500;
 export const BATCH = 50;
 
-/** Read web/config.json ({"api": "https://..." | null}); returns {api: null} when missing or invalid. */
+/**
+ * Read web/config.json: {"api": "https://host" | "/api" | null}. A path starting with "/" means the
+ * API is on the same origin (Vercel, or `coding-tutor-serve --with-api`). Returns {api: null} when
+ * missing or invalid.
+ */
 export async function loadConfig(fetchFn = fetch, url = "config.json") {
   try {
     const res = await fetchFn(url, { cache: "no-cache" });
     if (!res.ok) return { api: null };
     const cfg = await res.json();
-    const api = typeof cfg.api === "string" && /^https?:\/\//.test(cfg.api) ? cfg.api.replace(/\/+$/, "") : null;
-    return { api };
+    const ok = typeof cfg.api === "string" && (/^https?:\/\//.test(cfg.api) || /^\/[\w/-]*$/.test(cfg.api));
+    return { api: ok ? cfg.api.replace(/\/+$/, "") || null : null };
   } catch {
     return { api: null };
   }

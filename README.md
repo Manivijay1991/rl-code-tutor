@@ -44,22 +44,25 @@ on any static host. Progress stays in the student's browser.
 
 ### Live bandit API (optional): the tutor learns from every student
 
+Run the UI and the API together locally, on one origin exactly like a Vercel deployment:
+
 ```powershell
-coding-tutor-api          # http://127.0.0.1:8780, SQLite at data\api.sqlite
+coding-tutor-serve --with-api      # http://127.0.0.1:8765 ; API at /api/v1/... ; SQLite at data\api.sqlite
 ```
 
-Set `web/config.json` to `{"api": "http://127.0.0.1:8780"}` (or your deployed URL). Without it the app
-runs fully offline and each browser learns alone.
+Or run the API alone (`coding-tutor-api`, port 8780) and set `web/config.json` to
+`{"api": "http://127.0.0.1:8780"}`. With `{"api": null}` (the default) the app runs fully offline and
+each browser learns alone. `{"api": "/api"}` means "same origin".
 
 - The browser still chooses the coaching style. It combines the student's own results with the shared
   counts from `GET /v1/policy`, capped at 20 pseudo-trials per arm so personal results still matter.
 - When a reward settles (next NEW case with the same trap), it sends `POST /v1/events` with exactly
   `{confusion, bucket, action, reward}`. No ids, answers, notes or IPs are stored; days are the finest time grain.
 - Students can turn sharing off in Progress → Learning together. Unsent events wait in an outbox.
-- Server: standard-library WSGI (`coding_tutor.api.app.make_app`), CORS allowlist, 64 KB body limit,
-  per-client rate limit. Storage is SQLite (`api/storage.py`); swap it for a hosted database to deploy.
+- Server: standard-library WSGI (`coding_tutor.live.app.make_app`), CORS allowlist, 64 KB body limit,
+  per-client rate limit. Storage is pluggable (`live/stores/`): SQLite now, a hosted store for deployment.
 
-JavaScript tests use Node's built-in runner (`cd web; node --test "test/*.test.mjs"`) and also run inside `pytest`.
+JavaScript tests live in `tests/web/` (Node's built-in runner: `node --test "tests/web/*.test.mjs"`) and also run inside `pytest`.
 
 Resolve a single case:
 
@@ -107,26 +110,29 @@ llm = make_llm(LLMConfig(provider="openai", model="m", base_url="http://gpu:8000
 
 The LLM only writes the note. The answer, distractors and explanations come from the rules engine.
 A note is kept only if it contains every deciding detail and none of the phrases that would change
-the answer; otherwise it is retried with the problems listed. Output: `scenarios/<table>/<id>.json` (draft).
+the answer; otherwise it is retried with the problems listed. Output: `content/scenarios/<table>/<id>.json` (draft).
 
 ## Project layout
 
 ```
-src/coding_tutor/
-  paths.py              where data, tables and scenarios live (override with CODING_TUTOR_DATA / CODING_TUTOR_SCENARIOS)
-  decision_tables/      rules as JSON (slots -> codes, tagged wrong answers)
+content/                CC BY-SA content reviewed by certified coders
+  tables/               decision tables: slots -> codes, tagged wrong answers (draft)
+  scenarios/<table>/    generated practice cases (draft)
+schemas/                JSON Schemas: the contract between Python and the web app (table, scenario, bundle, event)
+src/coding_tutor/       Python package (Apache-2.0)
+  paths.py  schema.py   file locations; stdlib validator for schemas/
+  cms/                  fetch.py, build_db.py (CMS downloads -> data/codes.sqlite)
   engine/               rules.py (answers), codes.py (ICD-10-CM lookups), hcc.py (V28 hierarchy + weights)
-  llm/                  config.py (provider, model, URL, API key), transport.py (HTTP), providers.py (Ollama, OpenAI-compatible)
+  llm/                  config.py (provider, model, URL, API key), transport.py, providers.py (Ollama, OpenAI-compatible)
   generator/            scenarios.py (LLM writes the note; the engine decides the answer)
   rl/                   simulator.py, policies.py, experiment.py
-  cms/                  fetch.py, build_db.py
-  ui/                   export.py (bundle for the web UI), serve.py (localhost server)
-  api/                  live bandit API: policy.py (validate events), storage.py (SQLite), app.py (WSGI), server.py
-web/                    static coach-mode UI: index.html, css/, js/ (bandit, selector, hints, progress, note, app), test/
-tests/                  mirrors src/coding_tutor/
+  bundle/               export.py: content + engine -> web/data/bundle.json (validated against schemas/)
+  live/                 live bandit API: policy.py, app.py (WSGI), server.py, stores/ (sqlite.py)
+  devserver/            serve.py, static.py: local UI, optionally with the API on one origin
+web/                    static coach-mode app = deploy root: index.html, css/, js/, config.json, data/bundle.json
+tests/                  all tests: Python mirrors src/coding_tutor/, tests/web/ mirrors web/js/
 docs/python-style.md    coding standards
-data/                   CMS downloads and codes.sqlite (not committed)
-scenarios/              generated practice scenarios
+data/                   local only, not committed: CMS downloads, codes.sqlite, api.sqlite
 ```
 
 ## Development

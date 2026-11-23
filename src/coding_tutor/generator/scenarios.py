@@ -8,7 +8,8 @@ phrases that would change the answer (other values' evidence, note_forbid, code-
     python -m coding_tutor.generator.scenarios --table meat_support --all     # every combination once
     python -m coding_tutor.generator.scenarios --table ckd_staging --dry-run  # print prompts only
 
-Output: scenarios/<table>/<id>.json (status "draft" until a certified coder reviews it).
+Output: content/scenarios/<table>/<id>.json (status "draft" until a certified coder reviews it);
+shape: schemas/scenario.schema.json.
 """
 
 from __future__ import annotations

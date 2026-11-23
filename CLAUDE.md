@@ -13,17 +13,26 @@ A free, open-source practice tool for medical coding certification candidates, b
 - **Coach mode never gives the answer directly.** Feedback guides the student to pick it themselves: up to 3 escalating hints with a re-pick after each; no hint names the correct code. The answer is shown only if the student asks after the hints run out. Getting it right on these re-picks is not the bandit reward (reward stays: next NEW question with the same confusion).
 
 ## Architecture
-Installable package `coding_tutor` in a src layout (`src/coding_tutor/`); paths live in `coding_tutor/paths.py`.
-Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated scenarios in `scenarios/`.
-0. `cms/fetch.py`, `cms/build_db.py` — download the CMS files and build `data/codes.sqlite`.
-1. `decision_tables/*.json` (package data) — rules as slots (deciding details) → correct codes, with confusions tagged per wrong answer.
-2. `engine/rules.py` — resolves answers and checks every slot combination is covered; `engine/codes.py` code lookups; `engine/hcc.py` V28 hierarchy and weights (feedback only).
+Repository layout (one meaning per name):
+```
+content/         CC BY-SA, reviewed by certified coders: tables/*.json, scenarios/<table>/<id>.json
+schemas/         JSON Schemas = the contract between Python and JS: table, scenario, bundle, event
+src/coding_tutor/  Apache-2.0 package (paths in paths.py; schema.py = stdlib validator for schemas/)
+web/             static app = the deploy root (index.html, css/, js/, config.json, data/bundle.json [built])
+tests/           ALL tests: Python mirrors src/coding_tutor/, tests/web/ mirrors web/js/
+data/            local only (gitignored): CMS downloads, codes.sqlite, api.sqlite
+```
+Pipeline inside `src/coding_tutor/`:
+0. `cms/` — `fetch.py`, `build_db.py`: download CMS files, build `data/codes.sqlite`.
+1. `content/tables/*.json` — rules as slots (deciding details) → correct codes, with confusions tagged per wrong answer; shape in `schemas/table.schema.json`. Slot `label`/`labels` are student-facing wording used by hints.
+2. `engine/` — `rules.py` resolves answers and checks every slot combination is covered; `codes.py` code lookups; `hcc.py` V28 hierarchy and weights (feedback only).
 3. `llm/` — LLM clients: `config.py` (LLMConfig: provider, model, URL, API key; `config_from_env`), `transport.py` (injectable HTTP), `providers.py` (`ollama`, `openai_compatible`, `make_llm`). An LLM is any `(system, user, seed) -> str` function. API keys only via parameters or env vars, never CLI values, logs or files.
-   `generator/scenarios.py` — picks slots, engine computes answer, the injected LLM (default: local Ollama) writes the note, a check confirms deciding details are present (and answer-changing phrases absent), output saved to `scenarios/<table>/<id>.json`. Note-writing hints live in the tables: `describe`, `exclusive`, `note_forbid`, `note_rules`, `question`.
+   `generator/scenarios.py` — picks slots, engine computes answer, the injected LLM (default: local Ollama) writes the note, a check confirms deciding details are present (and answer-changing phrases absent), output saved to `content/scenarios/<table>/<id>.json`. Note-writing hints live in the tables: `describe`, `exclusive`, `note_forbid`, `note_rules`, `question`.
 4. `rl/` — simulator (`simulator.py`), policies (`policies.py`), experiment (`experiment.py`).
-5. UI — `ui/export.py` rebuilds every scenario's answer, distractors (with trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine into `web/data/bundle.json`; `ui/serve.py` serves `web/` on localhost. `web/` is static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward), `selector.js` (pending reward → due review → unseen → weakest), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `app.js` (controller). Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
-   Slot `label`/`labels` in the tables are the student-facing wording used by hints.
-6. `api/` — live bandit (optional; `web/config.json` `api` URL, null = offline). Browser still chooses actions with Thompson sampling over its own counts + shared counts from `GET /v1/policy` (capped at `SHARED_CAP`=20 pseudo-trials). Settled rewards go to `POST /v1/events` as exactly `{confusion, bucket, action, reward}`; `policy.py` rejects any other field. Stdlib WSGI `make_app` (injected storage connection, confusions, CORS allowlist, rate limiter, clock); `storage.py` SQLite (arms totals + append-only event log, no identifiers, day granularity). Hosting adapter + hosted DB TODO.
+5. `bundle/export.py` — rebuilds every scenario's answer, distractors (trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine into `web/data/bundle.json`; refuses to write if it does not match `schemas/bundle.schema.json`. Re-run after any table or scenario change.
+   `web/js/` — static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward, confidence-aware review gaps), `selector.js` (pending reward → due review → unseen → weakest), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `api.js` (live bandit client), `app.js` (controller). Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
+6. `live/` — live bandit service (optional; `web/config.json` `api`: null = offline, "/api" = same origin, or a URL). Browser still chooses actions with Thompson sampling over its own counts + shared counts from `GET /v1/policy` (capped at `SHARED_CAP`=20 pseudo-trials). Settled rewards go to `POST /v1/events` as exactly `{confusion, bucket, action, reward}` (`schemas/event.schema.json`; `policy.py` rejects any other field). `app.py` stdlib WSGI `make_app` (injected `Store`, confusions, CORS allowlist, rate limiter, clock; paths accept an `/api` prefix); `stores/` backends build a `Store` (record, arm_rows, total_events): `stores/sqlite.py` now (arm totals + append-only event log, no identifiers, day granularity), Redis for Vercel TODO. `server.py` = standalone API.
+7. `devserver/` — `coding-tutor-serve [--with-api]`: static files (`static.py`) plus, optionally, the live API under `/api` on one origin, answering `/config.json` as `{"api": "/api"}` (the file on disk is untouched).
 
 ## RL design
 - **Use a contextual Thompson-sampling bandit only** to choose *how to teach* after a wrong answer. Context = (confusion, miss count bucketed 1/2/3+).
@@ -52,8 +61,9 @@ Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated sc
 - No secrets, API keys, student identifiers or patient data in code, tests, fixtures or logs.
 
 ## Testing
-- `pytest`; tests live in `tests/`, mirroring the source layout
-  (`src/coding_tutor/engine/x.py` -> `tests/engine/test_x.py`, `src/coding_tutor/rl/x.py` -> `tests/rl/test_x.py`).
+- All tests live in one root, `tests/`, mirroring the source layout for both languages:
+  `src/coding_tutor/engine/x.py` -> `tests/engine/test_x.py`; `web/js/x.js` -> `tests/web/x.test.mjs`.
+  Never put tests inside `web/` (it is the deploy root).
 - Shared fixtures go in `tests/conftest.py`; use `parametrize` instead of copied test bodies.
 - `pyproject.toml` puts `src/` on the pytest import path (`import coding_tutor...`); don't add sys.path hacks.
 - Every new function: normal case, edge cases, invalid input.
@@ -62,7 +72,7 @@ Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated sc
 - Fixed random seeds in all RL and simulation tests; mark long runs `@pytest.mark.slow`.
 - Commands (PowerShell):
   - `.\.venv\Scripts\python.exe -m ruff check .` and `.\.venv\Scripts\python.exe -m ruff format --check .`
-  - `.\.venv\Scripts\python.exe -m pytest` (quick run: add `-m "not slow"`); this also runs the web JS tests via Node when installed (`web/test/*.test.mjs`, Node's built-in runner, no npm packages)
+  - `.\.venv\Scripts\python.exe -m pytest` (quick run: add `-m "not slow"`); this also runs the web JS tests via Node when installed (`tests/web/*.test.mjs`, Node's built-in runner, no npm packages). Direct JS run: `node --test "tests/web/*.test.mjs"`
   - After changing tables or scenarios: `coding-tutor-export-ui` to refresh `web/data/bundle.json`.
 - Before calling a task done: ruff clean and all tests passing; report both results.
 - Refactors must not change behavior: existing tests stay green without editing them,
@@ -72,4 +82,4 @@ Downloaded CMS files and `codes.sqlite` go in `data/` (gitignored); generated sc
 1. Exam mode in the web UI (sections, flag for review, countdown timer); real-student testing of coach mode.
 2. Decision tables for CRC: acceptable sources, status codes; more MEAT conditions.
 3. Certified-coder review of tables and generated scenarios.
-4. Deploy the live bandit API: pick a host (Vercel Python functions + Postgres, or AWS Lambda + DynamoDB), add a storage adapter with the same functions as `api/storage.py`, set the CORS origin and `web/config.json`. Then offline evaluation in `rl/` from the event log.
+4. Deploy the live bandit API: pick a host (Vercel Python functions + Postgres, or AWS Lambda + DynamoDB), add `live/stores/redis.py` building the same `Store`, an `api/index.py` Vercel entry, set the CORS origin and `web/config.json`. Then offline evaluation in `rl/` from the event log.
