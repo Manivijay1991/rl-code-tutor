@@ -27,7 +27,8 @@ const $ = (id) => document.getElementById(id);
 const app = {
   bundle: null,
   progress: emptyProgress(),
-  prefs: { theme: null, showDesc: true, topic: null, onboarded: false, share: true },
+  prefs: { theme: null, showDesc: true, topic: null, share: true },
+  view: "home", // "home" | "practice"
   api: null, // live bandit API base URL from config.json, or null (offline)
   shared: null, // {arms, events} from GET /v1/policy
   focus: null,
@@ -46,8 +47,9 @@ async function boot() {
     app.bundle = await res.json();
   } catch (e) {
     mount($("bench-inner"), h("div", { class: "card empty" }, h("h2", { text: "No scenarios found" }),
-      h("p", {}, "Run ", h("code", { text: "python -m coding_tutor.ui.export" }), " and serve this folder with ",
-        h("code", { text: "python -m coding_tutor.ui.serve" }), "."), h("p", { class: "note-small", text: String(e) })));
+      h("p", {}, "Run ", h("code", { text: "coding-tutor-export-ui" }), " and serve this folder with ",
+        h("code", { text: "coding-tutor-serve" }), "."), h("p", { class: "note-small", text: String(e) })));
+    showView("practice");
     return;
   }
   if (app.prefs.topic && !app.bundle.tables[app.prefs.topic]) app.prefs.topic = null;
@@ -55,9 +57,115 @@ async function boot() {
   if (cs?.icd10cm) $("code-set").textContent = `Code set: ${cs.icd10cm}; ${cs.hcc_map}.`;
   renderTopics();
   document.addEventListener("keydown", onKey);
-  nextQuestion();
-  if (!app.prefs.onboarded) showWelcome();
+  $("brand").addEventListener("click", (e) => {
+    e.preventDefault();
+    showHome();
+  });
+  showHome();
   connectApi();
+}
+
+// ---------------------------------------------------------------- views
+function showView(view) {
+  app.view = view;
+  document.body.dataset.view = view;
+  $("home").hidden = view !== "home";
+  $("main").hidden = view !== "practice";
+  window.scrollTo({ top: 0 });
+}
+
+function showHome() {
+  closeDrawer();
+  renderHome();
+  showView("home");
+  $("home").querySelector(".btn.big")?.focus({ preventScroll: true });
+}
+
+function startPractice(topic = app.prefs.topic) {
+  app.prefs.topic = topic;
+  savePrefs();
+  renderTopics();
+  showView("practice");
+  if (!app.q || app.q.phase === "done" || app.q.scenario.table !== topic && topic) nextQuestion();
+}
+
+function renderHome() {
+  const p = app.progress;
+  const returning = p.totals.answered > 0;
+  const pct = returning ? Math.round((p.totals.firstTry / p.totals.answered) * 100) : 0;
+  const tables = Object.entries(app.bundle.tables);
+  const traps = tables.reduce((n, [, t]) => n + Object.keys(t.confusions).length, 0);
+  const cases = app.bundle.scenarios.length;
+  const chosen = app.prefs.topic;
+  const topicChip = (id, label) =>
+    h("button", { class: "chip-btn", type: "button", "aria-pressed": String(chosen === id), on: { click: () => { app.prefs.topic = id; savePrefs(); renderHome(); } } }, label);
+
+  const hero = h("section", { class: "hero" },
+    h("div", {},
+      h("span", { class: "eyebrow" }, icon("target", 14), "Free practice for CRC risk adjustment coding"),
+      h("h1", {}, "Read the note like an ", h("em", {}, "auditor"), ". Code what it supports."),
+      h("p", { class: "lead" },
+        `${cases} clinical cases built from the official ICD-10-CM code set and CMS-HCC V28. When you miss, you get coached, not told, and the next case is chosen from how you answered.`),
+      h("div", { class: "cta" },
+        h("button", { class: "btn big", type: "button", on: { click: () => startPractice(chosen) } },
+          returning ? "Continue assessment" : "Start assessment", icon("arrow", 16)),
+        h("button", { class: "btn ghost", type: "button", on: { click: openDrawer } }, icon("chart", 16), "Your progress")),
+      h("div", { class: "topic-pick", role: "group", "aria-label": "Topic" },
+        h("span", { class: "label" }, "Practice"),
+        topicChip(null, "All topics"),
+        tables.map(([id, t]) => topicChip(id, t.topic || t.title))),
+      returning
+        ? h("p", { class: "welcome-back" }, `Welcome back: ${p.totals.answered} cases done, ${pct}% right on the first try, best streak ${p.bestStreak}.`)
+        : null),
+    demoCard());
+
+  const how = h("section", {},
+    h("h2", { class: "section-title" }, "How a case works"),
+    h("div", { class: "how" },
+      step(1, "Read and mark the evidence", "Turn on the highlighter and tap the sentences that decide the codes, the way an auditor reads."),
+      step(2, "Pick the code set", "Choose the codes the note supports and say how confident you are."),
+      step(3, "Miss? Get coached", "Up to 3 hints, each one closer, with a re-pick after each. No hint names the answer; you see it only if you ask."),
+      step(4, "Learn why it matters", "The debrief shows the rule, the deciding words, and how the miss would change the CMS-HCC risk score.")));
+
+  const loop = h("section", {},
+    h("h2", { class: "section-title" }, "How your next case is chosen"),
+    h("div", { class: "loop" },
+      loopStep("Every wrong answer has a cause", "Each wrong choice is tagged with the trap behind it, like missing a diabetes 'with' link or coding from a medication list."),
+      loopStep("A coaching style is picked", "Rule refresher, contrast pair, find the evidence, guiding question, walkthrough or an easier case: whichever has helped most, while still trying others."),
+      loopStep("The same trap returns in a new case", "Your next case tests the same trap with a different note. That result is the real test of whether the coaching worked."),
+      loopStep("Your tutor learns", "The coaching style that helped is used more for that trap. Confident mistakes come back sooner; traps you master come back less often.")),
+    h("p", { class: "loop-foot" }, icon("bulb", 16),
+      `${traps} traps across ${tables.length} topics. New and weak traps come first, and spaced review brings each one back.`));
+
+  const trust = h("section", { class: "trust" },
+    trustCard("book", "Answers from rules, not AI", "Every answer comes from the official code set and a rules engine. AI only writes the practice notes."),
+    trustCard("check", "Private by design", "No account. Your progress stays in this browser. Sharing anonymous coaching results is optional."),
+    trustCard("target", "Draft content", "Cases are drafts until a certified coder reviews them. Not affiliated with AAPC, AHIMA, AMA or CMS."));
+
+  mount($("home"), hero, how, loop, trust);
+}
+
+function step(n, title, text) {
+  return h("div", { class: "card" }, h("div", { class: "num" }, String(n)), h("h3", {}, title), h("p", {}, text));
+}
+
+function loopStep(title, text) {
+  return h("div", {}, h("h3", {}, title), h("p", {}, text));
+}
+
+function trustCard(iconName, title, text) {
+  return h("div", { class: "card" }, h("h3", {}, icon(iconName, 16), title), h("p", {}, text));
+}
+
+function demoCard() {
+  return h("div", { class: "demo", "aria-hidden": "true" },
+    h("span", { class: "tag" }, "Example"),
+    h("div", { class: "note-line" }, "Assessment: ", h("mark", {}, "Type 2 diabetes"), " with ", h("mark", {}, "CKD stage 4"),
+      ". Continue ", h("mark", {}, "insulin"), "."),
+    h("div", { class: "pick" }, "Your pick:", h("span", { class: "code" }, "E11.9"), h("span", { class: "code" }, "N18.4"),
+      h("span", { class: "opt-badge lean-under" }, "Undercodes")),
+    h("div", { class: "hint-chip" }, "Contrast pair: your choice would be right if the provider said the CKD is NOT caused by the diabetes. Check what this note says."),
+    h("div", { class: "pick" }, icon("check", 16), "Re-pick, then a new case with the same trap tests it."));
 }
 
 // ---------------------------------------------------------------- live bandit API (optional)
@@ -174,14 +282,22 @@ function renderHeaderStats(bump = false) {
     streak.classList.add("bump");
   }
   const done = p.daily[today()] ?? 0;
+  const met = done >= DAILY_GOAL;
   const frac = Math.min(1, done / DAILY_GOAL);
   const r = 9;
   const c = 2 * Math.PI * r;
-  mount($("goal"),
-    svg("svg", { width: 24, height: 24, viewBox: "0 0 24 24", "aria-hidden": "true" },
-      svg("circle", { cx: 12, cy: 12, r, fill: "none", stroke: "var(--line)", "stroke-width": 3 }),
-      svg("circle", { cx: 12, cy: 12, r, fill: "none", stroke: "var(--accent)", "stroke-width": 3, "stroke-linecap": "round", "stroke-dasharray": `${c * frac} ${c}` })),
-    h("span", {}, `${done}/${DAILY_GOAL} today`));
+  const goal = $("goal");
+  goal.classList.toggle("met", met);
+  goal.title = met
+    ? `Daily goal of ${DAILY_GOAL} cases met: ${done} done today`
+    : `Daily goal: ${done} of ${DAILY_GOAL} cases done today`;
+  mount(goal,
+    met
+      ? icon("check", 18)
+      : svg("svg", { width: 22, height: 22, viewBox: "0 0 24 24", "aria-hidden": "true" },
+          svg("circle", { cx: 12, cy: 12, r, fill: "none", stroke: "var(--line)", "stroke-width": 3 }),
+          svg("circle", { cx: 12, cy: 12, r, fill: "none", stroke: "var(--accent)", "stroke-width": 3, "stroke-linecap": "round", "stroke-dasharray": `${c * frac} ${c}` })),
+    h("span", {}, met ? `Goal met · ${done} today` : `${done} of ${DAILY_GOAL} today`));
 }
 
 // ---------------------------------------------------------------- question state
@@ -344,9 +460,12 @@ function questionCard() {
   const actions = h("div", { class: "actions" });
   if (!done) {
     if (q.firstPick === null) {
-      actions.append(h("div", { class: "seg", role: "group", "aria-label": "Confidence" },
-        h("button", { type: "button", "aria-pressed": String(q.sure), on: { click: () => setSure(true) } }, "Sure"),
-        h("button", { type: "button", "aria-pressed": String(!q.sure), on: { click: () => setSure(false) } }, "Not sure")));
+      actions.append(h("div", { class: "confidence" },
+        h("span", { class: "k", id: "conf-label" }, "How confident are you?"),
+        h("div", { class: "seg", role: "group", "aria-labelledby": "conf-label" },
+          h("button", { type: "button", "aria-pressed": String(q.sure), on: { click: () => setSure(true) } }, "Sure"),
+          h("button", { type: "button", "aria-pressed": String(!q.sure), on: { click: () => setSure(false) } }, "Guessing")),
+        h("span", { class: "why" }, "Confident mistakes come back sooner for review; lucky guesses are not counted as mastered.")));
     }
     actions.append(h("span", { class: "spacer" }));
     if (q.phase === "stuck") {
@@ -765,6 +884,7 @@ function sharingCard() {
 function practiceTrap(id) {
   app.focus = id;
   closeDrawer();
+  showView("practice");
   renderTopics();
   nextQuestion();
   toast(`Focused practice: ${trapName(id)}`);
@@ -790,23 +910,6 @@ function showOverlay(content, onClose) {
   ov.hidden = false;
   ov.onclick = (e) => e.target === ov && close();
   ov.querySelector("button")?.focus();
-}
-
-function showWelcome() {
-  showOverlay((close) => [
-    h("h2", {}, "Code like an auditor reads"),
-    h("p", { class: "note-small" }, "Practice for CRC risk adjustment coding. Every answer comes from the official code set and draft rules; nothing here is guessed by AI."),
-    h("ol", { class: "steps" },
-      h("li", {}, h("span", {}, h("b", {}, "Read the note. "), "Turn on the highlighter (M) and tap the sentences that decide the codes.")),
-      h("li", {}, h("span", {}, h("b", {}, "Pick the code set. "), "Say whether you are sure, then check.")),
-      h("li", {}, h("span", {}, h("b", {}, "Miss? Get coached, not told. "), "Up to three hints, each one closer; the answer only if you ask.")),
-      h("li", {}, h("span", {}, h("b", {}, "Your tutor adapts. "), "It learns which coaching style helps you, and brings each trap back in a new case."))),
-    h("div", { class: "actions" }, h("span", { class: "spacer" }),
-      h("button", { class: "btn big", type: "button", on: { click: close } }, "Start practicing", icon("arrow", 16))),
-  ], () => {
-    app.prefs.onboarded = true;
-    savePrefs();
-  });
 }
 
 function showKeys() {
@@ -846,6 +949,10 @@ function onKey(e) {
   if (k === "p") return drawerOpen ? closeDrawer() : openDrawer();
   if (drawerOpen) return;
   if (k === "?") return showKeys();
+  if (app.view === "home") {
+    if (k === "enter" && !e.target.closest?.("button")) startPractice(app.prefs.topic);
+    return;
+  }
   const q = app.q;
   if (!q) return;
   if (/^[1-9]$/.test(k)) {
