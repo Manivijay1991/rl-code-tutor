@@ -216,28 +216,32 @@ function sceneRead() {
 function scenePick() {
   return [
     option(["E11.22", "N18.4", "Z79.4"]),
-    option(["E11.9", "N18.4", "Z79.4"], "pick"),
-    option(["E11.22", "Z79.4"]),
+    option(["E11.22", "Z79.4"], "pick"),
+    option(["E11.9", "N18.4", "Z79.4"]),
     h("div", { class: "mini-row end" }, h("span", { class: "mini-btn pulse" }, "Check")),
   ];
 }
 
 function sceneCoach() {
   return [
-    option(["E11.9", "N18.4", "Z79.4"], "wrong"),
+    option(["E11.22", "Z79.4"], "wrong"),
     h("div", { class: "mini-pips" }, h("i", { class: "on" }), h("i"), h("i"), h("span", {}, "Hint 1 of 3")),
-    h("div", { class: "mini-hint slide" }, h("b", {}, "Contrast pair. "),
-      "Your choice would be right if the provider said the CKD is NOT caused by the diabetes. Check what this note says."),
+    h("div", { class: "mini-hint slide" }, h("b", {}, "Rule refresher. "),
+      "The note documents a CKD stage. Does the diabetes-with-CKD code tell you to add another code for it?"),
     option(["E11.22", "N18.4", "Z79.4"], "right d5"),
   ];
 }
 
+// Real CMS-HCC V28 scores for this case: leaving out the CKD stage code drops HCC 327 (CKD stage 4, 0.514).
+// (The diabetes HCCs share one weight in V28, so a diabetes-only miss would not change the score.)
 function sceneDebrief() {
   return [
     h("div", { class: "mini-result pop" }, icon("check", 18), "Solved with 1 hint"),
     h("div", { class: "mini-bars" },
+      h("p", { class: "mini-bars-k" }, "Risk score ", h("span", {}, "(1.0 = an average Medicare patient)")),
       h("div", {}, h("span", {}, "Your first pick"), h("span", { class: "bar" }, h("i", { class: "grow b1" })), h("span", { class: "num" }, "0.166")),
-      h("div", {}, h("span", {}, "Correct"), h("span", { class: "bar" }, h("i", { class: "grow b2" })), h("span", { class: "num" }, "0.680"))),
+      h("div", {}, h("span", {}, "Correct"), h("span", { class: "bar" }, h("i", { class: "grow b2" })), h("span", { class: "num" }, "0.680")),
+      h("p", { class: "mini-bars-cap" }, "Leaving out CKD stage 4 under-reports this patient by 0.514, about half an average patient's cost.")),
     h("div", { class: "mini-tip pop d5" }, icon("target", 15), "This trap returns in a new case to test the coaching"),
   ];
 }
