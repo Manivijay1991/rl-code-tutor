@@ -1,10 +1,12 @@
-// Coach-mode controller: renders the note and workbench, runs the hint ladder, records progress.
+// Assessment page (practice.html): renders the note and workbench, runs the hint ladder, records progress.
+// The home page is index.html + home.js.
 // Answers come from the exported bundle (built by the rules engine); nothing here decides codes.
 
 import { enqueue, fetchPolicy, flush, loadConfig, toEvents } from "./api.js";
 import { ACTION_LABELS, chooseAction, learnedContexts } from "./bandit.js";
 import { h, icon, mount, svg } from "./dom.js";
 import { LADDERS, LEAN_MESSAGES, buildHint, narrowRemovals } from "./hints.js";
+import { DAILY_GOAL, applyTheme, loadBundle, loadPrefs, savePrefs as storePrefs, today, toggleTheme, trapName } from "./common.js";
 import { evidenceBySlot, pieces, segment, sentencesWithEvidence } from "./note.js";
 import {
   accuracy,
@@ -18,17 +20,15 @@ import {
 } from "./progress.js";
 import { shuffled } from "./random.js";
 import { REASONS, nextScenario } from "./selector.js";
-import { OUTBOX_KEY, PREFS_KEY, PROGRESS_KEY, loadJSON, removeKey, saveJSON } from "./store.js";
+import { OUTBOX_KEY, PROGRESS_KEY, loadJSON, removeKey, saveJSON } from "./store.js";
 
-const DAILY_GOAL = 10;
 const MAX_HINTS = 3;
 const $ = (id) => document.getElementById(id);
 
 const app = {
   bundle: null,
   progress: emptyProgress(),
-  prefs: { theme: null, showDesc: true, topic: null, share: true },
-  view: "home", // "home" | "practice"
+  prefs: loadPrefs(),
   api: null, // live bandit API base URL from config.json, or null (offline)
   shared: null, // {arms, events} from GET /v1/policy
   focus: null,
@@ -37,135 +37,28 @@ const app = {
 
 // ---------------------------------------------------------------- boot
 async function boot() {
-  app.prefs = { ...app.prefs, ...loadJSON(PREFS_KEY, {}) };
   app.progress = migrate(loadJSON(PROGRESS_KEY, null));
-  applyTheme();
+  applyTheme(app.prefs, $("btn-theme"));
   staticButtons();
   try {
-    const res = await fetch("data/bundle.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    app.bundle = await res.json();
+    app.bundle = await loadBundle();
   } catch (e) {
     mount($("bench-inner"), h("div", { class: "card empty" }, h("h2", { text: "No scenarios found" }),
       h("p", {}, "Run ", h("code", { text: "coding-tutor-export-ui" }), " and serve this folder with ",
         h("code", { text: "coding-tutor-serve" }), "."), h("p", { class: "note-small", text: String(e) })));
-    showView("practice");
     return;
   }
+  const params = new URLSearchParams(location.search);
+  if (params.has("topic")) app.prefs.topic = params.get("topic") || null;
   if (app.prefs.topic && !app.bundle.tables[app.prefs.topic]) app.prefs.topic = null;
+  savePrefs();
   const cs = app.bundle.code_set;
   if (cs?.icd10cm) $("code-set").textContent = `Code set: ${cs.icd10cm}; ${cs.hcc_map}.`;
   renderTopics();
   document.addEventListener("keydown", onKey);
-  $("brand").addEventListener("click", (e) => {
-    e.preventDefault();
-    showHome();
-  });
-  showHome();
+  nextQuestion();
+  if (location.hash === "#progress") openDrawer();
   connectApi();
-}
-
-// ---------------------------------------------------------------- views
-function showView(view) {
-  app.view = view;
-  document.body.dataset.view = view;
-  $("home").hidden = view !== "home";
-  $("main").hidden = view !== "practice";
-  window.scrollTo({ top: 0 });
-}
-
-function showHome() {
-  closeDrawer();
-  renderHome();
-  showView("home");
-  $("home").querySelector(".btn.big")?.focus({ preventScroll: true });
-}
-
-function startPractice(topic = app.prefs.topic) {
-  app.prefs.topic = topic;
-  savePrefs();
-  renderTopics();
-  showView("practice");
-  if (!app.q || app.q.phase === "done" || app.q.scenario.table !== topic && topic) nextQuestion();
-}
-
-function renderHome() {
-  const p = app.progress;
-  const returning = p.totals.answered > 0;
-  const pct = returning ? Math.round((p.totals.firstTry / p.totals.answered) * 100) : 0;
-  const tables = Object.entries(app.bundle.tables);
-  const traps = tables.reduce((n, [, t]) => n + Object.keys(t.confusions).length, 0);
-  const cases = app.bundle.scenarios.length;
-  const chosen = app.prefs.topic;
-  const topicChip = (id, label) =>
-    h("button", { class: "chip-btn", type: "button", "aria-pressed": String(chosen === id), on: { click: () => { app.prefs.topic = id; savePrefs(); renderHome(); } } }, label);
-
-  const hero = h("section", { class: "hero" },
-    h("div", {},
-      h("span", { class: "eyebrow" }, icon("target", 14), "Free practice for CRC risk adjustment coding"),
-      h("h1", {}, "Read the note like an ", h("em", {}, "auditor"), ". Code what it supports."),
-      h("p", { class: "lead" },
-        `${cases} clinical cases built from the official ICD-10-CM code set and CMS-HCC V28. When you miss, you get coached, not told, and the next case is chosen from how you answered.`),
-      h("div", { class: "cta" },
-        h("button", { class: "btn big", type: "button", on: { click: () => startPractice(chosen) } },
-          returning ? "Continue assessment" : "Start assessment", icon("arrow", 16)),
-        h("button", { class: "btn ghost", type: "button", on: { click: openDrawer } }, icon("chart", 16), "Your progress")),
-      h("div", { class: "topic-pick", role: "group", "aria-label": "Topic" },
-        h("span", { class: "label" }, "Practice"),
-        topicChip(null, "All topics"),
-        tables.map(([id, t]) => topicChip(id, t.topic || t.title))),
-      returning
-        ? h("p", { class: "welcome-back" }, `Welcome back: ${p.totals.answered} cases done, ${pct}% right on the first try, best streak ${p.bestStreak}.`)
-        : null),
-    demoCard());
-
-  const how = h("section", {},
-    h("h2", { class: "section-title" }, "How a case works"),
-    h("div", { class: "how" },
-      step(1, "Read and mark the evidence", "Turn on the highlighter and tap the sentences that decide the codes, the way an auditor reads."),
-      step(2, "Pick the code set", "Choose the codes the note supports and say how confident you are."),
-      step(3, "Miss? Get coached", "Up to 3 hints, each one closer, with a re-pick after each. No hint names the answer; you see it only if you ask."),
-      step(4, "Learn why it matters", "The debrief shows the rule, the deciding words, and how the miss would change the CMS-HCC risk score.")));
-
-  const loop = h("section", {},
-    h("h2", { class: "section-title" }, "How your next case is chosen"),
-    h("div", { class: "loop" },
-      loopStep("Every wrong answer has a cause", "Each wrong choice is tagged with the trap behind it, like missing a diabetes 'with' link or coding from a medication list."),
-      loopStep("A coaching style is picked", "Rule refresher, contrast pair, find the evidence, guiding question, walkthrough or an easier case: whichever has helped most, while still trying others."),
-      loopStep("The same trap returns in a new case", "Your next case tests the same trap with a different note. That result is the real test of whether the coaching worked."),
-      loopStep("Your tutor learns", "The coaching style that helped is used more for that trap. Confident mistakes come back sooner; traps you master come back less often.")),
-    h("p", { class: "loop-foot" }, icon("bulb", 16),
-      `${traps} traps across ${tables.length} topics. New and weak traps come first, and spaced review brings each one back.`));
-
-  const trust = h("section", { class: "trust" },
-    trustCard("book", "Answers from rules, not AI", "Every answer comes from the official code set and a rules engine. AI only writes the practice notes."),
-    trustCard("check", "Private by design", "No account. Your progress stays in this browser. Sharing anonymous coaching results is optional."),
-    trustCard("target", "Draft content", "Cases are drafts until a certified coder reviews them. Not affiliated with AAPC, AHIMA, AMA or CMS."));
-
-  mount($("home"), hero, how, loop, trust);
-}
-
-function step(n, title, text) {
-  return h("div", { class: "card" }, h("div", { class: "num" }, String(n)), h("h3", {}, title), h("p", {}, text));
-}
-
-function loopStep(title, text) {
-  return h("div", {}, h("h3", {}, title), h("p", {}, text));
-}
-
-function trustCard(iconName, title, text) {
-  return h("div", { class: "card" }, h("h3", {}, icon(iconName, 16), title), h("p", {}, text));
-}
-
-function demoCard() {
-  return h("div", { class: "demo", "aria-hidden": "true" },
-    h("span", { class: "tag" }, "Example"),
-    h("div", { class: "note-line" }, "Assessment: ", h("mark", {}, "Type 2 diabetes"), " with ", h("mark", {}, "CKD stage 4"),
-      ". Continue ", h("mark", {}, "insulin"), "."),
-    h("div", { class: "pick" }, "Your pick:", h("span", { class: "code" }, "E11.9"), h("span", { class: "code" }, "N18.4"),
-      h("span", { class: "opt-badge lean-under" }, "Undercodes")),
-    h("div", { class: "hint-chip" }, "Contrast pair: your choice would be right if the provider said the CKD is NOT caused by the diabetes. Check what this note says."),
-    h("div", { class: "pick" }, icon("check", 16), "Re-pick, then a new case with the same trap tests it."));
 }
 
 // ---------------------------------------------------------------- live bandit API (optional)
@@ -195,7 +88,7 @@ function setShare(on) {
 }
 
 function savePrefs() {
-  saveJSON(PREFS_KEY, app.prefs);
+  storePrefs(app.prefs);
 }
 
 function saveProgress() {
@@ -209,28 +102,11 @@ function staticButtons() {
   mount($("btn-drawer-close"), icon("x"));
   $("btn-progress").addEventListener("click", openDrawer);
   $("btn-keys").addEventListener("click", showKeys);
-  $("btn-theme").addEventListener("click", toggleTheme);
+  $("btn-theme").addEventListener("click", () => toggleTheme(app.prefs, $("btn-theme")));
   $("btn-drawer-close").addEventListener("click", closeDrawer);
   $("drawer").addEventListener("click", (e) => e.target === $("drawer") && closeDrawer());
   $("btn-marker").addEventListener("click", toggleMarker);
   $("note").addEventListener("click", onNoteClick);
-}
-
-function applyTheme() {
-  const t = app.prefs.theme;
-  if (t) document.documentElement.dataset.theme = t;
-  else delete document.documentElement.dataset.theme;
-  const dark = t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  mount($("btn-theme"), icon(dark ? "sun" : "moon"));
-}
-
-function toggleTheme() {
-  const dark = document.documentElement.dataset.theme
-    ? document.documentElement.dataset.theme === "dark"
-    : matchMedia("(prefers-color-scheme: dark)").matches;
-  app.prefs.theme = dark ? "light" : "dark";
-  savePrefs();
-  applyTheme();
 }
 
 function renderTopics() {
@@ -263,11 +139,6 @@ function clearFocus() {
   app.focus = null;
   renderTopics();
   nextQuestion();
-}
-
-function today() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
 function renderHeaderStats(bump = false) {
@@ -307,15 +178,6 @@ function tableOf(scenario) {
 
 function correctCodes(scenario) {
   return scenario.options.find((o) => o.correct).codes;
-}
-
-const TRAP_WORDS = { ckd: "CKD", htn: "HTN", esrd: "ESRD", meat: "MEAT", z794: "Z79.4", dm: "DM", mdd: "MDD" };
-
-/** Readable trap name from its id: "missed_htn_ckd_link" -> "Missed HTN CKD link". */
-function trapName(confusion) {
-  const words = confusion.split(":")[1].split("_").map((w) => TRAP_WORDS[w] ?? w);
-  const text = words.join(" ");
-  return text[0].toUpperCase() + text.slice(1);
 }
 
 function nextQuestion() {
@@ -884,7 +746,6 @@ function sharingCard() {
 function practiceTrap(id) {
   app.focus = id;
   closeDrawer();
-  showView("practice");
   renderTopics();
   nextQuestion();
   toast(`Focused practice: ${trapName(id)}`);
@@ -949,10 +810,6 @@ function onKey(e) {
   if (k === "p") return drawerOpen ? closeDrawer() : openDrawer();
   if (drawerOpen) return;
   if (k === "?") return showKeys();
-  if (app.view === "home") {
-    if (k === "enter" && !e.target.closest?.("button")) startPractice(app.prefs.topic);
-    return;
-  }
   const q = app.q;
   if (!q) return;
   if (/^[1-9]$/.test(k)) {

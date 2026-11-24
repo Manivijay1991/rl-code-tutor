@@ -129,7 +129,7 @@ src/coding_tutor/       Python package (Apache-2.0)
   bundle/               export.py: content + engine -> web/data/bundle.json (validated against schemas/)
   live/                 live bandit API: policy.py, app.py (WSGI), server.py, stores/ (sqlite.py)
   devserver/            serve.py, static.py: local UI, optionally with the API on one origin
-web/                    static coach-mode app = deploy root: index.html, css/, js/, config.json, data/bundle.json
+web/                    static app = deploy root: index.html (home), practice.html (assessment), css/, js/, fonts/, config.json, data/bundle.json
 tests/                  all tests: Python mirrors src/coding_tutor/, tests/web/ mirrors web/js/
 docs/python-style.md    coding standards
 data/                   local only, not committed: CMS downloads, codes.sqlite, api.sqlite
