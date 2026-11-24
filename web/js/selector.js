@@ -85,6 +85,30 @@ export function nextScenario(bundle, progress, { topic = null, focus = null, exc
   return { scenario: leastSeen(pool, progress, rng), reason: "any", confusion: null };
 }
 
+/**
+ * The upcoming traps in the same priority order nextScenario uses, for showing a queue.
+ * Deterministic: unseen traps follow `order` (defaults to bundle order) and ties sort by id.
+ * Returns [{confusion, reason}] with at most `n` entries.
+ */
+export function queuePreview(bundle, progress, n = 4, { topic = null, order = null } = {}) {
+  const pool = bundle.scenarios.filter((s) => !topic || s.table === topic);
+  const traps = order ?? [...new Set(pool.flatMap(scenarioConfusions))];
+  const acc = (c) => accuracy(progress, c) ?? 0;
+  const byWeakness = (a, b) => acc(a) - acc(b) || a.localeCompare(b);
+  const out = [];
+  const add = (confusion, reason) => {
+    if (out.length < n && !out.some((q) => q.confusion === confusion)) out.push({ confusion, reason });
+  };
+  for (const [c, p] of Object.entries(progress.pending)) {
+    if (withConfusion(pool, c).some((s) => s.id !== p.scenarioId)) add(c, p.action === "easier_case" ? "easier" : "reward");
+  }
+  const seen = traps.filter((c) => confStats(progress, c).seen);
+  seen.filter((c) => confStats(progress, c).due <= progress.qIndex).sort(byWeakness).forEach((c) => add(c, "review"));
+  traps.filter((c) => !confStats(progress, c).seen).forEach((c) => add(c, "new"));
+  [...seen].sort(byWeakness).forEach((c) => add(c, "weakest"));
+  return out;
+}
+
 /** The trap with the lowest first-pick accuracy (random tie-break). */
 export function weakest(confusions, progress, rng = Math.random) {
   const acc = (c) => accuracy(progress, c) ?? 0;

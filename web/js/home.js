@@ -1,10 +1,9 @@
 // Home page (index.html): what the app is, an animated walkthrough of a case, how the next case is
 // chosen, and the way into the assessment (practice.html). Reads the bundle only for counts.
 
-import { ACTIONS, ACTION_LABELS, chooseAction, posteriorMeans, updateBandit } from "./bandit.js";
-import { applyTheme, loadBundle, loadPrefs, practiceUrl, savePrefs, toggleTheme, trapName } from "./common.js";
-import { h, icon, mount } from "./dom.js";
-import { makeRng, shuffled } from "./random.js";
+import { ACTIONS } from "./bandit.js";
+import { applyTheme, loadBundle, loadPrefs, practiceUrl, savePrefs, toggleTheme } from "./common.js";
+import { h, icon, mount, svg } from "./dom.js";
 import { migrate } from "./progress.js";
 import { PROGRESS_KEY, loadJSON } from "./store.js";
 
@@ -25,7 +24,6 @@ async function boot() {
   if (state.prefs.topic && !state.bundle.tables[state.prefs.topic]) state.prefs.topic = null;
   render();
   revealOnScroll();
-  startJourney();
 }
 
 // ---------------------------------------------------------------- page
@@ -245,196 +243,87 @@ function sceneDebrief() {
 }
 
 // ---------------------------------------------------------------- how the next case is chosen
-// "Try the loop": an interactive journey the visitor drives. Choices decide the path; the coaching
-// pick and the learning use the real bandit (bandit.js). Traps rotate through real ones from the content.
+// A passive, directional diagram (no clicks): answer → right (waits longer) or missed (coached, then the
+// same trap comes back). Two layouts: wide for desktop, tall for phones. Dots travel the paths unless
+// reduced motion is on. Below it, the order the next case is picked in.
 
-const RAIL = [
-  { id: "choose", label: "Case", icon: "target" },
-  { id: "read", label: "Read", icon: "marker" },
-  { id: "trap", label: "Trap", icon: "x" },
-  { id: "coach", label: "Coach", icon: "bulb" },
-  { id: "hints", label: "Hints", icon: "book" },
-  { id: "retest", label: "Re-test", icon: "reset" },
-  { id: "learn", label: "Learn", icon: "chart" },
-];
-const RIGHT_PATH = new Set(["choose", "read", "right"]);
-const jr = { traps: [], t: 0, step: "choose", odds: {}, pick: null, helped: null, rolling: false, visited: new Set(["choose"]) };
+const NODE = { w: 150, h: 56 };
+const FLOW_NODES = {
+  case: { icon: "book", text: "Next case" },
+  answer: { icon: "marker", text: "You answer" },
+  right: { icon: "check", text: "Right", kind: "ok" },
+  wait: { icon: "reset", text: "Review later", kind: "ok" },
+  miss: { icon: "x", text: "Missed", kind: "bad" },
+  coach: { icon: "bulb", text: "Coached", kind: "accent" },
+  again: { icon: "target", text: "Trap returns", kind: "accent" },
+};
+const LAYOUTS = {
+  wide: {
+    viewBox: "0 0 960 320",
+    at: { case: [85, 95], answer: [280, 95], right: [490, 40], wait: [700, 40], miss: [490, 180], coach: [700, 180], again: [880, 180] },
+    edges: ["M160 95 H197", "M355 95 H385 V40 H407", "M355 95 H385 V180 H407", "M565 40 H617", "M565 180 H617", "M775 180 H797",
+      "M880 208 V280 H280 V131"],
+    dots: [
+      { path: "M85 95 H280 H385 V40 H700", cls: "ok", dur: 5 },
+      { path: "M85 95 H280 H385 V180 H880 V280 H280 V95", cls: "bad", dur: 7 },
+    ],
+  },
+  tall: {
+    viewBox: "0 0 360 474",
+    at: { case: [180, 40], answer: [180, 128], right: [95, 232], wait: [95, 330], miss: [265, 232], coach: [265, 330], again: [265, 428] },
+    edges: ["M180 68 V91", "M180 156 V182 H95 V195", "M180 156 V182 H265 V195", "M95 260 V293", "M265 260 V293", "M265 358 V391",
+      "M340 428 H352 V128 H264"],
+    dots: [
+      { path: "M180 40 V182 H95 V330", cls: "ok", dur: 5 },
+      { path: "M180 40 V182 H265 V428 H352 V128 H180", cls: "bad", dur: 7 },
+    ],
+  },
+};
 
-const jTrap = () => jr.traps[jr.t % jr.traps.length];
-
-function journeyTraps() {
-  const all = Object.entries(state.bundle.tables).flatMap(([tid, t]) => Object.keys(t.confusions).map((c) => `${tid}:${c}`));
-  return all.length ? shuffled(all, makeRng(11)) : ["demo:missed_with_link"];
+function flowSvg(name) {
+  const L = LAYOUTS[name];
+  const root = svg("svg", { viewBox: L.viewBox, class: `flow-svg ${name}`, "aria-hidden": "true" });
+  root.append(svg("defs", {},
+    svg("marker", { id: `fl-arrow-${name}`, viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 9, markerHeight: 9, markerUnits: "userSpaceOnUse", orient: "auto" },
+      svg("path", { d: "M0 0 L10 5 L0 10 z", class: "fl-head" }))));
+  L.edges.forEach((d, i) => root.append(svg("path", { d, class: `fl-edge${i === L.edges.length - 1 ? " loop" : ""}`, "marker-end": `url(#fl-arrow-${name})` })));
+  for (const [id, [cx, cy]] of Object.entries(L.at)) {
+    const n = FLOW_NODES[id];
+    const g = svg("g", { class: `fl-node ${n.kind ?? ""}` });
+    g.append(svg("rect", { x: cx - NODE.w / 2, y: cy - NODE.h / 2, width: NODE.w, height: NODE.h, rx: 14 }));
+    const ic = icon(n.icon, 18);
+    ic.setAttribute("x", cx - NODE.w / 2 + 14);
+    ic.setAttribute("y", cy - 9);
+    g.append(ic);
+    const t = svg("text", { x: cx - NODE.w / 2 + 40, y: cy, "dominant-baseline": "middle" });
+    t.textContent = n.text;
+    g.append(t);
+    root.append(g);
+  }
+  if (!reducedMotion()) {
+    for (const d of L.dots) {
+      const dot = svg("circle", { r: 6, class: `fl-dot ${d.cls}` });
+      dot.append(svg("animateMotion", { dur: `${d.dur}s`, repeatCount: "indefinite", path: d.path, rotate: "0" }));
+      root.append(dot);
+    }
+  }
+  return root;
 }
 
 function learningLoop() {
+  const order = [["reset", "Re-test"], ["chart", "Due review"], ["target", "New trap"], ["x", "Weakest"]];
   return h("section", { class: "reveal", "aria-labelledby": "loop-title" },
-    h("div", { class: "section-head" },
-      h("h2", { class: "section-title", id: "loop-title" }, "How your next case is chosen"),
-      h("button", { class: "btn ghost small", type: "button", on: { click: restartJourney } }, icon("reset", 14), "Start over")),
-    h("div", { class: "journey" },
-      h("ol", { class: "rail", id: "rail", "aria-label": "Steps of the loop" }),
-      h("div", { class: "jcard", id: "jcard", "aria-live": "polite" })),
-    h("p", { class: "loop-foot" }, icon("bulb", 16), "Try it: your choices decide the path. Every student has their own coaching odds for every trap."));
-}
-
-function go(step) {
-  jr.step = step;
-  jr.visited.add(step === "right" ? "read" : step);
-  renderJourney();
-  $("jcard")?.querySelector("button")?.focus({ preventScroll: true });
-}
-
-function restartJourney() {
-  jr.visited = new Set(["choose"]);
-  jr.pick = null;
-  jr.helped = null;
-  go("choose");
-}
-
-function nextCase() {
-  jr.t += 1;
-  restartJourney();
-}
-
-function renderRail() {
-  const order = RAIL.map((r) => r.id);
-  const current = jr.step === "right" ? "read" : jr.step;
-  const at = order.indexOf(current);
-  const skipped = (id) => jr.step === "right" && !RIGHT_PATH.has(id);
-  mount($("rail"), RAIL.map((r, i) =>
-    h("li", {
-      class: `rnode${r.id === current ? " on" : ""}${i < at || (jr.step === "right" && i <= at) ? " done" : ""}${skipped(r.id) ? " skip" : ""}`,
-      "aria-current": r.id === current ? "step" : null,
-    }, h("span", { class: "rdot" }, icon(r.icon, 16)), h("span", { class: "rlabel" }, r.label))));
-  $("rail").style.setProperty("--fill", String(Math.max(0, at) / (RAIL.length - 1)));
-}
-
-function choice(label, kind, onClick) {
-  return h("button", { class: `btn ${kind === "ghost" ? "ghost" : ""}`, type: "button", on: { click: onClick } }, label);
-}
-
-function oddsBars(highlight, delta = 0) {
-  const trap = jTrap();
-  const means = posteriorMeans(jr.odds[trap] ?? {}, trap, 1);
-  return h("ul", { class: "jodds" }, ACTIONS.map((a) => {
-    const pct = Math.round(means[a] * 100);
-    return h("li", { class: a === highlight ? `hl${delta > 0 ? " up" : delta < 0 ? " down" : ""}` : "" },
-      h("span", { class: "jo-label" }, ACTION_LABELS[a]),
-      h("span", { class: "jo-bar" }, h("i", { style: `width:${pct}%` })),
-      h("span", { class: "jo-num" }, `${pct}%`));
-  }));
-}
-
-function stageCard() {
-  const trap = trapName(jTrap());
-  const style = jr.pick ? ACTION_LABELS[jr.pick] : "";
-  const card = (iconName, kicker, title, text, visual, actions) =>
-    [h("div", { class: "jhead" }, h("span", { class: "jicon" }, icon(iconName, 22)), h("span", {}, h("span", { class: "jkicker" }, kicker), h("h3", {}, title))),
-      h("p", { class: "jtext" }, text), visual, h("div", { class: "jactions" }, actions)];
-
-  switch (jr.step) {
-    case "choose":
-      return card("target", "Step 1", "A case is chosen for you",
-        "Traps waiting for a re-test come first, then reviews that are due, then new traps, then your weakest trap.",
-        h("div", { class: "jqueue" }, ["Re-test", "Due review", "New trap", "Weakest"].map((q, i) => h("span", { style: `--i:${i}` }, q))),
-        [choice("Open the case", "", () => go("read"))]);
-    case "read":
-      return card("marker", "Step 2", "Read the note, pick the codes",
-        "Mark the words that decide the codes and choose a code set. How did it go?",
-        h("div", { class: "jnote" }, "Assessment: ", h("mark", {}, "Type 2 diabetes"), " with ", h("mark", {}, "CKD stage 4"), ". Continue ", h("mark", {}, "insulin"), "."),
-        [choice("I got it right", "", () => go("right")), choice("I fell for a trap", "ghost", () => go("trap"))]);
-    case "right":
-      return card("check", "Right on the first pick", "Your review gap grows",
-        "Each time you get this trap right on the first pick, it waits longer before it comes back for review.",
-        h("div", { class: "jgap" }, [2, 4, 8, 16].map((n, i) => h("span", { style: `--i:${i}` }, `${n}`)), h("em", {}, "cases until review")),
-        [choice("Next case", "", nextCase)]);
-    case "trap":
-      return card("x", "Not quite", `Trap found: ${trap}`,
-        "Your wrong choice is tagged with the trap behind it, so the tutor knows exactly what to coach.",
-        trapDetail(),
-        [choice("Coach me", "", () => { jr.pick = null; go("coach"); })]);
-    case "coach":
-      return card("bulb", "Step 3", "The tutor picks a coaching style",
-        jr.pick ? `It picked "${style}": the best odds for this trap so far, while still trying others now and then.`
-          : "It weighs what has worked for this trap before, and leaves room to try others.",
-        h("div", { class: "jchips", id: "jchips" }, ACTIONS.map((a) => h("span", { class: `chip${a === jr.pick ? " won" : ""}`, dataset: { a } }, ACTION_LABELS[a]))),
-        [jr.pick ? choice("See the hints", "", () => go("hints")) : choice("Pick a style", "", rollStyle)]);
-    case "hints":
-      return card("book", "Step 4", "Up to 3 hints, then re-pick",
-        `Coaching with "${style}": each hint gets closer, you re-pick after each, and no hint names the answer.`,
-        h("div", { class: "jpips" }, [1, 2, 3].map((n) => h("span", { style: `--i:${n}` }, `Hint ${n}`))),
-        [choice("Later: a new case", "", () => go("retest"))]);
-    case "retest":
-      return card("reset", "Step 5", "Same trap, new case",
-        `A different note tests "${trap}" again. This is the real test of whether "${style}" worked. How did it go?`,
-        null,
-        [choice("Right this time", "", () => learn(1)), choice("Missed again", "ghost", () => learn(0))]);
-    case "learn":
-      return card("chart", "Step 6", jr.helped ? "The coaching worked" : "The coaching did not stick",
-        jr.helped ? `"${style}" becomes more likely for "${trap}".` : `"${style}" becomes less likely for "${trap}"; the tutor will try other styles more.`,
-        oddsBars(jr.pick, jr.helped ? 1 : -1),
-        [choice("Next case", "", nextCase), choice("Try this trap again", "ghost", () => { jr.visited = new Set(["choose", "read"]); go("trap"); })]);
-    default:
-      return [];
-  }
-}
-
-/** The current trap's own description and lean, straight from the decision tables. */
-function trapDetail() {
-  const [tid, cid] = jTrap().split(":");
-  const info = state.bundle.tables[tid]?.confusions?.[cid];
-  if (!info) return null;
-  const lean = { over: "Overcoding", under: "Undercoding", neutral: "Wrong level of detail" }[info.lean] ?? "";
-  return h("div", { class: "jtrap" },
-    h("span", { class: `opt-badge lean-${info.lean}` }, lean),
-    h("span", { class: "jtrap-desc" }, info.description));
-}
-
-/** Spin through the styles, then land on the real Thompson-sampling pick. */
-function rollStyle() {
-  if (jr.rolling) return;
-  const trap = jTrap();
-  const pick = chooseAction(jr.odds[trap] ?? {}, trap, 1);
-  const done = () => {
-    jr.rolling = false;
-    jr.pick = pick;
-    renderJourney();
-    $("jcard")?.querySelector(".jactions button")?.focus({ preventScroll: true });
-  };
-  if (reducedMotion()) return done();
-  jr.rolling = true;
-  const chips = [...document.querySelectorAll("#jchips .chip")];
-  const target = ACTIONS.indexOf(pick);
-  const steps = ACTIONS.length * 2 + target; // two full rounds, then stop on the pick
-  const SPIN_MS = 1400;
-  const t0 = performance.now();
-  // Time-based, so throttled timers (busy device, background tab) cannot leave it stuck mid-spin.
-  const tick = () => {
-    const k = Math.min(1, (performance.now() - t0) / SPIN_MS);
-    const at = Math.round(steps * (1 - (1 - k) ** 2)); // ease out: slows down near the end
-    chips.forEach((c, i) => c.classList.toggle("spin", i === at % ACTIONS.length));
-    if (k < 1) setTimeout(tick, 50);
-    else setTimeout(done, 200);
-  };
-  tick();
-}
-
-function learn(helped) {
-  const trap = jTrap();
-  jr.helped = helped;
-  jr.odds[trap] = updateBandit(jr.odds[trap] ?? {}, trap, 1, jr.pick, helped);
-  go("learn");
-}
-
-function renderJourney() {
-  renderRail();
-  mount($("jcard"), stageCard());
-}
-
-function startJourney() {
-  jr.traps = journeyTraps();
-  renderJourney();
+    h("h2", { class: "section-title", id: "loop-title" }, "How your next case is chosen"),
+    h("div", { class: "flowbox" },
+      h("div", { class: "flow-figure", role: "img",
+        "aria-label": "You answer a case. Right: the trap is reviewed later, with a longer gap each time. Missed: you are coached, then the same trap comes back in a new case." },
+        flowSvg("wide"), flowSvg("tall")),
+      h("div", { class: "priority" },
+        h("span", { class: "priority-k" }, "Picks next"),
+        h("ol", { class: "priority-list" }, order.flatMap(([ic, label], i) => [
+          i ? h("li", { class: "priority-arrow", "aria-hidden": "true" }, icon("arrow", 14)) : null,
+          h("li", { class: "priority-item" }, h("span", { class: "priority-n" }, String(i + 1)), icon(ic, 14), label),
+        ])))));
 }
 
 function trust() {

@@ -637,23 +637,36 @@ function debriefCard() {
 function riskCard(first) {
   const g = first.gap;
   if (!g) return null;
+  const hccName = (x) => app.bundle.hccs[x] ?? `HCC ${x}`;
+  const head = h("div", { class: "section-k" }, "What the miss changes");
+  const explain = h("p", { class: "note-small risk-key" },
+    "Risk score (CMS-", term("HCC"), " V28): 1.0 = an average Medicare patient's expected cost. Higher score, higher payment.");
+  // The HCC behind the difference, in words.
+  const hccLine = [
+    g.missing_hccs.length ? `Your pick misses ${g.missing_hccs.map(hccName).join(", ")}.` : "",
+    g.extra_hccs.length ? `Your pick adds ${g.extra_hccs.map(hccName).join(", ")}.` : "",
+  ].filter(Boolean).join(" ");
+
+  if (g.direction === "none") {
+    return h("div", { class: "risk" }, head,
+      h("div", { class: "risk-chip none" }, icon("check", 15), `Same risk score (${g.correct.toFixed(3)})`),
+      h("p", { class: "note-small" }, "The payment would not change here, but the code is still wrong, and audits check the code, not the score."),
+      hccLine ? h("p", { class: "note-small" }, hccLine) : null,
+      explain);
+  }
+  const diff = Math.abs(g.gap);
+  const pctAvg = Math.round(diff * 100);
+  const over = g.direction === "over";
   const max = Math.max(g.student, g.correct, 0.05);
-  const pct = (v) => `${Math.round((v / max) * 100)}%`;
-  const hccList = (hs) => hs.map((x) => `HCC ${x} ${app.bundle.hccs[x] ? `(${app.bundle.hccs[x]})` : ""}`).join("; ");
-  const text = g.direction === "none"
-    ? "Same risk score here, but the code is still wrong: audits check the code, not just the score."
-    : g.direction === "over"
-      ? `Your pick raises the risk score by ${Math.abs(g.gap).toFixed(3)}: an unsupported HCC is an audit finding.`
-      : `Your pick lowers the risk score by ${Math.abs(g.gap).toFixed(3)}: a supported condition goes unreported.`;
-  return h("div", {},
-    h("div", { class: "section-k" }, "What the miss changes (CMS-", term("HCC"), ` V28, ${g.segment} segment)`),
-    h("div", { class: "gap-viz" },
-      h("div", { class: "gap-row" }, h("span", {}, "Your pick"), h("div", { class: "gap-track" }, h("div", { class: `gap-fill ${g.direction}`, style: `width:${pct(g.student)}` })), h("span", { class: "gap-num" }, g.student.toFixed(3))),
-      h("div", { class: "gap-row" }, h("span", {}, "Correct"), h("div", { class: "gap-track" }, h("div", { class: "gap-fill correct", style: `width:${pct(g.correct)}` })), h("span", { class: "gap-num" }, g.correct.toFixed(3)))),
-    h("p", { class: "note-small" }, text),
-    g.missing_hccs.length ? h("p", { class: "note-small" }, `Missing: ${hccList(g.missing_hccs)}`) : null,
-    g.extra_hccs.length ? h("p", { class: "note-small" }, `Extra: ${hccList(g.extra_hccs)}`) : null,
-    h("p", { class: "note-small" }, "Shown for feedback only. Your score is right or wrong on the codes."));
+  const bar = (label, v, cls) => h("div", { class: "gap-row" },
+    h("span", {}, label), h("div", { class: "gap-track" }, h("div", { class: `gap-fill ${cls}`, style: `width:${Math.round((v / max) * 100)}%` })),
+    h("span", { class: "gap-num" }, v.toFixed(3)));
+  return h("div", { class: "risk" }, head,
+    h("div", { class: `risk-chip ${g.direction}` }, icon(over ? "arrow" : "x", 15),
+      over ? `+${diff.toFixed(3)}: overpaid by about ${pctAvg}% of an average patient's cost` : `−${diff.toFixed(3)}: underpaid by about ${pctAvg}% of an average patient's cost`),
+    h("div", { class: "gap-viz" }, bar("Your pick", g.student, g.direction), bar("Correct", g.correct, "correct")),
+    h("p", { class: "note-small" }, (over ? "An unsupported condition is an audit finding. " : "A supported condition goes unreported. ") + hccLine),
+    explain);
 }
 
 function evidenceCard() {
