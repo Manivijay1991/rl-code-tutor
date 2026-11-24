@@ -1,0 +1,133 @@
+{
+  "id": "diabetes_complications-f2e2508e7a",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow up for T2DM and CKD.\n\nHPI: Pt is a 75 y.o. female presenting for routine follow up of type 2 diabetes and chronic kidney disease stage 4. Pt reports feeling generally well today. Denies any recent episodes of dizziness, blurred vision, or significant fatigue. Pt has been on long-term insulin therapy. She reports consistent adherence to her injection schedule. Pt notes occasional heartburn but manages with lifestyle. No new concerns voiced.\n\nMedication List:\n- Insulin glargine, subcutaneous daily\n- Omeprazole 20mg PO daily\n- Loratadine 10mg PO daily PRN\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nHEENT: Denies vision changes, sore throat.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Reports occasional reflux.\nMSK: Denies joint pain.\nNeuro: Denies numbness, weakness.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had DM. Father had CAD.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 22 mL/min/1.73m2\nCreatinine: 2.4 mg/dL\nPotassium: 4.5 mEq/L\n\nExam:\nGen: Well-appearing, in no acute distress.\nCV: RRR, S1, S2. No murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, non-distended.\nExt: WNL.\n\nAssessment:\n1. T2DM: Stable on insulin.\n2. CKD stage 4: Note that this is not related to diabetes.\n3. GERD: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan:\n1. Continue current insulin regimen. Monitor blood glucose daily.\n2. Continue monitoring renal function. Maintain hydration.\n3. Continue current medications for GERD and allergies.\n4. F/u in 3 months for lab work and clinic visit.\n\nProblem List:\n- T2DM\n- CKD stage 4 (not due to diabetes)\n- GERD\n- Seasonal allergic rhinitis\n\nElectronically signed, J. Lindqvist, PA-C, 05/12/2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.4"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-24T17:30:01+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "PA-C",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

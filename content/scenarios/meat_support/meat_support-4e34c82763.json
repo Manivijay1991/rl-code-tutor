@@ -1,0 +1,70 @@
+{
+  "id": "meat_support-4e34c82763",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: Pt is a 90 y/o male presenting for f/u of chronic obstructive pulmonary disease. Pt reports mild dyspnea on exertion over the last month but denies increased sputum production or fever. He states he is able to perform ADLs but tires more easily than usual. Denies chest pain or orthopnea. He is currently adherent to his inhaler regimen. He reports no recent URI symptoms.\n\nMedication List:\n- Tiotropium 18 mcg inhaled, 1 daily\n- Salmeterol/Fluticasone inhaler, 2 puffs BID\n- Lisinopril 10 mg, 1 daily\n\nSocial History: Retired. Lives with wife. Former smoker (40 pack-year hx). No alcohol or illicit drug use.\n\nFamily History: Father had COPD and hypertension. Mother had type 2 diabetes.\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nRespiratory: Positive for mild SOB on exertion. Denies cough or wheezing.\nCardiovascular: No palpitations or chest pain.\nGI: No nausea or diarrhea.\nMSK: Mild joint stiffness.\nNeuro: No dizziness or confusion.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 94% on RA\nRR: 18\nHt/Wt: 5'8\", 155 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 58 mL/min\nCBC: WNL\nCMP: WNL\n\nExam:\nGen: 90 y/o male, alert and oriented x3. Appears in no acute distress.\nLungs: Decreased breath sounds in bases, expiratory wheezes noted.\nCV: RRR, no murmurs.\nAbd: Soft, non-tender.\nExt: No edema.\n\nAssessment:\n1. COPD: Pt is stable at this time. Symptoms reviewed during today's visit.\n\nPlan:\n1. COPD: Continue current medications. Encourage pursed-lip breathing and stay hydrated. Pt to f/u in 3 months or sooner if symptoms worsen.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:23+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

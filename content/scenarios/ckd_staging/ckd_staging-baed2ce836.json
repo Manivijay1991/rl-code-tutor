@@ -1,0 +1,138 @@
+{
+  "id": "ckd_staging-baed2ce836",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3_unspecified",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease.\n\nHPI\nPt is a 76-year-old female presenting for routine follow-up of CKD and hypertension. Pt reports feeling well overall. No new complaints of edema, fatigue, or changes in urinary output. Compliant with current meds.\n\nMedication List\nLisinopril 10mg daily\nHydrochlorothiazide 12.5mg daily\n\nExam\nGen: Well-appearing, alert/oriented x3.\nVitals: BP 134/82, HR 72, RR 16, Temp 98.6F.\nHeart: RRR, no murmurs.\nLungs: CTAB.\nExt: No pedal edema.\nLabs: Recent eGFR 42.\n\nAssessment\n1. CKD, stage 3.\n2. Hypertension.\n\nPlan\n1. Continue current medications as prescribed.\n2. Monitor BP and renal function.\n3. F/u in 3 months for labs and BP check.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "I12.9",
+    "N18.30"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "Stage 3 without a 3a/3b specification: N18.30."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.30"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.30"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.127,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.3"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "N18.3 needs a 5th character.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.127,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1830"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-24T17:28:28+00:00",
+    "style": {
+      "age": 76,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

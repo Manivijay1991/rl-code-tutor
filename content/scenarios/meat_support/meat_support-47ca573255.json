@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-47ca573255",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: \"Follow-up for persistent low back pain.\"\n\nHPI: [Copied Forward from 03/15/2026]\nThe patient is a 72-year-old female presenting for evaluation of chronic low back pain. She reports a dull, aching sensation in the lumbar region that began approximately two years ago. The pain is described as constant but worsens with prolonged standing or lifting heavy objects. She denies any radiation of pain into the lower extremities. She has attempted several over-the-counter analgesics with only moderate relief. She denies any recent falls or acute traumatic events.\n\n[Update from today's visit]\nToday, the patient reports that the pain has remained stable over the last month but has increased slightly during her morning activities. She denies any new numbness, tingling, or weakness in her legs. She continues to manage the symptoms with her current regimen but expresses a desire to discuss physical therapy options.\n\nMedication List:\n- Naproxen 500mg every 12 hours as needed\n- Lisinopril 20mg daily\n- Furosemide 40mg daily\n\nVitals:\nBP: 134/82, HR: 74, SpO2: 98% on room air, Temp: 98.6 F, Weight: 165 lbs.\n\nRecent Labs:\neGFR: 62 mL/min/1.73m2, HbA1c: 6.4%, Sodium: 138 mEq/L, Potassium: 4.5 mEq/L.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for congestion or sore throat.\nCardiovascular: Negative for palpitations or chest pain.\nRespiratory: Negative for shortness of breath or cough.\nMusculoskeletal: Positive for lumbar aching. Negative for joint swelling.\nNeurological: Negative for syncope or tremors.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nGenitourinary: Negative for dysuria.\nIntegumentary: Negative for rashes.\n\nSocial History:\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History:\nMother: Hypertension.\nFather: Type 2 Diabetes.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nMusculoskeletal: Lumbar spine shows mild paraspinal muscle tenderness. Range of motion is limited by discomfort but within normal limits for her age. No spinal deformity noted. Lower extremities are intact with normal strength and sensation.\n\nAssessment:\n1. Chronic low back pain.\n\nPlan:\n1. Recommend initiation of a formal physical therapy evaluation twice weekly.\n2. Continue current NSAID regimen as needed for breakthrough pain.\n3. Patient to return in 4 weeks to monitor progress with physical therapy.\n\nProblem List:\n- chronic systolic heart failure (HFrEF)\n\nElectronically signed, A. Rivera, MD, 10/14/2026",
+  "answer": [],
+  "explanations": [
+    "Heart failure appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:31:19+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

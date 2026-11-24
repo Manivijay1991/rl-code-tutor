@@ -1,0 +1,61 @@
+{
+  "id": "ckd_staging-77264c6d35",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for CKD.\n\nHPI\n56 y.o. female presents for routine f/u of chronic kidney disease. Pt reports feeling well overall, denying any acute changes in urinary output or systemic symptoms. She is adherent to current medications and reports stable vitals at home.\n\nMedication List\nLisinopril 10mg daily.\n\nExam\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6 F.\nHeart: RRR, no murmurs.\nLungs: CTAB.\nAbd: Soft, non-tender, no masses.\nExt: WNL.\n\nAssessment\n1. CKD stage 1. Recent labs show eGFR of 92, which is stable. UA positive for albumin.\n\nPlan\n1. Continue current meds. \n2. Order repeat labs in 6 months to monitor renal function.\n3. Continue diet and fluid intake as previously discussed.\n4. Return to clinic as scheduled.\n\nElectronically signed, \nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "N18.1"
+  ],
+  "explanations": [
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T16:22:39+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

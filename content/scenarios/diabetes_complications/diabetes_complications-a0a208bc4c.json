@@ -1,0 +1,116 @@
+{
+  "id": "diabetes_complications-a0a208bc4c",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for T2DM and polyneuropathy.\n\nHPI: Pt is a 70-year-old female presenting for routine follow-up of type 2 diabetes mellitus and peripheral neuropathy. Pt reports stable baseline. Denies any acute episodes of dizziness, vision changes, or severe foot pain. She reports mild, intermittent tingling in bilateral feet, consistent with previous visits. Pt continues to manage her glucose levels via diet and exercise only. No changes in weight or activity level since last seen.\n\nMedication List:\n- Lipitor 20mg PO QD\n- Multivitamin PO QD\n- Seasonal allergic rhinitis meds PRN\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had T2DM. Father had hyperlipidemia.\n\nReview of Systems:\nGeneral: Denies fever, chills, fatigue.\nEyes: Denies blurry vision.\nNeuro: Positive for bilateral tingling in feet; denies muscle weakness or severe sharp pain.\nSkin: No new lesions or sores noted.\nAll other systems reviewed and negative.\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 7.1%\neGFR: 75\nLDL: 88\nGlucose: 115\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nExtremities: Normal pulses. Symmetric sensation to light touch. No ulcers or debris noted on feet.\n\nAssessment:\n1. Type 2 diabetes mellitus, diet controlled.\n2. Peripheral neuropathy.\n3. Hyperlipidemia.\n4. Seasonal allergic rhinitis.\n\nPlan:\n1. T2DM: Continue current diet and exercise regimen. Pt encouraged to maintain current lifestyle.\n2. Polyneuropathy: Continue monitoring symptoms. Advised to inspect feet daily for any skin breakdown.\n3. Hyperlipidemia: Continue current statin therapy.\n4. Follow up in 3 months for lab work and clinical exam.\n\nProblem List:\n- Type 2 diabetes mellitus\n- Peripheral neuropathy\n- Hyperlipidemia\n- Seasonal allergic rhinitis\n\nElectronically signed,\nE. Castillo, MD\n05/14/2026",
+  "answer": [
+    "E11.42"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: the combination code E11.42 captures both."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding the two separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "G62.9"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1142"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:12+00:00",
+    "style": {
+      "age": 70,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "hyperlipidemia"
+      ],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

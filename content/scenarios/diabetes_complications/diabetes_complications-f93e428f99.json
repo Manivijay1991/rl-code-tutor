@@ -1,0 +1,118 @@
+{
+  "id": "diabetes_complications-f93e428f99",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes and hypoglycemia.\n\nHPI: (Copied Forward) Patient is a 77-year-old female with a known history of type 2 diabetes mellitus and hyperlipidemia. She has been managed with a combination of insulin and an oral hypoglycemic agent. She reports regular adherence to her medication regimen. She also manages seasonal allergic rhinitis.\n\nUpdate: The patient presents today for a follow-up regarding her management of type 2 diabetes. She reports that she has experienced a hypoglycemic episode since the last visit. She describes the episode as occurring approximately two hours after her morning dose of insulin and her oral medication. She noted feeling shaky and lightheaded but recovered after consuming a small snack. She continues to manage her hyperlipidemia and seasonal allergic rhinitis without significant issues. She denies any recent changes in her activity level or significant weight fluctuations.\n\nMedication List:\n- Insulin glargine (long-acting)\n- Glipizide (oral hypoglycemic)\n- Atorvastatin\n- Loratadine\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on room air, Weight 155 lbs.\n\nRecent Labs: HbA1c: 7.4%, eGFR: 68 mL/min/1.73m2, Creatinine: 1.1 mg/dL, LDL: 82 mg/dL.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Positive for seasonal nasal congestion.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for palpitations or chest pain.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for dizziness or numbness.\nSkin: Negative for rashes or lesions.\n\nSocial History: Retired; lives with her spouse; non-smoker; occasional social alcohol consumption.\n\nFamily History: Mother had type 2 diabetes; Father had hyperlipidemia.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nSkin: No visible rashes or integumentary changes.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm; no murmurs.\nNeurological: Alert and oriented; no focal deficits noted.\n\nAssessment:\n1. Type 2 diabetes mellitus: Patient is currently experiencing a hypoglycemic episode.\n2. Hyperlipidemia: Stable on current statin therapy.\n3. Seasonal allergic rhinitis: Stable.\n\nProblem List:\n- Type 2 diabetes\n- Hypoglycemia\n- Hyperlipidemia\n- Seasonal allergic rhinitis\n\nPlan:\n1. Continue current insulin and glipizide regimen.\n2. Instructed patient on recognizing early signs of hypoglycemia and carrying a source of fast-acting glucose.\n3. Continue atorvastatin for hyperlipidemia.\n4. Continue loratadine as needed for seasonal allergic rhinitis.\n5. Follow up in 3 months for repeat HbA1c.\n\nElectronically signed,\nE. Castillo",
+  "answer": [
+    "E11.649",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:19+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "hyperlipidemia"
+      ],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

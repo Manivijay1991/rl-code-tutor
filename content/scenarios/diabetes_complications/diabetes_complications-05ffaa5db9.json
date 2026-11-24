@@ -1,0 +1,119 @@
+{
+  "id": "diabetes_complications-05ffaa5db9",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 1 diabetes and peripheral neuropathy.\n\nHPI: (Copied Forward) Patient is a 72-year-old female with a long-standing history of type 1 diabetes mellitus. She has been managed on a long-term insulin regimen. She also presents with symptoms of polyneuropathy in both lower extremities.\n\n(Today's Update) The patient returns today for a routine follow-up. She reports that her blood glucose levels have been stable on her current insulin dose. She notes that the tingling and numbness in her feet remain constant but have not worsened in severity over the last month. She denies any recent falls or significant changes in sensation.\n\nMedication List:\n- Insulin Lispro (Injectable)\n- Atorvastatin 20mg daily\n- Cholecalciferol 2000 IU daily\n\nVitals: BP 128/82, HR 74, Temp 98.6F, SpO2 98% on room air, Weight 155 lbs.\n\nRecent Labs:\n- HbA1c: 7.2%\n- eGFR: 68 mL/min\n- Vitamin D: 32 ng/mL\n- Lipid Panel: LDL 85 mg/dL, HDL 50 mg/dL, Triglycerides 140 mg/dL\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight changes.\n- HEENT: Negative for vision changes or headaches.\n- Cardiovascular: Negative for chest pain or palpitations.\n- Respiratory: Negative for shortness of breath or cough.\n- Gastrointestinal: Negative for abdominal pain or diarrhea.\n- Musculoskeletal: Positive for bilateral foot tingling.\n- Neurological: Positive for mild numbness in toes.\n- Integumentary: Negative for skin breakdown or rashes.\n\nSocial History: Retired; lives in a single-story home with her spouse. Non-smoker.\n\nFamily History: Mother had hyperlipidemia. Father had heart disease.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nExtremities: Symmetrical muscle strength 5/5. Diminished sensation to light touch noted in distal toes bilaterally. No ulcerations or signs of infection noted on feet.\n\nAssessment:\n1. Type 1 diabetes mellitus: Stable on current insulin regimen.\n2. Polyneuropathy: The patient’s peripheral neuropathy is noted to be unrelated to diabetes.\n3. Hyperlipidemia: Stable on current medication.\n4. Vitamin D deficiency: Improving with supplementation.\n\nPlan:\n1. Continue current insulin regimen as prescribed.\n2. Continue Atorvastatin for hyperlipidemia.\n3. Continue Vitamin D supplementation.\n4. Monitor sensation in feet; follow up in 3 months.\n\nProblem List:\n- Type 1 diabetes\n- Polyneuropathy (not due to diabetes)\n- Hyperlipidemia\n- Vitamin D deficiency\n\nElectronically signed,\nA. Rivera, NP\nMay 14, 2026",
+  "answer": [
+    "E10.9",
+    "G62.9"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code each separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.42",
+        "G62.9"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Provider documentation of no link overrides the presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E109"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:29:15+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "vitamin D deficiency"
+      ],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

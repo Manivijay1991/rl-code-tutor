@@ -1,0 +1,134 @@
+{
+  "id": "diabetes_complications-6332a665cd",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes and kidney function.\n\nHPI: [Copied Forward] Patient is a 66-year-old male with a history of type 2 diabetes mellitus and chronic kidney disease stage 4. He reports stable management of blood glucose levels. He denies any acute symptoms or changes in renal function since the last evaluation. He continues his long-term regimen of insulin and an oral hypoglycemic agent.\n\nVitals: BP 128/80, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nConstitutional: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nNeurological: Negative\nMusculoskeletal: Negative\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nRenal: No edema noted in lower extremities.\n\nAssessment:\n1. Type 2 diabetes: Stable on current regimen.\n2. Chronic kidney disease stage 4: Progressing as expected. Note: This renal condition is unrelated to diabetes.\n\nPlan:\n1. Continue current insulin and oral hypoglycemic medications.\n2. Monitor renal function with laboratory tests in 3 months.\n3. Patient to continue routine self-monitoring of blood glucose.\n\nElectronically signed, L. Moreau, MD, 10/14/2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:27+00:00",
+    "style": {
+      "age": 66,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau"
+    }
+  }
+}

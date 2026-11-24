@@ -1,0 +1,96 @@
+{
+  "id": "ckd_staging-9eb2078430",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3_unspecified",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for CKD and GERD.\n\nHPI: Pt is a 66-year-old female presenting for routine follow-up of chronic kidney disease and gastroesophageal reflux disease. Pt reports feeling well overall. Denies any new shortness of breath, chest pain, or significant edema. Reports occasional acid reflux, managed with current medications. Compliant with medications and dietary restrictions. No changes in renal function noted since last visit.\n\nMedication List:\n- Atorvastatin 40mg PO QD\n- Omeprazole 20mg PO QD\n- Lisinopril 10mg PO QD\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nCV: No palpitations or chest pain.\nResp: No SOB or cough.\nGI: Positive for occasional heartburn. No nausea/vomiting.\nMSK: No joint pain or stiffness.\nNeuro: No dizziness or numbness.\n\nSocial History: Retired. Lives with spouse. Non-smoker. Occasional alcohol consumption.\n\nFamily History: Mother had hyperlipidemia. Father had GERD.\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\neGFR: 42\nCreatinine: 1.8 mg/dL\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular rhythm, no murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no masses.\nExt: No edema.\n\nAssessment:\n1. CKD: Pt is currently at stage 3. Renal function stable based on most recent labs.\n2. GERD: Stable; well-controlled on proton pump inhibitor.\n3. Hyperlipidemia: Stable on statin therapy.\n\nPlan:\n- Continue current medications as prescribed.\n- Continue monitoring renal function with labs in 3 months.\n- Diet: Maintain low-sodium and heart-healthy diet.\n- F/u in 3 months for lab work and clinic visit.\n\nProblem List:\n- CKD stage 3\n- GERD\n- Hyperlipidemia\n\nElectronically signed, K. Nguyen, MD, 05/12/2026",
+  "answer": [
+    "N18.30"
+  ],
+  "explanations": [
+    "Stage 3 without a 3a/3b specification: N18.30."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.3"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "N18.3 needs a 5th character.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.127,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1830"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:24+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "MD",
+      "signer": "K. Nguyen"
+    }
+  }
+}

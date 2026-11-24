@@ -301,7 +301,10 @@ button { font: inherit; color: inherit; }
 .hint { border-left: 4px solid var(--accent); animation: rise 0.25s ease; }
 .hint h3 { margin: 0 0 4px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
 .hint p { margin: 6px 0; }
-.lean-line { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; padding: 4px 8px; border-radius: 7px; margin-bottom: 4px; }
+.hint-think { font-weight: 600; color: var(--ink); }
+.hint-reveal { margin-top: 2px; }
+.hint-more { outline: none; }
+.lean-line {display: inline-flex; gap: 6px; align-items: center; font-size: 13px; padding: 4px 8px; border-radius: 7px; margin-bottom: 4px; }
 .refs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .ref { font: 600 12px var(--mono); padding: 3px 7px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); color: var(--ink-2); }
 .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
@@ -625,7 +628,7 @@ body[data-view="home"] .topbar { padding-inline: max(20px, calc((100% - 1120px) 
   background-image: radial-gradient(circle at 100% 0, var(--accent-soft), transparent 45%); }
 .flow-figure { display: grid; justify-items: center; }
 .flow-svg { width: 100%; height: auto; display: block; }
-.flow-svg.wide { max-width: 920px; }
+.flow-svg.wide { max-width: 780px; margin: 0 auto; }
 .flow-svg.tall { display: none; max-width: 360px; }
 .fl-node rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
 .fl-node text { fill: var(--ink); font: 650 15px var(--font); }
@@ -643,7 +646,7 @@ body[data-view="home"] .topbar { padding-inline: max(20px, calc((100% - 1120px) 
 .fl-edge { fill: none; stroke: var(--ink-3); stroke-width: 2; stroke-linejoin: round; }
 .fl-edge.loop { stroke-dasharray: 6 5; }
 .fl-head { fill: var(--ink-3); }
-.fl-label { font: 600 13px var(--font); }
+.fl-label { font: 500 12px var(--font); }
 .fl-label.ok { fill: var(--ok); }
 .fl-label.accent { fill: var(--accent); }
 .fl-dot { stroke: var(--surface); stroke-width: 3; }

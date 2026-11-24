@@ -1,0 +1,96 @@
+{
+  "id": "diabetes_complications-73c1d2c705",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes.\n\nHPI: Pt is a 66 y.o. female presenting for routine follow-up of T2DM without complications. Pt has been on long-term insulin therapy. She reports feeling well overall. Denies any recent acute issues, vision changes, or numbness in extremities. She is adherent to her insulin regimen.\n\nMedication List:\n- Insulin glargine (long-acting) daily\n- Atorvastatin 20mg daily\n- Loratadine 10mg PRN for seasonal allergic rhinitis\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nHEENT: Denies vision changes, ear pain.\nRespiratory: Denies SOB, cough.\nMSK: Denies joint pain, weakness.\nNeuro: Denies tingling, numbness.\nGI: Denies nausea, diarrhea.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had T2DM. Father had coronary artery disease.\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 82 (stable)\nLDL: 88 mg/dL\nGlucose (fasting): 135 mg/dL\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 165 lbs\nHeight: 5'4\"\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nAbd: Soft, non-tender, non-distended.\nSkin: Intact, no lesions.\nExt: No edema, pulses 2+ bilaterally.\n\nAssessment:\n1. Type 2 diabetes mellitus without complications.\n2. Hyperlipidemia.\n3. Seasonal allergic rhinitis.\n\nPlan:\n1. Continue current insulin regimen as prescribed.\n2. Continue atorvastatin for hyperlipidemia.\n3. Continue loratadine as needed for allergy symptoms.\n4. Pt to continue monitoring home glucose levels.\n5. F/u in 3 months for labs and routine check.\n\nProblem List:\n- T2DM without complications\n- Hyperlipidemia\n- Seasonal allergic rhinitis\n\nElectronically signed, K. Nguyen, NP, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "Z79.4"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:29:28+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "NP",
+      "signer": "K. Nguyen"
+    }
+  }
+}

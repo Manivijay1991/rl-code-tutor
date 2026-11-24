@@ -1,0 +1,123 @@
+{
+  "id": "diabetes_complications-81cc376ed3",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes and foot numbness.\n\nHPI: The patient is an 82-year-old woman presenting today for a routine follow-up of her type 2 diabetes. She reports stable glucose levels and continues to adhere to her current regimen. She also reports persistent tingling and numbness in her feet, which she describes as a form of polyneuropathy. She notes that these sensations are chronic. She remains ambulatory and denies any acute changes in her mobility or sensation.\n\nMedication List: Insulin, Glipizide, and a daily multivitamin.\n\nExam: The patient is alert and oriented. Physical exam reveals intact skin and sensation in the lower extremities. Neurological exam confirms diminished sensation in the toes.\n\nAssessment: 1. Type 2 diabetes mellitus: Stable on current dual therapy. 2. Peripheral neuropathy: The patient's symptoms are unrelated to diabetes.\n\nPlan: Continue current medications, including insulin and her oral hypoglycemic. We will continue to monitor her glucose levels and schedule a follow-up in three months to assess the progression of her neuropathy.\n\nElectronically signed, E. Castillo, PA-C, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:54+00:00",
+    "style": {
+      "age": 82,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "E. Castillo"
+    }
+  }
+}

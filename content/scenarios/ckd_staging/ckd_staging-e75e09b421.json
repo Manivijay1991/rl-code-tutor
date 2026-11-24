@@ -1,0 +1,113 @@
+{
+  "id": "ckd_staging-e75e09b421",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for management of end stage renal disease and hemodialysis.\n\nHPI\nThe patient is a 57-year-old male who presents today for a scheduled follow-up of his chronic kidney disease. He is currently receiving maintenance hemodialysis. He reports that his symptoms have been stable since the last visit. He denies any recent episodes of severe pruritus, significant fluid overload, or unexpected weight gain between sessions. He notes that he has been compliant with his fluid restrictions and phosphate binders. He denies any new shortness of breath or significant fatigue. His seasonal allergic rhinitis is currently well-controlled with over-the-counter medications. He also reports adherence to his vitamin D supplementation for his known deficiency.\n\nMedication List\n- Sevelamer 800mg (oral, with meals)\n- Calcitriol 0.25mcg (oral)\n- Vitamin D3 2000 IU (oral)\n- Cetirizine 10mg (as needed for seasonal allergies)\n\nReview of Systems\nConstitutional: No fevers, chills, or recent weight changes.\nRespiratory: No cough or shortness of breath.\nIntegumentary: No new rashes or severe itching.\nGenitourinary: No urinary symptoms.\nNeurological: No numbness or tingling.\n\nSocial History\nThe patient lives with his spouse and two children. He works as a part-time consultant. He denies tobacco use and drinks alcohol socially.\n\nFamily History\nFather: Deceased, history of renal disease.\nMother: Alive, history of seasonal allergies.\n\nVitals and Recent Labs\nBP: 128/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nWeight: 185 lbs (stable)\neGFR: 12 mL/min/1.73m2\nPotassium: 4.5 mEq/L\nPhosphorus: 3.8 mg/dL\nHemoglobin: 10.2 g/dL\n\nExam\nGeneral: Well-appearing, alert, and oriented.\nSkin: No active lesions or signs of uremic frost.\nCardiovascular: Regular rate and rhythm, no murmurs.\nPulmonary: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment\n1. End stage renal disease on maintenance hemodialysis.\n2. Chronic kidney disease.\n3. Vitamin D deficiency.\n4. Seasonal allergic rhinitis.\n\nPlan\n1. Continue maintenance hemodialysis schedule.\n2. Continue current phosphate binder and vitamin D regimen.\n3. Monitor lab work every 3 months.\n4. Continue seasonal allergy management as needed.\n\nProblem List\n- End stage renal disease\n- Chronic kidney disease\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "N18.6",
+    "Z99.2"
+  ],
+  "explanations": [
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only.",
+    "Patient on dialysis: add Z99.2 dependence on renal dialysis."
+  ],
+  "refs": [
+    "OCG I.C.14.a.1",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.5",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.5",
+        "Z99.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.6"
+      ],
+      "confusion": "missed_dialysis_status",
+      "lean": "under",
+      "why": "Dialysis status is reported with Z99.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:52+00:00",
+    "style": {
+      "age": 57,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "vitamin D deficiency"
+      ],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

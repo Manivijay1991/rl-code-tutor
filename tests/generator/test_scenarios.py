@@ -14,11 +14,13 @@ from coding_tutor.generator.scenarios import (
     has_phrase,
     make_record,
     pick_slots,
+    pick_style,
     requirements,
     save,
     scenario_id,
     write_note,
 )
+from coding_tutor.schema import load_schema, validate
 
 FILLER = " The patient is seen for routine follow-up today and reports feeling generally well." * 5
 
@@ -179,6 +181,74 @@ def test_generate_one(dm, tmp_path):
 
 def log_problems(note, dm):
     return check_note(note, requirements(dm, dm_slots()))
+
+
+# ---- style ----
+def test_pick_style_is_seeded_and_varied(dm):
+    assert pick_style(dm, random.Random(7)) == pick_style(dm, random.Random(7))
+    styles = [pick_style(dm, random.Random(i)) for i in range(300)]
+    assert {s["sex"] for s in styles} == {"woman", "man"}
+    assert {s["voice"] for s in styles} == set(scenarios.VOICES)
+    assert {s["length"] for s in styles} == set(scenarios.LENGTHS)
+    assert {s["credential"] for s in styles} == set(scenarios.CREDENTIALS)
+    assert all(35 <= s["age"] <= 64 or 66 <= s["age"] <= 90 for s in styles)
+    medicare = sum(s["age"] >= 66 for s in styles) / len(styles)
+    assert 0.6 < medicare < 0.8
+
+
+def test_pick_style_background_only_in_long_notes(dm, meat):
+    styles = [pick_style(dm, random.Random(i)) for i in range(100)]
+    assert all(not s["background"] for s in styles if s["length"] == "short")
+    assert all(
+        len(s["background"]) == 2 and set(s["background"]) <= set(dm["note_background"])
+        for s in styles
+        if s["length"] == "long"
+    )
+    assert all(pick_style(meat, random.Random(i))["background"] == [] for i in range(50))
+
+
+def test_build_prompt_with_style(dm):
+    style = {
+        "age": 72,
+        "sex": "woman",
+        "voice": "templated",
+        "length": "long",
+        "background": ["hyperlipidemia", "vitamin D deficiency"],
+        "credential": "NP",
+        "signer": "K. Nguyen",
+    }
+    text = build_prompt(requirements(dm, dm_slots()), style=style)
+    for part in [
+        "72-year-old woman",
+        "EHR template",
+        "280-420",
+        "Review of Systems",
+        "hyperlipidemia, vitamin D deficiency",
+        "K. Nguyen, NP",
+        "Electronically signed",
+        "2026",
+        "(add a Problem List section)",
+    ]:
+        assert part in text, part
+    plain = build_prompt(requirements(dm, dm_slots()))
+    assert "120-220" in plain and "year-old" not in plain
+
+
+def test_background_never_breaks_the_note_rules(tables):
+    for t in tables.values():
+        for slots in combos(t):
+            req = requirements(t, slots)
+            for condition in t.get("note_background", []):
+                assert not any(has_phrase(condition, p) for p in req["forbid"]), (t["id"], condition)
+
+
+def test_generate_one_records_the_style(dm, tmp_path):
+    args = argparse.Namespace(attempts=1, model="fake", out=tmp_path)
+    good = "Type 2 diabetes with CKD stage 4, on insulin." + FILLER
+    path, _ = generate_one(dm, dm_slots(), fake_llm([good]), 5, args, None)
+    rec = json.loads(path.read_text(encoding="utf-8"))
+    assert rec["generator"]["style"] == pick_style(dm, random.Random(5))
+    assert validate(rec, load_schema("scenario")) == []
 
 
 # ---- batches ----

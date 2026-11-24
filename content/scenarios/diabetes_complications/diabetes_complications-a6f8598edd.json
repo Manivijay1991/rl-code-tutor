@@ -1,0 +1,111 @@
+{
+  "id": "diabetes_complications-a6f8598edd",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and recent hypoglycemia.\n\nHPI\nThe patient is a 53-year-old male presenting for a follow-up evaluation of his type 2 diabetes mellitus. He reports that he has been managed on insulin long-term and does not take any oral medications. He reports experiencing a recent hypoglycemic episode which occurred approximately two days ago. He describes feeling shaky and lightheaded. He states he has been monitoring his blood glucose levels regularly at home. He reports adherence to his prescribed insulin regimen but notes some uncertainty regarding the timing of his doses in relation to his meals.\n\nMedication List\n- Insulin glargine (long-acting)\n- Insulin lispro (rapid-acting)\n\nExam\nThe patient is alert and oriented. He appears in no acute distress. Skin is intact without lesions. Vital signs are stable.\n\nAssessment\n1. Type 2 diabetes mellitus.\n2. Hypoglycemia.\n\nPlan\nWe will continue the current insulin regimen. The patient was instructed on the importance of consistent meal timing to prevent a recurrent hypoglycemic episode. We will monitor his glucose levels closely over the next month. He will return to the clinic in four weeks for a follow-up.\n\nElectronically signed, M. Okafor, DO, 05/14/2026",
+  "answer": [
+    "E11.649",
+    "Z79.4"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:09+00:00",
+    "style": {
+      "age": 53,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "M. Okafor"
+    }
+  }
+}

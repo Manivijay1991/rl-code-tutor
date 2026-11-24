@@ -1,0 +1,91 @@
+{
+  "id": "ckd_staging-9ed615e30a",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for kidney disease and reflux.\n\nHPI: Patient is an 83-year-old female presenting for a scheduled follow-up of chronic kidney disease and gastroesophageal reflux disease. \n\n(Copied Forward): Patient has a long-standing history of chronic kidney disease and seasonal allergic rhinitis. She reports occasional heartburn and acid regurgitation, managed with lifestyle modifications and medication. She denies any recent acute changes in renal function or severe respiratory symptoms.\n\n(Today's Update): The patient reports she is feeling stable today. She notes that her reflux symptoms are well-controlled with her current regimen. She denies any new shortness of breath, significant edema, or changes in appetite. She continues to manage her seasonal allergies with occasional over-the-counter medications.\n\nMedication List:\n- Omeprazole 20mg daily\n- Loratadine 10mg daily\n- Vitamin D supplement\n\nVitals: BP 128/82, HR 76, SpO2 96% on room air, Temp 98.4 F, Weight 142 lbs.\n\nRecent Labs:\neGFR: 12 mL/min/1.73m2\nCreatinine: 5.4 mg/dL\nPotassium: 4.8 mEq/L\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Positive for seasonal congestion; negative for sore throat.\nCardiovascular: Negative for palpitations or chest pain.\nRespiratory: Negative for cough or wheezing.\nGastrointestinal: Positive for occasional reflux; negative for nausea/diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for tremors or dizziness.\n\nSocial History: Retired; lives with her daughter; non-smoker.\nFamily History: Mother had chronic kidney disease.\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm; no murmurs.\nAbdomen: Soft, non-tender, no masses.\nSkin: Intact, no significant lesions.\n\nAssessment:\n1. End stage renal disease: Patient remains stable on current management plan.\n2. Gastroesophageal reflux disease: Well-controlled.\n3. Seasonal allergic rhinitis: Stable.\n\nProblem List:\n- End stage renal disease\n- Gastroesophageal reflux disease\n- Seasonal allergic rhinitis\n\nPlan:\n1. Continue current medications for reflux and allergies.\n2. Monitor renal labs and potassium levels every 3 months.\n3. Follow up in 4 months for routine evaluation of chronic kidney disease.\n\nElectronically signed, A. Rivera, PA-C, 05/14/2026",
+  "answer": [
+    "N18.6"
+  ],
+  "explanations": [
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only."
+  ],
+  "refs": [
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.5",
+        "N18.6"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.5"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:47+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "PA-C",
+      "signer": "A. Rivera"
+    }
+  }
+}

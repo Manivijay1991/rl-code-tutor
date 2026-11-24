@@ -1,0 +1,129 @@
+{
+  "id": "ckd_staging-6aac6a53b3",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for CKD and HTN.\n\nHPI\nPt is a 67-year-old male presenting for routine follow-up of chronic kidney disease. Pt reports stable condition, denying any acute shortness of breath or significant edema. He reports adherence to current medication regimen. Reports mild fatigue but no other new complaints.\n\nMedication List\nLisinopril 10mg daily\nSevelamer 800mg TID\nPhosphate binder as needed\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nVitals: BP 138/84, HR 72, RR 16, Temp 98.6 F.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nExtremities: No pedal edema.\nSkin: Intact, no new lesions.\n\nAssessment\n1. CKD stage 5: Recent labs show eGFR < 15. Pt remains stable on current management.\n2. Hypertension: Well-controlled on current meds.\n\nPlan\n- Continue current medications.\n- F/u in 3 months for lab work and BP check.\n- Pt advised to monitor weight and report any sudden changes.\n\nElectronically signed, L. Moreau, PA-C, 05/14/2026",
+  "answer": [
+    "I12.0",
+    "N18.5"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "CKD stage 5 (not documented as ESRD): N18.5."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.5"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.5"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.6"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 5 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:59+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

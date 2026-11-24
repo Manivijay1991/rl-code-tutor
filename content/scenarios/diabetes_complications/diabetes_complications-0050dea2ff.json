@@ -1,0 +1,108 @@
+{
+  "id": "diabetes_complications-0050dea2ff",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for glucose management.\n\nHPI: (Copied Forward) Patient is a 78-year-old male with a history of type 1 diabetes mellitus. He reports consistent use of insulin. He notes occasional fluctuations in blood glucose levels but remains adherent to his prescribed regimen.\n\nUpdate: The patient reports that his blood sugars have been poorly controlled over the last month. He notes frequent episodes of hyperglycemia despite regular insulin administration. He denies any new symptoms or acute illnesses.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F, Weight 185 lbs.\n\nReview of Systems:\nConstitutional: Negative\nEyes: Negative\nEars/Nose/Throat: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: Intact, no noted injection site reactions.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\n\nAssessment:\n1. Type 1 diabetes mellitus with hyperglycemia.\n\nPlan:\n1. Continue long-term insulin therapy.\n2. Instructed patient on monitoring blood glucose more frequently.\n3. Review insulin titration in two weeks.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "E10.65"
+  ],
+  "explanations": [
+    "Type 1 diabetes with hyperglycemia / poor control: E10.65.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.649"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E10.649 is hypoglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.65",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1065"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:01+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

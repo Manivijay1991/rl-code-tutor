@@ -1,0 +1,136 @@
+{
+  "id": "ckd_staging-884a7b137d",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3a",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease and hypertension.\n\nHPI\nThe patient is a 68-year-old male presenting for a routine follow-up of his chronic kidney disease and hypertension. He reports feeling well today and denies any recent symptoms of edema, fatigue, or changes in urinary output. He has been adherent to his current medication regimen. He notes that his blood pressure has remained stable at home.\n\nMedication List\nLisinopril 20mg daily\nHydrochlorothiazide 25mg daily\n\nExam\nThe patient is alert and oriented x3. He appears in no acute distress. Blood pressure is 134/82 mmHg. Heart rate is 72 bpm. Lungs are clear to auscultation. No peripheral edema is noted.\n\nAssessment\nThe patient has CKD stage 3a. His most recent laboratory results show an eGFR of 52 mL/min/1.73m2, which is consistent with his diagnosis. He also has hypertension which is currently well-controlled on his current medications.\n\nPlan\nContinue current medications for hypertension and chronic kidney disease. The patient will return in three months for a repeat laboratory evaluation of renal function and blood pressure check.\n\nElectronically signed, K. Nguyen, PA-C, 05/12/2026",
+  "answer": [
+    "I12.9",
+    "N18.31"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 3a: N18.31."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.31"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.31"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.127,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3a is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is a different (more severe) stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1831"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:28+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

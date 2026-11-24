@@ -1,0 +1,98 @@
+{
+  "id": "ckd_staging-b498e8270b",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease and vitamin D deficiency.\n\nHPI\nThe patient is a 73-year-old male presenting today for a scheduled follow-up of his chronic kidney disease and vitamin D deficiency. He reports feeling generally well and denies any acute changes in his renal function or symptoms of gastroesophageal reflux disease. He notes that his acid reflux is currently well-managed with his current regimen. He denies any shortness of breath, significant edema, or changes in urinary output. He continues to take his prescribed supplements and medications as directed.\n\nReview of Systems\nNegative for chest pain, shortness of breath, weight changes, or peripheral edema. Negative for rashes, joint pain, or neurological deficits. Negative for fever, chills, or cough.\n\nSocial History\nThe patient is retired and lives with his wife. He enjoys gardening and walking. He denies tobacco use and reports moderate alcohol consumption on weekends.\n\nFamily History\nFather had a history of renal insufficiency. Mother had a history of vitamin D deficiency and gastroesophageal reflux disease.\n\nMedication List\n- Vitamin D3 supplement\n- Omeprazole 20mg daily\n- Hydrochlorothiazide 25mg daily\n\nVitals\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nTemperature: 98.6 F\nWeight: 185 lbs\n\nRecent Labs\neGFR: 38 mL/min/1.73m2\nSerum Creatinine: 2.1 mg/dL\nVitamin D: 22 ng/mL\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm; no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No peripheral edema noted.\n\nAssessment\n1. Chronic kidney disease, stage 3b: The patient's renal function remains stable with an eGFR of 38.\n2. Vitamin D deficiency: Laboratory results confirm a low level, requiring continued supplementation.\n3. Gastroesophageal reflux disease: Stable and well-controlled with current medication.\n\nPlan\n1. Chronic kidney disease: Continue current management and monitor renal function with repeat labs in 3 months.\n2. Vitamin D deficiency: Continue Vitamin D3 supplementation; recheck levels in 3 months.\n3. Gastroesophageal reflux disease: Continue current medication as needed.\n\nProblem List\n1. Chronic kidney disease, stage 3b\n2. Vitamin D deficiency\n3. Gastroesophageal reflux disease\n\nElectronically signed, S. Patel, MD\nMay 14, 2026",
+  "answer": [
+    "N18.32"
+  ],
+  "explanations": [
+    "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a)."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "3a is less severe than the documented 3b.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3b is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:00+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "MD",
+      "signer": "S. Patel"
+    }
+  }
+}

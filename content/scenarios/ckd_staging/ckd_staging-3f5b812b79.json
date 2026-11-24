@@ -1,0 +1,158 @@
+{
+  "id": "ckd_staging-3f5b812b79",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "yes",
+    "dialysis": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for maintenance hemodialysis and management of hypertension.\n\nHPI\nThe patient is an 86-year-old man who presents today for a routine follow-up of his end stage renal disease and hypertension. He is currently undergoing maintenance hemodialysis. He reports feeling generally well today, noting that his fatigue has been manageable since his last session. He denies any recent shortness of breath, chest pain, or significant edema in his lower extremities. He reports consistent compliance with his prescribed medication regimen and regular attendance at his dialysis center. He notes occasional mild heartburn, which he manages with his current medications.\n\nMedication List\n- Lisinopril 10mg daily\n- Amlodipine 5mg daily\n- Calcium Carbonate 500mg daily\n- Vitamin D supplement 1000 IU daily\n- Omeprazole 20mg daily\n\nReview of Systems\nConstitutional: No fever, chills, or weight loss.\nCardiovascular: No chest pain or palpitations.\nRespiratory: No cough or shortness of breath.\nGastrointestinal: Reports occasional heartburn; no nausea or diarrhea.\nMusculoskeletal: No joint pain or swelling.\nNeurological: No dizziness or confusion.\n\nSocial History\nThe patient lives at home with his wife. He is retired and spends most of his time gardening and reading. He denies tobacco or alcohol use.\n\nFamily History\nFather had hypertension and a history of renal issues. Mother had a history of gastroesophageal reflux disease.\n\nRecent Labs\neGFR: 12 mL/min/1.73m2\nPotassium: 4.5 mEq/L\nHemoglobin: 10.2 g/dL\nPhosphorus: 3.8 mg/dL\n\nVitals\nBP: 138/82 mmHg\nHR: 72 bpm\nTemp: 98.4 F\nSpO2: 96% on room air\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress.\nCardiovascular: Regular rate and rhythm; no murmurs heard.\nRespiratory: Lungs are clear to auscultation bilaterally.\nExtremities: No peripheral edema noted.\nSkin: Intact; no rashes.\n\nAssessment\n1. End stage renal disease: The patient's eGFR is currently 12, confirming his status. He remains stable on his maintenance hemodialysis schedule.\n2. Hypertension: Blood pressure is well-controlled on current medications.\n3. Gastroesophageal reflux disease: Stable and well-managed.\n4. Vitamin D deficiency: Ongoing monitoring and supplementation.\n\nProblem List\n- End stage renal disease\n- Hypertension\n- Gastroesophageal reflux disease\n- Vitamin D deficiency\n\nPlan\n- Continue current hemodialysis schedule.\n- Continue current antihypertensive medications.\n- Continue Vitamin D supplementation and monitor labs in 3 months.\n- Continue omeprazole for GERD symptoms.\n\nElectronically signed, J. Lindqvist, MD\n05/14/2026",
+  "answer": [
+    "I12.0",
+    "N18.6",
+    "Z99.2"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only.",
+    "Patient on dialysis: add Z99.2 dependence on renal dialysis."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "Z99.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.6"
+      ],
+      "confusion": "missed_dialysis_status",
+      "lean": "under",
+      "why": "Dialysis status is reported with Z99.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:41+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "vitamin D deficiency"
+      ],
+      "credential": "MD",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "id": "ckd_staging-59096dbc38",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: Pt is an 86 y.o. female presenting for routine f/u of chronic kidney disease. Pt reports feeling generally well today. Denies any acute shortness of breath, chest pain, or significant edema in lower extremities. Pt reports adherence to current antihypertensive and lipid-lowering medications. Reports occasional heartburn, managed with lifestyle and meds. No new concerns regarding renal function or systemic symptoms voiced at this time.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Omeprazole 20mg QD\n- Hydrochlorothiazide 12.5mg QD\n\nSocial History: Retired. Lives at home with daughter. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had HTN. Father had hyperlipidemia.\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nCV: No palpitations or chest pain.\nResp: No SOB or cough.\nGI: Occasional reflux, no nausea/vomiting.\nMSK: No joint pain.\nNeuro: No dizziness or focal weakness.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 142 lbs\n\nRecent Labs:\neGFR: 22 mL/min/1.73m2\nCreatinine: 2.8 mg/dL\nLDL: 88 mg/dL\nGlucose: 105 mg/dL\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nAbd: Soft, non-tender, non-distended.\nExt: No pitting edema.\nSkin: Intact, no rashes.\n\nAssessment:\n1. Chronic kidney disease, stage 4. Stable at this visit.\n2. Hypertension. Well-controlled on current regimen.\n3. Hyperlipidemia. Stable.\n4. Gastroesophageal reflux disease.\n\nPlan:\n1. CKD: Continue current meds. Monitor renal function and electrolytes with labs in 3 months.\n2. HTN: Continue Lisinopril and HCTZ. Pt to monitor home BP.\n3. Hyperlipidemia: Continue Atorvastatin.\n4. GERD: Continue Omeprazole as needed for symptoms.\nFollow up in 3 months.\n\nProblem List:\n- Chronic kidney disease, stage 4\n- Hypertension\n- Hyperlipidemia\n- Gastroesophageal reflux disease\n\nElectronically signed, A. Rivera, NP, 05/14/2026",
+  "answer": [
+    "I12.9",
+    "N18.4"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 4: N18.4."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.4"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.514,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.4"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.514,
+        "gap": 0.301,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 4 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.514,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.514,
+    "hccs": [
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:53+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "hyperlipidemia"
+      ],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

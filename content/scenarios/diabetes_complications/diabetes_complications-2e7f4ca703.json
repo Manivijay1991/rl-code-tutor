@@ -1,0 +1,123 @@
+{
+  "id": "diabetes_complications-2e7f4ca703",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for T2DM and foot pain.\n\nHPI\nPt is an 81 y.o. male presenting for routine management of type 2 diabetes and chronic peripheral neuropathy. Pt reports stable glucose levels on current regimen. Complains of mild tingling in bilateral feet. Pt states symptoms have been persistent for several months. He is adherent to medications and reports no acute changes in mobility.\n\nMedication List\n- Insulin glargine\n- Metformin 500mg BID\n- Gabapentin 300mg TID\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F, SpO2 97% on RA.\nCV: RRR, CTAB.\nResp: CTAB.\nExt: Bilateral feet show mild sensory deficit; no ulcers or skin breakdown noted.\nNeuro: Decreased sensation to monofilament in toes.\n\nAssessment\n1. T2DM: Stable on insulin and oral hypoglycemic.\n2. Polyneuropathy: Stable. Note: This condition is unrelated to diabetes.\n\nPlan\n- Continue current insulin and metformin.\n- Maintain gabapentin for neuropathy.\n- F/u in 3 months for labs and A1c.\n\nElectronically signed, \nE. Castillo, DO\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:10+00:00",
+    "style": {
+      "age": 81,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

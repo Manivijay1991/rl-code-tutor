@@ -1,0 +1,137 @@
+{
+  "id": "diabetes_complications-8412b1d22e",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes and kidney disease.\n\nHPI: [Copied Forward] Patient is a 90-year-old male presenting for management of type 2 diabetes and chronic kidney disease stage 4. He has been managed with a combination of insulin and an oral hypoglycemic agent for several years. He reports stable glucose levels and no recent episodes of significant fluctuations. He continues to manage symptoms of gastroesophageal reflux disease and seasonal allergic rhinitis.\n\nUpdate: The patient reports he is feeling well today. He denies any new symptoms related to his kidney function or gastroesophageal reflux. He maintains a consistent routine with his medications.\n\nMedication List:\n- Insulin Glargine\n- Glipizide\n- Omeprazole\n- Loratadine\n\nVitals: BP 128/74, HR 76, Temp 98.6 F, SpO2 98% on room air, Weight 165 lbs.\n\nRecent Labs:\n- HbA1c: 7.4%\n- eGFR: 22 mL/min/1.73m2\n- Creatinine: 2.4 mg/dL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nHEENT: Positive for seasonal nasal congestion.\nRespiratory: Negative for cough or shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Positive for occasional heartburn; negative for nausea or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for tremors or dizziness.\n\nSocial History: Retired. Lives with his wife. Non-smoker. Occasional social drinking.\n\nFamily History: Father had type 2 diabetes. Mother had seasonal allergies.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No new lesions or rashes.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm.\nAbdomen: Soft, non-tender, no masses.\n\nAssessment:\n1. Type 2 diabetes: Stable on current regimen of insulin and glipizide.\n2. Chronic kidney disease stage 4: Note that this condition is unrelated to diabetes.\n3. Gastroesophageal reflux disease: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan:\n1. Continue current insulin and oral hypoglycemic medications.\n2. Monitor renal function and electrolytes every 3 months.\n3. Continue omeprazole for reflux.\n4. Continue loratadine as needed for allergies.\n5. Return to clinic in 3 months.\n\nProblem List:\n- Type 2 diabetes\n- Chronic kidney disease stage 4 (not related to diabetes)\n- Gastroesophageal reflux disease\n- Seasonal allergic rhinitis\n\nElectronically signed,\nS. Patel, NP\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:46+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

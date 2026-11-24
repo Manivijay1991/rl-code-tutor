@@ -15,7 +15,16 @@
         "3_unspecified": ["stage 3"], "4": ["stage 4"], "5": ["stage 5"],
         "esrd": ["end stage renal disease", "ESRD"]
       },
-      "describe": {"3_unspecified": "Write 'stage 3' only; never say 3a or 3b."}
+      "describe": {
+        "1": "The provider documents CKD stage 1. Include a recent eGFR of 90 or above and albumin in the urine.",
+        "2": "The provider documents CKD stage 2. Include a recent eGFR between 60 and 89.",
+        "3a": "The provider documents CKD stage 3a. Include a recent eGFR between 45 and 59.",
+        "3b": "The provider documents CKD stage 3b. Include a recent eGFR between 30 and 44.",
+        "3_unspecified": "The provider documents 'stage 3' only; never say 3a or 3b. Include a recent eGFR between 30 and 59, and do not restate the stage from it.",
+        "4": "The provider documents CKD stage 4. Include a recent eGFR between 15 and 29.",
+        "5": "The provider documents CKD stage 5. Include a recent eGFR below 15.",
+        "esrd": "The provider documents end stage renal disease. Include a recent eGFR below 15."
+      }
     },
     "hypertension": {
       "label": "Hypertension",
@@ -32,7 +41,8 @@
       "describe": {"yes": "The patient is on maintenance hemodialysis."}
     }
   },
-  "note_forbid": ["diabetes", "diabetic", "not due to hypertension", "unrelated to hypertension", "heart failure"],
+  "note_forbid": ["diabetes", "diabetic", "DM", "T2DM", "DM2", "T1DM", "not due to hypertension", "unrelated to hypertension", "heart failure", "CHF", "HFrEF"],
+  "note_background": ["hyperlipidemia", "osteoarthritis of both knees", "gastroesophageal reflux disease", "seasonal allergic rhinitis", "vitamin D deficiency"],
   "note_rules": [
     {"when": {}, "require": [["CKD", "chronic kidney disease", "end stage renal disease", "ESRD"]],
      "describe": "Name the kidney disease itself (CKD or chronic kidney disease, or ESRD), not just the stage number."}

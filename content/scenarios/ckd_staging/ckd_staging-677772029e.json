@@ -1,0 +1,132 @@
+{
+  "id": "ckd_staging-677772029e",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease and hypertension.\n\nHPI\nThe patient is an 81-year-old woman presenting for a routine follow-up of her chronic kidney disease and hypertension. She reports feeling generally well today but notes occasional fatigue and mild swelling in her lower extremities. She denies any recent acute changes in renal function, shortness of breath, or chest pain. She continues to manage her symptoms with her current medication regimen. She reports that her osteoarthritis of both knees remains stable, though she experiences some stiffness in the mornings. She is adherent to her prescribed vitamins.\n\nMedication List\nLisinopril 10mg daily\nHydrochlorothiazide 12.5mg daily\nVitamin D supplement 2000 IU daily\n\nReview of Systems\nConstitutional: Reports mild fatigue. No fever or chills.\nCardiovascular: No palpitations or chest pain.\nRespiratory: No shortness of breath.\nMusculoskeletal: Reports stiffness in both knees.\nGenitourinary: No dysuria or hematuria.\nNeurological: No dizziness or numbness.\n\nSocial History\nThe patient lives at home with her spouse. She enjoys gardening and light walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension and osteoarthritis. Father had chronic kidney disease.\n\nVitals\nBP: 138/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 97% on room air\nWeight: 155 lbs\n\nRecent Labs\neGFR: 12 mL/min/1.73m2\nCreatinine: 4.8 mg/dL\nPotassium: 4.5 mEq/L\nCalcium: 9.2 mg/dL\nVitamin D: 22 ng/mL\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress.\nCardiovascular: Regular rate and rhythm. No murmurs.\nLungs: Clear to auscultation bilaterally.\nExtremities: Trace edema noted in bilateral ankles. Mild joint swelling in both knees.\nSkin: Intact, no rashes.\n\nAssessment\n1. Chronic kidney disease, stage 5: The patient's renal function remains significantly impaired with a recent eGFR below 15.\n2. Hypertension: Blood pressure is currently stable on oral medications.\n3. Osteoarthritis of both knees: Stable with occasional morning stiffness.\n4. Vitamin D deficiency: Ongoing management of low levels.\n\nPlan\n1. Continue current antihypertensive medications.\n2. Monitor renal function and electrolytes every 3 months.\n3. Continue Vitamin D supplementation.\n4. Continue to monitor for progression of chronic kidney disease.\n\nProblem List\n- Chronic kidney disease, stage 5\n- Hypertension\n- Osteoarthritis of both knees\n- Vitamin D deficiency\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "I12.0",
+    "N18.5"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "CKD stage 5 (not documented as ESRD): N18.5."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.5"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.5"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.6"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 5 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:43+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "osteoarthritis of both knees",
+        "vitamin D deficiency"
+      ],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

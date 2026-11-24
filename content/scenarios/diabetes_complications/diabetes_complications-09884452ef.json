@@ -1,0 +1,167 @@
+{
+  "id": "diabetes_complications-09884452ef",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for T2DM and CKD.\n\nHPI: Pt is a 78 y.o. female presenting for routine follow-up of type 2 diabetes and chronic kidney disease stage 4. Pt reports she has been managing her glucose levels with a combination of insulin and an oral hypoglycemic agent. She denies any acute distress or recent changes in status. She reports adherence to her medication regimen. She notes occasional heartburn, managed with lifestyle and OTC meds. She reports some fatigue but denies any new urinary symptoms or significant weight changes. \n\nMedication List:\n- Insulin glargine daily\n- Glipizide BID\n- Vitamin D supplement\n- Omeprazole PRN for GERD\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight changes.\nHEENT: No vision changes, no sore throat.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: Reports occasional reflux. No nausea, no diarrhea.\nMSK: No joint pain.\nNeuro: No numbness or tingling.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol.\n\nFamily History: Mother had T2DM. Father had GERD.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs:\neGFR: 22 mL/min/1.73m2\nHbA1c: 7.4%\nSodium: 138 mEq/L\nPotassium: 4.8 mEq/L\nCreatinine: 2.8 mg/dL\nVitamin D: 22 ng/mL\n\nExam:\nGen: Well-appearing, alert, oriented x3.\nCV: RRR, regular S1, S2. No murmurs.\nLungs: CTAB.\nAbd: Soft, non-tender, non-distended.\nExt: WNL.\nNeuro: Alert, coherent, no focal deficits.\n\nAssessment:\n1. T2DM: Stable on current insulin and oral hypoglycemic. HbA1c is near target.\n2. CKD stage 4: Stable. Monitoring renal function.\n3. Vitamin D deficiency: Persistent.\n4. GERD: Stable.\n\nPlan:\n- Continue current insulin and glipizide.\n- Continue vitamin D supplementation.\n- F/u in 3 months for labs and A1c.\n- Monitor renal function.\n\nProblem List:\n- T2DM\n- CKD stage 4\n- Vitamin D deficiency\n- GERD\n\nElectronically signed, A. Rivera, PA-C, 05/12/2026",
+  "answer": [
+    "E11.22",
+    "N18.4",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "CKD is listed under 'with' for diabetes in the Index, so the link is presumed: use the combination code E11.22.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The provider does not have to write 'due to'; 'with' presumes the link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.2",
+        "N18.4",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "E11.2 is a subcategory; a 5th character is required.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "by": "37"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:11+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "PA-C",
+      "signer": "A. Rivera"
+    }
+  }
+}

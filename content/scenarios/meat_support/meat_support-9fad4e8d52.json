@@ -1,0 +1,87 @@
+{
+  "id": "meat_support-9fad4e8d52",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for heart failure.\n\nHPI\n83 y/o female pt presents for f/u of chronic systolic heart failure. Pt reports feeling well overall. Denies SOB, orthopnea, or increased edema. Reports good compliance with current meds. No recent hospitalizations or acute exacerbations.\n\nMedication List\nLisinopril 10mg QD\nCarvedilol 6.25mg BID\nFurosemide 40mg QD\nSpironolactone 25mg QD\n\nExam\nVitals: BP 128/78, HR 72, RR 16, SpO2 96% RA, Temp 98.6F.\nGen: Alert, oriented x3, in no acute distress.\nCV: RRR, CTAB, no murmurs, rubs, or gallops.\nLungs: Clear to auscultation bilaterally.\nExt: No pitting edema noted.\n\nAssessment\n1. Chronic systolic heart failure (HFrEF): Pt is stable. Symptoms reviewed.\n\nPlan\n1. Continue current medication regimen.\n2. Follow up in 3 months for routine evaluation.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "I50.22"
+  ],
+  "explanations": [
+    "The provider addressed chronic systolic heart failure at this visit, so it is supported: I50.22."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.36,
+        "gap": -0.36,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Type (systolic) and acuity (chronic) are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5022"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:33+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

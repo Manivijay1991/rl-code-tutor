@@ -1,0 +1,137 @@
+{
+  "id": "diabetes_complications-0ffabf89d2",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes and chronic kidney disease.\n\nHPI: The patient is a 74-year-old woman who presents today for a routine follow-up of her type 2 diabetes mellitus and chronic kidney disease stage 4. She reports that her blood glucose levels have been stable over the past month. She continues to manage her condition with a combination of insulin and an oral hypoglycemic agent. She denies any acute changes in her renal function or new symptoms related to her diabetes. She notes that she feels well overall and has been compliant with her current regimen.\n\nMedication List:\n- Insulin Glargine (long-acting)\n- Glipizide\n- Atorvastatin\n- Vitamin D supplement\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nSkin: No rashes or lesions.\nGenitourinary: No dysuria.\nMusculoskeletal: No joint pain or stiffness.\nAll other systems are negative.\n\nSocial History: The patient lives in a single-story home with her spouse. She is retired and enjoys gardening and reading. She denies tobacco or alcohol use.\n\nFamily History: Mother had type 2 diabetes and cardiovascular disease. Father had a history of hyperlipidemia.\n\nRecent Labs:\neGFR: 22 mL/min/1.73m2\nHbA1c: 7.4%\nSerum Vitamin D: 28 ng/mL\nLDL: 88 mg/dL\n\nVitals:\nBP: 128/78\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 155 lbs\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nSkin: Intact, no noted ulcers or breakdown.\nNeck: Supple, no lymphadenopathy.\nHeart: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Type 2 diabetes mellitus: Stable on current regimen of insulin and glipizide.\n2. Chronic kidney disease stage 4: The patient's renal decline is unrelated to diabetes.\n3. Hyperlipidemia: Stable on atorvastatin.\n4. Vitamin D deficiency: Correcting with supplementation.\n\nPlan:\n1. Continue current insulin and oral hypoglycemic medications.\n2. Continue atorvastatin for hyperlipidemia.\n3. Continue Vitamin D supplementation.\n4. Follow up in 3 months for repeat labs and A1c.\n\nProblem List:\n- Type 2 diabetes\n- Chronic kidney disease stage 4 (not due to diabetes)\n- Hyperlipidemia\n- Vitamin D deficiency\n\nElectronically signed,\nA. Rivera, DO\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:07+00:00",
+    "style": {
+      "age": 74,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "vitamin D deficiency"
+      ],
+      "credential": "DO",
+      "signer": "A. Rivera"
+    }
+  }
+}

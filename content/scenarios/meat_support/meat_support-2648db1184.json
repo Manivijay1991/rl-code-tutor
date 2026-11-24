@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-2648db1184",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Follow-up for hypertension.\n\nVitals: BP 142/88, HR 74, Temp 98.6 F, SpO2 98% on room air, BMI 28.4.\n\nRecent Labs:\nDate: 10/12/2025\nGlucose: 104 mg/dL\nHbA1c: 5.7%\neGFR: 88 mL/min/1.73m2\nSodium: 139 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\n\nMedication List:\n- Lisinopril 20mg daily\n- Hydrochlorothiazide 12.5mg daily\n- Tiotropium 18mcg daily\n- Atorvastatin 40mg daily\n\nSocial History: \nPatient is a 51-year-old male who works as an office manager. He reports a non-smoking status and drinks alcohol socially on weekends. He lives with his wife and two children.\n\nFamily History: \nFather had a myocardial infarction at age 62. Mother has hypertension and type 2 diabetes.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nCardiovascular: Negative for chest pain, palpitations, or edema.\nRespiratory: Negative for cough, wheezing, or shortness of breath.\nGastrointestinal: Negative for abdominal pain, nausea, or diarrhea.\nNeurological: Negative for dizziness or numbness.\nMusculoskeletal: Negative for joint pain or swelling.\n\nHPI:\n[Copied Forward]\nPatient is a 51-year-old male presenting for management of hypertension. He reports that his blood pressure has been stable at home, averaging 130/80. He denies any associated headaches or visual changes. He is adherent to his current regimen.\n\n[Update]\nThe patient returns today for a follow-up. He reports that his blood pressure has remained well-controlled over the last month. He denies any side effects from his current medications. He expresses a desire to maintain his current routine.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard, no murmurs, rubs, or gallops.\nRespiratory: Lungs clear to auscultation bilaterally.\nExtremities: No peripheral edema noted.\n\nAssessment:\n1. Hypertension: Stable and well-controlled on current medication list.\n\nPlan:\n1. Continue current antihypertensive medications as prescribed.\n2. Patient to continue home blood pressure monitoring and keep a log for the next three months.\n3. Return to clinic in 4 months for a routine follow-up and lab work.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:31+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

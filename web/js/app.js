@@ -479,7 +479,6 @@ function showHint(opt) {
   q.hint = buildHint({ kind, scenario: q.scenario, table: q.table, option: opt, correctCodes: correctCodes(q.scenario), step: q.hintsUsed });
   q.hintState = {};
   q.phase = "hint";
-  if (q.hint.kind === "spotlight") q.hint.slots.forEach((s) => q.lit.add(s));
   if (q.hint.kind === "narrow") narrowRemovals(q.scenario.options, q.tried).forEach((i) => q.removed.add(i));
 }
 
@@ -536,14 +535,20 @@ function hintCard() {
   const body = [
     h("h3", {}, icon("bulb", 17), hint.title),
     h("div", { class: `lean-line lean-${leanKey}` }, LEAN_MESSAGES[leanKey]),
-    h("p", {}, hint.body),
+    h("p", { class: "hint-think" }, hint.think),
   ];
-  if (hint.kind === "rule" && hint.refs?.length) body.push(h("div", { class: "refs" }, hint.refs.map((r) => h("span", { class: "ref" }, r))));
+  // Think first: details stay hidden until the student asks for them.
+  const more = [];
+  if (hint.body) more.push(h("p", {}, hint.body));
+  if (hint.kind === "rule" && hint.refs?.length) more.push(h("div", { class: "refs" }, hint.refs.map((r) => h("span", { class: "ref" }, r))));
   if (hint.kind === "contrast") {
-    body.push(h("div", { class: "contrast" },
-      h("div", { class: "would" }, h("div", { class: "k" }, "Your choice fits a note that says"), h("div", { class: "v" }, hint.pivotLabel ?? "something else")),
+    more.push(h("div", { class: "contrast" },
+      hint.pivotLabel ? h("div", { class: "would" }, h("div", { class: "k" }, "Your choice fits a note that says"), h("div", { class: "v" }, hint.pivotLabel)) : null,
       h("div", {}, h("div", { class: "k" }, "Other possibilities"), h("div", { class: "v" }, hint.alternatives.join(" · ")))));
   }
+  if (!hint.reveal) body.push(...more);
+  else if (q.hintState.revealed) body.push(h("div", { class: "hint-more", tabindex: "-1" }, more));
+  else body.push(h("button", { class: "btn ghost small hint-reveal", type: "button", on: { click: revealHint } }, icon("bulb", 15), hint.reveal));
   if (hint.kind === "question") body.push(miniQuestion(hint.question, "q0"));
   if (hint.kind === "walk") {
     const answered = hint.steps.filter((_, i) => q.hintState[`w${i}`] === "right").length;
@@ -558,6 +563,18 @@ function hintCard() {
     body.push(h("p", { class: "step-done" }, "✓ Highlighted in the note. Pick again."));
   }
   return h("div", { class: "card hint", role: "region", "aria-label": "Hint" }, body);
+}
+
+/** Show the hint's details (and, for the spotlight, light up the deciding words) after the student asks. */
+function revealHint() {
+  const q = app.q;
+  q.hintState.revealed = true;
+  if (q.hint.kind === "spotlight") {
+    q.hint.slots.forEach((s) => q.lit.add(s));
+    renderNote();
+  }
+  renderBench();
+  document.querySelector(".hint-more")?.focus();
 }
 
 function miniQuestion(step, key, prefix = null) {

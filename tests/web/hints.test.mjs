@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { test } from "node:test";
 
 import { ACTIONS } from "../../web/js/bandit.js";
-import { LADDERS, buildHint, hintTexts, narrowRemovals, scrub } from "../../web/js/hints.js";
+import { LADDERS, LEAN_MESSAGES, buildHint, hintTexts, narrowRemovals, scrub } from "../../web/js/hints.js";
 import { makeRng } from "../../web/js/random.js";
 
 const BUNDLE_URL = new URL("../../web/data/bundle.json", import.meta.url);
@@ -38,6 +38,24 @@ test("find and spotlight fall back to 'read what is not there' without evidence"
   const table = { slots: { a: { label: "A", values: { x: "X", y: "Y" } } }, confusions: {} };
   const h = buildHint({ kind: "spotlight", scenario, table, option: { deciding: ["a"], lean: "over" }, correctCodes: [], step: 2 });
   assert.equal(h.kind, "absence");
+});
+
+test("every hint opens with a thinking prompt; details wait behind a reveal", () => {
+  const scenario = { slots: { a: "x" }, evidence: [{ slot: "a", start: 0, end: 3 }], refs: ["Guideline I.A"] };
+  const table = { slots: { a: { label: "Stage", values: { x: "X", y: "Y" } } }, confusions: { c: { description: "Picked Y.", lean: "over" } } };
+  const option = { deciding: ["a"], confusion: "c", lean: "over", pivot: { slot: "a", value: "y" } };
+  const hidden = new Set(["rule", "contrast", "spotlight", "absence"]);
+  for (const kind of ["rule", "contrast", "question", "walk", "find", "spotlight", "narrow"]) {
+    const h = buildHint({ kind, scenario, table, option, correctCodes: [], step: 1 });
+    assert.ok(h.think?.length > 10, `${kind} has a thinking prompt`);
+    assert.equal(Boolean(h.reveal), hidden.has(h.kind), `${kind} reveal`);
+  }
+  const noEvidence = buildHint({ kind: "find", scenario: { ...scenario, evidence: [] }, table, option, correctCodes: [], step: 1 });
+  assert.ok(noEvidence.think.includes("Stage") && noEvidence.reveal);
+});
+
+test("lean messages are questions, not verdicts", () => {
+  for (const text of Object.values(LEAN_MESSAGES)) assert.ok(text.endsWith("?"), text);
 });
 
 test("no hint for any real scenario names a correct code", { skip: !existsSync(BUNDLE_URL) && "bundle not exported" }, () => {

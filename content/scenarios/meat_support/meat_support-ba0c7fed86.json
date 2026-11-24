@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-ba0c7fed86",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Follow-up for hypertension and evaluation of new-onset knee pain.\n\nHPI: The patient is an 86-year-old male who presents today for a scheduled follow-up regarding his blood pressure management and to discuss recent discomfort in his right knee. He reports that his blood pressure has been stable at home, though he occasionally notes a headache in the mornings. Regarding his right knee, he describes a dull, aching pain that has progressively worsened over the last three months. He notes that the pain is most severe when climbing stairs or rising from a seated position. He denies any recent falls or acute trauma to the joint. He has attempted to manage the discomfort with rest but finds that the pain is interfering with his daily activities. He denies any swelling, redness, or warmth in the area.\n\nReview of Systems: Negative for chest pain, shortness of breath, or palpitations. Negative for fever, chills, or cough. Negative for recent weight changes. Positive for right knee aching. Negative for numbness or tingling in the lower extremities.\n\nSocial History: The patient is retired and lives with his wife. He enjoys walking in his garden and watching television. He does not smoke and drinks alcohol occasionally.\n\nFamily History: Father had a history of hypertension and myocardial infarction. Mother had type 2 diabetes.\n\nVitals and Recent Labs:\nBP: 138/84 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 185 lbs\nHeight: 5'10\"\nLab Results: Sodium: 140 mEq/L, Potassium: 4.2 mEq/L, Creatinine: 1.1 mg/dL, eGFR: 72 mL/min/1.73m², HbA1c: 6.4%.\n\nMedication List:\nLisinopril 20mg daily\nHydrochlorothiazide 12.5mg daily\nTiotropium 18mcg daily\nAtorvastatin 40mg daily\nAcetaminophen 500mg as needed\n\nExam: The patient is a well-appearing, alert, and oriented 86-year-old male. He is in no acute distress. Cardiovascular exam reveals regular rate and rhythm with no murmurs. Lungs are clear to auscultation bilaterally. Musculoskeletal exam of the right knee shows mild tenderness upon palpation of the medial joint line with a decreased range of motion compared to the left side. No significant erythema or edema is noted.\n\nAssessment:\n1. Hypertension: Stable on current regimen.\n2. Right knee pain: Likely degenerative changes.\n\nPlan:\n1. Continue current antihypertensive medications.\n2. For the knee pain, we will begin a course of physical therapy to strengthen the quadriceps and improve mobility.\n3. Recommend Ibuprofen 400mg every 6 hours as needed for acute pain flare-ups.\n4. Follow up in 4 weeks to monitor progress with physical therapy.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:31:11+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

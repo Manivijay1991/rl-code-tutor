@@ -1,0 +1,94 @@
+{
+  "id": "ckd_staging-b9249648fd",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3a",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: Pt is an 85 y.o. female presenting for scheduled f/u of chronic kidney disease. She reports feeling generally well today. Denies any new shortness of breath, peripheral edema, or significant changes in urinary output. She notes mild stiffness in both knees, which she attributes to her osteoarthritis. She denies any acute flank pain or fever. She is here to monitor her renal function and manage her vitamin D deficiency.\n\nMedication List:\n- Cholecalciferol 50,000 IU QD\n- Acetaminophen 650mg BID PRN for joint pain\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nHEENT: No vision changes, no sore throat.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: No nausea, no diarrhea.\nMSK: Reports bilateral knee stiffness.\nGU: No dysuria, normal urinary frequency.\nSkin: No rashes.\n\nSocial History: Retired. Lives with her daughter. No tobacco use. Occasional alcohol use.\n\nFamily History: Mother had osteoarthritis. Father had history of renal issues.\n\nVitals:\nBP: 128/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 142 lbs\n\nRecent Labs:\neGFR: 52 mL/min/1.73m2\nCreatinine: 1.6 mg/dL\nVitamin D: 22 ng/mL\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nMSK: Mild tenderness and decreased ROM of both knees.\nExtremities: No edema, pulses 2+ bilaterally.\n\nAssessment:\n1. Chronic kidney disease, stage 3a. Stable.\n2. Vitamin D deficiency.\n3. Osteoarthritis of both knees.\n\nPlan:\n- Continue current Cholecalciferol regimen.\n- Continue as needed Acetaminophen for joint pain.\n- Monitor renal function with labs in 3-6 months.\n- Continue to monitor for progression of chronic kidney disease.\n\nProblem List:\n- Chronic kidney disease, stage 3a\n- Vitamin D deficiency\n- Osteoarthritis of both knees\n\nElectronically signed,\nM. Okafor, PA-C\n05/14/2026",
+  "answer": [
+    "N18.31"
+  ],
+  "explanations": [
+    "CKD stage 3a: N18.31."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3a is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is a different (more severe) stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1831"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:26+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "osteoarthritis of both knees"
+      ],
+      "credential": "PA-C",
+      "signer": "M. Okafor"
+    }
+  }
+}

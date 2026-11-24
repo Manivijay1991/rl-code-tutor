@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-ace980beef",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for persistent joint pain and stiffness.\n\nHPI\nThe patient is a 68-year-old male presenting today for an evaluation of chronic pain in his bilateral knees and hips. He reports that the stiffness is most pronounced in the morning and after periods of prolonged inactivity. He describes a dull, aching sensation that occasionally sharpens during strenuous activity. He has tried over-the-counter NSAIDs with limited relief. He denies any recent falls, new swelling, or systemic fevers. He notes that his mobility is slightly impaired but he remains independent with his daily activities.\n\nMedication List\nSacubitril-valsartan 49/97 mg, carvedilol 12.5 mg, furosemide 40 mg, spironolactone 25 mg.\n\nExam\nThe patient appears in no acute distress. He is alert and oriented x3. Physical exam reveals mild tenderness to palpation over the bilateral patellae and hips. Range of motion is preserved but limited by discomfort. No erythema or warmth is noted over the joints. Gait is steady.\n\nAssessment\n1. Chronic joint pain and stiffness.\n2. Stable clinical status regarding current medications.\n\nPlan\nThe patient will begin a course of physical therapy to improve range of motion and strengthen supporting musculature. We will also discuss a topical lidocaine patch for localized symptomatic relief. He will follow up in four weeks to assess progress with physical therapy.\n\nElectronically signed, K. Nguyen, PA-C\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:40+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

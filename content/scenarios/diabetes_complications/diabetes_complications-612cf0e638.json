@@ -1,0 +1,121 @@
+{
+  "id": "diabetes_complications-612cf0e638",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes and polyneuropathy.\n\nHPI: The patient is an 86-year-old male presenting for a routine follow-up of his chronic conditions. He is currently managed for type 2 diabetes mellitus and has a long-standing history of polyneuropathy. He reports that his blood glucose levels have been stable on his current oral hypoglycemic regimen. He denies any recent episodes of severe tremors, dizziness, or significant changes in his gait. Regarding his polyneuropathy, he notes persistent tingling and some numbness in his bilateral feet, which he describes as a constant sensation. He states that the progression of these symptoms has been gradual. He denies any new acute pain or localized infections. He also mentions that his seasonal allergic rhinitis and gastroesophageal reflux disease remain stable and well-managed.\n\nMedication List:\n- Metformin 500mg BID\n- Omeprazole 20mg daily\n- Loratadine 10mg daily\n\nSocial History: The patient lives at home with his spouse. He is a retired engineer and enjoys gardening and reading. He denies any tobacco or alcohol use.\n\nFamily History: Father had type 2 diabetes. Mother had a history of gastroesophageal reflux disease.\n\nReview of Systems: The patient denies chest pain, shortness of breath, fever, or chills. He reports mild tingling in his toes but denies any acute weakness. He denies changes in vision or hearing.\n\nVitals:\nBP: 128/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 7.1%\neGFR: 62 mL/min\nCreatinine: 1.1 mg/dL\n\nExam: The patient is alert and oriented x3. He appears in no acute distress. Neurological exam reveals diminished sensation to light touch and monofilament testing in the bilateral great toes and first metatarsals. Deep tendon reflexes are diminished at the ankles. Skin is intact without ulcers or lesions.\n\nAssessment:\n1. Type 2 diabetes mellitus: Stable on current oral medication.\n2. Polyneuropathy: The patient continues to experience sensory deficits in the lower extremities. It is noted that this polyneuropathy is not related to diabetes.\n3. Seasonal allergic rhinitis: Stable.\n4. Gastroesophageal reflux disease: Stable.\n\nPlan:\n1. Continue current oral hypoglycemic and maintain current dosage.\n2. Continue monitoring of peripheral sensation; advise patient to wear sturdy, well-fitting shoes to prevent injury.\n3. Continue management of seasonal allergies and GERD as needed.\n\nProblem List:\n- Type 2 diabetes mellitus\n- Polyneuropathy\n- Seasonal allergic rhinitis\n- Gastroesophageal reflux disease\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:52+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "id": "diabetes_complications-a07ba83605",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes and CKD.\n\nHPI:\n[Copied Forward from 05/12/2025]\nThe patient is a 49-year-old male with a history of type 2 diabetes and chronic kidney disease stage 4. He is currently managed on long-term insulin therapy. He reports consistent adherence to his injection schedule. He denies any recent acute episodes or significant changes in his renal function. He notes that his CKD stage 4 is not related to diabetes. He reports stable symptoms regarding his seasonal allergic rhinitis.\n\n[Current Update]\nThe patient presents today for a routine follow-up. He reports that his blood glucose levels have been stable on his current insulin regimen. He denies any new symptoms related to his renal status or seasonal allergies. He reports no changes in his lipid profile or overall energy levels.\n\nMedication List:\n- Insulin Glargine (Long-acting)\n- Atorvastatin 40mg daily\n- Loratadine 10mg daily as needed\n\nVitals:\nBP: 128/82, HR: 74, SpO2: 98% on room air, Temp: 98.6 F, Weight: 210 lbs.\n\nRecent Labs:\neGFR: 22 mL/min/1.73m²\nHbA1c: 7.4%\nLDL: 88 mg/dL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight changes.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Positive for occasional sneezing/congestion (seasonal).\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for numbness or tingling.\nPsychiatric: Negative for anxiety or depression.\n\nSocial History:\nThe patient works full-time as a technician. He reports no tobacco use and social alcohol consumption only. He lives with his spouse and two children.\n\nFamily History:\nFather: History of hyperlipidemia and type 2 diabetes.\nMother: History of seasonal allergic rhinitis.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No new rashes or lesions.\nLungs: Clear to auscultation bilaterally.\nHeart: Regular rate and rhythm, no murmurs.\nExtremities: No edema noted.\n\nAssessment:\n1. Type 2 diabetes: Stable on insulin.\n2. Chronic kidney disease stage 4: Stable; note that this condition is unrelated to diabetes.\n3. Hyperlipidemia: Managed with statin.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan:\n1. Continue current insulin regimen.\n2. Continue Atorvastatin for hyperlipidemia.\n3. Monitor eGFR and HbA1c in 3 months.\n4. Continue as needed antihistamines for seasonal allergies.\n\nProblem List:\n- Type 2 diabetes\n- Chronic kidney disease stage 4\n- Hyperlipidemia\n- Seasonal allergic rhinitis\n\nElectronically signed,\nD.",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.4"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:20+00:00",
+    "style": {
+      "age": 49,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "hyperlipidemia"
+      ],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

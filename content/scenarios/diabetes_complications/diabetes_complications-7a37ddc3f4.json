@@ -1,0 +1,94 @@
+{
+  "id": "diabetes_complications-7a37ddc3f4",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes management.\n\nHPI: Pt is a 90-year-old male presenting for routine follow-up of type 1 diabetes mellitus. Pt reports feeling well overall. He maintains long-term insulin therapy. Denies any acute symptoms or concerns. He reports adherence to his current regimen. No recent issues with glucose monitoring or injections.\n\nMedication List:\n- Insulin (long-term)\n- Vitamin D supplement\n- Antacid PRN\n\nReview of Systems:\nGeneral: No fatigue, no weight change.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: Occasional heartburn, no nausea.\nMSK: No joint pain.\nNeuro: No tremors, no weakness.\n\nSocial History: Retired. Lives with spouse. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had DM. Mother had heart disease.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 165 lbs\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 68\nVitamin D: 30 ng/mL\n\nExam:\nGen: Well-appearing, pleasant.\nCV: RRR, S1, S2, no murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, +GERD.\nExtremities: WNL.\nNeuro: Alert and oriented x3.\n\nAssessment:\n1. Type 1 diabetes mellitus without complications. Pt stable on insulin.\n2. Gastroesophageal reflux disease. Stable.\n3. Vitamin D deficiency.\n\nPlan:\n- Continue current insulin regimen.\n- Continue Vitamin D supplementation.\n- Continue monitoring labs.\n- F/u in 3 months.\n\nProblem List:\n- Type 1 diabetes mellitus without complications\n- Gastroesophageal reflux disease\n- Vitamin D deficiency\n\nElectronically signed, H. Tanaka, DO, 05/14/2026",
+  "answer": [
+    "E10.9"
+  ],
+  "explanations": [
+    "No complication documented: type 1 diabetes without complications.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.65"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "No hyperglycemia or poor control is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.9",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E109"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:24+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "vitamin D deficiency"
+      ],
+      "credential": "DO",
+      "signer": "H. Tanaka"
+    }
+  }
+}

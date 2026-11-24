@@ -1,0 +1,91 @@
+{
+  "id": "diabetes_complications-00b15b79e6",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for T1DM.\n\nHPI: Pt is a 75-year-old female presenting for routine follow-up of type 1 diabetes. She reports she has been managing her condition with insulin long term. She denies any acute issues or recent episodes of distress. She notes she is stable on her current regimen. No complications reported at this time.\n\nMedication List: Insulin (long-acting and rapid-acting).\n\nExam: Pt is alert and oriented x3. Appearance is well-groomed. RR: 16, HR: 72, BP: 128/80, Temp: 98.6 F. CTAB. Skin is warm and dry. No acute distress noted.\n\nAssessment: 1. T1DM without complications.\n\nPlan: Continue current insulin regimen. Patient to monitor blood glucose levels daily. F/u in 3 months for routine labs and clinic visit.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "E10.9"
+  ],
+  "explanations": [
+    "No complication documented: type 1 diabetes without complications.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.65"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "No hyperglycemia or poor control is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.9",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E109"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:29:00+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

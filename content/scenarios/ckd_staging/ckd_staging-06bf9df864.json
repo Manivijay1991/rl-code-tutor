@@ -1,0 +1,133 @@
+{
+  "id": "ckd_staging-06bf9df864",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and ESRD.\n\nHPI: [Copied Forward] Patient is a 78-year-old male who presents for management of chronic kidney disease and hypertension. He reports being stable on his current medication regimen. He denies any new onset of peripheral edema, shortness of breath, or significant changes in appetite. He reports occasional acid reflux but notes it is well-controlled with current medications.\n\n[Update] Today, the patient reports feeling well and denies any new symptoms since the last visit. He continues to experience minor symptoms of gastroesophageal reflux disease but states his current management is effective. He denies any acute changes in renal function or blood pressure fluctuations.\n\nVitals: BP 134/82, HR 76, Temp 98.6 F, SpO2 98% on room air, Weight 185 lbs.\n\nRecent Labs: eGFR 12 mL/min/1.73m2. Potassium 4.8 mEq/L. Sodium 138 mEq/L. Creatinine 5.2 mg/dL.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Omeprazole 20mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nEyes: Negative for vision changes.\nENT: Negative for congestion, hearing loss.\nCardiovascular: Negative for palpitations, chest pain.\nRespiratory: Negative for cough, dyspnea.\nGastrointestinal: Positive for occasional reflux. Negative for nausea, diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness, numbness.\n\nSocial History: Retired. Lives with his wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had hyperlipidemia.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs.\nRespiratory: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, non-distended.\nExtremities: No edema noted.\n\nAssessment:\n1. End stage renal disease: Patient remains stable on current management.\n2. Hypertension: Well-controlled on current regimen.\n3. Hyperlipidemia: Stable.\n4. Gastroesophageal reflux disease: Stable.\n\nPlan:\nContinue current medications. Monitor eGFR and potassium levels every 3 months. Patient instructed to report any significant swelling or rapid weight gain.\n\nProblem List:\n- End stage renal disease\n- Hypertension\n- Hyperlipidemia\n- Gastroesophageal reflux disease\n\nElectronically signed, A. Rivera, PA-C, 05/12/2026",
+  "answer": [
+    "I12.0",
+    "N18.6"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.6"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.6"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "N18.6"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:37+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "PA-C",
+      "signer": "A. Rivera"
+    }
+  }
+}

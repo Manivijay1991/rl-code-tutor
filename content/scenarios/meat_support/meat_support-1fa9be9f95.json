@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-1fa9be9f95",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for persistent joint pain and stiffness.\n\nHPI\nThe patient is an 80-year-old male presenting for a scheduled follow-up regarding chronic discomfort in his bilateral knees and hips. He reports that the stiffness is most pronounced in the morning and after periods of prolonged sitting. He describes the pain as a dull ache, rated as a 4/10, which occasionally sharpens during heavy exertion like walking long distances. He has been consistent with his current regimen but notes that the stiffness in his left knee has persisted for approximately three weeks. He denies any recent falls, new swelling, redness, or warmth in the joints. He denies any systemic symptoms such as fever, chills, or unexplained weight loss.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, or palpitations. He denies recent headaches or dizziness. He reports no changes in bowel or bladder habits. He denies any recent cough or sore throat. He denies any new numbness or tingling in his extremities.\n\nSocial History\nThe patient lives at home with his wife. He is retired and spends most of his time gardening and walking. He denies tobacco use and reports social drinking of one glass of wine on weekends.\n\nFamily History\nHis father had hypertension and a history of stroke. His mother had osteoarthritis.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nSertraline 50mg daily\nNaproxen 250mg as needed for joint pain\n\nExam\nThe patient is alert and oriented x3. He appears in no acute distress. Physical examination reveals bilateral knee joint swelling with mild tenderness to palpation over the patellar tendons. Range of motion is limited by discomfort but is otherwise intact. His gait is steady with a slight limp on the left side. No erythema or warmth is noted.\n\nVitals\nBP: 132/84 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 97% on room air\n\nRecent Labs\nHbA1c: 6.8%\neGFR: 65 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nAssessment\nThe patient is experiencing chronic joint discomfort consistent with his known history. He is managing his symptoms well but requires continued monitoring of inflammation.\n\nPlan\n1. Continue current medication list as prescribed.\n2. Instructed to use naproxen only as needed for acute flare-ups.\n3. Recommend physical therapy twice weekly for strengthening exercises.\n4. Follow up in 8 weeks for a reassessment of joint mobility.\n\nElectronically signed, H. Tanaka, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "An antidepressant on the list does not establish major depression; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:04+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

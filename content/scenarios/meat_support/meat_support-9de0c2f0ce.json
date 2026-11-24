@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-9de0c2f0ce",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Follow-up for knee pain.\n\nHPI: Copied Forward: Patient is a 78-year-old male presenting for evaluation of chronic right knee pain. He reports a dull ache that worsens with weight-bearing activities and walking long distances. He denies any recent falls or acute trauma. He reports that the pain is manageable with over-the-counter analgesics but limits his mobility.\n\nUpdate: Today, the patient reports that the pain has remained stable over the last month. He denies any new swelling or \"locking\" of the joint. He continues to experience stiffness in the morning but notes improvement with gentle stretching.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nMusculoskeletal: Positive (Right knee pain)\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\n\nMedication List:\n- Sacubitril-valsartan 49/51 mg\n- Furosemide 40 mg\n- Acetaminophen 500 mg\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nMusculoskeletal: Right knee shows mild tenderness to palpation over the patella. Range of motion is limited by discomfort but stable. No erythema or warmth noted.\n\nAssessment:\n1. Chronic right knee pain.\n\nPlan:\n1. Continue current activity level; avoid high-impact exercises.\n2. Recommended physical therapy for strengthening.\n3. Follow up in 4 weeks to assess progress.\n\nElectronically signed, R. Mensah, NP, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:52+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

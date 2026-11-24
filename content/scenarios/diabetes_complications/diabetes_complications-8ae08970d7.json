@@ -1,0 +1,116 @@
+{
+  "id": "diabetes_complications-8ae08970d7",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for management of diabetes.\n\nHPI\nThe patient is a 90-year-old woman presenting for a routine follow-up regarding her type 2 diabetes. She reports that she has been experiencing symptoms of hyperglycemia lately. She continues to take her medications daily but notes that her blood glucose levels have been poorly controlled over the last month. She denies any acute distress or recent changes in her health status.\n\nMedication List\n- Insulin\n- Metformin\n- Glipizide\n\nExam\nThe patient appears well-nourished and in no acute distress. She is alert and oriented to person, place, and time. Skin is intact with no new lesions. Vital signs are stable.\n\nAssessment\n1. Type 2 diabetes mellitus.\n2. Hyperglycemia.\n\nPlan\nWe will continue her current regimen of insulin and her oral hypoglycemic medication. The patient was instructed to monitor her glucose levels more frequently and keep a log for the next three months. We will schedule a follow-up appointment in four weeks to review the logs and adjust her dosages as necessary.\n\nElectronically signed, T. Haddad, PA-C, 05/12/2026",
+  "answer": [
+    "E11.65",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Diabetes documented as poorly controlled, out of control, or with hyperglycemia is coded to diabetes with hyperglycemia.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Index: Diabetes, poorly controlled",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.649 is hypoglycemia, not hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:44+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "T. Haddad"
+    }
+  }
+}

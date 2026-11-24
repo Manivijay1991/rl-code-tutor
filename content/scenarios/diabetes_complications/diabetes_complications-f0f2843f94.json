@@ -1,0 +1,129 @@
+{
+  "id": "diabetes_complications-f0f2843f94",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for CKD and diabetes.\n\nHPI: [Copied Forward] Patient is a 66-year-old female with a history of type 2 diabetes and chronic kidney disease stage 4. She reports stable management of her blood glucose levels with her current oral hypoglycemic agent. She denies any acute changes in renal function or significant fluctuations in glucose. \n\n[Today's Update] The patient presents today for a routine follow-up. She reports feeling well and maintains a consistent routine. She notes that her renal decline is not related to diabetes. She continues to tolerate her current medication regimen well without any side effects.\n\nMedication List:\n- Linagliptin 5mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 165 lbs.\n\nReview of Systems:\n- Constitutional: Negative\n- Cardiovascular: Negative\n- Respiratory: Negative\n- Gastrointestinal: Negative\n- Genitourinary: Negative\n- Musculoskeletal: Negative\n- Neurological: Negative\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No new lesions noted.\nExtremities: No edema.\nLungs: Clear to auscultation.\nHeart: Regular rate and rhythm.\n\nAssessment:\n1. Type 2 diabetes mellitus: Stable on linagliptin.\n2. Chronic kidney disease stage 4: eGFR is currently 22. Progression is not due to diabetes.\n\nPlan:\n- Continue current oral hypoglycemic agent.\n- Monitor renal function with lab work in 3 months.\n- Patient to continue current management plan.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:32:20+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

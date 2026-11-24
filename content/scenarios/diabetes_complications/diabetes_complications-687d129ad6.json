@@ -1,0 +1,96 @@
+{
+  "id": "diabetes_complications-687d129ad6",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes.\n\nHPI: The patient is a 52-year-old man presenting for a routine follow-up of his type 2 diabetes. He has been managed on long-term insulin therapy and reports consistent adherence to his injection schedule. He currently denies any acute concerns, including vision changes, numbness in his extremities, or episodes of low blood sugar. He states that he feels well overall and has been monitoring his glucose levels at home. He reports that his gastroesophageal reflux disease remains stable with current management. He denies any new symptoms or concerns regarding his vitamin D deficiency.\n\nMedication List:\n- Insulin Glargine (long-acting)\n- Omeprazole 20mg daily\n- Vitamin D3 2000 IU daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight changes.\nHEENT: Denies vision changes or sore throat.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath or cough.\nGastrointestinal: Denies abdominal pain; reports occasional reflux.\nMusculoskeletal: Denies joint pain or muscle weakness.\nNeurological: Denies numbness or tingling.\n\nSocial History: The patient works full-time in a sedentary office environment. He denies tobacco or alcohol use. He lives with his spouse and two children.\n\nFamily History: Father has type 2 diabetes. Mother has gastroesophageal reflux disease.\n\nVitals:\nBP: 122/78 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\nWeight: 195 lbs\nBMI: 28.4\n\nRecent Labs:\nHbA1c: 7.2%\neGFR: 85 mL/min/1.73m2\nVitamin D: 32 ng/mL\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No ulcers or lesions noted.\nEyes: Pupils equal and reactive; extraocular movements intact.\nHeart: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses.\n\nAssessment:\n1. Type 2 diabetes without complications.\n2. Gastroesophageal reflux disease.\n3. Vitamin D deficiency.\n\nPlan:\n1. Continue current insulin regimen for type 2 diabetes management.\n2. Continue Vitamin D3 supplementation.\n3. Continue current reflux medication.\n4. Follow up in 3 months for repeat HbA1c.\n\nProblem List:\n- Type 2 diabetes without complications\n- Gastroesophageal reflux disease\n- Vitamin D deficiency\n\nElectronically signed,\nM. Okafor, NP\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "Z79.4"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:51+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

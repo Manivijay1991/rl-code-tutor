@@ -1,0 +1,132 @@
+{
+  "id": "diabetes_complications-c8208765b9",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes and kidney function.\n\nHPI: [Copied Forward]\nPatient is an 85-year-old female who presents for routine management of her chronic conditions. She reports stable symptoms regarding her gastroesophageal reflux disease and vitamin D deficiency. She denies any recent falls or acute changes in mobility. She maintains a consistent regimen of her oral hypoglycemic medication. She reports adherence to her current treatment plan.\n\n[Today's Update]\nThe patient returns for a follow-up evaluation of her T2DM and chronic kidney disease stage 4. She reports that she feels well today and denies any new concerns. She continues to take her oral medication for glucose management. She notes that she has been managing her reflux with her current medications. She denies any recent changes in her renal status or any acute symptoms.\n\nMedication List:\n- Linagliptin 5mg daily\n- Calcium carbonate 500mg daily\n- Vitamin D3 2000 IU daily\n\nVitals:\nBP: 128/76\nHR: 74\nSpO2: 98% on room air\nTemp: 98.6 F\nWeight: 142 lbs\n\nRecent Labs:\neGFR: 22 mL/min/1.73m2\nHbA1c: 7.4%\nCalcium: 9.2 mg/dL\nVitamin D: 32 ng/mL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for sore throat, rhinorrhea.\nCardiovascular: Negative for chest pain, palpitations.\nRespiratory: Negative for shortness of breath, cough.\nGastrointestinal: Positive for occasional heartburn.\nGenitourinary: Negative for dysuria, frequency.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness, weakness.\n\nSocial History:\nThe patient lives at home with her daughter. She retired five years ago and enjoys gardening and knitting. She does not smoke and drinks caffeine occasionally.\n\nFamily History:\nMother had type 2 diabetes and osteoarthritis. Father had coronary artery disease.\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished and in no acute distress.\nSkin: Intact, no significant rashes or lesions.\nLungs: Clear to auscultation bilaterally.\nHeart: Regular rate and rhythm, no murmurs.\nAbdomen: Soft, non-tender, no masses.\n\nAssessment:\n1. Type 2 diabetes mellitus: Stable on linagliptin.\n2. Chronic kidney disease stage 4: Stable and well-managed.\n3. Gastroesophageal reflux disease: Stable.\n4. Vitamin D deficiency: Improving with supplementation.\n\nNote: The patient's renal decline is not related to diabetes.\n\nPlan:\n1. Continue linagliptin as directed.\n2. Continue current vitamin D and reflux medications.\n3. Follow up in 3 months for labs.\n\nProblem List:\n- Type 2 diabetes\n- Chronic kidney disease stage 4\n- Vitamin D deficiency\n- Gastroesophageal reflux disease\n\nElectronically signed,\nD. Kowalski, DO",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:32:12+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

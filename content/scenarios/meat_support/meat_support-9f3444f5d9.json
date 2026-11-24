@@ -1,0 +1,70 @@
+{
+  "id": "meat_support-9f3444f5d9",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Shortness of breath\n\nHPI: 75 y.o. female pt presents for f/u of COPD. Pt reports stable symptoms over the past month. Denies increased cough, sputum production, or acute exacerbation. Reports mild exertional dyspnea but denies any fevers or chills. Pt states she is adhering to current medications.\n\nMedication List:\n- Tiotropium 18 mcg inhaled\n- Salmeterol/Fluticasone 250/50 mcg inhaled\n- Albuterol HFA 2mg PRN\n\nExam:\nGen: Alert, pleasant, in no acute distress.\nResp: CTAB. Breath sounds clear bilaterally. No wheezing or rhonchi.\nCV: RRR, regular rhythm. No murmurs.\nExt: No edema.\n\nAssessment:\n1. COPD: Pt is currently stable. Symptoms reviewed and well-controlled on current regimen.\n\nPlan:\n1. COPD: Continue current medications. Pt to f/u in 3 months. Advised to seek immediate care for worsening dyspnea or increased sputum.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:31:03+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

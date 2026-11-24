@@ -1,0 +1,108 @@
+{
+  "id": "diabetes_complications-e5ea7d4d89",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for T1DM.\n\nHPI\nPt is a 61-year-old male presenting for routine follow-up of type 1 diabetes. Pt reports frequent symptoms of hyperglycemia over the last month. States he has been adherent to his insulin regimen but notes elevated thirst and frequent urination. Denies any acute distress.\n\nMedication List\nInsulin glargine and insulin lispro.\n\nExam\nPt is alert and oriented x3. Appearance is well-groomed. Vitals: BP 128/82, HR 74, Temp 98.6 F. General: CTAB. Respiratory: RRR. Cardiovascular: RRR, no murmurs. Skin: Intact, no new lesions.\n\nAssessment\n1. Type 1 diabetes: Currently poorly controlled.\n2. Hyperglycemia.\n\nPlan\n1. Continue current insulin regimen as prescribed. \n2. Monitor blood glucose levels daily. \n3. F/u in 3 months for lab work and A1c.\n4. Pt to keep a log of glucose readings and report any significant fluctuations.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "E10.65"
+  ],
+  "explanations": [
+    "Type 1 diabetes with hyperglycemia / poor control: E10.65.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.649"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E10.649 is hypoglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.65",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1065"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:29:17+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

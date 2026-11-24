@@ -22,6 +22,9 @@
         "polyneuropathy": ["polyneuropathy", "peripheral neuropathy"],
         "hyperglycemia": ["hyperglycemia", "poorly controlled", "out of control"],
         "hypoglycemia": ["hypoglycemia", "hypoglycemic episode"]
+      },
+      "describe": {
+        "ckd_stage4": "The patient has CKD stage 4 with an eGFR between 15 and 29. Metformin is contraindicated at this eGFR: never list it; if an oral diabetes medication is used, choose one such as glipizide or linagliptin."
       }
     },
     "provider_says_unrelated": {
@@ -48,7 +51,8 @@
                    "insulin_and_oral": "The patient uses both insulin and an oral diabetes medication long term."}
     }
   },
-  "note_forbid": ["hypertension", "HTN", "hypertensive", "dialysis"],
+  "note_forbid": ["hypertension", "HTN", "hypertensive", "dialysis", "ESRD"],
+  "note_background": ["hyperlipidemia", "gastroesophageal reflux disease", "seasonal allergic rhinitis", "vitamin D deficiency"],
   "exclude": [
     {"dm_type": "type1", "meds": ["diet_only", "oral", "insulin_and_oral"]},
     {"complication": ["none", "hyperglycemia", "hypoglycemia"], "provider_says_unrelated": "yes"}

@@ -1,0 +1,162 @@
+{
+  "id": "diabetes_complications-c4248baeae",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for diabetes and kidney disease management.\n\nHPI\nThe patient is a 70-year-old male presenting for a routine follow-up of his type 2 diabetes and chronic kidney disease stage 4. He reports feeling generally well today and denies any acute concerns. He continues to manage his blood glucose levels using long-term insulin therapy. He denies any recent episodes of severe fatigue, shortness of breath, or significant changes in urinary output. He reports adherence to his current medication regimen and stable symptoms regarding his gastroesophageal reflux disease. He also notes that his seasonal allergic rhinitis is currently stable.\n\nMedication List\n- Insulin (long-term)\n- Omeprazole 20mg daily\n- Cetirizine 10mg as needed\n\nReview of Systems\nConstitutional: Denies fever, chills, or weight changes.\nHEENT: Denies vision changes or sore throat.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies cough or wheezing.\nGastrointestinal: Reports occasional mild heartburn; denies nausea or diarrhea.\nGenitourinary: Denies dysuria or hematuria.\nMusculoskeletal: Denies joint pain or swelling.\nNeurological: Denies numbness or tingling.\n\nSocial History\nThe patient lives with his spouse and works as a retired consultant. He enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History\nFather had type 2 diabetes and a history of heart disease. Mother had seasonal allergies.\n\nVitals\nTemperature: 98.6 F\nPulse: 72 bpm\nRespiratory Rate: 16 breaths/min\nBlood Pressure: 128/82 mmHg\nHeight: 5'10\"\nWeight: 185 lbs\n\nRecent Labs\neGFR: 24 mL/min/1.73m2\nHbA1c: 7.4%\nCreatinine: 2.8 mg/dL\nPotassium: 4.5 mEq/L\n\nExam\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No new lesions or rashes noted.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rhythm, no murmurs.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No edema noted.\n\nAssessment\n1. Type 2 diabetes mellitus: Stable on insulin.\n2. Chronic kidney disease stage 4: Stable.\n3. Gastroesophageal reflux disease: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan\n1. Continue current insulin regimen as prescribed.\n2. Monitor renal function with follow-up labs in three months.\n3. Continue current medications for GERD and allergies.\n4. Patient will follow up in 3 months for routine monitoring.\n\nProblem List\n- Type 2 diabetes\n- Chronic kidney disease stage 4\n- Gastroesophageal reflux disease\n- Seasonal allergic rhinitis\n\nElectronically signed,\nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "E11.22",
+    "N18.4",
+    "Z79.4"
+  ],
+  "explanations": [
+    "CKD is listed under 'with' for diabetes in the Index, so the link is presumed: use the combination code E11.22.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The provider does not have to write 'due to'; 'with' presumes the link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.2",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "E11.2 is a subcategory; a 5th character is required.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "Z79.4"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "by": "37"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:24+00:00",
+    "style": {
+      "age": 70,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

@@ -24,7 +24,22 @@
       "properties": {
         "model": {"type": "string"},
         "attempts": {"type": "integer", "minimum": 1},
-        "created": {"type": "string"}
+        "created": {"type": "string"},
+        "style": {
+          "type": "object",
+          "description": "how the note was asked to read (coding_tutor.generator.scenarios.pick_style); never changes the answer",
+          "required": ["age", "sex", "voice", "length", "background", "credential", "signer"],
+          "additionalProperties": false,
+          "properties": {
+            "age": {"type": "integer", "minimum": 18, "maximum": 110},
+            "sex": {"enum": ["woman", "man"]},
+            "voice": {"enum": ["narrative", "shorthand", "templated"]},
+            "length": {"enum": ["short", "long"]},
+            "background": {"type": "array", "items": {"type": "string"}},
+            "credential": {"enum": ["MD", "DO", "NP", "PA-C"]},
+            "signer": {"type": "string"}
+          }
+        }
       }
     }
   }

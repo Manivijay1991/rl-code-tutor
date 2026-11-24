@@ -1,0 +1,96 @@
+{
+  "id": "diabetes_complications-43d9622350",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for diabetes management.\n\nHPI\nPt is a 73 y.o. female presenting for routine f/u of T2DM. Pt reports stable status and denies any acute concerns. She has been managed on a combination of insulin and an oral hypoglycemic for several years. She reports adherence to current regimen and denies any recent issues with glucose monitoring.\n\nMedication List\n- Insulin and metformin daily.\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6 F.\nCV: RRR, CTAB.\nResp: Clear to auscultation bilaterally.\nSkin: Intact, no signs of infection.\nNeuro: Grossly intact, WNL.\n\nAssessment\n1. T2DM without complications.\n\nPlan\n- Continue current regimen of insulin and metformin.\n- Pt to continue monitoring blood glucose levels.\n- F/u in 3 months for routine labs and management.\n\nElectronically signed,\nM. Okafor, PA-C\n05/14/2026",
+  "answer": [
+    "E11.9",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:18+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "M. Okafor"
+    }
+  }
+}

@@ -1,6 +1,8 @@
 // Coach-mode hints. The bandit's teaching action picks a ladder of 3 escalating hints; the student
 // re-picks after each. No hint ever names a correct code (CLAUDE.md): every text goes through
 // scrub(), and hints are built only from slot labels, confusion descriptions and references.
+// Think first: every hint opens with a question (`think`). Details (`body`, refs, the contrast, the
+// highlight) sit behind a reveal (`reveal` = its button text) so the student tries on their own first.
 
 export const LADDERS = {
   rule_refresh: ["rule", "spotlight", "narrow"],
@@ -12,9 +14,9 @@ export const LADDERS = {
 };
 
 export const LEAN_MESSAGES = {
-  over: "That choice reports more than the note supports (overcoding).",
-  under: "That choice leaves out something the note supports (undercoding).",
-  neutral: "That choice codes the right idea at the wrong level of detail.",
+  over: "Does the note document everything your choice reports?",
+  under: "Is something documented that your choice leaves out?",
+  neutral: "Is your choice exactly as specific as the note?",
 };
 
 /** Replace every correct code (dotted or not, any case) with a neutral phrase. */
@@ -61,6 +63,8 @@ export function buildHint({ kind, scenario, table, option, correctCodes, step })
       return {
         ...base,
         title: "Rule refresher",
+        think: `Which coding rule decides "${first.label}" here? Try to recall it before you look.`,
+        reveal: "Show the rule",
         body: s(`Common trap: ${trap.description}`),
         refs: scenario.refs.map(s),
       };
@@ -70,6 +74,10 @@ export function buildHint({ kind, scenario, table, option, correctCodes, step })
       return {
         ...base,
         title: "Contrast pair",
+        think: p
+          ? `Your choice is right for a different note. What would that note say about "${first.label}"? Does this note say that?`
+          : `Which detail decides the codes here? Look at what the note says about "${first.label}".`,
+        reveal: "Compare the two notes",
         body: s(
           p
             ? `Your choice would be right if the note said "${pivotLabel}" for "${first.label}". ` +
@@ -85,14 +93,14 @@ export function buildHint({ kind, scenario, table, option, correctCodes, step })
       return {
         ...base,
         title: "Guiding question",
-        body: s(`What does the note say about "${first.label}"?`),
+        think: "Answer this from the note, then pick again.",
         question: first,
       };
     case "walk":
       return {
         ...base,
         title: "Step-by-step walkthrough",
-        body: "Answer each step from the note, then pick again.",
+        think: "Break it into steps. Answer each one from the note, then pick again.",
         steps: deciding.map((slot) => slotInfo(table, scenario, slot)),
       };
     case "find":
@@ -100,7 +108,7 @@ export function buildHint({ kind, scenario, table, option, correctCodes, step })
       return {
         ...base,
         title: "Find the evidence",
-        body: "Tap the sentence in the note that decides this. The codes depend on it.",
+        think: `Which sentence in the note decides "${first.label}"? Tap it.`,
         slots: deciding,
       };
     case "spotlight":
@@ -108,14 +116,16 @@ export function buildHint({ kind, scenario, table, option, correctCodes, step })
       return {
         ...base,
         title: "Spotlight",
-        body: "The highlighted words in the note decide the answer. Read them again before you pick.",
+        think: `Re-read the note. Which words decide "${first.label}"?`,
+        reveal: "Highlight them for me",
+        body: "The highlighted words decide the answer. Read them again before you pick.",
         slots: deciding,
       };
     case "narrow":
       return {
         ...base,
         title: "Narrow it down",
-        body: "Some choices are now ruled out. One of the remaining choices is correct.",
+        think: "Some choices are now ruled out. For each one left, ask: does the note document every detail it needs?",
       };
     default:
       throw new RangeError(`unknown hint kind ${kind}`);
@@ -127,6 +137,8 @@ function absence(base, first, s) {
     ...base,
     kind: "absence",
     title: "Read what is NOT there",
+    think: `Find what the note says about "${first.label}". Is it actually written, or are you assuming it?`,
+    reveal: "Show the tip",
     body: s(
       `Look at "${first.label}". The note is silent or neutral here, and that silence matters: ` +
         "code only what is documented, and do not assume what is not written.",
@@ -146,6 +158,8 @@ export function narrowRemovals(options, tried, rng = Math.random) {
 export function hintTexts(hint) {
   const texts = [
     hint.title,
+    hint.think,
+    hint.reveal,
     hint.body,
     hint.lean,
     ...(hint.refs ?? []),

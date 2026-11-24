@@ -31,6 +31,7 @@
       }
     },
     "note_forbid": {"type": "array", "items": {"type": "string"}, "description": "phrases no generated note may contain (they would change the answer)"},
+    "note_background": {"type": "array", "items": {"type": "string"}, "description": "stable unrelated conditions a long note may mention for realism; each must leave the answer unchanged (outside the question's scope, no HCC)"},
     "note_rules": {
       "type": "array",
       "description": "per-case overrides for note generation; every rule whose `when` matches applies",

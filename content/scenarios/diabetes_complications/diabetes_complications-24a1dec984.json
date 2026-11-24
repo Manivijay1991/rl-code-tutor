@@ -1,0 +1,107 @@
+{
+  "id": "diabetes_complications-24a1dec984",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for hyperglycemia.\n\nHPI\nThe patient is an 80-year-old woman presenting for a routine follow-up regarding her type 2 diabetes. She reports that she has been experiencing symptoms of hyperglycemia, including increased thirst and frequent urination over the past month. She notes that she has been attempting to manage her glucose levels through diet and exercise alone. She denies any recent acute illnesses or changes in her physical activity levels.\n\nMedication List\nNone.\n\nExam\nThe patient appears in no acute distress. She is alert and oriented to person, place, and time. Skin is dry and intact. Heart rate is 72 beats per minute, blood pressure is 130/82 mmHg, and oxygen saturation is 98% on room air.\n\nAssessment\n1. Type 2 diabetes mellitus: The patient's glucose levels are currently poorly controlled.\n2. Hyperglycemia: Presenting with clinical symptoms.\n\nPlan\nThe patient will continue with her current diet-controlled regimen. We discussed the importance of consistent carbohydrate monitoring. She will return to the clinic in four weeks for a follow-up laboratory evaluation.\n\nElectronically signed, H. Tanaka, PA-C, 05/14/2026",
+  "answer": [
+    "E11.65"
+  ],
+  "explanations": [
+    "Diabetes documented as poorly controlled, out of control, or with hyperglycemia is coded to diabetes with hyperglycemia."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Index: Diabetes, poorly controlled"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.649 is hypoglycemia, not hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:56+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

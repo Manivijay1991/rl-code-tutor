@@ -1,0 +1,143 @@
+{
+  "id": "ckd_staging-40bf1be900",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and CKD.\n\nHPI: Pt is a 60-year-old female presenting for scheduled follow-up of HTN and chronic kidney disease. Pt reports feeling well generally. Denies any acute shortness of breath, chest pain, or significant edema in lower extremities. She notes occasional joint stiffness in both knees, consistent with known osteoarthritis. Compliant with current antihypertensive and lipid-lowering medications. No changes in diet or activity level reported.\n\nMedication List:\n- Lisinopril 20mg daily\n- Atorvastatin 40mg daily\n- Naproxen 500mg PRN for joint pain\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies nausea, abdominal pain.\nMSK: Reports bilateral knee stiffness.\nNeuro: Denies dizziness, numbness.\n\nSocial History: Retired; lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had HTN and stroke. Father had hyperlipidemia.\n\nVitals:\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 165 lbs\nHeight: 5'5\"\n\nRecent Labs:\neGFR: 38 mL/min/1.73m2\nCreatinine: 2.1 mg/dL\nLDL: 88 mg/dL\nGlucose: 95 mg/dL\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs.\nLungs: CTAB.\nExt: No pedal edema. Stable gait.\n\nAssessment:\n1. Hypertension: Stable on current regimen.\n2. Chronic kidney disease, stage 3b: eGFR currently 38.\n3. Hyperlipidemia: Well-controlled on statin.\n4. Osteoarthritis of both knees: Chronic, managed with PRN NSAIDs.\n\nPlan:\n- Continue current medications.\n- Monitor BP at home; report any readings >140/90.\n- Continue scheduled labs to monitor renal function.\n- F/u in 3 months.\n\nProblem List:\n- Hypertension\n- Chronic kidney disease, stage 3b\n- Hyperlipidemia\n- Osteoarthritis of both knees\n\nElectronically signed, R. Mensah, DO, 05/12/2026",
+  "answer": [
+    "I12.9",
+    "N18.32"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.32"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.32"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.127,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "3a is less severe than the documented 3b.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3b is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:04+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "osteoarthritis of both knees",
+        "hyperlipidemia"
+      ],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "id": "diabetes_complications-a4b927ca8b",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for management of T2DM and CKD.\n\nHPI: Pt is an 86 y.o. female presenting for routine follow-up of type 2 diabetes and chronic kidney disease stage 4. Pt reports feeling well overall. Denies any acute changes in symptoms or new concerns. Current management of T2DM is diet controlled. Pt reports adherence to nutritional guidelines and regular physical activity. Denies any recent episodes of dizziness, fatigue, or shortness of breath.\n\nMedication List:\n- Seasonal allergic rhinitis: Loratadine 10mg daily.\n- Hyperlipidemia: Atorvastatin 20mg daily.\n- Diet and exercise for T2DM management.\n\nSocial History: Retired. Lives at home with spouse. No tobacco use. Occasional alcohol use.\n\nFamily History: Mother had T2DM. Father had hyperlipidemia.\n\nReview of Systems:\nGeneral: Denies fever, chills, weight changes.\nCV: Denies chest pain, palpitations.\nResp: Denies cough, SOB.\nGI: Denies N/V, diarrhea, constipation.\nMSK: Denies joint pain, swelling.\nNeuro: Denies numbness, tingling, weakness.\nSkin: Denies rashes, lesions.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs:\neGFR: 22 mL/min/1.73m2\nHbA1c: 7.4%\nLDL: 88 mg/dL\nCreatinine: 2.8 mg/dL\n\nExam:\nGen: Well-appearing, pleasant.\nCV: RRR, CTAB.\nResp: CTAB.\nAbd: Soft, non-tender, non-distended.\nExt: WNL.\n\nAssessment:\n1. T2DM: Stable, currently diet controlled.\n2. CKD stage 4: Stable at current eGFR.\n3. Hyperlipidemia: Controlled on medication.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan:\n- Continue current diet and exercise regimen for T2DM.\n- Continue medications for hyperlipidemia and allergic rhinitis.\n- Monitor renal function with repeat labs in 3 months.\n- F/u in 3 months for routine check.\n\nProblem List:\n- T2DM (diet controlled)\n- CKD stage 4\n- Hyperlipidemia\n- Seasonal allergic rhinitis\n\nElectronically signed, A. Rivera, NP, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD is listed under 'with' for diabetes in the Index, so the link is presumed: use the combination code E11.22.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The provider does not have to write 'due to'; 'with' presumes the link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.2",
+        "N18.4"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "E11.2 is a subcategory; a 5th character is required.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.68,
+        "gap": -0.166,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:01+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "hyperlipidemia"
+      ],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

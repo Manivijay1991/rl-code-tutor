@@ -4,6 +4,11 @@ The LLM only writes the note. Answers, distractors and explanations come from th
 A note is kept only if it contains every deciding detail (slot evidence) and none of the
 phrases that would change the answer (other values' evidence, note_forbid, code-like strings).
 
+Each note also gets a style picked from its seed, so practice notes vary like real charts: patient age
+and sex, voice (full sentences, clinician shorthand, or an EHR template with copied-forward history),
+length (short, or long with review of systems, history, vitals and labs), stable background conditions
+from the table's `note_background`, and a signature line. The style never changes the answer.
+
     python -m coding_tutor.generator.scenarios --n 2                          # 2 per table
     python -m coding_tutor.generator.scenarios --table meat_support --all     # every combination once
     python -m coding_tutor.generator.scenarios --table ckd_staging --dry-run  # print prompts only
@@ -32,7 +37,7 @@ from coding_tutor.engine.rules import Distractor, Slots, Table, combos, load_tab
 from coding_tutor.llm import LLM, PROVIDERS, LLMConfig, LLMError, config_from_env, make_llm
 from coding_tutor.paths import SCENARIOS_DIR
 
-MIN_WORDS, MAX_WORDS = 50, 400
+MIN_WORDS, MAX_WORDS = 50, 550
 
 # ICD-10-CM-looking strings (E11.22, E1122, N18.4) and coding words must never appear in a note.
 # 3-character forms like "B12" are allowed (vitamin B12); real answer codes have 4+ characters.
@@ -40,12 +45,50 @@ CODE_LIKE = re.compile(r"(?<![\w.])[A-TV-Z]\d{2}\.?[0-9A-Z]{1,4}(?!\w|\.\w)")
 CODING_WORDS = ["ICD", "ICD-10", "HCC", "CPT", "billing code", "diagnosis code"]
 
 Requirements = dict  # {"require": [[phrase, ...], ...], "forbid": [phrase, ...], "facts": [str, ...]}
+Style = dict  # {"age", "sex", "voice", "length", "background": [str], "credential", "signer"}
 
 SYSTEM = (
-    "You write short, realistic outpatient clinic notes for medical-coding practice. "
+    "You write realistic outpatient clinic notes for medical-coding practice. "
     "Output only the note text, with plain section headings. Never include ICD-10, CPT, HCC or any "
     "billing codes, and never mention coding. Use only the facts you are given; do not add other "
-    "chronic diagnoses, and do not mention or deny conditions you were not asked to mention."
+    "chronic diagnoses, and do not mention or deny conditions you were not asked to mention. "
+    "Keep medications, labs and vitals clinically consistent with each other (e.g. no metformin when "
+    "the eGFR is below 30)."
+)
+
+VOICES = {
+    "narrative": "Write in clear, complete sentences.",
+    "shorthand": (
+        "Write the way a busy clinician does: short phrases and common abbreviations "
+        "(pt, hx, c/o, f/u, NAD, RRR, CTAB, WNL, BID, PRN). Keep every required phrase word for word."
+    ),
+    "templated": (
+        "Write it as an EHR template: labeled fields (e.g. 'Vitals: BP 132/78, HR 72, SpO2 97%'), a Review of "
+        "Systems checklist, and an HPI that reads as copied forward from a prior visit before today's update."
+    ),
+}
+LENGTHS = {
+    "short": "about 120-220 words",
+    "long": (
+        "about 280-420 words; also include Review of Systems, Social History, Family History, vitals and recent labs"
+    ),
+}
+# Only provider types that are acceptable sources for risk adjustment; others would change the answer.
+CREDENTIALS = ("MD", "DO", "NP", "PA-C")
+# Fictional signers (initial + common surname), so notes are not all signed by the LLM's favourite name.
+SIGNERS = (
+    "A. Rivera",
+    "K. Nguyen",
+    "M. Okafor",
+    "S. Patel",
+    "J. Lindqvist",
+    "T. Haddad",
+    "L. Moreau",
+    "D. Kowalski",
+    "R. Mensah",
+    "E. Castillo",
+    "H. Tanaka",
+    "P. O'Brien",
 )
 
 
@@ -108,6 +151,51 @@ def requirements(t: Table, slots: Slots) -> Requirements:
     return {"require": require, "forbid": list(dict.fromkeys(forbid)), "facts": facts}
 
 
+# ---- style (pure) ----
+def pick_style(t: Table, rng: random.Random) -> Style:
+    """Pick how one note reads: patient, voice, length, background conditions and signer.
+
+    About 70% of patients are 66-90 (most risk-adjusted patients are on Medicare), the rest 35-64.
+    Background conditions come only from the table's `note_background` (chosen so they never change
+    the answer) and appear only in long notes.
+    """
+    age = rng.randint(66, 90) if rng.random() < 0.7 else rng.randint(35, 64)
+    sex = rng.choice(["woman", "man"])
+    voice = rng.choice(sorted(VOICES))
+    length = rng.choice(sorted(LENGTHS))
+    pool = t.get("note_background", [])
+    background = rng.sample(pool, k=min(2, len(pool))) if length == "long" else []
+    credential = rng.choice(CREDENTIALS)
+    return {
+        "age": age,
+        "sex": sex,
+        "voice": voice,
+        "length": length,
+        "background": background,
+        "credential": credential,
+        "signer": rng.choice(SIGNERS),
+    }
+
+
+def style_lines(style: Style) -> list[str]:
+    """Return the writer instructions for a style."""
+    article = "an" if str(style["age"]).startswith("8") else "a"  # an 80-, 85-year-old
+    lines = [
+        f"Patient: {article} {style['age']}-year-old {style['sex']}; use matching pronouns.",
+        VOICES[style["voice"]],
+    ]
+    if style["background"]:
+        lines.append(
+            "Also mention these stable background conditions in the history and problem list, and no other "
+            "chronic conditions: " + ", ".join(style["background"]) + "."
+        )
+    lines.append(
+        f"End with a signature line: 'Electronically signed', {style['signer']}, {style['credential']}, "
+        "and a visit date in 2026."
+    )
+    return lines
+
+
 # ---- checking (pure) ----
 def has_phrase(text: str, phrase: str) -> bool:
     """Return True if `phrase` appears in `text` as whole words, ignoring case."""
@@ -131,12 +219,24 @@ def check_note(note: str, req: Requirements) -> list[str]:
 
 
 # ---- prompt (pure) ----
-def build_prompt(req: Requirements, problems: list[str] | None = None) -> str:
-    """Return the user prompt for the note writer, listing any problems from a rejected draft."""
+def build_prompt(req: Requirements, problems: list[str] | None = None, style: Style | None = None) -> str:
+    """Return the user prompt for the note writer, listing any problems from a rejected draft.
+
+    Args:
+        req: What the note must and must not say.
+        problems: Problems found in the previous draft, if any.
+        style: How the note should read (see `pick_style`); None = a short plain note.
+    """
+    length = LENGTHS[style["length"]] if style else LENGTHS["short"]
+    problem_list = (
+        "add a Problem List section"
+        if style and style["background"]
+        else "add a Problem List section only if a fact below asks for one"
+    )
     lines = [
-        "Write an outpatient progress note of about 120-220 words with these sections: "
-        "Chief Complaint, HPI, Medication List, Exam, Assessment, Plan "
-        "(add a Problem List section only if a fact below asks for one).",
+        f"Write an outpatient progress note of {length}, with these sections: "
+        f"Chief Complaint, HPI, Medication List, Exam, Assessment, Plan ({problem_list}).",
+        *(style_lines(style) if style else []),
         "",
         "Facts the note must make clear:",
         *[f"- {f}" for f in req["facts"]],
@@ -162,7 +262,9 @@ def clean(text: str) -> str:
 
 
 # ---- one scenario ----
-def write_note(t: Table, slots: Slots, llm: LLM, seed: int, attempts: int = 3) -> tuple[str | None, list[dict]]:
+def write_note(
+    t: Table, slots: Slots, llm: LLM, seed: int, attempts: int = 3, style: Style | None = None
+) -> tuple[str | None, list[dict]]:
     """Ask the LLM for a note until one passes the check.
 
     Args:
@@ -171,6 +273,7 @@ def write_note(t: Table, slots: Slots, llm: LLM, seed: int, attempts: int = 3) -
         llm: Note writer; called with (system, user, seed).
         seed: Seed for the first attempt; later attempts use seed + i.
         attempts: Maximum number of drafts.
+        style: How the note should read; None = a short plain note.
 
     Returns:
         (accepted note or None, attempt log of {seed, problems}).
@@ -178,7 +281,7 @@ def write_note(t: Table, slots: Slots, llm: LLM, seed: int, attempts: int = 3) -
     req = requirements(t, slots)
     log, problems = [], None
     for i in range(attempts):
-        note = clean(llm(SYSTEM, build_prompt(req, problems), seed + i))
+        note = clean(llm(SYSTEM, build_prompt(req, problems, style), seed + i))
         problems = check_note(note, req)
         log.append({"seed": seed + i, "problems": problems})
         if not problems:
@@ -204,9 +307,15 @@ def _distractor_record(t: Table, d: Distractor, correct: tuple[str, ...], con: s
 
 
 def make_record(
-    t: Table, slots: Slots, note: str, model: str, log: list[dict], con: sqlite3.Connection | None = None
+    t: Table,
+    slots: Slots,
+    note: str,
+    model: str,
+    log: list[dict],
+    con: sqlite3.Connection | None = None,
+    style: Style | None = None,
 ) -> dict:
-    """Return the scenario JSON. Everything except `note` comes from the rules engine and CMS data."""
+    """Return the scenario JSON. Everything except `note` and the style comes from the rules engine and CMS data."""
     ans = resolve(t, slots)
     return {
         "id": scenario_id(t["id"], slots, note),
@@ -225,6 +334,7 @@ def make_record(
             "model": model,
             "attempts": len(log),
             "created": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
+            **({"style": style} if style else {}),
         },
     }
 
@@ -260,11 +370,12 @@ def pick_slots(t: Table, n: int | None, rng: random.Random) -> list[Slots]:
 def generate_one(
     t: Table, slots: Slots, llm: LLM, seed: int, args: argparse.Namespace, con: sqlite3.Connection | None
 ) -> tuple[Path | None, list[dict]]:
-    """Write, check and save one scenario. Returns (saved path or None, attempt log)."""
-    note, log = write_note(t, slots, llm, seed=seed, attempts=args.attempts)
+    """Write, check and save one scenario in a style picked from `seed`. Returns (saved path or None, attempt log)."""
+    style = pick_style(t, random.Random(seed))
+    note, log = write_note(t, slots, llm, seed=seed, attempts=args.attempts, style=style)
     if note is None:
         return None, log
-    return save(make_record(t, slots, note, args.model, log, con), args.out), log
+    return save(make_record(t, slots, note, args.model, log, con, style), args.out), log
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -325,11 +436,13 @@ def main(argv: list[str] | None = None, llm: LLM | None = None, env: Mapping[str
     ok = failed = 0
     for t in chosen:
         for k, slots in enumerate(pick_slots(t, None if args.all else args.n, rng)):
+            seed = args.seed * 1000 + k
             if args.dry_run:
-                print(f"--- {t['id']} {slots}\n{build_prompt(requirements(t, slots))}\n")
+                style = pick_style(t, random.Random(seed))
+                print(f"--- {t['id']} {slots}\n{build_prompt(requirements(t, slots), style=style)}\n")
                 continue
             try:
-                path, log = generate_one(t, slots, llm, args.seed * 1000 + k, args, con)
+                path, log = generate_one(t, slots, llm, seed, args, con)
             except LLMError as e:
                 print(f"LLM error ({config.provider}, {config.model}): {e}", file=sys.stderr)
                 return 2

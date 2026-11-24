@@ -1,0 +1,64 @@
+{
+  "id": "ckd_staging-e3a7b6553a",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "2",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: The patient is a 79-year-old female who presents today for a routine follow-up of her chronic kidney disease. She reports feeling well overall and denies any acute changes in urinary output, flank pain, or significant fatigue. She notes that her gastroesophageal reflux disease is well-controlled with current lifestyle modifications and medication. She also reports that her seasonal allergic rhinitis is manageable during the current season. She denies any new symptoms of edema or shortness of breath.\n\nMedication List:\n- Omeprazole 20 mg daily\n- Loratadine 10 mg daily\n- Lisinopril 10 mg daily\n\nReview of Systems:\nGeneral: No fever, chills, or weight changes.\nConstitutional: No fatigue or malaise.\nHEENT: No runny nose or itchy eyes.\nRespiratory: No cough or shortness of breath.\nGI: No nausea, vomiting, or abdominal pain.\nMSK: No joint pain or stiffness.\nNeurological: No dizziness or numbness.\n\nSocial History: The patient lives in a single-story home with her spouse. She enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History: Mother had a history of chronic kidney disease. Father had a history of seasonal allergies.\n\nVitals:\nBP: 128/78 mmHg\nHR: 72 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs:\neGFR: 74 mL/min/1.73m2\nCreatinine: 1.4 mg/dL\nHemoglobin: 12.8 g/dL\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No rashes or lesions.\nNeck: No lymphadenopathy.\nHeart: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No edema noted.\n\nAssessment:\n1. Chronic kidney disease, stage 2. The patient's eGFR remains stable at 74.\n2. Gastroesophageal reflux disease. Stable.\n3. Seasonal allergic rhinitis. Stable.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Monitor renal function with repeat labs in 6 months.\n3. Follow up in 6 months for routine evaluation.\n\nProblem List:\n- Chronic kidney disease, stage 2\n- Gastroesophageal reflux disease\n- Seasonal allergic rhinitis\n\nElectronically signed, H. Tanaka, DO, 05/14/2026",
+  "answer": [
+    "N18.2"
+  ],
+  "explanations": [
+    "CKD stage 2: N18.2."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.1"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "The note documents stage 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T16:22:45+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "DO",
+      "signer": "H. Tanaka"
+    }
+  }
+}

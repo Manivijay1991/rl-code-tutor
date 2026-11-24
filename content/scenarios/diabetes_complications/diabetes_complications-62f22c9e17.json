@@ -1,0 +1,109 @@
+{
+  "id": "diabetes_complications-62f22c9e17",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes mellitus and recent hypoglycemia.\n\nHPI\nThe patient is a 79-year-old male presenting for a follow-up visit regarding his management of type 2 diabetes. He reports that his blood glucose levels have been generally stable, and he currently manages his condition through diet and exercise. However, he reports experiencing a recent hypoglycemic episode. He describes feeling shaky and lightheaded for approximately thirty minutes before returning to baseline. He denies any associated syncope or loss of consciousness. He reports consistent adherence to his nutritional plan. He also notes occasional sneezing and itchy eyes during spring months, consistent with his history of seasonal allergic rhinitis.\n\nMedication List\nVitamin D supplement\nMultivitamin\n\nReview of Systems\nConstitutional: Denies fever, chills, or weight changes.\nHEENT: Reports seasonal nasal congestion and itchy eyes.\nNeurological: Denies dizziness or weakness.\nEndocrine: Reports recent hypoglycemic episode.\nMusculoskeletal: No joint pain.\nAll other systems reviewed and are negative.\n\nSocial History\nThe patient is retired and lives with his wife. He enjoys walking in his garden and watching television. He does not smoke and drinks alcohol occasionally.\n\nFamily History\nFather had type 2 diabetes. Mother had seasonal allergies.\n\nRecent Labs\nHbA1c: 6.8%\nVitamin D: 22 ng/mL\neGFR: 72 mL/min/1.73m2\nGlucose: 104 mg/dL\n\nVitals\nBP: 128/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress.\nSkin: No rashes or lesions noted.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm; S1, S2 heard.\nNeurological: Alert and oriented. Steady gait.\n\nAssessment\n1. Type 2 diabetes mellitus, currently diet controlled.\n2. Hypoglycemia.\n3. Vitamin D deficiency.\n4. Seasonal allergic rhinitis.\n\nPlan\n1. Continue current diet and exercise regimen for type 2 diabetes.\n2. Patient advised to monitor blood glucose more frequently to identify triggers for hypoglycemia.\n3. Continue Vitamin D supplementation.\n4. Continue current management for seasonal allergic rhinitis.\n5. Follow up in 3 months.\n\nProblem List\n1. Type 2 diabetes mellitus\n2. Hypoglycemia\n3. Vitamin D deficiency\n4. Seasonal allergic rhinitis\n\nElectronically signed, S. Patel, PA-C, 05/14/2026",
+  "answer": [
+    "E11.649"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:49+00:00",
+    "style": {
+      "age": 79,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "vitamin D deficiency"
+      ],
+      "credential": "PA-C",
+      "signer": "S. Patel"
+    }
+  }
+}

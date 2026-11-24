@@ -1,0 +1,88 @@
+{
+  "id": "meat_support-d2ebcb8b93",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nHPI: The patient is a 73-year-old male presenting for a follow-up evaluation of his mood. He reports that his symptoms have remained relatively consistent over the past month. He describes a persistent low mood and occasional feelings of fatigue, but he denies any thoughts of self-harm or suicidal ideation. He reports that his sleep has been adequate and his appetite remains stable. He feels that his current medication regimen is providing sufficient relief from his symptoms and he notes that his ability to perform daily activities has not significantly declined.\n\nMedication List:\n- Sertraline 50mg daily\n- Lisinopril 10mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight changes.\nPsychiatric: Reports low mood and fatigue; denies hallucinations or delusions.\nNeurological: Denies tremors or memory loss.\nRespiratory: Denies shortness of breath or cough.\nCardiovascular: Denies chest pain or palpitations.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBlood Pressure: 128/82 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 72 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nExam:\nGeneral: The patient is a well-groomed male who appears in no acute distress.\nPsychiatric: Mood is somewhat subdued but his affect is congruent. Speech is normal in rate and volume. Thought process is linear and goal-oriented. Insight and judgment are intact.\n\nAssessment:\n1. Major depressive disorder, recurrent, moderate. The patient's symptoms were reviewed today. He appears to be stable on his current medication.\n\nPlan:\n1. Major depressive disorder, recurrent, moderate: The plan is to continue the current dosage of Sertraline. He will monitor his symptoms and we will meet again in three months for a follow-up.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "F33.1"
+  ],
+  "explanations": [
+    "The provider addressed recurrent moderate major depression: F33.1. Severity matters; unspecified recurrent MDD (F33.9) does not map to a V28 HCC."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "The condition was addressed at the visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity (moderate) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F331"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:56+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

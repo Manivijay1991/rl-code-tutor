@@ -1,0 +1,88 @@
+{
+  "id": "meat_support-b0f19f465b",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: \"Feeling down and tired lately.\"\n\nHPI: Pt is a 68-year-old female presenting for a follow-up regarding her mood. She reports persistent feelings of sadness and low energy over the past month. She notes decreased interest in hobbies and some difficulty with concentration. She denies suicidal ideation, plans, or intent. She reports improved sleep patterns since starting her current regimen but remains frustrated by lack of motivation. No acute physical complaints. She states she is compliant with medications.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Multivitamin PO QD\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\neGFR: 82 mL/min/1.73m2\nLipid Panel: Total Cholesterol 180, LDL 95, HDL 50, Triglycerides 130\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nPsychiatric: Positive for depressed mood and anhedonia. Negative for hallucinations, mania, or suicidal ideation.\nNeurological: Negative for tremors, seizures, or focal weakness.\nRespiratory: Negative for shortness of breath or cough.\nCV: Negative for chest pain or palpitations.\n\nSocial History: Pt is retired. Lives with husband. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had hypertension. Father had history of diabetes.\n\nExam:\nGeneral: Well-appearing, pleasant, cooperative.\nPsych: Alert and oriented x3. Speech is normal rate/tone. Mood is \"down,\" affect is slightly constricted but congruent. Thought process is linear and goal-oriented. Insight and judgment intact.\nPhysical: CTAB. Heart RRR. Lungs clear. Extremities WNL.\n\nAssessment:\n1. Major depressive disorder, recurrent, moderate. Pt is stable on current dose of Sertraline. Symptoms reviewed.\n\nPlan:\n1. Continue Sertraline 50mg QD. Pt to continue monitoring mood and report any worsening of symptoms or suicidal ideation. Follow up in 4 weeks.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "F33.1"
+  ],
+  "explanations": [
+    "The provider addressed recurrent moderate major depression: F33.1. Severity matters; unspecified recurrent MDD (F33.9) does not map to a V28 HCC."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "The condition was addressed at the visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity (moderate) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F331"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:45+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "id": "diabetes_complications-a03c1aa9b9",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes and numbness in feet.\n\nHPI: Pt is a 67-year-old female presenting for routine follow-up of T2DM and chronic polyneuropathy. Pt reports stable glycemic control on long-term oral hypoglycemic therapy. She complains of persistent tingling and \"pins and needles\" sensation in bilateral feet. Pt notes symptoms are stable and have not worsened since last visit. She denies any acute foot ulcers, infections, or recent falls. She continues to manage symptoms with OTC analgesics.\n\nMedication List:\n- Metformin 1000mg BID\n- Omeprazole 20mg daily\n- Vitamin D3 2000 IU daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight changes.\nHEENT: Denies vision changes, sore throat.\nRespiratory: Denies SOB, cough.\nMSK: Reports bilateral foot numbness; denies joint pain.\nGI: Denies nausea, constipation.\nGU: Denies dysuria.\nSkin: Denies rashes.\n\nSocial History: Retired; lives with husband. Non-smoker. Occasional alcohol consumption.\n\nFamily History: Mother had T2DM. Father had coronary artery disease.\n\nRecent Labs:\nHbA1c: 7.2%\neGFR: 65\nVitamin D: 32 ng/mL\n\nVitals:\nBP: 122/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWt: 155 lbs\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nNeurological: Sensation diminished to light touch in bilateral toes. Deep tendon reflexes 2+ throughout. Gait steady.\nSkin: Integument intact, no ulcers noted on feet.\n\nAssessment:\n1. T2DM: Stable on metformin.\n2. Polyneuropathy: Pt reports chronic symptoms. Note: This condition is unrelated to diabetes.\n3. GERD: Stable.\n4. Vitamin D deficiency: Improving with supplementation.\n\nPlan:\n- Continue metformin BID.\n- Continue Vitamin D supplementation.\n- Monitor HbA1c in 3 months.\n- Continue current management of polyneuropathy.\n\nProblem List:\n- T2DM\n- Polyneuropathy (not due to diabetes)\n- GERD\n- Vitamin D deficiency\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:07+00:00",
+    "style": {
+      "age": 67,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "vitamin D deficiency"
+      ],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

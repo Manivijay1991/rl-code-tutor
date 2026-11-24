@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-76a0e61bc6",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: \"Follow up on high blood pressure.\"\n\nHPI: Pt is a 60 y.o. female presenting for routine follow-up of hypertension. Pt reports she has been adherent to her current medication regimen. She denies any recent headaches, dizziness, or chest pain. She notes she feels \"okay\" but wants to ensure her numbers are staying stable. No new concerns voiced today.\n\nMedication List:\n- Lisinopril 20mg daily\n- Hydrochlorothiazide 25mg daily\n\nVitals:\nBP: 138/86\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'4\", 165 lbs\n\nRecent Labs:\nBP: 138/86\nBMP: Na 140, K 4.2, Cr 0.9, eGFR 82\nHbA1c: 5.8%\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies palpitations, SOB, chest pain.\nResp: Denies cough, wheezing.\nGI: Denies N/A, diarrhea, constipation.\nMSK: Denies joint pain, stiffness.\nNeuro: Denies numbness, tingling, focal weakness.\n\nSocial History: Pt is married, works part-time as a librarian. Lives in a single-story home. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension and stroke. Father had T2DM.\n\nExam:\nGen: Well-developed, well-nourished, no acute distress.\nCV: RRR, S1, S2 heard, no murmurs.\nLungs: CTAB.\nExt: No edema, pulses 2+ bilaterally.\nNeuro: Alert and oriented x3. Normal gait.\n\nAssessment:\n1. Hypertension: Currently well-controlled on current meds. BP today is slightly elevated but stable.\n\nPlan:\n1. Continue current Lisinopril and HCTZ.\n2. Encourage low-sodium diet and daily walking.\n3. F/u in 3 months for repeat BP check and labs.\n\nProblem List:\n- major depressive disorder, recurrent, moderate\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Depression appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:00+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

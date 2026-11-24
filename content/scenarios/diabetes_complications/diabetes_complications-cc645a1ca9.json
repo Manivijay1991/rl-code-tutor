@@ -1,0 +1,114 @@
+{
+  "id": "diabetes_complications-cc645a1ca9",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: \"Feeling dizzy and shaky.\"\n\nHPI: Pt is a 77 y.o. female presenting for f/u of T2DM. Pt reports recent episode of hypoglycemia, specifically noting feelings of shakiness, sweating, and lightheadedness last week. Pt states she has been on long-term insulin therapy. Denies concurrent episodes of syncope or loss of consciousness. Pt reports adherence to her current regimen but notes occasional fluctuations in energy levels. No acute complaints of chest pain or shortness of breath.\n\nMedication List:\n- Insulin (long-term)\n- Vitamin D supplement\n- Antacid for GERD\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight changes.\nHEENT: Denies vision changes, sore throat.\nCV: Denies palpitations, chest pain.\nResp: Denies SOB, cough.\nGI: Reports occasional heartburn.\nMSK: Denies joint pain.\nNeuro: Denies numbness, tingling, or focal weakness.\n\nSocial History: Retired. Lives with daughter. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had T2DM. Father had GERD.\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 65 mL/min\nVitamin D: 28 ng/mL\nGlucose (random): 104 mg/dL\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nExam:\nGen: Alert and oriented x3. Well-appearing.\nCV: RRR, regular S1, S2. No murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no masses.\nNeuro: Alert, coherent, steady gait.\nSkin: Intact, no lesions.\n\nAssessment:\n1. T2DM: Stable on current insulin.\n2. Hypoglycemia: Recent episode reported; pt advised on monitoring.\n3. GERD: Stable.\n4. Vitamin D deficiency: Ongoing.\n\nPlan:\n- Continue current insulin regimen.\n- Instructed pt on monitoring blood glucose levels more frequently during periods of shakiness.\n- Continue Vitamin D supplementation.\n- F/u in 3 months.\n\nProblem List:\n- T2DM\n- Hypoglycemia\n- GERD\n- Vitamin D deficiency\n\nElectronically signed,\nP. O'Brien, NP\nMay 14, 2026",
+  "answer": [
+    "E11.649",
+    "Z79.4"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:53+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "vitamin D deficiency"
+      ],
+      "credential": "NP",
+      "signer": "P. O'Brien"
+    }
+  }
+}

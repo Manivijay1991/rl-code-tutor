@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-fddd2ed309",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nPt is an 87yF presenting for routine f/u of HTN. She reports feeling well overall. Denies any recent syncope, chest pain, or shortness of breath. Reports adherence to current meds. BP has been stable at home. No new concerns today.\n\nMedication List\nLisinopril 20mg daily\nHydrochlorothiazide 25mg daily\nAspirin 81mg daily\n\nExam\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6.\nCV: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB.\nExt: No edema.\nNeuro: NAD.\n\nAssessment\n1. Hypertension: Well-controlled on current regimen.\n\nPlan\n1. Continue current medications as prescribed.\n2. Routine f/u in 3 months.\n3. Return to clinic sooner if any acute symptoms develop.\n\nProblem List\n- major depressive disorder, recurrent, moderate\n\nElectronically signed,\nR. Mensah, DO\n05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Depression appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:47+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

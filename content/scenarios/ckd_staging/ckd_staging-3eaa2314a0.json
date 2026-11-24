@@ -1,0 +1,106 @@
+{
+  "id": "ckd_staging-3eaa2314a0",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and chronic kidney disease.\n\nHPI: Pt is an 80-year-old female presenting for routine follow-up of HTN and CKD. Pt reports feeling well overall. Denies any acute shortness of breath, chest pain, or dizziness. Reports compliance with current antihypertensive regimen. Denies any changes in urinary output or significant edema. Reports occasional heartburn, managed with lifestyle and meds.\n\nMedication List:\n- Lisinopril 10mg daily\n- Omeprazole 20mg daily\n- Vitamin D supplement 1000 IU daily\n\nSocial History: Retired. Lives in a single-story home with her spouse. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had HTN. Father had history of CKD.\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nCV: No chest pain, palpitations, or orthopnea.\nResp: No SOB or cough.\nGI: Occasional reflux, no nausea/vomiting.\nMSK: No joint pain.\nNeuro: No headaches or numbness.\n\nVitals:\nBP: 132/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Hgb: 36% / 12.1\nWNL\n\nRecent Labs:\neGFR: 92 (reflects CKD stage 1)\nUrinalysis: Trace albumin\nVitamin D: 28 ng/mL\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular rhythm, no murmurs.\nResp: CTAB, no wheezes.\nAbdomen: Soft, non-tender, no masses.\nExt: No edema, pulses 2+ bilaterally.\n\nAssessment:\n1. Hypertension: Stable, well-controlled on current meds.\n2. Chronic kidney disease, stage 1: Stable. eGFR remains above 90; however, trace albumin noted in urine.\n3. Gastroesophageal reflux disease: Stable.\n4. Vitamin D deficiency: Ongoing management.\n\nPlan:\n- Continue current Lisinopril and Omeprazole.\n- Continue Vitamin D supplementation.\n- Monitor BP at home; f/u in 3 months for labs and BP check.\n- Encouraged low sodium diet.\n\nProblem List:\n- Hypertension\n- CKD stage 1\n- Gastroesophageal reflux disease\n- Vitamin D deficiency\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "I12.9",
+    "N18.1"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.1"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.1"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0,
+        "gap": 0.815,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-24T17:28:01+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "vitamin D deficiency"
+      ],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

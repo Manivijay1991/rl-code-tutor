@@ -1,0 +1,130 @@
+{
+  "id": "diabetes_complications-e755330949",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 1 diabetes and renal function.\n\nHPI\nThe patient is a 79-year-old woman presenting today for a routine follow-up of her type 1 diabetes mellitus and chronic kidney disease stage 4. She reports that she has been managing her blood glucose levels consistently using long-term insulin therapy. She denies any acute symptoms of illness or changes in her renal status since the last visit. She notes that her gastroesophageal reflux disease remains stable with current management. She also reports that her seasonal allergic rhinitis is well-controlled at this time. She denies any recent falls or changes in her functional status.\n\nMedication List\n- Insulin and subcutaneous injections\n- Proton pump inhibitor for GERD\n- Seasonal allergy medications as needed\n\nVitals\nTemperature: 98.6 F\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nBlood Pressure: 122/78 mmHg\nOxygen Saturation: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\neGFR: 22 mL/min/1.73m2\nHbA1c: 7.4%\nSerum Creatinine: 2.8 mg/dL\n\nReview of Systems\nConstitutional: Negative for fever, chills, or weight changes.\nRespiratory: Negative for cough or shortness of breath.\nGastrointestinal: Reports occasional mild reflux; no nausea or vomiting.\nGenitourinary: No dysuria or frequency.\nMusculoskeletal: No joint pain or weakness.\nNeurological: No headaches or dizziness.\n\nSocial History\nThe patient lives at home with her spouse. She retired five years ago and enjoys gardening and reading. She denies tobacco or alcohol use.\n\nFamily History\nMother: Type 1 diabetes.\nFather: Coronary artery disease.\nSiblings: One brother with GERD.\n\nExam\nGeneral: Well-appearing, pleasant, and in no acute distress.\nSkin: Intact, no rashes or lesions.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm; no murmurs.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No edema noted.\n\nAssessment\n1. Type 1 diabetes mellitus: Stable on long-term insulin.\n2. Chronic kidney disease stage 4: Patient’s renal decline is noted to be unrelated to diabetes.\n3. Gastroesophageal reflux disease: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan\n1. Continue current insulin regimen as prescribed.\n2. Monitor renal function with follow-up labs in 3 months.\n3. Continue management of GERD and seasonal allergies.\n\nProblem List\n1. Type 1 diabetes mellitus\n2. Chronic kidney disease stage 4 (not due to diabetes)\n3. Gastroesophageal reflux disease\n4. Seasonal allergic rhinitis\n\nElectronically signed,\nH. Tanaka, DO\nMay 14, 2026",
+  "answer": [
+    "E10.9",
+    "N18.4"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes: code each separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.22",
+        "N18.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Provider documentation of no link overrides the presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.9"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E109"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-24T17:21:54+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "DO",
+      "signer": "H. Tanaka"
+    }
+  }
+}

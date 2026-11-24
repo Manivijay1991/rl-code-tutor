@@ -1,0 +1,70 @@
+{
+  "id": "meat_support-cfc648162b",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nShortness of breath.\n\nHPI\nPt is a 56 y.o. female presenting for f/u of COPD. Pt reports mild dyspnea on exertion but denies increased sputum production, fever, or chills. She states her symptoms are well-managed with current regimen. No recent URI or environmental exposures noted. Pt reports good compliance with inhalers.\n\nMedication List\n1. Tiotropium (Spiriva) 1 inhalation QD\n2. Salmeterol/Fluticasone (Advair) 1 inhalation BID\n3. Albuterol HFA 2 puffs PRN\n\nExam\nGen: Well-appearing, in no acute distress.\nResp: CTAB, RRR, no wheezing or crackles.\nCV: RRR, no murmurs.\nExt: No edema.\nVitals: BP 128/82, HR 74, RR 16, SpO2 96% on RA.\n\nAssessment\n1. COPD: Pt is stable at this time. Symptoms reviewed.\n\nPlan\n1. COPD: Continue current maintenance medications. Pt to monitor for increased cough or secretions. F/u in 3 months.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:38+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

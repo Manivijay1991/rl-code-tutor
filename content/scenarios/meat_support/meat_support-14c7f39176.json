@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-14c7f39176",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for persistent joint pain.\n\nHPI\nThe patient is an 89-year-old woman who presents today for evaluation of worsening bilateral knee pain. She reports that the pain has increased over the last three months, particularly when walking long distances or climbing stairs. She describes the sensation as a dull ache that occasionally sharpens with movement. She denies any recent falls, fever, or localized swelling. She notes that she is managing the discomfort with over-the-counter analgesics but seeks a more formal evaluation of her mobility.\n\nMedication List\nLisinopril 10mg daily\nFurosemide 20mg daily\nAcetaminophen 500mg as needed\n\nExam\nThe patient is alert and oriented. She appears in no acute distress. Physical exam reveals mild tenderness to palpation over the bilateral patellofemoral joints. Range of motion is preserved but limited by discomfort. No erythema or warmth is noted. Gait is steady.\n\nAssessment\n1. Osteoarthritis of the knees.\n\nPlan\n1. Continue current analgesic regimen as needed.\n2. Physical therapy referral for strengthening exercises.\n3. Follow up in 4 weeks to monitor progress.\n\nProblem List\n1. chronic systolic heart failure (HFrEF)\n2. Osteoarthritis of the knees",
+  "answer": [],
+  "explanations": [
+    "Heart failure appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:49+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

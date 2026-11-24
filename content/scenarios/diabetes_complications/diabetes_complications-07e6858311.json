@@ -1,0 +1,95 @@
+{
+  "id": "diabetes_complications-07e6858311",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes.\n\nHPI: Pt is a 90 y.o. female presenting for routine f/u of T2DM. Pt reports she has been feeling well overall. She denies any acute changes in symptoms, vision, or sensation. She remains on a long-term oral hypoglycemic and reports adherence to her current regimen. No reports of significant weight changes or recent infections. Pt denies any acute distress.\n\nMedication List:\n- Metformin 500mg BID\n- Atorvastatin 20mg daily\n- Loratadine 10mg PRN for seasonal allergic rhinitis\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nHEENT: Denies vision changes, ear pain.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies nausea, diarrhea, constipation.\nMSK: Denies joint pain.\nNeuro: Denies numbness, tingling.\n\nSocial History: Lives with daughter. Retired. No tobacco use. Occasional social outings.\n\nFamily History: Mother had T2DM. Father had hyperlipidemia.\n\nRecent Labs:\nHbA1c: 7.2%\neGFR: 65\nLDL: 88\nGlucose (fasting): 126\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 135 lbs\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB, no wheezes or crackles.\nAbd: Soft, non-tender, non-distended.\nExt: WNL, no edema noted.\n\nAssessment:\n1. T2DM without complications.\n2. Hyperlipidemia.\n3. Seasonal allergic rhinitis.\n\nPlan:\n- Continue current oral hypoglycemic and statin.\n- Continue monitoring HbA1c every 3-6 months.\n- Encourage staying hydrated and maintaining current activity level.\n- Return to clinic as needed or for routine f/u.\n\nProblem List:\n- T2DM without complications\n- Hyperlipidemia\n- Seasonal allergic rhinitis\n\nElectronically signed,\nE. Castillo, NP\n05/14/2026",
+  "answer": [
+    "E11.9",
+    "Z79.84"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.84"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:55+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "hyperlipidemia"
+      ],
+      "credential": "NP",
+      "signer": "E. Castillo"
+    }
+  }
+}

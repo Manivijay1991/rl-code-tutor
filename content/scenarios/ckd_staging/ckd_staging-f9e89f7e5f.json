@@ -1,0 +1,94 @@
+{
+  "id": "ckd_staging-f9e89f7e5f",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3a",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI:\n[Copied Forward]\nPatient is a 72-year-old female presenting for evaluation of chronic kidney disease and hyperlipidemia. Patient reports stable renal function with no new symptoms of uremia or significant edema. She reports adherence to her current medication regimen and expresses no concerns regarding her lipid management.\n\n[Today's Update]\nThe patient returns today for a scheduled follow-up. She reports feeling well and maintains stable energy levels. She denies any new shortness of breath, changes in urinary output, or significant fatigue. She reports consistent adherence to her vitamin D supplementation.\n\nVitals:\nBP: 128/82, HR: 74, RR: 16, SpO2: 98% on room air, Temp: 98.6 F, Weight: 155 lbs.\n\nRecent Labs:\neGFR: 52 mL/min/1.73m²\nVitamin D: 28 ng/mL\nTotal Cholesterol: 185 mg/dL\nLDL: 92 mg/dL\n\nMedication List:\n- Atorvastatin 20mg daily\n- Cholecalciferol 2000 IU daily\n\nSocial History:\nRetired teacher. Lives with her spouse. Non-smoker. Occasional social drinking.\n\nFamily History:\nMother had hyperlipidemia. Father had a history of stroke.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for congestion, sore throat.\nCardiovascular: Negative for chest pain, palpitations.\nRespiratory: Negative for cough, wheezing.\nGastrointestinal: Negative for abdominal pain, diarrhea.\nGenitourinary: Negative for dysuria, hematuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for numbness, dizziness.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No rashes or lesions.\nCardiovascular: Regular rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nRenal: No, no tenderness, no trace of edema in lower extremities.\n\nAssessment:\n1. Chronic kidney disease, stage 3a.\n2. Hyperlipidemia.\n3. Vitamin D deficiency.\n\nPlan:\n1. Chronic kidney disease: Continue monitoring renal function and electrolytes. Maintain current hydration.\n2. Hyperlipidemia: Continue atorvastatin; patient to return in 6 months for repeat lipid panel.\n3. Vitamin D deficiency: Continue daily cholecalciferol.\n\nProblem List:\n- Chronic kidney disease, stage 3a\n- Hyperlipidemia\n- Vitamin D deficiency\n\nElectronically signed, A. Rivera, NP, 10/14/2026",
+  "answer": [
+    "N18.31"
+  ],
+  "explanations": [
+    "CKD stage 3a: N18.31."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3a is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is a different (more severe) stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1831"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:12+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "vitamin D deficiency"
+      ],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

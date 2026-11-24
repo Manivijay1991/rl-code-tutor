@@ -258,7 +258,7 @@ const FLOW_NODES = {
 // Both branches loop straight back to "Next case" (dashed, the last two edges); what the selector does
 // with the trap is a label on each loop, not a step: right → its review gap doubles; missed → the very
 // next case is a new case with the same trap (selector.js priority 1).
-const LOOP_LABELS = { ok: "Trap back later: in 2 → 4 → 8 cases", accent: "Next case: same trap, new note" };
+const LOOP_LABELS = { ok: "Same trap later, in a new note: after 2 → 4 → 8 cases", accent: "Next case: same trap, in a new note" };
 const LAYOUTS = {
   wide: {
     viewBox: "0 0 780 316",
@@ -276,8 +276,8 @@ const LAYOUTS = {
     at: { case: [180, 60], answer: [180, 150], right: [95, 256], miss: [265, 256], coach: [265, 356] },
     edges: ["M180 88 V114", "M180 178 V206 H95 V220", "M180 178 V206 H265 V220", "M265 284 V320",
       "M20 256 H8 V60 H97", "M340 356 H352 V60 H263"],
-    labels: [{ x: 95, y: 304, cls: "ok", lines: ["Trap back later:", "in 2 → 4 → 8 cases"] },
-      { x: 265, y: 400, cls: "accent", lines: ["Next: same trap,", "new note"] }],
+    labels: [{ x: 95, y: 304, cls: "ok", lines: ["Same trap, new note,", "after 2 → 4 → 8 cases"] },
+      { x: 265, y: 400, cls: "accent", lines: ["Next: same trap,", "in a new note"] }],
     dots: [
       { path: "M180 60 V206 H95 V256 H8 V60 H180", cls: "ok", dur: 6 },
       { path: "M180 60 V206 H265 V356 H352 V60 H180", cls: "bad", dur: 7 },
@@ -333,7 +333,7 @@ function learningLoop() {
     h("h2", { class: "section-title", id: "loop-title" }, "How your next case is chosen"),
     h("div", { class: "flowbox" },
       h("div", { class: "flow-figure", role: "img",
-        "aria-label": "You answer a case. Right: you go to the next case, and that trap comes back for review later, after 2, then 4, then 8 cases. Missed: you are coached, and your next case is a new note with the same trap." },
+        "aria-label": "You answer a case. Right: you go to the next case, and that trap comes back later in a new note, after 2, then 4, then 8 cases. Missed: you are coached, and your next case is a new note with the same trap." },
         flowSvg("wide"), flowSvg("tall")),
       h("div", { class: "priority" },
         h("span", { class: "priority-k" }, "Picks next"),

@@ -1,0 +1,133 @@
+{
+  "id": "ckd_staging-4f5703b9f7",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease and hypertension.\n\nVitals: BP 138/84, HR 76, RR 16, SpO2 98% on room air, Temp 98.6 F, BMI 29.4.\n\nRecent Labs: eGFR 12 mL/min/1.73m², Creatinine 5.4 mg/dL, Potassium 4.8 mEq/L, Hemoglobin 10.2 g/dL.\n\nSocial History: Patient is a 49-year-old male. He works full-time in a warehouse setting. He reports occasional alcohol consumption and denies tobacco or illicit drug use. He lives with his spouse and two children.\n\nFamily History: Father has a history of hypertension. Mother has a history of osteoarthritis. No family history of early-onset renal failure.\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue, or weight changes.\nEyes: No vision changes or redness.\nEars/Nose/Throat: No congestion, rhinorrhea, or sore throat.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath or cough.\nGastrointestinal: Denies abdominal pain or diarrhea. Reports occasional heartburn.\nMusculoskeletal: Reports bilateral knee stiffness.\nNeurological: Denies numbness or tingling.\nGenitourinary: Denies dysuria or urgency.\nSkin: No new rashes.\n\nHPI: Patient is a 49-year-old male who presented for a follow-up evaluation of his chronic kidney disease and hypertension. He reports that his blood pressure has been stable at home with medication compliance. He notes occasional discomfort in his knees but denies any acute changes. He continues to manage his gastroesophageal reflux disease with lifestyle modifications.\n\nMedication List:\nLisinopril 10mg daily\nHydrochlorothiazide 12.5mg daily\nOmeprazole 20mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No significant rashes or lesions.\nCardiovascular: Regular rhythm, no murmurs, S1 and S2 heard.\nRespiratory: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses.\nMusculoskeletal: Mild swelling and tenderness noted over bilateral knees.\nNeurological: Normal strength and sensation in all extremities.\n\nAssessment:\n1. End stage renal disease: Patient's eGFR remains significantly low at 12.\n2. Hypertension: Blood pressure is currently well-controlled on current regimen.\n3. Gastroesophageal reflux disease: Stable with current management.\n4. Osteoarthritis of both knees: Chronic and stable.\n\nPlan:\n1. Continue current antihypertensive and gastrointestinal medications.\n2. Monitor renal function and electrolytes every 3 months.\n3. Encourage continued hydration and low-sodium diet.\n4. Follow up in 3 months for repeat labs and blood pressure check.\n\nProblem List:\n- End stage renal disease\n- Hypertension\n- Gastroesophageal reflux disease\n- Osteoarthritis of both knees\n\nElectronically signed,\nD. Kowalski, MD\nOctober 14, 2026",
+  "answer": [
+    "I12.0",
+    "N18.6"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.6"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.6"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "N18.6"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:16+00:00",
+    "style": {
+      "age": 49,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "osteoarthritis of both knees"
+      ],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

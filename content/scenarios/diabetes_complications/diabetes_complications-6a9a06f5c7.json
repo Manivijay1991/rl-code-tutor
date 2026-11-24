@@ -1,0 +1,110 @@
+{
+  "id": "diabetes_complications-6a9a06f5c7",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for hyperglycemia.\n\nHPI\nThe patient is a 68-year-old male presenting for a follow-up evaluation regarding his type 2 diabetes. He reports that he has been experiencing symptoms of hyperglycemia, including increased thirst and frequent urination over the past month. He states that his blood glucose levels have been higher than his target range despite his current management strategy. He currently manages his type 2 diabetes mellitus using diet and exercise only. He denies any acute symptoms of infection, vision changes, or numbness in his extremities. He notes that his seasonal allergic rhinitis symptoms are currently mild and manageable with over-the-counter measures.\n\nMedication List\n- Vitamin D3 supplement\n- Over-the-counter antihistamines for seasonal allergic rhinitis\n\nReview of Systems\nConstitutional: Negative for fever, chills, or weight changes.\nHEENT: Positive for occasional sneezing and itchy eyes.\nRespiratory: Negative for cough or shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\nNeurological: Negative for weakness or tremors.\nGenitourinary: Positive for increased frequency of urination.\nIntegumentary: Negative for rashes or sores.\n\nSocial History\nThe patient is retired and lives with his wife. He enjoys walking and gardening. He denies tobacco or alcohol use.\n\nFamily History\nFather had type 2 diabetes. Mother had seasonal allergies.\n\nVitals\nBP: 128/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 195 lbs\n\nRecent Labs\nHbA1c: 8.4%\neGFR: 78 mL/min/1.73m2\nVitamin D: 22 ng/mL\n\nExam\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No new lesions or ulcers noted.\nRespiratory: Lungs clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm.\nNeurological: Grossly intact.\n\nAssessment\n1. Type 2 diabetes: The patient’s condition is currently poorly controlled as evidenced by the elevated HbA1c.\n2. Hyperglycemia: Presenting with symptoms of high blood glucose.\n3. Vitamin D deficiency: Laboratory values indicate a low level.\n4. Seasonal allergic rhinitis: Stable and well-managed.\n\nPlan\n1. Continue diet-controlled management for type 2 diabetes.\n2. Discussed the importance of consistent caloric intake and physical activity.\n3. Increase Vitamin D dosage to address deficiency.\n4. Follow up in three months for repeat HbA1c and laboratory monitoring.\n\nProblem List\n- Type 2 diabetes\n- Hyperglycemia\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed, R. Mensah, MD\nMay 14, 2026",
+  "answer": [
+    "E11.65"
+  ],
+  "explanations": [
+    "Diabetes documented as poorly controlled, out of control, or with hyperglycemia is coded to diabetes with hyperglycemia."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Index: Diabetes, poorly controlled"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.649 is hypoglycemia, not hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:14+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "MD",
+      "signer": "R. Mensah"
+    }
+  }
+}

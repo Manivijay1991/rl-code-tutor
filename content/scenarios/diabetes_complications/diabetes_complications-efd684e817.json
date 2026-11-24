@@ -1,0 +1,133 @@
+{
+  "id": "diabetes_complications-efd684e817",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes and renal function.\n\nHPI: [Copied Forward] Patient is a 78-year-old male presenting for management of type 2 diabetes mellitus and chronic kidney disease stage 4. He reports stable glucose levels and no recent episodes of acute illness. He is managed exclusively on insulin and denies any side effects. He reports occasional heartburn associated with gastroesophageal reflux disease.\n\n[Today's Update] The patient reports he has been feeling well since the last visit. He continues to adhere to his insulin regimen. He denies any new symptoms related to his renal function or gastroesophageal reflux disease.\n\nVitals: BP 128/80, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 27.4.\n\nRecent Labs: HbA1c: 7.4%, eGFR: 22 mL/min/1.73m2, Creatinine: 2.4 mg/dL, Potassium: 4.5 mEq/L.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight change.\nHEENT: Negative for vision changes or sore throat.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Positive for occasional heartburn.\nMusculoskeletal: Negative for joint pain or weakness.\nNeurological: Negative for numbness or tingling.\nGenitourinary: Negative for dysuria.\n\nSocial History: Retired; lives with wife; non-smoker; occasional alcohol use.\nFamily History: Father had coronary artery disease; Mother had stroke.\n\nMedication List:\n- Insulin glargine (long-acting)\n- Atorvastatin 40mg daily\n- Omeprazole 20mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No new lesions or rashes.\nRespiratory: Lungs clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm; no murmurs.\nAbdomen: Soft, non-tender, no masses.\n\nAssessment:\n1. Type 2 diabetes mellitus: Stable on insulin.\n2. Chronic kidney disease stage 4: Stable. Note that the renal decline is not due to diabetes.\n3. Hyperlipidemia: Well-controlled on statin.\n4. Gastroesophageal reflux disease: Stable.\n\nProblem List:\n- Type 2 diabetes mellitus\n- Chronic kidney disease stage 4 (unrelated to diabetes)\n- Hyperlipidemia\n- Gastroesophageal reflux disease\n\nPlan:\n1. Continue current insulin dose; monitor fingerstick glucose.\n2. Continue atorvastatin for hyperlipidemia.\n3. Continue omeprazole for GERD.\n4. Monitor renal function with repeat labs in 3 months.\n\nElectronically signed,\nA. Rivera, PA-C\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.4"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:38+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "PA-C",
+      "signer": "A. Rivera"
+    }
+  }
+}

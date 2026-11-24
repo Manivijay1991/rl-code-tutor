@@ -1,0 +1,117 @@
+{
+  "id": "diabetes_complications-e3338e158d",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for T2DM and numbness in feet.\n\nHPI\nPt is a 71-year-old female presenting for routine management of type 2 diabetes mellitus. She reports persistent tingling and \"pins and needles\" sensations in bilateral feet. Pt states symptoms are constant but do not interfere with mobility. She has been on her current oral hypoglycemic regimen for several years. No acute complaints of vision changes or wound healing issues today.\n\nMedication List\nMetformin 1000mg BID\nGlipizide 5mg daily\n\nExam\nGen: Alert, cooperative, in no acute distress.\nCV: RRR, CTAB.\nExt: Bilateral feet show decreased sensation to monofilament. Skin intact. No ulcers.\nNeuro: Diminished sensation to light touch in distal lower extremities.\n\nAssessment\n1. T2DM: Stable on current oral medications.\n2. Peripheral neuropathy: Symptomatic, stable.\n\nPlan\n1. Continue metformin and glipizide as prescribed.\n2. Monitor foot health; patient instructed to check feet daily for any skin breakdown.\n3. F/u in 3 months for routine labs and management.\n\nElectronically signed, H. Tanaka, PA-C, 05/14/2026",
+  "answer": [
+    "E11.42",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: the combination code E11.42 captures both.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding the two separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.84"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.42"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1142"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:55+00:00",
+    "style": {
+      "age": 71,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

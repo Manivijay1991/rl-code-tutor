@@ -1,0 +1,74 @@
+{
+  "id": "ckd_staging-c1f5644590",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease.\n\nHPI\nPt is a 73 y.o. female presenting for routine monitoring of CKD. Pt reports feeling generally well today. Denies any acute shortness of breath, increased edema, or changes in urinary output. Pt reports adherence to current medication regimen. No new concerns voiced at this time.\n\nMedication List\nLisinopril 10mg daily\nFurosemide 40mg daily\nSevelamer 800mg TID\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\nCV: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB.\nExt: No pedal edema noted.\nSkin: Intact, no lesions.\n\nAssessment\n1. Chronic kidney disease, stage 4. Recent labs show eGFR of 22. Pt is stable on current regimen.\n\nPlan\n1. Continue current medications as prescribed.\n2. F/u in 3 months for labs and blood pressure check.\n3. Patient instructed to report any sudden weight gain or swelling.\n\nElectronically signed,\nM. Okafor, PA-C\n05/12/2026",
+  "answer": [
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD stage 4: N18.4."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 4 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.514,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.514,
+    "hccs": [
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:13+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "M. Okafor"
+    }
+  }
+}

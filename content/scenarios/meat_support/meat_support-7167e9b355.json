@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-7167e9b355",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nShortness of breath and persistent cough.\n\nHPI\nThe patient is a 79-year-old woman presenting today for evaluation of worsening dyspnea over the last three weeks. She reports that her breathing feels more labored during mild exertion, such as walking to the mailbox, and she notes a dry, hacking cough that is most prominent in the early morning. She denies any chest pain, fever, or chills. She also denies any recent travel or exposure to known sick contacts. She states she has been using her rescue inhaler more frequently but feels that her baseline breathing remains more difficult than it was a month ago. She reports a mild decrease in her activity level due to fatigue.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Tiotropium 18mcg daily\n- Albuterol HFA as needed\n- Metformin 500mg daily\n\nVitals\nBP: 138/84 mmHg\nHR: 78 bpm\nRR: 20 breaths/min\nSpO2: 94% on room air\nTemp: 98.6 F\nWeight: 152 lbs\n\nRecent Labs\nHbA1c: 6.8%\neGFR: 62 mL/min/1.73m2\nTSH: 2.1 mIU/L\nCBC: WBC 7.2, Hb 12.4, Plt 210\n\nReview of Systems\nConstitutional: Denies fever, chills, or weight loss.\nRespiratory: Positive for cough and shortness of breath. Denies wheezing.\nCardiovascular: Denies palpitations or orthopnea.\nGastrointestinal: Denies nausea or abdominal pain.\nNeurological: Denies dizziness or syncope.\n\nSocial History\nThe patient is retired and lives in a single-story home with her husband. She enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension and stroke. Father had type 2 diabetes.\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress but shows mild use of accessory muscles during the interview.\nRespiratory: Lungs are clear to auscultation bilaterally. No wheezes or crackles noted.\nCardiovascular: Regular rate and rhythm. S1 and S2 are distinct. No murmurs.\nMusculoskeletal: No joint swelling or erythema.\n\nAssessment\n1. Dyspnea and cough.\n2. Type 2 diabetes mellitus.\n3. Hypertension.\n\nPlan\n1. Continue current medication list.\n2. Increase frequency of albuterol use as needed for acute symptoms.\n3. Follow up in two weeks for a repeat respiratory evaluation.\n4. Patient instructed to seek emergency care if she experiences severe chest pain or blue lips.\n\nElectronically signed, D. Kowalski, NP, 10/14/2026",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:44+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}
