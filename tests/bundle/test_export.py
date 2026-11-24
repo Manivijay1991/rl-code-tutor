@@ -3,7 +3,7 @@ import json
 import pytest
 
 from coding_tutor.bundle import export
-from coding_tutor.engine.rules import make_table, resolve
+from coding_tutor.engine.rules import TableError, make_table, resolve
 
 FILLER = " The patient is seen for routine follow-up today and reports feeling generally well." * 5
 DM_SLOTS = {"dm_type": "type2", "complication": "ckd_stage4", "provider_says_unrelated": "no", "meds": "insulin"}
@@ -127,6 +127,37 @@ def test_load_and_write(tmp_path):
     assert export.load_scenario_files(tmp_path / "missing") == []
     path = export.write_bundle({"x": "é"}, tmp_path / "out" / "bundle.json")
     assert json.loads(path.read_text(encoding="utf-8")) == {"x": "é"}
+
+
+def test_build_bundle_links_only_cited_references(tables):
+    refs = {"OCG I.A.15": {"title": "With", "url": "https://example.org/ocg.pdf#page=11"},
+            "OCG Z.9": {"title": "Unused", "url": "https://example.org/x"}}  # fmt: skip
+    bundle, _ = export.build_bundle([record()], tables, None, refs)
+    cited = export.cited_refs(bundle["scenarios"])
+    assert "OCG I.A.15" in cited
+    assert set(bundle["references"]) == cited & set(refs)
+    assert export.contract_problems(bundle) == []
+    assert export.build_bundle([record()], tables, None)[0]["references"] == {}
+
+
+def test_load_references_validates(tmp_path):
+    good = tmp_path / "refs.json"
+    good.write_text(
+        json.dumps({"OCG I.A.15": {"title": "With", "url": "https://x.org/a.pdf#page=11"}}), encoding="utf-8"
+    )
+    assert export.load_references(good)["OCG I.A.15"]["title"] == "With"
+    assert export.load_references(tmp_path / "missing.json") == {}
+    bad = tmp_path / "bad.json"
+    bad.write_text(json.dumps({"OCG I.A.15": {"title": "With", "url": "http://insecure"}}), encoding="utf-8")
+    with pytest.raises(TableError, match="bad.json"):
+        export.load_references(bad)
+
+
+def test_every_cited_reference_has_a_link(tables):
+    refs = export.load_references()
+    cited = {r for t in tables.values() for c in t["components"] for rule in c["rules"] for r in rule.get("refs", [])}
+    assert cited <= set(refs), sorted(cited - set(refs))
+    assert all(v["url"].startswith("https://") and v["title"] for v in refs.values())
 
 
 def test_real_scenarios_all_export(tables):

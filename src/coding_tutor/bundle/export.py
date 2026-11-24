@@ -23,7 +23,7 @@ from coding_tutor.engine import hcc
 from coding_tutor.engine.codes import dotted
 from coding_tutor.engine.rules import Answer, Slots, Table, TableError, load_tables, match_rule, matches, resolve
 from coding_tutor.generator.scenarios import check_note, flat_evidence, requirements
-from coding_tutor.paths import BUNDLE_PATH, SCENARIOS_DIR
+from coding_tutor.paths import BUNDLE_PATH, REFERENCES_PATH, SCENARIOS_DIR
 from coding_tutor.schema import load_schema, validate
 
 
@@ -32,6 +32,22 @@ def load_scenario_files(directory: Path = SCENARIOS_DIR) -> list[dict]:
     """Return every scenario JSON under `directory`, sorted by id."""
     files = sorted(Path(directory).glob("*/*.json"))
     return sorted((json.loads(p.read_text(encoding="utf-8")) for p in files), key=lambda r: r["id"])
+
+
+def load_references(path: Path = REFERENCES_PATH) -> dict[str, dict]:
+    """Return {reference id: {title, url}} from content/references.json ({} when the file is missing).
+
+    Raises:
+        TableError: The file does not match schemas/references.schema.json.
+    """
+    path = Path(path)
+    if not path.exists():
+        return {}
+    refs = json.loads(path.read_text(encoding="utf-8"))
+    problems = validate(refs, load_schema("references"))
+    if problems:
+        raise TableError(f"{path}: {problems[0]}")
+    return refs
 
 
 # ---- per-table metadata ----
@@ -182,8 +198,20 @@ def code_info(code_list: set[str], con: sqlite3.Connection | None) -> dict[str, 
 
 
 # ---- bundle ----
-def build_bundle(records: list[dict], tables: dict[str, Table], con: sqlite3.Connection | None) -> tuple[dict, list]:
-    """Return (bundle, skipped) where skipped is [(scenario id, problems)]."""
+def build_bundle(
+    records: list[dict],
+    tables: dict[str, Table],
+    con: sqlite3.Connection | None,
+    references: dict[str, dict] | None = None,
+) -> tuple[dict, list]:
+    """Return (bundle, skipped) where skipped is [(scenario id, problems)].
+
+    Args:
+        records: Scenario files.
+        tables: Decision tables by id.
+        con: Code database, or None (no descriptions or risk scores).
+        references: Reference id -> {title, url}; only the ones the scenarios cite are included.
+    """
     entries, skipped = [], []
     for record in records:
         t = tables.get(record["table"])
@@ -201,9 +229,15 @@ def build_bundle(records: list[dict], tables: dict[str, Table], con: sqlite3.Con
         "tables": {tid: table_meta(t) for tid, t in tables.items() if any(e["table"] == tid for e in entries)},
         "codes": code_info(used, con),
         "hccs": {h: hcc.label(h, con) for h in sorted(hccs, key=int)} if con else {},
+        "references": {r: references[r] for r in sorted(cited_refs(entries)) if r in (references or {})},
         "scenarios": entries,
     }
     return bundle, skipped
+
+
+def cited_refs(entries: list[dict]) -> set[str]:
+    """Return every reference id the scenarios cite."""
+    return {r for e in entries for r in e["refs"]}
 
 
 def _hccs_in(entry: dict) -> set[str]:
@@ -230,8 +264,12 @@ def contract_problems(bundle: dict) -> list[str]:
 def main() -> int:
     """Export the bundle and print a summary; exit 1 if any scenario was skipped or the contract fails."""
     con = codedb.default_db()
-    bundle, skipped = build_bundle(load_scenario_files(), load_tables(), con)
+    references = load_references()
+    bundle, skipped = build_bundle(load_scenario_files(), load_tables(), con, references)
     problems = contract_problems(bundle)
+    unlinked = sorted(cited_refs(bundle["scenarios"]) - set(references))
+    if unlinked:
+        print("note: references without a link in content/references.json:", ", ".join(unlinked))
     if problems:
         print("bundle does not match schemas/bundle.schema.json; nothing written:", *problems[:10], sep="\n  ")
         return 1

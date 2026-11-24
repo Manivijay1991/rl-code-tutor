@@ -540,7 +540,7 @@ function hintCard() {
   // Think first: details stay hidden until the student asks for them.
   const more = [];
   if (hint.body) more.push(h("p", {}, hint.body));
-  if (hint.kind === "rule" && hint.refs?.length) more.push(h("div", { class: "refs" }, hint.refs.map((r) => h("span", { class: "ref" }, r))));
+  if (hint.kind === "rule" && hint.refs?.length) more.push(h("div", { class: "refs" }, hint.refs.map(refChip)));
   if (hint.kind === "contrast") {
     more.push(h("div", { class: "contrast" },
       hint.pivotLabel ? h("div", { class: "would" }, h("div", { class: "k" }, "Your choice fits a note that says"), h("div", { class: "v" }, hint.pivotLabel)) : null,
@@ -575,6 +575,15 @@ function revealHint() {
   }
   renderBench();
   document.querySelector(".hint-more")?.focus();
+}
+
+/** A reference chip: a link to the official source (with its title) when the bundle has one, else plain text. */
+function refChip(id) {
+  const ref = app.bundle.references?.[id];
+  if (!ref) return h("span", { class: "ref" }, id);
+  return h("a", { class: "ref ref-link", href: ref.url, target: "_blank", rel: "noopener noreferrer" },
+    h("b", {}, id), h("span", { class: "ref-title" }, ref.title),
+    h("span", { "aria-hidden": "true" }, "↗"), h("span", { class: "sr-only" }, " (opens the official source in a new tab)"));
 }
 
 function miniQuestion(step, key, prefix = null) {
@@ -645,7 +654,7 @@ function debriefCard() {
     parts.push(h("div", { class: "coach-line", style: "margin-top:12px" }, icon("target", 16),
       `Coaching used: ${ACTION_LABELS[q.action]}. Your next new case with this trap tells your tutor whether it helped.`));
   }
-  if (s.refs.length) parts.push(h("div", { class: "section-k" }, "References"), h("div", { class: "refs" }, s.refs.map((r) => h("span", { class: "ref" }, r))));
+  if (s.refs.length) parts.push(h("div", { class: "section-k" }, "References"), h("div", { class: "refs" }, s.refs.map(refChip)));
   parts.push(h("div", { class: "actions" }, h("span", { class: "spacer" }),
     h("button", { class: "btn big", type: "button", on: { click: nextQuestion } }, "Next case", icon("arrow", 16), h("span", { class: "kbd" }, "N"))));
   return h("div", { class: "card debrief", "aria-live": "polite" }, parts);

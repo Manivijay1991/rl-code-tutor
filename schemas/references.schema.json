@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "References",
+  "description": "content/references.json: every reference id a decision table cites (e.g. 'OCG I.C.9.a.2') -> a short title and a link to the official, free source (with #page= for the guidelines PDF).",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["title", "url"],
+    "additionalProperties": false,
+    "properties": {
+      "title": {"type": "string", "minLength": 1},
+      "url": {"type": "string", "pattern": "^https://"}
+    }
+  }
+}

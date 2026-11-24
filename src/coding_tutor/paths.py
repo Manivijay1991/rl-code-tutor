@@ -32,6 +32,7 @@ def _content_dir() -> Path:
 CONTENT_DIR = _content_dir()
 TABLES_DIR = CONTENT_DIR / "tables"
 SCENARIOS_DIR = Path(os.environ.get("CODING_TUTOR_SCENARIOS", CONTENT_DIR / "scenarios"))
+REFERENCES_PATH = CONTENT_DIR / "references.json"
 SCHEMAS_DIR = REPO_ROOT / "schemas"
 
 DATA_DIR = Path(os.environ.get("CODING_TUTOR_DATA", REPO_ROOT / "data"))

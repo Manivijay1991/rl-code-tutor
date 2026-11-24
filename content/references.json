@@ -1,0 +1,42 @@
+{
+  "OCG I.A.15": {
+    "title": "The \"with\" convention",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=11"
+  },
+  "OCG I.C.4.a": {
+    "title": "Diabetes mellitus",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=39"
+  },
+  "OCG I.C.4.a.3": {
+    "title": "Diabetes and the use of insulin, oral hypoglycemics and injectable non-insulin drugs",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=40"
+  },
+  "OCG I.C.9.a.2": {
+    "title": "Hypertensive chronic kidney disease",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=50"
+  },
+  "OCG I.C.14.a": {
+    "title": "Chronic kidney disease",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=62"
+  },
+  "OCG I.C.14.a.1": {
+    "title": "Stages of chronic kidney disease",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=62"
+  },
+  "OCG I.C.21.c.3": {
+    "title": "Status Z codes",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=93"
+  },
+  "OCG IV.I": {
+    "title": "Outpatient: chronic diseases",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=114"
+  },
+  "OCG IV.J": {
+    "title": "Outpatient: code all documented conditions that coexist",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=114"
+  },
+  "ICD-10-CM Index: Diabetes, poorly controlled": {
+    "title": "Alphabetic Index, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  }
+}
