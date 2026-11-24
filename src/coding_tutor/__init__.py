@@ -1,4 +1,4 @@
-"""Coding Tutor: free practice for medical coding certification candidates (CRC first).
+"""CRC Coding Tutor: free practice for medical coding certification candidates (CRC first).
 
 Not affiliated with or endorsed by AAPC, AHIMA, AMA or CMS. Decision tables and generated
 scenarios are drafts until a certified coder reviews them.

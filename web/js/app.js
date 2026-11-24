@@ -4,9 +4,9 @@
 
 import { enqueue, fetchPolicy, flush, loadConfig, toEvents } from "./api.js";
 import { ACTION_LABELS, chooseAction, learnedContexts } from "./bandit.js";
-import { h, icon, mount, svg } from "./dom.js";
+import { h, icon, mount, svg, trapFocus } from "./dom.js";
 import { LADDERS, LEAN_MESSAGES, buildHint, narrowRemovals } from "./hints.js";
-import { DAILY_GOAL, applyTheme, loadBundle, loadPrefs, savePrefs as storePrefs, today, toggleTheme, trapName } from "./common.js";
+import { DAILY_GOAL, applyTheme, loadBundle, loadPrefs, savePrefs as storePrefs, term, today, toggleTheme, trapName } from "./common.js";
 import { evidenceBySlot, pieces, segment, sentencesWithEvidence } from "./note.js";
 import {
   accuracy,
@@ -107,6 +107,17 @@ function staticButtons() {
   $("drawer").addEventListener("click", (e) => e.target === $("drawer") && closeDrawer());
   $("btn-marker").addEventListener("click", toggleMarker);
   $("note").addEventListener("click", onNoteClick);
+  $("note").addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && e.target.closest(".sent[role='button']")) {
+      e.preventDefault();
+      e.stopPropagation();
+      const i = e.target.closest(".sent").dataset.i;
+      onNoteClick(e);
+      document.querySelector(`.sent[data-i="${i}"]`)?.focus();
+    }
+  });
+  $("drawer").addEventListener("keydown", (e) => trapFocus($("drawer"), e));
+  $("overlay").addEventListener("keydown", (e) => trapFocus($("overlay"), e));
 }
 
 function renderTopics() {
@@ -203,7 +214,6 @@ function nextQuestion() {
     tried: new Set(),
     removed: new Set(),
     firstPick: null,
-    sure: true,
     hintsUsed: 0,
     action: null,
     missBucket: null,
@@ -231,6 +241,7 @@ function renderNote() {
   note.classList.toggle("finding", finding);
   const showAll = q.phase === "done";
   const spans = q.scenario.evidence;
+  const interactive = (q.marking || finding) && q.phase !== "done";
   mount(note, q.blocks.map((b) =>
     b.type === "heading"
       ? h("h3", { text: b.text })
@@ -239,6 +250,9 @@ function renderNote() {
           h("span", {
             class: `sent${q.marked.has(sent.i) ? " marked" : ""}${q.hintState.found === sent.i ? " found" : ""}`,
             dataset: { i: String(sent.i) },
+            tabindex: interactive ? "0" : null,
+            role: interactive ? "button" : null,
+            "aria-pressed": q.marking && !finding ? String(q.marked.has(sent.i)) : null,
           }, pieces(sent, spans).map((p) =>
             p.slot ? h("mark", { class: `ev${showAll || q.lit.has(p.slot) ? " lit" : ""}`, dataset: { slot: p.slot } }, p.text) : p.text)),
         ])),
@@ -253,13 +267,29 @@ function renderNote() {
   marker.setAttribute("aria-pressed", String(q.marking));
   mount(marker, icon("marker", 16), q.marking ? "Highlighter on" : "Highlighter");
   const banner = $("find-banner");
-  banner.hidden = !finding;
-  if (finding) mount(banner, "Tap the sentence that decides the codes.");
+  const tip = !finding && !q.marking && !app.prefs.tipSeen && q.phase !== "done";
+  banner.hidden = !finding && !tip;
+  if (finding) mount(banner, "Tap (or Tab to and press Enter on) the sentence that decides the codes.");
+  else if (tip) {
+    mount(banner, h("span", {}, "Tip: turn on the ", h("b", {}, "Highlighter"),
+      " and mark the words that decide the codes. The debrief shows how many you found."),
+    h("button", { class: "btn ghost small", type: "button", on: { click: dismissTip } }, "Got it"));
+  }
+}
+
+function dismissTip() {
+  app.prefs.tipSeen = true;
+  savePrefs();
+  renderNote();
 }
 
 function toggleMarker() {
   if (!app.q || app.q.phase === "done") return;
   app.q.marking = !app.q.marking;
+  if (app.q.marking && !app.prefs.tipSeen) {
+    app.prefs.tipSeen = true;
+    savePrefs();
+  }
   renderNote();
   toast(app.q.marking ? "Highlighter on: tap the sentences that decide the codes" : "Highlighter off");
 }
@@ -316,19 +346,11 @@ function questionCard() {
   const q = app.q;
   const opts = q.scenario.options;
   const done = q.phase === "done";
-  const list = h("div", { class: "options", role: "radiogroup", "aria-label": "Answer choices" },
+  const list = h("div", { class: "options", role: "radiogroup", "aria-label": "Answer choices", on: { keydown: onOptionKey } },
     q.order.map((idx, pos) => optionButton(opts[idx], idx, pos, done)));
 
   const actions = h("div", { class: "actions" });
   if (!done) {
-    if (q.firstPick === null) {
-      actions.append(h("div", { class: "confidence" },
-        h("span", { class: "k", id: "conf-label" }, "How confident are you?"),
-        h("div", { class: "seg", role: "group", "aria-labelledby": "conf-label" },
-          h("button", { type: "button", "aria-pressed": String(q.sure), on: { click: () => setSure(true) } }, "Sure"),
-          h("button", { type: "button", "aria-pressed": String(!q.sure), on: { click: () => setSure(false) } }, "Guessing")),
-        h("span", { class: "why" }, "Confident mistakes come back sooner for review; lucky guesses are not counted as mastered.")));
-    }
     actions.append(h("span", { class: "spacer" }));
     if (q.phase === "stuck") {
       actions.append(h("button", { class: "btn ghost", type: "button", on: { click: keepTrying } }, "Keep trying"),
@@ -345,7 +367,7 @@ function questionCard() {
       h("div", { class: "q-sub" },
         h("span", {}, "Pick the code set the note supports."),
         h("label", { class: "switch" },
-          h("input", { type: "checkbox", checked: app.prefs.showDesc, on: { change: toggleDesc } }), "Show code descriptions"))),
+          h("input", { type: "checkbox", checked: app.prefs.showDesc, on: { change: toggleDesc } }), "Show code descriptions (codebook)"))),
     list,
     q.hintsUsed ? ladder() : null,
     actions);
@@ -372,6 +394,7 @@ function optionButton(opt, idx, pos, done) {
     type: "button",
     role: "radio",
     "aria-checked": String(q.selected === idx),
+    tabindex: idx === focusTarget() ? "0" : "-1",
     disabled,
     dataset: { idx: String(idx) },
     on: { click: () => select(idx) },
@@ -386,22 +409,41 @@ function ladder() {
     q.action ? h("span", { style: "margin-left:auto" }, `Coaching: ${ACTION_LABELS[q.action]}`) : null);
 }
 
-function setSure(v) {
-  app.q.sure = v;
-  renderBench();
-}
-
 function toggleDesc(e) {
   app.prefs.showDesc = e.target.checked;
   savePrefs();
   renderBench();
 }
 
-function select(idx) {
+function selectable(idx) {
   const q = app.q;
-  if (q.phase === "done" || q.tried.has(idx) || q.removed.has(idx)) return;
+  return q.phase !== "done" && q.phase !== "stuck" && !q.tried.has(idx) && !q.removed.has(idx);
+}
+
+/** The option that takes Tab focus: the selected one, else the first selectable one. */
+function focusTarget() {
+  const q = app.q;
+  return q.selected ?? q.order.find(selectable);
+}
+
+function select(idx, focus = false) {
+  const q = app.q;
+  if (!selectable(idx)) return;
   q.selected = idx;
   renderBench();
+  if (focus) document.querySelector(`.option[data-idx="${idx}"]`)?.focus();
+}
+
+function onOptionKey(e) {
+  const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+  if (!(e.key in keys)) return;
+  e.preventDefault();
+  const q = app.q;
+  const enabled = q.order.filter(selectable);
+  if (!enabled.length) return;
+  const current = enabled.indexOf(q.selected ?? Number(e.target.closest(".option")?.dataset.idx));
+  const next = enabled[(current + keys[e.key] + enabled.length) % enabled.length];
+  select(next, true);
 }
 
 // ---------------------------------------------------------------- checking
@@ -463,7 +505,6 @@ function finish(result) {
   q.evidence = q.marked.size ? evidenceScore([...q.marked], evidenceBySlot(q.blocks, q.scenario.evidence)) : null;
   const { progress, settled } = recordOutcome(app.progress, q.scenario, {
     firstOption,
-    sure: q.sure,
     hintsUsed: q.hintsUsed,
     revealed: result === "revealed",
     action: q.action,
@@ -561,16 +602,10 @@ function debriefCard() {
     revealed: ["Here is the answer", "Worth another look: this trap will come back in a new case."],
   };
   const [title, sub] = titles[q.result];
-  const confidence = !first.correct && q.sure
-    ? "You were sure on your first pick, so this is a misconception worth fixing. This trap comes back soon."
-    : first.correct && !q.sure
-      ? "You were not sure, so this trap comes back for review even though you got it right."
-      : null;
   const parts = [
     h("div", { class: `result ${q.result}` },
       h("div", { class: "big-icon" }, icon(q.result === "revealed" ? "book" : "check", 24)),
       h("div", {}, h("h3", {}, title), h("p", {}, sub))),
-    confidence ? h("div", { class: "coach-line", style: "margin-top:12px" }, icon("target", 16), confidence) : null,
     h("div", { class: "section-k" }, "Correct answer"),
     h("div", { class: "answer-rows" }, correct.codes.length
       ? correct.codes.map((c) => h("div", { class: "answer-row" }, h("span", { class: "code" }, c), h("span", {}, app.bundle.codes[c]?.desc ?? "")))
@@ -584,7 +619,7 @@ function debriefCard() {
     parts.push(
       h("div", { class: "section-k" }, "Your first pick"),
       h("div", { class: "codes" }, first.codes.length ? first.codes.map((c) => h("span", { class: "code" }, c)) : h("span", { class: "code none" }, "No code")),
-      h("p", { class: "note-small" }, h("span", { class: `opt-badge lean-${first.lean}` }, first.lean === "over" ? "Overcoding" : first.lean === "under" ? "Undercoding" : "Wrong level"), " ", first.why || trap?.description || ""),
+      h("p", { class: "note-small" }, h("span", { class: `opt-badge lean-${first.lean}` }, first.lean === "over" ? term("Overcoding", "overcoding") : first.lean === "under" ? term("Undercoding", "undercoding") : "Wrong level"), " ", first.why || trap?.description || ""),
       riskCard(first),
     );
   }
@@ -611,7 +646,7 @@ function riskCard(first) {
       ? `Your pick raises the risk score by ${Math.abs(g.gap).toFixed(3)}: an unsupported HCC is an audit finding.`
       : `Your pick lowers the risk score by ${Math.abs(g.gap).toFixed(3)}: a supported condition goes unreported.`;
   return h("div", {},
-    h("div", { class: "section-k" }, `What the miss changes (CMS-HCC V28, ${g.segment} segment)`),
+    h("div", { class: "section-k" }, "What the miss changes (CMS-", term("HCC"), ` V28, ${g.segment} segment)`),
     h("div", { class: "gap-viz" },
       h("div", { class: "gap-row" }, h("span", {}, "Your pick"), h("div", { class: "gap-track" }, h("div", { class: `gap-fill ${g.direction}`, style: `width:${pct(g.student)}` })), h("span", { class: "gap-num" }, g.student.toFixed(3))),
       h("div", { class: "gap-row" }, h("span", {}, "Correct"), h("div", { class: "gap-track" }, h("div", { class: "gap-fill correct", style: `width:${pct(g.correct)}` })), h("span", { class: "gap-num" }, g.correct.toFixed(3)))),
@@ -640,13 +675,16 @@ function evidenceCard() {
 
 // ---------------------------------------------------------------- progress drawer
 function openDrawer() {
+  app.returnFocus = document.activeElement;
   renderDrawer();
   $("drawer").hidden = false;
   $("btn-drawer-close").focus();
 }
 
 function closeDrawer() {
+  if ($("drawer").hidden) return;
   $("drawer").hidden = true;
+  app.returnFocus?.focus?.();
 }
 
 function renderDrawer() {
@@ -656,7 +694,6 @@ function renderDrawer() {
   const lean = leanSummary(p);
   const total = lean.over + lean.under;
   const needle = total ? 50 + ((lean.over - lean.under) / total) * 45 : 50;
-  const cal = (k) => (p.calibration[k].n ? `${Math.round((p.calibration[k].right / p.calibration[k].n) * 100)}%` : "–");
   const leanText = {
     balanced: total < 3 ? "Answer a few more cases to see your lean." : "No strong lean: your misses go both ways.",
     over: "You lean toward overcoding: reporting more than the note supports. Look for MEAT before you code.",
@@ -667,15 +704,14 @@ function renderDrawer() {
     h("div", { class: "stats" },
       stat(t.answered, "cases"), stat(`${pctFirst}%`, "first try"), stat(p.bestStreak, "best streak"), stat(t.answered ? (t.hintsUsed / t.answered).toFixed(1) : "0", "hints per case")),
     h("div", { class: "card" },
-      h("h3", { style: "margin:0;font-size:15px" }, "Your lean"),
+      h("h3", { style: "margin:0;font-size:15px" }, "Your ", term("lean")),
       h("div", { class: "lean-meter", role: "img", "aria-label": `Lean: ${lean.label}` }, h("div", { class: "lean-needle", style: `left:${needle}%` })),
       h("div", { class: "lean-ends" }, h("span", {}, `Undercoding · ${lean.under}`), h("span", {}, `${lean.over} · Overcoding`)),
       h("p", { class: "note-small" }, leanText)),
     h("div", { class: "card" },
-      h("h3", { style: "margin:0;font-size:15px" }, "Confidence check"),
-      h("p", { class: "note-small" }, `When you said Sure: ${cal("sure")} right · Not sure: ${cal("unsure")} right.`),
+      h("h3", { style: "margin:0;font-size:15px" }, "Evidence eye"),
       p.evidence.questions
-        ? h("p", { class: "note-small" }, `Evidence eye: you found ${p.evidence.hit} of ${p.evidence.hit + p.evidence.missed} deciding details across ${p.evidence.questions} marked case${p.evidence.questions === 1 ? "" : "s"}.`)
+        ? h("p", { class: "note-small" }, `You found ${p.evidence.hit} of ${p.evidence.hit + p.evidence.missed} deciding details across ${p.evidence.questions} marked case${p.evidence.questions === 1 ? "" : "s"}.`)
         : h("p", { class: "note-small" }, "Use the highlighter (M) to mark evidence and see your evidence eye here.")),
     trapMap(),
     insights(),
@@ -710,7 +746,7 @@ function trapMap() {
           h("span", { class: "bar" }, h("i", { style: `width:${acc === null ? 0 : Math.round(acc * 100)}%` })),
           h("span", { class: "meta" }, st.seen ? `${Math.round(acc * 100)}% · seen ${st.seen}` : "not met yet"));
       }))));
-  return h("div", { class: "card" }, h("h3", { style: "margin:0;font-size:15px" }, "Trap map"),
+  return h("div", { class: "card" }, h("h3", { style: "margin:0;font-size:15px" }, term("Trap", "trap"), " map"),
     h("p", { class: "note-small" }, "Each tile is a common coding trap. Click one to practice it."), groups);
 }
 
@@ -763,9 +799,11 @@ function resetProgress() {
 // ---------------------------------------------------------------- overlays
 function showOverlay(content, onClose) {
   const ov = $("overlay");
+  const opener = document.activeElement;
   const close = () => {
     ov.hidden = true;
     onClose?.();
+    opener?.focus?.();
   };
   mount(ov, h("div", { class: "modal", role: "dialog", "aria-modal": "true" }, content(close)));
   ov.hidden = false;
@@ -774,11 +812,15 @@ function showOverlay(content, onClose) {
 }
 
 function showKeys() {
-  const rows = [["1–6", "Pick a choice"], ["Enter", "Check / next case"], ["S", "Toggle Sure / Not sure"], ["M", "Highlighter"],
-    ["D", "Code descriptions"], ["N", "Next case (after answering)"], ["P", "Progress"], ["?", "This help"], ["Esc", "Close"]];
+  const rows = [["1–6", "Pick a choice"], ["↑ ↓", "Move between choices"], ["Enter", "Check / next case"],
+    ["M", "Highlighter"], ["D", "Code descriptions"], ["N", "Next case (after answering)"],
+    ["P", "Progress"], ["?", "This help"], ["Esc", "Close"]];
   showOverlay((close) => [
     h("h2", {}, "Keyboard shortcuts"),
     h("div", { class: "keys" }, rows.flatMap(([k, d]) => [h("span", { class: "kbd" }, k), h("span", {}, d)])),
+    h("label", { class: "switch" },
+      h("input", { type: "checkbox", checked: app.prefs.shortcuts, on: { change: (e) => { app.prefs.shortcuts = e.target.checked; savePrefs(); } } }),
+      "Single-key shortcuts (turn off if you use speech input)"),
     h("div", { class: "actions" }, h("span", { class: "spacer" }), h("button", { class: "btn", type: "button", on: { click: close } }, "Got it")),
   ]);
 }
@@ -807,6 +849,7 @@ function onKey(e) {
   }
   if (overlayOpen) return;
   const k = e.key.toLowerCase();
+  if (!app.prefs.shortcuts && k.length === 1) return; // single-character shortcuts are switched off
   if (k === "p") return drawerOpen ? closeDrawer() : openDrawer();
   if (drawerOpen) return;
   if (k === "?") return showKeys();
@@ -824,7 +867,6 @@ function onKey(e) {
   }
   if (k === "n" && q.phase === "done") return nextQuestion();
   if (k === "m") return toggleMarker();
-  if (k === "s" && q.firstPick === null) return setSure(!q.sure);
   if (k === "d") {
     app.prefs.showDesc = !app.prefs.showDesc;
     savePrefs();

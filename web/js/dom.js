@@ -58,10 +58,30 @@ export function icon(name, size = 18) {
     target: "M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z",
     book: "M4 4h5a2 2 0 0 1 2 2v10a2 2 0 0 0-2-2H4zM16 4h-5a2 2 0 0 0-2 2v10a2 2 0 0 1 2-2h5z",
     reset: "M4 10a6 6 0 1 0 2-4.5M4 3v3.5h3.5",
+    pause: "M7.5 5v10M12.5 5v10",
+    play: "M7 5.5v9l7.5-4.5L7 5.5Z",
   };
   return svg(
     "svg",
     { width: size, height: size, viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", "stroke-width": 1.7, "stroke-linecap": "round", "stroke-linejoin": "round", "aria-hidden": "true", class: "icon" },
     svg("path", { d: paths[name] ?? "" }),
   );
+}
+
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+
+/** Keep Tab / Shift+Tab inside `container` (for dialogs). Call from a keydown handler. */
+export function trapFocus(container, e) {
+  if (e.key !== "Tab") return;
+  const items = [...container.querySelectorAll(FOCUSABLE)].filter((el) => el.offsetParent !== null);
+  if (!items.length) return;
+  const first = items[0];
+  const last = items.at(-1);
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }

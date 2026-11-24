@@ -21,7 +21,7 @@ const scenario = (id, confusions = ["a", "b"]) => ({
 });
 const right = (s) => s.options[0];
 const wrong = (s, k = 1) => s.options[k];
-const base = { sure: true, hintsUsed: 0, revealed: false, action: null, missBucket: null, evidence: null, date: "2026-11-23" };
+const base = { hintsUsed: 0, revealed: false, action: null, missBucket: null, evidence: null, date: "2026-11-23" };
 
 test("scenario confusions are unique and prefixed", () => {
   assert.deepEqual(scenarioConfusions(scenario("s", ["a", "a", "b"])), ["t:a", "t:b"]);
@@ -37,21 +37,18 @@ test("a first-try success updates totals, streak and review interval", () => {
   assert.equal(progress.daily["2026-11-23"], 1);
 });
 
-test("review gap depends on confidence", () => {
-  assert.equal(reviewGap(8, { fellFor: true, firstCorrect: false, sure: true }), 1); // confident miss: misconception
-  assert.equal(reviewGap(8, { fellFor: true, firstCorrect: false, sure: false }), 2);
-  assert.equal(reviewGap(8, { fellFor: false, firstCorrect: false, sure: true }), 2); // missed another trap
-  assert.equal(reviewGap(8, { fellFor: false, firstCorrect: true, sure: false }), 8); // lucky guess: do not grow
-  assert.equal(reviewGap(0, { fellFor: false, firstCorrect: true, sure: false }), 2);
-  assert.equal(reviewGap(8, { fellFor: false, firstCorrect: true, sure: true }), 16);
-  assert.equal(reviewGap(32, { fellFor: false, firstCorrect: true, sure: true }), 32); // capped
+test("review gap: misses come back soon, first-pick successes wait longer", () => {
+  assert.equal(reviewGap(8, { fellFor: true, firstCorrect: false }), 1); // fell for this trap
+  assert.equal(reviewGap(8, { fellFor: false, firstCorrect: false }), 2); // missed another trap
+  assert.equal(reviewGap(0, { fellFor: false, firstCorrect: true }), 2);
+  assert.equal(reviewGap(8, { fellFor: false, firstCorrect: true }), 16);
+  assert.equal(reviewGap(32, { fellFor: false, firstCorrect: true }), 32); // capped
 });
 
-test("a confident miss comes back sooner than an unsure one", () => {
+test("a trap you fell for is due right after the next case", () => {
   const s = scenario("s1");
-  const sure = recordOutcome(emptyProgress(), s, { ...base, sure: true, firstOption: wrong(s) }).progress;
-  const unsure = recordOutcome(emptyProgress(), s, { ...base, sure: false, firstOption: wrong(s) }).progress;
-  assert.ok(sure.conf["t:a"].due < unsure.conf["t:a"].due);
+  const p = recordOutcome(emptyProgress(), s, { ...base, firstOption: wrong(s) }).progress;
+  assert.equal(p.conf["t:a"].due, p.qIndex + 1);
 });
 
 test("a miss records the trap, lean, gap and a pending reward", () => {
@@ -97,12 +94,11 @@ test("a failed reward question records 0", () => {
   assert.equal(r.progress.pending["t:b"].action, "find_meat");
 });
 
-test("calibration, evidence and revealed counts", () => {
+test("evidence and revealed counts", () => {
   const s = scenario("s1");
   const { progress } = recordOutcome(emptyProgress(), s, {
-    ...base, firstOption: wrong(s), sure: true, revealed: true, evidence: { hit: 1, missed: 1, extra: 2 },
+    ...base, firstOption: wrong(s), revealed: true, evidence: { hit: 1, missed: 1, extra: 2 },
   });
-  assert.deepEqual(progress.calibration.sure, { n: 1, right: 0 });
   assert.deepEqual(progress.evidence, { questions: 1, hit: 1, missed: 1, extra: 2 });
   assert.equal(progress.totals.revealed, 1);
   assert.equal(progress.totals.solvedWithHints, 0);
@@ -134,4 +130,11 @@ test("history is capped", () => {
   for (let i = 0; i < 305; i++) p = recordOutcome(p, s, { ...base, firstOption: right(s) }).progress;
   assert.equal(p.history.length, 300);
   assert.equal(p.bestStreak, 305);
+});
+
+test("older saved progress loses the removed confidence stats", () => {
+  const old = { ...emptyProgress(), streak: 2, calibration: { sure: { n: 3, right: 1 }, unsure: { n: 0, right: 0 } } };
+  const p = migrate(old);
+  assert.equal(p.streak, 2);
+  assert.equal("calibration" in p, false);
 });

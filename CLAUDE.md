@@ -1,4 +1,4 @@
-# Coding Tutor: project context for Claude Code
+# CRC Coding Tutor: project context for Claude Code
 
 ## What this is
 A free, open-source practice tool for medical coding certification candidates, built mainly as a learning project in LLM + reinforcement learning. Primary audience: AAPC **CRC** (risk adjustment) candidates; **CIC** (inpatient) is the likely second target. Both exams use only free code sets.
@@ -30,7 +30,7 @@ Pipeline inside `src/coding_tutor/`:
    `generator/scenarios.py` — picks slots, engine computes answer, the injected LLM (default: local Ollama) writes the note, a check confirms deciding details are present (and answer-changing phrases absent), output saved to `content/scenarios/<table>/<id>.json`. Note-writing hints live in the tables: `describe`, `exclusive`, `note_forbid`, `note_rules`, `question`.
 4. `rl/` — simulator (`simulator.py`), policies (`policies.py`), experiment (`experiment.py`).
 5. `bundle/export.py` — rebuilds every scenario's answer, distractors (trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine into `web/data/bundle.json`; refuses to write if it does not match `schemas/bundle.schema.json`. Re-run after any table or scenario change.
-   `web/js/` — static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward, confidence-aware review gaps), `selector.js` (pending reward → due review → unseen → weakest), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `api.js` (live bandit client), `common.js` (prefs, theme, dates, shared by both pages), `home.js` (home page: hero, animated walkthrough, next-case loop), `app.js` (assessment page controller). Pages: `index.html` → `practice.html?topic=<id>` (`#progress` opens the progress drawer). Animations respect prefers-reduced-motion; layouts are checked from 320px to 1920px. Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
+   `web/js/` — static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward, spaced-review gaps), `selector.js` (pending reward → due review → unseen → weakest), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `api.js` (live bandit client), `common.js` (prefs, theme, dates, shared by both pages), `home.js` (home page: hero, animated walkthrough, next-case loop), `app.js` (assessment page controller). Pages: `index.html` → `practice.html?topic=<id>` (`#progress` opens the progress drawer). Animations respect prefers-reduced-motion; layouts are checked from 320px to 1920px. Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
 6. `live/` — live bandit service (optional; `web/config.json` `api`: null = offline, "/api" = same origin, or a URL). Browser still chooses actions with Thompson sampling over its own counts + shared counts from `GET /v1/policy` (capped at `SHARED_CAP`=20 pseudo-trials). Settled rewards go to `POST /v1/events` as exactly `{confusion, bucket, action, reward}` (`schemas/event.schema.json`; `policy.py` rejects any other field). `app.py` stdlib WSGI `make_app` (injected `Store`, confusions, CORS allowlist, rate limiter, clock; paths accept an `/api` prefix); `stores/` backends build a `Store` (record, arm_rows, total_events): `stores/sqlite.py` now (arm totals + append-only event log, no identifiers, day granularity), Redis for Vercel TODO. `server.py` = standalone API.
 7. `devserver/` — `coding-tutor-serve [--with-api]`: static files (`static.py`) plus, optionally, the live API under `/api` on one origin, answering `/config.json` as `{"api": "/api"}` (the file on disk is untouched).
 
@@ -59,6 +59,14 @@ Pipeline inside `src/coding_tutor/`:
   policies implement one shared interface (`coding_tutor.rl.policies.Agent`): name, act(ctx), update(ctx, action, reward, next_ctx),
   where ctx = (confusion, miss bucket 1/2/3).
 - No secrets, API keys, student identifiers or patient data in code, tests, fixtures or logs.
+
+## Accessibility (web, WCAG 2.2 AA)
+- Text colours must pass `tests/web/contrast.test.mjs` (4.5:1) in both themes; adjust tokens in `web/css/app.css`, never one-off colours.
+- Everything usable by keyboard: answer choices are a radio group (roving tabindex, arrow keys); note sentences become focusable buttons while marking/finding; dialogs and the drawer trap focus and return it on close.
+- Single-key shortcuts can be switched off (Keyboard shortcuts dialog, `prefs.shortcuts`).
+- Anything that auto-advances has a visible Pause button and stops under prefers-reduced-motion.
+- Jargon gets a glossary tooltip via `term()` in `common.js`; hidden tooltips use `display: none` so they never widen the page.
+- Check 320–1920px for horizontal overflow before shipping UI changes.
 
 ## Testing
 - All tests live in one root, `tests/`, mirroring the source layout for both languages:

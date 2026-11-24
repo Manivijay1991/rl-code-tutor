@@ -1,9 +1,10 @@
-# Coding Tutor
+# CRC Coding Tutor
 
 A free, non-commercial practice tool for **CRC (risk adjustment) coding** candidates. A rules engine
 decides every answer; a Thompson-sampling bandit chooses *how to teach* after a wrong answer.
 
-> Not affiliated with or endorsed by AAPC, AHIMA, AMA or CMS. All decision tables and generated
+> CRC (Certified Risk Adjustment Coder) is a credential of AAPC. This project is not affiliated with or
+> endorsed by AAPC, AHIMA, AMA or CMS. All decision tables and generated
 > scenarios are **drafts** until reviewed by a certified coder. Not for production coding.
 
 ## Setup (Windows / PowerShell)
@@ -39,8 +40,33 @@ on any static host. Progress stays in the student's browser.
   names the correct code; the answer appears only if you ask.
 - **Adaptive:** a Thompson-sampling bandit picks the coaching style per (trap, miss count) and learns
   from the next NEW case with the same trap. Spaced review brings traps back.
-- **Know your lean:** overcoding vs undercoding meter, confidence check, trap map, "what helps you".
+- **Know your lean:** overcoding vs undercoding meter, evidence eye, trap map, "what helps you".
 - **Why it matters:** the debrief shows how the miss moves the CMS-HCC V28 risk score (feedback only).
+
+### How the next case is chosen
+
+```mermaid
+flowchart TD
+    A["Next case is chosen<br/>pending re-test → due review → new trap → weakest trap"] --> B["Read the note, mark evidence,<br/>pick a code set"]
+    B --> C{"Right on the<br/>first pick?"}
+    C -- No --> D["Trap found<br/>(the wrong choice is tagged with its trap)"]
+    D --> E["Tutor picks a coaching style<br/>Thompson sampling on (trap, miss count)"]
+    E --> F["Up to 3 hints, re-pick after each<br/>no hint names the answer"]
+    F --> G["Trap marked pending;<br/>it comes back in the next cases"]
+    G --> A
+    C -- Yes --> H{"Was this case re-testing<br/>a pending trap?"}
+    H -- Yes --> I["Reward 1 for the coaching style used"]
+    H -- No --> J["Review gap for the trap grows"]
+    I --> L["Tutor learns: that style is used more for this trap"]
+    J --> A
+    L --> A
+    C -. "No, on a re-test" .-> K["Reward 0 for the coaching style used"]
+    K --> M["Tutor learns: that style is used less for this trap"]
+    M --> D
+```
+
+Re-picks after hints never count as the reward; only the first pick on the NEW case does. The same flow
+is drawn natively (no Mermaid library, works offline) on the home page.
 
 ### Live bandit API (optional): the tutor learns from every student
 

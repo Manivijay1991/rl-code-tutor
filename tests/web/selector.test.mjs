@@ -16,7 +16,7 @@ const sc = (id, table, traps, nCodes = 1) => ({
 const bundle = {
   scenarios: [sc("a1", "t", ["x"], 3), sc("a2", "t", ["x"], 1), sc("a3", "t", ["x", "y"], 2), sc("b1", "u", ["z"])],
 };
-const base = { sure: true, hintsUsed: 0, revealed: false, evidence: null, date: "d" };
+const base = { hintsUsed: 0, revealed: false, evidence: null, date: "d" };
 
 test("empty pool returns null", () => {
   assert.equal(nextScenario({ scenarios: [] }, emptyProgress()), null);

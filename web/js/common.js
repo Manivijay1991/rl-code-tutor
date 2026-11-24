@@ -1,10 +1,10 @@
 // Shared by both pages (index.html = home, practice.html = assessment): preferences, theme, dates, names.
 
-import { icon, mount } from "./dom.js";
+import { h, icon, mount } from "./dom.js";
 import { PREFS_KEY, loadJSON, saveJSON } from "./store.js";
 
 export const DAILY_GOAL = 10;
-export const DEFAULT_PREFS = { theme: null, showDesc: true, topic: null, share: true };
+export const DEFAULT_PREFS = { theme: null, showDesc: false, topic: null, share: true, shortcuts: true, tipSeen: false };
 
 /** Stored preferences merged over the defaults. */
 export function loadPrefs() {
@@ -59,4 +59,20 @@ export async function loadBundle(url = "data/bundle.json") {
 /** URL of the assessment page, optionally for one topic. */
 export function practiceUrl(topic = null) {
   return topic ? `practice.html?topic=${encodeURIComponent(topic)}` : "practice.html";
+}
+
+/** Plain-language meanings for the jargon students meet in the app. */
+export const GLOSSARY = {
+  trap: "A common coding mistake that a question tests, such as missing the diabetes 'with' link.",
+  lean: "Whether your misses tend to report too much (overcoding) or too little (undercoding).",
+  overcoding: "Reporting a code or condition the documentation does not support.",
+  undercoding: "Leaving out a code or condition the documentation does support.",
+  HCC: "Hierarchical Condition Category: a CMS group of diagnoses used to calculate risk scores.",
+  MEAT: "Monitor, Evaluate, Assess/Address, Treat: signs that a condition was addressed at the visit.",
+};
+
+/** A word with its glossary meaning as a keyboard-reachable tooltip. */
+export function term(word, key = word) {
+  const tip = GLOSSARY[key] ?? GLOSSARY[key.toLowerCase()];
+  return h("span", { class: "term", tabindex: "0", "data-tip": tip, title: tip }, word);
 }

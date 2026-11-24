@@ -29,7 +29,6 @@ export function emptyProgress() {
     totals: { answered: 0, firstTry: 0, solvedWithHints: 0, revealed: 0, hintsUsed: 0 },
     lean: { over: 0, under: 0, neutral: 0 },
     gap: { over: 0, under: 0 },
-    calibration: { sure: { n: 0, right: 0 }, unsure: { n: 0, right: 0 } },
     evidence: { questions: 0, hit: 0, missed: 0, extra: 0 },
     daily: {},
     history: [],
@@ -59,21 +58,19 @@ export function nextMissBucket(progress, confusion) {
 }
 
 /**
- * Spaced-review gap (in questions) after one more question containing a trap. Confidence matters:
- *   sure and fell for it    -> a misconception: back after 1 question
- *   unsure and fell for it  -> back after 2
- *   unsure but right        -> not mastered yet: keep the current gap (at least 2), do not grow it
- *   sure and right          -> double the gap (2, 4, 8 ... MAX_INTERVAL)
+ * Spaced-review gap (in questions) after one more question containing a trap:
+ *   fell for this trap          -> back after 1 question
+ *   missed, but on another trap -> back after 2
+ *   right on the first pick     -> double the gap (2, 4, 8 ... MAX_INTERVAL)
  */
-export function reviewGap(interval, { fellFor, firstCorrect, sure }) {
-  if (fellFor) return sure ? 1 : 2;
-  if (!firstCorrect) return 2; // missed, but on a different trap in this case
-  if (!sure) return Math.max(2, interval);
+export function reviewGap(interval, { fellFor, firstCorrect }) {
+  if (fellFor) return 1;
+  if (!firstCorrect) return 2;
   return Math.min(MAX_INTERVAL, Math.max(2, interval * 2));
 }
 
-function updateConf(stats, { fellFor, firstCorrect, sure, qIndex }) {
-  const gap = reviewGap(stats.interval, { fellFor, firstCorrect, sure });
+function updateConf(stats, { fellFor, firstCorrect, qIndex }) {
+  const gap = reviewGap(stats.interval, { fellFor, firstCorrect });
   return {
     seen: stats.seen + 1,
     right: stats.right + (firstCorrect ? 1 : 0),
@@ -103,7 +100,6 @@ function settleRewards(progress, scenario, confusions, firstCorrect) {
  *
  * outcome = {
  *   firstOption,      the option object picked first
- *   sure,             confidence on the first pick (boolean)
  *   hintsUsed,        0-3
  *   revealed,         the student asked for the answer
  *   action,           teaching action chosen after the first miss (or null)
@@ -129,7 +125,6 @@ export function recordOutcome(progress, scenario, outcome) {
     conf[c] = updateConf(confStats(progress, c), {
       fellFor: c === fellFor,
       firstCorrect,
-      sure: Boolean(outcome.sure),
       qIndex,
     });
   }
@@ -142,12 +137,6 @@ export function recordOutcome(progress, scenario, outcome) {
     const g = outcome.firstOption.gap;
     if (g && g.direction !== "none") gap[g.direction] = round3(gap[g.direction] + Math.abs(g.gap));
   }
-
-  const calKey = outcome.sure ? "sure" : "unsure";
-  const calibration = {
-    ...progress.calibration,
-    [calKey]: { n: progress.calibration[calKey].n + 1, right: progress.calibration[calKey].right + (firstCorrect ? 1 : 0) },
-  };
 
   const evidence = outcome.evidence
     ? {
@@ -177,7 +166,6 @@ export function recordOutcome(progress, scenario, outcome) {
     hints: outcome.hintsUsed,
     revealed: Boolean(outcome.revealed),
     action: outcome.action ?? null,
-    sure: Boolean(outcome.sure),
   };
 
   return {
@@ -193,7 +181,6 @@ export function recordOutcome(progress, scenario, outcome) {
       totals,
       lean,
       gap,
-      calibration,
       evidence,
       daily,
       history: [...progress.history, entry].slice(-HISTORY_LIMIT),
@@ -228,7 +215,8 @@ export function leanSummary(progress) {
 /** Restore a stored object, falling back to an empty progress when it is missing or outdated. */
 export function migrate(stored) {
   if (!stored || stored.version !== PROGRESS_VERSION) return emptyProgress();
-  return { ...emptyProgress(), ...stored };
+  const { calibration, ...rest } = stored; // removed with the Sure/Guessing control
+  return { ...emptyProgress(), ...rest };
 }
 
 function round3(x) {
