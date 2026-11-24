@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-881c98f537",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for persistent low back pain.\n\nHPI\nThe patient is a 54-year-old male presenting for evaluation of chronic low back pain that has persisted for approximately three months. He reports a dull ache localized to the lumbar region, which occasionally radiates into the right buttock. He notes that the pain is exacerbated by prolonged sitting and heavy lifting. He denies any recent trauma, fever, or neurological deficits such as numbness or tingling in the lower extremities. He has attempted over-the-counter analgesics with only partial relief.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nTiotropium 18mcg daily\nNaproxen 500mg as needed\n\nExam\nThe patient is alert and in no acute distress. Physical exam reveals tenderness to palpation over the lumbar spine. Range of motion is limited by discomfort. Straight leg raise test is negative bilaterally. Strength and sensation are intact in both lower extremities.\n\nAssessment\n1. Chronic low back pain.\n\nPlan\nThe patient will begin a course of physical therapy twice weekly focusing on core strengthening and stretching. We discussed proper lifting techniques and ergonomic adjustments at his workplace. Follow-up in four weeks to assess progress.",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:15:33+00:00"
+  }
+}

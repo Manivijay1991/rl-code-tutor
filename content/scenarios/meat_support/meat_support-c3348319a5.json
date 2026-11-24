@@ -1,0 +1,78 @@
+{
+  "id": "meat_support-c3348319a5",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for heart failure.\n\nHPI\nThe patient is a 68-year-old male presenting for a scheduled follow-up regarding chronic systolic heart failure. He reports feeling well today and denies any increased shortness of breath, paroxysmal nocturnal dyspnea, or significant lower extremity edema. He states he has been adherent to his current medication regimen and has not experienced any chest pain or syncope since the last visit.\n\nMedication List\nLisinopril 20mg daily, Carvedilol 12.5mg twice daily, Spironolactone 25mg daily, Furosemide 40mg as needed.\n\nExam\nThe patient appears in no acute distress. Vital signs are stable. Heart sounds are regular with an S3. Lungs are clear to auscultation bilaterally. No peripheral edema noted in the lower extremities.\n\nAssessment\n1. Chronic systolic heart failure: The patient is currently stable and reports good symptom control.\n\nPlan\n1. Chronic systolic heart failure: The plan is to continue the current medication regimen. The patient will monitor for any increase in weight or fluid retention and return in three months for a follow-up evaluation.",
+  "answer": [
+    "I50.22"
+  ],
+  "explanations": [
+    "The provider addressed chronic systolic heart failure at this visit, so it is supported: I50.22."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.36,
+        "gap": -0.36,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Type (systolic) and acuity (chronic) are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5022"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:15:35+00:00"
+  }
+}

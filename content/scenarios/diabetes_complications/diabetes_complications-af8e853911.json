@@ -1,0 +1,114 @@
+{
+  "id": "diabetes_complications-af8e853911",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and peripheral neuropathy.\n\nHPI\nThe patient is a 64-year-old individual presenting for a routine follow-up of type 2 diabetes mellitus. The patient reports stable glucose levels while maintaining their current regimen of insulin and an oral hypoglycemic agent. They also report ongoing symptoms of polyneuropathy, characterized by tingling and numbness in the bilateral feet. The patient notes that these sensations have persisted over several months.\n\nMedication List\n- Insulin\n- Metformin\n- Glipizide\n\nExam\nThe patient is alert and oriented. Physical examination of the lower extremities reveals diminished sensation to light touch in the toes. No acute skin breakdown or ulcers are noted. Neurological assessment confirms the presence of polyneuropathy.\n\nAssessment\n1. Type 2 diabetes mellitus: Stable on current regimen.\n2. Polyneuropathy: The patient's condition is unrelated to diabetes.\n\nPlan\nContinue current insulin and metformin dosages. Monitor blood glucose levels daily. Provide education on foot care and sensation monitoring. Follow up in three months.",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:17:05+00:00"
+  }
+}

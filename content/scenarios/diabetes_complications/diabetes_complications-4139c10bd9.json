@@ -1,0 +1,106 @@
+{
+  "id": "diabetes_complications-4139c10bd9",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 1 diabetes and tingling in feet.\n\nHPI\nThe patient is a 54-year-old individual presenting for a routine follow-up of type 1 diabetes mellitus. The patient reports persistent sensations of tingling and numbness in the bilateral lower extremities. These symptoms are described as constant and have been present for several months. The patient has been using insulin for long-term management of their condition. There are no reports of acute changes in sensation or new motor deficits at this time.\n\nMedication List\n- Insulin (long-term)\n- No oral diabetes medications\n\nExam\nThe patient is alert and oriented. Physical examination of the lower extremities reveals diminished sensation to light touch and vibration in the toes and metatarsal heads. Strength is 5/5 in all muscle groups. Reflexes are diminished at the ankles.\n\nAssessment\n1. Type 1 diabetes mellitus\n2. Polyneuropathy\n\nPlan\nThe patient will continue their current insulin regimen. We will monitor the progression of the peripheral neuropathy. The patient was advised to wear supportive footwear and to report any significant changes in sensation or motor function. Follow-up in three months.",
+  "answer": [
+    "E10.42"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: E10.42.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "G62.9"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1042"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:16:25+00:00"
+  }
+}

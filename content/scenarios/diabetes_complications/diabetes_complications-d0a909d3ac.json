@@ -1,0 +1,108 @@
+{
+  "id": "diabetes_complications-d0a909d3ac",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and foot discomfort.\n\nHPI\nThe patient is a 64-year-old male presenting for a routine follow-up of his type 2 diabetes mellitus. He reports persistent tingling and a \"pins and needles\" sensation in both feet, which he describes as a worsening symptom of his peripheral neuropathy. He denies any acute injuries to the feet or sudden changes in sensation. He has been adherent to his long-term oral medication regimen and reports consistent glucose monitoring.\n\nMedication List\nMetformin 1000mg daily.\n\nExam\nGeneral: The patient is alert and in no acute distress.\nExtremities: Physical examination of the lower extremities reveals diminished sensation to light touch and vibration in the toes bilaterally. No ulcers or visible skin breakdown noted. Reflexes are diminished at the ankles.\n\nAssessment\n1. Type 2 diabetes mellitus.\n2. Peripheral neuropathy.\n\nPlan\nThe patient will continue his current oral hypoglycemic therapy with metformin. We will monitor his sensation levels and schedule a follow-up in three months to evaluate the progression of his symptoms. He was instructed to perform daily foot inspections.",
+  "answer": [
+    "E11.42",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: the combination code E11.42 captures both.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding the two separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.84"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.42"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1142"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:16:56+00:00"
+  }
+}

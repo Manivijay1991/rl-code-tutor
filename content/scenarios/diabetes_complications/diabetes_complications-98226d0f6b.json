@@ -1,0 +1,104 @@
+{
+  "id": "diabetes_complications-98226d0f6b",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for management of type 2 diabetes and polyneuropathy.\n\nHPI\nThe patient is a 62-year-old male presenting for a routine follow-up. He reports stable management of his type 2 diabetes mellitus, which is currently diet controlled. He notes persistent tingling and some numbness in his feet, consistent with his known polyneuropathy. He denies any acute changes in sensation or significant pain. He reports adherence to his current lifestyle modifications.\n\nMedication List\nMultivitamins, Vitamin B12.\n\nExam\nGeneral: Well-appearing, in no acute distress.\nExtremities: Diminished sensation to light touch noted in bilateral toes and metatarsal heads. No active ulcers or skin breakdown observed. Strength remains intact.\n\nAssessment\n1. Type 2 diabetes mellitus: Patient is currently stable and managed via diet and exercise.\n2. Polyneuropathy: Chronic symptoms persisting.\n\nPlan\nContinue current diet-based management for type 2 diabetes. Monitor sensation in lower extremities. Follow up in 3 months for routine evaluation.",
+  "answer": [
+    "E11.42"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: the combination code E11.42 captures both."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding the two separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "G62.9"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1142"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:14:58+00:00"
+  }
+}

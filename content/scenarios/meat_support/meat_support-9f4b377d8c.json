@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-9f4b377d8c",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for chronic low back pain.\n\nHPI\nThe patient is a 54-year-old male presenting for a follow-up evaluation of chronic low back pain. He reports that the pain has been persistent for approximately six months, characterized as a dull ache in the lumbar region. He notes that the intensity is currently a 4 out of 10, occasionally increasing with prolonged sitting or heavy lifting. He denies any radiating pain down the lower extremities, numbness, or weakness. He has been practicing core strengthening exercises and reports moderate improvement in mobility over the last month.\n\nMedication List\nSertraline 50mg daily.\n\nExam\nThe patient is alert and in no acute distress. Physical examination reveals mild tenderness to palpation over the lumbar spine. Range of motion is within functional limits for flexion and extension. Neurological examination of the lower extremities is intact, with normal sensation and strength in the L2-S1 distributions. No spinal step-off is noted.\n\nAssessment\n1. Chronic low back pain.\n\nPlan\nContinue current core strengthening program and physical therapy. Patient advised to maintain proper posture during work hours. Follow up in four weeks to monitor progress.",
+  "answer": [],
+  "explanations": [
+    "An antidepressant on the list does not establish major depression; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:17:37+00:00"
+  }
+}

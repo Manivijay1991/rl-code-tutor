@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-d14fe23214",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nThe patient is a 58-year-old male presenting today for a routine follow-up of hypertension. He reports that his blood pressure has been well-controlled over the last month. He denies any headaches, dizziness, or vision changes. He has been adherent to his current medication regimen and reports no side effects. He continues to engage in regular walking for exercise.\n\nMedication List\nLisinopril 20mg daily\nHydrochlorothiazide 25mg daily\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented. Vital signs are stable with a blood pressure of 128/82 mmHg. Heart rate is regular. Lungs are clear to auscultation. No pedal edema noted.\n\nAssessment\n1. Hypertension: Stable and well-controlled on current medications.\n\nPlan\n1. Continue current medication regimen as prescribed.\n2. Patient instructed to continue daily blood pressure monitoring at home.\n3. Follow up in 3 months for routine check.\n\nProblem List\n1. major depressive disorder, recurrent, moderate",
+  "answer": [],
+  "explanations": [
+    "Depression appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:17:35+00:00"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "diabetes_complications-92b8eb7c9f",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for diabetes management.\n\nHPI\nThe patient presents today for a routine follow-up of their type 2 diabetes. They report feeling well and have been consistent with their current management strategy. The patient states they are currently managing their glucose levels through diet and exercise alone. They report no issues with weight management or energy levels and maintain a stable routine.\n\nMedication List\nNo medications for diabetes.\n\nExam\nThe patient is alert and oriented. Vital signs are stable. Physical examination shows no acute distress. Skin is intact with no signs of infection or ulceration.\n\nAssessment\n1. Type 2 diabetes mellitus without complications. The patient's condition is currently diet controlled.\n\nPlan\n1. Continue current diet and exercise regimen.\n2. Schedule follow-up in three months for laboratory monitoring.\n3. Patient instructed to report any new symptoms before the next appointment.",
+  "answer": [
+    "E11.9"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:16:32+00:00"
+  }
+}

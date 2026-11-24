@@ -1,0 +1,146 @@
+{
+  "id": "ckd_staging-7dca7570f8",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "yes",
+    "dialysis": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for renal management.\n\nHPI: The patient is a 68-year-old male presenting for a routine follow-up of ESRD. He currently undergoes maintenance hemodialysis three times per week. He reports feeling stable overall with no recent episodes of severe shortness of breath or significant fluid weight gain between sessions. He notes occasional fatigue but denies any acute chest pain or significant new symptoms. His hypertension remains relatively well-controlled on his current medication regimen.\n\nMedication List: Lisinopril, Amlodipine, Sevelamer, and Erythropoietin.\n\nExam: The patient appears well-nourished and in no acute distress. Blood pressure is 138/82 mmHg. Heart rate is 72 bpm. Lung sounds are clear to auscultation. No peripheral edema noted in the lower extremities.\n\nAssessment: 1. End stage renal disease on maintenance hemodialysis. 2. Hypertension.\n\nPlan: Continue current hemodialysis schedule. Continue current antihypertensive medications. Follow up in one month for lab work and blood pressure monitoring. Patient instructed to maintain fluid restrictions between treatments.",
+  "answer": [
+    "I12.0",
+    "N18.6",
+    "Z99.2"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only.",
+    "Patient on dialysis: add Z99.2 dependence on renal dialysis."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "Z99.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.6"
+      ],
+      "confusion": "missed_dialysis_status",
+      "lean": "under",
+      "why": "Dialysis status is reported with Z99.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:14:22+00:00"
+  }
+}

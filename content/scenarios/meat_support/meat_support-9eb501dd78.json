@@ -1,0 +1,61 @@
+{
+  "id": "meat_support-9eb501dd78",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nShortness of breath.\n\nHPI\nThe patient is a 68-year-old male presenting for a follow-up regarding his chronic obstructive pulmonary disease. He reports that his breathing has been manageable over the last month, though he experiences mild exertional dyspnea. He denies any increased productive cough, chest pain, or recent fevers. He states he has been adherent to his current inhaler regimen and has not required any recent emergency interventions.\n\nMedication List\nTiotropium (inhaler)\nSalbutamol (rescue inhaler)\n\nExam\nThe patient is alert and in no acute distress. Lung sounds reveal diminished breath sounds in the lower lobes with scattered wheezes. Oxygen saturation is 94% on room air. Heart rate is regular.\n\nAssessment\n1. COPD: The patient appears stable today. Symptoms were reviewed and are well-controlled on the current medication.\n\nPlan\n1. COPD: Continue the current medication regimen. The plan is to monitor for any worsening of symptoms and schedule a follow-up in three months.",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:15:29+00:00"
+  }
+}

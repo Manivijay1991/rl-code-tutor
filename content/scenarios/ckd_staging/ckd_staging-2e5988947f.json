@@ -1,0 +1,101 @@
+{
+  "id": "ckd_staging-2e5988947f",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for maintenance dialysis.\n\nHPI: The patient is a 68-year-old male presenting for a routine follow-up of end stage renal disease. He currently undergoes maintenance hemodialysis three times per week. He reports that he is feeling well today and denies any significant shortness of breath, chest pain, or severe itching. He reports adherence to his current medication regimen and states that his access site is stable without signs of infection or bleeding.\n\nMedication List:\n- Ferrous sulfate\n- Sevelamer\n- Calcium acetate\n- Epoetin alfa\n\nExam: The patient is alert and oriented. Vital signs are stable. Skin is intact with no visible rashes. The vascular access site is palpable with brisk flow and no drainage or erythema noted. Lung sounds are clear.\n\nAssessment:\n1. End stage renal disease on maintenance hemodialysis.\n\nPlan: Continue current hemodialysis schedule. Monitor laboratory values for phosphorus and potassium levels. Patient will return in one month for a follow-up evaluation.",
+  "answer": [
+    "N18.6",
+    "Z99.2"
+  ],
+  "explanations": [
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only.",
+    "Patient on dialysis: add Z99.2 dependence on renal dialysis."
+  ],
+  "refs": [
+    "OCG I.C.14.a.1",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.5",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.5",
+        "Z99.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.6"
+      ],
+      "confusion": "missed_dialysis_status",
+      "lean": "under",
+      "why": "Dialysis status is reported with Z99.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:16:14+00:00"
+  }
+}

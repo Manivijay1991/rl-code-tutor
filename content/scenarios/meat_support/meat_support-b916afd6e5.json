@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-b916afd6e5",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for persistent joint stiffness and localized swelling.\n\nHPI\nThe patient is a 64-year-old male presenting for a scheduled evaluation of right and left hand joints. He reports that the stiffness is most severe in the morning, typically lasting for about an hour before improving with movement. He notes occasional warmth and mild swelling over the metacarpophalangeal joints. He denies any recent trauma to the hands or systemic fevers. He is seeking a review of his current management plan for these symptoms.\n\nMedication List\n- Lisinopril 10mg daily\n- Tiotropium 18mcg daily\n- Naproxen 500mg as needed for pain\n\nExam\nThe patient is alert and in no acute distress. Physical examination of the hands reveals mild symmetrical swelling of the MCP joints. Range of motion is slightly diminished but preserved. No erythema or fluctuance is noted. No systemic signs of infection are present.\n\nAssessment\n1. Joint stiffness and swelling of the hands.\n\nPlan\n1. Continue current management of joint symptoms.\n2. Patient advised to monitor for any increase in swelling or redness.\n3. Follow up in 4 weeks for further assessment.",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:17:25+00:00"
+  }
+}

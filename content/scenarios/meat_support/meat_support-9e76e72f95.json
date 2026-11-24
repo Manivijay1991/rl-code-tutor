@@ -1,0 +1,79 @@
+{
+  "id": "meat_support-9e76e72f95",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nHPI: The patient returns for a follow-up evaluation of their mood. They report that their symptoms have remained manageable over the last month. They describe consistent energy levels and an improved ability to complete daily tasks. They deny any recent episodes of acute distress or significant changes in sleep patterns. The patient states they are feeling stable and are satisfied with their current progress.\n\nMedication List: Sertraline 100mg daily.\n\nExam: The patient is alert and oriented. They are well-groomed with a pleasant affect. Speech is normal in rate and volume. Mood is reported as \"okay.\" No signs of psychomotor agitation or retardation are noted.\n\nAssessment: Major depressive disorder, recurrent, moderate. The patient's symptoms were reviewed during today's session. They appear to be responding well to the current pharmacological intervention.\n\nPlan: Continue current medication regimen. The plan is to monitor the patient's progress and schedule a follow-up appointment in four weeks.",
+  "answer": [
+    "F33.1"
+  ],
+  "explanations": [
+    "The provider addressed recurrent moderate major depression: F33.1. Severity matters; unspecified recurrent MDD (F33.9) does not map to a V28 HCC."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "The condition was addressed at the visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity (moderate) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F331"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:17:33+00:00"
+  }
+}

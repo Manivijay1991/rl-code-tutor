@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-829e2f064e",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for persistent localized joint pain.\n\nHPI\nThe patient is a 64-year-old male presenting for evaluation of chronic pain in the right wrist. He reports that the discomfort began approximately three months ago and has progressively worsened, particularly during activities involving gripping or lifting heavy objects. He describes the sensation as a dull ache that occasionally sharpens. He has attempted over-the-counter anti-inflammatory medications with limited success. He denies any recent trauma to the area, fever, or systemic malaise.\n\nMedication List\n- Sacubitril-valsartan 49.5 mg\n- Lisinopril 10 mg\n- Atorvastatin 20 mg\n\nExam\nThe patient is alert and in no acute distress. Physical examination of the right wrist reveals mild swelling and tenderness upon palpation of the radial aspect. Range of motion is slightly diminished compared to the left side. No erythema or warmth is noted. Neurovascular status of the hand is intact.\n\nAssessment\n1. Chronic right wrist pain.\n\nPlan\n1. Start a course of physical therapy to improve mobility and strength.\n2. Provide a referral to an orthopedic specialist for further imaging if symptoms persist.\n3. Patient instructed to return if pain worsens or if new symptoms develop.",
+  "answer": [],
+  "explanations": [
+    "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:17:31+00:00"
+  }
+}

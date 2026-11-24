@@ -643,6 +643,9 @@ body[data-view="home"] .topbar { padding-inline: max(20px, calc((100% - 1120px) 
 .fl-edge { fill: none; stroke: var(--ink-3); stroke-width: 2; stroke-linejoin: round; }
 .fl-edge.loop { stroke-dasharray: 6 5; }
 .fl-head { fill: var(--ink-3); }
+.fl-label { font: 600 13px var(--font); }
+.fl-label.ok { fill: var(--ok); }
+.fl-label.accent { fill: var(--accent); }
 .fl-dot { stroke: var(--surface); stroke-width: 3; }
 .fl-dot.ok { fill: var(--ok); }
 .fl-dot.bad { fill: var(--bad); }

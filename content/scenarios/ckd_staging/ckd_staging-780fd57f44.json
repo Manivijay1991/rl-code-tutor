@@ -1,0 +1,79 @@
+{
+  "id": "ckd_staging-780fd57f44",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease.\n\nHPI\nThe patient is a 64-year-old male presenting for a scheduled evaluation of his chronic kidney disease. He reports feeling generally stable but notes occasional fatigue and mild edema in his lower extremities. He denies any acute shortness of breath, chest pain, or significant changes in urinary output. He is currently maintaining his prescribed regimen and reports compliance with his dietary restrictions.\n\nMedication List\nLisinopril 10mg daily, Furosemide 40mg daily, Sevelamer 800mg with meals.\n\nExam\nThe patient is alert and oriented. Vital signs are stable. Physical exam reveals mild pitting edema in the bilateral ankles. Lungs are clear to auscultation. Heart sounds are regular. No acute distress noted.\n\nAssessment\n1. Chronic kidney disease, progressing toward end stage renal disease.\n\nPlan\n1. Continue current medications as prescribed.\n2. Monitor renal function and electrolyte levels with laboratory tests in one month.\n3. Follow up in the clinic in 4 weeks for a repeat evaluation.",
+  "answer": [
+    "N18.6"
+  ],
+  "explanations": [
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only."
+  ],
+  "refs": [
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.5",
+        "N18.6"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.5"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:16:12+00:00"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "diabetes_complications-46b80122f9",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for management of type 2 diabetes.\n\nHPI\nThe patient is a 62-year-old individual presenting for a routine follow-up of type 2 diabetes mellitus. The patient reports consistent adherence to their prescribed insulin regimen. They report feeling well and deny any acute concerns. The patient currently reports no complications related to their chronic condition. They have been on a stable treatment plan and report steady blood glucose monitoring at home.\n\nMedication List\nLong-acting insulin.\n\nExam\nThe patient is alert and oriented. Physical examination reveals no acute distress. Skin is intact without signs of infection. Vital signs are stable.\n\nAssessment\nType 2 diabetes mellitus without complications.\n\nPlan\nContinue the current insulin regimen. The patient will continue to monitor blood glucose levels and report any changes. Follow-up in three months for routine laboratory work and clinical evaluation.",
+  "answer": [
+    "E11.9",
+    "Z79.4"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:16:33+00:00"
+  }
+}

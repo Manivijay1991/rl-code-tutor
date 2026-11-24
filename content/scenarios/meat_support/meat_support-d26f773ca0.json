@@ -1,0 +1,51 @@
+{
+  "id": "meat_support-d26f773ca0",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for persistent low back pain.\n\nHPI\nThe patient is a 62-year-old male presenting today for evaluation of chronic low back pain. He reports a dull, aching sensation in the lumbar region that has persisted for approximately three months. He describes the pain as constant but exacerbated by prolonged sitting and heavy lifting. He denies any radiating pain into the lower extremities, numbness, or weakness. He has tried over-the-counter ibuprofen with only mild relief.\n\nMedication List\nIbuprofen 400mg as needed.\n\nExam\nThe patient is in no acute distress. Physical examination of the lumbar spine reveals mild tenderness to palpation over the L4-L5 paraspinal muscles. Range of motion is slightly limited in forward flexion. Neurological exam of the lower extremities is intact, with normal strength, sensation, and reflexes.\n\nAssessment\n1. Chronic low back pain.\n\nPlan\nThe patient will begin a course of physical therapy twice weekly focusing on core strengthening and lumbar stretching. We discussed proper lifting techniques and ergonomics. He will follow up in four weeks to assess progress.\n\nProblem List\n1. COPD",
+  "answer": [],
+  "explanations": [
+    "COPD appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:17:23+00:00"
+  }
+}

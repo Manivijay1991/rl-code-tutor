@@ -1,0 +1,119 @@
+{
+  "id": "diabetes_complications-c08aa4635c",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for diabetes and kidney function.\n\nHPI\nThe patient is a 54-year-old male presenting today for a routine follow-up regarding his type 1 diabetes. He reports being consistent with his prescribed insulin regimen and denies any significant acute concerns. He reports stable energy levels and no recent episodes of severe illness. He is currently managing his chronic kidney disease stage 4 and reports no new symptoms of renal decline.\n\nMedication List\n- Insulin (long-term use)\n- No oral diabetes medication\n\nExam\nThe patient appears well-nourished and in no acute distress. Physical examination reveals clear lung sounds and regular heart rate. Skin is intact without signs of infection. Renal function assessment is ongoing.\n\nAssessment\n1. Type 1 diabetes mellitus.\n2. Chronic kidney disease stage 4.\n\nPlan\nContinue current insulin regimen. Monitor renal function through regular laboratory testing. Patient instructed to maintain current hydration and report any changes in symptoms. Follow-up scheduled in three months.",
+  "answer": [
+    "E10.22",
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD is listed under 'with' for diabetes, so the link is presumed: use the combination code E10.22.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9",
+        "N18.4"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "'With' presumes the link without 'due to' wording.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1022"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:16:21+00:00"
+  }
+}

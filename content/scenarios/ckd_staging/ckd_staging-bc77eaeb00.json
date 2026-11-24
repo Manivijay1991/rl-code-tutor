@@ -1,0 +1,94 @@
+{
+  "id": "ckd_staging-bc77eaeb00",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease.\n\nHPI\nThe patient is a 62-year-old male presenting for a routine follow-up regarding his chronic kidney disease. He reports feeling well overall and denies any recent acute changes in urinary output or systemic symptoms. He was diagnosed with hypertension several years ago and has been consistent with his medications. He is here today to monitor his renal function and manage his blood pressure.\n\nMedication List\nLisinopril 10mg daily, Amlodipine 5mg daily.\n\nExam\nThe patient appears in no acute distress. Vital signs are stable. Blood pressure is 132/82 mmHg. Heart sounds are regular with no murmurs. Lungs are clear to auscultation. No pedal edema noted.\n\nAssessment\n1. Chronic kidney disease, stage 1.\n2. Hypertension.\n\nPlan\nThe patient will continue his current medication regimen. We will monitor his serum creatinine and glomerular filtration rate at the next visit. He was instructed to maintain a low-sodium diet and follow up in three months.",
+  "answer": [
+    "I12.9",
+    "N18.1"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.1"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.1"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0,
+        "gap": 0.815,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T04:13:52+00:00"
+  }
+}
