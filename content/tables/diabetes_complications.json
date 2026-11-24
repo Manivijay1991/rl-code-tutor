@@ -33,7 +33,7 @@
       "values": ["no", "yes"],
       "evidence": {"no": [], "yes": ["not due to diabetes", "not related to diabetes", "unrelated to diabetes"]},
       "describe": {"no": "Do not say whether the complication is or is not caused by the diabetes.",
-                   "yes": "The provider explicitly states the complication is not caused by the diabetes."}
+                   "yes": "In the Assessment, the provider explicitly states the complication is not caused by the diabetes (e.g. 'not due to diabetes'). Only the provider says this, never the patient, and nowhere else in the note."}
     },
     "meds": {
       "label": "Long-term diabetes medication",
@@ -53,6 +53,10 @@
   },
   "note_forbid": ["hypertension", "HTN", "hypertensive", "dialysis", "ESRD"],
   "note_background": ["hyperlipidemia", "gastroesophageal reflux disease", "seasonal allergic rhinitis", "vitamin D deficiency"],
+  "note_rules": [
+    {"when": {"complication": "ckd_stage4"},
+     "forbid": ["NSAID", "NSAIDs", "naproxen", "ibuprofen", "diclofenac", "meloxicam", "celecoxib"]}
+  ],
   "exclude": [
     {"dm_type": "type1", "meds": ["diet_only", "oral", "insulin_and_oral"]},
     {"complication": ["none", "hyperglycemia", "hypoglycemia"], "provider_says_unrelated": "yes"}

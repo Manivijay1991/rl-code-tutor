@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-0af3365264",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nLow back pain.\n\nHPI\nThe patient is a 36-year-old woman who presents today for evaluation of localized low back pain. She reports that the discomfort began approximately two weeks ago after she spent a weekend lifting heavy boxes. She describes the pain as a dull ache in the lumbar region that occasionally radiates to her upper gluteal muscles. She notes that the pain is exacerbated by prolonged sitting or bending forward but is partially relieved by rest and the application of heat. She denies any numbness, tingling, or weakness in her lower extremities. She has attempted over-the-counter ibuprofen with mild success.\n\nMedication List\nIbuprofen 400 mg as needed.\n\nExam\nThe patient is alert and in no acute distress. She is upright and moving comfortably. Physical exam reveals tenderness to palpation over the lumbar paraspinal muscles. Range of motion of the spine is slightly limited by discomfort. There are no, and no neurological deficits are noted in the lower extremities. Reflexes are 2+ and symmetric.\n\nAssessment\n1. Low back pain.\n\nPlan\nThe patient will continue with conservative management. I recommended alternating heat and ice therapy and prescribed a regimen of physical therapy to focus on core strengthening and stretching. She will follow up in four weeks to assess progress.\n\nProblem List\n1. COPD\n2. Status post appendectomy\n3. Status post cholecystectomy\n\nElectronically signed, L. Moreau, DO, 05/12/2026",
+  "answer": [],
+  "explanations": [
+    "COPD appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:21:13+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

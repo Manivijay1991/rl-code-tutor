@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-5f1ebcffdc",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Low back pain.\n\nHPI: Pt is a 66-year-old female presenting for evaluation of chronic low back pain. Pt reports dull, aching pain in the lumbar region persisting for approximately 4 months. Pain is described as constant but exacerbated by prolonged standing or lifting heavy objects. Pt denies any radiating pain, numbness, or tingling in the lower extremities. Denies any recent falls or acute trauma. Pt states that over-the-counter NSAIDs provide mild, temporary relief.\n\nMedication List:\n- Venlafaxine 75mg daily\n- Naproxen 500mg PRN for pain\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nMusculoskeletal: Positive for lumbar aching. Denies joint swelling or morning stiffness.\nNeurological: Denies weakness, paresthesia, or gait changes.\nRespiratory: Denies SOB or cough.\nAll other systems reviewed and negative.\n\nSocial History: Retired; lives with husband. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had hypertension. Father had osteoarthritis.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 5'4\"\nWt: 155 lbs\n\nRecent Labs:\nWBC: 7.2\nHgb: 13.8\nPlt: 240\neGFR: 88\n\nExam:\nGen: Well-appearing, in no acute distress.\nMusculoskeletal: Lumbar spine shows mild paraspinal muscle tenderness. No spinal deformity. Range of motion (ROM) limited by discomfort. Straight leg raise test is negative bilaterally. Strength 5/5 in lower extremities. Deep tendon reflexes 2+ and symmetric.\n\nAssessment:\n1. Low back pain.\n\nPlan:\n- Advised pt to maintain activity and avoid heavy lifting.\n- Recommended physical therapy for core strengthening and lumbar support.\n- Continue current medication list.\n- F/u in 4 weeks to assess progress with PT.\n\nProblem List:\n- Status post appendectomy\n- Status post cholecystectomy\n- History of tonsillectomy\n\nElectronically signed,\nE. Castillo, MD\n05/14/2026",
+  "answer": [],
+  "explanations": [
+    "An antidepressant on the list does not establish major depression; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:22:47+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

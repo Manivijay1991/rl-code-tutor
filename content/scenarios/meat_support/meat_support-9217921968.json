@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-9217921968",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nLow back pain.\n\nHPI\nThe patient is a 50-year-old male presenting for evaluation of persistent low back pain. He reports a dull, aching sensation in his lumbar region that has persisted for approximately three weeks. He notes that the pain is exacerbated by prolonged sitting and heavy lifting but is partially relieved by rest and heat application. He denies any radiating pain into the lower extremities, numbness, tingling, or weakness. He denies any recent falls or acute trauma to the spine.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is alert and in no acute distress. He is upright and moving comfortably. Physical examination of the lumbar spine reveals mild tenderness to palpation over the paraspinal muscles. Range of motion is limited by discomfort but remains within functional limits. There are no neurological deficits noted in the lower extremities; strength and sensation are intact.\n\nAssessment\nLow back pain.\n\nPlan\nThe patient will begin a regimen of stretching exercises and heat therapy. He was advised on proper body mechanics and ergonomic adjustments for his workspace. Follow-up is scheduled in four weeks if symptoms persist or worsen.\n\nProblem List\n- Chronic systolic heart failure\n- Status post appendectomy\n- Status post cholecystectomy\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Heart failure appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:28:02+00:00",
+    "style": {
+      "age": 50,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

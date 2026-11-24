@@ -1,0 +1,70 @@
+{
+  "id": "meat_support-c427972401",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Follow-up for low back pain.\n\nHPI: The patient is a 47-year-old male presenting for a follow-up evaluation of low back pain. He reports that the pain has been intermittent over the last three months, primarily localized to the lumbar region. He describes the sensation as a dull ache that occasionally sharpens with prolonged sitting or lifting heavy objects. He notes that he has tried over-the-counter heat therapy with moderate relief. He denies any radiating pain down the legs, numbness, tingling, or weakness in his lower extremities. He denies any recent falls or specific traumatic injuries to the spine. He is seeking further management to improve his daily comfort.\n\nMedication List:\n- Tiotropium and Salmeterol (for COPD)\n- Naproxen 500mg as needed for low back pain\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nMusculoskeletal: Positive for lumbar aching; denies joint swelling or redness.\nNeurological: Denies numbness, tingling, or focal weakness.\nRespiratory: Denies shortness of breath or cough.\n\nSocial History: The patient works as a warehouse supervisor. He denies tobacco or alcohol use. He lives with his spouse and two children.\n\nFamily History: Father had hypertension; mother had seasonal allergies.\n\nPast Surgical History:\n- Status post appendectomy\n- Status post tonsillectomy\n- Status post cholecystectomy\n\nVitals:\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\n\nRecent Labs:\nWhite blood cell count: 7.2 x 10^9/L\nHemoglobin: 14.5 g/dL\nPlatelets: 210 x 10^9/L\n\nExam: The patient is alert and in no acute distress. Physical examination of the lumbar spine reveals mild tenderness to palpation over the L4-L5 region. Range of motion is slightly limited by discomfort but remains within functional limits. No and neural deficits were noted. Strength is 5/5 in all lower extremity muscle groups. Reflexes are 2+ and symmetric.\n\nProblem List:\n- COPD\n- Status post appendectomy\n- Status post tonsillectomy\n- Status post cholecystectomy\n- Low back pain\n\nAssessment: \n1. Low back pain: The patient's symptoms appear stable but are bothersome during work.\n2. COPD: Reviewed and stable.\n\nPlan:\n1. Low back pain: The plan is to continue Naproxen as needed for flare-ups. I will advise the patient on proper lifting techniques and stretching exercises.\n2. COPD: Continue current medication regimen of Tiotropium and Salmeterol.\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:26:19+00:00",
+    "style": {
+      "age": 47,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

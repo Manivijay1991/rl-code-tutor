@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-895669705b",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Left knee pain.\n\nHPI: (Copied forward from 05/12/2026) Patient is a 78-year-old male presenting with progressive dull aching in the left knee. He reports stiffness in the morning and increased discomfort after walking for more than 20 minutes. No recent trauma or falls. He describes the pain as a 4/10 and notes it is most severe at night.\n\nUpdate: Patient reports that the pain has remained stable over the last month but feels more stiff during cold weather. He denies any new swelling or redness.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nMusculoskeletal: Positive (Left knee pain)\nNeurological: Negative\nRespiratory: Negative\nGastrointestinal: Negative\n\nMedication List:\n- Metoprolol succinate 25mg\n- Furosemide 40mg\n- Acetaminophen 500mg every 6 hours as needed\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Left knee shows mild crepitus upon flexion. No joint line tenderness or effusion noted. Range of motion is slightly diminished compared to the right side but is intact.\n\nProblem List:\n- Status post appendectomy\n- History of tonsillectomy\n- Status post cholecystectomy\n\nAssessment:\n- Left knee osteoarthritis.\n\nPlan:\n1. Continue current activity modification.\n2. Continue as needed acetaminophen for pain management.\n3. Follow up in 3 months for evaluation of symptoms.\n\nElectronically signed, R. Mensah, NP, 10/14/2026",
+  "answer": [],
+  "explanations": [
+    "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:21:30+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

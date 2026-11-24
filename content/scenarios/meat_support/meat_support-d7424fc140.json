@@ -1,0 +1,70 @@
+{
+  "id": "meat_support-d7424fc140",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nLow back pain.\n\nHPI\nThe patient is a 50-year-old male presenting for evaluation of low back pain. He describes a dull ache in his lumbar region that began three days ago after lifting heavy boxes. He reports that the pain is exacerbated by prolonged sitting and bending. He denies any radiating pain, numbness, or tingling in his lower extremities. He has attempted to manage the discomfort with rest and heat packs with minimal relief.\n\nMedication List\nTiotropium (Spiriva) 18 mcg inhaled.\n\nExam\nThe patient is alert and in no acute distress. Physical exam reveals tenderness to palpation over the lumbar spine without any palpable step-off or midline tenderness. Strength and sensation are intact in both lower extremities. Reflexes are 2+ and symmetric.\n\nAssessment\n1. Low back pain: The patient's symptoms appear musculoskeletal in nature.\n2. COPD: The patient's chronic obstructive pulmonary disease is stable at this time.\n\nPlan\n1. Low back pain: The plan is to manage symptoms with activity modification and scheduled NSAIDs as needed.\n2. COPD: Continue current maintenance medication, Tiotropium.\n\nProblem List\n- COPD\n- Status post appendectomy\n- Status post cholecystectomy\n- History of tonsillectomy\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:26:09+00:00",
+    "style": {
+      "age": 50,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

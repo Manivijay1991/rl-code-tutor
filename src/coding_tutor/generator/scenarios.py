@@ -53,7 +53,7 @@ SYSTEM = (
     "billing codes, and never mention coding. Use only the facts you are given; do not add other "
     "chronic diagnoses, and do not mention or deny conditions you were not asked to mention. "
     "Keep medications, labs and vitals clinically consistent with each other (e.g. no metformin when "
-    "the eGFR is below 30)."
+    "the eGFR is below 30, no NSAIDs such as ibuprofen or naproxen with advanced kidney disease or heart failure)."
 )
 
 VOICES = {
@@ -177,6 +177,13 @@ def pick_style(t: Table, rng: random.Random) -> Style:
     }
 
 
+def signed(note: str, style: Style | None) -> str:
+    """Return the note with the style's signature line appended when the writer left it out."""
+    if not style or has_phrase(note, "Electronically signed"):
+        return note
+    return f"{note}\n\nElectronically signed, {style['signer']}, {style['credential']}"
+
+
 def style_lines(style: Style) -> list[str]:
     """Return the writer instructions for a style."""
     article = "an" if str(style["age"]).startswith("8") else "a"  # an 80-, 85-year-old
@@ -285,7 +292,7 @@ def write_note(
         problems = check_note(note, req)
         log.append({"seed": seed + i, "problems": problems})
         if not problems:
-            return note, log
+            return signed(note, style), log
     return None, log
 
 

@@ -18,6 +18,7 @@ from coding_tutor.generator.scenarios import (
     requirements,
     save,
     scenario_id,
+    signed,
     write_note,
 )
 from coding_tutor.schema import load_schema, validate
@@ -232,6 +233,23 @@ def test_build_prompt_with_style(dm):
         assert part in text, part
     plain = build_prompt(requirements(dm, dm_slots()))
     assert "120-220" in plain and "year-old" not in plain
+
+
+def test_signed_adds_a_missing_signature(dm):
+    style = pick_style(dm, random.Random(3))
+    note = "Type 2 diabetes with CKD stage 4, on insulin." + FILLER
+    out = signed(note, style)
+    assert out.startswith(note) and out.endswith(f"Electronically signed, {style['signer']}, {style['credential']}")
+    already = note + "\nElectronically signed, Dr. X, MD"
+    assert signed(already, style) == already
+    assert signed(note, None) == note
+
+
+def test_write_note_signs_styled_notes(dm):
+    style = pick_style(dm, random.Random(3))
+    good = "Type 2 diabetes with CKD stage 4, on insulin." + FILLER
+    note, _ = write_note(dm, dm_slots(), fake_llm([good]), seed=0, style=style)
+    assert style["signer"] in note and check_note(note, requirements(dm, dm_slots())) == []
 
 
 def test_background_never_breaks_the_note_rules(tables):

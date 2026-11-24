@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-bf1836740e",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nFollow-up for chronic low back pain.\n\nHPI\nThe patient is an 80-year-old male presenting for a follow-up evaluation of his chronic low back pain. He reports that the pain has been persistent for several months, primarily localized to the lumbar region. He describes the sensation as a dull ache that occasionally sharpens with prolonged standing or walking. He notes that the pain is most severe at the end of the day and does not typically radiate into his lower extremities. He has been utilizing heat therapy at home with moderate relief. He denies any recent falls, new-onset numbness, or weakness in his legs. He reports that his current activity level remains stable, though he finds it difficult to perform heavy lifting.\n\nReview of Systems\nThe patient denies any chest pain, shortness of breath, fever, chills, or recent weight changes. He denies any headaches, vision changes, or urinary incontinence. He reports no joint swelling or recent rashes.\n\nSocial History\nHe is retired and lives with his wife in a single-story home. He enjoys gardening and walking in the neighborhood. He does not smoke and drinks alcohol occasionally.\n\nFamily History\nHis father had high blood pressure. His mother had osteoarthritis.\n\nVitals\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 185 lbs\nHeight: 5'10\"\n\nRecent Labs\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nPlatelets: 210 x 10^9/L\neGFR: 78 mL/min/1.73m2\n\nMedication List\nVenlafaxine 75 mg daily\n\nProblem List\nStatus post appendectomy\nStatus post cholecystectomy\nStatus post tonsillectomy\n\nExam\nThe patient is an alert and oriented 80-year-old male in no acute distress. Physical examination of the lumbar spine reveals mild tenderness to palpation over the L4-L5 region. There is no evidence of spinal deformity or muscle wasting. Straight leg raise tests are negative bilaterally. Gait is steady and balanced.\n\nAssessment\nThe patient presents with stable chronic low back pain. His symptoms are managed well with conservative measures, and he shows no signs of acute neurological deficit.\n\nPlan\nWe will continue the current conservative management plan. I advised the patient to continue using heat packs and to practice gentle stretching exercises as previously instructed. We will monitor his progress and schedule a follow-up in three months to assess if any changes in pain intensity are noted.\n\nElectronically signed, H. Tanaka, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "An antidepressant on the list does not establish major depression; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:21:42+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

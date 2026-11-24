@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-b7d309f9f0",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nKnee pain.\n\nHPI\nThe patient is a 77-year-old woman who presents today for an evaluation of persistent left knee pain. She reports that the discomfort began approximately three months ago and has gradually worsened. She describes the pain as a dull ache that is most prominent in the morning and after prolonged periods of walking. She notes occasional stiffness that improves with movement. She denies any acute trauma, falls, or sudden popping sensations. She has attempted to manage the symptoms with over-the-counter acetaminophen with limited success. She is seeking a formal evaluation and a discussion regarding management options to improve her mobility.\n\nReview of Systems\nThe patient reports positive for joint pain in the left knee. She denies any recent fevers, chills, weight changes, chest pain, shortness of breath, or changes in bowel habits. She denies any neurological symptoms or visual disturbances.\n\nSocial History\nShe is a retired schoolteacher who lives in a single-story home with her husband. She enjoys gardening and walking in her neighborhood. She denies tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension. Her father had a history of osteoarthritis.\n\nVitals\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\nWeight: 155 lbs\nHeight: 5'4\"\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^3/uL\nPlatelet Count: 210 x 10^3/uL\nGlucose: 98 mg/dL\n\nMedication List\nAcetaminophen 500mg every 6 hours as needed.\n\nExam\nThe patient appears in no acute distress. She is alert and oriented. Physical examination of the left knee reveals mild swelling and tenderness over the patellofemoral joint. Range of motion is slightly limited by discomfort. No erythema or warmth is noted. Crepitus is palpable during flexion and extension. Stability tests are intact.\n\nAssessment\n1. Left knee osteoarthritis.\n\nPlan\nThe patient will begin a regimen of physical therapy to strengthen the quadriceps and improve joint stability. She was advised to continue using acetaminophen as needed for pain and to utilize a heating pad for morning stiffness. We will schedule a follow-up in six weeks to assess progress with the physical therapy program.\n\nProblem List\n1. COPD\n2. Status post appendectomy\n3. Status post cholecystectomy\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "COPD appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:21:51+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

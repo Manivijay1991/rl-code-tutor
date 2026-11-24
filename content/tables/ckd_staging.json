@@ -45,7 +45,9 @@
   "note_background": ["hyperlipidemia", "osteoarthritis of both knees", "gastroesophageal reflux disease", "seasonal allergic rhinitis", "vitamin D deficiency"],
   "note_rules": [
     {"when": {}, "require": [["CKD", "chronic kidney disease", "end stage renal disease", "ESRD"]],
-     "describe": "Name the kidney disease itself (CKD or chronic kidney disease, or ESRD), not just the stage number."}
+     "describe": "Name the kidney disease itself (CKD or chronic kidney disease, or ESRD), not just the stage number."},
+    {"when": {"stage": ["3b", "4", "5", "esrd"]},
+     "forbid": ["NSAID", "NSAIDs", "naproxen", "ibuprofen", "diclofenac", "meloxicam", "celecoxib", "metformin"]}
   ],
   "exclude": [
     {"stage": ["1", "2", "3a", "3b", "3_unspecified", "4", "5"], "dialysis": "yes"}

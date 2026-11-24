@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-0237e8ff80",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: \"Right knee pain\"\n\nHPI: Pt is a 60 y.o. female presenting for evaluation of chronic right knee pain. Pt reports aching and stiffness, particularly in the morning and after prolonged sitting. Pain is described as a 4/10 and does not radiate. Pt notes occasional swelling after physical activity. No recent trauma or falls. Pt reports trying over-the-counter NSAIDs with minimal relief. No history of fever, chills, or acute redness.\n\nMedication List:\n- Naproxen 500mg BID PRN\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight changes.\nMusculoskeletal: Positive for right knee pain and stiffness. Negative for hip or ankle pain.\nNeurological: Negative for numbness or tingling.\nRespiratory: Negative for shortness of breath or cough.\nCV: Negative for chest pain.\n\nSocial History: Pt is married, works full-time as a bookkeeper. Non-smoker. Occasional alcohol use. Lives in a single-story home.\n\nFamily History: Mother had hypertension. Father had osteoarthritis.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 165 lbs\n\nRecent Labs:\nWBC: 7.2\nHgb: 13.4\nPlt: 210\neGFR: 88\n\nExam:\nGeneral: Pt in no acute distress, alert and oriented x3.\nMusculoskeletal: Right knee shows mild tenderness over the patella. Mild swelling noted. ROM is limited in flexion due to discomfort. No joint laxity. No erythema or warmth. Gait is steady.\n\nAssessment:\n1. Knee osteoarthritis.\n\nPlan:\n1. Continue Naproxen 500mg BID PRN for pain.\n2. Recommended physical therapy for strengthening and range of motion.\n3. Instructed on home exercise program.\n4. F/u in 4 weeks to assess progress.\n\nProblem List:\n- status post cholecystectomy\n- status post appendectomy\n- major depressive disorder, recurrent, moderate\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Depression appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:21:38+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-be7669721d",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Left knee pain.\n\nHPI: The patient is a 67-year-old male who presents today for evaluation of chronic left knee pain. He reports that the pain has been gradually increasing over the last six months, particularly when performing activities such as walking up stairs or getting out of a chair. He describes the sensation as a dull ache that occasionally becomes sharp with prolonged weight-bearing. He denies any recent acute trauma, falls, or sudden \"locking\" of the joint. He notes that the symptoms are most prominent in the morning and after long periods of standing. He has attempted to manage the discomfort with rest and occasional ice packs but feels that the limitations on his mobility are becoming more significant.\n\nReview of Systems: Negative for fevers, chills, or night sweats. Negative for recent weight loss. Negative for any new-onset numbness or tingling in the lower extremities. Negative for generalized weakness.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking in his neighborhood. He denies tobacco use and reports occasional social alcohol consumption.\n\nFamily History: Father died of natural causes at age 78. Mother died at age 82. No significant family history of orthopedic issues reported.\n\nVitals:\nBP: 128/82 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\nWeight: 195 lbs\nHeight: 5'10\"\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.8 x 10^9/L\nPlatelets: 240 x 10^9/L\neGFR: 88 mL/min/1.73m2\n\nMedication List:\n- sacubitril-valsartan 90mg\n- carvedilol 12.5mg\n- furosemide 40mg\n- spironolactone 25mg\n- metoprolol succinate 25mg\n\nExam: The patient is a well-appearing, alert, and oriented male in no acute distress. Physical exam of the left knee reveals mild swelling and tenderness over the joint line. Range of motion is slightly limited by discomfort, especially during deep flexion. No joint instability or gross deformity is noted. No significant erythema or warmth is present.\n\nAssessment: Left knee osteoarthritis. The patient exhibits classic symptoms of degenerative joint disease exacerbated by daily activity.\n\nPlan: We will initiate a conservative management plan. I have recommended a physical therapy regimen focusing on quadriceps strengthening and range of motion exercises. We will also discuss a weight management plan to reduce stress on the joint. The patient was advised to use a heating pad for comfort as needed. He will follow up in four weeks to assess progress with physical therapy.\n\nProblem List:\n- Status post appendectomy\n- Status post cholecystectomy\n- History of tonsillectomy\n\nElectronically signed, T. Haddad, DO, 10/14/2026",
+  "answer": [],
+  "explanations": [
+    "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:28:07+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "T. Haddad"
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "topic": "Risk adjustment documentation",
   "status": "draft",
   "code_set": "ICD-10-CM FY2027",
-  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Ignore the reason for the visit. Choose 'no code' if none is supported.",
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
   "note": "MEAT (Monitor, Evaluate, Assess/Address, Treat) is an industry mnemonic, not CMS wording. The underlying rule is coding conditions that coexist and affect care at the encounter.",
   "slots": {
     "condition": {
@@ -28,13 +28,21 @@
       },
       "exclusive": false,
       "describe": {
-        "meat_supported": "The provider addresses the condition at this visit in the assessment and plan: at least one of monitor, evaluate, assess or treat (e.g. stable, symptoms reviewed, continue medication, will monitor).",
-        "problem_list_only": "The condition appears ONLY in a 'Problem List' section. It is not mentioned in the history, exam, assessment or plan; the visit is about something else.",
-        "med_list_only": "A medication for the condition appears ONLY in a 'Medication List' section. The condition itself is never named anywhere in the note; the visit is about something else."
+        "meat_supported": "The provider addresses the condition at this visit in the assessment and plan: at least one of monitor, evaluate, assess or treat (e.g. stable, symptoms reviewed, continue medication, will monitor). The Medication List includes at least one medication that treats the condition, and the plan refers to it. The condition is also listed in a 'Problem List' section, together with two or three past surgical history items (e.g. 'status post appendectomy', 'history of tonsillectomy', 'status post cholecystectomy').",
+        "problem_list_only": "The condition appears ONLY in a 'Problem List' section, among two or three past surgical history items (e.g. 'status post appendectomy', 'history of tonsillectomy', 'status post cholecystectomy'). It is not mentioned in the history, exam, assessment or plan; the visit is about something else.",
+        "med_list_only": "A medication for the condition appears ONLY in a 'Medication List' section. The condition itself is never named anywhere in the note; the visit is about something else. Include a 'Problem List' section with two or three past surgical history items only (e.g. 'status post appendectomy', 'history of tonsillectomy', 'status post cholecystectomy')."
       }
     }
   },
+  "note_forbid": ["diabetes", "diabetic", "T2DM", "DM2", "CKD", "chronic kidney disease", "atrial fibrillation", "AFib",
+                  "cancer", "carcinoma", "malignant", "dementia", "morbid obesity", "rheumatoid", "cirrhosis", "stroke",
+                  "schizophrenia", "bipolar", "angina", "vascular disease", "amputation"],
   "note_rules": [
+    {"when": {}, "require": [["problem list"]], "describe":"The reason for the visit, and anything else the provider addresses, must be a condition that does not affect risk adjustment (e.g. low back pain, knee osteoarthritis, seasonal allergies, or a routine wellness visit). Do not mention any other chronic disease, not even in family history."},
+    {"when": {"condition": "copd"}, "forbid": ["heart failure", "CHF", "depression", "depressive", "MDD"]},
+    {"when": {"condition": "chf_chronic_systolic"}, "forbid": ["COPD", "chronic obstructive", "emphysema", "depression", "depressive", "MDD", "hypertension", "HTN",
+                                                              "NSAID", "NSAIDs", "naproxen", "ibuprofen", "diclofenac", "meloxicam", "celecoxib"]},
+    {"when": {"condition": "mdd_recurrent_moderate"}, "forbid": ["COPD", "chronic obstructive", "emphysema", "heart failure", "CHF"]},
     {"when": {"condition": "copd", "documentation": "med_list_only"}, "skip_evidence": ["condition"],
      "require": [["tiotropium", "albuterol", "fluticasone-salmeterol", "budesonide-formoterol"]],
      "forbid": ["COPD", "chronic obstructive", "emphysema", "chronic bronchitis", "lung disease"]},

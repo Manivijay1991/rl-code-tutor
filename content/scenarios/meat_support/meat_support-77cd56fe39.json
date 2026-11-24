@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-77cd56fe39",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\n\"My right knee hurts a lot when I walk.\"\n\nHistory of Present Illness\nThe patient is an 86-year-old male presenting for evaluation of progressive right knee pain. He reports that the discomfort began approximately three months ago and has gradually intensified. He describes the pain as a dull ache that worsens significantly with weight-bearing activities and when climbing stairs. He notes occasional stiffness in the morning which typically resolves within thirty minutes of movement. He denies any recent acute trauma, falls, or \"locking\" of the joint. He reports that the pain is currently limiting his ability to garden and walk short distances. He has tried over-the-counter acetaminophen with only mild relief.\n\nMedication List\n- Acetaminophen 500mg\n- Tiotropium\n- Multivitamin\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, chills, or unintended weight loss. He denies any neurological deficits or changes in vision. He denies any urinary symptoms or changes in bowel habits. He denies any rashes or new-onset joint swelling in other areas.\n\nSocial History\nThe patient lives at home with his wife. He is retired and enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History\nHis father had hypertension. His mother had osteoarthritis.\n\nPast Surgical History\n- Status post appendectomy\n- Status post cholecystectomy\n- Status post tonsillectomy\n\nProblem List\n- Right knee osteoarthritis\n\nPhysical Exam\nVitals: BP: 132/78, HR: 72, Temp: 98.6 F, RR: 16, SpO2: 98% on room air.\nGeneral: The patient is alert and oriented x3, appearing in no acute distress.\nMusculoskeletal: Right knee shows mild swelling and decreased range of motion compared to the left side. Tenderness is noted along the medial joint line. Crepitus is palpable during flexion and extension. No joint instability noted.\n\nAssessment\nThe patient has symptomatic right knee osteoarthritis. The pain is consistent with degenerative joint changes.\n\nPlan\n1. Continue acetaminophen as needed for pain.\n2. Recommended physical therapy to strengthen quadriceps and improve joint stability.\n3. Discussed the possibility of a corticosteroid injection if pain persists despite conservative management.\n4. Follow up in 4 weeks to assess progress with physical therapy.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:22:26+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

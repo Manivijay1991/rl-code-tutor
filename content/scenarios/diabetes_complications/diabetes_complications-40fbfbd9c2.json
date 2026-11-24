@@ -1,0 +1,118 @@
+{
+  "id": "diabetes_complications-40fbfbd9c2",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Evaluation of hypoglycemia.\n\nHPI: The patient is an 81-year-old male presenting for a follow-up visit regarding his management of type 2 diabetes mellitus. He reports that over the last month, he has experienced at least two distinct episodes of hypoglycemia. He describes feeling shaky, sweaty, and lightheaded, which typically occurs in the morning before he has eaten a full breakfast. He currently manages his condition with a long-term regimen of insulin and an oral hypoglycemic agent. He states that he has been consistent with his medication timing but notes these episodes are becoming more frequent. He also mentions occasional symptoms of gastroesophageal reflux disease, which he manages with occasional over-the-counter antacids.\n\nMedication List:\n- Insulin glargine\n- Glipizide\n- Vitamin D3 supplement\n- Omeprazole\n\nSocial History: The patient lives at home with his wife. He is retired and enjoys gardening and watching television. He denies alcohol or tobacco use.\n\nFamily History: Father had type 2 diabetes. Mother had a history of gastroesophageal reflux disease.\n\nReview of Systems: Positive for occasional heartburn and episodes of shakiness. Negative for chest pain, shortness of breath, vision changes, or numbness in extremities.\n\nVitals:\nBP: 128/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 7.2%\neGFR: 65 mL/min/1.73m2\nVitamin D level: 22 ng/mL\n\nExam: The patient is alert and oriented x3. He appears in no acute distress. Skin is warm and dry. Heart sounds are regular with no murmurs. Lungs are clear to auscultation. Abdomen is soft, non-tender, and non-distended.\n\nAssessment:\n1. Type 2 diabetes mellitus with associated hypoglycemia.\n2. Vitamin D deficiency.\n3. Gastroesophageal reflux disease.\n\nPlan:\n1. Adjust the dosage of his oral hypoglycemic agent to mitigate the frequency of the hypoglycemic episode.\n2. Continue current insulin regimen but monitor blood glucose levels more frequently in the morning.\n3. Increase Vitamin D3 dosage to address the deficiency.\n4. Continue current management for gastroesophageal reflux disease.\n5. Follow up in four weeks for a laboratory check and medication review.\n\nProblem List:\n- Type 2 diabetes mellitus\n- Hypoglycemia\n- Vitamin D deficiency\n- Gastroesophageal reflux disease\n\nElectronically signed,\nP. O'Brien, NP\nMay 14, 2026",
+  "answer": [
+    "E11.649",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:26:47+00:00",
+    "style": {
+      "age": 81,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "NP",
+      "signer": "P. O'Brien"
+    }
+  }
+}

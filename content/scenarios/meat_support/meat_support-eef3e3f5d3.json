@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-eef3e3f5d3",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: \"Right knee pain\"\n\nVitals: BP 128/74, HR 70, SpO2 98% on room air, Temp 98.6 F, Weight 145 lbs.\n\nRecent Labs: Hemoglobin 12.4 g/dL, White Blood Cell Count 7.2 x 10^9/L, Platelets 210 x 10^9/L.\n\nHistory of Present Illness: \n(Copied Forward) Patient is an 85-year-old female who presents with chronic right knee pain. She reports a dull ache that is most prominent in the morning and after prolonged periods of standing. She notes occasional stiffness but denies any recent falls or acute traumatic injury. She describes the pain as a 4/10 on the numerical rating scale. She has been attempting to manage the discomfort with gentle stretching and heat application.\n\n(Today's Update) The patient reports that the right knee pain has persisted over the last month. She notes that it has become slightly more difficult to navigate stairs. She denies any new swelling, redness, or warmth in the joint. She has not tried any new over-the-counter medications since the last visit.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight change.\nMusculoskeletal: Positive for right knee pain and stiffness. Negative for joint swelling or redness.\nNeurological: Negative for numbness or tingling.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or abdominal pain.\nGenitourinary: Negative for dysuria.\n\nSocial History: Retired; lives in a single-story home with her daughter. Non-smoker.\n\nFamily History: Mother had arthritis. Father had a history of joint pain.\n\nProblem List:\n- Status post appendectomy\n- Status post cholecystectomy\n- Status post tonsillectomy\n\nMedication List:\n- carvedilol 25 mg daily\n- furosemide 40 mg daily\n- metoprolol succinate 50 mg daily\n- spironolactone 25 mg daily\n- sacubitril-valsartan 97 mg daily\n\nExam:\nGeneral: Well-appearing, pleasant, and in no acute distress.\nMusculoskeletal: Right knee shows mild crepitus upon flexion and extension. No significant erythema or fluctuance noted. Range of motion is slightly limited by discomfort but stable. Strength is 5/5 in the quadriceps and hamstrings.\n\nAssessment:\n1. Right knee osteoarthritis.\n\nPlan:\nThe patient will continue with her current physical activity modifications and heat therapy. We discussed the importance of maintaining a consistent stretching routine. She will follow up in six weeks to assess progress. If pain worsens or if she develops signs of infection, she is instructed to call the clinic.\n\nElectronically signed, D. Kowalski, PA-C, 10/14/2026",
+  "answer": [],
+  "explanations": [
+    "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:28:34+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "D. Kowalski"
+    }
+  }
+}

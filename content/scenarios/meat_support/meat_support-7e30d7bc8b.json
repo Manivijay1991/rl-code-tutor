@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-7e30d7bc8b",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Right knee pain.\n\nHPI: The patient is a 47-year-old male presenting for evaluation of persistent right knee pain. He reports that the pain began approximately three months ago and has gradually increased in intensity. He describes the pain as a dull ache that worsens with prolonged walking or climbing stairs. He denies any acute trauma, sudden \"popping\" sensations, or locking of the joint. He notes some stiffness in the morning that typically resolves within 20 minutes. He has attempted to manage the discomfort with rest and ice packs but seeks a formal evaluation and a more structured management plan.\n\nReview of Systems: Negative for fevers, chills, or night sweats. Denies any chest pain, shortness of breath, or palpitations. Negative for joint swelling in other areas. Denies any numbness or tingling in the lower extremities. Denies recent weight changes.\n\nSocial History: The patient works as a software engineer and spends a significant portion of his day sitting. He reports a sedentary lifestyle outside of work. He denies tobacco or alcohol use.\n\nFamily History: Father has a history of osteoarthritis. Mother has a history of seasonal allergies.\n\nPast Surgical History: Status post appendectomy, status post tonsillectomy, and status post cholecystectomy.\n\nVitals:\nBP: 118/76 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\nWeight: 195 lbs\nHeight: 5'11\"\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nPlatelet Count: 210 x 10^9/L\n\nMedication List:\nMultivitamin daily.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Right knee shows mild swelling and tenderness upon palpation of the patellar tendon. Range of motion is intact but limited by discomfort at the end of flexion. No erythema or warmth noted. No instability noted during provocative testing.\n\nAssessment:\n1. Right knee osteoarthritis.\n\nPlan:\nThe patient will begin a physical therapy regimen focusing on quadricep strengthening and range of motion exercises. We discussed the importance of low-impact activities such as swimming or cycling. He will follow up in four weeks to assess progress with physical therapy.\n\nProblem List:\n1. chronic systolic heart failure (HFrEF)\n2. Status post appendectomy\n3. Status post tonsillectomy\n4. Status post cholecystectomy\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Heart failure appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:28:11+00:00",
+    "style": {
+      "age": 47,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}
