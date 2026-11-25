@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-504c0bf6e4",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd_exacerbation",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nIncreased shortness of breath and cough.\n\nHPI\nThe patient is an 89-year-old woman presenting today for an exacerbation of her chronic obstructive pulmonary disease. She reports a significant increase in dyspnea and a productive cough over the past three days. She states that her baseline symptoms have worsened, making it difficult to perform activities of daily living. She continues to use home oxygen at night as prescribed. She denies fever, chills, or chest pain.\n\nMedication List\n1. Tiotropium\n2. Salmeterol/Fluticasone\n3. Home oxygen (nocturnal)\n\nExam\nThe patient appears in mild respiratory distress. Lung auscultation reveals bilateral wheezing and diminished breath sounds in the lower lobes. Oxygen saturation is 92% on room air. Heart rate is 88 beats per minute. She is alert and oriented to person, place, and time.\n\nAssessment\nAcute exacerbation of COPD.\n\nPlan\nThe patient will begin a five-day course of a steroid burst to manage the current flare-up. She was instructed to continue her home oxygen as usual. She will follow up in one week if symptoms do not improve.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "J44.1",
+    "Z99.81"
+  ],
+  "explanations": [
+    "COPD with an acute exacerbation: J44.1 (same HCC 280 as stable COPD, but a different code).",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "Z99.81"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "under",
+      "why": "An acute exacerbation is documented: J44.1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J441"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:26+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

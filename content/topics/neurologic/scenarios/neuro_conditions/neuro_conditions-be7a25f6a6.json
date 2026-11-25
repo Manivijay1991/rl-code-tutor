@@ -1,0 +1,80 @@
+{
+  "id": "neuro_conditions-be7a25f6a6",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "single_seizure_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for history of seizure.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nNeurological: Negative for tremors, weakness, or numbness.\nCardiovascular: Negative for palpitations or chest pain.\nRespiratory: Negative for shortness of breath or cough.\n\nHPI:\n[Copied Forward from prior visit]: Patient is a 77-year-old female who first presented with a single seizure several years ago. She reported the event was unprovoked and occurred without any precipitating factors. Since that event, she has had no further episodes. She currently takes no seizure medication.\n\n[Update]: The patient reports she remains stable with no new neurological complaints or changes in her baseline status. She continues to be seizure-free and denies any recent incidents.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nNeurological: Cranial nerves II-XII intact. Motor strength 5/5 throughout. Sensation intact to light touch. Gait is steady and coordinated. Reflexes are 2+ and symmetric.\n\nAssessment:\n1. History of one seizure, stable.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Patient to continue monitoring for any new neurological symptoms.\n3. Return to clinic in 12 months for routine follow-up.\n\nElectronically signed, R. Mensah, PA-C, 05/14/2026",
+  "answer": [
+    "Z86.69"
+  ],
+  "explanations": [
+    "One seizure years ago, none since and no treatment: personal history, Z86.69 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "coded_resolved_seizure",
+      "lean": "over",
+      "why": "The seizure is not current: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0,
+        "gap": 0.245,
+        "direction": "over",
+        "extra_hccs": [
+          "201"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G40.909"
+      ],
+      "confusion": "coded_resolved_seizure",
+      "lean": "over",
+      "why": "Epilepsy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0,
+        "gap": 0.245,
+        "direction": "over",
+        "extra_hccs": [
+          "201"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:53+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

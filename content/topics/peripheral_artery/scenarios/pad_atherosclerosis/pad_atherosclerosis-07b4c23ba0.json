@@ -1,0 +1,60 @@
+{
+  "id": "pad_atherosclerosis-07b4c23ba0",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "pvd_unspecified",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint\nFollow up for peripheral vascular disease.\n\nHPI\nPt is a 56 y/o female presenting for routine follow up of peripheral vascular disease. Pt reports no acute symptoms at this time. Stable status regarding the right leg. No new complaints reported since last visit.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAspirin 81mg daily\n\nExam\nGen: Well developed, well nourished, in no acute distress.\nCV: RRR, CTAB.\nExtremities: Right lower extremity shows stable perfusion. No new lesions noted. Pulses palpable. No acute changes to the right leg.\n\nAssessment\n1. Peripheral vascular disease, stable. Right leg only.\n\nPlan\n1. Continue current medications as prescribed.\n2. Routine follow up in 6 months.\n3. Encourage regular walking and exercise.\n\nElectronically signed, D. Kowalski, MD\n05/14/2026",
+  "answer": [
+    "I73.9"
+  ],
+  "explanations": [
+    "Peripheral vascular disease without documented atherosclerosis or a complication: I73.9 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.211"
+      ],
+      "confusion": "assumed_atherosclerosis",
+      "lean": "over",
+      "why": "Atherosclerosis and claudication are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:12:49+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

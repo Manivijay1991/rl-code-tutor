@@ -1,0 +1,61 @@
+{
+  "id": "liver_disease-8663113474",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "fatty_liver"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for liver imaging results.\n\nHPI: (Copied Forward) Patient is a 78-year-old male presenting for evaluation of asymptomatic abdominal discomfort. He reports no significant weight loss, jaundice, or fever. He denies any changes in appetite or bowel habits.\n\nUpdate: The patient returns today to discuss the results of his recent abdominal ultrasound. He reports he has been adhering to his current activity goals. He denies any new abdominal pain or discomfort since the imaging was performed.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 185 lbs.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nGastrointestinal: Negative for nausea, vomiting, diarrhea.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or confusion.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nAbdomen: Soft, non-tender, no guarding, no rebound tenderness. No palpable masses or hepatomegaly.\n\nAssessment:\n1. Hepatic steatosis: Ultrasound confirmed finding of fatty liver. Currently stable.\n\nPlan:\n1. Continue management of hepatic steatosis with lifestyle modifications, including a low-fat diet and regular moderate exercise.\n2. Follow up in 6 months for repeat assessment.\n\nElectronically signed, \nR. Mensah, NP\nOctober 14, 2026",
+  "answer": [
+    "K76.0"
+  ],
+  "explanations": [
+    "Fatty liver: K76.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K74.60"
+      ],
+      "confusion": "coded_cirrhosis",
+      "lean": "over",
+      "why": "Cirrhosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0,
+        "gap": 0.447,
+        "direction": "over",
+        "extra_hccs": [
+          "64"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:42+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

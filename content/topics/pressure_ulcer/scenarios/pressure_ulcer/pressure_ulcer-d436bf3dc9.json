@@ -1,0 +1,62 @@
+{
+  "id": "pressure_ulcer-d436bf3dc9",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Wound care for sacrum.\n\nHPI: Pt is an 85-year-old female presenting for follow-up of a pressure ulcer located over the sacrum. Pt reports the area is uncomfortable but denies acute pain or drainage at this time. She notes she is using a pressure-redistributing mattress at home. No recent changes in mobility reported. Pt currently remains bedbound most of the day.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Meloxicam 15mg daily\n- Acetaminophen 500mg PRN\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight loss.\nIntegumentary: Positive for pressure ulcer on sacrum. No other skin concerns.\nMusculoskeletal: Denies joint pain or weakness.\nNeurological: Denies numbness or tingling.\nAll other systems reviewed and negative.\n\nSocial History: Lives at home with family support. Non-smoker. No alcohol use.\n\nFamily History: Mother had hypertension. Father had history of stroke.\n\nVitals:\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 145 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 68 mL/min/1.73m2\nWBC: 8.2 (WNL)\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: Pressure ulcer noted over the sacrum. Area is erythematous. No drainage noted. No purulent discharge. Remaining skin is intact and dry.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\n\nAssessment:\n1. Pressure ulcer of the sacrum.\n\nPlan:\n1. Wound care: Cleanse sacral area with normal saline. Apply thin layer of barrier cream.\n2. Education: Reinforced importance of frequent repositioning and pressure-relieving surfaces.\n3. Follow up: Return to clinic in 2 weeks for wound assessment.\n\nElectronically signed,\nD. Kowalski, DO\n05/12/2026",
+  "answer": [
+    "L89.159"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage not documented: L89.159 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.152"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "No stage is documented: use the unspecified-stage code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 0,
+        "gap": 0.838,
+        "direction": "over",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:01+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

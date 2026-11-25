@@ -1,0 +1,68 @@
+{
+  "id": "neuro_conditions-bb260a48f5",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "epilepsy_intractable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for seizure management.\n\nHPI\nThe patient is a 77-year-old female who presents today for a follow-up evaluation of her epilepsy. She reports that she has been experiencing frequent breakthrough seizures despite being adherent to her current pharmacological regimen. She currently takes two different anti-epileptic medications, but her symptoms remain poorly controlled. She describes the seizures as sudden onset, lasting approximately two to three minutes, often involving involuntary muscle contractions and brief periods of altered consciousness. She denies any new-onset focal neurological deficits or changes in her baseline mobility. She reports that the seizures are occurring roughly three times per month. There have been no recent falls or injuries associated with these episodes.\n\nMedication List\n- Levetiracetam 1000mg BID\n- Lamotrigine 200mg BID\n\nReview of Systems\nThe patient reports no recent headaches, visual changes, or focal weakness. She denies chest pain, shortness of breath, or palpitations. She reports no changes in sleep patterns or appetite. She denies any recent episodes of fever or chills.\n\nSocial History\nThe patient lives at home with her spouse. She is retired and enjoys gardening and walking in the park. She denies any tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension and a history of seizures. Her father had type 2 diabetes.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 bpm\nSpO2: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\nSodium: 138 mEq/L\nPotassium: 4.1 mEq/L\nCreatinine: 1.0 mg/dL\neGFR: 78 mL/min/1.73m2\nGlucose: 105 mg/dL\n\nExam\nThe patient is alert and oriented x3. She is in no acute distress. Neurological exam reveals intact motor strength in all four extremities. Cranial nerves II-XII are grossly intact. Reflexes are 2+ and symmetric. Coordination is normal. Gait is steady. Skin is warm and dry.\n\nAssessment\nThe patient is a 77-year-old female with intractable epilepsy. Despite the use of two concurrent medications, she continues to experience breakthrough seizures. Her condition is currently characterized as drug-resistant.\n\nPlan\nWe will discuss a transition to a different pharmacological agent or a combination therapy to address the refractory nature of her seizures. A neurology consultation will be requested to evaluate for adjunctive therapies. The patient will continue her current medications until the next appointment.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "G40.919"
+  ],
+  "explanations": [
+    "Intractable epilepsy without status epilepticus: G40.919 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G40.909"
+      ],
+      "confusion": "missed_intractable",
+      "lean": "under",
+      "why": "Intractable (drug-resistant) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40919"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:00+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

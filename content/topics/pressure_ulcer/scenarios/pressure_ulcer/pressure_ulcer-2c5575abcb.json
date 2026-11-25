@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-2c5575abcb",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "2"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Evaluation of a skin lesion on the right heel.\n\nHPI: The patient is a 73-year-old male who presents today for a follow-up regarding a pressure ulcer on the right heel. He reports that he first noticed the area approximately two weeks ago. He describes the area as painful and tender, particularly when applying pressure to the foot. He admits to being less mobile recently due to general fatigue, which has limited his ability to shift weight effectively. He has been attempting to keep the area clean and dry at home. He denies any drainage, systemic fever, or chills.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nIntegumentary: Positive for a localized lesion on the right heel. No rashes elsewhere.\nMusculoskeletal: Reports mild stiffness in the lower extremities.\nNeurological: Denies numbness or tingling.\n\nSocial History: The patient lives at home with his spouse. He is a retired construction worker and enjoys gardening. He denies tobacco or alcohol use.\n\nFamily History: Father had hypertension and a history of stroke. Mother had a history of heart disease.\n\nVitals:\nBP: 132/78 mmHg\nHR: 74 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 97% on room air\n\nRecent Labs:\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nPlatelets: 210 x 10^3/uL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m²\n\nExam: The patient is alert and oriented. Physical examination of the right heel reveals a stage 2 pressure ulcer. The area shows partial-thickness skin loss with a pinkish, moist base. There is no surrounding erythema or purulent drainage. The surrounding skin is intact. Capillary refill is <2 seconds.\n\nAssessment:\n1. Pressure ulcer of the right heel, stage 2.\n\nPlan:\n1. Wound care: Cleanse the pressure ulcer with normal saline. Apply a non-adherent dressing and a foam dressing to provide cushioning.\n2. Pressure relief: Instructed the patient on frequent weight shifts and the use of pressure-relieving footwear.\n3. Follow-up: Return to the clinic in two weeks for a dressing change and reassessment of the wound.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "L89.612"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 2: L89.612 (HCC 382)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.838,
+        "gap": -0.838,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.613"
+      ],
+      "confusion": "overstated_stage",
+      "lean": "over",
+      "why": "The documented stage is 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 0.838,
+        "gap": 0.237,
+        "direction": "over",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.838,
+    "hccs": [
+      {
+        "hcc": "382",
+        "label": "Pressure Ulcer of Skin with Partial Thickness Skin Loss",
+        "from": [
+          "L89612"
+        ],
+        "weight": 0.838
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:10+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

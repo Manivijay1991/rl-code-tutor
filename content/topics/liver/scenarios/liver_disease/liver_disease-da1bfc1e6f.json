@@ -1,0 +1,61 @@
+{
+  "id": "liver_disease-da1bfc1e6f",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "hep_c_cured"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for history of hepatitis C.\n\nHPI: Patient is a 72-year-old female who originally presented for management of a hepatitis C infection. She completed a full course of antiviral therapy several years ago. At the time of completion, she achieved a sustained virologic response. She reports feeling well today with no new symptoms, complaints of fatigue, or abdominal discomfort. She is here for a routine follow-up to ensure no recurrence of the infection and to monitor overall health. (Copied forward from previous visit; no updates since last encounter).\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals: BP 128/82, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nRecent Labs:\n- ALT: 24 U/L\n- AST: 22 U/L\n- Bilirubin: 0.8 mg/dL\n- Albumin: 4.2 g/dL\n- Platelets: 240,000/uL\n- INR: 1.0\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss, or fatigue.\nHEENT: Negative for vision changes, hearing loss, or sore throat.\nRespiratory: Negative for cough, shortness of breath, or wheezing.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea, vomiting, or abdominal pain.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness, numbness, or tingling.\n\nSocial History: Retired; lives with her spouse. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had hypertension; father had type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished, in no acute distress.\nAbdomen: Soft, non-tender, non-distended. No masses palpated.\nSkin: No visible jaundice or lesions.\n\nAssessment:\n1. History of hepatitis C, cured. Patient achieved SVR and currently shows no evidence of infection or liver damage.\n2. Hypertension, well-controlled on medication.\n3. Hyperlipidemia, stable on current regimen.\n\nPlan:\n1. Continue current medications.\n2. Routine follow-up in 12 months.\n3. Patient advised to maintain healthy diet and exercise.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "Z86.19"
+  ],
+  "explanations": [
+    "Hepatitis C cured with no current infection: personal history, Z86.19 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B18.2"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "The hepatitis C was cured (sustained virologic response): code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.185,
+        "correct": 0,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "65"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:54+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

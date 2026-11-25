@@ -7,8 +7,24 @@
     "title": "Tabular List: major depressive disorder, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
+  "ICD-10-CM Tabular: G20-G40": {
+    "title": "Tabular List: Parkinson's disease, MS and epilepsy, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
   "ICD-10-CM Tabular: I48": {
     "title": "Tabular List: atrial fibrillation and flutter, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: I70-I73": {
+    "title": "Tabular List: atherosclerosis and peripheral vascular disease, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: K70-K77": {
+    "title": "Tabular List: diseases of the liver, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: M05-M06": {
+    "title": "Tabular List: rheumatoid arthritis, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
   "OCG I.A.13": {
@@ -22,6 +38,14 @@
   "OCG I.B.14": {
     "title": "Documentation by clinicians other than the patient's provider (BMI)",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=16"
+  },
+  "OCG I.C.10.a": {
+    "title": "COPD and asthma",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=56"
+  },
+  "OCG I.C.12.a": {
+    "title": "Pressure ulcer stage codes (unstageable, unspecified, healed)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=58"
   },
   "OCG I.C.14.a": {
     "title": "Chronic kidney disease",

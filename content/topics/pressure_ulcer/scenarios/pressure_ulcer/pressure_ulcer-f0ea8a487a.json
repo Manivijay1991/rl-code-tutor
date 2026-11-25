@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-f0ea8a487a",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "4"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Management of a pressure ulcer.\n\nHPI: The patient is an 86-year-old male who presents today for a follow-up evaluation of a pressure ulcer located over the sacrum. He reports that the wound has remained persistent and he seeks further management. He reports localized discomfort but denies any systemic symptoms such as fever or chills. He is currently receiving nursing care at home but is seeking an updated clinical assessment and wound care plan from the clinic.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nVitals:\nBP: 138/82 mmHg\nHR: 74 bpm\nRR: 18 breaths/min\nTemp: 98.6 F\nSpO2: 96% on room air\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 68 mL/min/1.73m2\nWBC: 8.4 x 10^9/L\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nIntegumentary: Positive for a pressure ulcer over the sacrum. Denies rashes or new lesions.\nMusculoskeletal: Reports mild stiffness in the lower extremities.\nNeurological: Denies numbness or tingling.\n\nSocial History: The patient resides in an assisted living facility. He is a former smoker who quit twenty years ago. He enjoys listening to news and reading.\n\nFamily History: Father had hypertension. Mother had a history of heart disease.\n\nExam: The patient is alert and oriented. Physical examination of the skin reveals a large, deep pressure ulcer over the sacrum. The wound measures approximately 5cm x 6cm. Clinical assessment confirms this is a stage 4 pressure ulcer with visible and palpable tissue destruction. The surrounding skin is intact but appears dry.\n\nAssessment: 86-year-old male with a stage 4 pressure ulcer over the sacrum.\n\nPlan:\n1. Wound Care: Perform bedside debridement of the sacral area. Apply a hydrocolloid dressing to the pressure ulcer.\n2. Pressure Management: Continue use of a high-specification pressure-redistribution mattress.\n3. Nutrition: Encourage a high-protein diet to support tissue repair.\n4. Follow-up: Return to the clinic in two weeks for a wound measurement and dressing change.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "L89.154"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage 4: L89.154 (HCC 379)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.965,
+        "gap": -1.965,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.153"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 1.965,
+        "gap": -0.89,
+        "direction": "under",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.965,
+    "hccs": [
+      {
+        "hcc": "379",
+        "label": "Pressure Ulcer of Skin with Necrosis Through to Muscle/Tendon/Bone",
+        "from": [
+          "L89154"
+        ],
+        "weight": 1.965
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:04+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

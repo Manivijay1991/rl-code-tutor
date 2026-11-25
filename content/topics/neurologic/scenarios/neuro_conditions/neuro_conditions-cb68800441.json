@@ -1,0 +1,68 @@
+{
+  "id": "neuro_conditions-cb68800441",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "epilepsy_intractable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for seizure management.\n\nHPI\nPt is an 80 y.o. female presenting for f/u of epilepsy. Pt reports persistent seizure activity despite adherence to current regimen. She reports approximately 2-3 breakthrough seizures over the last month, characterized by brief tonic-clonic movements lasting <2 minutes. Pt notes these episodes are unpredictable and occur regardless of sleep patterns. She denies any recent changes in medication, new medications, or significant lifestyle changes. She states she is still experiencing some side effects including mild lethargy and occasional dizziness. No recent falls reported.\n\nReview of Systems\nConstitutional: Denies fever, chills, weight change.\nNeurological: Positive for breakthrough seizures. Denies headache, numbness, or weakness.\nCardiovascular: Denies chest pain, palpitations.\nRespiratory: Denies SOB or cough.\nGI: Denies nausea, diarrhea, or abdominal pain.\n\nSocial History\nPt lives at home with her daughter. Retired. No tobacco, alcohol, or illicit drug use.\n\nFamily History\nMother had hypertension and seizures. Father had type 2 diabetes.\n\nMedication List\nLevetiracetam 1000mg BID\nLamotrigine 200mg BID\nAmlodipine 5mg daily\nMultivitamin daily\n\nExam\nVitals: BP 132/78, HR 74, RR 16, Temp 98.6 F, SpO2 98% RA.\nGeneral: Alert and oriented x3. Appears in no acute distress.\nNeurological: Cranial nerves II-XII intact. Speech clear. Gait steady. Normal deep tendon reflexes. No focal deficits noted.\nSkin: No new lesions or rashes.\n\nRecent Labs\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\nBMP: Na 139, K 4.2, Cr 1.1, eGFR 72.\n\nAssessment\n1. Epilepsy: Pt presents with ongoing seizure activity. Current regimen is insufficient to control symptoms.\n2. Intractable epilepsy: Pt meets criteria for drug-resistant seizures despite concurrent use of two primary anti-epileptic medications.\n\nPlan\n1. Continue current medications.\n2. Consider referral to neurology for evaluation of adjunctive therapies for refractory seizures.\n3. Patient instructed to keep seizure log for next visit.\n4. F/u in 4 weeks.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "G40.919"
+  ],
+  "explanations": [
+    "Intractable epilepsy without status epilepticus: G40.919 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G40.909"
+      ],
+      "confusion": "missed_intractable",
+      "lean": "under",
+      "why": "Intractable (drug-resistant) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40919"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:02+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

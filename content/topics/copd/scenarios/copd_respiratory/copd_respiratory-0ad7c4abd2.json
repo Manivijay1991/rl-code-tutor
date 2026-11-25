@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-0ad7c4abd2",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nFollow-up for COPD.\n\nHPI\nThe patient is a 73-year-old woman presenting for a routine follow-up of her chronic obstructive pulmonary disease. She reports that she has been feeling stable and is managing her symptoms well at home. She continues to use home oxygen during the night to assist with her breathing. She denies any recent increase in shortness of breath or changes in her cough. She reports good compliance with her current regimen and states that her activities of daily living remain largely unchanged.\n\nMedication List\n1. Tiotropium (Inhaler)\n2. Salmeterol/Fluticasone (Inhaler)\n3. Supplemental oxygen (Nighttime only)\n\nExam\nThe patient is alert and oriented. She appears in no acute distress. Respiratory effort is even and unlabored. Breath sounds are diminished bilaterally but clear. Oxygen saturation is stable on her prescribed home oxygen.\n\nAssessment\n1. COPD, stable.\n\nPlan\n1. Continue current maintenance medications.\n2. Continue home oxygen as prescribed at night.\n3. Follow up in the clinic in 3 months for a routine check.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "J44.9",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Stable COPD: J44.9 (HCC 280).",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.1",
+        "Z99.81"
+      ],
+      "confusion": "unsupported_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:16+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

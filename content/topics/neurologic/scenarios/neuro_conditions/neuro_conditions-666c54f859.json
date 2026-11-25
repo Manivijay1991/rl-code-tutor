@@ -1,0 +1,80 @@
+{
+  "id": "neuro_conditions-666c54f859",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "single_seizure_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for history of seizure.\n\nVitals: BP 134/82, HR 74, SpO2 98% on room air, Temp 98.6 F, HR 74.\n\nHPI: (Copied Forward) Patient is an 89-year-old female who presented with a history of one seizure that occurred several years ago. The event was reported as an isolated seizure that was unprovoked in nature. There have been no further incidents since that time. The patient has not required any ongoing pharmacological management for this event.\n\nUpdate: The patient reports no new neurological symptoms or changes in her baseline status since the last visit. She remains stable.\n\nReview of Systems:\nConstitutional: Negative\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\n\nMedication List:\n- Aspirin 81 mg daily\n- Lisinopril 10 mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nNeurological: Cranial nerves II-XII intact. Motor strength 5/5 throughout. Coordination and gait are steady for her age. Reflexes are 2+ and symmetric.\n\nAssessment:\n1. History of one seizure.\n\nPlan:\n1. Continue current observation. No new medications are indicated at this time.\n2. Follow up as needed or in 6 months.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "Z86.69"
+  ],
+  "explanations": [
+    "One seizure years ago, none since and no treatment: personal history, Z86.69 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "coded_resolved_seizure",
+      "lean": "over",
+      "why": "The seizure is not current: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0,
+        "gap": 0.245,
+        "direction": "over",
+        "extra_hccs": [
+          "201"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G40.909"
+      ],
+      "confusion": "coded_resolved_seizure",
+      "lean": "over",
+      "why": "Epilepsy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0,
+        "gap": 0.245,
+        "direction": "over",
+        "extra_hccs": [
+          "201"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:09+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

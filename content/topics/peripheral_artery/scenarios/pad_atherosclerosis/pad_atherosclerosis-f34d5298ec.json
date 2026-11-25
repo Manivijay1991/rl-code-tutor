@@ -1,0 +1,96 @@
+{
+  "id": "pad_atherosclerosis-f34d5298ec",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "claudication",
+    "side": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Calf pain when walking.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F, Weight 210 lbs.\n\nRecent Labs: HbA1c 5.8%, eGFR 88, LDL 115, HDL 42, Triglycerides 150.\n\nMedication List:\n- Atorvastatin 40mg daily\n- Lisinopril 10mg daily\n- Aspirin 81mg daily\n\nSocial History: Patient is a 51-year-old male who works as a warehouse supervisor. He reports a 20-pack-year smoking history but quit three years ago. He exercises by walking three times a week.\n\nFamily History: Father had a myocardial infarction at age 55. Mother has hypertension.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nMusculoskeletal: Positive for calf pain during exertion.\nNeurological: Negative for numbness or tingling.\nIntegumentary: Negative for skin breakdown.\n\nHPI: Patient is a 51-year-old male presenting for follow-up of atherosclerotic changes in the lower extremities. He reports experiencing intermittent claudication specifically localized to the left leg. He describes the sensation as a dull ache in the calf that occurs consistently after walking approximately two blocks. He notes that the discomfort resolves completely with brief periods of rest. He denies any experience of pain while seated or lying down. He denies any changes to the skin or appearance of the left lower extremity.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nCardiovascular: Regular rate and rhythm. No murmurs.\nExtremities: Left leg shows diminished pedal pulses compared to the opposite side. Skin is intact without lesions. Capillary refill is <3 seconds. No signs of acute ischemia.\n\nAssessment:\n1. Atherosclerosis of the native leg arteries with intermittent claudication.\n\nPlan:\n1. Continue current lipid-lowering and antiplatelet therapy.\n2. Instructed patient to engage in a supervised walking program to improve functional capacity.\n3. Advised patient to avoid smoking and maintain a heart-healthy diet.\n4. Follow up in 3 months for a repeat evaluation of symptoms.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "I70.212"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the left leg with intermittent claudication (no HCC in V28): I70.212."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.211"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.222"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Rest pain is not documented (it would add HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0,
+        "gap": 0.455,
+        "direction": "over",
+        "extra_hccs": [
+          "264"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I73.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Atherosclerosis with claudication is documented: I70.21-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:42+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

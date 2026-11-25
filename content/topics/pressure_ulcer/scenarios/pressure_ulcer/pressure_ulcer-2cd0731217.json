@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-2cd0731217",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "3"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow up of pressure ulcer.\n\nHPI\nPt is a 78-year-old male presenting for wound care of a pressure ulcer on the right heel. Pt reports the wound has been present for several weeks. He notes some drainage but denies significant pain or systemic symptoms. He is currently using a pressure-reducing mattress and performs frequent weight shifts. He is compliant with current wound care regimen.\n\nMedication List\nLisinopril 10mg QD\nAtorvastatin 20mg QD\nAspirin 81mg QD\nMeloxicam 15mg QD\n\nReview of Systems\nConstitutional: Denies fever, chills, or fatigue.\nIntegumentary: Positive for pressure ulcer on right heel. Denies other skin changes.\nMusculoskeletal: Denies joint pain or new weakness.\nNeuro: Denies numbness or tingling.\nAll other systems reviewed and negative.\n\nSocial History\nPt lives at home with spouse. Retired. No tobacco use. Occasional alcohol use.\n\nFamily History\nFather: Hypertension, Stroke.\nMother: Heart disease.\n\nVitals\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 165 lbs\n\nRecent Labs\nHbA1c: 6.8%\neGFR: 65\nWBC: 8.2\nHgb: 13.4\nHct: 40%\n\nExam\nGeneral: Pt appears well-nourished, in no acute distress.\nSkin: Stage 3 pressure ulcer noted on the right heel. Wound measures approximately 3x2cm with visible granulation tissue and some slough. No surrounding erythema noted. Periwound skin intact.\nMSK: Right foot stable.\nNeuro: Sensation intact to light touch.\n\nAssessment\n1. Pressure ulcer, right heel. Currently stage 3.\n\nPlan\n1. Wound care: Cleanse with normal saline, apply hydrocolloid dressing to the right heel.\n2. Continue current medications.\n3. Instructed pt to maintain offloading of the right heel.\n4. F/u in 2 weeks for wound assessment.\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [
+    "L89.613"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 3: L89.613 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.612"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 1.075,
+        "gap": -0.237,
+        "direction": "under",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89613"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:21+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

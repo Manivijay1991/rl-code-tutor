@@ -1,0 +1,85 @@
+{
+  "id": "liver_disease-e735fada97",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "alcoholic_cirrhosis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for alcoholic cirrhosis.\n\nHPI\nThe patient is a 36-year-old woman presenting today for a routine follow-up of alcoholic cirrhosis. She reports feeling well and states that she has successfully maintained sobriety and no longer drinks alcohol. She denies any recent episodes of jaundice, abdominal pain, or significant fatigue. She is compliant with her current management plan and reports no new symptoms since her last evaluation.\n\nMedication List\nLactulose 15g daily.\n\nExam\nThe patient is alert and oriented x3. She appears in no acute distress. Skin is clear without jaundice. Abdomen is soft and non-tender with no palpable masses. No peripheral edema is noted. Vital signs are stable within normal limits.\n\nAssessment\n1. Alcoholic cirrhosis: The patient is stable and continues to remain abstinent from alcohol. There is currently no evidence of fluid accumulation.\n\nPlan\n1. Continue current medications as prescribed.\n2. Maintain total abstinence from alcohol.\n3. Follow up in three months for laboratory monitoring and clinical evaluation.\n\nElectronically signed, L. Moreau, DO, 05/12/2026",
+  "answer": [
+    "K70.30"
+  ],
+  "explanations": [
+    "Alcoholic cirrhosis without ascites: K70.30 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K74.60"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The cause (alcohol) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K70.31"
+      ],
+      "confusion": "unsupported_ascites",
+      "lean": "over",
+      "why": "Ascites is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7030"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:14:30+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

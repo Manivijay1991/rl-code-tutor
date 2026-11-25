@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-0919e4de77",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "unstageable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Pressure ulcer management.\n\nHPI: [Copied Forward] Patient is an 89-year-old female who presents for ongoing management of a pressure ulcer. She reports increased discomfort at the site and notes that the area remains firm. She is currently utilizing a pressure-redistribution mattress at home and performs frequent repositioning. She denies new systemic symptoms or increased drainage.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Integumentary: Positive (sacral pressure injury)\n- Musculoskeletal: Negative\n- Neurological: Negative\n\nExam:\nPatient is alert and oriented x3. Skin is dry. Inspection of the sacrum reveals a pressure ulcer. The wound base is covered by eschar, making the injury unstageable. No purulent drainage noted. Surrounding tissue is intact.\n\nAssessment:\n1. Pressure ulcer of the sacrum.\n\nPlan:\n1. Continue current wound care protocol.\n2. Apply hydrogel dressing to the unstageable pressure ulcer.\n3. Continue pressure-redistribution mattress and repositioning every 2 hours.\n4. Follow up in 2 weeks for wound measurement.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "L89.150"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, unstageable (base covered by eschar or slough): L89.150 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "Unstageable is a documented stage (L89.--0), not 'unspecified'.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.154"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "Do not assign a stage the provider could not determine.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.965,
+        "correct": 1.075,
+        "gap": 0.89,
+        "direction": "over",
+        "extra_hccs": [
+          "379"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89150"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:06+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

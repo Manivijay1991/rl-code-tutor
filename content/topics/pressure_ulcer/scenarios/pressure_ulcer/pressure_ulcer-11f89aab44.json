@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-11f89aab44",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "unstageable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow up on pressure ulcer.\n\nHPI\nPt is a 76-year-old female presenting for wound care of a pressure ulcer on the right heel. Pt reports the wound remains painful. No new drainage noted. Pt reports compliance with offloading measures.\n\nMedication List\nLisinopril 10mg QD\nAtorvastatin 20mg QD\nAspirin 81mg QD\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nSkin: Pressure ulcer on the right heel. Wound base is covered by eschar, making the wound unstageable. No surrounding erythema or purulent drainage noted.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6 F, SpO2 98% on RA.\n\nAssessment\n1. Pressure ulcer on right heel.\n\nPlan\n1. Wound care: Cleanse with normal saline, apply hydrogel and non-adherent dressing.\n2. Continue offloading and repositioning.\n3. F/u in 2 weeks for wound assessment.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "L89.610"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, unstageable (base covered by eschar or slough): L89.610 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "Unstageable is a documented stage (L89.--0), not 'unspecified'.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.614"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "Do not assign a stage the provider could not determine.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.965,
+        "correct": 1.075,
+        "gap": 0.89,
+        "direction": "over",
+        "extra_hccs": [
+          "379"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89610"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:27+00:00",
+    "style": {
+      "age": 76,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

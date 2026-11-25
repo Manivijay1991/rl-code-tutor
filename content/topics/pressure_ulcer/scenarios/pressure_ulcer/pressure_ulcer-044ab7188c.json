@@ -1,0 +1,58 @@
+{
+  "id": "pressure_ulcer-044ab7188c",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Follow-up on sacral pressure injury.\n\nHPI: Patient is a 78-year-old male presenting for follow-up of a pressure ulcer located over the sacrum. (Copied forward from previous visits). Update: The patient reports that the area is no longer painful and the skin is intact. He has been compliant with positioning and skin care protocols.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 134/82, HR 76, SpO2 98% on room air, Temp 98.6 F\n\nReview of Systems:\nConstitutional: Negative\nIntegumentary: Positive (prior pressure injury)\nMusculoskeletal: Negative\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished male in no acute distress.\nIntegumentary: Skin is dry but intact over the sacrum. The pressure ulcer is completely healed. No drainage, erythema, or fluctuance noted. Skin integrity is restored.\n\nAssessment:\n1. Pressure ulcer over the sacrum: Fully healed.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Discontinue specific pressure injury protocols as the site has healed.\n3. Return to clinic in 3 months for routine follow-up.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "A pressure ulcer documented as completely healed is not coded."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "healed_coded",
+      "lean": "over",
+      "why": "No code is assigned for a completely healed pressure ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:05+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

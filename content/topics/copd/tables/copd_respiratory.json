@@ -1,0 +1,347 @@
+{
+  "id": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note_age": {
+    "min": 50
+  },
+  "slots": {
+    "form": {
+      "label": "Lung disease documented",
+      "values": [
+        "copd",
+        "copd_exacerbation",
+        "emphysema"
+      ],
+      "labels": {
+        "copd": "COPD, stable",
+        "copd_exacerbation": "COPD with acute exacerbation",
+        "emphysema": "Emphysema"
+      },
+      "evidence": {
+        "copd": [
+          "COPD",
+          "chronic obstructive pulmonary disease"
+        ],
+        "copd_exacerbation": [
+          "exacerbation"
+        ],
+        "emphysema": [
+          "emphysema"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "copd": "The provider documents COPD, stable.",
+        "copd_exacerbation": "The provider documents an acute exacerbation of COPD (more dyspnea and cough) treated at this visit with a steroid burst.",
+        "emphysema": "The provider documents emphysema (do not call it COPD)."
+      }
+    },
+    "respiratory": {
+      "label": "Respiratory failure or oxygen",
+      "values": [
+        "none",
+        "oxygen_only",
+        "chronic_failure"
+      ],
+      "labels": {
+        "none": "Neither",
+        "oxygen_only": "Home oxygen, no respiratory failure documented",
+        "chronic_failure": "Chronic respiratory failure with hypoxia, on home oxygen"
+      },
+      "evidence": {
+        "none": [],
+        "oxygen_only": [
+          [
+            "home oxygen",
+            "supplemental oxygen"
+          ]
+        ],
+        "chronic_failure": [
+          [
+            "chronic respiratory failure"
+          ],
+          [
+            "hypoxia",
+            "hypoxic",
+            "hypoxemia",
+            "hypoxemic"
+          ],
+          [
+            "home oxygen",
+            "supplemental oxygen"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "none": "The patient does not use oxygen and has no respiratory failure.",
+        "oxygen_only": "The patient uses home oxygen at night; the provider does not diagnose respiratory failure.",
+        "chronic_failure": "The provider diagnoses chronic respiratory failure with hypoxia; the patient uses home oxygen continuously."
+      }
+    }
+  },
+  "note_forbid": [
+    "pneumonia",
+    "bronchiectasis",
+    "asthma",
+    "lung cancer",
+    "pulmonary fibrosis",
+    "heart failure",
+    "hypercapnia",
+    "hypercapnic",
+    "acute respiratory failure",
+    "acute on chronic",
+    "intubat",
+    "ventilator",
+    "tracheostomy",
+    "BiPAP",
+    "CPAP"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "form": "copd"
+      },
+      "forbid": [
+        "exacerbation",
+        "flare",
+        "emphysema",
+        "bronchitis"
+      ]
+    },
+    {
+      "when": {
+        "form": "copd_exacerbation"
+      },
+      "require": [
+        [
+          "COPD",
+          "chronic obstructive pulmonary disease"
+        ]
+      ],
+      "forbid": [
+        "emphysema",
+        "bronchitis"
+      ]
+    },
+    {
+      "when": {
+        "form": "emphysema"
+      },
+      "forbid": [
+        "exacerbation",
+        "flare",
+        "COPD",
+        "chronic obstructive",
+        "bronchitis"
+      ]
+    },
+    {
+      "when": {
+        "respiratory": "none"
+      },
+      "forbid": [
+        "home oxygen",
+        "supplemental oxygen",
+        "oxygen at",
+        "L/min",
+        "respiratory failure",
+        "hypoxic",
+        "hypoxemic",
+        "hypoxia",
+        "hypoxemia"
+      ]
+    },
+    {
+      "when": {
+        "respiratory": "oxygen_only"
+      },
+      "forbid": [
+        "respiratory failure",
+        "hypoxic respiratory",
+        "chronic hypoxia",
+        "chronic hypoxemia"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_exacerbation": {
+      "description": "Coded stable COPD when an acute exacerbation is documented.",
+      "lean": "under"
+    },
+    "unsupported_exacerbation": {
+      "description": "Coded an exacerbation that is not documented.",
+      "lean": "over"
+    },
+    "unspecified_when_specified": {
+      "description": "Used COPD, unspecified (J44.9) when emphysema is documented.",
+      "lean": "neutral"
+    },
+    "respiratory_failure_from_oxygen": {
+      "description": "Coded respiratory failure from home oxygen use alone; the provider must diagnose it.",
+      "lean": "over"
+    },
+    "missed_oxygen": {
+      "description": "Left out dependence on supplemental oxygen (Z99.81).",
+      "lean": "under"
+    },
+    "missed_respiratory_failure": {
+      "description": "Left out documented chronic respiratory failure (HCC 213).",
+      "lean": "under"
+    },
+    "unspecified_respiratory_failure": {
+      "description": "Used unspecified respiratory failure when hypoxia is documented.",
+      "lean": "neutral"
+    },
+    "acute_on_chronic_unsupported": {
+      "description": "Coded acute on chronic respiratory failure when only chronic failure is documented.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "lung",
+      "rules": [
+        {
+          "when": {
+            "form": "copd"
+          },
+          "codes": [
+            "J44.9"
+          ],
+          "explain": "Stable COPD: J44.9 (HCC 280).",
+          "refs": [
+            "OCG I.C.10.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J44.1"
+              ],
+              "confusion": "unsupported_exacerbation",
+              "why": "No exacerbation is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "form": "copd_exacerbation"
+          },
+          "codes": [
+            "J44.1"
+          ],
+          "explain": "COPD with an acute exacerbation: J44.1 (same HCC 280 as stable COPD, but a different code).",
+          "refs": [
+            "OCG I.C.10.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J44.9"
+              ],
+              "confusion": "missed_exacerbation",
+              "why": "An acute exacerbation is documented: J44.1."
+            }
+          ]
+        },
+        {
+          "when": {
+            "form": "emphysema"
+          },
+          "codes": [
+            "J43.9"
+          ],
+          "explain": "Emphysema: J43.9 (HCC 280), not J44.-.",
+          "refs": [
+            "OCG I.C.10.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J44.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Emphysema has its own code, J43.9."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "respiratory",
+      "rules": [
+        {
+          "when": {
+            "respiratory": "oxygen_only"
+          },
+          "codes": [
+            "Z99.81"
+          ],
+          "explain": "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J96.11",
+                "Z99.81"
+              ],
+              "confusion": "respiratory_failure_from_oxygen",
+              "why": "Oxygen use alone does not establish respiratory failure (HCC 213)."
+            },
+            {
+              "codes": [],
+              "confusion": "missed_oxygen",
+              "why": "Dependence on supplemental oxygen is documented: Z99.81."
+            }
+          ]
+        },
+        {
+          "when": {
+            "respiratory": "chronic_failure"
+          },
+          "codes": [
+            "J96.11",
+            "Z99.81"
+          ],
+          "explain": "Chronic respiratory failure with hypoxia: J96.11 (HCC 213), plus Z99.81 for the home oxygen.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z99.81"
+              ],
+              "confusion": "missed_respiratory_failure",
+              "why": "The provider diagnoses chronic respiratory failure: J96.11 (HCC 213)."
+            },
+            {
+              "codes": [
+                "J96.10",
+                "Z99.81"
+              ],
+              "confusion": "unspecified_respiratory_failure",
+              "why": "Hypoxia is documented: J96.11."
+            },
+            {
+              "codes": [
+                "J96.21",
+                "Z99.81"
+              ],
+              "confusion": "acute_on_chronic_unsupported",
+              "why": "Only chronic respiratory failure is documented."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    }
+  ]
+}

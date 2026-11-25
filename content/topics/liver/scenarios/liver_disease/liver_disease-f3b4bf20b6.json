@@ -1,0 +1,68 @@
+{
+  "id": "liver_disease-f3b4bf20b6",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "alcoholic_cirrhosis_ascites"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for management of alcoholic cirrhosis and ascites.\n\nHPI\nThe patient is a 79-year-old female presenting today for a follow-up evaluation regarding her chronic liver condition. She currently has a diagnosis of alcoholic cirrhosis with associated ascites. She reports that she has successfully maintained sobriety and no longer drinks alcohol. She states that her symptoms have been relatively stable over the last month, though she occasionally experiences a feeling of fullness and abdominal discomfort. She denies any recent fever, chills, yellowing of the eyes, or sudden weight changes. She reports compliance with her current medication regimen and has not experienced any significant episodes of acute distress since her last visit.\n\nMedication List\nLisinopril 10mg daily\nSpironolactone 25mg daily\nLactulose 15g four times daily\nVitamin K 10mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 97% on room air\nHeight: 5'4\"\nWeight: 165 lbs\n\nRecent Labs\nALT: 42 U/L\nAST: 58 U/L\nAlbumin: 3.1 g/dL\nINR: 1.4\nBilirubin: 1.2 mg/dL\nSodium: 135 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\neGFR: 62 mL/min/1.73m2\n\nReview of Systems\nConstitutional: Denies fever, chills, or fatigue.\nGastrointestinal: Positive for abdominal fullness; denies nausea, vomiting, or bloody stools.\nSkin: Denies itching or jaundice.\nNeurological: Denies confusion or tremors.\n\nSocial History\nThe patient lives at home with her daughter. She is retired and enjoys gardening. She is currently sober.\n\nFamily History\nMother had hypertension and type 2 diabetes. Father had a history of coronary artery disease.\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress.\nAbdomen: Significant distension noted with palpable fluid. Soft, non-tender. No guarding or rebound tenderness.\nSkin: No visible jaundice or spider angiomata noted.\nExtremities: Trace pitting edema noted in bilateral lower extremities.\n\nAssessment\n1. Alcoholic cirrhosis with ascites: The patient is stable at this time. She is maintaining sobriety.\n\nPlan\n1. Continue current medications as prescribed.\n2. Maintain low-sodium diet.\n3. Follow up in 3 months for repeat lab work and clinical evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "K70.31"
+  ],
+  "explanations": [
+    "Alcoholic cirrhosis with ascites: K70.31 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K70.30"
+      ],
+      "confusion": "missed_ascites",
+      "lean": "under",
+      "why": "Ascites is documented: K70.31.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7031"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:35+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

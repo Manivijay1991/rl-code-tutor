@@ -1,0 +1,68 @@
+{
+  "id": "neuro_conditions-8994663dc8",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "seizure_disorder"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for seizure disorder.\n\nHPI\nThe patient is an 86-year-old male presenting for a routine follow-up of his seizure disorder. He reports that his condition has been well-controlled over the last six months. He denies any recent episodes of tonic-clonic activity or focal awareness alterations. He reports consistent adherence to his prescribed levetiracetam and denies any significant side effects such as dizziness, somnolence, or mood changes. He notes that his sleep patterns remain regular and he feels generally well.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, chills, or joint pain. He denies any recent falls, visual changes, or numbness/tingling in his extremities. He denies any changes in appetite or bowel habits.\n\nSocial History\nThe patient lives at home with his wife. He is retired and spends most of his time gardening and watching television. He denies tobacco or alcohol use.\n\nFamily History\nHis father had hypertension and his mother had type 2 diabetes.\n\nMedication List\n- Levetiracetam 500mg twice daily\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 65 mL/min/1.73m2\nTSH: 2.1 mIU/L\nSodium: 139 mEq/L\nPotassium: 4.2 mEq/L\n\nExam\nThe patient is alert and oriented to person, place, and time. He appears in no acute distress. His speech is clear and coherent. Neurological exam reveals normal gait and steady balance. Cranial nerves II-XII are intact. Muscle strength is 5/5 throughout. Reflexes are 2+ and symmetric. No tremors or involuntary movements noted.\n\nAssessment\n1. Seizure disorder: The patient’s seizure disorder remains stable and well-controlled on his current dose of levetiracetam. He is currently asymptomatic.\n\nPlan\n1. Continue levetiracetam 500mg twice daily.\n2. Continue current antihypertensive and lipid-lowering medications.\n3. Follow up in 6 months for routine monitoring.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "G40.909"
+  ],
+  "explanations": [
+    "'Seizure disorder' indexes to epilepsy, unspecified: G40.909 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "symptom_for_diagnosis",
+      "lean": "neutral",
+      "why": "A seizure disorder is a diagnosis (G40.909), not the symptom R56.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40909"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:06+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

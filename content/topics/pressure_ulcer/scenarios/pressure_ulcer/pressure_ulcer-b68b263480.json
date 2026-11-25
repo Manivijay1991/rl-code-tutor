@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-b68b263480",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "unstageable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Pressure ulcer on right heel.\n\nHPI: Pt is a 90-year-old female presenting for f/u of a pressure ulcer on the right heel. Pt reports that the wound has not shown significant improvement over the last month. She notes some discomfort but no new drainage or systemic symptoms. She remains mobile with a walker but spends significant time in a chair.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n- Meloxicam 15mg daily\n\nVitals:\nBP: 138/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 145 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 58\nWBC: 8.0\nHgb: 12.4\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight loss.\nIntegumentary: Positive for pressure ulcer on right heel. Denies other skin breakdown.\nMusculoskeletal: Denies joint pain or new weakness.\nNeuro: Denies numbness or tingling.\n\nSocial History: Lives in assisted living facility. Retired teacher. Non-smoker.\n\nFamily History: Mother had hypertension. Father had heart disease.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nSkin: Pressure ulcer on right heel. Wound bed is covered by eschar. No surrounding erythema or fluctuance.\nMusculoskeletal: Good range of motion in right ankle.\nCardiovascular: RRR, regular rhythm.\nRespiratory: CTAB.\n\nAssessment:\n1. Pressure ulcer on right heel. The wound is currently unstageable due to the presence of eschar at the base.\n\nPlan:\n1. Pressure ulcer: Continue current wound care and dressing changes. Keep area clean and dry. Encourage frequent repositioning and weight off right heel.\n2. Follow up in 2 weeks for wound re-evaluation.\n\nElectronically signed,\nM. Okafor, NP\n05/14/2026",
+  "answer": [
+    "L89.610"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, unstageable (base covered by eschar or slough): L89.610 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "Unstageable is a documented stage (L89.--0), not 'unspecified'.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.614"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "Do not assign a stage the provider could not determine.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.965,
+        "correct": 1.075,
+        "gap": 0.89,
+        "direction": "over",
+        "extra_hccs": [
+          "379"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89610"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:17+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

@@ -223,6 +223,14 @@ One table per topic folder (`content/topics/<topic>/tables/`); `coding-tutor-che
 | Obesity and BMI | `obesity_bmi` | 11 | BMI needs a provider diagnosis; BMI 40+ is HCC 48 | draft |
 | Status codes | `status_codes` | 7 | amputation level/side, ostomy status vs attention, reversed | draft |
 | Alcohol use | `alcohol_use` | 7 | mild = abuse (no HCC), moderate/severe = dependence, remission | draft |
+| Diabetes, hypertension and CKD | `diabetes_htn_ckd` | 12 | both links at once, stage code, dialysis | draft |
+| Atrial fibrillation | `atrial_fibrillation` | 9 | type, history after ablation (Z86.79), anticoagulant Z79.01 | draft |
+| Peripheral artery disease | `pad_atherosclerosis` | 7 | PVD vs atherosclerosis, claudication (no HCC) vs rest pain vs ulcer + L97 | draft |
+| COPD and respiratory failure | `copd_respiratory` | 9 | exacerbation, emphysema, home oxygen alone is not respiratory failure | draft |
+| Pressure ulcers | `pressure_ulcer` | 12 | stage decides the HCC; unstageable vs unspecified; healed | draft |
+| Liver disease | `liver_disease` | 6 | cirrhosis types, chronic vs cured hepatitis C, fatty liver | draft |
+| Epilepsy, Parkinson's and MS | `neuro_conditions` | 7 | seizure disorder = epilepsy, past single seizure, G35 is a header in FY2027 | draft |
+| Rheumatoid arthritis | `rheumatoid_arthritis` | 5 | RA vs osteoarthritis, rheumatoid factor, methotrexate Z79.631 | draft |
 | MEAT documentation | `meat_support` | 9 | problem list or medication list only | draft |
 
 V28 hierarchies, labels and weights come from the CMS model software (see `engine/hcc.py`).

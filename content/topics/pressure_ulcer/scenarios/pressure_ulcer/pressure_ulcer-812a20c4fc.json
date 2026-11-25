@@ -1,0 +1,58 @@
+{
+  "id": "pressure_ulcer-812a20c4fc",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Follow-up on pressure ulcer.\n\nHPI: (Copied Forward) Patient is an 86-year-old female who presented for management of a pressure ulcer located on the right heel. The patient reports limited mobility and skin breakdown in the area. Management has focused on pressure relief and skin integrity.\n\nUpdate: Patient returns today for follow-up. She reports that the area on her right heel feels significantly better and she has noted improvement in the skin appearance. She reports no new pain or drainage.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nVitals: BP 128/74, HR 76, SpO2 98% on room air, Temp 98.6 F, Weight 142 lbs.\n\nRecent Labs:\n- Hemoglobin: 12.4 g/dL\n- White Blood Cell Count: 7.2 x 10^9/L\n- Creatinine: 1.1 mg/dL\n- eGFR: 72 mL/min/1.73m2\n\nReview of Systems:\n- General: Negative for fever, chills, or fatigue.\n- Integumentary: Positive for skin changes on right heel; negative for rashes or other lesions.\n- Musculoskeletal: Negative for joint pain or new stiffness.\n- Neurological: Negative for numbness or tingling.\n- Cardiovascular: Negative for chest pain or palpitations.\n- Respiratory: Negative for shortness of breath or cough.\n\nSocial History: Patient lives at home with her daughter. She is retired and enjoys knitting. She uses a walker for ambulation.\n\nFamily History: Mother had hypertension; father had a history of coronary artery disease.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nIntegumentary: Examination of the right heel reveals that the pressure ulcer has completely healed. The skin is intact, smooth, and shows no signs of breakdown or irritation. No drainage or erythema noted.\n\nAssessment:\n1. Pressure ulcer of the right heel: The site has fully healed. No further intervention is required at this time.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue using pressure-relieving footwear and mobility aids.\n3. Follow up in 6 months for routine skin check.\n\nElectronically signed, J. Lindqvist, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "A pressure ulcer documented as completely healed is not coded."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "healed_coded",
+      "lean": "over",
+      "why": "No code is assigned for a completely healed pressure ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:33+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

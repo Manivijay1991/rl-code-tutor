@@ -1,0 +1,62 @@
+{
+  "id": "rheumatoid_arthritis-136a2ac776",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "osteoarthritis",
+    "methotrexate": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint: Knee pain.\n\nHPI: Pt is an 85 y.o. female presenting for f/u of chronic joint pain. She reports persistent aching and stiffness in both knees, particularly noted in the morning and after periods of inactivity. Pt describes the pain as a dull ache that worsens with increased ambulation. She denies any recent acute trauma or sudden onset of swelling. She notes that while the pain is constant, it is manageable with current regimen. Pt denies any systemic symptoms such as fever, chills, or significant fatigue. No reports of redness or warmth over the joints.\n\nMedication List:\n- Acetaminophen 650mg BID PRN for pain\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nMusculoskeletal: Positive for bilateral knee pain and stiffness. Denies back pain or shoulder pain.\nNeurological: Denies numbness or tingling.\nSkin: Denies rashes.\n\nSocial History: Retired. Lives with daughter. Independent with ADLs. No tobacco or alcohol use.\n\nFamily History: Mother had osteoarthritis. Father had hypertension.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 34%\nWBC: 7.2\nHbA1c: 6.1%\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nMusculoskeletal: Inspection of both knees shows mild bony enlargement. Palpation reveals tenderness over the patellofemoral joints. ROM is limited by discomfort but no joint effusion noted. No erythema or warmth. Strength 5/5 in quads and hamstrings.\n\nAssessment:\n1. Osteoarthritis of both knees. Pain is stable. No evidence of systemic inflammatory processes.\n\nPlan:\n1. Continue current management with acetaminophen for pain control.\n2. Continue PT for strengthening and mobility.\n3. No disease-modifying drug indicated at this time.\n4. Follow up in 3-6 months or as needed for increased symptoms.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "M17.0"
+  ],
+  "explanations": [
+    "Bilateral primary osteoarthritis of the knees: M17.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9"
+      ],
+      "confusion": "coded_ra_for_oa",
+      "lean": "over",
+      "why": "Osteoarthritis is not rheumatoid arthritis (HCC 93).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0,
+        "gap": 0.617,
+        "direction": "over",
+        "extra_hccs": [
+          "93"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T14:18:43+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

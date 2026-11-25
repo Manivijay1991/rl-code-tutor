@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-1a8923ef28",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "2"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Wound care for right heel.\n\nHPI: Pt is a 68-year-old female presenting for follow-up of a pressure ulcer on the right heel. Pt reports the area has been painful but stable over the last week. No new drainage or systemic symptoms reported. Pt currently uses a pressure-relieving mattress at home.\n\nMedication List: \n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Amlodipine 5mg QD\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nIntegumentary: Reports localized pain at right heel. No new rashes.\nMSK: Denies joint pain or swelling.\nCV: Denies chest pain or palpitations.\nResp: Denies SOB or cough.\nNeuro: Denies numbness or tingling.\n\nSocial History: Pt lives at home with spouse. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had stroke.\n\nVitals:\nBP: 138/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 12.4\nWt: 155 lbs\n\nRecent Labs:\nHbA1c: 6.4%\neGFR: 78\nWBC: 8.2\nHgb: 12.1\nPlt: 210k\n\nExam:\nGeneral: Pt in no acute distress, alert and oriented x3.\nSkin: Exam of right heel reveals a stage 2 pressure ulcer. Wound measures approximately 2cm x 1.5cm. Bed is pink and moist with minimal serous drainage. No surrounding erythema or purulent discharge. Surrounding skin is intact.\nMSK: Strength 5/5 in all extremities.\nCV: RRR, regular rhythm.\nResp: CTAB.\n\nAssessment:\n1. Stage 2 pressure ulcer on right heel.\n\nPlan:\n1. Wound care: Cleanse with normal saline. Apply hydrocolloid dressing to the right heel.\n2. Instructions: Maintain offloading of the right heel. Keep dressing dry and intact.\n3. F/u: Return to clinic in 2 weeks for wound re-evaluation.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "L89.612"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 2: L89.612 (HCC 382)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.838,
+        "gap": -0.838,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.613"
+      ],
+      "confusion": "overstated_stage",
+      "lean": "over",
+      "why": "The documented stage is 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 0.838,
+        "gap": 0.237,
+        "direction": "over",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.838,
+    "hccs": [
+      {
+        "hcc": "382",
+        "label": "Pressure Ulcer of Skin with Partial Thickness Skin Loss",
+        "from": [
+          "L89612"
+        ],
+        "weight": 0.838
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:07+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "pressure_ulcer",
+  "title": "Pressure ulcers",
+  "kind": "hcc",
+  "description": "Pressure ulcer site and stage, unstageable versus unspecified, and healed ulcers.",
+  "order": 88,
+  "enabled": true
+}

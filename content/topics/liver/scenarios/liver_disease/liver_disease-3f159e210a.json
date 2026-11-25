@@ -1,0 +1,61 @@
+{
+  "id": "liver_disease-3f159e210a",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "fatty_liver"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for hepatic steatosis.\n\nHPI\nThe patient is a 68-year-old male presenting for a routine follow-up regarding his hepatic steatosis. He reports feeling well and denies any abdominal pain, jaundice, or unintentional weight changes. He has been compliant with his current lifestyle modifications and reports engaging in regular walking and maintaining a balanced diet. He notes that he has been mindful of his caloric intake to manage his liver health.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is alert and oriented x3. He appears in no acute distress. Abdomen is soft and non-tender without guarding or rebound. No hepatomegaly or splenomegaly noted on palpation. Vital signs are stable and within normal limits.\n\nAssessment\n1. Hepatic steatosis: The patient has a history of fatty liver as documented by a previous ultrasound. He is currently asymptomatic and stable.\n\nPlan\n1. Continue current diet and exercise regimen.\n2. Follow up in 6 months for a repeat evaluation of hepatic steatosis.\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "K76.0"
+  ],
+  "explanations": [
+    "Fatty liver: K76.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K74.60"
+      ],
+      "confusion": "coded_cirrhosis",
+      "lean": "over",
+      "why": "Cirrhosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0,
+        "gap": 0.447,
+        "direction": "over",
+        "extra_hccs": [
+          "64"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:52+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

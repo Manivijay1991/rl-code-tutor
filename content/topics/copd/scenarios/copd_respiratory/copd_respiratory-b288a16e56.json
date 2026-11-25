@@ -1,0 +1,141 @@
+{
+  "id": "copd_respiratory-b288a16e56",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd_exacerbation",
+    "respiratory": "chronic_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Increased shortness of breath.\n\nVitals: BP 138/84, HR 88, SpO2 91% on 2L, Temp 98.6F, RR 22.\n\nReview of Systems:\nRespiratory: Positive for cough, dyspnea.\nCardiovascular: Negative for chest pain.\nConstitutional: Negative for fever.\n\nHPI: [Copied Forward] Patient is a 78-year-old male with a history of chronic obstructive pulmonary disease. He reports persistent shortness of breath and productive cough. He currently utilizes home oxygen for maintenance.\n\n[Today's Update] The patient presents today with a significant exacerbation of his symptoms over the last 48 hours. He reports increased dyspnea and a worsening cough. He admits to increased secretions.\n\nMedication List:\n- Tiotropium\n- Salmeterol\n- Prednisone (scheduled)\n- Home oxygen\n\nExam:\nGeneral: Alert and oriented, in mild respiratory distress.\nRespiratory: Tachypneic, diminished breath sounds in bilateral lower lobes, audible wheezing.\nCardiovascular: Regular rate and rhythm, no murmurs.\n\nAssessment:\n1. Exacerbation of COPD.\n2. Chronic respiratory failure with hypoxia.\n\nPlan:\n1. Initiate a 5-day steroid burst (Prednisone 40mg daily).\n2. Increase home oxygen flow as tolerated.\n3. Follow up in 1 week.\n\nElectronically signed,\nR. Mensah, NP\n05/14/2026",
+  "answer": [
+    "J44.1",
+    "J96.11",
+    "Z99.81"
+  ],
+  "explanations": [
+    "COPD with an acute exacerbation: J44.1 (same HCC 280 as stable COPD, but a different code).",
+    "Chronic respiratory failure with hypoxia: J96.11 (HCC 213), plus Z99.81 for the home oxygen."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "under",
+      "why": "An acute exacerbation is documented: J44.1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "Z99.81"
+      ],
+      "confusion": "missed_respiratory_failure",
+      "lean": "under",
+      "why": "The provider diagnoses chronic respiratory failure: J96.11 (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.689,
+        "gap": -0.37,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "213"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "J96.10",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_respiratory_failure",
+      "lean": "neutral",
+      "why": "Hypoxia is documented: J96.11.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "J96.21",
+        "Z99.81"
+      ],
+      "confusion": "acute_on_chronic_unsupported",
+      "lean": "over",
+      "why": "Only chronic respiratory failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.689,
+    "hccs": [
+      {
+        "hcc": "213",
+        "label": "Cardio-Respiratory Failure and Shock",
+        "from": [
+          "J9611"
+        ],
+        "weight": 0.37
+      },
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J441"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:29+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

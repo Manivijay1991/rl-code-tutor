@@ -1,0 +1,69 @@
+{
+  "id": "copd_respiratory-9a80b50b1a",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: The patient is a 73-year-old male who presents today for a follow-up regarding his chronic respiratory status. He reports persistent shortness of breath during moderate physical exertion, such as walking a few blocks or climbing stairs. He describes a chronic cough but denies any recent changes in the production of sputum or any increase in the severity of his symptoms over the last month. He states that his activity levels are somewhat limited but he is able to perform most activities of daily living independently. He denies chest pain, weight loss, or night sweats. He currently does not use any oxygen and reports no episodes of severe distress.\n\nMedication List:\n- Lisinopril 10mg daily\n- Amlodipine 5mg daily\n- Albuterol inhaler as needed\n\nReview of Systems:\nConstitutional: Denies fever or chills.\nRespiratory: Positive for shortness of breath on exertion and chronic cough. Denies wheezing.\nCardiovascular: Denies chest pain or palpitations.\nMusculoskeletal: Denies joint pain.\nNeurological: Denies dizziness or syncope.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking. He reports a history of tobacco use but has been a non-smoker for several years. He denies any alcohol or illicit drug use.\n\nFamily History: Father had hypertension and emphysema. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/82 mmHg\nHR: 74 bpm\nRR: 18 breaths/min\nSpO2: 96% on room air\nTemp: 98.6 F\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 72 mL/min\nCBC: Within normal limits.\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nRespiratory: Breath sounds are diminished in the lower lobes but clear in the upper lobes. No acute distress noted.\nCardiovascular: Regular rate and rhythm, no murmurs noted.\n\nAssessment:\n1. Emphysema: The patient has stable emphysema with symptoms primarily limited to exertional dyspnea.\n\nPlan:\n1. Continue current medications.\n2. Encourage continued activity as tolerated.\n3. Follow up in 6 months for a repeat pulmonary function test.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "J43.9"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-."
+  ],
+  "refs": [
+    "OCG I.C.10.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T14:13:42+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "pressure_ulcer-758d72d325",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nWound care for a pressure ulcer.\n\nHPI\nThe patient is an 89-year-old woman who presents today for a follow-up evaluation of a pressure ulcer located over her sacrum. She reports that the area has been uncomfortable, and she is seeking continued management of the site. She has been utilizing a pressure-redistributing mattress at home. She denies any new symptoms of pain or drainage since the last visit.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\n\nExam\nThe patient is alert and oriented. Physical examination reveals a pressure ulcer over the sacrum. The area shows localized redness and some erosion of the skin. There is no evidence of purulent drainage or systemic signs of distress.\n\nAssessment\nPressure ulcer of the sacrum.\n\nPlan\nThe patient will continue with current wound care protocols. I will provide instructions on keeping the area clean and dry. We will monitor the pressure ulcer during the next scheduled visit. The patient is advised to continue frequent repositioning to prevent further skin breakdown.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "L89.159"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage not documented: L89.159 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.152"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "No stage is documented: use the unspecified-stage code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 0,
+        "gap": 0.838,
+        "direction": "over",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:03+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

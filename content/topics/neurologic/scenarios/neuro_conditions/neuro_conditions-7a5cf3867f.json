@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-7a5cf3867f",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "ms_relapsing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for relapsing-remitting multiple sclerosis.\n\nHPI: [Copied Forward] Patient is a 78-year-old male with a history of relapsing-remitting multiple sclerosis. He reports stable neurological symptoms with no recent exacerbations or significant changes in mobility. He continues to manage symptoms effectively with his current regimen.\n\nUpdate: The patient reports feeling well today. He denies any new episodes of numbness or weakness. He notes that his current disease-modifying therapy remains effective in maintaining his functional status.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nNeurological: Positive for stable symptoms of relapsing-remitting MS; Negative for new focal deficits.\nMusculoskeletal: Negative for new joint pain.\nConstitutional: Negative for fatigue or weight changes.\n\nExam: Patient is alert and oriented x3. Gait is steady with a normal stride. Muscle strength is 5/5 in all extremities. No new tremors or involuntary movements noted. Reflexes are symmetric.\n\nAssessment: 78-year-old male with relapsing-remitting multiple sclerosis. He remains stable on his current disease-modifying therapy.\n\nMedication List: \n- Disease-modifying therapy (Current)\n- Multivitamin\n\nPlan: \n1. Continue current medication regimen for relapsing-remitting MS.\n2. Routine follow-up in 6 months.\n3. Patient instructed to report any sudden changes in symptoms immediately.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "G35.A"
+  ],
+  "explanations": [
+    "Relapsing-remitting multiple sclerosis: G35.A (HCC 198). G35 itself is a header in FY2027."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G35"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "G35 needs more characters in FY2027.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G35.D"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type (relapsing-remitting) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.647,
+    "hccs": [
+      {
+        "hcc": "198",
+        "label": "Multiple Sclerosis",
+        "from": [
+          "G35A"
+        ],
+        "weight": 0.647
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:58+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

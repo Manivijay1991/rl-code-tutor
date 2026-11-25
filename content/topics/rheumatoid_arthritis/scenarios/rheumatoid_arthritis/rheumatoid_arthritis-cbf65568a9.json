@@ -1,0 +1,108 @@
+{
+  "id": "rheumatoid_arthritis-cbf65568a9",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "ra_seropositive",
+    "methotrexate": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for rheumatoid arthritis.\n\nHPI\n83 y.o. female presents for routine f/u of rheumatoid arthritis. Pt reports stable symptoms over the last month. She continues long-term methotrexate and folic acid. No new complaints of systemic symptoms or significant flares in the hands or feet.\n\nMedication List\nMethotrexate weekly\nFolic acid daily\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nMSK: Mild joint swelling noted in MCP joints and MTP joints. No acute erythema or warmth. Range of motion intact.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F.\n\nAssessment\n1. Rheumatoid arthritis: Seropositive (RF positive) status. Symptoms stable on current regimen. No evidence of organ involvement.\n\nPlan\n1. Continue methotrexate weekly with folic acid.\n2. Continue current monitoring.\n3. Return to clinic in 3 months for f/u.\n\nElectronically signed\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "M05.79",
+    "Z79.631"
+  ],
+  "explanations": [
+    "Rheumatoid arthritis with rheumatoid factor, multiple sites, no organ involvement: M05.79 (HCC 93).",
+    "Long-term methotrexate (an antimetabolite): Z79.631."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9",
+        "Z79.631"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Rheumatoid factor and multiple sites are documented: M05.79.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M05.79"
+      ],
+      "confusion": "missed_drug_therapy",
+      "lean": "under",
+      "why": "Long-term methotrexate is documented: Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M05.79",
+        "Z79.899"
+      ],
+      "confusion": "nonspecific_drug_code",
+      "lean": "neutral",
+      "why": "Methotrexate has its own long-term use code, Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.617,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M0579"
+        ],
+        "weight": 0.617
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:32+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

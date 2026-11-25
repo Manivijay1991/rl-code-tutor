@@ -1,0 +1,62 @@
+{
+  "id": "rheumatoid_arthritis-68eab1f07f",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "osteoarthritis",
+    "methotrexate": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint\nChronic joint pain.\n\nHPI\nThe patient is an 89-year-old woman presenting today for a follow-up evaluation of osteoarthritis affecting both knees. She reports persistent aching and stiffness, particularly in the mornings, which impacts her mobility. She notes that the pain is most severe after prolonged walking. She denies any systemic symptoms or signs of an inflammatory process. She has been consistently following her current management plan and reports some improvement in function.\n\nMedication List\nAcetaminophen 650mg every 6 hours as needed for pain.\n\nExam\nThe patient is alert and oriented. Physical examination reveals palpable bony enlargement and decreased range of motion in both knees. There is no significant warmth, erythema, or significant joint effusion noted. No systemic signs of acute illness are present.\n\nAssessment\n1. Primary osteoarthritis of both knees.\n\nPlan\nThe patient will continue her current regimen of acetaminophen for pain management. She will continue with her scheduled physical therapy sessions to improve strength and range of motion. No disease-modifying drugs are indicated at this time. Follow-up in three months.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "M17.0"
+  ],
+  "explanations": [
+    "Bilateral primary osteoarthritis of the knees: M17.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9"
+      ],
+      "confusion": "coded_ra_for_oa",
+      "lean": "over",
+      "why": "Osteoarthritis is not rheumatoid arthritis (HCC 93).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0,
+        "gap": 0.617,
+        "direction": "over",
+        "extra_hccs": [
+          "93"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:15:17+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

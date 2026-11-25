@@ -1,0 +1,119 @@
+{
+  "id": "pad_atherosclerosis-e27e38b2de",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "ulcer",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Non-healing foot wound.\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nIntegumentary: Positive for right foot ulceration.\nMusculoskeletal: Negative for joint pain or stiffness.\nAll other systems reviewed and negative.\n\nHPI:\n[Copied Forward from previous visit]: Patient is a 78-year-old male presenting with a chronic wound on the right foot. He reports a history of atherosclerosis and notes that the wound has failed to show significant improvement over the last three months. He denies systemic symptoms or acute increase in pain.\n\n[Today's Update]: The patient returns for a follow-up on the non-healing arterial ulcer located on the top of the right foot. He reports the wound remains stable but continues to drain slightly. He denies any new fever or chills.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Aspirin 81mg daily\n\nExam:\nGeneral: Alert and oriented x3. In no acute distress.\nRight lower extremity: Atherosclerosis noted. There is a non-healing arterial ulcer on the top of the right foot. The wound bed is granulating with moderate drainage. No signs of systemic infection.\n\nAssessment:\n1. Atherosclerosis of the right leg.\n2. Non-healing arterial ulcer of the right foot.\n\nPlan:\n1. Continue current medications.\n2. Wound care: Cleanse with normal saline and apply antimicrobial dressing.\n3. Follow up in 2 weeks for wound measurement and progress.\n\nElectronically signed, \nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "I70.235",
+    "L97.519"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the right leg with ulceration of the foot (HCC 263), plus the ulcer code: I70.235.",
+    "I70.23- says to use an additional code for the ulcer's site and severity: L97.519 (other part of right foot, severity not documented)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73",
+    "OCG I.A.13"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.245",
+        "L97.519"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.118,
+        "correct": 1.118,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.221",
+        "L97.519"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Ulceration is documented: it is the highest stage (HCC 263).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.101,
+        "correct": 1.118,
+        "gap": -0.017,
+        "direction": "under",
+        "extra_hccs": [
+          "264",
+          "383"
+        ],
+        "missing_hccs": [
+          "263"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I70.235"
+      ],
+      "confusion": "missed_ulcer_code",
+      "lean": "under",
+      "why": "Use an additional code (L97.-) to identify the ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.118,
+        "correct": 1.118,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.118,
+    "hccs": [
+      {
+        "hcc": "263",
+        "label": "Atherosclerosis of Arteries of the Extremities with Ulceration or Gangrene",
+        "from": [
+          "I70235"
+        ],
+        "weight": 1.118
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "by": "263"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:08+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

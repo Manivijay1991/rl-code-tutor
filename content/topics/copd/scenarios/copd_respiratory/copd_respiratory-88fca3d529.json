@@ -1,0 +1,69 @@
+{
+  "id": "copd_respiratory-88fca3d529",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd",
+    "respiratory": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nFollow-up for chronic obstructive pulmonary disease.\n\nHPI\nPt is a 75-year-old female presenting for routine management of COPD. Pt reports feeling well today. She denies any shortness of breath, increased cough, or changes in sputum production. She notes she is stable and maintaining her baseline. No recent URI or environmental triggers. Pt currently does not use oxygen and denies any distress.\n\nMedication List\n1. Tiotropium inhaler daily\n2. Salbutamol inhaler PRN\n3. Lisinopril 10mg daily\n\nExam\nPt appears in no acute distress. Alert and oriented x3. Speech is clear. Breath sounds are diminished but clear in all fields. No wheezing or crackles noted. RRR, CTAB. WNL.\n\nAssessment\n1. COPD, stable. Pt is asymptomatic and maintaining stable baseline.\n\nPlan\n1. Continue current maintenance medications.\n2. Follow up in 6 months for routine check.\n3. Encouraged smoking cessation and staying hydrated.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "Stable COPD: J44.9 (HCC 280)."
+  ],
+  "refs": [
+    "OCG I.C.10.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.1"
+      ],
+      "confusion": "unsupported_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:19:22+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

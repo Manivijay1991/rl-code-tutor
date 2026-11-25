@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-9598d2564a",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "2"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow up for pressure ulcer.\n\nHPI\nPt is a 70 y.o. female presenting for evaluation of a pressure ulcer over the sacrum. Pt reports the area is painful and has been noted to be worsening over the last week. Pt is currently immobile.\n\nMedication List\nLisinopril 10mg QD\nAtorvastatin 20mg QD\nAspirin 81mg QD\n\nExam\nGen: alert, oriented x3, in no acute distress.\nSkin: Stage 2 pressure ulcer noted over the sacrum. Area shows partial-thickness skin loss with minimal drainage and surrounding erythema. No purulent discharge noted.\nVitals: BP 132/84, HR 78, RR 16, Temp 98.6 F, SpO2 98% on RA.\n\nAssessment\n1. Stage 2 pressure ulcer of the sacrum.\n\nPlan\n1. Wound care: Cleanse with normal saline, apply hydrocolloid dressing to the pressure ulcer.\n2. Repositioning: Pt instructed on Q2h turning schedule.\n3. F/u: Return to clinic in 2 weeks for wound check.\n\nElectronically signed,\nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "L89.152"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage 2: L89.152 (HCC 382)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.838,
+        "gap": -0.838,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.153"
+      ],
+      "confusion": "overstated_stage",
+      "lean": "over",
+      "why": "The documented stage is 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 0.838,
+        "gap": 0.237,
+        "direction": "over",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.838,
+    "hccs": [
+      {
+        "hcc": "382",
+        "label": "Pressure Ulcer of Skin with Partial Thickness Skin Loss",
+        "from": [
+          "L89152"
+        ],
+        "weight": 0.838
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:52+00:00",
+    "style": {
+      "age": 70,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

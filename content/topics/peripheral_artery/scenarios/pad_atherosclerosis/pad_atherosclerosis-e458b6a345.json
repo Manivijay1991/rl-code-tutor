@@ -1,0 +1,96 @@
+{
+  "id": "pad_atherosclerosis-e458b6a345",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "claudication",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint\nEvaluation of calf pain while walking.\n\nHPI\nThe patient is a 73-year-old woman presenting for a follow-up regarding symptoms of claudication. She reports significant calf pain that occurs specifically during long walks but resolves quickly with rest. She denies any pain while at rest. She notes that the discomfort is localized exclusively to her right leg. She denies any skin breakdown or changes in sensation.\n\nMedication List\nAtorvastatin 40mg daily\nLisinopril 10mg daily\nAspirin 81mg daily\n\nExam\nThe patient is alert and in no acute distress. Physical examination of the right lower extremity reveals diminished pedal pulses compared to the unaffected side. The skin is intact with no signs of breakdown. Capillary refill is less than 3 seconds.\n\nAssessment\nThe patient has atherosclerosis of the native leg arteries. This is manifesting as intermittent claudication involving the right leg only.\n\nPlan\nContinue current antiplatelet and lipid-lowering medications. The patient was advised to engage in a supervised walking program. We will monitor the progression of the atherosclerotic changes and schedule a follow-up in three months.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "I70.211"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the right leg with intermittent claudication (no HCC in V28): I70.211."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.212"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.221"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Rest pain is not documented (it would add HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0,
+        "gap": 0.455,
+        "direction": "over",
+        "extra_hccs": [
+          "264"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I73.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Atherosclerosis with claudication is documented: I70.21-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:12:51+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

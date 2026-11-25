@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-58bf07a236",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "4"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Pressure ulcer management\n\nVitals: BP 138/82, HR 76, SpO2 96% on room air, Temp 98.4°F, BMI 27.2\n\nRecent Labs: Hemoglobin 13.4 g/dL, White Blood Cell Count 7.2 x 10^9/L, Serum Albumin 3.2 g/dL, Creatinine 1.1 mg/dL.\n\nSocial History: Retired construction worker. Lives with his wife in a single-story home. Uses a walker for ambulation. Non-smoker.\n\nFamily History: Father had hypertension. Mother had a history of stroke.\n\nReview of Systems:\nConstitutional: Negative for fever or chills.\nIntegumentary: Positive for skin breakdown at the sacrum.\nMusculoskeletal: Positive for decreased mobility.\nNeurological: Negative for numbness or tingling.\nAll other systems reviewed and negative.\n\nHPI: [Copied Forward from previous visit]\nPatient is an 84-year-old male presenting for follow-up of a chronic pressure injury. He reports increased difficulty with repositioning and noted that the area has worsened since the last encounter. He denies any new systemic symptoms.\n\n[Today's Update]\nThe patient presents today for a scheduled evaluation of his sacral wound. He reports that the area remains painful when he is turned in bed. He reports compliance with the current dressing regimen but notes that the wound bed appears to have deeper tissue involvement.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nIntegumentary: Physical examination reveals a large pressure ulcer over the sacrum. The wound measures approximately 5cm x 6cm. It is characterized as a stage 4 pressure ulcer with visible exposed tissue. The surrounding skin is intact but shows some maceration. No purulent drainage is noted today.\n\nAssessment:\n1. Stage 4 pressure ulcer of the sacrum.\n\nPlan:\n1. Continue current wound care protocol.\n2. Apply hydrocolloid dressing to the sacrum daily.\n3. Instructed patient and caregivers on the importance of frequent repositioning every 2 hours.\n4. Scheduled for a follow-up wound measurement in 7 days.\n5. Encouraged high-protein nutritional intake to support tissue repair.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "L89.154"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage 4: L89.154 (HCC 379)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.965,
+        "gap": -1.965,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.153"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 1.965,
+        "gap": -0.89,
+        "direction": "under",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.965,
+    "hccs": [
+      {
+        "hcc": "379",
+        "label": "Pressure Ulcer of Skin with Necrosis Through to Muscle/Tendon/Bone",
+        "from": [
+          "L89154"
+        ],
+        "weight": 1.965
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:16:55+00:00",
+    "style": {
+      "age": 84,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

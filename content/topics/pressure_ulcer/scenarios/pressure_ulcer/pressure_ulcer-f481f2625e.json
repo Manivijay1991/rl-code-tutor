@@ -1,0 +1,58 @@
+{
+  "id": "pressure_ulcer-f481f2625e",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Follow-up on sacral pressure ulcer.\n\nHPI: Pt is a 71 y/o male presenting for scheduled f/u of pressure ulcer over the sacrum. Pt reports no pain or discomfort at the site. He has been adherent to all recommendations since last visit. \n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Amlodipine 5mg QD\n\nExam:\nGen: Alert and oriented x3, in no acute distress.\nSkin: Sacral area inspected. The previous pressure ulcer over the sacrum is completely healed. Skin is intact with no drainage or erythema. No other skin breakdown noted. \nVitals: BP 128/82, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\n\nAssessment:\n1. Pressure ulcer over the sacrum: fully healed.\n\nPlan:\n1. No further treatment required for the sacral site.\n2. Continue current medications as prescribed.\n3. F/u PRN if new skin concerns arise.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "A pressure ulcer documented as completely healed is not coded."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "healed_coded",
+      "lean": "over",
+      "why": "No code is assigned for a completely healed pressure ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:20:14+00:00",
+    "style": {
+      "age": 71,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

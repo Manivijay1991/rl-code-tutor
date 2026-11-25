@@ -1,0 +1,85 @@
+{
+  "id": "liver_disease-6448784935",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "cirrhosis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for cirrhosis.\n\nHPI\nPt is a 56 y.o. female presenting for routine follow-up of cirrhosis. Pt reports feeling well overall. Denies any acute abdominal pain, fever, or jaundice. Reports stable energy levels. No new symptoms since last visit.\n\nMedication List\n1. Spironolactone 25mg daily\n2. Lactulose 15g BID PRN\n3. Vitamin K 10mg daily\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender. No palpable masses.\nSkin: No new lesions noted.\nNeuro: Alert and oriented x3.\n\nAssessment\n1. Cirrhosis. Pt is currently stable and asymptomatic.\n\nPlan\n1. Continue current medications as prescribed.\n2. Routine labs to be ordered and reviewed in 3 months.\n3. Follow up in 3 months for further evaluation of cirrhosis.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "K74.60"
+  ],
+  "explanations": [
+    "Cirrhosis of the liver with no cause documented: K74.60 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K70.30"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "neutral",
+      "why": "Alcohol is not documented as the cause.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K74.69"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "neutral",
+      "why": "K74.69 is for other specified cirrhosis; no type is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7460"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:27+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-2a5738a6c1",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "3"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up for pressure ulcer.\n\nHPI\nThe patient is an 88-year-old woman presenting for a follow-up evaluation of a pressure ulcer located over the sacrum. She reports that the area has been causing discomfort but she has been diligent with her dressing changes at home. She notes that the skin remains intact around the edges of the wound but she desires a professional assessment of the healing progress.\n\nMedication List\nLisinopril 10mg daily\nAmlodipine 5mg daily\nAtorvastatin 20mg daily\n\nExam\nThe patient is alert and oriented. Physical examination of the skin reveals a stage 3 pressure ulcer over the sacrum. The wound bed shows granulation tissue with moderate drainage. The surrounding skin is intact and shows no signs of maceration. Peripheral pulses are palpable, and the patient's vitals are stable.\n\nAssessment\nStage 3 pressure ulcer of the sacrum.\n\nPlan\nThe wound was cleansed with normal saline and a fresh dressing was applied. I instructed the patient to continue repositioning every two hours to reduce pressure on the sacrum. We will continue to monitor the stage 3 pressure ulcer during the next scheduled visit.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "L89.153"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage 3: L89.153 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.152"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 1.075,
+        "gap": -0.237,
+        "direction": "under",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89153"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:54+00:00",
+    "style": {
+      "age": 88,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "id": "pad_atherosclerosis-742b020791",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "ulcer",
+    "side": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Non-healing wound on left foot.\n\nHPI: Pt is a 68-year-old female presenting for f/u of a chronic wound. Pt reports a persistent ulcer on the top of the left foot. She states the wound has not shown significant improvement over the last month despite topical treatments. Pt denies fever, chills, or systemic malaise. No acute drainage or foul odor noted today. Pt reports some discomfort but denies severe pain.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 40mg QD\n- Aspirin 81mg QD\n- Omeprazole 20mg QD\n\nSocial History: Retired teacher. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had stroke.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight changes.\nIntegumentary: Positive for wound on left foot. Negative for rashes.\nMusculoskeletal: Negative for joint pain or swelling.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for SOB or cough.\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'4\", 165 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 78\nWBC: 8.0\nHgb: 12.4\nHct: 38%\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nSkin: Notable for atherosclerosis of the native leg arteries. Located on the left lower extremity is a non-healing arterial ulcer on the top of the foot. Wound bed appears granulated with minimal surrounding erythema. No purulent drainage noted. No signs of systemic infection.\n\nAssessment:\n1. Atherosclerosis of the native leg arteries.\n2. Chronic ulcer on the left foot.\n\nPlan:\n1. Continue current medications.\n2. Wound care: Cleanse with normal saline and apply antimicrobial dressing BID.\n3. Monitor for signs of infection.\n4. F/u in 2 weeks for wound assessment.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "I70.245",
+    "L97.529"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the left leg with ulceration of the foot (HCC 263), plus the ulcer code: I70.245.",
+    "I70.24- says to use an additional code for the ulcer's site and severity: L97.529 (other part of left foot, severity not documented)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73",
+    "OCG I.A.13"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.235",
+        "L97.529"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.118,
+        "correct": 1.118,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.222",
+        "L97.529"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Ulceration is documented: it is the highest stage (HCC 263).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.101,
+        "correct": 1.118,
+        "gap": -0.017,
+        "direction": "under",
+        "extra_hccs": [
+          "264",
+          "383"
+        ],
+        "missing_hccs": [
+          "263"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I70.245"
+      ],
+      "confusion": "missed_ulcer_code",
+      "lean": "under",
+      "why": "Use an additional code (L97.-) to identify the ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.118,
+        "correct": 1.118,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.118,
+    "hccs": [
+      {
+        "hcc": "263",
+        "label": "Atherosclerosis of Arteries of the Extremities with Ulceration or Gangrene",
+        "from": [
+          "I70245"
+        ],
+        "weight": 1.118
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "by": "263"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:55+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

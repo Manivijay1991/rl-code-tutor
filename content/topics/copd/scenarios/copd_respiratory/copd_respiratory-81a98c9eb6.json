@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-81a98c9eb6",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nFollow-up for COPD.\n\nHPI\nPt is an 80 y.o. female presenting for routine follow-up of chronic obstructive pulmonary disease. Pt reports she has been feeling stable over the past month. She notes that she continues to use home oxygen at night as previously prescribed. Denies increased shortness of breath, productive cough, or chest pain. Reports good activity tolerance. No new concerns today.\n\nMedication List\n1. Tiotropium inhaler, daily\n2. Salbutamol HFA, PRN\n3. Lisinopril 10mg, daily\n4. Atorvastatin 20mg, daily\n\nReview of Systems\nConstitutional: No fever, chills, or weight loss.\nRespiratory: Denies SOB, cough, or wheezing.\nCardiovascular: No chest pain or palpitations.\nMusculoskeletal: No joint pain or swelling.\nAll other systems reviewed and negative.\n\nSocial History\nRetired. Lives with husband. Non-smoker. Denies alcohol or illicit drug use.\n\nFamily History\nMother: Hypertension, stroke.\nFather: Type 2 DM.\n\nVitals\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 94% on RA\nHt: 5'4\"\nWt: 145 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 65\nCBC: WNL\nCMP: WNL\n\nExam\nGeneral: Alert and oriented x3. Appears comfortable in no acute distress.\nRespiratory: CTAB. Breath sounds clear to auscultation bilaterally. No wheezing or rales.\nCardiovascular: RRR, no murmurs, rubs, or gallops.\nMusculoskeletal: Gait steady, no edema noted.\nSkin: Intact, no rashes.\n\nAssessment\n1. COPD, stable.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue use of home oxygen at night.\n3. Follow up in 3 months for routine check.\n\nElectronically signed, T. Haddad, NP, 05/12/2026",
+  "answer": [
+    "J44.9",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Stable COPD: J44.9 (HCC 280).",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.1",
+        "Z99.81"
+      ],
+      "confusion": "unsupported_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:19:25+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "peripheral_artery",
+  "title": "Peripheral artery disease",
+  "kind": "hcc",
+  "description": "Atherosclerosis of the legs: claudication, rest pain, ulceration and the ulcer code.",
+  "order": 85,
+  "enabled": true
+}

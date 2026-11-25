@@ -1,0 +1,141 @@
+{
+  "id": "copd_respiratory-d0014ceedc",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "chronic_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: 66 y.o. female pt presents for f/u of chronic respiratory failure. Pt reports persistent dyspnea, primarily on exertion. Pt states she has been using home oxygen continuously as prescribed. Denies any recent changes in sputum production or fever. Pt reports stable mobility but feels fatigued.\n\nMedication List:\n- Oxygen at home: continuous use\n- Albuterol HFA: 2 puffs q4h PRN SOB\n- Prednisone: 5mg daily\n\nVitals:\nBP: 132/84\nHR: 82 (RRR)\nTemp: 98.6 F\nSpO2: 91% on home oxygen\nRR: 20\n\nRecent Labs:\n- WBC: 7.2 (WNL)\n- Hgb: 13.1 (WNL)\n- Platelets: 210 (WNL)\n- eGFR: 75 (WNL)\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight loss.\nRespiratory: Positive for chronic shortness of breath. Denies productive cough.\nCardiovascular: Denies chest pain or palpitations.\nMusculoskeletal: Denies joint pain.\nNeurological: Denies dizziness or syncope.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional gardener.\n\nFamily History: Mother had hypertension. Father had emphysema.\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nRespiratory: Decreased breath sounds in bilateral lower lobes. Barrel chest noted. Use of accessory muscles noted during deep inspiration.\nCardiovascular: RRR, S1, S2, no murmurs.\nExtremities: No edema noted.\nSkin: Intact, no rashes.\n\nAssessment:\n1. Emphysema.\n2. Chronic respiratory failure with hypoxia.\n\nPlan:\n1. Continue home oxygen as prescribed.\n2. Continue current medications.\n3. Pt to f/u in 3 months for repeat evaluation of respiratory status.\n4. Instructed to call clinic immediately if worsening of dyspnea occurs.\n\nElectronically signed,\nE. Castillo, MD\nMay 14, 2026",
+  "answer": [
+    "J43.9",
+    "J96.11",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-.",
+    "Chronic respiratory failure with hypoxia: J96.11 (HCC 213), plus Z99.81 for the home oxygen."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "Z99.81"
+      ],
+      "confusion": "missed_respiratory_failure",
+      "lean": "under",
+      "why": "The provider diagnoses chronic respiratory failure: J96.11 (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.689,
+        "gap": -0.37,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "213"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "J96.10",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_respiratory_failure",
+      "lean": "neutral",
+      "why": "Hypoxia is documented: J96.11.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "J96.21",
+        "Z99.81"
+      ],
+      "confusion": "acute_on_chronic_unsupported",
+      "lean": "over",
+      "why": "Only chronic respiratory failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.689,
+    "hccs": [
+      {
+        "hcc": "213",
+        "label": "Cardio-Respiratory Failure and Shock",
+        "from": [
+          "J9611"
+        ],
+        "weight": 0.37
+      },
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:19:53+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

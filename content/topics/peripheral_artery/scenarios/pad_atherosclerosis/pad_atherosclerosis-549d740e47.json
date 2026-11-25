@@ -1,0 +1,88 @@
+{
+  "id": "pad_atherosclerosis-549d740e47",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "rest_pain",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Right foot pain.\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nMusculoskeletal: Positive (Right foot pain)\nNeurological: Negative\nSkin: Negative\n\nHPI:\n(Copied Forward) Patient is an 89-year-old female presenting for management of atherosclerosis of the native leg arteries. She reports significant rest pain in the right foot. She denies any skin breakdown or open sores.\n\n(Today's Update) The patient returns today for follow-up regarding the atherosclerosis of the right leg. She reports that the rest pain in the right foot has remained constant over the last week. She denies any new drainage or skin changes.\n\nMedication List:\n- Aspirin 81 mg daily\n- Atorvastatin 40 mg daily\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nCardiovascular: Regular rate and rhythm.\nMusculoskeletal: Right lower extremity is intact with stable pulses. No skin breakdown noted on the right foot.\n\nAssessment:\n1. Atherosclerosis of the right leg with rest pain.\n\nPlan:\n1. Continue current aspirin and statin regimen.\n2. Monitor for any skin changes.\n3. Follow up in 3 months.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "I70.221"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the right leg with rest pain (HCC 264): I70.221."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.222"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0.455,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.211"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Rest pain is documented: it is a higher stage (HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.455,
+        "gap": -0.455,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "264"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.455,
+    "hccs": [
+      {
+        "hcc": "264",
+        "label": "Vascular Disease with Complications",
+        "from": [
+          "I70221"
+        ],
+        "weight": 0.455
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:19:03+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

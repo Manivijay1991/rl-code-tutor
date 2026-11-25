@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-54c1fb03b8",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "3"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Wound care for right heel.\n\nHPI: Pt is a 66-year-old female presenting for scheduled wound care and evaluation of a pressure injury. Pt reports the wound on the right heel has remained stable over the last week. She denies new pain, drainage, or fever. She reports compliance with offloading measures and dressing changes.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Amlodipine 5mg QD\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nIntegumentary: Localized pain at right heel. No other skin issues.\nMusculoskeletal: No joint pain.\nRespiratory: No SOB or cough.\nCV: No chest pain.\n\nSocial History: Retired. Lives at home with spouse. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had CAD.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 165 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 82\nWBC: 8.0\nHgb: 13.2\n\nExam:\nGeneral: Pt in no acute distress (NAD). Alert and oriented x3.\nSkin: Pressure ulcer noted on the right heel. Wound measures 3cm x 2cm. Depth is significant, characterized as a stage 3 pressure ulcer. Wound bed shows granulation tissue with minimal slough. No purulent drainage noted. Periwound skin is intact and healthy.\n\nAssessment:\n1. Stage 3 pressure ulcer on right heel.\n\nPlan:\n1. Wound care: Cleanse with normal saline. Apply hydrocolloid dressing to the pressure ulcer on the right heel.\n2. Offloading: Continue use of specialized footwear and pressure-relieving mattress.\n3. Follow-up: Return to clinic in 1 week for dressing change and wound measurement.\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [
+    "L89.613"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 3: L89.613 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.612"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 1.075,
+        "gap": -0.237,
+        "direction": "under",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89613"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:13+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

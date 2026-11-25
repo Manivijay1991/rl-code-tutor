@@ -1,0 +1,89 @@
+{
+  "id": "liver_disease-1849031a47",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "hep_c_chronic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for chronic hepatitis C.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nHEENT: Negative for jaundice or pruritus.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for abdominal pain or nausea.\nMusculoskeletal: Negative for joint pain.\n\nHPI: (Copied Forward) Patient is a 77-year-old female presenting for monitoring of chronic hepatitis C. She reports feeling well overall and denies any acute symptoms. She is currently stable and continues to follow the surveillance protocol.\n\nMedication List:\n- Atorvastatin 20mg daily\n- Lisinopril 10mg daily\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished, in no acute distress.\nAbdomen: Soft, non-tender, no guarding, no rebound. No palpable masses.\nSkin: No visible jaundice or lesions.\n\nAssessment:\n1. Chronic hepatitis C: The patient is currently being monitored. She is not yet ready for treatment at this time.\n\nPlan:\n1. Continue monitoring of chronic hepatitis C.\n2. Order repeat liver function tests and CBC in 6 months.\n3. Return to clinic for follow-up as scheduled.\n\nElectronically signed, R. Mensah, PA-C, 05/14/2026",
+  "answer": [
+    "B18.2"
+  ],
+  "explanations": [
+    "Chronic viral hepatitis C: B18.2 (HCC 65)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B19.20"
+      ],
+      "confusion": "unspecified_hepatitis",
+      "lean": "under",
+      "why": "The hepatitis C is documented as chronic: B18.2 (HCC 65).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.185,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "65"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z86.19"
+      ],
+      "confusion": "current_coded_history",
+      "lean": "under",
+      "why": "The infection is still present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.185,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "65"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.185,
+    "hccs": [
+      {
+        "hcc": "65",
+        "label": "Chronic Hepatitis",
+        "from": [
+          "B182"
+        ],
+        "weight": 0.185
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:37+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-ddf3131d4c",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd_exacerbation",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Increased shortness of breath and cough.\n\nHPI: (Copied Forward) Patient is a 72-year-old female with a known history of COPD who presents for follow-up of chronic respiratory symptoms. She reports stable baseline symptoms managed with maintenance inhalers and nocturnal supplemental oxygen. She denies recent chest pain or fevers.\n\n(Current Visit Update): The patient reports a significant worsening of her symptoms over the past 48 hours. She describes an acute exacerbation characterized by increased dyspnea and a productive cough with yellow sputum. She notes that she is struggling to maintain her usual level of activity. She has been using her rescue inhaler more frequently but feels the symptoms are not fully resolving.\n\nMedication List:\n- Tiotropium (Spiriva) 1 inhaler daily\n- Salmeterol/Fluticasone (Advair) 1 inhaler twice daily\n- Albuterol HFA as needed\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 138/84, HR 88, RR 22, SpO2 92% on room air, Temp 98.6F.\n\nRecent Labs:\n- Hemoglobin: 13.2 g/dL\n- White Blood Cell Count: 11.4 x 10^3/uL\n- eGFR: 65 mL/min/1.73m2\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or night sweats.\n- Respiratory: Positive for increased dyspnea and cough. Negative for wheezing or stridor.\n- Cardiovascular: Negative for chest pain or palpitations.\n- Gastrointestinal: Negative for nausea, vomiting, or diarrhea.\n- Neurological: Negative for dizziness or confusion.\n- Musculoskeletal: Negative for joint pain or swelling.\n\nSocial History: Retired; lives with her spouse. Former smoker (30 pack-year history). No history of illicit drug use.\n\nFamily History: Mother had hypertension; Father had a history of COPD.\n\nExam:\nGeneral: Alert and oriented x3. In slight respiratory distress but not in acute distress.\nRespiratory: Tachypneic. Diffuse wheezing noted on auscultation. Decreased breath sounds in bilateral lower lobes.\nCardiovascular: Regular rate and rhythm. No murmurs heard.\nExtremities: No peripheral edema.\n\nAssessment:\n1. Acute exacerbation of COPD.\n\nPlan:\n1. Start a 5-day course of oral prednisone (40mg daily) to address the current flare.\n2. Continue current maintenance medications.\n3. Patient will continue home oxygen at night as previously prescribed.\n4. Follow up in 2 weeks to reassess symptoms.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "J44.1",
+    "Z99.81"
+  ],
+  "explanations": [
+    "COPD with an acute exacerbation: J44.1 (same HCC 280 as stable COPD, but a different code).",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "Z99.81"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "under",
+      "why": "An acute exacerbation is documented: J44.1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J441"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:19:38+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "liver_disease-2335681635",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "cirrhosis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for liver disease.\n\nHPI\nPt is a 75-year-old female presenting for routine monitoring of known cirrhosis. She reports feeling well today with no new complaints of abdominal pain or fatigue. She denies any recent changes in appetite or sleep patterns. She continues to adhere to her current management plan and reports no issues with medication tolerance.\n\nMedication List\nLisinopril 10mg daily\nSpironolactone 25mg daily\nVitamin K 1.0mg daily\n\nExam\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\nCV: RRR, regular rhythm, no murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no guarding.\nSkin: No new lesions noted.\nExt: No edema.\n\nAssessment\n1. Cirrhosis. Patient is stable and asymptomatic at this visit.\n\nPlan\n1. Continue current medications as prescribed.\n2. Routine labs to be ordered today.\n3. F/u in 3 months for further evaluation.\n\nElectronically signed,\nE. Castillo, DO\nMay 14, 2026",
+  "answer": [
+    "K74.60"
+  ],
+  "explanations": [
+    "Cirrhosis of the liver with no cause documented: K74.60 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K70.30"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "neutral",
+      "why": "Alcohol is not documented as the cause.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K74.69"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "neutral",
+      "why": "K74.69 is for other specified cirrhosis; no type is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7460"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:35+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

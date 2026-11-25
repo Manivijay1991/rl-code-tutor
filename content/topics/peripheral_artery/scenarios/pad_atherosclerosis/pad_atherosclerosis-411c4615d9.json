@@ -1,0 +1,60 @@
+{
+  "id": "pad_atherosclerosis-411c4615d9",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "pvd_unspecified",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Follow-up for peripheral vascular disease.\n\nHPI: Pt is a 75-year-old female presenting for f/u of known peripheral vascular disease. Pt reports no acute symptoms. She states the condition in her right leg remains stable. No new concerns voiced today. \n\nMedication List: \n- Aspirin 81mg daily\n- Atorvastatin 40mg daily\n\nExam: \nGen: Well-appearing, alert, and oriented x3. \nCV: RRR, CTAB. \nExtremities: Right lower extremity shows diminished pulses. Skin is intact. No and no new lesions noted.\n\nAssessment: \n1. Peripheral vascular disease, right leg, stable.\n\nPlan: \n1. Continue current medications as prescribed. \n2. Continue monitoring of right leg status. \n3. F/u in 6 months or as needed.\n\nElectronically signed, \nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "I73.9"
+  ],
+  "explanations": [
+    "Peripheral vascular disease without documented atherosclerosis or a complication: I73.9 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.211"
+      ],
+      "confusion": "assumed_atherosclerosis",
+      "lean": "over",
+      "why": "Atherosclerosis and claudication are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:45+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

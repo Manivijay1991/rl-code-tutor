@@ -1,0 +1,69 @@
+{
+  "id": "rheumatoid_arthritis-c412421448",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "ra_seropositive",
+    "methotrexate": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for joint pain.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a follow-up evaluation of her rheumatoid arthritis. She reports ongoing stiffness and aching in her hands and feet. She describes the discomfort as a dull ache that is most prominent in the morning, lasting approximately one hour before she can begin her daily activities. She notes that the symptoms are particularly noticeable in her MCP joints and the MTP joints of her toes. She denies any recent systemic symptoms such as fever, chills, or significant fatigue. She currently manages her symptoms without a disease-modifying drug, relying on over-the-counter analgesics and regular physical therapy. She reports that her current regimen provides moderate relief for her daily activities but does not completely eliminate the discomfort.\n\nMedication List\n- Acetaminophen 650mg every 6 hours as needed for pain.\n- Multivitamin daily.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, chills, or unintentional weight loss. She denies any new-onset neurological symptoms or vision changes. She reports mild joint stiffness but denies any systemic symptoms or organ involvement.\n\nSocial History\nThe patient is retired and lives at home with her spouse. She enjoys gardening and walking for exercise. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension and type 2 diabetes. Father had a history of heart disease.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nRheumatoid Factor: Positive\nComplete Blood Count (CBC): Within normal limits\nComprehensive Metabolic Panel (CMP): Within normal limits\nESR: 22 mm/hr\n\nExam\nThe patient is a well-appearing, alert, and oriented 79-year-old woman. Physical examination of the hands reveals mild swelling and tenderness over the MCP joints. The wrists show no significant erythema or warmth. Examination of the feet reveals mild tenderness over the MTP joints. No evidence of systemic involvement or skin rashes is noted.\n\nAssessment\nThe patient has rheumatoid arthritis and is seropositive based on her positive rheumatoid factor. The condition currently affects her hands and feet without any evidence of organ involvement.\n\nPlan\nContinue current management with acetaminophen for pain control. Continue with physical therapy twice weekly to maintain range of motion and strength. We will continue to monitor her joint symptoms. She is instructed to return for a follow-up in three months or sooner if she experiences a significant flare-up or new systemic symptoms.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "M05.79"
+  ],
+  "explanations": [
+    "Rheumatoid arthritis with rheumatoid factor, multiple sites, no organ involvement: M05.79 (HCC 93)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Rheumatoid factor and multiple sites are documented: M05.79.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.617,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M0579"
+        ],
+        "weight": 0.617
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:10+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

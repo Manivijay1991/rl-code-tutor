@@ -189,6 +189,50 @@ EXPECTED = [
     ("diabetes_htn_ckd", {"stage": "4", "hypertension": "yes", "dialysis": "no"}, ["E11.22", "I12.9", "N18.4"]),
     ("diabetes_htn_ckd", {"stage": "5", "hypertension": "yes", "dialysis": "no"}, ["E11.22", "I12.0", "N18.5"]),
     ("diabetes_htn_ckd", {"stage": "esrd", "hypertension": "no", "dialysis": "yes"}, ["E11.22", "N18.6", "Z99.2"]),
+    # pad_atherosclerosis: pad, ulcer
+    ("pad_atherosclerosis", {"severity": "pvd_unspecified", "side": "right"}, ["I73.9"]),
+    ("pad_atherosclerosis", {"severity": "claudication", "side": "right"}, ["I70.211"]),
+    ("pad_atherosclerosis", {"severity": "claudication", "side": "left"}, ["I70.212"]),
+    ("pad_atherosclerosis", {"severity": "rest_pain", "side": "right"}, ["I70.221"]),
+    ("pad_atherosclerosis", {"severity": "rest_pain", "side": "left"}, ["I70.222"]),
+    ("pad_atherosclerosis", {"severity": "ulcer", "side": "right"}, ["I70.235", "L97.519"]),
+    ("pad_atherosclerosis", {"severity": "ulcer", "side": "left"}, ["I70.245", "L97.529"]),
+    # copd_respiratory: lung, respiratory
+    ("copd_respiratory", {"form": "copd", "respiratory": "none"}, ["J44.9"]),
+    ("copd_respiratory", {"form": "copd_exacerbation", "respiratory": "oxygen_only"}, ["J44.1", "Z99.81"]),
+    ("copd_respiratory", {"form": "emphysema", "respiratory": "chronic_failure"}, ["J43.9", "J96.11", "Z99.81"]),
+    # pressure_ulcer: ulcer
+    ("pressure_ulcer", {"site": "sacral", "stage": "2"}, ["L89.152"]),
+    ("pressure_ulcer", {"site": "sacral", "stage": "3"}, ["L89.153"]),
+    ("pressure_ulcer", {"site": "sacral", "stage": "4"}, ["L89.154"]),
+    ("pressure_ulcer", {"site": "sacral", "stage": "unstageable"}, ["L89.150"]),
+    ("pressure_ulcer", {"site": "sacral", "stage": "unspecified"}, ["L89.159"]),
+    ("pressure_ulcer", {"site": "sacral", "stage": "healed"}, []),
+    ("pressure_ulcer", {"site": "right_heel", "stage": "2"}, ["L89.612"]),
+    ("pressure_ulcer", {"site": "right_heel", "stage": "3"}, ["L89.613"]),
+    ("pressure_ulcer", {"site": "right_heel", "stage": "4"}, ["L89.614"]),
+    ("pressure_ulcer", {"site": "right_heel", "stage": "unstageable"}, ["L89.610"]),
+    ("pressure_ulcer", {"site": "right_heel", "stage": "unspecified"}, ["L89.619"]),
+    ("pressure_ulcer", {"site": "right_heel", "stage": "healed"}, []),
+    # liver_disease: liver
+    ("liver_disease", {"condition": "cirrhosis"}, ["K74.60"]),
+    ("liver_disease", {"condition": "alcoholic_cirrhosis"}, ["K70.30"]),
+    ("liver_disease", {"condition": "alcoholic_cirrhosis_ascites"}, ["K70.31"]),
+    ("liver_disease", {"condition": "hep_c_chronic"}, ["B18.2"]),
+    ("liver_disease", {"condition": "hep_c_cured"}, ["Z86.19"]),
+    ("liver_disease", {"condition": "fatty_liver"}, ["K76.0"]),
+    # neuro_conditions: neuro
+    ("neuro_conditions", {"condition": "epilepsy"}, ["G40.909"]),
+    ("neuro_conditions", {"condition": "epilepsy_intractable"}, ["G40.919"]),
+    ("neuro_conditions", {"condition": "seizure_disorder"}, ["G40.909"]),
+    ("neuro_conditions", {"condition": "single_seizure_history"}, ["Z86.69"]),
+    ("neuro_conditions", {"condition": "parkinsons"}, ["G20.A1"]),
+    ("neuro_conditions", {"condition": "ms_relapsing"}, ["G35.A"]),
+    ("neuro_conditions", {"condition": "ms_unspecified"}, ["G35.D"]),
+    # rheumatoid_arthritis: arthritis, drug
+    ("rheumatoid_arthritis", {"diagnosis": "ra_unspecified", "methotrexate": "no"}, ["M06.9"]),
+    ("rheumatoid_arthritis", {"diagnosis": "ra_seropositive", "methotrexate": "yes"}, ["M05.79", "Z79.631"]),
+    ("rheumatoid_arthritis", {"diagnosis": "osteoarthritis", "methotrexate": "no"}, ["M17.0"]),
 ]  # fmt: skip
 
 

@@ -1,0 +1,108 @@
+{
+  "id": "rheumatoid_arthritis-b93d4fa8e6",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "ra_unspecified",
+    "methotrexate": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for rheumatoid arthritis.\n\nHPI\nThe patient is a 36-year-old woman presenting for a scheduled follow-up regarding her chronic rheumatoid arthritis. She reports that her symptoms have been well-managed over the last few months. She denies any acute flares or significant increases in pain or stiffness. She continues to tolerate her current medication regimen well and reports no significant side effects.\n\nMedication List\n- Methotrexate 15 mg once weekly\n- Folic acid 1 mg daily\n\nExam\nThe patient appears well-nourished and in no acute distress. Her gait is steady and she is moving comfortably. No visible swelling or erythema is noted upon physical examination of the visible joints. Skin is clear and dry.\n\nAssessment\n1. Rheumatoid arthritis: The patient remains stable on her current long-term regimen of methotrexate and folic acid.\n\nPlan\n1. Continue current methotrexate dosage once weekly.\n2. Continue folic acid daily.\n3. Follow up in three months for routine monitoring.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "M06.9",
+    "Z79.631"
+  ],
+  "explanations": [
+    "Rheumatoid arthritis, nothing more specified: M06.9 (HCC 93).",
+    "Long-term methotrexate (an antimetabolite): Z79.631."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M05.70",
+        "Z79.631"
+      ],
+      "confusion": "assumed_rf_status",
+      "lean": "neutral",
+      "why": "Rheumatoid factor status is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M06.9"
+      ],
+      "confusion": "missed_drug_therapy",
+      "lean": "under",
+      "why": "Long-term methotrexate is documented: Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M06.9",
+        "Z79.899"
+      ],
+      "confusion": "nonspecific_drug_code",
+      "lean": "neutral",
+      "why": "Methotrexate has its own long-term use code, Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.617,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M069"
+        ],
+        "weight": 0.617
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:06+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

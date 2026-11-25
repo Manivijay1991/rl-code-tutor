@@ -1,0 +1,69 @@
+{
+  "id": "copd_respiratory-719541139c",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: [Copied Forward] Patient is a 57-year-old female with a history of emphysema who presents for a follow-up evaluation of chronic dyspnea. She reports that her breathing feels more labored during physical exertion but remains stable at rest. She denies any recent fevers or chills. She currently does not require any external air assistance for her breathing.\n\nVitals: BP 128/82, HR 74, SpO2 96% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nRespiratory: Positive for shortness of breath. Negative for cough or sputum production.\nCardiovascular: Negative for chest pain or palpitations.\nMusculoskeletal: Negative for joint pain.\n\nExam: Patient is alert and oriented x3. Respiratory effort is increased but regular. Lung sounds reveal diminished breath sounds and expiratory wheezes consistent with emphysema. No use of accessory muscles noted. Heart sounds are regular with no murmurs.\n\nMedication List:\n- Tiotropium (Spiriva) 18 mcg inhaled\n- Salmeterol/Fluticasone inhaler\n\nAssessment:\n1. Emphysema: Patient remains stable on current maintenance medications. No evidence of acute decline.\n\nPlan:\n1. Continue current inhaler regimen.\n2. Encourage pulmonary rehabilitation exercises.\n3. Follow up in 3 months.\n\nElectronically signed,\nS. Patel, NP\nMay 14, 2026",
+  "answer": [
+    "J43.9"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-."
+  ],
+  "refs": [
+    "OCG I.C.10.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:19:45+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

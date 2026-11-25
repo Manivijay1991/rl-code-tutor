@@ -1,0 +1,96 @@
+{
+  "id": "pad_atherosclerosis-d5567ec945",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "claudication",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint\nClaudication in the right leg.\n\nHPI\nThe patient is a 77-year-old woman presenting for evaluation of symptoms related to atherosclerosis. She reports experiencing significant calf pain specifically when walking for moderate distances. She notes that the discomfort occurs consistently in the right leg during exertion and resolves with rest. She denies any nocturnal pain or discomfort while at rest. She also denies any skin breakdown or changes to the integrity of the skin. The patient notes that the symptoms are isolated to the right lower extremity. She is seeking a management plan to improve her mobility and address these symptoms.\n\nReview of Systems\nThe patient reports positive for lower extremity discomfort during exercise. She denies chest pain, shortness of breath, fever, chills, or unintended weight loss. She denies any neurological deficits or changes in vision.\n\nSocial History\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and walking in her neighborhood. She denies tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension and a history of heart disease. Her father had a history of stroke.\n\nMedication List\n- Aspirin 81 mg daily\n- Atorvastatin 40 mg daily\n- Lisinopril 10 mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 72 mL/min/1.73m2\nTotal Cholesterol: 185 mg/dL\nLDL: 98 mg/dL\nHDL: 52 mg/dL\nTriglycerides: 140 mg/dL\n\nExam\nThe patient is alert and oriented. Physical exam reveals skin and nail beds of the right foot are intact without any signs of breakdown. Pulses are palpable in the right foot. Capillary refill is less than 3 seconds in the right lower extremity. No visible signs of skin changes or breakdown are noted on the right leg.\n\nAssessment\nThe patient has atherosclerosis of the native leg arteries with intermittent claudication. This is currently limited to the right leg.\n\nPlan\n1. Continue current medication regimen including aspirin and atorvastatin.\n2. Encourage supervised exercise therapy to improve walking distance.\n3. Follow up in three months to assess symptom progression.\n4. Patient instructed to call the office if she experiences sudden worsening of symptoms or skin changes.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "I70.211"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the right leg with intermittent claudication (no HCC in V28): I70.211."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.212"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.221"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Rest pain is not documented (it would add HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0,
+        "gap": 0.455,
+        "direction": "over",
+        "extra_hccs": [
+          "264"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I73.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Atherosclerosis with claudication is documented: I70.21-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:38+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

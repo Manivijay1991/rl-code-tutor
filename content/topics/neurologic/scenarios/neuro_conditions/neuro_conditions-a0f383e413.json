@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-a0f383e413",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "ms_relapsing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for MS.\n\nHPI\nPt is a 61-year-old male presenting for routine follow-up of relapsing-remitting multiple sclerosis. Pt reports feeling stable over the past few months. No new exacerbations or significant neurological deficits noted since last visit. Continues to tolerate current disease-modifying therapy well with no adverse effects reported.\n\nMedication List\n- Interferon beta-1a injection (weekly)\n- Vitamin D3 supplement\n- Gabapentin 300mg BID\n\nExam\nGen: Well-appearing, in no acute distress.\nNeuro: Alert and oriented x3. Speech clear. Gait steady. Strength 5/5 throughout. Reflexes symmetric and brisk. Coordination intact. Sensation intact to light touch. No new focal deficits.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\n\nAssessment\n1. Relapsing-remitting MS: Stable on current disease-modifying therapy.\n\nPlan\n- Continue current medications as prescribed.\n- Maintain current treatment regimen.\n- Follow up in 6 months for routine evaluation.\n\nElectronically signed,\nK. Nguyen, DO\n10/15/2026",
+  "answer": [
+    "G35.A"
+  ],
+  "explanations": [
+    "Relapsing-remitting multiple sclerosis: G35.A (HCC 198). G35 itself is a header in FY2027."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G35"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "G35 needs more characters in FY2027.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G35.D"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type (relapsing-remitting) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.647,
+    "hccs": [
+      {
+        "hcc": "198",
+        "label": "Multiple Sclerosis",
+        "from": [
+          "G35A"
+        ],
+        "weight": 0.647
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:16+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

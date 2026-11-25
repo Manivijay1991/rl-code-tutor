@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-393b4d7cdb",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "ms_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: \"Numbness and tingling in legs.\"\n\nHPI: 68 y/o female pt presents for f/u of multiple sclerosis. Pt reports persistent paresthesia and \"pins and needles\" sensations in bilateral lower extremities over the last 3 weeks. Describes sensation as worsening at night and during periods of prolonged sitting. Denies any acute falls, motor weakness, or changes in vision. Pt notes mild fatigue but states it is consistent with her baseline. No new neurological deficits reported. Pt currently managing symptoms with existing regimen.\n\nMedication List:\n- Gabapentin 300mg TID\n- Baclofen 10mg BID\n- Atorvastatin 20mg daily\n- Lisinopril 10mg daily\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wbc: WNL\n\nRecent Labs:\nHbA1c: 5.7%\neGFR: 78 mL/min\nTSH: 2.1 mIU/L\n\nReview of Systems:\nConstitutional: No chills, no fatigue.\nNeurological: Positive for paresthesia in legs. Negative for tremors, dizziness, or vision changes.\nMSK: Mild stiffness in hips.\nRespiratory: No SOB or cough.\n\nSocial History: Retired teacher. Lives with husband. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nExam:\nGen: Well-appearing, alert, oriented x3.\nNeuro: Cranial nerves II-XII intact. Speech clear. Gait steady. Strength 5/5 in all extremities. Sensation intact to light touch in upper extremities. Decreased sensation to pinprick noted in bilateral feet. Reflexes 2+ throughout. No tremors noted.\nMS: No acute spasms or gait instability.\n\nAssessment:\n1. Multiple sclerosis: Pt presents with stable but bothersome paresthesia. No evidence of acute exacerbation or new focal deficits.\n\nPlan:\n1. Continue current Gabapentin and Baclofen dosages.\n2. Discussed non-pharmacological interventions for nerve discomfort.\n3. F/u in 3 months or sooner if symptoms worsen.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "G35.D"
+  ],
+  "explanations": [
+    "Multiple sclerosis without a documented type: G35.D (HCC 198). G35 itself is a header in FY2027."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G35"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "G35 needs more characters in FY2027.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G35.A"
+      ],
+      "confusion": "assumed_type",
+      "lean": "over",
+      "why": "The provider does not document relapsing-remitting MS.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.647,
+    "hccs": [
+      {
+        "hcc": "198",
+        "label": "Multiple Sclerosis",
+        "from": [
+          "G35D"
+        ],
+        "weight": 0.647
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:17+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}
