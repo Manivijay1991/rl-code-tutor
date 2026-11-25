@@ -8,8 +8,8 @@ and local databases go in `data/` (not committed). Override with environment var
     CODING_TUTOR_CONTENT     folder holding topics/, hcc_groups.json and references.json
     CODING_TUTOR_DATA        folder for CMS downloads and SQLite databases
 
-When the package is installed outside the repository (e.g. a serverless function), the content folder
-falls back to `./content` under the working directory.
+When the package is installed outside the repository (e.g. a serverless function), the content and
+schema folders fall back to `./content` and `./schemas` under the working directory.
 """
 
 from __future__ import annotations
@@ -21,19 +21,24 @@ PACKAGE_DIR = Path(__file__).resolve().parent
 REPO_ROOT = PACKAGE_DIR.parent.parent
 
 
+def repo_or_cwd(name: str, repo_root: Path = REPO_ROOT, cwd: Path | None = None) -> Path:
+    """Return `<repo_root>/<name>` when it is a folder, else `<cwd>/<name>` (an installed package)."""
+    repo = repo_root / name
+    return repo if repo.is_dir() else (cwd or Path.cwd()) / name
+
+
 def _content_dir() -> Path:
     """Return the content folder: env override, the repository's, or ./content."""
     if os.environ.get("CODING_TUTOR_CONTENT"):
         return Path(os.environ["CODING_TUTOR_CONTENT"])
-    repo = REPO_ROOT / "content"
-    return repo if repo.is_dir() else Path.cwd() / "content"
+    return repo_or_cwd("content")
 
 
 CONTENT_DIR = _content_dir()
 TOPICS_DIR = CONTENT_DIR / "topics"
 HCC_GROUPS_PATH = CONTENT_DIR / "hcc_groups.json"
 REFERENCES_PATH = CONTENT_DIR / "references.json"
-SCHEMAS_DIR = REPO_ROOT / "schemas"
+SCHEMAS_DIR = repo_or_cwd("schemas")
 
 DATA_DIR = Path(os.environ.get("CODING_TUTOR_DATA", REPO_ROOT / "data"))
 RAW_DIR = DATA_DIR / "raw"

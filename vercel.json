@@ -5,7 +5,7 @@
   "cleanUrls": false,
   "functions": {
     "api/index.py": {
-      "includeFiles": "content/topics/*/tables/*.json",
+      "includeFiles": "{content/topics/*/topic.json,content/topics/*/tables/*.json,schemas/*.json}",
       "maxDuration": 10
     }
   },

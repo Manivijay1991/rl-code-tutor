@@ -3,6 +3,7 @@ the same security headers as the dev server, immutable topic files and a fresh m
 
 import importlib.util
 import json
+from pathlib import PurePosixPath
 
 import pytest
 
@@ -55,6 +56,30 @@ def test_vercel_serves_web_and_routes_the_api(vercel):
     assert vercel["outputDirectory"] == "web"
     assert {"source": "/api/(.*)", "destination": "/api/index"} in vercel["rewrites"]
     assert "content/topics" in vercel["functions"]["api/index.py"]["includeFiles"]
+
+
+def include_patterns(vercel):
+    """Split vercel.json's includeFiles ("{a,b}" or "a") into glob patterns."""
+    spec = vercel["functions"]["api/index.py"]["includeFiles"]
+    return spec.strip("{}").split(",") if spec.startswith("{") else [spec]
+
+
+@pytest.mark.parametrize("folder", ["content/topics/*/topic.json", "content/topics/*/tables/*.json", "schemas/*.json"])
+def test_vercel_bundles_every_file_the_api_reads(vercel, folder):
+    # load_tables() reads each topic.json, its tables, and the schemas that check them (missing ones = HTTP 500).
+    files = [p.relative_to(REPO_ROOT).as_posix() for p in REPO_ROOT.glob(folder)]
+    assert files
+    patterns = include_patterns(vercel)
+    missing = [f for f in files if not any(PurePosixPath(f).full_match(p) for p in patterns)]
+    assert not missing, missing
+
+
+def test_vercelignore_only_drops_root_folders():
+    # An unanchored "data/" also dropped web/data/ (the question bundle) from the deploy.
+    lines = (REPO_ROOT / ".vercelignore").read_text(encoding="utf-8").splitlines()
+    folders = [x for x in lines if x.endswith("/") and not x.startswith("#")]
+    plain = [x for x in folders if not x.startswith("/") and "*" not in x]  # wildcards match anywhere on purpose
+    assert folders and not plain, plain
 
 
 def test_vercel_security_headers_match_the_dev_server(vercel):
