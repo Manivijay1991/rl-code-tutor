@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-c747c415cc",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nThe patient is a 52-year-old man presenting today for a follow-up evaluation of his major depressive disorder, recurrent. He reports that his mood has been consistently low over the past several weeks. He describes a persistent lack of energy and a diminished interest in his usual hobbies. He notes that his sleep has been interrupted, often waking up in the early morning and having difficulty returning to sleep. He reports a noticeable decrease in concentration at work but denies any changes in appetite. He states that his current symptoms are moderate in intensity, impacting his daily functioning but not preventing him from completing his primary responsibilities. He is currently taking his prescribed medications as directed and reports no significant side effects.\n\nMedication List\nSertraline 100mg daily\n\nReview of Systems\nNegative for chest pain, shortness of breath, or palpitations. Negative for fevers or chills. Negative for weight changes. Denies any changes in vision or hearing. Denies any thoughts of self-harm. Negative for tremors or muscle weakness.\n\nSocial History\nThe patient is currently employed full-time in a management role. He lives with his wife and two children. He reports a sedentary lifestyle and enjoys watching movies on weekends. He denies any tobacco use.\n\nFamily History\nFather has a history of hypertension. Mother has a history of type 2 diabetes. No known history of mental health conditions in the immediate family.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'10\"\nWeight: 195 lbs\n\nRecent Labs\nHbA1c: 5.7%\nTSH: 2.1 mIU/L\nCMP: Within normal limits.\n\nExam\nThe patient is a well-groomed man who appears his stated age. He is cooperative and maintains good eye contact throughout the encounter. Speech is normal in rate and volume. Mood is reported as \"down\" and affect is congruent. Thought process is linear and goal-oriented. Cognition is intact. No acute physical distress noted.\n\nAssessment\n1. Major depressive disorder, recurrent. The patient is currently experiencing a moderate episode of depression.\n\nPlan\n1. Continue current dose of Sertraline 100mg daily.\n2. Monitor for any changes in mood or side effects.\n3. Patient advised to utilize coping strategies and maintain a regular sleep schedule.\n4. Follow up in four weeks for continued monitoring of symptoms.\n\nElectronically signed, L. Moreau, PA-C, 05/14/2026",
+  "answer": [
+    "F33.1"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, moderate (HCC 155): F33.1."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.0"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents moderate (HCC 155); mild has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity is documented: do not use the unspecified code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F331"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:21+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "id": "diabetes_htn_ckd-4a78e42271",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "3a",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for hypertension and type 2 diabetes.\n\nHPI\nThe patient is a 77-year-old female presenting for a routine follow-up of her chronic kidney disease and hypertension. She reports feeling well today and denies any new symptoms such as edema, shortness of breath, or changes in urinary output. She continues to manage her type 2 diabetes through dietary modifications alone and reports that she is adhering to her current lifestyle plan. Her blood pressure has been stable at home. She is here today for a laboratory review and to monitor her renal function.\n\nMedication List\n1. Lisinopril 10 mg daily\n2. Amlodipine 5 mg daily\n3. Multivitamin daily\n\nReview of Systems\nThe patient denies chest pain, palpitations, dizziness, or syncope. She denies any recent fevers, chills, or cough. She reports no significant joint pain or muscle weakness. She denies any changes in bowel habits or appetite.\n\nSocial History\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and walking in the neighborhood. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension and stroke. Father had type 2 diabetes and lived to age 85.\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\neGFR: 52 mL/min/1.73m2\nHbA1c: 6.8%\nSerum Creatinine: 1.4 mg/dL\n\nExam\nThe patient appears well-nourished and in no acute distress. She is alert and oriented to person, place, and time. Skin is warm and dry without rashes. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally. Extremities show no edema and have brisk capillary refill.\n\nAssessment\n1. Hypertension: Currently stable on medication.\n2. Type 2 diabetes: Managed via diet; HbA1c remains within target range.\n3. Chronic kidney disease, stage 3a: Renal function is stable based on recent eGFR.\n\nPlan\n1. Continue current Lisinopril and Amlodipine for hypertension.\n2. Continue current diet for type 2 diabetes management.\n3. Continue monitoring renal function. Follow up with repeat labs in 3 months.\n4. Patient advised to maintain low-sodium diet and stay hydrated.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "I12.9",
+    "N18.31"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "Hypertension with CKD stage 1-4 is presumed linked: I12.9. Both links apply at once: diabetes with CKD and hypertensive CKD.",
+    "The CKD stage is coded in addition: N18.31."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "I12.9",
+        "N18.31"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I10",
+        "N18.31"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "Hypertension and CKD are presumed linked: I12.-, not I10.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.0",
+        "N18.31"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.293,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.9"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.293,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.293,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1831"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:55:32+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

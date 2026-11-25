@@ -1,0 +1,8 @@
+{
+  "id": "status",
+  "title": "Status codes",
+  "kind": "hcc",
+  "description": "Amputation and ostomy status: level, side, and reversed ostomies.",
+  "order": 90,
+  "enabled": true
+}

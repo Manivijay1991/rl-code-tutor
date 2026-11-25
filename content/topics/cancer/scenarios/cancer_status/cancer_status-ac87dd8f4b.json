@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-ac87dd8f4b",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Evaluation of liver pain and fatigue.\n\nHPI: The patient is an 86-year-old male who presents today for a follow-up regarding his history of cancer of the right lung. He originally underwent surgical intervention and subsequent treatment for the primary site several years ago. He reports that his primary site remains stable, and he feels well otherwise, except for a recent increase in dull aching in the upper right quadrant of his abdomen and increased feelings of lethargy. He denies any new shortness of breath or significant weight loss over the last month. He notes that his appetite remains stable.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and watching television. He does not smoke and drinks alcohol only occasionally.\n\nFamily History: Father died of a myocardial infarction at age 70. Mother had hypertension and lived to age 88.\n\nReview of Systems:\nConstitutional: Reports mild fatigue. No fever or chills.\nRespiratory: No cough or shortness of breath.\nGastrointestinal: Reports dull RUQ pain. No nausea, vomiting, or diarrhea.\nMusculoskeletal: No joint pain or swelling.\nNeurological: No dizziness or numbness.\n\nVitals:\nBP: 132/84\nHR: 72\nTemp: 98.6 F\nRR: 16\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs:\nALT: 55 U/L\nAST: 48 U/L\nBilirubin: 1.1 mg/dL\nAlbumin: 3.8 g/dL\neGFR: 62 mL/min\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: Lungs clear to auscultation.\nAbdomen: Soft, non-tender, and non-distended. Mild tenderness noted in the right upper quadrant. No palpable masses.\nSkin: Intact, no new lesions.\n\nAssessment:\n1. Liver metastases: The patient presents with new abdominal discomfort. Imaging and lab work indicate the presence of metastases to the liver.\n2. History of cancer of the right lung: The primary site shows no evidence of local recurrence. The original treatment is complete and remains stable.\n\nPlan:\n1. Liver metastases: We will discuss supportive care for abdominal discomfort. We will monitor liver function tests every three months.\n2. Right lung: Continue current observation as the primary site remains stable.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "Z85.118",
+    "C78.7"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91",
+        "C78.7"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.209,
+        "gap": -4.209,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.118",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:44+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

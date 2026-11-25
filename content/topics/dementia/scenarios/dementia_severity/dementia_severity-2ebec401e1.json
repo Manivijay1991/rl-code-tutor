@@ -1,0 +1,132 @@
+{
+  "id": "dementia_severity-2ebec401e1",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "unspecified",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for cognitive decline.\n\nHPI\nThe patient is an 80-year-old male presenting for a scheduled follow-up regarding his history of Alzheimer's disease. He is accompanied by his daughter, who reports that the patient remains stable at home. The daughter notes that he is generally calm and cooperative during daily activities. There have been no recent changes in his ability to perform activities of daily living, and he remains pleasant during interactions. He does not exhibit any behavioral or mood disturbances. The goal of today's visit is to monitor his current status and ensure he remains comfortable and safe.\n\nMedication List\n- Donepezil 10 mg daily\n- Memantine 20 mg daily\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, or palpitations. He denies any recent falls or new-onset fractures. He denies changes in appetite or significant weight loss. He denies any urinary incontinence or bowel irregularities. He denies new-onset tremors or gait instability.\n\nSocial History\nThe patient lives at home with his daughter. He is a retired civil engineer and enjoys listening to classical music. He does not smoke and does not consume alcohol.\n\nFamily History\nFather had hypertension and a history of cognitive decline. Mother had a history of arthritis.\n\nVitals\nTemperature: 98.4 F\nHeart Rate: 72 bpm\nBlood Pressure: 132/84 mmHg\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 97% on room air\nWeight: 185 lbs\n\nRecent Labs\nHbA1c: 6.4%\neGFR: 68 mL/min/1.73m2\nTSH: 2.1 mIU/L\nSodium: 139 mEq/L\nPotassium: 4.2 mEq/L\n\nExam\nThe patient is an 80-year-old male who appears well-groomed and is dressed appropriately for the weather. He is calm and cooperative throughout the encounter. Speech is clear and coherent. He is able to follow simple commands and engage in basic conversation. He shows no signs of distress. Neurological exam reveals intact cranial nerves and normal muscle strength. Gait is steady with a normal range of motion.\n\nAssessment\n1. Alzheimer's disease: The patient continues to have a stable course with his current medication regimen. He remains cooperative and shows no behavioral disturbances at this time.\n\nPlan\n1. Continue current medications, including Donepezil and Memantine.\n2. Continue home health services for safety monitoring.\n3. Follow up in three months for a repeat cognitive screening and medication review.\n\nElectronically signed,\nH. Tanaka, MD\nMay 14, 2026",
+  "answer": [
+    "G30.9",
+    "F02.80"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), unspecified severity, without behavioral disturbance: F02.80."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.80"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B0"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.811"
+      ],
+      "confusion": "unsupported_behavior",
+      "lean": "over",
+      "why": "No behavioral disturbance is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.90"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "G309",
+          "F0280"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:36:15+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

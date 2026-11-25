@@ -1,0 +1,78 @@
+{
+  "id": "obesity_bmi-2eb426559f",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension.\n\nHPI: Patient is a 51-year-old male presenting for a follow-up of essential hypertension. He reports consistent adherence to his prescribed medication regimen. He denies any episodes of syncope, chest pain, or shortness of breath. He notes that his blood pressure readings at home have remained relatively stable, though he occasionally sees spikes during periods of high stress at work. He denies any headaches or visual changes.\n\nUpdate: The patient reports that he has been feeling well since the last visit. He has maintained his current exercise routine and continues to monitor his blood pressure at home twice daily. He denies any new symptoms or side effects from his current medications.\n\nMedication List:\n- Lisinopril 20mg daily\n- Amlodipine 5mg daily\n\nVitals: BP 138/84, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 42.8.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue, or unintentional weight changes.\nEyes: Negative for blurred vision or double vision.\nCardiovascular: Negative for palpitations or chest pain.\nRespiratory: Negative for cough or wheezing.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for numbness or tingling.\n\nSocial History: The patient works as a project manager. He is a non-smoker and drinks alcohol socially on weekends. He lives with his spouse and two children.\n\nFamily History: Father had a myocardial infarction at age 60. Mother has type 2 diabetes.\n\nRecent Labs:\n- HbA1c: 5.8%\n- Serum Creatinine: 1.1 mg/dL\n- eGFR: 82 mL/min/1.73m2\n- Potassium: 4.2 mEq/L\n\nExam:\nGeneral: Alert and oriented x3. Well-appearing male in no acute distress.\nCardiovascular: Regular rate and rhythm. S1, S2 heard clearly. No murmurs, rubs, or gallops.\nPulmonary: Clear to auscultation bilaterally. No wheezes or crackles.\nExtremities: No edema noted. Peripheral pulses are 2+ and symmetric.\n\nAssessment:\n1. Hypertension: Currently stable on Lisinopril and Amlodipine. Patient is showing good compliance.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue home blood pressure monitoring and maintain a log for the next three months.\n3. Follow up in 4 months for a repeat blood pressure check and lab work.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.41"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "48"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:38+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

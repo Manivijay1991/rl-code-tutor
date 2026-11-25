@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-6fd0e27e2d",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "full_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for mood.\n\nHPI: Pt is a 77 y/o female presenting for scheduled follow-up of major depressive disorder, recurrent. Pt reports stable mood over the past 3 months. Denies any episodes of low mood, anhedonia, or sleep disturbances. States she feels \"back to her old self\" and is enjoying hobbies again. No reports of weight changes or fatigue. Pt reports good compliance with current regimen.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Multivitamin PO QD\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nPsychiatric: No depressed mood, no sleep issues.\nNeurological: No tremors, no gait changes.\nAll other systems reviewed and negative.\n\nSocial History: Pt lives with her spouse. Retired. Enjoys gardening and walking. No tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 124 lbs\n\nRecent Labs:\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nTSH: 2.1 mIU/L\nGlucose: 105 mg/dL\n\nExam:\nGen: Alert and oriented x3. Well-groomed.\nPsych: Cooperative. Normal speech and tone. Affect is bright and congruent. Mood is stable. Thought process is linear and goal-directed. Insight and judgment are intact.\nPhysical: CTAB. RRR. Lungs clear.\n\nAssessment:\n1. Major depressive disorder, recurrent. Pt is currently in full remission.\n\nPlan:\n1. Continue current dose of Sertraline.\n2. Continue to monitor mood and side effects.\n3. Return to clinic in 3 months for routine follow-up.\n\nElectronically signed, T. Haddad, NP, 05/12/2026",
+  "answer": [
+    "F33.42"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, in full remission (no HCC): F33.42."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents full remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.41"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is full, not partial.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:35+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

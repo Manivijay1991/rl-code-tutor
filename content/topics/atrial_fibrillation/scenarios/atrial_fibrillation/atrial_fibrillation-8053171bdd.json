@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-8053171bdd",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "permanent",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rate management.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nRecent Labs: eGFR 72, K+ 4.1, Na+ 138, HbA1c 6.4%.\n\nMedication List:\n- Metoprolol 50 mg daily\n- Lisinopril 10 mg daily\n- Atorvastatin 20 mg daily\n\nFamily History: Mother had hypertension; Father had type 2 diabetes.\n\nSocial History: Retired teacher, lives with husband, non-smoker, occasional alcohol consumption.\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight change.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath.\nNeurological: Denies dizziness or syncope.\nMusculoskeletal: Denies joint pain.\nGastrointestinal: Denies abdominal pain or diarrhea.\n\nHPI: [Copied Forward] Patient is a 72-year-old female with a history of permanent atrial fibrillation. She presents for evaluation of rate control. She reports stable symptoms and no episodes of significant tachycardia. She is currently managed with beta-blocker therapy for rate control. She denies any new-onset symptoms or syncope.\n\n[Current Update] The patient reports feeling well today and states that her heart rate remains stable during daily activities. She denies any palpitations or lightheadedness. She continues to follow a heart-healthy diet and remains active with walking for exercise. She confirms she is not experiencing any chest discomfort.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rhythm, S1 and S2 heard, no murmurs. Capillary refill <2 seconds.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Permanent atrial fibrillation: The patient is currently stable on metoprolol for rate control. She is at low risk for complications and does not require an anticoagulant at this time.\n\nPlan:\n1. Continue current metoprolol dosage for management of her permanent AFib.\n2. Continue lisinopril and atorvastatin as prescribed.\n3. Follow up in 6 months for routine monitoring of heart rate and blood pressure.\n\nElectronically signed,\nA. Rivera, MD\nOctober 14, 2026",
+  "answer": [
+    "I48.21"
+  ],
+  "explanations": [
+    "Permanent atrial fibrillation: I48.21 (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.20"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Permanent has its own code; I48.20 is chronic AF, unspecified.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (permanent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4821"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:57:53+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

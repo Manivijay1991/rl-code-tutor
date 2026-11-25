@@ -1,0 +1,76 @@
+{
+  "id": "obesity_bmi-4f9003a29f",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "32"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nPt is a 56 y/o female presenting for f/u of HTN. Reports adherence to current meds. Denies chest pain, SOB, or syncope. BP has been well-controlled at home. Pt reports feeling well overall.\n\nMedication List\nLisinopril 20mg QD\nHydrochlorothiazide 25mg QD\n\nExam\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6 F, BMI 32.4.\nGen: Alert, cooperative, in no acute distress.\nCV: RRR, CTAB, no murmurs.\nLungs: Clear to auscultation bilaterally.\nExt: No edema.\n\nAssessment\n1. Hypertension - stable on current regimen.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue home BP monitoring and keep a log.\n3. Return to clinic in 3 months for f/u.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.32"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:54+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

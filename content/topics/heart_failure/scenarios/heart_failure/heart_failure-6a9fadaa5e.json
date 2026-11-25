@@ -1,0 +1,95 @@
+{
+  "id": "heart_failure-6a9fadaa5e",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Shortness of breath and increased swelling in legs.\n\nHPI: The patient is a 73-year-old male who presents today for a follow-up and evaluation of worsening symptoms related to his known heart failure with preserved ejection fraction. He reports that over the past week, he has experienced a significant increase in shortness of breath, particularly when performing activities of daily living. He also notes that his lower extremities have become increasingly swollen and firm. He states that his symptoms have progressed rapidly over the last few days, suggesting an acute on chronic exacerbation of his baseline condition. He denies chest pain, fever, or productive cough. He reports that he has been compliant with his current medications but feels that his current dosage is insufficient to manage the current flare-up.\n\nMedication List:\n- Furosemide 40mg daily\n- Lisinopril 10mg daily\n- Metoprolol Succinate 25mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: Positive for dyspnea on exertion and mild orthopnea. Negative for cough or wheezing.\nCardiovascular: Positive for peripheral edema. Negative for chest pain or palpitations.\nMusculoskeletal: Positive for bilateral lower extremity swelling.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking. He denies tobacco use and reports moderate alcohol consumption.\n\nFamily History: Father had a history of coronary artery disease; mother had a history of stroke.\n\nVitals:\nBP: 138/84 mmHg\nHR: 78 bpm\nRR: 20 breaths/min\nSpO2: 95% on room air\nTemp: 98.6 F\nWeight: 215 lbs (increased 4 lbs since last visit)\n\nRecent Labs:\nSodium: 136 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nBNP: 450 pg/mL\n\nExam: The patient appears in mild respiratory distress. Heart sounds are regular with an S3 and S4. Lungs show scattered crackles in the bilateral bases. Significant pitting edema is noted in both lower extremities extending to the mid-calf.\n\nAssessment: The patient is experiencing an acute on chronic exacerbation of his diastolic heart failure. This is evidenced by his increased weight, peripheral edema, and increased dyspnea.\n\nPlan: Increase Furosemide dosage to 80mg daily to address the fluid overload. Patient instructed to monitor daily weights and report any weight gain of more than 3 pounds in a day. Follow up in one week for a repeat evaluation.\n\nElectronically signed, \nH. Tanaka, NP\nOctober 14, 2026",
+  "answer": [
+    "I50.33"
+  ],
+  "explanations": [
+    "Acute on chronic diastolic heart failure: I50.33 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.32"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.31"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5033"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:48+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

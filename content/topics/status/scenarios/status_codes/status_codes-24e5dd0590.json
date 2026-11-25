@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-24e5dd0590",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "aka_left",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for hypertension and joint pain.\n\nHPI\nPt is an 80 y.o. female presenting for a routine follow-up of chronic hypertension and osteoarthritis of the hands. Pt reports mild aching in bilateral MCP and PIP joints, worse in the morning. Denies any acute swelling or redness. Pt has a history of a left above-knee amputation several years ago. She currently uses a prosthesis for mobility. She reports that her blood pressure has been stable at home with current meds. Denies chest pain, shortness of breath, or syncope.\n\nMedication List\nLisinopril 20mg daily\nAmlodipine 5mg daily\nAcetaminophen 650mg BID PRN for joint pain\n\nReview of Systems\nConstitutional: No fever, chills, or weight changes.\nHEENT: No vision changes, no headaches.\nRespiratory: No SOB, no cough.\nMusculoskeletal: Bilateral hand joint pain, no acute injuries.\nSkin: No rashes.\nNeurological: No numbness or weakness.\n\nSocial History\nRetired. Lives with her daughter. Independent in ADLs. Non-smoker.\n\nFamily History\nMother: Hypertension, Stroke.\nFather: Myocardial Infarction.\n\nVitals\nBP: 132/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 145 lbs\n\nRecent Labs\nBMP: Na 139, K 4.2, BUN 18, Cr 1.0, eGFR 82.\nHbA1c: 5.6%\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nCardiovascular: RRR, regular S1/S2, no murmurs.\nRespiratory: CTAB.\nMusculoskeletal: Left above-knee amputation site is well-healed with no drainage or erythema. Hand joints show mild non-inflammatory swelling.\nNeurological: Grossly intact.\n\nAssessment\n1. Hypertension: Well-controlled on current regimen.\n2. Osteoarthritis: Hand joints.\n3. Left AKA: Stable status.\n\nPlan\n1. Continue Lisinopril and Amlodipine as prescribed.\n2. Continue Acetaminophen PRN for hand pain.\n3. Follow up in 3 months for routine BP check.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "Z89.612"
+  ],
+  "explanations": [
+    "Acquired absence of the left leg above the knee: Z89.612 (HCC 409)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.598,
+        "gap": -0.598,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z89.512"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "The amputation is above the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.611"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89612"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:20+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

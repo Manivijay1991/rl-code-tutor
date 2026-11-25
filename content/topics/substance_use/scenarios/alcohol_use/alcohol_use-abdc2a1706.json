@@ -1,0 +1,58 @@
+{
+  "id": "alcohol_use-abdc2a1706",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "social_drinking",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint\nFollow-up for hypertension and hyperlipidemia.\n\nHPI\nPt is a 56 y.o. female presenting for routine follow-up. She reports feeling well overall, denying any acute chest pain or shortness of breath. She reports good adherence to medications. Regarding social history, she drinks socially, typically a glass of wine on weekends. Pt is currently drinking at this appointment.\n\nMedication List\nLisinopril 20mg daily\nAtorvastatin 40mg daily\n\nExam\nBP 132/84, HR 72, RR 16, Temp 98.6F. Pt is alert and oriented x3. CTAB. Heart sounds RRR. Lungs clear to auscultation. No edema noted.\n\nAssessment\n1. Hypertension: Well-controlled on current regimen.\n2. Hyperlipidemia: Stable.\n\nPlan\n1. Continue current medications as prescribed.\n2. Maintain heart-healthy diet and regular exercise.\n3. Return to clinic in 3 months for f/u.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Social drinking without a provider diagnosis is not coded."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "coded_social_drinking",
+      "lean": "over",
+      "why": "The provider does not diagnose an alcohol use disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:48+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-04b7663564",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_right",
+    "handedness": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for residual right-sided hemiparesis.\n\nHPI\nThe patient is a 77-year-old woman who presents for a follow-up evaluation of her functional status following a prior ischemic stroke. She is right-handed and reports that she is currently managing her daily activities with some assistance. She notes that the right-sided hemiparesis remains a consistent limitation, particularly when performing fine motor tasks or carrying objects. She denies any recent falls or significant changes in her mobility since the last visit. She is seeking to optimize her physical therapy regimen to improve her independence.\n\nMedication List\n- Lisinopril 10 mg daily\n- Atorvastatin 40 mg daily\n- Aspirin 81 mg daily\n\nVitals\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nOxygen Saturation: 98% on room air\nTemperature: 98.6 F\nWeight: 154 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nGlucose: 108 mg/dL\neGFR: 68 mL/min/1.73m2\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, or palpitations. She reports no recent fevers or chills. She denies any changes in vision or hearing. She denies any new-onset tremors or loss of balance.\n\nSocial History\nThe patient lives at home with her spouse. She enjoys gardening and spends most of her time relaxing at home. She does not smoke and drinks alcohol occasionally.\n\nFamily History\nMother had hypertension and type 2 diabetes. Father had a myocardial infarction at age 70.\n\nExam\nThe patient is alert and oriented to person, place, and time. She is seated in a chair and appears in no acute distress. Physical examination reveals a stable, chronic right-sided hemiparesis. Strength is diminished in the right upper and lower extremities compared to the left. She is right-hand dominant, though she requires compensatory techniques for gripping small objects. Sensation is intact to light touch throughout.\n\nAssessment\n1. Residual right-sided hemiparesis following a past ischemic stroke.\n\nPlan\n1. Continue current medications for hypertension and lipid management.\n2. Continue physical therapy twice weekly focusing on gait stability and upper extremity strengthening.\n3. Follow up in four weeks to monitor progress.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "I69.351"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, right dominant side: I69.351 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.353"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69351"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:37+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

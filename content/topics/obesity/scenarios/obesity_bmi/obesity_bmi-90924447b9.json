@@ -1,0 +1,111 @@
+{
+  "id": "obesity_bmi-90924447b9",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "obesity",
+    "bmi": "52"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for weight management.\n\nHPI: Pt is a 60-year-old female presenting for follow-up regarding weight management. She reports difficulty adhering to a consistent exercise regimen due to joint discomfort. She notes she has been trying to reduce caloric intake but finds it challenging to manage portion sizes during social gatherings. She denies any acute pain, shortness of breath, or chest pain today. She is seeking guidance on sustainable lifestyle modifications.\n\nMedication List:\n- Multivitamin daily\n- Glucosamine 500mg BID\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nCV: Denies palpitations, chest pain.\nResp: Denies SOB, cough.\nMSK: Reports mild knee aching with prolonged walking.\nGI: Denies nausea, diarrhea, constipation.\n\nSocial History: Pt is married and works as a part-time administrative assistant. She enjoys walking in the park and cooking at home. She reports a sedentary work environment.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 138/88\nHR: 78 RRR\nTemp: 98.6 F\nRR: 16\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 310 lbs\nBMI: 52.5\n\nRecent Labs:\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\neGFR: 85 mL/min/1.73m2\nLipid Panel: Total Cholesterol 190, LDL 110, HDL 45, Trig 150\n\nExam:\nGeneral: Pt is alert and oriented x3. Appears in no acute distress.\nCV: RRR, regular rhythm. No murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no masses.\nMSK: Mild tenderness to palpation of bilateral knees.\nExtremities: No edema.\n\nAssessment:\n1. Obesity: Pt presents with a BMI of 52.5. Discussion held regarding the risks of excessive weight and the importance of gradual weight loss.\n2. Joint discomfort: Likely related to weight.\n\nPlan:\n1. Diet and activity counseling: Encouraged pt to increase daily step count and focus on high-protein, low-calorie meal planning. Discussed calorie tracking apps.\n2. Follow-up: Return to clinic in 3 months for weight check and labs.\n\nElectronically signed,\nR. Mensah, DO\n10/14/2026",
+  "answer": [
+    "E66.9",
+    "Z68.43"
+  ],
+  "explanations": [
+    "Obesity documented by the provider: E66.9. The coder does not upgrade it to morbid obesity from the BMI.",
+    "BMI 52.x with a provider weight diagnosis: add Z68.43 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.01",
+        "Z68.43"
+      ],
+      "confusion": "morbid_from_bmi",
+      "lean": "over",
+      "why": "Only the provider can diagnose morbid obesity; the BMI does not change the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E66.9",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 52.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "Z6843"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:17+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

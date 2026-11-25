@@ -1,0 +1,72 @@
+{
+  "id": "cancer_status-0e95f64bab",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for prostate cancer.\n\nHPI: The patient is a 73-year-old male presenting for a follow-up visit regarding his diagnosis of prostate carcinoma. He is currently receiving radiation to manage the malignancy. He reports that he has been tolerating the treatment well thus far, noting some mild fatigue but no significant acute side effects. He denies any new-onset urinary symptoms or significant changes in his bowel habits. He expresses that his primary goal is to maintain his current quality of life while continuing his oncology regimen.\n\nMedication List:\n- Lysumi (radiation management)\n- Advil (as needed for discomfort)\n- Multivitamin\n\nReview of Systems:\nConstitutional: Reports mild fatigue; denies fever, chills, or unintended weight loss.\nGenitourinary: Denies dysuria or hematuria.\nMusculoskeletal: Denies joint pain or significant mobility issues.\nAll other systems are reviewed and are negative.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/84 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\n\nRecent Labs:\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^9/L\nPlatelets: 210 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 78 mL/min/1.73m2\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nAbdomen: Soft, non-tender, no masses palpable.\nGenitourinary: No visible lesions or discharge.\nExtremities: No edema noted.\n\nAssessment:\n1. Prostate cancer: The patient is on active treatment with radiation. Clinical status is stable.\n\nPlan:\n1. Continue current radiation schedule as directed by the oncology team.\n2. Monitor for any increased fatigue or changes in urinary flow.\n3. Follow up in four weeks for a reassessment of treatment tolerance.\n\nElectronically signed,\nH. Tanaka, NP\nMay 14, 2026",
+  "answer": [
+    "C61"
+  ],
+  "explanations": [
+    "Cancer of the prostate under current treatment is a current malignancy: C61."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.46"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "23"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "from": [
+          "C61"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:07+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

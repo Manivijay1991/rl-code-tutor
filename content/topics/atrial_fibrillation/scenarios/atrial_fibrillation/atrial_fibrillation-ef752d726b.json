@@ -1,0 +1,129 @@
+{
+  "id": "atrial_fibrillation-ef752d726b",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rhythm.\n\nHPI: 87 y/o female presents for scheduled follow-up of atrial fibrillation. Pt reports feeling well overall, denies palpitations, chest pain, or shortness of breath. Currently managed with rate control. Pt remains compliant with apixaban for prevention. No new symptoms noted since last visit.\n\nMedication List:\n- Apixaban 5mg BID\n- Metoprolol 25mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72 (regular), RR 16, SpO2 98% on RA.\nCardio: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB.\nExt: No edema.\n\nAssessment:\n1. Atrial fibrillation: Stable, currently on rate control and apixaban.\n\nPlan:\n- Continue current medications as prescribed.\n- Monitor heart rate and rhythm.\n- Follow up in 3 months.\n\nElectronically signed,\nR. Mensah, DO\n05/14/2026",
+  "answer": [
+    "I48.91",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Current atrial fibrillation without a documented type: I48.91 (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.0",
+        "Z79.01"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "The provider does not document the type.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.79",
+        "Z79.01"
+      ],
+      "confusion": "current_coded_history",
+      "lean": "under",
+      "why": "The atrial fibrillation is current (treated and monitored).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "238"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4891"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:56:44+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

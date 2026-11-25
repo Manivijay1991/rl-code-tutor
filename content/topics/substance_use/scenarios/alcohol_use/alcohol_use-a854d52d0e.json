@@ -1,0 +1,80 @@
+{
+  "id": "alcohol_use-a854d52d0e",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_mild",
+    "remission": "yes"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint: Follow-up on alcohol use disorder.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 205 lbs.\n\nRecent Labs:\n- HbA1c: 5.7%\n- eGFR: 88 mL/min/1.73m2\n- ALT: 24 U/L\n- AST: 22 U/L\n- LDL: 102 mg/dL\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems:\n- General: Negative for fever, chills, or weight changes.\n- HEENT: Negative for vision changes or hearing loss.\n- Respiratory: Negative for cough or shortness of breath.\n- Cardiovascular: Negative for chest pain or palpitations.\n- Gastrointestinal: Negative for abdominal pain or nausea.\n- Musculoskeletal: Negative for joint pain.\n- Neurological: Negative for headaches or tremors.\n- Psychiatric: Negative for anxiety or depression.\n\nSocial History: Patient is a 51-year-old male who works as a project manager. He reports he does not smoke and does not use illicit substances. He lives with his spouse and two children.\n\nFamily History: Father had hypertension; mother had type 2 diabetes. No known family history of substance use disorders.\n\nHPI: [Copied Forward] Patient is a 51-year-old male who presented for evaluation of alcohol use disorder, mild. He reports significant consumption in his 30s and 40s. He sought treatment for behavioral changes and began a structured program. He reports a history of regular consumption but has transitioned to a sober lifestyle over the last several years.\n\n[Update] Patient returns for a follow-up to discuss his progress. He reports that he has not consumed any alcohol for over a year. He expresses satisfaction with his current lifestyle and reports no cravings or urges to use. He continues to participate in regular exercise and maintains a healthy diet.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nSkin: No rashes or lesions noted.\nHeart: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no organomegaly.\nNeurological: No tremors, gait is steady, reflexes are symmetric.\n\nAssessment:\n1. Alcohol use disorder, mild. The patient is currently in sustained remission.\n\nPlan:\n1. Continue current monitoring.\n2. Provide positive reinforcement for continued abstinence.\n3. Patient will continue with current medications for blood pressure and cholesterol management.\n4. Follow-up in 6 months.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "F10.11"
+  ],
+  "explanations": [
+    "Alcohol use disorder, mild, in remission: F10.11."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "missed_remission",
+      "lean": "neutral",
+      "why": "The provider documents remission.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F10.21"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "A mild use disorder is abuse (F10.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0,
+        "gap": 0.242,
+        "direction": "over",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:44+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

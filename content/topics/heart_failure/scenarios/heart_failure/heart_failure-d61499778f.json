@@ -1,0 +1,95 @@
+{
+  "id": "heart_failure-d61499778f",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint\nShortness of breath and increased swelling in the legs.\n\nHPI\nThe patient is an 86-year-old male who presents for follow-up of his known systolic heart failure. He reports a significant increase in shortness of breath over the last five days, noting that he is now unable to perform simple household tasks without stopping to rest. He describes a progressive increase in bilateral lower extremity edema, stating that his shoes no longer fit comfortably. He reports a weight gain of approximately 6 pounds over the past week. He denies any chest pain, palpitations, or fever. He currently manages his condition with a stable regimen of furosemide and carvedilol, but he feels his current dose is no longer sufficient to manage his symptoms.\n\nReview of Systems\nConstitutional: Negative for fever or chills. Respiratory: Positive for dyspnea on exertion and orthopnea. Cardiovascular: Positive for peripheral edema. Gastrointestinal: Negative for nausea or abdominal pain. Neurological: Negative for dizziness or syncope.\n\nSocial History\nThe patient lives at home with his wife. He is retired and enjoys walking in the park when his symptoms allow. He denies tobacco use and reports social alcohol consumption.\n\nFamily History\nFather died of a myocardial infarction at age 65. Mother had a history of stroke.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 18 breaths/min\nOxygen Saturation: 95% on room air\nWeight: 195 lbs\n\nRecent Labs\nSodium: 136 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nBNP: 850 pg/mL\nEchocardiogram (previous): EF 30%\n\nMedication List\nFurosemide 40 mg daily\nCarvedilol 25 mg twice daily\nLisinopril 10 mg daily\n\nExam\nThe patient appears in mild respiratory distress. He is alert and oriented. Heart sounds are regular with a soft S3. Lungs are clear to auscultation bilaterally. There is 3+ pitting edema noted in both lower extremities extending to the mid-calf.\n\nAssessment\n1. Acute on chronic exacerbation of systolic heart failure. The patient's presentation is consistent with fluid overload.\n\nPlan\n1. Increase furosemide dose to 80 mg daily to address the acute on chronic exacerbation.\n2. Instructed the patient on a low-sodium diet and daily weight monitoring.\n3. Patient to return to the clinic in one week for a follow-up evaluation of symptoms and weight.\n4. Patient instructed to seek immediate emergency care if he experiences severe difficulty breathing or chest pain.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "I50.23"
+  ],
+  "explanations": [
+    "Acute on chronic systolic heart failure: I50.23 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.21"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5023"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:22+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

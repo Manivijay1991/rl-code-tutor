@@ -1,0 +1,64 @@
+{
+  "id": "cancer_status-3b873ad531",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "history",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for history of cancer.\n\nHPI\nPt is an 83-year-old female presenting for routine follow-up. Hx of malignancy of the right breast. Primary site was surgically removed and treated several years ago. Treatment is complete. Pt reports no new symptoms, pain, or changes to the surgical site. No concerns voiced today.\n\nMedication List\nMultivitamin daily\nAcetaminophen 500mg PRN for pain\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6 F.\nPhysical: CTAB. No masses or skin changes noted to the right breast. No evidence of local recurrence.\n\nAssessment\n1. History of malignancy of the right breast. Treatment complete. No evidence of disease at the primary site or other sites.\n\nPlan\n1. Continue routine surveillance.\n2. No further intervention directed at the primary site at this time.\n3. F/u in 6 months.\n\nElectronically signed\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "Z85.3"
+  ],
+  "explanations": [
+    "The right female breast cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.3 (no HCC). Any metastasis is still coded as a current secondary malignancy."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C50.911"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:44:04+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

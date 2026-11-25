@@ -1,0 +1,95 @@
+{
+  "id": "heart_failure-33480e84e9",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Shortness of breath and leg swelling.\n\nHPI: [Copied Forward] Patient is a 57-year-old female with a known history of diastolic heart failure (HFpEF). She reports stable symptoms between clinic visits but notes occasional fatigue.\n\n[Update] Today, the patient reports a significant increase in shortness of breath over the last three days, particularly when walking short distances. She notes that her bilateral lower extremities have become significantly more swollen compared to last month. She denies chest pain, fever, or productive cough.\n\nVitals: BP 142/88, HR 78, SpO2 95% on room air, Temp 98.6F.\n\nReview of Systems:\nConstitutional: Negative for fever/chills.\nRespiratory: Positive for dyspnea on exertion.\nCardiovascular: Positive for edema.\nGastrointestinal: Negative for nausea/diarrhea.\nNeurological: Negative for dizziness.\n\nExam: Patient appears in mild respiratory distress at rest. Lung sounds reveal bilateral crackles at the bases. Heart sounds are regular with no murmurs. Significant 3+ pitting edema noted in bilateral lower extremities extending to the mid-calf.\n\nAssessment:\n1. Acute on chronic heart failure with preserved ejection fraction (EF 60%).\n\nPlan:\n1. Increase dosage of and diuretic to manage volume overload.\n2. Patient instructed to monitor daily weight and notify clinic if weight gain exceeds 3 lbs in 24 hours.\n3. Follow up in two weeks to reassess fluid status.\n\nMedication List:\nFurosemide 40mg daily\nLisinopril 10mg daily\nMetoprolol Succinate 25mg daily\n\nElectronically signed,\nS. Patel, NP\n05/14/2026",
+  "answer": [
+    "I50.33"
+  ],
+  "explanations": [
+    "Acute on chronic diastolic heart failure: I50.33 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.32"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.31"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5033"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:35+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

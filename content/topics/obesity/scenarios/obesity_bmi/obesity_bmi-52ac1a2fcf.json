@@ -1,0 +1,76 @@
+{
+  "id": "obesity_bmi-52ac1a2fcf",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "37"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint\nFollow-up for hypertension and type 2 diabetes.\n\nHPI\nThe patient is a 77-year-old woman who presents today for a routine follow-up of her chronic hypertension and type 2 diabetes mellitus. She reports that she has been feeling generally well over the past month. She denies any recent episodes of dizziness, syncope, or blurred vision. She reports that her blood glucose levels have been stable with her current medication regimen, and she denies any significant hypoglycemic episodes. She reports consistent adherence to her prescribed medications and has been monitoring her blood pressure at home. She notes that she feels more energetic than she did during her last visit.\n\nMedication List\nLisinopril 20mg daily\nMetformin 500mg twice daily\nAtorvastatin 40mg daily\n\nVitals\nBP: 132/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\nBMI: 37.4\n\nRecent Labs\nHbA1c: 7.1%\neGFR: 65 mL/min/1.73m2\nLDL: 88 mg/dL\nCreatinine: 1.1 mg/dL\n\nReview of Systems\nThe patient reports no recent headaches, chest pain, or shortness of breath. She denies any polyuria, polydipsia, or numbness in her extremities. She denies any joint pain or visual changes.\n\nSocial History\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and walking in her neighborhood. She denies tobacco or alcohol use.\n\nFamily History\nMother had a history of hypertension and stroke. Father had type 2 diabetes and coronary artery disease.\n\nExam\nThe patient appears well-nourished and in no acute distress. She is alert and oriented to person, place, and time. Skin is warm and dry. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally. Peripheral pulses are palpable. Neurological exam is unremarkable.\n\nAssessment\n1. Hypertension: Well-controlled on lisinopril.\n2. Type 2 Diabetes Mellitus: Stable with metformin and lifestyle modifications.\n\nPlan\nContinue current medications for hypertension and diabetes. Follow-up in three months for repeat labs and blood pressure check. Encouraged continued regular walking and healthy diet.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.37"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:34+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "id": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "slots": {
+    "documentation": {
+      "label": "Provider's documentation",
+      "values": [
+        "social_drinking",
+        "use_disorder_mild",
+        "use_disorder_moderate",
+        "use_disorder_severe"
+      ],
+      "labels": {
+        "social_drinking": "Social drinking only",
+        "use_disorder_mild": "Alcohol use disorder, mild",
+        "use_disorder_moderate": "Alcohol use disorder, moderate",
+        "use_disorder_severe": "Alcohol use disorder, severe"
+      },
+      "evidence": {
+        "social_drinking": [
+          "drinks socially",
+          "social drinker",
+          "occasional alcohol"
+        ],
+        "use_disorder_mild": [
+          "mild alcohol use disorder",
+          "alcohol use disorder, mild"
+        ],
+        "use_disorder_moderate": [
+          "moderate alcohol use disorder",
+          "alcohol use disorder, moderate"
+        ],
+        "use_disorder_severe": [
+          "severe alcohol use disorder",
+          "alcohol use disorder, severe"
+        ]
+      },
+      "describe": {
+        "social_drinking": "The patient drinks socially (a glass of wine on weekends); the provider makes no alcohol diagnosis.",
+        "use_disorder_mild": "The provider diagnoses alcohol use disorder, mild, and addresses it.",
+        "use_disorder_moderate": "The provider diagnoses alcohol use disorder, moderate, and addresses it.",
+        "use_disorder_severe": "The provider diagnoses alcohol use disorder, severe, and addresses it."
+      }
+    },
+    "remission": {
+      "label": "Remission",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "labels": {
+        "no": "Not in remission",
+        "yes": "In remission"
+      },
+      "evidence": {
+        "no": [],
+        "yes": [
+          "in early remission",
+          "in sustained remission",
+          "in remission"
+        ]
+      },
+      "describe": {
+        "no": "The patient is currently drinking.",
+        "yes": "The provider documents the disorder as in sustained remission (no alcohol use for over a year)."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "documentation": "social_drinking",
+      "remission": "yes"
+    }
+  ],
+  "note_forbid": [
+    "withdrawal",
+    "intoxication",
+    "delirium",
+    "cirrhosis",
+    "alcoholic liver",
+    "fatty liver",
+    "pancreatitis",
+    "cannabis",
+    "opioid",
+    "cocaine",
+    "drug use disorder",
+    "alcohol-induced",
+    "blackout",
+    "nicotine dependence"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "documentation": "social_drinking"
+      },
+      "forbid": [
+        "alcohol use disorder",
+        "alcoholism",
+        "dependence",
+        "abuse",
+        "AUD"
+      ]
+    },
+    {
+      "when": {
+        "documentation": [
+          "use_disorder_mild",
+          "use_disorder_moderate",
+          "use_disorder_severe"
+        ]
+      },
+      "forbid": [
+        "alcoholism",
+        "alcohol dependence",
+        "alcohol abuse"
+      ]
+    }
+  ],
+  "confusions": {
+    "coded_social_drinking": {
+      "description": "Coded alcohol use when the provider documents only social drinking.",
+      "lean": "over"
+    },
+    "severity_up": {
+      "description": "Coded dependence (F10.2-) for a mild use disorder.",
+      "lean": "over"
+    },
+    "severity_down": {
+      "description": "Coded abuse (F10.1-) for a moderate or severe use disorder.",
+      "lean": "under"
+    },
+    "missed_remission": {
+      "description": "Coded the disorder as active when it is in remission.",
+      "lean": "neutral"
+    },
+    "unspecified_use": {
+      "description": "Used 'alcohol use, unspecified' when a use disorder is documented.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "documentation": "social_drinking"
+          },
+          "codes": [],
+          "explain": "Social drinking without a provider diagnosis is not coded.",
+          "refs": [
+            "OCG I.C.5.b.2"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F10.10"
+              ],
+              "confusion": "coded_social_drinking",
+              "why": "The provider does not diagnose an alcohol use disorder."
+            }
+          ]
+        },
+        {
+          "when": {
+            "documentation": "use_disorder_mild",
+            "remission": "no"
+          },
+          "codes": [
+            "F10.10"
+          ],
+          "explain": "Alcohol use disorder, mild, indexes to alcohol abuse: F10.10 (no HCC in V28).",
+          "refs": [
+            "OCG I.C.5.b.2"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F10.20"
+              ],
+              "confusion": "severity_up",
+              "why": "A mild use disorder is abuse (F10.1-), not dependence."
+            },
+            {
+              "codes": [
+                "F10.90"
+              ],
+              "confusion": "unspecified_use",
+              "why": "A use disorder with a severity is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "documentation": "use_disorder_mild",
+            "remission": "yes"
+          },
+          "codes": [
+            "F10.11"
+          ],
+          "explain": "Alcohol use disorder, mild, in remission: F10.11.",
+          "refs": [
+            "OCG I.C.5.b.1",
+            "OCG I.C.5.b.2"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F10.10"
+              ],
+              "confusion": "missed_remission",
+              "why": "The provider documents remission."
+            },
+            {
+              "codes": [
+                "F10.21"
+              ],
+              "confusion": "severity_up",
+              "why": "A mild use disorder is abuse (F10.1-), not dependence."
+            }
+          ]
+        },
+        {
+          "when": {
+            "documentation": [
+              "use_disorder_moderate",
+              "use_disorder_severe"
+            ],
+            "remission": "no"
+          },
+          "codes": [
+            "F10.20"
+          ],
+          "explain": "Alcohol use disorder, moderate or severe, indexes to alcohol dependence: F10.20 (HCC 139).",
+          "refs": [
+            "OCG I.C.5.b.2"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F10.10"
+              ],
+              "confusion": "severity_down",
+              "why": "Moderate or severe use disorder is dependence (F10.2-); abuse has no HCC."
+            },
+            {
+              "codes": [
+                "F10.90"
+              ],
+              "confusion": "unspecified_use",
+              "why": "A use disorder with a severity is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "documentation": [
+              "use_disorder_moderate",
+              "use_disorder_severe"
+            ],
+            "remission": "yes"
+          },
+          "codes": [
+            "F10.21"
+          ],
+          "explain": "Alcohol use disorder, moderate or severe, in remission: F10.21, alcohol dependence in remission (HCC 139).",
+          "refs": [
+            "OCG I.C.5.b.1",
+            "OCG I.C.5.b.2"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F10.20"
+              ],
+              "confusion": "missed_remission",
+              "why": "The provider documents remission."
+            },
+            {
+              "codes": [
+                "F10.11"
+              ],
+              "confusion": "severity_down",
+              "why": "Moderate or severe use disorder is dependence (F10.2-)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

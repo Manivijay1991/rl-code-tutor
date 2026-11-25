@@ -1,0 +1,8 @@
+# Not needed on the host: local data, tests, docs and tooling.
+.venv/
+.claude/
+data/
+tests/
+docs/
+**/__pycache__/
+*.egg-info/

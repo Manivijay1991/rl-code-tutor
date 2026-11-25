@@ -34,7 +34,7 @@ from pathlib import Path
 from coding_tutor import catalog
 from coding_tutor.engine import hcc
 from coding_tutor.engine.codes import default_db, dotted
-from coding_tutor.engine.rules import Distractor, Slots, Table, combos, load_tables, matches, resolve
+from coding_tutor.engine.rules import Distractor, Slots, Table, TableError, combos, load_tables, matches, resolve
 from coding_tutor.llm import LLM, PROVIDERS, LLMConfig, LLMError, config_from_env, make_llm
 
 MIN_WORDS, MAX_WORDS = 50, 550
@@ -93,7 +93,7 @@ SIGNERS = (
 
 
 # ---- requirements (pure) ----
-def _groups(evidence: list) -> list[list[str]]:
+def evidence_groups(evidence: list) -> list[list[str]]:
     """Turn an evidence list into required groups: ["a","b"] is one group; [["a"],["b","c"]] is two."""
     if not evidence:
         return []
@@ -102,7 +102,7 @@ def _groups(evidence: list) -> list[list[str]]:
 
 def flat_evidence(evidence: list) -> list[str]:
     """Return every phrase in an evidence list."""
-    return [p for g in _groups(evidence) for p in g]
+    return [p for g in evidence_groups(evidence) for p in g]
 
 
 def _fact(name: str, spec: dict, value: str, skipped: bool) -> str | None:
@@ -141,7 +141,7 @@ def requirements(t: Table, slots: Slots) -> Requirements:
         if fact:
             facts.append(fact)
         if name not in skipped:
-            require += _groups(spec.get("evidence", {}).get(value, []))
+            require += evidence_groups(spec.get("evidence", {}).get(value, []))
             forbid += _exclusive_forbid(spec, value)
     for r in rules:
         require += [list(g) for g in r.get("require", [])]
@@ -182,6 +182,25 @@ def signed(note: str, style: Style | None) -> str:
     if not style or has_phrase(note, "Electronically signed"):
         return note
     return f"{note}\n\nElectronically signed, {style['signer']}, {style['credential']}"
+
+
+def style_for(t: Table, slots: Slots, rng: random.Random) -> Style:
+    """Pick a style, then apply the case's constraints.
+
+    The table's `note_age` keeps the patient's age realistic for the topic (an age outside it is redrawn
+    inside it), and a matching `note_rules` entry may fix the patient's sex.
+
+    Raises:
+        TableError: Matching note_rules ask for different sexes.
+    """
+    style = pick_style(t, rng)
+    lo, hi = t.get("note_age", {}).get("min", 18), t.get("note_age", {}).get("max", 110)
+    if not lo <= style["age"] <= hi:
+        style = {**style, "age": rng.randint(lo, min(hi, max(lo, 90)))}
+    sexes = {r["sex"] for r in t.get("note_rules", []) if "sex" in r and matches(r["when"], slots)}
+    if len(sexes) > 1:
+        raise TableError(f"{t['id']}: note_rules give conflicting sexes {sorted(sexes)} for {slots}")
+    return {**style, "sex": sexes.pop()} if sexes else style
 
 
 def style_lines(style: Style) -> list[str]:
@@ -390,7 +409,7 @@ def generate_one(
     t: Table, slots: Slots, llm: LLM, seed: int, args: argparse.Namespace, con: sqlite3.Connection | None
 ) -> tuple[Path | None, list[dict]]:
     """Write, check and save one scenario in a style picked from `seed`. Returns (saved path or None, attempt log)."""
-    style = pick_style(t, random.Random(seed))
+    style = style_for(t, slots, random.Random(seed))
     note, log = write_note(t, slots, llm, seed=seed, attempts=args.attempts, style=style)
     if note is None:
         return None, log
@@ -480,7 +499,7 @@ def main(argv: list[str] | None = None, llm: LLM | None = None, env: Mapping[str
         for k, slots in enumerate(pick_slots(t, None if args.all else args.n, rng)):
             seed = args.seed * 1000 + k
             if args.dry_run:
-                style = pick_style(t, random.Random(seed))
+                style = style_for(t, slots, random.Random(seed))
                 print(f"--- {t['id']} {slots}\n{build_prompt(requirements(t, slots), style=style)}\n")
                 continue
             try:

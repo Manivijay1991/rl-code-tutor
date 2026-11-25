@@ -1,0 +1,517 @@
+{
+  "id": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note_age": {
+    "min": 45
+  },
+  "slots": {
+    "site": {
+      "label": "Primary site",
+      "values": [
+        "breast_right",
+        "prostate",
+        "lung_right",
+        "colon"
+      ],
+      "labels": {
+        "breast_right": "Right breast",
+        "prostate": "Prostate",
+        "lung_right": "Right lung",
+        "colon": "Colon"
+      },
+      "evidence": {
+        "breast_right": [
+          "right breast"
+        ],
+        "prostate": [
+          "prostate"
+        ],
+        "lung_right": [
+          "right lung"
+        ],
+        "colon": [
+          "colon"
+        ]
+      },
+      "describe": {
+        "breast_right": "Cancer of the right breast (no quadrant or part specified).",
+        "prostate": "Prostate cancer.",
+        "lung_right": "Cancer of the right lung (no lobe specified).",
+        "colon": "Colon cancer (no part of the colon specified)."
+      }
+    },
+    "status": {
+      "label": "Current or history",
+      "values": [
+        "active",
+        "history"
+      ],
+      "labels": {
+        "active": "Current, under treatment",
+        "history": "Treated in the past, no evidence of it now"
+      },
+      "evidence": {
+        "active": [
+          "undergoing chemotherapy",
+          "undergoing radiation",
+          "currently receiving chemotherapy",
+          "currently receiving radiation",
+          "on active treatment"
+        ],
+        "history": [
+          "no evidence of disease",
+          "no evidence of recurrence",
+          "no evidence of local recurrence"
+        ]
+      },
+      "describe": {
+        "active": "The cancer is current: the patient is undergoing chemotherapy or radiation for it now.",
+        "history": "The primary cancer was removed and treated years ago; treatment is complete, nothing is directed at it now, and there is no evidence of it at the primary site."
+      }
+    },
+    "mets": {
+      "label": "Metastases",
+      "values": [
+        "none",
+        "bone",
+        "liver"
+      ],
+      "labels": {
+        "none": "None",
+        "bone": "Bone",
+        "liver": "Liver"
+      },
+      "evidence": {
+        "none": [],
+        "bone": [
+          "metastatic to bone",
+          "bone metastases",
+          "bone metastasis",
+          "metastases to bone"
+        ],
+        "liver": [
+          "liver metastases",
+          "liver metastasis",
+          "metastatic to the liver",
+          "metastases to the liver"
+        ]
+      },
+      "describe": {
+        "none": "No spread to other sites.",
+        "bone": "The cancer has spread to bone (bone metastases), addressed at this visit.",
+        "liver": "The cancer has spread to the liver (liver metastases), addressed at this visit."
+      }
+    }
+  },
+  "note_forbid": [
+    "lymph node",
+    "lymphoma",
+    "leukemia",
+    "brain metastases",
+    "hospice",
+    "in situ",
+    "recurrence of",
+    "recurrent cancer"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "require": [
+        [
+          "cancer",
+          "carcinoma",
+          "malignant neoplasm",
+          "adenocarcinoma"
+        ]
+      ]
+    },
+    {
+      "when": {
+        "site": "breast_right"
+      },
+      "sex": "woman",
+      "forbid": [
+        "left breast",
+        "quadrant",
+        "nipple",
+        "areola",
+        "axillary",
+        "bilateral"
+      ]
+    },
+    {
+      "when": {
+        "site": "prostate"
+      },
+      "sex": "man"
+    },
+    {
+      "when": {
+        "site": "lung_right"
+      },
+      "forbid": [
+        "lobe",
+        "left lung",
+        "bilateral"
+      ]
+    },
+    {
+      "when": {
+        "site": "colon"
+      },
+      "forbid": [
+        "sigmoid",
+        "cecum",
+        "cecal",
+        "ascending",
+        "descending",
+        "transverse",
+        "hepatic flexure",
+        "splenic flexure",
+        "rectum",
+        "rectal",
+        "rectosigmoid",
+        "appendix"
+      ]
+    },
+    {
+      "when": {
+        "mets": "none"
+      },
+      "forbid": [
+        "metastatic",
+        "metastasis",
+        "metastases",
+        "metastasized",
+        "spread to"
+      ]
+    },
+    {
+      "when": {
+        "status": "history",
+        "mets": [
+          "bone",
+          "liver"
+        ]
+      },
+      "forbid": [
+        "no evidence of disease"
+      ]
+    },
+    {
+      "when": {
+        "status": "history"
+      },
+      "forbid": [
+        "tamoxifen",
+        "anastrozole",
+        "letrozole",
+        "exemestane",
+        "leuprolide",
+        "enzalutamide",
+        "hormone therapy",
+        "androgen deprivation",
+        "immunotherapy",
+        "maintenance therapy"
+      ]
+    },
+    {
+      "when": {
+        "status": "active"
+      },
+      "forbid": [
+        "history of breast cancer",
+        "history of prostate cancer",
+        "history of lung cancer",
+        "history of colon cancer",
+        "personal history"
+      ]
+    }
+  ],
+  "confusions": {
+    "history_coded_active": {
+      "description": "Coded a current cancer after treatment ended with no evidence of the primary.",
+      "lean": "over"
+    },
+    "active_coded_history": {
+      "description": "Coded personal history while the cancer is still being treated.",
+      "lean": "under"
+    },
+    "missed_mets": {
+      "description": "Left out a documented metastasis (secondary malignancy).",
+      "lean": "under"
+    },
+    "wrong_met_site": {
+      "description": "Coded the metastasis to the wrong site.",
+      "lean": "neutral"
+    },
+    "unspecified_laterality": {
+      "description": "Used an unspecified-side code when the side is documented.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "primary",
+      "rules": [
+        {
+          "when": {
+            "site": "breast_right",
+            "status": "active"
+          },
+          "codes": [
+            "C50.911"
+          ],
+          "explain": "Cancer of the right female breast under current treatment is a current malignancy: C50.911.",
+          "refs": [
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z85.3"
+              ],
+              "confusion": "active_coded_history",
+              "why": "Treatment is still directed at the cancer, so it is current, not history."
+            },
+            {
+              "codes": [
+                "C50.919"
+              ],
+              "confusion": "unspecified_laterality",
+              "why": "The note documents the right breast: use the right-breast code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "breast_right",
+            "status": "history"
+          },
+          "codes": [
+            "Z85.3"
+          ],
+          "explain": "The right female breast cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.3 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+          "refs": [
+            "OCG I.C.2.d",
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C50.911"
+              ],
+              "confusion": "history_coded_active",
+              "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "prostate",
+            "status": "active"
+          },
+          "codes": [
+            "C61"
+          ],
+          "explain": "Cancer of the prostate under current treatment is a current malignancy: C61.",
+          "refs": [
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z85.46"
+              ],
+              "confusion": "active_coded_history",
+              "why": "Treatment is still directed at the cancer, so it is current, not history."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "prostate",
+            "status": "history"
+          },
+          "codes": [
+            "Z85.46"
+          ],
+          "explain": "The prostate cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.46 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+          "refs": [
+            "OCG I.C.2.d",
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C61"
+              ],
+              "confusion": "history_coded_active",
+              "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "lung_right",
+            "status": "active"
+          },
+          "codes": [
+            "C34.91"
+          ],
+          "explain": "Cancer of the right lung under current treatment is a current malignancy: C34.91.",
+          "refs": [
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z85.118"
+              ],
+              "confusion": "active_coded_history",
+              "why": "Treatment is still directed at the cancer, so it is current, not history."
+            },
+            {
+              "codes": [
+                "C34.90"
+              ],
+              "confusion": "unspecified_laterality",
+              "why": "The note documents the right lung: use the right-lung code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "lung_right",
+            "status": "history"
+          },
+          "codes": [
+            "Z85.118"
+          ],
+          "explain": "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+          "refs": [
+            "OCG I.C.2.d",
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C34.91"
+              ],
+              "confusion": "history_coded_active",
+              "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "colon",
+            "status": "active"
+          },
+          "codes": [
+            "C18.9"
+          ],
+          "explain": "Cancer of the colon under current treatment is a current malignancy: C18.9.",
+          "refs": [
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z85.038"
+              ],
+              "confusion": "active_coded_history",
+              "why": "Treatment is still directed at the cancer, so it is current, not history."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "colon",
+            "status": "history"
+          },
+          "codes": [
+            "Z85.038"
+          ],
+          "explain": "The colon cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.038 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+          "refs": [
+            "OCG I.C.2.d",
+            "OCG I.C.2.m"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C18.9"
+              ],
+              "confusion": "history_coded_active",
+              "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mets",
+      "rules": [
+        {
+          "when": {
+            "mets": "bone"
+          },
+          "codes": [
+            "C79.51"
+          ],
+          "explain": "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC).",
+          "refs": [
+            "OCG I.C.2.d"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_mets",
+              "why": "Metastasis is coded as a secondary malignancy, even when the primary is history."
+            },
+            {
+              "codes": [
+                "C78.7"
+              ],
+              "confusion": "wrong_met_site",
+              "why": "The metastases are in bone, not the liver."
+            }
+          ]
+        },
+        {
+          "when": {
+            "mets": "liver"
+          },
+          "codes": [
+            "C78.7"
+          ],
+          "explain": "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17).",
+          "refs": [
+            "OCG I.C.2.d"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_mets",
+              "why": "Metastasis is coded as a secondary malignancy, even when the primary is history."
+            },
+            {
+              "codes": [
+                "C79.51"
+              ],
+              "confusion": "wrong_met_site",
+              "why": "The metastases are in the liver, not bone."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    }
+  ]
+}

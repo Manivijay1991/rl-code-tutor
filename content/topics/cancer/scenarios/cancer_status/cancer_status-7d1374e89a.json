@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-7d1374e89a",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for management of lung cancer and new bone pain.\n\nHPI\nThe patient is an 81-year-old female who presents today for a follow-up evaluation regarding her cancer of the right lung. She is currently receiving chemotherapy and reports that she has been feeling a dull, aching sensation in her lower spine over the past three weeks. She describes the pain as constant but manageable with over-the-counter measures, though it has become more pronounced during movement. She denies any new shortness of breath, productive cough, or significant weight loss since her last appointment. She reports that her energy levels remain stable despite the ongoing treatment.\n\nMedication List\n- Prednisone 10mg daily\n- Ondansetron 8mg as needed for nausea\n- Acetaminophen 650mg as needed for pain\n\nReview of Systems\nConstitutional: No fever, chills, or night sweats.\nRespiratory: No shortness of breath or cough.\nMusculoskeletal: Positive for localized back pain.\nNeurological: No numbness or tingling in extremities.\n\nSocial History\nThe patient lives at home with her daughter. She is a retired teacher and enjoys gardening and light walking. She denies tobacco or alcohol use.\n\nFamily History\nMother: Type 2 Diabetes.\nFather: Hypertension.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 96% on room air\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 11.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^9/L\nPlatelets: 180 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nExam\nGeneral: Well-appearing, alert, and oriented.\nRespiratory: Clear to auscultation bilaterally.\nMusculoskeletal: Tenderness noted upon palpation of the lumbar spine. No focal neurological deficits.\n\nAssessment\n1. Cancer of the right lung: Patient is currently receiving chemotherapy.\n2. Bone metastases: New onset of spinal pain suggests progression of the malignant neoplasm to the skeletal system.\n\nPlan\n1. Continue current chemotherapy regimen as scheduled.\n2. Order a skeletal survey and a dedicated MRI of the lumbar spine to confirm the extent of the bone metastasis.\n3. Start scheduled physical therapy for pain management.\n4. Follow up in two weeks to review imaging and adjust pain management.\n\nElectronically signed, P. O'Brien, DO, 10/14/2026",
+  "answer": [
+    "C34.91",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.90",
+        "C79.51"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 2.341,
+        "gap": -1.205,
+        "direction": "under",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.91",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:51:08+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "P. O'Brien"
+    }
+  }
+}

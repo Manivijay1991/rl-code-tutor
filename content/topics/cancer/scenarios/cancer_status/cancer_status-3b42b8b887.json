@@ -1,0 +1,64 @@
+{
+  "id": "cancer_status-3b42b8b887",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "history",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for prostate cancer history.\n\nHPI: Pt is a 90 y.o. male presenting for routine surveillance of history of prostate cancer. Pt underwent surgical removal of the primary tumor several years ago. He reports feeling well and denies any new-onset symptoms, pain, or urinary changes. He states that his treatment is complete and he has no concerns at this time. He notes no changes in mobility or general health.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Multivitamin QD\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nGU: No dysuria, hematuria, or incontinence.\nMSK: No joint pain or stiffness.\nNeuro: No tremors or cognitive changes.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives with wife. No tobacco or alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 62\nTSH: 2.1 mIU/L\nCBC: WNL\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, regular S1, S2.\nAbdomen: Soft, non-tender, non-distended.\nGenitourinary: No masses noted.\nSkin: No suspicious lesions.\n\nAssessment:\n1. History of prostate cancer. Primary tumor was removed and treated years ago. Treatment is complete. Clinical exam and history show no evidence of disease. No evidence of local recurrence at the primary site.\n\nPlan:\n1. Continue current surveillance.\n2. Continue current medications as prescribed.\n3. Return to clinic in 6 months for routine follow-up.\n\nElectronically signed, M. Okafor, NP, 05/14/2026",
+  "answer": [
+    "Z85.46"
+  ],
+  "explanations": [
+    "The prostate cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.46 (no HCC). Any metastasis is still coded as a current secondary malignancy."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C61"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:44:34+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "id": "dementia_severity-1b6892ef8f",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "moderate",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for memory loss and behavior.\n\nHPI: (Copied Forward) Patient is a 66-year-old female with a history of Alzheimer's disease who presents for routine management. She has been experiencing progressive cognitive decline and difficulties with activities of daily living.\n\n(Update) The patient's daughter reports that while the patient remains stable during the day, she has experienced increased episodes of agitation in the evenings. These episodes are characterized by restlessness and irritability. The patient remains in a moderate stage of decline.\n\nMedication List:\n- Donepezil 10mg daily\n- Memantine 20mg twice daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nNeurological: Positive for memory loss, positive for agitation.\nPsychiatric: Positive for irritability.\nOther systems: All negative.\n\nExam:\nGeneral: Alert, cooperative, but appears mildly agitated.\nNeurological: Gait is steady. Speech is clear but slow. Memory is significantly impaired.\n\nAssessment:\n1. Alzheimer's disease, moderate dementia.\n2. Evening agitation.\n\nPlan:\n1. Continue current medications for cognitive support.\n2. To address evening agitation, we will trial a low-dose sedative at bedtime to improve sleep quality and reduce evening restlessness.\n3. Follow up in 3 months.\n\nElectronically signed,\nE. Castillo, DO\nOctober 14, 2026",
+  "answer": [
+    "G30.9",
+    "F02.B11"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), moderate, with agitation: F02.B11."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.B11"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.811"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (moderate): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.A11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is moderate.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.B11"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "126",
+        "label": "Dementia/Moderate",
+        "from": [
+          "F02B11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "by": "126"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:58:48+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

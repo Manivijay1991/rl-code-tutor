@@ -6,6 +6,7 @@ from coding_tutor import catalog
 from coding_tutor.generator import audit
 from coding_tutor.generator.audit import (
     Finding,
+    audit_generic,
     audit_record,
     audit_records,
     egfr_values,
@@ -215,6 +216,60 @@ def test_common_checks(change, expected):
     assert any(expected in m for m in messages), messages
 
 
+# ---- generic audit (tables without a specific one) ----
+GEN = {
+    "id": "gen",
+    "slots": {
+        "behavior": {"values": ["none", "agitation"], "evidence": {"none": [], "agitation": ["agitation", "agitated"]}},
+        "severity": {
+            "values": ["mild", "moderate"],
+            "evidence": {"mild": ["mild dementia"], "moderate": ["moderate dementia"]},
+        },
+        "kind": {"values": ["a", "b"], "evidence": {"a": [["x1"], ["x2"]], "b": ["y"]}, "exclusive": False},
+    },
+    "note_rules": [{"when": {"kind": "b"}, "skip_evidence": ["kind"]}],
+}
+GEN_SLOTS = {"behavior": "agitation", "severity": "moderate", "kind": "a"}
+GEN_NOTE = f"HPI: Evening agitation.\nAssessment: Moderate dementia. x1 and x2 reviewed.\n{SIGN}"
+
+
+def generic(note, **slots):
+    return audit_generic(GEN, {**GEN_SLOTS, **slots}, sections(note))
+
+
+def test_generic_audit_clean_note():
+    assert generic(GEN_NOTE) == []
+
+
+@pytest.mark.parametrize(
+    ("change", "slots", "expected"),
+    [
+        (("Evening agitation.", "Denies agitation."), {}, "behavior=agitation"),
+        (("HPI: Evening agitation.", "Family History: mother had agitation."), {}, "behavior=agitation"),
+        (("Moderate dementia.", "Moderate dementia, earlier mild dementia."), {}, "also documents 'mild'"),
+        ((" and x2", ""), {}, "kind=a"),
+        (("Evening agitation.", "Calm."), {"behavior": "none"}, None),
+    ],
+)
+def test_generic_audit_finds_what_a_coder_would(change, slots, expected):
+    findings = generic(GEN_NOTE.replace(*change), **slots)
+    if expected is None:
+        assert findings == []
+    else:
+        assert any(expected in f.message and f.kind == "answer" for f in findings), findings
+
+
+def test_generic_audit_respects_non_exclusive_and_skipped_slots():
+    assert generic(GEN_NOTE + " Also y.") == []  # kind is not exclusive: mentioning y does not conflict
+    assert generic(GEN_NOTE.replace(" and x2", "").replace("x1", "z"), kind="b") == []  # kind evidence skipped for b
+
+
+def test_audit_record_uses_the_generic_audit_when_given_the_table():
+    rec = record("gen", GEN_SLOTS, GEN_NOTE.replace("Evening agitation.", "Denies agitation."))
+    assert any(f.kind == "answer" for f in audit_record(rec, GEN))
+    assert all(f.kind != "answer" for f in audit_record(rec))  # without the table: common checks only
+
+
 def test_unknown_table_gets_common_checks_only():
     rec = record("other_table", {}, "No signature here.", style=None)
     assert audit_record(rec) == [Finding("realism", "no signature")]
@@ -259,5 +314,14 @@ def test_main_exit_codes(tmp_path, capsys):
 
 
 @pytest.mark.skipif(not catalog.load_scenarios(), reason="no scenarios generated")
-def test_every_real_scenario_passes_the_audit():
-    assert audit_records(load_records()) == {}
+def test_every_real_scenario_passes_the_audit(tables):
+    assert audit_records(load_records(), tables) == {}
+
+
+def test_audit_age_uses_the_tables_range():
+    table = {**GEN, "note_age": {"min": 65}}
+    young = record("gen", GEN_SLOTS, GEN_NOTE, style={**STYLE, "age": 40})
+    assert audit.audit_age(young, table) == [Finding("realism", "patient age 40 is outside 65-200 for this topic")]
+    assert audit.audit_age(record("gen", GEN_SLOTS, GEN_NOTE), table) == []  # STYLE age 70
+    assert audit.audit_age(young, GEN) == [] and audit.audit_age(young, None) == []  # no range: nothing to check
+    assert any("outside 65" in f.message for f in audit_record(young, table))

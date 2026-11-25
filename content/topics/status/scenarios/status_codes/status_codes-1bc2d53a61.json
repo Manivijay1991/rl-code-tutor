@@ -1,0 +1,77 @@
+{
+  "id": "status_codes-1bc2d53a61",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "toe_right",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Follow-up for hypertension and chronic joint pain.\n\nHPI: The patient is an 86-year-old male presenting for a routine follow-up of his chronic hypertension and osteoarthritis. He reports that his blood pressure has been well-controlled over the last few months. He notes occasional stiffness in his hands and knees, particularly in the morning, but states he is able to perform most activities of daily living independently. He denies any recent falls, chest pain, or shortness of breath. He notes that the amputation of the right great toe occurred several years ago and he has no current concerns regarding the site.\n\nMedication List:\n- Lisinopril 20mg daily\n- Amlodipine 5mg daily\n- Naproxen 500mg as needed for joint pain\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight changes.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies cough or shortness of breath.\nMusculoskeletal: Reports bilateral hand and knee stiffness.\nNeurological: Denies dizziness or syncope.\nGastrointestinal: Denies abdominal pain or changes in bowel habits.\n\nSocial History: The patient lives at home with his wife. He enjoys gardening and watching television. He retired 15 years ago. He denies tobacco or alcohol use.\n\nFamily History: Father had a history of hypertension. Mother had a history of osteoarthritis.\n\nVitals:\nBP: 132/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 65 mL/min/1.73m2\nSodium: 138 mEq/L\nPotassium: 4.5 mEq/L\nCreatinine: 1.2 mg/dL\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm. No murmurs noted.\nRespiratory: Lungs clear to auscultation bilaterally.\nMusculoskeletal: Mild joint swelling in bilateral hands. Examination of the foot shows a stable right great toe amputation. No signs of acute distress or skin breakdown at the site.\n\nAssessment:\n1. Hypertension: Currently well-controlled on medication.\n2. Osteoarthritis: Chronic joint stiffness with mild swelling.\n3. Status post right great toe amputation: Stable, no new concerns.\n\nPlan:\n1. Continue current Lisinopril and Amlodipine regimen.\n2. Continue Naproxen as needed for joint pain; monitor renal function.\n3. Return to clinic in 3 months for blood pressure check and lab work.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z89.411"
+  ],
+  "explanations": [
+    "Acquired absence of the right great toe: Z89.411 (no HCC in V28; leg amputations map to HCC 409)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.511"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "Only the great toe is absent, not the leg below the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0,
+        "gap": 0.598,
+        "direction": "over",
+        "extra_hccs": [
+          "409"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:24+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

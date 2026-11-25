@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-aebd9290dd",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "persistent",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Palpitations and shortness of breath.\n\nHPI: (Copied Forward) Patient is a 51-year-old male presenting for evaluation of palpitations. He reports an irregular heartbeat that started several months ago. He notes occasional shortness of breath during moderate exertion. He denies chest pain or syncope. He is currently managed with rate control.\n\nUpdate: The patient reports that his symptoms have remained consistent since the last visit. He continues to experience an irregular pulse but states that his heart rate feels more controlled with his current medication. He denies any new-onset fainting or severe exertional dyspnea.\n\nVitals: BP 128/82, HR 84 (irregular), SpO2 98% on room air, Temp 98.6 F, RR 16.\n\nRecent Labs:\nTSH: 2.4 uIU/mL\nBMP: Sodium 140, Potassium 4.2, Creatinine 1.0, eGFR 92.\nEKG: Shows persistent AFib with a controlled ventricular rate.\n\nMedication List:\nMetoprolol 50mg daily\nLisinopril 10mg daily\n\nSocial History: Patient works as a software engineer. He denies tobacco use and reports occasional alcohol consumption (1-2 beers on weekends). He exercises 3 times per week.\n\nFamily History: Father had hypertension; Mother had Type 2 Diabetes. No family history of sudden cardiac death.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nCardiovascular: Positive for palpitations and irregular pulse. Negative for chest pain, syncope, or edema.\nRespiratory: Positive for mild exertional shortness of breath. Negative for cough or wheezing.\nNeurological: Negative for dizziness, numbness, or weakness.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCardiovascular: Irregular rhythm noted. S1 and S2 are distinct. No murmurs heard. Radial pulses are palpable.\nRespiratory: Lungs clear to auscultation bilaterally. No crackles or wheezes.\nExtremities: No cyanosis or edema.\n\nAssessment:\n1. Persistent atrial fibrillation: The patient is currently experiencing persistent AFib. He is stable on his current rate-control regimen. He is at low risk for complications and does not require an anticoagulant at this time.\n\nPlan:\n1. Continue current metoprolol dosage for rate control of persistent AF.\n2. Monitor for any increase in symptoms or new-onset dizziness.\n3. Follow up in 3 months for a repeat EKG and laboratory work.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "I48.19"
+  ],
+  "explanations": [
+    "Persistent atrial fibrillation, not documented as longstanding: I48.19, other persistent (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.11"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Longstanding persistent is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (persistent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4819"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:56:27+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

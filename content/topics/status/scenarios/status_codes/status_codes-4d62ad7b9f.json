@@ -1,0 +1,60 @@
+{
+  "id": "status_codes-4d62ad7b9f",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "colostomy",
+    "state": "reversed"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Follow-up for surgical history.\n\nHPI: Pt is an 85-year-old female presenting for a scheduled follow-up. Pt reports she is feeling well today. She has a significant surgical history involving a colostomy from a past procedure. She notes that the ostomy was successfully reversed in the past. Pt currently denies any issues with her bowel movements, abdominal pain, or discomfort at the previous site. She states she no longer has a stoma and is satisfied with the outcome of the reversal. No new concerns voiced today.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nHEENT: No vision changes, no hearing loss.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: No nausea, no constipation, no diarrhea.\nMSK: No joint pain.\nNeuro: No dizziness, no numbness.\n\nSocial History: Retired. Lives with her daughter. Independent with ADLs. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had a history of heart disease.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 5'4\"\nWt: 145 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 72\nTSH: 2.1\nCMP: WNL\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular S1/S2, no murmurs.\nResp: CTAB.\nAbdomen: Soft, non-tender, non-distended. No palpable masses.\nSkin: Intact, no rashes.\n\nAssessment:\n1. Status post colostomy reversal. Pt is stable and asymptomatic.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Follow up in 6 months for routine check.\n3. Educate pt on signs of bowel obstruction; pt verbalizes understanding.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [],
+  "explanations": [
+    "The colostomy was reversed: the patient no longer has one, so there is no status to report."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.3"
+      ],
+      "confusion": "reversed_coded",
+      "lean": "over",
+      "why": "A reversed colostomy is no longer present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0,
+        "gap": 0.673,
+        "direction": "over",
+        "extra_hccs": [
+          "463"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:24+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

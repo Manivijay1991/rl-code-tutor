@@ -1,0 +1,123 @@
+{
+  "id": "heart_failure-8e41d9d208",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint\nWorsening shortness of breath and edema.\n\nHPI\nPt is an 83y female with known systolic heart failure (EF 30%) and hypertension. Presents today with acute on chronic exacerbation of her heart failure symptoms. Pt reports increased dyspnea on exertion and worsening bilateral lower extremity edema over the past week. Denies chest pain or fever.\n\nMedication List\nFurosemide 40mg BID, Lisinopril 10mg daily, Metoprolol Succinate 25mg daily.\n\nExam\nVitals: BP 142/88, HR 78, RR 18, SpO2 95% on RA. Pt in no acute distress. Lung sounds: mild crackles at bases. Heart: RRR, regular S1/S2. Edema: 2+ pitting edema to mid-calf bilaterally.\n\nAssessment\n1. Acute on chronic heart failure exacerbation.\n2. Hypertension.\n\nPlan\n1. Increase Furosemide to 80mg BID to manage fluid overload. \n2. Pt to monitor daily weights and report any increase of >3lbs in 24 hours.\n3. Follow up in 2 weeks for reassessment of fluid status.\n\nElectronically signed, \nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "I11.0",
+    "I50.23"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Acute on chronic systolic heart failure: I50.23 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.23"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.22"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.21"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5023"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "224"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:12+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

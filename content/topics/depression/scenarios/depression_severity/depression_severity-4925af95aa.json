@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-4925af95aa",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"Feeling down and tired lately.\"\n\nHPI: Pt is a 66-year-old female presenting for f/u of MDD. Pt reports persistent low mood, decreased interest in hobbies, and significant fatigue over the past 4 weeks. Describes \"heavy\" feeling and difficulty concentrating on daily tasks. Pt reports improved sleep but notes poor appetite. No acute distress noted during visit. Pt states current symptoms are most consistent with a moderate episode of her recurrent condition. Denies any recent acute changes in safety.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Fatigue, decreased appetite.\nPsychiatric: Depressed mood, low energy.\nNeurological: None.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional social outings.\n\nFamily History: Mother had history of depression. Father had hypertension.\n\nVitals:\nBP: 128/82\nHR: 74\nRR: 16\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs:\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nTSH: 2.1 mIU/L\nGlucose: 98 mg/dL\n\nExam:\nGeneral: Well-appearing, cooperative.\nPsych: Affect is constricted, mood is depressed. Speech is normal rate/volume. Thought process is linear. Insight and judgment intact.\nPhysical: CTAB. RRR. Lungs clear.\n\nAssessment:\n1. Major depressive disorder, recurrent. Currently experiencing a moderate episode.\n\nPlan:\n1. Continue current Sertraline regimen.\n2. Encourage behavioral activation and regular exercise.\n3. Follow up in 4 weeks to monitor symptoms and response to medication.\n4. Pt instructed to call office immediately if symptoms worsen.\n\nElectronically signed,\nE. Castillo, MD\n05/14/2026",
+  "answer": [
+    "F33.1"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, moderate (HCC 155): F33.1."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.0"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents moderate (HCC 155); mild has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity is documented: do not use the unspecified code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F331"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:49:45+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

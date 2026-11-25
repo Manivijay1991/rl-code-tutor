@@ -1,0 +1,90 @@
+{
+  "id": "alcohol_use-985c4c1cf4",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_moderate",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint\nFollow-up for alcohol use.\n\nHPI\nPt is an 83 y.o. female presenting for follow-up. Pt admits to current alcohol use. She reports drinking daily, approximately 3-4 drinks per day. Pt expresses some difficulty in reducing intake but remains motivated to seek help. She denies any recent falls or acute physical symptoms related to consumption.\n\nMedication List\nMultivitamin daily\nAspirin 81mg daily\n\nExam\nPt alert and oriented x3. Appears in no acute distress. RRR, CTAB. Skin warm and dry. No tremors noted. Gait steady.\n\nAssessment\n1. Alcohol use disorder, moderate. Pt currently drinking and requires continued monitoring and counseling.\n\nPlan\n1. Discussed risks of continued alcohol use. Pt advised to reduce daily intake. \n2. Provided resources for outpatient support groups.\n3. F/u in 4 weeks to monitor progress and adjust plan as needed.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "F10.20"
+  ],
+  "explanations": [
+    "Alcohol use disorder, moderate or severe, indexes to alcohol dependence: F10.20 (HCC 139)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "Moderate or severe use disorder is dependence (F10.2-); abuse has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.242,
+        "gap": -0.242,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "139"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F10.90"
+      ],
+      "confusion": "unspecified_use",
+      "lean": "under",
+      "why": "A use disorder with a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.242,
+        "gap": -0.242,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "139"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.242,
+    "hccs": [
+      {
+        "hcc": "139",
+        "label": "Alcohol Use Disorder/Moderate/Severe/Alcohol Use with Specified Non-Psychotic Complications",
+        "from": [
+          "F1020"
+        ],
+        "weight": 0.242
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:46+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

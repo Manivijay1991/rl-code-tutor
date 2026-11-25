@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-5dab034f1e",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_left",
+    "handedness": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for left-sided hemiparesis.\n\nHPI\nPt is a 61 y/o male presenting for f/u of residual left-sided hemiparesis following a previous ischemic stroke. Pt reports stable functional status. He notes some difficulty with fine motor tasks, but continues to be left-handed. No new complaints or worsening of symptoms reported since last visit.\n\nMedication List\n1. Lisinopril 10mg QD\n2. Atorvastatin 20mg QD\n3. Aspirin 81mg QD\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nExtremities: Notable for left hemiparesis. Strength is 4/5 in the left upper and lower extremities. Sensation intact.\nNeuro: Cranial nerves II-XII intact.\n\nAssessment\n1. Residual left-sided hemiparesis secondary to past ischemic stroke.\n2. Left-hand dominant.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue physical therapy for mobility and strength.\n3. F/u in 3 months for routine check.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "I69.352"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, left dominant side: I69.352 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.354"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69352"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:04+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

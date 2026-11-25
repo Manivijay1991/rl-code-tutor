@@ -1,0 +1,127 @@
+{
+  "id": "atrial_fibrillation-c1c1f081d1",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "paroxysmal",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rhythm and anticoagulation.\n\nHPI: Pt is an 80-year-old female presenting for follow-up of paroxysmal AFib. Pt reports occasional palpitations and \"skipped beats\" over the last month. Denies syncope, chest pain, or shortness of breath. She states she feels generally well otherwise. She is currently managed on rate control and a daily anticoagulant. She reports good adherence to medications.\n\nMedication List:\n- Apixaban 5mg BID\n- Metoprolol 25mg daily\n- Lisinopril 10mg daily\n- Vitamin D3 1000 IU daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nCV: Reports intermittent palpitations. Denies chest pain, syncope.\nResp: Denies SOB, cough.\nNeuro: Denies headache, weakness, numbness.\nGI: Denies nausea, diarrhea.\nMSK: Denies joint pain.\n\nSocial History: Retired. Lives with daughter. No tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had coronary artery disease.\n\nVitals:\nBP: 128/74\nHR: 72 (irregular)\nRR: 16\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs:\neGFR: 65\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\nPotassium: 4.2 mEq/L\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR (irregular), S1, S2 and no murmurs. Capillary refill <2 sec.\nResp: CTAB, no wheezes or rales.\nNeuro: Alert, coherent, no focal deficits.\n\nAssessment:\n1. Paroxysmal AFib: Currently stable on rate control. Pt reports occasional symptoms but remains hemodynamically stable.\n2. Anticoagulation: Pt is taking apixaban as indicated for her condition.\n\nPlan:\n- Continue current regimen of apixaban and metoprolol.\n- Continue to monitor heart rate and symptoms of paroxysmal AFib.\n- Follow up in 3 months for routine monitoring.\n\nElectronically signed,\nT. Haddad, NP\n05/12/2026",
+  "answer": [
+    "I48.0",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Paroxysmal atrial fibrillation: I48.0 (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91",
+        "Z79.01"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paroxysmal) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.21",
+        "Z79.01"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "The provider documents paroxysmal, not permanent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.0"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.0",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I480"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:57:38+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

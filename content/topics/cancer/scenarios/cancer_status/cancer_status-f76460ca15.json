@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-f76460ca15",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "active",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Evaluation of liver metastases and progression of breast cancer.\n\nHPI: The patient is an 86-year-old female who presents today for a follow-up evaluation regarding her diagnosis of cancer of the right breast. She is currently receiving chemotherapy to manage the primary malignancy. During the current course of treatment, imaging has confirmed that the disease is metastatic to the liver. The patient reports experiencing increased fatigue and mild abdominal discomfort over the past two weeks. She denies any significant shortness of breath or acute pain. She remains motivated to continue her current treatment regimen but expresses concerns regarding the progression of the disease to the liver.\n\nMedication List:\n- Cyclophosphamide 600 mg PO daily\n- Doxorubicin 50 mg IV every 21 days\n- Prednisone 10 mg PO daily\n- Omeprazole 20 mg PO daily\n\nVitals:\nBlood Pressure: 138/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\n\nRecent Labs:\nHemoglobin: 11.2 g/dL\nWhite Blood Cell Count: 4.5 x 10^9/uL\nPlatelet Count: 145 x 10^3/uL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nALT: 88 U/L\nAST: 76 U/L\nAlkaline Phosphatase: 195 U/L\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever or chills.\nGastrointestinal: Positive for mild abdominal discomfort. Negative for nausea, vomiting, or diarrhea.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness or confusion.\n\nSocial History: The patient lives at home with her daughter. She enjoys gardening and reading. She is a former smoker (quit 20 years ago) and does not currently consume alcohol.\n\nFamily History: Mother had breast cancer; father had hypertension.\n\nExam: The patient appears in no acute distress. She is alert and oriented to person, place, and time. Skin is warm and dry. Abdomen is soft and non-tender to palpation with no visible masses or guarding. Right breast shows no new skin changes or discharge.\n\nAssessment: 86-year-old female with cancer of the right breast who is currently receiving chemotherapy. New imaging confirms liver metastases.\n\nPlan: Continue current chemotherapy protocol. Monitor liver function tests closely due to liver metastasis. Provide supportive care for fatigue and abdominal discomfort. Follow up in two weeks for further evaluation.\n\nElectronically signed, \nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "C50.911",
+    "C78.7"
+  ],
+  "explanations": [
+    "Cancer of the right female breast under current treatment is a current malignancy: C50.911.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.3",
+        "C78.7"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.919",
+        "C78.7"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right breast: use the right-breast code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.911"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 4.209,
+        "gap": -4.023,
+        "direction": "under",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C50.911",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "by": "17"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 4,
+    "created": "2026-11-25T04:50:28+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

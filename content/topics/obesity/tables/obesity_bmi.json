@@ -1,0 +1,429 @@
+{
+  "id": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "slots": {
+    "diagnosis": {
+      "label": "Provider's weight diagnosis",
+      "values": [
+        "none",
+        "obesity",
+        "morbid_obesity"
+      ],
+      "labels": {
+        "none": "None",
+        "obesity": "Obesity",
+        "morbid_obesity": "Morbid (severe) obesity"
+      },
+      "evidence": {
+        "none": [],
+        "obesity": [
+          "obesity"
+        ],
+        "morbid_obesity": [
+          "morbid obesity",
+          "severe obesity"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "none": "The provider does not diagnose or address weight; the BMI appears only in the vitals.",
+        "obesity": "The provider diagnoses obesity and addresses it (diet and activity counseling).",
+        "morbid_obesity": "The provider diagnoses morbid obesity and addresses it (diet, activity, referral to a weight management program)."
+      }
+    },
+    "bmi": {
+      "label": "BMI in the vitals",
+      "values": [
+        "32",
+        "37",
+        "42",
+        "52"
+      ],
+      "labels": {
+        "32": "BMI 32.x",
+        "37": "BMI 37.x",
+        "42": "BMI 42.x",
+        "52": "BMI 52.x"
+      },
+      "evidence": {
+        "32": [
+          "BMI 32",
+          "BMI of 32",
+          "BMI: 32",
+          "BMI is 32"
+        ],
+        "37": [
+          "BMI 37",
+          "BMI of 37",
+          "BMI: 37",
+          "BMI is 37"
+        ],
+        "42": [
+          "BMI 42",
+          "BMI of 42",
+          "BMI: 42",
+          "BMI is 42"
+        ],
+        "52": [
+          "BMI 52",
+          "BMI of 52",
+          "BMI: 52",
+          "BMI is 52"
+        ]
+      },
+      "describe": {
+        "32": "The vitals list a BMI of 32 point something (write it as 'BMI 32.' plus one digit), and no other BMI value.",
+        "37": "The vitals list a BMI of 37 point something (write it as 'BMI 37.' plus one digit), and no other BMI value.",
+        "42": "The vitals list a BMI of 42 point something (write it as 'BMI 42.' plus one digit), and no other BMI value.",
+        "52": "The vitals list a BMI of 52 point something (write it as 'BMI 52.' plus one digit), and no other BMI value."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "diagnosis": "morbid_obesity",
+      "bmi": "32"
+    }
+  ],
+  "note_forbid": [
+    "drug-induced",
+    "medication-induced",
+    "Cushing",
+    "hypothyroidism",
+    "pregnant",
+    "pregnancy",
+    "bariatric",
+    "hypoventilation",
+    "class 1",
+    "class 2",
+    "class 3",
+    "class I",
+    "class II",
+    "class III"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "diagnosis": "none"
+      },
+      "forbid": [
+        "obesity",
+        "obese",
+        "overweight",
+        "weight management",
+        "weight loss"
+      ]
+    },
+    {
+      "when": {
+        "diagnosis": "obesity"
+      },
+      "forbid": [
+        "morbid",
+        "severe obesity"
+      ]
+    }
+  ],
+  "confusions": {
+    "bmi_without_dx": {
+      "description": "Reported a BMI code without a provider-documented weight diagnosis.",
+      "lean": "over"
+    },
+    "obesity_from_bmi": {
+      "description": "Coded obesity from the BMI alone; the provider must diagnose it.",
+      "lean": "over"
+    },
+    "morbid_from_bmi": {
+      "description": "Upgraded the provider's 'obesity' to morbid obesity from the BMI.",
+      "lean": "over"
+    },
+    "missed_morbid": {
+      "description": "Coded obesity, unspecified when the provider documented morbid obesity.",
+      "lean": "under"
+    },
+    "missed_bmi": {
+      "description": "Left out the BMI code when it is reportable.",
+      "lean": "under"
+    },
+    "wrong_bmi_code": {
+      "description": "Picked the wrong BMI range.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "diagnosis": "morbid_obesity"
+          },
+          "codes": [
+            "E66.01"
+          ],
+          "explain": "Morbid (severe) obesity documented by the provider: E66.01 (HCC 48).",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E66.9"
+              ],
+              "confusion": "missed_morbid",
+              "why": "The provider documents morbid obesity: E66.01, not E66.9."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": "obesity"
+          },
+          "codes": [
+            "E66.9"
+          ],
+          "explain": "Obesity documented by the provider: E66.9. The coder does not upgrade it to morbid obesity from the BMI.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E66.01"
+              ],
+              "confusion": "morbid_from_bmi",
+              "why": "Only the provider can diagnose morbid obesity; the BMI does not change the diagnosis."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": "none"
+          },
+          "codes": [],
+          "explain": "No weight diagnosis by the provider: nothing to code.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E66.9"
+              ],
+              "confusion": "obesity_from_bmi",
+              "why": "Obesity must be diagnosed by the provider, not inferred from the BMI."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bmi",
+      "rules": [
+        {
+          "when": {
+            "diagnosis": "none",
+            "bmi": "32"
+          },
+          "codes": [],
+          "explain": "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z68.32"
+              ],
+              "confusion": "bmi_without_dx",
+              "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": "none",
+            "bmi": "37"
+          },
+          "codes": [],
+          "explain": "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z68.37"
+              ],
+              "confusion": "bmi_without_dx",
+              "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": "none",
+            "bmi": "42"
+          },
+          "codes": [],
+          "explain": "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z68.41"
+              ],
+              "confusion": "bmi_without_dx",
+              "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": "none",
+            "bmi": "52"
+          },
+          "codes": [],
+          "explain": "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z68.43"
+              ],
+              "confusion": "bmi_without_dx",
+              "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": [
+              "obesity",
+              "morbid_obesity"
+            ],
+            "bmi": "32"
+          },
+          "codes": [
+            "Z68.32"
+          ],
+          "explain": "BMI 32.x with a provider weight diagnosis: add Z68.32.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_bmi",
+              "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code."
+            },
+            {
+              "codes": [
+                "Z68.37"
+              ],
+              "confusion": "wrong_bmi_code",
+              "why": "The BMI is 32.x."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": [
+              "obesity",
+              "morbid_obesity"
+            ],
+            "bmi": "37"
+          },
+          "codes": [
+            "Z68.37"
+          ],
+          "explain": "BMI 37.x with a provider weight diagnosis: add Z68.37.",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_bmi",
+              "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code."
+            },
+            {
+              "codes": [
+                "Z68.41"
+              ],
+              "confusion": "wrong_bmi_code",
+              "why": "The BMI is 37.x."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": [
+              "obesity",
+              "morbid_obesity"
+            ],
+            "bmi": "42"
+          },
+          "codes": [
+            "Z68.41"
+          ],
+          "explain": "BMI 42.x with a provider weight diagnosis: add Z68.41 (BMI 40 or more maps to HCC 48 on its own).",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_bmi",
+              "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code."
+            },
+            {
+              "codes": [
+                "Z68.37"
+              ],
+              "confusion": "wrong_bmi_code",
+              "why": "The BMI is 42.x."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": [
+              "obesity",
+              "morbid_obesity"
+            ],
+            "bmi": "52"
+          },
+          "codes": [
+            "Z68.43"
+          ],
+          "explain": "BMI 52.x with a provider weight diagnosis: add Z68.43 (BMI 40 or more maps to HCC 48 on its own).",
+          "refs": [
+            "OCG I.B.14"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_bmi",
+              "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code."
+            },
+            {
+              "codes": [
+                "Z68.37"
+              ],
+              "confusion": "wrong_bmi_code",
+              "why": "The BMI is 52.x."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-d8eeece650",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for lung cancer and new symptoms.\n\nHPI\nThe patient is a 73-year-old man presenting today for a follow-up regarding his malignant neoplasm of the right lung. He is currently receiving chemotherapy to manage the primary site. He reports increased fatigue and right upper quadrant discomfort over the past two weeks. Diagnostic imaging and clinical evaluation have confirmed that the cancer is now metastatic to the liver. He denies significant shortness of breath or new neurological deficits at this time.\n\nMedication List\n- Chemotherapy agent (current cycle)\n- Acetaminophen 500mg every 6 hours as needed for pain\n- Ondansetron 8mg as needed for nausea\n\nExam\nThe patient appears fatigued but is alert and oriented. Skin is intact with no new lesions. Abdomen is soft with mild tenderness in the right upper quadrant. Breath sounds are clear and equal bilaterally.\n\nAssessment\n1. Malignant neoplasm of the right lung, currently receiving chemotherapy.\n2. Liver metastases.\n\nPlan\nWe will continue the current chemotherapy regimen. We will also initiate supportive care for liver metastases, including pain management and monitoring of hepatic function. Follow-up in two weeks.\n\nElectronically signed, H. Tanaka, PA-C, 05/14/2026",
+  "answer": [
+    "C34.91",
+    "C78.7"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118",
+        "C78.7"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.90",
+        "C78.7"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 4.209,
+        "gap": -3.073,
+        "direction": "under",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.91",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "by": "17"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:32+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

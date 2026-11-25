@@ -1,0 +1,108 @@
+{
+  "id": "obesity_bmi-bdef79c393",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "morbid_obesity",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint\nFollow-up for weight management.\n\nHPI\nPt is a 76-year-old female presenting for follow-up regarding weight. Pt reports difficulty losing weight despite previous attempts at lifestyle modifications. She notes occasional fatigue but denies any acute shortness of breath or chest pain. Pt is motivated to begin a structured plan to address her morbid obesity.\n\nMedication List\nMultivitamin daily.\n\nExam\nVitals: BP 138/84, HR 76, RR 16, Temp 98.6F, BMI 42.8.\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nExt: No edema noted.\n\nAssessment\n1. Morbid obesity.\n\nPlan\nDiscussed weight management goals with pt. Counseled on increased caloric deficit through diet and increased physical activity. Referred to a weight management program for further support. Pt to f/u in 3 months to monitor progress.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "E66.01",
+    "Z68.41"
+  ],
+  "explanations": [
+    "Morbid (severe) obesity documented by the provider: E66.01 (HCC 48).",
+    "BMI 42.x with a provider weight diagnosis: add Z68.41 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9",
+        "Z68.41"
+      ],
+      "confusion": "missed_morbid",
+      "lean": "under",
+      "why": "The provider documents morbid obesity: E66.01, not E66.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 42.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "E6601",
+          "Z6841"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:11+00:00",
+    "style": {
+      "age": 76,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

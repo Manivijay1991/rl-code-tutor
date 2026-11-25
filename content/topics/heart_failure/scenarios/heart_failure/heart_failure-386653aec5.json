@@ -1,0 +1,123 @@
+{
+  "id": "heart_failure-386653aec5",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Shortness of breath and leg swelling.\n\nHPI: [Copied Forward] Patient is an 89-year-old female with a history of systolic heart failure (EF 30%) and hypertension. She reports stable symptoms on her current regimen of furosemide and lisinopril. She denies any chest pain or orthopnea.\n\n[Current Update] The patient presents today for a follow-up of her heart failure. She reports a significant increase in dyspnea over the last 48 hours, noting she is more short of breath during minimal exertion. She also reports increased pitting edema in her bilateral lower extremities. She denies fever or productive cough.\n\nVitals: BP 142/84, HR 82, SpO2 94% on RA, Temp 98.1 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nRespiratory: Positive for dyspnea on exertion. Negative for cough.\nCardiovascular: Positive for peripheral edema. Negative for chest pain.\nNeurological: Negative for dizziness or syncope.\n\nExam:\nGeneral: Alert and oriented, in mild respiratory distress.\nRespiratory: Lungs clear to auscultation, no crackles.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard.\nExtremities: 2+ pitting edema to the mid-calf bilaterally.\n\nAssessment:\n1. Acute on chronic heart failure exacerbation.\n2. Hypertension.\n\nPlan:\n1. Increase furosemide dosage to address acute volume overload.\n2. Monitor weight daily and report any gain of >3 lbs in 24 hours.\n3. Continue current lisinopril for hypertension.\n\nMedication List:\n- Furosemide 40mg PO daily\n- Lisinopril 10mg PO daily\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "I11.0",
+    "I50.23"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Acute on chronic systolic heart failure: I50.23 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.23"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.22"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.21"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5023"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "224"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:25+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

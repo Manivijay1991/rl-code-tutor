@@ -88,7 +88,23 @@ or run the API alone (`coding-tutor-api`, port 8780) with `{"api": "http://127.0
   `{confusion, miss_level, action, reward}`. No ids, answers, notes or IPs are stored; days are the finest time grain.
 - Students can turn sharing off in Progress → Learning together. Unsent events wait in an outbox.
 - Server: standard-library WSGI (`coding_tutor.live.app.make_app`), CORS allowlist, 64 KB body limit,
-  per-client rate limit. Storage is pluggable (`live/stores/`): SQLite now, a hosted store for deployment.
+  per-client rate limit. Storage is pluggable (`live/stores/`): SQLite locally, Redis (Upstash REST) when hosted.
+
+### Deploy (Vercel)
+
+The repository is deploy-ready for Vercel: `web/` is served as static files and `api/index.py` runs the live API as
+one Python function (standard library only; `requirements.txt` installs this package).
+
+1. Export the content and commit it: `coding-tutor-audit` (0 findings), `coding-tutor-export-ui`.
+2. Import the repository in Vercel (no build command; `vercel.json` sets `web/` as the output).
+3. Add the Upstash Redis integration (Vercel Marketplace). It sets `KV_REST_API_URL` and `KV_REST_API_TOKEN`; the API
+   reads only these environment variables (the `UPSTASH_REDIS_REST_*` names also work). Never put the token in a file.
+4. Deploy. `web/config.json` already points at `/api` on the same origin, so no CORS setup is needed.
+
+`vercel.json` also sets a strict Content-Security-Policy (no inline scripts; the dev server sends the same headers,
+and a test keeps them equal), caches `data/topics/*.json` forever (their names change with their content) and
+always revalidates `data/manifest.json`. Without the Redis variables the API refuses to start and the app keeps
+working offline. This configuration is tested locally; it has not yet been deployed.
 
 JavaScript tests live in `tests/web/` (Node's built-in runner: `node --test "tests/web/**/*.test.mjs"`) and also run inside `pytest`.
 
@@ -192,11 +208,22 @@ No CPT, CDT, NUBC or NCCI content, and no third-party exam questions.
 
 ## Decision tables
 
-| Table | Combos | Status |
-|---|---|---|
-| `diabetes_complications` | 35 | draft |
-| `ckd_staging` | 18 | draft |
-| `meat_support` | 9 | draft |
+One table per topic folder (`content/topics/<topic>/tables/`); `coding-tutor-check` validates them all and
+`coding-tutor-coverage` shows which of the 115 V28 HCCs they cover.
+
+| Topic | Table | Combos | Main traps | Status |
+|---|---|---|---|---|
+| Chronic kidney disease | `ckd_staging` | 18 | stage, hypertensive CKD, ESRD, dialysis status | draft |
+| Diabetes | `diabetes_complications` | 35 | "with" link, provider says unrelated, insulin/oral Z codes | draft |
+| Dementia | `dementia_severity` | 17 | stage (HCC 125-127), Alzheimer's etiology, agitation, MCI | draft |
+| Depression | `depression_severity` | 15 | severity (mild has no HCC), psychotic features, remission | draft |
+| Cancer | `cancer_status` | 24 | current vs history (Z85), metastases (HCC 17/18) | draft |
+| Stroke after discharge | `stroke_sequelae` | 8 | history vs sequela, dominant side defaults | draft |
+| Heart failure | `heart_failure` | 8 | acuity, type, hypertensive heart disease (I11.0) | draft |
+| Obesity and BMI | `obesity_bmi` | 11 | BMI needs a provider diagnosis; BMI 40+ is HCC 48 | draft |
+| Status codes | `status_codes` | 7 | amputation level/side, ostomy status vs attention, reversed | draft |
+| Alcohol use | `alcohol_use` | 7 | mild = abuse (no HCC), moderate/severe = dependence, remission | draft |
+| MEAT documentation | `meat_support` | 9 | problem list or medication list only | draft |
 
 V28 hierarchies, labels and weights come from the CMS model software (see `engine/hcc.py`).
 Weights are shown in coach feedback only (`hcc.score_gap`: risk-score error, over or under);

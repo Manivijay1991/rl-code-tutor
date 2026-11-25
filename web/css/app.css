@@ -154,6 +154,15 @@ button { font: inherit; color: inherit; }
 }
 .chip-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .chip-btn.focus-chip { border-style: dashed; border-color: var(--accent); color: var(--accent); }
+.topic-select {
+  width: 100%; min-width: 0; max-width: 300px; flex: 0 1 auto; border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink); border-radius: 999px; padding: 6px 30px 6px 14px; font: 500 13.5px var(--font); cursor: pointer;
+  appearance: none; text-overflow: ellipsis;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-2) 50%), linear-gradient(135deg, var(--ink-2) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%; background-size: 5px 5px; background-repeat: no-repeat;
+}
+.topic-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.topics:has(.topic-select) { overflow: visible; align-items: center; min-width: 0; }
 .top-actions { display: flex; align-items: center; gap: 8px; flex: none; }
 .icon-btn {
   display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 10px;

@@ -1,0 +1,159 @@
+{
+  "id": "dementia_severity-e4d4348c61",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "severe",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Evaluation of cognitive decline and behavioral changes.\n\nHPI: Patient is a 75-year-old male with a known history of Alzheimer's disease. Patient is currently at a severe stage of the disease. Per prior notes, the patient has shown progressive cognitive impairment and difficulty with activities of daily living. Today's update: The patient’s daughter reports increased episodes of agitation during the evening hours, which are causing distress for both the patient and the caregivers. The patient remains non-verbal for most of the visit but is responsive to tactile prompts.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nNeurological: Positive for memory loss, positive for gait instability.\nPsychiatric: Positive for agitation.\nConstitutional: Negative for fever, negative for weight loss.\n\nMedication List:\nDonepezil 10mg daily\nMemantine 20mg daily\n\nExam:\nGeneral: Elderly male, appears frail, sits in wheelchair.\nNeurological: Oriented to person only; severely impaired speech; significant gait instability.\nBehavioral: Patient appeared agitated during the exam, requiring redirection.\n\nAssessment:\n1. Alzheimer's disease, severe stage.\n2. Evening agitation.\n\nPlan:\n1. Continue current medications for cognitive support.\n2. Initiate a low-dose sedative to manage evening agitation.\n3. Follow up in 4 weeks.\n\nElectronically signed, L. Moreau, NP, 05/14/2026",
+  "answer": [
+    "G30.9",
+    "F02.C11"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), severe, with agitation: F02.C11."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.C11"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.811"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (severe): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.C0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.C11"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "125",
+        "label": "Dementia/Severe",
+        "from": [
+          "F02C11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "by": "125"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:36:36+00:00",
+    "style": {
+      "age": 75,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "L. Moreau"
+    }
+  }
+}

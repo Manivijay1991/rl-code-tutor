@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-411fb386e3",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "paroxysmal",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nPalpitations and shortness of breath.\n\nHPI\nPt is a 56-year-old female presenting for follow-up of paroxysmal AFib. Pt reports intermittent episodes of rapid heartbeat over the last month. Symptoms typically occur during periods of stress or physical exertion. Pt denies syncope, chest pain, or lightheadedness. Currently managed with rate control medication. Pt reports good adherence to meds.\n\nMedication List\nMetoprolol 50mg BID\nLisinopril 10mg daily\n\nExam\nPt in no acute distress. Alert and oriented x3. BP 122/78, HR 72 (regular), RR 16, Temp 98.6F. Heart: RRR, no murmurs, no rubs. Lungs: CTAB. Extremities: WNL, no edema.\n\nAssessment\n1. Paroxysmal atrial fibrillation. Currently stable on rate control. Pt has low risk for thromboembolic events; therefore, no anticoagulant is indicated at this time.\n\nPlan\n1. Continue Metoprolol 50mg BID for rate control of AFib.\n2. Monitor symptoms.\n3. F/u in 3 months.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "I48.0"
+  ],
+  "explanations": [
+    "Paroxysmal atrial fibrillation: I48.0 (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paroxysmal) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.21"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "The provider documents paroxysmal, not permanent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I480"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:54:48+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

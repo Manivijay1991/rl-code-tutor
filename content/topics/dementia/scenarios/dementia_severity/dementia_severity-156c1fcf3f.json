@@ -1,0 +1,63 @@
+{
+  "id": "dementia_severity-156c1fcf3f",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "mci",
+    "severity": "unspecified",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive changes.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 27.4.\n\nRecent Labs: HbA1c 6.8%, eGFR 82 mL/min/1.73m2, TSH 2.1 mIU/L.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nFamily History:\nFather: Deceased, history of hypertension.\nMother: Deceased, history of arthritis.\nSiblings: One brother, history of coronary artery disease.\n\nSocial History:\nRetired civil engineer. Lives with his wife. Non-smoker. Occasional social drinking.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight change.\nNeurological: Positive for occasional forgetfulness. Negative for tremors or gait instability.\nPsychiatric: Negative for mood disturbances or sleep issues.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nGenitourinary: Negative for dysuria.\n\nHPI:\n[Copied Forward] Patient is a 67-year-old male presenting for evaluation of memory lapses. He reports difficulty recalling recent events and occasionally losing his keys. He denies any significant changes in his ability to perform activities of daily living. \n\n[Today's Update] The patient returns today for a follow-up evaluation of his cognitive status. He remains calm and cooperative throughout the encounter. He reports that his wife has noticed he is slower to process new information but he continues to manage his own finances and household tasks. He denies any behavioral disturbances or mood changes.\n\nExam:\nGeneral: Well-developed, well-nourished male who appears relaxed and is cooperative with the exam.\nNeurological: Alert and oriented to person, place, and time. Speech is clear and coherent. Gait is steady. No focal neurological deficits noted.\nMental Status: Patient is able to follow multi-step commands. There is evidence of mild cognitive impairment. No evidence of mood or behavioral disturbances.\n\nAssessment:\n1. Mild cognitive impairment.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Maintain current activity level and social engagement.\n3. Follow up in 6 months for a repeat cognitive screening and review of symptoms.\n\nElectronically signed,\nM. Okafor, NP\nOctober 14, 2026",
+  "answer": [
+    "G31.84"
+  ],
+  "explanations": [
+    "Mild cognitive impairment is not dementia: G31.84 (no HCC). Code dementia only when the provider documents it."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "coded_dementia_for_mci",
+      "lean": "over",
+      "why": "The provider documents mild cognitive impairment, not dementia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0,
+        "gap": 0.341,
+        "direction": "over",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 4,
+    "created": "2026-11-25T04:42:37+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

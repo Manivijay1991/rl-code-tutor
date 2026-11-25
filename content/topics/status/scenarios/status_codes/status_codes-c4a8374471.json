@@ -1,0 +1,60 @@
+{
+  "id": "status_codes-c4a8374471",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "ileostomy",
+    "state": "reversed"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Follow-up for abdominal status.\n\nHPI: Patient is a 57-year-old woman who previously underwent a surgical ileostomy due to bowel issues. Following that period, she underwent a surgical reversal of the procedure. She reports that since the takedown, she has experienced good bowel function and no significant abdominal discomfort. She presents today for a routine check-up to ensure continued healing and stability of the surgical site. She denies any new pain, changes in stool consistency, or abdominal distention since her last visit.\n\nMedication List:\n- Multivitamin daily\n- Fiber supplement as needed\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nReview of Systems:\n- Constitutional: Negative\n- GI: Positive (Normal bowel movements)\n- Musculoskeletal: Negative\n- Neurological: Negative\n- Integumentary: Negative\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nAbdomen: Soft, non-distended, and non-tender. Surgical scars from the previous ileostomy and the subsequent reversal are well-healed with no signs of dehiscence or irritation. Bowel sounds are present in all four quadrants.\n\nAssessment:\n1. Status post-ileostomy reversal.\n\nPlan:\n1. Continue current activity level.\n2. Monitor for any signs of abdominal discomfort.\n3. Return to clinic in 6 months for routine follow-up.\n\nElectronically signed, \nS. Patel, NP\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "The ileostomy was reversed: the patient no longer has one, so there is no status to report."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.2"
+      ],
+      "confusion": "reversed_coded",
+      "lean": "over",
+      "why": "A reversed ileostomy is no longer present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0,
+        "gap": 0.673,
+        "direction": "over",
+        "extra_hccs": [
+          "463"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:36+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

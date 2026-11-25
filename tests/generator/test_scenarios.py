@@ -5,7 +5,7 @@ import random
 import pytest
 
 from coding_tutor import catalog
-from coding_tutor.engine.rules import combos, make_table
+from coding_tutor.engine.rules import TableError, combos, make_table
 from coding_tutor.generator import scenarios
 from coding_tutor.generator.scenarios import (
     build_prompt,
@@ -355,3 +355,36 @@ def test_save_defaults_to_the_topic_folder(dm, tmp_path, monkeypatch):
         catalog.topic_of("diabetes_complications", catalog.table_index(catalog.load_topics())), "diabetes_complications"
     )
     assert scenarios.scenario_folder(rec["table"]) == expected
+
+
+# ---- case constraints on the style ----
+def constrained(**extra):
+    return make_table({**TINY_FOR_STYLE, **extra}, "test")
+
+
+TINY_FOR_STYLE = {
+    "id": "style_t",
+    "status": "draft",
+    "slots": {"a": {"values": ["x", "y"]}},
+    "confusions": {"c": {"description": "d", "lean": "neutral"}},
+    "components": [{"id": "m", "rules": [
+        {"when": {"a": "x"}, "codes": ["E11.9"], "wrong": [{"codes": ["E11.8"], "confusion": "c"}]},
+        {"codes": ["E11.8"], "wrong": [{"codes": ["E11.9"], "confusion": "c"}]},
+    ]}],
+}  # fmt: skip
+
+
+def test_style_for_applies_sex_and_age_constraints():
+    t = constrained(note_age={"min": 65}, note_rules=[{"when": {"a": "x"}, "sex": "woman"}])
+    styles = [scenarios.style_for(t, {"a": "x"}, random.Random(i)) for i in range(60)]
+    assert all(s["sex"] == "woman" and 65 <= s["age"] <= 90 for s in styles)
+    others = {scenarios.style_for(t, {"a": "y"}, random.Random(i))["sex"] for i in range(60)}
+    assert others == {"woman", "man"}  # the rule does not match "y"
+    plain = constrained()
+    assert scenarios.style_for(plain, {"a": "x"}, random.Random(4)) == pick_style(plain, random.Random(4))
+
+
+def test_style_for_rejects_conflicting_sexes():
+    t = constrained(note_rules=[{"when": {}, "sex": "woman"}, {"when": {"a": "x"}, "sex": "man"}])
+    with pytest.raises(TableError, match="conflicting sexes"):
+        scenarios.style_for(t, {"a": "x"}, random.Random(1))

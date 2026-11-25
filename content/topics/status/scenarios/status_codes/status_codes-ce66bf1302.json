@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-ce66bf1302",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "bka_right",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Follow-up for joint pain.\n\nHPI: Pt is a 75-year-old female presenting for routine evaluation of right hip and knee joint pain. Pt reports dull, aching pain in the right hip, worsening with prolonged walking. She notes stiffness in the morning. No recent falls or acute injuries. Pt has a history of right below-knee amputation and uses a prosthesis for mobility. She denies any new issues with the prosthesis or skin integrity.\n\nMedication List:\n- Naproxen 500mg BID PRN\n- Lisinopril 10mg QD\n\nExam:\nGen: Well-appearing, alert, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB.\nMSK: Right hip shows mild tenderness to palpation. Range of motion limited by pain but stable. Right BKA site is intact with no signs of irritation. Gait is steady with prosthesis.\nNeuro: Strength 5/5 throughout.\n\nAssessment:\n1. Right hip joint pain.\n2. Status post right below-knee amputation.\n\nPlan:\n1. Continue Naproxen as needed for pain.\n2. Physical therapy referral for hip strengthening.\n3. F/u in 4 weeks.\n\nElectronically signed,\nE. Castillo, DO\n10/15/2026",
+  "answer": [
+    "Z89.511"
+  ],
+  "explanations": [
+    "Acquired absence of the right leg below the knee: Z89.511 (HCC 409). A status that still applies is coded at every visit where it is documented."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.598,
+        "gap": -0.598,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z89.611"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "The amputation is below the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.512"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89511"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:16+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

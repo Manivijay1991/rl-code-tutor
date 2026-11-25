@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-d1af0a52a6",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_right",
+    "handedness": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for residual right-sided hemiparesis.\n\nHPI\nThe patient is an 86-year-old male presenting today for a scheduled follow-up regarding his chronic condition following a prior ischemic stroke. He reports that his functional status remains stable. He continues to experience right-sided hemiparesis, which he manages daily. He notes that he is left-handed and continues to perform most activities of daily living using his left side. He denies any recent falls or significant changes in his mobility. He is seeking a review of his current physical status and medication management.\n\nMedication List\n1. Lisinopril 10mg daily\n2. Atorvastatin 40mg daily\n3. Aspirin 81mg daily\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs\nHbA1c: 6.2%\neGFR: 65 mL/min/1.73m2\nTSH: 2.1 mIU/L\nLDL: 88 mg/dL\n\nReview of Systems\nThe patient reports no chest pain, shortness of breath, or palpitations. He denies any recent headaches, dizziness, or vision changes. He reports no joint pain or significant fatigue. He denies any changes in bowel or bladder function.\n\nSocial History\nThe patient resides in his private residence with his wife. He retired five years ago and enjoys gardening and listening to music. He does not smoke and drinks alcohol occasionally in small amounts.\n\nFamily History\nFather: Deceased, history of hypertension.\nMother: Deceased, history of type 2 diabetes.\nSiblings: One brother, history of coronary artery disease.\n\nExam\nThe patient is alert and oriented to person, place, and time. He is cooperative and pleasant. Physical exam reveals a lean, well-nourished male. Neurological exam shows persistent right-sided hemiparesis with diminished motor strength in the right upper and lower extremities. He demonstrates clear left-hand dominant movement during the evaluation. Reflexes are symmetric. Sensation is intact to light touch throughout.\n\nAssessment\n1. Residual right-sided hemiparesis following a history of ischemic stroke.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan\n1. Continue current medications as prescribed.\n2. Encouraged continued physical therapy exercises to maintain current mobility.\n3. Follow up in three months for a routine check.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "I69.353"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, right non-dominant side: I69.353 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.351"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69353"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:54+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

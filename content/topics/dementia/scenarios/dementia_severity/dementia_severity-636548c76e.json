@@ -1,0 +1,112 @@
+{
+  "id": "dementia_severity-636548c76e",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "severe",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Evaluation of dementia and worsening behavior.\n\nHPI: Pt is a 77 y/o F presenting for f/u of dementia. Caregiver reports progressive decline in cognitive function. Significant concern noted for evening agitation, which has increased in frequency over the last month. Pt is often agitated during sunset hours, making care difficult. No recent falls.\n\nMedication List:\n- Donepezil 10mg daily\n- Quetiapine 12.5mg BID\n\nExam:\nGen: Elderly female, appears frail.\nNeuro: Disoriented to time and place. Significant cognitive impairment. Speech is slow.\nPsych: Visibly agitated during exam but calmed with redirection.\nVitals: BP 132/78, HR 74, RR 16, Temp 98.6F.\n\nAssessment:\n1. Severe dementia: Progressing as expected for age.\n2. Agitation: Related to advanced cognitive decline.\n\nPlan:\n1. Continue current medications.\n2. Adjust Quetiapine dose if evening agitation persists.\n3. Continue safety precautions at home.\n4. F/u in 3 months.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "F03.C11"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), severe, with agitation: F03.C11."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.911"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (severe): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.C0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "125",
+        "label": "Dementia/Severe",
+        "from": [
+          "F03C11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:58:45+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

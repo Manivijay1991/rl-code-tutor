@@ -1,0 +1,60 @@
+{
+  "id": "status_codes-7e3e854832",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "colostomy",
+    "state": "reversed"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for history of colostomy.\n\nHPI\nThe patient is an 89-year-old female presenting for a routine follow-up regarding her surgical history. She previously underwent a colostomy procedure and subsequently underwent a surgical reversal of that site. She reports feeling well and is currently asymptomatic. She notes that she no longer has a stoma and is satisfied with her current recovery status. She denies any abdominal discomfort or issues related to the previous surgical sites.\n\nMedication List\nMultivitamin, daily.\n\nExam\nThe patient is alert and oriented x3. She appears well-nourished and in no acute distress. Abdominal exam reveals a well-healed surgical site where the previous ostomy was reversed. Skin integrity is intact with no signs of irritation or breakdown. Bowel sounds are present in all four quadrants.\n\nAssessment\n1. History of colostomy, status post reversal.\n\nPlan\nThe patient will continue to be monitored for any changes in abdominal health. She was advised to maintain proper hydration and nutrition. Follow-up in six months or as needed.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "The colostomy was reversed: the patient no longer has one, so there is no status to report."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.3"
+      ],
+      "confusion": "reversed_coded",
+      "lean": "over",
+      "why": "A reversed colostomy is no longer present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0,
+        "gap": 0.673,
+        "direction": "over",
+        "extra_hccs": [
+          "463"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:39+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "id": "stroke_sequelae-c3e73c297d",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_right",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for right-sided hemiparesis.\n\nHPI\nPt is an 83-year-old female presenting for f/u of chronic right-sided hemiparesis secondary to a previous ischemic stroke. Pt reports stable mobility and functional status. She denies any recent falls or increased weakness. She continues to utilize assistive devices for ambulation. No new complaints voiced today.\n\nMedication List\nLisinopril 10mg QD\nAtorvastatin 20mg QD\nAspirin 81mg QD\n\nExam\nGeneral: Well-appearing, alert, and oriented x3. \nVitals: BP 132/84, HR 72, RR 16, Temp 98.6F, SpO2 98% RA.\nNeuro: RRR, CTAB. Strength: 3/5 in right upper and lower extremities, 5/5 in left. Sensation intact throughout.\nMSK: No acute joint swelling or erythema.\n\nAssessment\n1. Right-sided hemiparesis from past ischemic stroke. Stable condition.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue physical therapy for gait stability.\n3. F/u in 3 months.\n\nElectronically signed\nP. O'Brien, PA-C\n05/12/2026",
+  "answer": [
+    "I69.351"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, right side, dominant by default: I69.351 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.353"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I69.359"
+      ],
+      "confusion": "unspecified_side",
+      "lean": "neutral",
+      "why": "The affected side is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69351"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:44+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-129ab88eb2",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "ileostomy",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nRoutine follow-up for hypertension management.\n\nHPI\nThe patient is a 68-year-old male presenting for a scheduled evaluation of his blood pressure. He reports feeling well overall and denies any recent acute issues. He notes that he has had an ileostomy since his previous surgery and states that the site is currently healthy with no issues. He reports consistent adherence to his current antihypertensive regimen and denies any side effects.\n\nMedication List\nLisinopril 20mg daily\nAmlodipine 5mg daily\n\nExam\nThe patient is alert and oriented x3. He appears in no acute distress. Vital signs are stable, with a blood pressure of 132/82 mmHg. Physical exam reveals a well-healed and stable ileostomy site with no signs of redness or discharge. Heart sounds are regular with no murmurs. Lungs are clear to auscultation.\n\nAssessment\n1. Hypertension: Currently well-controlled on oral medications.\n2. Status post ileostomy: The stoma remains stable and healthy.\n\nPlan\n1. Continue current medications as prescribed.\n2. Patient to monitor blood pressure at home and keep a log for the next visit.\n3. Return to clinic in three months for a follow-up.\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "Z93.2"
+  ],
+  "explanations": [
+    "Ileostomy in place: Z93.2, ileostomy status (HCC 463). Z43.2 is only for an encounter for care of the ileostomy itself."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The ileostomy is documented and present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.673,
+        "gap": -0.673,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "463"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z43.2"
+      ],
+      "confusion": "attention_vs_status",
+      "lean": "neutral",
+      "why": "The visit is not for care of the ileostomy; report the status, Z93.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0.673,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z93.3"
+      ],
+      "confusion": "wrong_ostomy",
+      "lean": "neutral",
+      "why": "It is an ileostomy, not a colostomy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0.673,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.673,
+    "hccs": [
+      {
+        "hcc": "463",
+        "label": "Artificial Openings for Feeding or Elimination",
+        "from": [
+          "Z932"
+        ],
+        "weight": 0.673
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:26+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

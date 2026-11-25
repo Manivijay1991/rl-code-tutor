@@ -3,8 +3,8 @@
     python -m coding_tutor.live.server                       # http://127.0.0.1:8780, data/api.sqlite
     python -m coding_tutor.live.server --allow-origin https://tutor.example.org
 
-For production, mount `make_app(...)` from coding_tutor.live.app on a WSGI host and replace the
-SQLite storage with a hosted database.
+For production see api/index.py (Vercel): the same `make_app(...)` with the hosted Redis store
+(coding_tutor.live.stores.redis).
 """
 
 from __future__ import annotations

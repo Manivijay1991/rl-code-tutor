@@ -1,0 +1,79 @@
+{
+  "id": "stroke_sequelae-6144474d59",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "aphasia",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow up for expressive aphasia.\n\nHPI: 78 y/o male presents for routine follow up of expressive aphasia following a prior ischemic stroke. Pt reports stable condition. He continues to struggle with word-finding and fluid conversation but reports no changes in functional status since last visit. No new complaints of neurological deficits. Expressive aphasia remains the primary focus of today's evaluation.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Aspirin 81mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nNeurological: Positive for expressive aphasia; negative for any motor deficits.\nCV: No chest pain or palpitations.\nRespiratory: No SOB or cough.\nMSK: No joint pain or stiffness.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension and MI. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 72 mL/min\nLDL: 88 mg/dL\nTSH: 2.1 mIU/L\n\nExam:\nGeneral: Alert, cooperative, sits in chair.\nNeuro: Oriented to person, place, and time. Expressive aphasia noted during interview; pt requires extra time to formulate sentences. Cranial nerves II-XII intact. Motor strength 5/5 throughout. Reflexes 2+ and symmetric. Sensation intact to light touch. Gait steady.\nCV: RRR, regular rhythm.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no guarding.\n\nAssessment:\n1. Expressive aphasia secondary to history of ischemic stroke. Pt remains stable.\n\nPlan:\n1. Continue current medications.\n2. Continue outpatient speech therapy as scheduled.\n3. F/u in 3 months for routine neuro follow up.\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [
+    "I69.320"
+  ],
+  "explanations": [
+    "Residual aphasia from a past ischemic stroke: I69.320, a sequela code (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.9.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "A residual deficit is documented: code the sequela (I69.-), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "coded_acute_stroke",
+      "lean": "over",
+      "why": "I63 codes are for the acute stroke episode only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:10+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

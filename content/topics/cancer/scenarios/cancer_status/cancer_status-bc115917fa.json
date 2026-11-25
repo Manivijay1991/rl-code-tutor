@@ -1,0 +1,123 @@
+{
+  "id": "cancer_status-bc115917fa",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain.\n\nHPI: Pt is a 70-year-old female with known colon carcinoma who presents for follow-up of new-onset localized bone pain. Pt reports persistent aching in the lumbar spine and pelvis, rated 6/10. Pain is described as dull and constant, worsening with activity. Pt states she is currently receiving chemotherapy for her primary malignancy. She denies any sudden onset of neurological deficits, saddle anesthesia, or bowel incontinence. Pt reports mild fatigue but denies fever or chills.\n\nMedication List:\n- Chemotherapy agent (current cycle)\n- Acetaminophen 650mg BID PRN for pain\n- Prednisone 10mg daily\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever, chills, weight loss.\nMusculoskeletal: Positive for lumbar/pelvic bone pain. Negative for joint swelling.\nGI: Negative for change in bowel habits.\nNeuro: Negative for numbness or weakness.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had myocardial infarction at age 65.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 5'4\", 155 lbs\n\nRecent Labs:\nWBC: 6.2\nHgb: 10.4\nPlt: 145\neGFR: 72\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation, no wheezes or rales.\nMSK: Tenderness noted over the lumbar spine and pelvic crest. No obvious deformity or erythema. Range of motion limited by pain.\n\nAssessment:\n1. Colon carcinoma, currently receiving chemotherapy.\n2. Bone metastases.\n\nPlan:\n1. Continue current chemotherapy regimen as scheduled.\n2. Manage bone pain: Start scheduled acetaminophen 650mg BID.\n3. Order DXA scan and skeletal survey to further characterize bone involvement.\n4. Pt to f/u in 2 weeks for pain management review.\n\nElectronically signed, A. Rivera, NP, 05/14/2026",
+  "answer": [
+    "C18.9",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the colon under current treatment is a current malignancy: C18.9.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.038",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C18.9"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.363,
+        "correct": 2.341,
+        "gap": -1.978,
+        "direction": "under",
+        "extra_hccs": [
+          "22"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C18.9",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "22",
+        "label": "Bladder/Colorectal/and Other Cancers",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:32+00:00",
+    "style": {
+      "age": 70,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

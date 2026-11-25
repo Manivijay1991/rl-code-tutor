@@ -1,0 +1,8 @@
+{
+  "id": "atrial_fibrillation",
+  "title": "Atrial fibrillation",
+  "kind": "hcc",
+  "description": "Atrial fibrillation type, current versus history after ablation, and anticoagulant use.",
+  "order": 75,
+  "enabled": true
+}

@@ -1,0 +1,79 @@
+{
+  "id": "stroke_sequelae-746312b4b5",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "aphasia",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for expressive aphasia.\n\nHPI\nPt is an 87 y.o. female presenting for follow-up of residual expressive aphasia. Pt reports consistent difficulty with word-finding but notes she is able to communicate basic needs. History is significant for a past ischemic stroke. Pt denies any new neurological symptoms.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\n\nExam\nGen: Well-appearing, alert, and oriented.\nNeuro: Speech characterized by expressive aphasia. No motor deficits noted.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\nPhysical: RRR, CTAB, WNL.\n\nAssessment\n1. Expressive aphasia secondary to prior ischemic stroke. Pt is stable but continues to struggle with verbal fluency.\n\nPlan\n1. Continue current medications.\n2. Speech therapy referral for continued verbal practice.\n3. F/u in 3 months to monitor progress.\n\nElectronically signed,\nR. Mensah, DO\n10/14/2026",
+  "answer": [
+    "I69.320"
+  ],
+  "explanations": [
+    "Residual aphasia from a past ischemic stroke: I69.320, a sequela code (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.9.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "A residual deficit is documented: code the sequela (I69.-), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "coded_acute_stroke",
+      "lean": "over",
+      "why": "I63 codes are for the acute stroke episode only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:57+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

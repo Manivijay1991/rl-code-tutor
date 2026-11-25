@@ -1,0 +1,76 @@
+{
+  "id": "obesity_bmi-2aad2a266c",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "37"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension and osteoarthritis.\n\nHPI: Pt is an 80-year-old female presenting for routine f/u of chronic HTN and OA of the knees. Pt reports stable BP at home. Denies any recent chest pain, SOB, or syncope. Reports mild, aching pain in bilateral knees, worse with prolonged walking. Denies any new swelling or redness in joints. Pt reports good compliance with current antihypertensive meds. No new concerns today.\n\nMedication List:\n- Lisinopril 20mg daily\n- Meloxicam 15mg daily\n- Atorvastatin 40mg daily\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nBMI: 37.4\nHeight: 5'2\"\nWeight: 214 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 68\nTSH: 2.1\nLipid Panel: LDL 88, HDL 45, Trig 120\n\nReview of Systems:\nGeneral: No fatigue, no fever.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nMSK: Mild bilateral knee pain.\nNeuro: No dizziness, no numbness.\nGI: No nausea, no diarrhea.\n\nSocial History: Retired. Lives with daughter. Non-smoker. Occasional alcohol.\n\nFamily History: Mother had HTN, deceased. Father had T2DM.\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, S1, S2. No murmurs.\nResp: CTAB.\nMSK: Mild tenderness to palpation over bilateral knees. ROM WNL.\nSkin: No rashes or lesions.\n\nAssessment:\n1. Hypertension: Well-controlled on Lisinopril.\n2. Osteoarthritis: Stable, managed with Meloxicam.\n\nPlan:\n- Continue Lisinopril 20mg daily.\n- Continue Meloxicam 15mg daily as needed for joint pain.\n- Continue Atorvastatin 40mg daily.\n- F/u in 4 months for routine labs and BP check.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.37"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:45+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

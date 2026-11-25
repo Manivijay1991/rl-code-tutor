@@ -30,6 +30,9 @@
       }
     },
     "note_forbid": {"type": "array", "items": {"type": "string"}, "description": "phrases no generated note may contain (they would change the answer)"},
+    "note_age": {"type": "object", "description": "realistic patient age range for this topic's notes (e.g. dementia: 65 and over)",
+                 "additionalProperties": false,
+                 "properties": {"min": {"type": "integer", "minimum": 18, "maximum": 110}, "max": {"type": "integer", "minimum": 18, "maximum": 110}}},
     "note_background": {"type": "array", "items": {"type": "string"}, "description": "stable unrelated conditions a long note may mention for realism; each must leave the answer unchanged (outside the question's scope, no HCC)"},
     "note_rules": {
       "type": "array",
@@ -42,7 +45,8 @@
           "skip_evidence": {"type": "array", "items": {"type": "string"}, "description": "slots whose evidence/exclusive checks are skipped"},
           "require": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}, "description": "groups; one phrase from each"},
           "forbid": {"type": "array", "items": {"type": "string"}},
-          "describe": {"type": "string"}
+          "describe": {"type": "string"},
+          "sex": {"enum": ["woman", "man"], "description": "the patient's sex when the case requires it (e.g. prostate or female-breast codes)"}
         }
       }
     },

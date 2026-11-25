@@ -1,0 +1,89 @@
+{
+  "id": "atrial_fibrillation-5dd9a3055c",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Palpitations and fatigue.\n\nHPI: Pt is a 68-year-old female presenting for f/u of atrial fibrillation. Pt reports occasional episodes of palpitations over the last month, described as a \"fluttering\" sensation in the chest. Denies syncope, chest pain, or shortness of breath with exertion. Pt reports stable energy levels despite recent fatigue. She is currently on rate control medications and reports good adherence. Pt denies any history of falls or focal neurological deficits.\n\nMedication List:\n- Metoprolol 50mg BID\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n\nSocial History: Retired teacher. Lives with husband. Non-smoker. Occasional alcohol use (1-2 glasses of wine/week). No history of illicit drug use.\n\nFamily History: Mother: Hypertension, deceased. Father: Type 2 DM, deceased. Siblings: One brother with hypertension.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nCV: Positive for palpitations. Negative for chest pain, syncope.\nResp: Negative for SOB, cough.\nNeuro: Negative for dizziness, weakness, numbness.\nGI: Negative for nausea, diarrhea.\nMSK: Negative for joint pain.\n\nVitals:\nBP: 128/82\nHR: 78 (irregular)\nRR: 16\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 72\nTSH: 2.1 mIU/L\nPotassium: 4.2 mEq/L\n\nExam:\nGen: Well-appearing, alert and oriented x3.\nCV: RRR, irregular. S1, S2 heard. No murmurs, rubs, or gallops.\nLungs: CTAB.\nExt: No edema, pulses 2+ bilaterally.\n\nAssessment:\n1. Atrial fibrillation: Pt remains stable on current rate control regimen. No signs of decompensation. Pt is at low risk for embolic events; therefore, no anticoagulant is indicated at this time.\n\nPlan:\n1. Continue current medications.\n2. Continue monitoring of atrial fibrillation.\n3. Follow up in 3 months for routine monitoring.\n4. Instructed to call if chest pain or severe shortness of breath occurs.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "I48.91"
+  ],
+  "explanations": [
+    "Current atrial fibrillation without a documented type: I48.91 (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.0"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "The provider does not document the type.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.79"
+      ],
+      "confusion": "current_coded_history",
+      "lean": "under",
+      "why": "The atrial fibrillation is current (treated and monitored).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "238"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4891"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:56:40+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

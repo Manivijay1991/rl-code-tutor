@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-459d9a93fc",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"Feeling low lately.\"\n\nHPI: Pt is a 78-year-old male presenting for follow-up of MDD. Pt reports a recent decrease in motivation and interest in hobbies. Describes persistent low mood for the past 3 weeks. States he feels \"tired\" most days but maintains regular sleep patterns. Denies any acute distress or change in appetite. Pt reports that symptoms are manageable but persistent. Current episode is characterized as mild. Pt notes that his symptoms are recurrent and have been managed with pharmacotherapy in the past. He reports adherence to current regimen. No acute concerns voiced today.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Lisinopril 10mg PO QD\n- Amlodipine 5mg PO QD\n\nReview of Systems:\nGeneral: Fatigue, positive. Weight change, negative.\nPsychiatric: Low mood, positive. Interest loss, positive.\nNeurological: Weakness, negative. Tremor, negative.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional social outings.\n\nFamily History: Father had hypertension. Mother had history of depression.\n\nFamily History: Father had hypertension. Mother had history of depression.\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 165 lbs\n\nRecent Labs:\neGFR: 65\nHbA1c: 6.2%\nTSH: 2.1 mIU/L (WNL)\n\nExam:\nGeneral: Well-appearing, groomed, cooperative.\nPsych: Alert and oriented x3. Speech clear, normal rate/tone. Affect is somewhat flat but congruent to mood. Thought process linear and goal-oriented. Insight and judgment intact.\nPhysical: CTAB. RRR. Lungs clear. No acute distress.\n\nAssessment:\n1. Major depressive disorder, recurrent. Current episode is mild.\n\nPlan:\n- Continue current Sertraline dosage.\n- Monitor for any increase in symptom severity.\n- Follow up in 4 weeks for reassessment of mood and tolerability of medications.\n- Encouraged continued engagement in social activities and light exercise.\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [
+    "F33.0"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, mild (no HCC in V28): F33.0."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "The provider documents mild; moderate maps to an HCC that mild does not.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.0"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T04:49:41+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

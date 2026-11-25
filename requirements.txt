@@ -1,0 +1,2 @@
+# For hosting (Vercel installs this for api/index.py): the package itself, standard library only.
+.

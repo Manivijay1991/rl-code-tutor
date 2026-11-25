@@ -1,0 +1,64 @@
+{
+  "id": "cancer_status-dd4ffce705",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "history",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for history of breast cancer.\n\nHPI: Copied Forward: Patient is an 89-year-old female with a history of malignant neoplasm of the right breast. The primary tumor was surgically removed and treated several years ago. She has completed all recommended treatments. She reports feeling well and has had no new concerns since the last evaluation.\n\nMedication List:\n- Multivitamin daily\n- Atorvastatin 20mg daily\n\nVitals: BP 134/82, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight loss.\n- Integumentary: Negative for new skin lesions.\n- Musculoskeletal: Negative for joint pain or swelling.\n- All other systems: Reviewed and negative.\n\nExam:\nGeneral: Well-appearing, pleasant, and in no acute distress.\nBreast: Examination of the right breast shows no palpable masses or skin changes. No signs of local recurrence at the surgical site.\nSystemic: No new findings noted.\n\nAssessment:\n1. History of cancer of the right breast. Treatment is complete. There is no evidence of local recurrence and no evidence of disease at this time.\n\nPlan:\n1. Continue routine surveillance.\n2. Follow up in 6 months for clinical evaluation.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "Z85.3"
+  ],
+  "explanations": [
+    "The right female breast cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.3 (no HCC). Any metastasis is still coded as a current secondary malignancy."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C50.911"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:50:30+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

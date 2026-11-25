@@ -1,7 +1,7 @@
 """Storage backends for the live bandit. Each backend builds a `Store`; the app depends only on it.
 
 sqlite.py   local development and single-server hosting
-(redis.py)  hosted key-value store for serverless hosting (Vercel), planned
+redis.py    hosted Redis over the Upstash REST API, for serverless hosting (Vercel)
 """
 
 from __future__ import annotations

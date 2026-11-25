@@ -1,0 +1,127 @@
+{
+  "id": "atrial_fibrillation-58c07a4519",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "persistent",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rhythm management.\n\nVitals: BP 128/74, HR 82, SpO2 96% on RA, Temp 98.2 F.\n\nHPI: (Copied Forward) Patient is an 89-year-old female presenting for management of persistent atrial fibrillation. She reports regular heart rate and no palpitations. She is currently managed on rate control and anticoagulation. (Update) Patient reports she is feeling well today and denies any new shortness of breath or syncope. She continues to tolerate her current medications well without significant side effects.\n\nMedication List:\n- Apixaban 5 mg PO BID\n- Metoprolol Succinate 25 mg PO daily\n\nReview of Systems:\n- Constitutional: Negative\n- Cardiovascular: Positive (persistent AFib)\n- Respiratory: Negative\n- Gastrointestinal: Negative\n- Neurological: Negative\n\nExam:\nGeneral: Well-appearing, pleasant 89-year-old female in no acute distress.\nCardiovascular: Regular rhythm, rate 82, S1 and S2 heard, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nNeurological: Alert and oriented x3, steady gait.\n\nAssessment:\n1. Persistent atrial fibrillation: Patient is currently stable on rate control and apixaban for prevention of thromboembolic events.\n\nPlan:\n1. Continue current medications.\n2. Follow up in 3 months for routine monitoring.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "I48.19",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Persistent atrial fibrillation, not documented as longstanding: I48.19, other persistent (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.11",
+        "Z79.01"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Longstanding persistent is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91",
+        "Z79.01"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (persistent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.19"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.19",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4819"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:57:49+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "id": "obesity_bmi-c1cdc566f8",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "morbid_obesity",
+    "bmi": "52"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for weight management.\n\nVitals: BP 140/88, HR 76, SpO2 96% on room air, BMI 52.8.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\nMusculoskeletal: Positive for mild knee pain during exertion.\nGastrointestinal: Negative for abdominal pain or changes in bowel habits.\n\nHPI: (Copied Forward) Patient is an 83-year-old male presenting for evaluation of significant weight gain and associated mobility issues. He reports difficulty walking long distances and experiences shortness of breath during moderate physical activity. He expresses a desire to lose weight to improve his quality of life.\n\nAssessment:\n1. Morbid obesity.\n\nPlan:\nDiscussed the risks associated with his current weight and the importance of weight reduction. Provided education on caloric intake and encouraged increased daily activity as tolerated. I have provided a referral to a formal weight management program for structured support. Patient will follow up in four weeks to monitor progress.\n\nMedication List:\nLisinopril 10mg daily\nAtorvastatin 20mg daily\n\nElectronically signed,\nM. Okafor, MD\nOctober 14, 2026",
+  "answer": [
+    "E66.01",
+    "Z68.43"
+  ],
+  "explanations": [
+    "Morbid (severe) obesity documented by the provider: E66.01 (HCC 48).",
+    "BMI 52.x with a provider weight diagnosis: add Z68.43 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9",
+        "Z68.43"
+      ],
+      "confusion": "missed_morbid",
+      "lean": "under",
+      "why": "The provider documents morbid obesity: E66.01, not E66.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 52.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "E6601",
+          "Z6843"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:13+00:00",
+    "style": {
+      "age": 83,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "M. Okafor"
+    }
+  }
+}

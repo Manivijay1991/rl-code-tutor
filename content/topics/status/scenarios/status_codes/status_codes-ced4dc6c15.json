@@ -1,0 +1,77 @@
+{
+  "id": "status_codes-ced4dc6c15",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "toe_right",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for hypertension management and routine evaluation.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a scheduled follow-up to evaluate her blood pressure and general health status. She reports feeling well overall and denies any acute concerns or recent illnesses. She notes that she has been consistent with her current antihypertensive regimen. The patient also notes that she has had a right great toe amputation several years ago and has no concerns regarding the site at this time. She reports good mobility and denies any falls or significant balance issues.\n\nReview of Systems\nThe patient denies any chest pain, shortness of breath, palpitations, syncope, or dizziness. She denies any recent headaches, vision changes, or numbness in her extremities. She denies any joint pain, fevers, chills, or unintentional weight loss.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She is retired and enjoys gardening and walking in her neighborhood. She denies tobacco use and reports social alcohol consumption on weekends.\n\nFamily History\nHer mother had hypertension and a history of stroke. Her father had a history of myocardial infarction. Her siblings are all living and healthy.\n\nMedication List\nLisinopril 20mg daily\nAmlodipine 5mg daily\nHydrochlorothiazide 12.5mg daily\n\nVitals\nBlood Pressure: 138/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nTemperature: 98.6 F\nWeight: 155 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 72 mL/min/1.73m2\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\n\nExam\nGeneral: The patient is alert and oriented x3. She appears well-nourished and in no acute distress.\nCardiovascular: Regular rate and rhythm. S1 and S2 are heard clearly. No murmurs, rubs, or gallops noted.\nPulmonary: Lungs are clear to auscultation bilaterally. No wheezing or crackles.\nMusculoskeletal: The patient demonstrates stable gait. Upon inspection of the lower extremities, the history of amputation of the right great toe is noted; the site is well-healed with no signs of irritation.\n\nAssessment\n1. Hypertension: Currently well-controlled on the current medication regimen.\n2. Status post right great toe amputation: Stable and well-healed.\n\nPlan\n1. Continue current antihypertensive medications as prescribed.\n2. Continue to monitor blood pressure at home and maintain a log.\n3. Follow up in 4 months for a routine check-up.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "Z89.411"
+  ],
+  "explanations": [
+    "Acquired absence of the right great toe: Z89.411 (no HCC in V28; leg amputations map to HCC 409)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.511"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "Only the great toe is absent, not the leg below the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0,
+        "gap": 0.598,
+        "direction": "over",
+        "extra_hccs": [
+          "409"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:34+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

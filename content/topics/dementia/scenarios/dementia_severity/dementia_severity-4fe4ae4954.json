@@ -1,0 +1,91 @@
+{
+  "id": "dementia_severity-4fe4ae4954",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "unspecified",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline and behavioral issues.\n\nHPI: Copied Forward: Patient is a 74-year-old female presenting for management of dementia. She has been experiencing progressive memory loss and difficulty with executive functioning over the last year.\n\nUpdate: The patient’s daughter reports that the patient has become increasingly agitated in the evenings, often becoming restless and difficult to soothe during the sundowning period. The patient is otherwise stable but requires significant assistance with activities of daily living.\n\nVitals: BP 138/82, HR 74, SpO2 98% on RA, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nNeurological: Positive (memory loss, agitation)\nPsychiatric: Positive (agitation)\nRespiratory: Negative\nCardiovascular: Negative\n\nMedication List:\n- Donepezil 10mg daily\n- Quetiapine 12.5mg at bedtime\n\nExam:\nGeneral: Alert, oriented to person only.\nBehavior: Appears slightly agitated during the interview but is cooperative with the examiner.\nNeurological: Gait is steady; speech is clear.\n\nAssessment:\n1. Dementia\n2. Agitation\n\nPlan:\n1. Continue current medications.\n2. Increased Quetiapine dose slightly to address evening agitation.\n3. Provide caregiver education on environmental modifications to reduce evening agitation.\n4. Follow up in 3 months.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "F03.911"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), unspecified severity, with agitation: F03.911."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03911"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:58:43+00:00",
+    "style": {
+      "age": 74,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

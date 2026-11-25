@@ -1,0 +1,89 @@
+{
+  "id": "cancer_status-d4769c3e9f",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for management of lung cancer.\n\nHPI\nPt is a 77 y.o. female with a known malignant neoplasm of the right lung. Pt is currently receiving chemotherapy for the same. She presents today for a routine follow-up and to assess tolerance of current treatment regimen. Pt reports mild fatigue and occasional shortness of breath on exertion, which she describes as manageable. Denies any new localized pain, significant weight loss, or fever. She reports compliance with all medications and hydration.\n\nMedication List\n- Cisplatin 100 mg IV every 3 weeks\n- Prednisone 20 mg PO daily\n- Ondansetron 8 mg PO PRN for N/V\n- Lisinopril 10 mg PO daily\n\nReview of Systems\nConstitutional: Positive for mild fatigue. Negative for fever, chills, or night sweats. Respiratory: Positive for mild dyspnea on exertion. Negative for cough, hemoptysis, or wheezing. GI: Negative for nausea, vomiting, or changes in bowel habits. MSK: Negative for joint pain or swelling. Neuro: Negative for headaches or confusion.\n\nSocial History\nPt lives at home with her spouse. Retired teacher. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: Lung cancer. Father: Hypertension. Siblings: No significant-history.\n\nVitals\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 95% on RA\nWt: 145 lbs\n\nRecent Labs\nWBC: 5.2 (WNL)\nHgb: 10.8 (Low)\nPlt: 155 (WNL)\nNa: 138\nK: 4.0\nCr: 1.1\neGFR: 62\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress. CTAB.\nRespiratory: Breath sounds clear bilaterally. No wheezing or rales.\nCardiovascular: RRR, S1, S2 heard. No murmurs.\nSkin: Intact, no new lesions.\nExtremities: No edema.\n\nAssessment\n1. Malignant neoplasm of the right lung. Pt is currently receiving chemotherapy.\n2. Anemia of chronic disease.\n\nPlan\n1. Continue current chemotherapy protocol.\n2. Monitor CBC and renal function.\n3. Continue Lisinopril and Prednisone.\n4. Follow up in 3 weeks for next cycle.\n\nElectronically signed, T. Haddad, NP, 05/12/2026",
+  "answer": [
+    "C34.91"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.136,
+        "gap": -1.136,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "20"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.90"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 1.136,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.136,
+    "hccs": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "from": [
+          "C3491"
+        ],
+        "weight": 1.136
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:44:44+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

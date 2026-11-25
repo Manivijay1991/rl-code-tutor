@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-5237a66117",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "paroxysmal",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Palpitations and shortness of breath.\n\nHPI: Pt is a 90-year-old male presenting for f/u of paroxysmal AFib. Pt reports intermittent episodes of rapid heartbeat and mild dyspnea on exertion over the last month. Reports episodes last 10-30 minutes, then resolve spontaneously. Pt denies chest pain, syncope, or dizziness. Currently stable on rate control. Denies any new symptoms of lightheadedness.\n\nMedication List:\n- Metoprolol 25mg BID\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change.\nCV: Reports intermittent palpitations. Denies chest pain.\nResp: Mild SOB on exertion. Denies cough or wheezing.\nNeuro: No focal weakness or numbness.\nMSK: No joint pain.\nGI: No nausea or diarrhea.\n\nSocial History: Retired. Lives with wife. No tobacco use. Occasional alcohol.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/78\nHR: 74 (irregular)\nRR: 18\nTemp: 98.6 F\nSpO2: 96% on RA\nWt: 165 lbs\n\nRecent Labs:\neGFR: 62\nHbA1c: 6.8%\nTSH: 2.1 mIU/L\nBMP: WNL\n\nExam:\nGen: 90 y/o male, alert and oriented x3. Appears in no acute distress.\nCV: RRR, irregular. S1, S2 heard. No murmurs.\nResp: CTAB. No crackles or wheezes.\nExt: No edema.\nNeuro: Alert, coherent, no tremors.\n\nAssessment:\n1. Paroxysmal AFib: Pt currently experiencing paroxysmal AFib. Rate is well-controlled on metoprolol. Pt is at low risk for complications. No need for anticoagulation at this time due to low risk profile.\n\nPlan:\n1. Continue metoprolol 25mg BID for rate control.\n2. Monitor for any increase in frequency or duration of episodes.\n3. Follow up in 3 months for routine check.\n4. Pt instructed to seek immediate care if chest pain or severe SOB occurs.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "I48.0"
+  ],
+  "explanations": [
+    "Paroxysmal atrial fibrillation: I48.0 (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paroxysmal) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.21"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "The provider documents paroxysmal, not permanent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I480"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:56:13+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

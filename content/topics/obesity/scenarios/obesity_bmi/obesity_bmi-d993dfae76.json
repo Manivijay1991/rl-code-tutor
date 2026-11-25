@@ -1,0 +1,109 @@
+{
+  "id": "obesity_bmi-d993dfae76",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "morbid_obesity",
+    "bmi": "37"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for weight management.\n\nHPI: The patient is an 80-year-old male presenting today for a scheduled follow-up regarding weight management. He reports that he has been attempting to incorporate more movement into his daily routine but finds it difficult to maintain consistency due to joint discomfort. He expresses a desire to lose weight to improve his overall mobility and reduce the strain on his knees. He denies any recent acute injuries or significant changes in his appetite. He has been attempting to reduce his caloric intake but admits to occasional difficulty with consistency.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals:\nBP: 132/84 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 96% on room air\nHeight: 5'9\"\nWeight: 285 lbs\nBMI: 37.4\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 72 mL/min/1.73m2\nTotal Cholesterol: 185 mg/dL\nLDL: 98 mg/dL\n\nReview of Systems:\nConstitutional: No fatigue, fever, or chills.\nMusculoskeletal: Reports mild aching in bilateral knees.\nRespiratory: No shortness of breath or cough.\nCardiovascular: No chest pain or palpitations.\nGastrointestinal: No abdominal pain or changes in bowel habits.\n\nSocial History: The patient lives with his wife and reports being retired. He enjoys gardening and walking in his neighborhood. He smokes no tobacco and drinks alcohol occasionally.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nExam: The patient is alert and oriented x3. He appears in no acute distress. Physical exam reveals a well-nourished male with a BMI of 37. He is ambulatory with a steady gait. Heart sounds are regular and without murmurs. Lungs are clear to auscultation. No significant edema in lower extremities.\n\nAssessment: \n1. Morbid obesity. The patient's current weight and BMI are significantly above the healthy range, contributing to his joint discomfort.\n\nPlan:\n1. Diet: Encouraged the patient to follow a balanced, low-calorie diet focusing on lean proteins and increased fiber intake.\n2. Activity: Recommended starting with low-impact activities such as swimming or stationary cycling to protect his joints.\n3. Referral: Provided a referral to a formal weight management program for structured nutritional counseling.\n4. Follow-up: Return to clinic in three months for a weight check and progress review.\n\nElectronically signed, \nH. Tanaka, MD\nMay 14, 2026",
+  "answer": [
+    "E66.01",
+    "Z68.37"
+  ],
+  "explanations": [
+    "Morbid (severe) obesity documented by the provider: E66.01 (HCC 48).",
+    "BMI 37.x with a provider weight diagnosis: add Z68.37."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9",
+        "Z68.37"
+      ],
+      "confusion": "missed_morbid",
+      "lean": "under",
+      "why": "The provider documents morbid obesity: E66.01, not E66.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E66.01"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01",
+        "Z68.41"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 37.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "E6601"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:21+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

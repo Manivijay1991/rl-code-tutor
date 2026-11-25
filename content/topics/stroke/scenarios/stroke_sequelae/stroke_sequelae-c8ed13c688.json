@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-c8ed13c688",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_left",
+    "handedness": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for residual left-sided hemiparesis.\n\nHPI: Pt is a 73-year-old female presenting for follow-up regarding status post CVA. She reports stable condition with chronic left-sided hemiparesis. Pt notes that while she remains right-handed, she experiences some difficulty with fine motor tasks on the left side. No new focal deficits reported. Denies any recent falls or increased weakness. She is currently managing her symptoms and seeks evaluation for ongoing physical therapy progress.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Aspirin 81mg QD\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nNeurological: Positive for left-sided hemiparesis. Denies headache, dizziness, or vision changes.\nMusculoskeletal: Mild stiffness in left upper extremity.\nRespiratory: No SOB or cough.\nCardiovascular: No chest pain.\n\nSocial History: Retired. Lives with her spouse. Non-smoker. Occasional social outings.\n\nFamily History: Mother had hypertension. Father had myocardial infarction.\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 72\nLDL: 88 mg/dL\nTSH: 2.1 mIU/L\n\nExam:\nGeneral: Alert and oriented x3. In no acute distress.\nNeuro: Cranial nerves II-XII intact. Normal extraocular movements. Sensation intact throughout. Motor: 4/5 strength in left upper and lower extremities. 5/5 strength in right extremities. Pt is right-hand dominant. Gait is steady but slightly slower on the left side.\nMusculoskeletal: No joint swelling or erythema.\n\nAssessment:\n1. Left-sided hemiparesis following a past ischemic stroke.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan:\n1. Continue current meds as prescribed.\n2. Continue physical therapy 2x/week to address left hemiparesis.\n3. Follow up in 3 months for repeat labs and neuro exam.\n4. Encouraged home safety measures for mobility.\n\nElectronically signed, H. Tanaka, DO, 05/14/2026",
+  "answer": [
+    "I69.354"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, left non-dominant side: I69.354 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.352"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69354"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:59:13+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "H. Tanaka"
+    }
+  }
+}

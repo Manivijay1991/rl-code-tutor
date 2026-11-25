@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-3ea52aa6f4",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"Feeling low and tired lately.\"\n\nHPI: Pt is a 75-year-old female presenting for f/u of MDD. Pt reports persistent low mood and decreased energy over the past month. States she is having difficulty finding motivation for daily tasks but remains functional at home. Reports improved sleep recently but continues to feel \"heavy.\" Denies any acute distress. Pt reports compliance with current regimen.\n\nMedication List: Sertraline 50mg daily.\n\nExam: Pt is a well-groomed female sitting in exam room. Alert and oriented x3. Speech is clear, though slightly soft. Affect is flat but congruent with mood. Mood is described as \"down.\" RRR, CTAB, WNL. No acute distress noted.\n\nAssessment: \n1. Major depressive disorder, single episode. Current episode is mild.\n\nPlan: \n1. Continue current dose of Sertraline. \n2. Discussed importance of regular routine and social engagement. \n3. F/u in 4 weeks to monitor symptoms.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "F32.0"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, mild (no HCC in V28): F32.0."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "The provider documents mild; moderate maps to an HCC that mild does not.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.0"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents single episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:49:10+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

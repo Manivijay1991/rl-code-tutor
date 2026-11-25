@@ -25,6 +25,23 @@ TYPES = {
 }
 
 
+# Sent with every page and file, here and in production (vercel.json carries the same values; a test keeps them
+# equal). The app has no inline scripts; inline style attributes need 'unsafe-inline' for styles only. If the
+# live API is on another origin (config.json "api": "https://..."), add that origin to connect-src.
+CSP = (
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
+    "font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; "
+    "frame-ancestors 'none'"
+)
+SECURITY_HEADERS = (
+    ("Content-Security-Policy", CSP),
+    ("Referrer-Policy", "strict-origin-when-cross-origin"),
+    ("Permissions-Policy", "camera=(), microphone=(), geolocation=()"),
+    ("X-Content-Type-Options", "nosniff"),
+    ("X-Frame-Options", "DENY"),
+)
+
+
 def content_type(path: Path) -> str:
     """Return the Content-Type for a file name."""
     return TYPES.get(path.suffix.lower()) or mimetypes.guess_type(path.name)[0] or "application/octet-stream"
@@ -65,7 +82,7 @@ def static_app(root: Path) -> WSGIApp:
                 ("Content-Type", content_type(target)),
                 ("Content-Length", str(len(data))),
                 ("Cache-Control", "no-cache"),
-                ("X-Content-Type-Options", "nosniff"),
+                *SECURITY_HEADERS,
             ],
         )
         return [b""] if method == "HEAD" else [data]

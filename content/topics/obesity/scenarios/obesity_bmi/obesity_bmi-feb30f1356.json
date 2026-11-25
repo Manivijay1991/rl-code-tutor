@@ -1,0 +1,76 @@
+{
+  "id": "obesity_bmi-feb30f1356",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "32"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nPt is a 75 y.o. female presenting for routine f/u of HTN. Pt reports feeling well overall. Denies chest pain, SOB, or syncope. Reports adherence to current antihypertensive regimen. No acute concerns today.\n\nMedication List\nLisinopril 20mg daily\nAmlodipine 5mg daily\n\nExam\nVitals: BP 138/84, HR 72, RR 16, Temp 98.6 F. BMI 32.8.\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB, no murmurs.\nResp: CTAB, no wheezes or rales.\nExt: WNL, no edema.\n\nAssessment\n1. Hypertension: Stable on current meds.\n\nPlan\n1. Continue current meds as prescribed.\n2. F/u in 3 months for routine BP check.\n3. Encouraged DASH diet and regular exercise.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.32"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:41+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

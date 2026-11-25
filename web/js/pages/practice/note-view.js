@@ -31,7 +31,7 @@ export function renderNote() {
   ));
   const meta = [
     h("span", { class: "tag reason" }, REASONS[q.reason] ?? "Practice"),
-    h("span", { class: "tag", title: q.table.title }, q.table.topic || q.table.title),
+    h("span", { class: "tag", title: q.table.title }, app.manifest.topics.find((tp) => tp.id === q.table.topic)?.title ?? q.table.title),
     q.table.status === "draft" ? h("span", { class: "tag draft", title: "Not yet reviewed by a certified coder" }, "Draft") : null,
   ];
   mount($("chart-meta"), meta);

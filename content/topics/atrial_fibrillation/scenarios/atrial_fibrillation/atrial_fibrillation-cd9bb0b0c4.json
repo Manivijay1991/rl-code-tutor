@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-cd9bb0b0c4",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "paroxysmal",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Palpitations.\n\nHPI: 75 y.o. female presents for f/u of paroxysmal atrial fibrillation. Pt reports occasional episodes of rapid heartbeat over the last month. Episodes are intermittent and generally resolve on their own. Pt denies chest pain, syncope, or shortness of breath. She is currently managed with rate-control medication and does not require anticoagulation due to low risk profile.\n\nMedication List: Metoprolol 50mg BID, Lisinopril 10mg daily.\n\nExam: Pt alert and oriented x3. Good skin color. RRR, regular rhythm. CTAB. No murmurs, rubs, or gallops. Lungs clear to auscultation. Extremities WNL.\n\nAssessment: Paroxysmal AFib. Pt is stable on current rate-control regimen.\n\nPlan: Continue current medications. Monitor for any increase in frequency of episodes. Pt to call office if she experiences severe symptoms. F/u in 3 months.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "I48.0"
+  ],
+  "explanations": [
+    "Paroxysmal atrial fibrillation: I48.0 (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paroxysmal) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.21"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "The provider documents paroxysmal, not permanent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I480"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:57:31+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

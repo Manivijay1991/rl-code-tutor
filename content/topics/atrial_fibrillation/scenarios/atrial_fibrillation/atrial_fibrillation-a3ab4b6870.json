@@ -1,0 +1,129 @@
+{
+  "id": "atrial_fibrillation-a3ab4b6870",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rhythm and anticoagulation.\n\nHPI: Pt is a 60-year-old female presenting for routine follow-up of her known atrial fibrillation. She reports feeling generally well today. She denies palpitations, lightheadedness, or chest pain. She is currently managed on a rate-control regimen and reports good compliance with her medications. She denies any recent falls or episodes of syncope. She is here to monitor the management of her atrial fibrillation and ensure continued stability on her current anticoagulant.\n\nMedication List:\n- Apixaban 5mg BID\n- Metoprolol 25mg daily\n- Lisinopril 10mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations, SOB.\nResp: Denies cough, wheezing.\nNeuro: Denies headache, weakness, numbness.\nGI: Denies nausea, diarrhea, abdominal pain.\nMSK: Denies joint pain.\n\nSocial History: Lives in a single-family home with her spouse. Works part-time as a librarian. Non-smoker. Occasional alcohol consumption.\n\nFamily History: Mother had hypertension. Father had a history of coronary artery disease.\n\nRecent Labs:\n- HbA1c: 5.8%\n- K+: 4.2 mEq/L\n- Cr: 0.9 mg/dL\n- eGFR: >90 mL/min/1.73m2\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'5\"\nWeight: 155 lbs\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular rhythm. S1, S2 normal. No murmurs, rubs, or gallops.\nLungs: CTAB.\nExt: No edema, pulses palpable.\n\nAssessment:\n1. Atrial fibrillation - Pt is stable on current rate control and apixaban. No signs of tachycardia or arrhythmia at this time.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue apixaban for prevention of systemic complications.\n3. Monitor heart rate and rhythm at next visit.\n4. Return to clinic in 3 months for routine f/u.\n\nElectronically signed,\nR. Mensah, DO\n10/14/2026",
+  "answer": [
+    "I48.91",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Current atrial fibrillation without a documented type: I48.91 (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.0",
+        "Z79.01"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "The provider does not document the type.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.79",
+        "Z79.01"
+      ],
+      "confusion": "current_coded_history",
+      "lean": "under",
+      "why": "The atrial fibrillation is current (treated and monitored).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "238"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4891"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:55:19+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

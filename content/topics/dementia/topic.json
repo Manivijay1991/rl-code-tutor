@@ -1,0 +1,8 @@
+{
+  "id": "dementia",
+  "title": "Dementia",
+  "kind": "hcc",
+  "description": "Dementia type, stage and behavioral disturbance; mild cognitive impairment.",
+  "order": 30,
+  "enabled": true
+}

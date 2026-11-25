@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-c6b03140f9",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F, BMI 27.4.\n\nRecent Labs:\n- HbA1c: 5.7% (05/2026)\n- TSH: 2.1 mIU/L (05/2026)\n- CMP: Within normal limits (05/2026)\n\nMedication List:\n- Sertraline 50mg daily\n- Multivitamin daily\n\nSocial History: 69-year-old female, retired teacher, lives with husband. Non-smoker. Occasional social outings.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes. No family history of psychiatric conditions.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight changes.\nNeurological: Negative for tremors, dizziness.\nPsychiatric: Positive for low energy, occasional feelings of hopelessness. Negative for sleep disturbances.\nGeneral: All other systems reviewed and negative.\n\nHPI:\n(Copied Forward): Patient is a 69-year-old female with a history of major depressive disorder, single episode. She reports a history of persistent low mood and diminished interest in activities. She has been managed with SSRI therapy. Patient reports some improvement in mood but continues to experience occasional flat affect and lethargy.\n\n(Update): The patient presents today for a follow-up regarding her MDD. She reports that her mood has remained relatively stable over the last month. She notes that she is able to engage in hobbies like gardening more frequently than before. She reports that while she still experiences some persistent low mood, her overall functioning has improved. She denies any acute distress or significant changes in her daily routine.\n\nExam:\nGeneral: Well-appearing, pleasant, and cooperative.\nPsychiatric: Alert and oriented x3. Speech is normal in rate, volume, and tone. Mood is \"okay.\" Affect is congruent and stable. Thought process is linear and goal-directed. Insight and judgment are intact.\n\nAssessment:\nMajor depressive disorder, single episode. The patient is currently in partial remission. She shows steady progress with current pharmacological management.\n\nPlan:\n1. Continue current dosage of Sertraline 50mg daily.\n2. Continue monitoring for symptom progression.\n3. Return to clinic in 4 weeks for follow-up.\n\nElectronically signed, A. Rivera, NP, 05/15/2026",
+  "answer": [
+    "F32.4"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, in partial remission (no HCC): F32.4."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents partial remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.5"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is partial, not full.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:59:02+00:00",
+    "style": {
+      "age": 69,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

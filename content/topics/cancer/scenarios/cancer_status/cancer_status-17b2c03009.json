@@ -1,0 +1,72 @@
+{
+  "id": "cancer_status-17b2c03009",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for colon cancer and assessment of treatment side effects.\n\nHPI\nThe patient is a 74-year-old woman presenting for a routine follow-up regarding her diagnosis of colon carcinoma. She is currently receiving chemotherapy for the malignant neoplasm. She reports that she has been feeling generally well, though she notes some mild fatigue and occasional nausea following her recent infusions. She denies any significant abdominal pain, changes in bowel habits, or unintentional weight loss at this time. She states that the treatment is continuing as scheduled and she is compliant with all prescribed medications. She is here today to monitor her tolerance to the current regimen.\n\nReview of Systems\nThe patient reports no fevers, chills, or night sweats. She denies any shortness of breath or chest pain. She reports mild fatigue but denies significant muscle weakness. She denies any new-onset rashes or joint pain. Appetite is stable. No reports of palpitations or dizziness.\n\nSocial History\nThe patient lives at home with her spouse. She is a retired teacher and enjoys gardening and walking. She denies any tobacco or alcohol use.\n\nFamily History\nMother had hypertension. Father had type 2 diabetes. Siblings are healthy.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 11.2 g/dL\nWhite Blood Cell Count: 4.5 x 10^9/L\nPlatelet Count: 160 x 10^9/L\nCreatinine: 0.9 mg/dL\neGFR: 78 mL/min/1.73m2\n\nMedication List\nMetformin 500mg BID\nLisinopril 10mg daily\nOndansetron 8mg as needed for nausea\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress.\nAbdomen: Soft, non-distended, and non-tender to palpation. No masses or guarding noted.\nMusculoskeletal: No significant edema or erythema in lower extremities.\n\nAssessment\nThe patient is a 74-year-old woman with colon carcinoma who is currently receiving chemotherapy. She is tolerating the treatment well with manageable side effects.\n\nPlan\n1. Continue current chemotherapy regimen as prescribed by the oncology team.\n2. Continue current medications for hypertension and diabetes.\n3. Monitor CBC and metabolic panels every 4 weeks.\n4. Patient to call the office if she experiences severe nausea or fever.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "C18.9"
+  ],
+  "explanations": [
+    "Cancer of the colon under current treatment is a current malignancy: C18.9."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.038"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.363,
+        "gap": -0.363,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "22"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.363,
+    "hccs": [
+      {
+        "hcc": "22",
+        "label": "Bladder/Colorectal/and Other Cancers",
+        "from": [
+          "C189"
+        ],
+        "weight": 0.363
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:28+00:00",
+    "style": {
+      "age": 74,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

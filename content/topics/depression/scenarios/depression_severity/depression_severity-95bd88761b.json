@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-95bd88761b",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow up for depression.\n\nHPI: Pt is an 86-year-old female presenting for a scheduled follow-up regarding her diagnosis of major depressive disorder, recurrent. Pt reports stable mood over the past month. She notes improved energy levels and better engagement in daily activities. She continues to experience some occasional feelings of sadness and low motivation, but she denies any significant functional impairment. She reports compliance with current medication regimen and denies any significant side effects. She states she is feeling \"better than last time\" but acknowledges she is not completely back to her baseline.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Lisinopril 10mg PO QD\n\nReview of Systems:\nGeneral: Denies fever, chills, weight changes, or fatigue.\nPsychiatric: Reports occasional low mood but denies sleep disturbances or appetite changes.\nNeurological: No tremors or gait instability reported.\nMSK: No joint pain or stiffness.\nCV: No chest pain or palpitations.\n\nSocial History: Pt lives at home with her daughter. Retired. Enjoys gardening and knitting. No tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWt: 145 lbs\n\nRecent Labs:\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\neGFR: 65 mL/min/1.73m2\n\nExam:\nGen: Well-appearing, pleasant, cooperative.\nPsych: Alert and oriented x3. Speech is clear and normal rate/tone. Affect is congruent with mood. Insight and judgment intact. No acute distress noted.\nPhysical: CTAB. RRR. Lungs clear. Heart regular rhythm.\n\nAssessment:\n1. Major depressive disorder, recurrent. Pt is currently in partial remission. Mood is stable but requires continued monitoring of depressive symptoms.\n\nPlan:\n1. Continue current dosage of Sertraline.\n2. Continue monitoring for any worsening of mood or functional decline.\n3. Follow up in 4 weeks for next progress note.\n\nElectronically signed, A. Rivera, NP, 10/14/2026",
+  "answer": [
+    "F33.41"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, in partial remission (no HCC): F33.41."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents partial remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.42"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is partial, not full.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:32+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "cancer_status-3507e16cf6",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "active",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Evaluation of liver metastases and treatment progress.\n\nVitals: BP 138/84, HR 76, SpO2 96% on room air, Temp 98.4 F, BMI 27.2.\n\nRecent Labs: \nHb: 11.2 g/dL\nWBC: 6.4 x 10^9/L\nPlatelets: 145 x 10^9/L\nAlbumin: 3.1 g/dL\neGFR: 62 mL/min/1.73m2\n\nSocial History: Retired engineer; lives with his wife. Non-smoker; occasional alcohol use.\n\nFamily History: Father died of myocardial infarction at age 65; Mother had hypertension.\n\nReview of Systems:\nConstitutional: Positive for fatigue and mild weight loss.\nGI: Positive for dull abdominal discomfort.\nMSK: Negative for joint pain.\nNeuro: Negative for dizziness or confusion.\nCV: Negative for chest pain or palpitations.\n\nHPI: [Copied Forward] Patient is an 80-year-old male with a known malignant neoplasm of the colon. He is currently receiving chemotherapy for the primary site. He reports stable symptoms but notes increasing discomfort in the upper right quadrant.\n\n[Today's Update] The patient presents today for a follow-up regarding his ongoing treatment. He reports that while he is continuing his regimen, he has noticed increased dull aching in the right side of his abdomen. He notes that his fatigue has increased since the last appointment. He denies any acute vomiting or fever.\n\nExam:\nGeneral: Alert and oriented x3. Appears mildly fatigued but in no acute distress.\nAbdomen: Soft, non-distended. Moderate tenderness to palpation in the right upper quadrant. No guarding or rebound.\nSkin: No new lesions or rashes noted.\n\nAssessment: \n1. Colon carcinoma: The patient is on active treatment for his primary diagnosis.\n2. Liver metastases: New imaging reveals progression of the disease to the liver.\n\nPlan:\n1. Continue current chemotherapy protocol as scheduled.\n2. Order a modified imaging study to monitor the liver metastases.\n3. Adjust pain management for right upper quadrant discomfort; prescribed a non-NSAID analgesic.\n4. Follow up in two weeks for laboratory monitoring.\n\nElectronically signed, M. Okafor, NP, 05/14/2026",
+  "answer": [
+    "C18.9",
+    "C78.7"
+  ],
+  "explanations": [
+    "Cancer of the colon under current treatment is a current malignancy: C18.9.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.038",
+        "C78.7"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C18.9"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.363,
+        "correct": 4.209,
+        "gap": -3.846,
+        "direction": "under",
+        "extra_hccs": [
+          "22"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C18.9",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "22",
+        "label": "Bladder/Colorectal/and Other Cancers",
+        "by": "17"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:55+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

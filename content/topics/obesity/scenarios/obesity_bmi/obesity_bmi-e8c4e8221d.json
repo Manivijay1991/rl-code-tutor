@@ -1,0 +1,108 @@
+{
+  "id": "obesity_bmi-e8c4e8221d",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "morbid_obesity",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for weight management.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, BMI 42.8.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\nMusculoskeletal: Positive for mild joint discomfort.\nNeurological: Negative for dizziness or numbness.\n\nHPI: Patient is an 81-year-old female presenting for follow-up regarding weight management. Patient reports she has been attempting to increase her daily step count but notes difficulty with consistent adherence to a caloric deficit. She denies any new-onset pain or significant changes in mobility since the last visit.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nExam:\nGeneral: Well-appearing, pleasant, and in no acute distress.\nRespiratory: Lungs clear to auscultation bilaterally.\nCardiovascular: Regular rhythm, no murmurs.\nMusculoskeletal: Mild tenderness noted in bilateral knees.\n\nAssessment:\n1. Morbid obesity: Patient currently presents with a BMI of 42.8. She remains motivated but requires structured support.\n\nPlan:\n1. Diet and Activity: Encouraged increased protein intake and 15-minute daily walks.\n2. Referral: Referred to a formal weight management program for nutritional counseling.\n3. Follow-up: Return to clinic in 3 months.\n\nElectronically signed,\nR. Mensah, DO\nOctober 14, 2026",
+  "answer": [
+    "E66.01",
+    "Z68.41"
+  ],
+  "explanations": [
+    "Morbid (severe) obesity documented by the provider: E66.01 (HCC 48).",
+    "BMI 42.x with a provider weight diagnosis: add Z68.41 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9",
+        "Z68.41"
+      ],
+      "confusion": "missed_morbid",
+      "lean": "under",
+      "why": "The provider documents morbid obesity: E66.01, not E66.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 42.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "E6601",
+          "Z6841"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:24+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

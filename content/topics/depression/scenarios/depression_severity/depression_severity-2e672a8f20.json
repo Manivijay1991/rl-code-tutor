@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-2e672a8f20",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "severe_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nThe patient is an 81-year-old man presenting for a follow-up evaluation of major depressive disorder, recurrent. He reports that his symptoms have worsened over the last three weeks. He describes a severe lack of motivation, profound sadness, and significant sleep disturbances. Notably, he reports experiencing mood-congruent delusions, specifically expressing a belief that his body is wasting away due to an incurable illness. He denies any recent changes in his primary medications.\n\nMedication List\nSertraline 100mg daily; Quetiapine 50mg at bedtime.\n\nExam\nThe patient appears disheveled and is moving slowly. His affect is constricted and his mood is depressed. He is cooperative but exhibits a flat facial expression. Speech is slow but coherent. Thought process is linear, though content is influenced by his current delusions. Vital signs are stable and within normal limits.\n\nAssessment\n1. Major depressive disorder, recurrent, severe with psychotic features. The patient's delusions are currently mood-congruent and consistent with his depressive state.\n\nPlan\nWe will continue the current regimen of Sertraline and Quetiapine. I will monitor the severity of his psychotic features at the next visit. The patient was instructed to contact the office immediately if symptoms worsen.\n\nElectronically signed, J. Lindqvist, PA-C, 05/14/2026",
+  "answer": [
+    "F33.3"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, severe with psychotic features (HCC 152): F33.3."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.2"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "Psychotic features are documented: they change the code and the HCC (152).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.484,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "152"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.3"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.484,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.484,
+    "hccs": [
+      {
+        "hcc": "152",
+        "label": "Psychosis/Except Schizophrenia",
+        "from": [
+          "F333"
+        ],
+        "weight": 0.484
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:28+00:00",
+    "style": {
+      "age": 81,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

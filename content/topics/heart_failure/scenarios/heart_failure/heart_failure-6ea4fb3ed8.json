@@ -1,0 +1,95 @@
+{
+  "id": "heart_failure-6ea4fb3ed8",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Shortness of breath and increased leg swelling.\n\nHPI: Pt is a 68 y/o female with known diastolic heart failure presenting for f/u. Pt reports significant increase in dyspnea on exertion over the past 5 days, now affecting activities of daily living. Pt also reports bilateral lower extremity edema, noting shoes are feeling tighter. Pt admits to slight increase in weight (+4 lbs) over the last week. Denies chest pain, palpitations, or syncope. Pt states she has been compliant with current meds but notes symptoms have worsened despite home management.\n\nMedication List:\n- Furosemide 40mg BID\n- Lisinopril 10mg QD\n- Metoprolol Succinate 25mg QD\n\nReview of Systems:\nConstitutional: Positive for fatigue.\nRespiratory: Positive for dyspnea on exertion. Denies cough or SOB at rest.\nCardiovascular: Denies chest pain or palpitations.\nMusculoskeletal: Positive for bilateral lower extremity edema.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had heart failure. Father had stroke.\n\nVitals:\nBP: 138/82\nHR: 78 (RRR)\nRR: 18\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 165 lbs\n\nRecent Labs:\nBNP: 450 pg/mL\neGFR: 72 mL/min\nSodium: 136 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\n\nExam:\nGeneral: Pt in no acute distress, appears slightly fatigued.\nRespiratory: CTAB. Breath sounds clear bilaterally. No wheezes or rales.\nCardiovascular: RRR, S1, S2 heard. No murmurs, rubs, or gallops.\nExtremities: 2+ pitting edema to mid-calf bilaterally. Capillary refill <2 sec.\n\nAssessment:\n1. Acute on chronic heart failure. Pt is experiencing an exacerbation of her known HFpEF. Current symptoms and weight gain are consistent with fluid volume overload.\n\nPlan:\n1. Increase Furosemide to 80mg BID to address acute exacerbation.\n2. Instructed pt on daily weights and low sodium diet.\n3. F/u in 1 week for assessment of fluid status.\n4. Pt to call clinic immediately if severe SOB or chest pain occurs.\n\nElectronically signed, S. Patel, DO, 05/12/2026",
+  "answer": [
+    "I50.33"
+  ],
+  "explanations": [
+    "Acute on chronic diastolic heart failure: I50.33 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.32"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.31"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5033"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:23+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

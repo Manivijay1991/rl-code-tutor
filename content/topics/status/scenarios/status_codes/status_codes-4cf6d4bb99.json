@@ -1,0 +1,77 @@
+{
+  "id": "status_codes-4cf6d4bb99",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "toe_right",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Follow-up for hypertension and joint pain.\n\nVitals: BP 134/82, HR 74, Temp 98.6 F, SpO2 98% on room air, Height 5'10\", Weight 195 lbs.\n\nRecent Labs: HbA1c: 6.4%, eGFR: 88 mL/min/1.73m², LDL: 110 mg/dL, HDL: 45 mg/dL.\n\nSocial History: Patient is a non-smoker. He works as a warehouse supervisor. He reports regular exercise three times a week and occasional social drinking.\n\nFamily History: Father had hypertension and a myocardial infarction at age 65. Mother had a history of hyperlipidemia.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight change.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for congestion or hearing loss.\nRespiratory: Negative for cough or shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for abdominal pain or changes in bowel habits.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Positive for stiffness in the knees.\nNeurological: Negative for numbness or tingling.\nSkin: Negative for rashes.\n\nHPI: Patient is a 51-year-old male who presents for a routine follow-up of his chronic hypertension. He reports that his blood pressure has been well-controlled at home with his current medication regimen. He denies any recent episodes of dizziness or syncope. He reports mild stiffness in his bilateral knees in the mornings, which improves with movement. He notes that he has had a history of a right great toe amputation several years ago and reports no new issues with the site.\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nCardiovascular: Regular rate and rhythm. S1 and S2 heard clearly. No murmurs.\nRespiratory: Clear to auscultation bilaterally.\nMusculoskeletal: Mild tenderness noted over the patellar region bilaterally.\nExtremities: Good range of motion in shoulders and elbows. The patient has a history of amputation of the right great toe; the site is stable, well-healed, and shows no signs of irritation. Capillary refill is <2 seconds in all digits.\n\nAssessment:\n1. Hypertension: Stable and well-controlled on current medications.\n2. Knee stiffness: Likely osteoarthritis.\n\nPlan:\n1. Continue current antihypertensive medication.\n2. Continue current cholesterol management.\n3. Recommended over-the-counter acetaminophen for knee stiffness as needed.\n4. Follow up in 6 months for routine monitoring.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "Z89.411"
+  ],
+  "explanations": [
+    "Acquired absence of the right great toe: Z89.411 (no HCC in V28; leg amputations map to HCC 409)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.511"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "Only the great toe is absent, not the leg below the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0,
+        "gap": 0.598,
+        "direction": "over",
+        "extra_hccs": [
+          "409"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:17+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

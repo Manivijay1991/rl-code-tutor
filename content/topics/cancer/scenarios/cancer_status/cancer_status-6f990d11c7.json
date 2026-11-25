@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-6f990d11c7",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "history",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for metastatic liver disease.\n\nHPI\nThe patient is a 79-year-old man presenting for a follow-up evaluation regarding his history of colon cancer. He originally underwent surgery to remove the primary site several years ago. He reports feeling well overall and denies any new abdominal pain, significant weight loss, or changes in bowel habits. He is here today specifically to address the progression of the malignancy to the liver.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nMetformin 500mg twice daily\n\nExam\nThe patient is alert and oriented. He appears in no acute distress. Abdomen is soft and non-tender without palpable masses. Vital signs are stable and within normal limits.\n\nAssessment\n1. Colon cancer: The primary site shows no evidence of local recurrence.\n2. Liver metastases: The patient has developed a malignant neoplasm that is metastatic to the liver.\n\nPlan\nWe will continue to monitor the liver metastases. The patient will be scheduled for a follow-up imaging study to assess the size of the lesions. He was instructed to report any new symptoms immediately.\n\nElectronically signed, J. Lindqvist, DO, 05/14/2026",
+  "answer": [
+    "Z85.038",
+    "C78.7"
+  ],
+  "explanations": [
+    "The colon cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.038 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C18.9",
+        "C78.7"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.038"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.209,
+        "gap": -4.209,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.038",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:44+00:00",
+    "style": {
+      "age": 79,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

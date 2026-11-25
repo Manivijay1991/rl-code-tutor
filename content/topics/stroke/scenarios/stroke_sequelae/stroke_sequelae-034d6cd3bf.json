@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-034d6cd3bf",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_left",
+    "handedness": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for post-stroke mobility.\n\nHPI: Copied forward from prior visit: Patient is a 78-year-old male who experienced a cerebral infarction approximately two years ago. He presents for evaluation of lingering motor deficits. He remains left-hand dominant and continues to utilize his left side for most daily activities. He reports stable mobility but notes some fatigue during long walks.\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6F.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, weight change.\n- Neurological: Positive for left-sided hemiparesis. Negative for headache or dizziness.\n- Musculoskeletal: Negative for joint pain.\n\nExam:\nThe patient is alert and oriented. He is left-handed. Physical examination reveals persistent left-sided hemiparesis. Strength is 4/5 in the left upper and lower extremities. No new neurological findings.\n\nAssessment:\n1. Residual left-sided hemiparesis following a past ischemic stroke.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Physical therapy and occupational therapy to maintain current mobility and function.\n3. Return to clinic in 3 months for routine follow-up.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "I69.352"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, left dominant side: I69.352 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.354"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69352"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:17+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

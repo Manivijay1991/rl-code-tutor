@@ -29,6 +29,8 @@ from pathlib import Path
 from typing import NamedTuple
 
 from coding_tutor import catalog
+from coding_tutor.engine.rules import Table, load_tables, matches
+from coding_tutor.generator.scenarios import evidence_groups, flat_evidence
 
 
 class Finding(NamedTuple):
@@ -363,16 +365,74 @@ def audit_common(record: dict, note: str) -> list[Finding]:
     return out
 
 
-def audit_record(record: dict) -> list[Finding]:
-    """Audit one scenario record; tables without a specific audit get the common checks only."""
+def _phrase(p: str) -> str:
+    """Regex for a whole-word, case-insensitive phrase (the generator's matching rule)."""
+    return rf"(?<!\w){re.escape(p)}(?!\w)"
+
+
+def audit_generic(table: Table, slots: dict, sec: Sections) -> list[Finding]:
+    """Re-derive every slot from the table's own evidence phrases, read the way a coder reads them.
+
+    The generator only checks that required phrases occur somewhere. Here a phrase counts only when it is
+    about the patient (not family history) and not negated ("denies agitation"), and an exclusive slot
+    must not also document another value. Slots a matching `note_rules` entry exempts are skipped.
+    """
+    skipped = {s for r in table.get("note_rules", []) if matches(r["when"], slots) for s in r.get("skip_evidence", [])}
+    pt = patient_text(sec)
+    out = []
+    for name, spec in table["slots"].items():
+        if name in skipped:
+            continue
+        evidence, value = spec.get("evidence", {}), slots[name]
+        for group in evidence_groups(evidence.get(value, [])):
+            if not any(mentions(pt, _phrase(p)) for p in group):
+                out.append(
+                    Finding(
+                        "answer",
+                        f"{name}={value}: no plain mention of any of {group[:3]} (negated or family history only)",
+                    )
+                )
+        if spec.get("exclusive", True):
+            own = {p.lower() for p in flat_evidence(evidence.get(value, []))}
+            for other, phrases in evidence.items():
+                hits = [
+                    p
+                    for p in flat_evidence(phrases)
+                    if other != value and p.lower() not in own and mentions(pt, _phrase(p))
+                ]
+                if hits:
+                    out.append(
+                        Finding("answer", f"{name}: also documents {other!r} ({hits[0]!r}), answer key is {value!r}")
+                    )
+    return out
+
+
+def audit_record(record: dict, table: Table | None = None) -> list[Finding]:
+    """Audit one scenario: the table's specific audit (or the generic one, given the table) plus common checks."""
     note = record["note"]
     specific = AUDITS.get(record["table"])
-    return (specific(record["slots"], sections(note), note) if specific else []) + audit_common(record, note)
+    if specific:
+        found = specific(record["slots"], sections(note), note)
+    elif table is not None:
+        found = audit_generic(table, record["slots"], sections(note))
+    else:
+        found = []
+    return found + audit_common(record, note) + audit_age(record, table)
 
 
-def audit_records(records: list[dict]) -> dict[str, list[Finding]]:
+def audit_age(record: dict, table: Table | None) -> list[Finding]:
+    """Flag a patient age outside the table's realistic range (`note_age`, e.g. dementia: 65 and over)."""
+    age = (record.get("generator", {}).get("style") or {}).get("age")
+    limits = (table or {}).get("note_age", {})
+    if age is None or not limits:
+        return []
+    lo, hi = limits.get("min", 0), limits.get("max", 200)
+    return [] if lo <= age <= hi else [Finding("realism", f"patient age {age} is outside {lo}-{hi} for this topic")]
+
+
+def audit_records(records: list[dict], tables: dict[str, Table] | None = None) -> dict[str, list[Finding]]:
     """Return {scenario id: findings} for the records that have findings."""
-    results = {r["id"]: audit_record(r) for r in records}
+    results = {r["id"]: audit_record(r, (tables or {}).get(r["table"])) for r in records}
     return {k: v for k, v in results.items() if v}
 
 
@@ -418,7 +478,7 @@ def main(argv: list[str] | None = None) -> int:
     except FileNotFoundError as e:
         print(e, file=sys.stderr)
         return 2
-    results = audit_records(records)
+    results = audit_records(records, load_tables())
     print(format_report(len(records), results))
     return 1 if results else 0
 

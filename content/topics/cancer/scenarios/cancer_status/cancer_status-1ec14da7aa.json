@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-1ec14da7aa",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "history",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for metastatic prostate cancer.\n\nHPI: Pt is an 86-year-old male presenting for follow-up of prostate carcinoma. Pt’s primary cancer was removed and treated years ago; treatment is complete, nothing is directed at it now, and there is no evidence of local recurrence at the primary site. However, pt now presents with known liver metastases. Pt reports mild fatigue but denies significant abdominal pain, jaundice, or unintentional weight loss. He is stable on current management.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Multivitamin QD\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nHt/Wt: 165 lbs\n\nRecent Labs:\nHb: 13.2\nWBC: 7.4\nPlt: 210\neGFR: 62\nALT: 45\nAST: 42\nAlk Phos: 110\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nGI: Denies nausea, vomiting, diarrhea.\nGU: Denies dysuria, hematuria.\nMSK: Denies joint pain.\nNeuro: Denies dizziness, confusion.\n\nSocial History: Retired. Lives with wife. No tobacco or alcohol use.\n\nFamily History: Father had hypertension. Mother had diabetes.\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB, no wheezes/crackles.\nAbdomen: Soft, non-tender, no hepatomegaly noted.\nSkin: No new lesions.\n\nAssessment:\n1. Prostate cancer with liver metastases. Primary site stable.\n2. Hypertension.\n\nPlan:\n- Continue current medications.\n- Monitor liver enzymes and renal function.\n- Follow up in 3 months to assess progression of liver metastasis.\n- Encourage adequate protein intake and hydration.\n\nElectronically signed, \nA. Rivera, NP\n05/14/2026",
+  "answer": [
+    "Z85.46",
+    "C78.7"
+  ],
+  "explanations": [
+    "The prostate cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.46 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C61",
+        "C78.7"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.46"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.209,
+        "gap": -4.209,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.46",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:44:40+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

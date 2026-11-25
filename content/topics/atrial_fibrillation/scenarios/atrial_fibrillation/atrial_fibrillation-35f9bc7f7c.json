@@ -1,0 +1,63 @@
+{
+  "id": "atrial_fibrillation-35f9bc7f7c",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "status": "resolved",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for history of atrial fibrillation.\n\nHPI\nThe patient is an 80-year-old male presenting for a routine cardiology follow-up. He has a history of atrial fibrillation which was successfully managed via a catheter ablation procedure several years ago. The patient reports that he has had no recurrence since the procedure. He currently feels well and denies any palpitations, shortness of breath, or lightheadedness. He is not currently taking any rate-control or rhythm-control medications. Due to his low clinical risk profile, he is not on any blood thinners. He states that his heart rate feels regular and he has no concerns at this time.\n\nMedication List\n1. Lisinopril 10mg daily\n2. Atorvastatin 20mg daily\n3. Multivitamin daily\n\nReview of Systems\nThe patient reports no recent chest pain, shortness of breath, or syncope. He denies any lower extremity edema, fever, chills, or recent weight changes. He denies any neurological deficits or changes in vision.\n\nSocial History\nThe patient lives at home with his wife. He retired five years ago and enjoys gardening and walking. He drinks coffee occasionally and reports no tobacco or alcohol use.\n\nFamily History\nFather had a history of hypertension and myocardial infarction at age 70. Mother had a history of type 2 diabetes.\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm (regular)\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs\nHbA1c: 6.2%\neGFR: 65 mL/min/1.73m2\nLDL: 88 mg/dL\nTSH: 2.1 mIU/L\n\nExam\nThe patient is a well-appearing, alert, and oriented elderly male in no acute distress. Cardiovascular exam reveals a regular rhythm and rate with a S1 and S2 heard clearly; no murmurs, rubs, or gallops are noted. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended. Extremities are symmetric with no edema and normal capillary refill.\n\nAssessment\n1. Atrial fibrillation, status post ablation. The patient remains stable with no recurrence since the procedure. He does not require any medication for rhythm or rate control at this time.\n\nPlan\n1. Continue current medications as prescribed.\n2. Routine follow-up in 6 months to monitor cardiovascular status.\n3. Encouraged continued regular walking and healthy diet.\n\nElectronically signed,\nH. Tanaka, MD\nMay 14, 2026",
+  "answer": [
+    "Z86.79"
+  ],
+  "explanations": [
+    "Atrial fibrillation cured by ablation, with no recurrence and no treatment: personal history, Z86.79 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "resolved_coded_current",
+      "lean": "over",
+      "why": "It no longer exists and is not treated: code the history, not current AF.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "238"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:55:24+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

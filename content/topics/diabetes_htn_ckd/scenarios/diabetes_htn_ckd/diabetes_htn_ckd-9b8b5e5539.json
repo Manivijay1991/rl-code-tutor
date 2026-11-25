@@ -1,0 +1,167 @@
+{
+  "id": "diabetes_htn_ckd-9b8b5e5539",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for renal function and blood pressure.\n\nHPI: [Copied Forward] Patient is an 83-year-old male with a history of hypertension and type 2 diabetes. He presents for routine monitoring of his chronic kidney disease. He reports stable symptoms and continues to manage his glucose levels through diet alone.\n\nVitals: BP 138/82, HR 74, SpO2 98% on RA, Temp 98.6 F, Weight 185 lbs.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or abdominal pain.\nGenitourinary: Negative for dysuria.\nNeurological: Negative for weakness or dizziness.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. End stage renal disease: Recent laboratory results show an eGFR of 12 mL/min/1.73m2.\n2. Hypertension: Currently stable on current regimen.\n3. Type 2 diabetes: Managed via diet.\n\nPlan:\n1. Continue current blood pressure medications.\n2. Continue diet-based management for T2DM.\n3. Monitor renal function and electrolyte balance.\n\nElectronically signed, M. Okafor, MD, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "I12.0",
+    "N18.6"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "Hypertension with CKD stage 5 or ESRD: I12.0 (HCC 326).",
+    "The CKD stage is coded in addition: N18.6."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "I12.0",
+        "N18.6"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.9",
+        "N18.6"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I10",
+        "N18.6"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "Hypertension and CKD are presumed linked: I12.-, not I10.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.0"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.0",
+        "N18.5"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.981,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:57:23+00:00",
+    "style": {
+      "age": 83,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "M. Okafor"
+    }
+  }
+}

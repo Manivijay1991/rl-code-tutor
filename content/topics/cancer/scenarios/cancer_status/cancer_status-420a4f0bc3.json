@@ -1,0 +1,123 @@
+{
+  "id": "cancer_status-420a4f0bc3",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "active",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for prostate cancer and management of liver metastases.\n\nHPI\nThe patient is a 52-year-old man who presents today for a follow-up evaluation of his prostate carcinoma. He is currently receiving chemotherapy as part of his primary treatment regimen. During this visit, the patient reports persistent fatigue and mild abdominal discomfort. He notes that the symptoms have been intermittent over the last two weeks. He denies any acute fevers, chills, or significant unintentional weight loss since his last appointment. The primary focus of today's visit is the management of his liver metastases which were identified during recent imaging. He reports that his appetite remains stable despite the systemic side effects of his current treatment.\n\nMedication List\n- Chemotherapy agent (scheduled)\n- Ondansetron 8mg as needed for nausea\n- Multivitamin daily\n\nReview of Systems\nConstitutional: Reports fatigue. Denies fever or chills.\nGastrointestinal: Reports mild abdominal discomfort. Denies nausea, vomiting, or diarrhea.\nGenitourinary: Denies dysuria or urinary frequency.\nMusculoskeletal: Denies joint pain or muscle weakness.\nNeurological: Denies dizziness or numbness.\n\nSocial History\nThe patient works full-time in an office setting. He resides with his wife and two children. He reports being a non-smoker and drinks alcohol occasionally.\n\nFamily History\nFather had hypertension. Mother had type 2 diabetes. No family history of malignancy reported.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 210 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 6.2 x 10^9/L\nPlatelets: 180 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 82 mL/min/1.73m2\nALT: 55 U/L\nAST: 48 U/L\n\nExam\nGeneral: The patient appears in no acute distress, though he looks tired.\nAbdomen: Soft, non-tender, and non-distended. No palpable masses.\nGenitourinary: Normal external examination.\nSkin: No new rashes or lesions noted.\n\nAssessment\n1. Prostate carcinoma: The patient is currently on active treatment with chemotherapy.\n2. Liver metastases: Present and being monitored for progression or response to systemic therapy.\n\nPlan\n1. Continue the current chemotherapy protocol as scheduled.\n2. Monitor for any increase in abdominal pain or changes in liver function tests.\n3. Follow up in four weeks for a repeat lab workup and clinical assessment.\n\nElectronically signed,\nL. Moreau, PA-C\nMay 14, 2026",
+  "answer": [
+    "C61",
+    "C78.7"
+  ],
+  "explanations": [
+    "Cancer of the prostate under current treatment is a current malignancy: C61.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.46",
+        "C78.7"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C61"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 4.209,
+        "gap": -4.023,
+        "direction": "under",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C61",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "by": "17"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:44:30+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-320fc1c739",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "history",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow up for prostate cancer.\n\nHPI\nPt is a 73 y/o male presenting for follow up of prostate adenocarcinoma. Primary tumor was surgically removed and treated several years ago. Patient reports feeling well overall. Clinical evaluation shows no evidence of local recurrence at the primary site. However, patient is experiencing localized discomfort in the lumbar spine. Imaging confirms bone metastasis.\n\nMedication List\nAcetaminophen 650mg BID PRN for pain.\n\nExam\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 132/80, HR 72, RR 16, Temp 98.6F.\nMSK: Tenderness noted over lumbar spine. No focal neurological deficits.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\n\nAssessment\n1. Prostate adenocarcinoma. Primary site stable.\n2. Bone metastasis.\n\nPlan\n1. Continue monitoring primary site; no further intervention needed there.\n2. Manage bone metastasis symptoms.\n3. Order DEXA scan to evaluate bone density.\n4. F/u in 3 months.\n\nElectronically signed,\nM. Okafor, PA-C\n05/12/2026",
+  "answer": [
+    "Z85.46",
+    "C79.51"
+  ],
+  "explanations": [
+    "The prostate cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.46 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C61",
+        "C79.51"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.46"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.341,
+        "gap": -2.341,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.46",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:20+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "M. Okafor"
+    }
+  }
+}

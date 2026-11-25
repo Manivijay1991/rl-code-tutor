@@ -1,0 +1,106 @@
+{
+  "id": "diabetes_htn_ckd-7b82ea8ae2",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "3a",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for CKD and T2DM.\n\nHPI: Pt is a 90-year-old male presenting for routine follow-up of chronic kidney disease and type 2 diabetes. Pt reports feeling well today. Denies any acute shortness of breath, chest pain, or changes in urinary output. He continues to manage his glucose levels through diet alone. He reports adherence to low-sodium guidelines. No new complaints or concerns since last visit.\n\nMedication List:\n- Multivitamin daily\n- Vitamin D3 supplement\n\nSocial History: Retired. Lives with wife. No tobacco use. Occasional alcohol.\n\nFamily History: Father had history of CKD. Mother had history of stroke.\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: No nausea, no diarrhea.\nMSK: No joint pain, no falls.\nNeuro: No dizziness, no focal weakness.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 175 lbs\n\nRecent Labs:\neGFR: 52 mL/min/1.73m2\nHbA1c: 6.8%\nBMP: Na+ 138, K+ 4.5, Cr 1.8\n\nExam:\nGen: Alert, oriented x3, well-appearing for age.\nCV: RRR, S1, S2, no murmurs.\nLungs: CTAB.\nExt: WNL, no edema.\n\nAssessment:\n1. Chronic kidney disease, stage 3a.\n2. Type 2 diabetes.\n\nPlan:\n- Continue current diet-based management for T2DM.\n- Continue monitoring of renal function.\n- Follow up in 3 months for repeat labs and blood pressure check.\n- Encouraged continued hydration and balanced diet.\n\nElectronically signed, \nL. Moreau, DO\nMay 14, 2026",
+  "answer": [
+    "E11.22",
+    "N18.31"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.31."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.31"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.293,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.293,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1831"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:55:28+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

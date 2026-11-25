@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-f23da2d4e3",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "unspecified_depression",
+    "status": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nHPI: Patient is an 83-year-old female who presents today for a follow-up evaluation of depression. [Copied Forward from prior visit]: Patient reports persistent low mood and decreased interest in previously enjoyed hobbies. She describes feelings of sadness and fatigue. She notes that her sleep patterns have been inconsistent, often waking up early in the morning and having difficulty falling back asleep. She reports a diminished appetite over the last several weeks. She denies any acute physical pain but expresses a sense of lethargy.\n\nMedication List:\n- Sertraline 50mg daily\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 134/82, HR 76, SpO2 98% on room air, Temp 98.4 F, BMI 24.2.\n\nRecent Labs:\n- HbA1c: 5.8%\n- TSH: 2.1 mIU/L\n- eGFR: 72 mL/min/1.73m2\n- Sodium: 138 mEq/L\n- Potassium: 4.2 mEq/L\n\nReview of Systems:\nConstitutional: Positive for fatigue, negative for fever or chills.\nNeurological: Negative for tremors or dizziness.\nPsychiatric: Positive for depression, negative for sleep disturbances.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath.\nGastrointestinal: Negative for nausea or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\n\nSocial History: Patient is retired and lives with her spouse in a private residence. She enjoys gardening and knitting. She does not smoke and drinks caffeine occasionally.\n\nFamily History: Mother had hypertension; father had a history of heart disease.\n\nExam: Patient is an elderly female, alert and oriented to person, place, and time. She appears well-groomed and is in no acute distress. Affect is somewhat flat, and mood is described by the patient as \"down.\" Speech is normal in rate and volume. Cognition is intact. No tremors or gait abnormalities noted.\n\nAssessment:\n1. Depression\n\nPlan:\n1. Continue current medication regimen.\n2. Monitor for any changes in mood or physical symptoms.\n3. Follow up in 4 weeks for a routine check.\n\nElectronically signed, H. Tanaka, NP, 10/14/2026",
+  "answer": [
+    "F32.A"
+  ],
+  "explanations": [
+    "'Depression' without 'major depressive disorder' is F32.A, depression unspecified (no HCC). Do not upgrade it to major depression."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.9"
+      ],
+      "confusion": "coded_mdd_without_documentation",
+      "lean": "over",
+      "why": "Major depressive disorder is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "coded_mdd_without_documentation",
+      "lean": "over",
+      "why": "Neither major depression nor a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:50:04+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

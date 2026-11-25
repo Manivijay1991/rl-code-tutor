@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_htn_ckd-e93ff7775d",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for CKD and T2DM.\n\nHPI: 68 y.o. female pt presents for routine f/u of chronic kidney disease and type 2 diabetes. Pt reports she is currently managing her blood glucose levels through diet alone. She denies any new symptoms of malaise, edema, or shortness of breath. Pt states she is adherent to dietary restrictions. She is seeking evaluation of current renal function.\n\nMedication List:\n- Multivitamin daily\n- Vitamin D supplement daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight changes.\nHEENT: Denies vision changes, sore throat.\nCV: Denies chest pain, palpitations.\nResp: Denies cough, SOB.\nGI: Denies nausea, diarrhea, constipation.\nMSK: Denies joint pain, muscle weakness.\nNeuro: Denies dizziness, numbness.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had T2DM. Father had stroke.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 32%\nWt: 155 lbs\n\nRecent Labs:\neGFR: 12 mL/min/1.73m2\nCreatinine: 4.2 mg/dL\nHbA1c: 7.1%\nPotassium: 4.8 mEq/L\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, non-distended.\nExtremities: No edema noted.\nSkin: Intact, no rashes.\n\nAssessment:\n1. CKD stage 5: Pt continues to have significantly decreased renal function as evidenced by eGFR < 15.\n2. T2DM: Managed with diet; current HbA1c is stable.\n\nPlan:\n1. CKD: Continue monitoring of renal labs and electrolytes. Pt advised to avoid nephrotoxic agents.\n2. T2DM: Continue current diet-based management. F/u in 3 months for repeat labs.\n3. Education: Discussed importance of fluid intake and protein restrictions as appropriate for stage 5 CKD.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "N18.5"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.5."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.5"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.981,
+        "gap": -0.815,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.981,
+        "gap": -0.301,
+        "direction": "under",
+        "extra_hccs": [
+          "327"
+        ],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.981,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:55:48+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

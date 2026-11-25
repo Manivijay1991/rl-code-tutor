@@ -1,0 +1,8 @@
+{
+  "id": "obesity",
+  "title": "Obesity and BMI",
+  "kind": "hcc",
+  "description": "Obesity versus morbid obesity, and when BMI codes are reportable.",
+  "order": 80,
+  "enabled": true
+}

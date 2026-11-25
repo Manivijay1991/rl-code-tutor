@@ -1,0 +1,95 @@
+{
+  "id": "dementia_severity-7d7ccf1d35",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "moderate",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for cognitive decline.\n\nHPI\nPt is an 85 y.o. female presenting for a scheduled follow-up of dementia. Pt is accompanied by her daughter today. Daughter reports that pt's memory and executive function have continued to decline over the past 6 months. Pt requires significant assistance with ADLs and managing finances. However, daughter notes that pt remains very calm and is cooperative with all care. No significant changes in physical health reported since last visit.\n\nReview of Systems\nNegative for fever, chills, weight change, or chest pain. Denies any mood disturbances or behavioral changes.\n\nSocial History\nPt lives at home with her daughter and a part-time caregiver. Retired teacher. No tobacco or alcohol use.\n\nFamily History\nMother had memory issues in late 80s. Father had hypertension.\n\nMedication List\nDonepezil 10mg daily\nMemantine 50mg BID\nLisinopril 10mg daily\nMultivitamin daily\n\nVitals\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 58 kg\n\nRecent Labs\neGFR: 62\nHbA1c: 6.1%\nTSH: 2.1 mIU/L\nCBC: WNL\nCMP: WNL\n\nExam\nGeneral: Pt is alert, calm, and cooperative. Well-groomed.\nSpeech: Clear, though some word-finding difficulties noted.\nMood: Euthymic.\nCognition: Oriented to person and place, but disoriented to time. Significant deficits in short-term recall and complex task planning.\nNeuro: Cranial nerves II-XII intact. No tremors or gait changes.\nSkin: Intact, no pressure ulcers.\nLungs: CTAB.\nHeart: RRR, no murmurs.\n\nAssessment\n1. Dementia: Pt presents with moderate dementia. She remains stable from a behavioral standpoint, showing no signs of distress or mood disturbances. Cognitive decline is progressive but currently managed with current pharmacotherapy.\n\nPlan\n1. Continue current medications.\n2. Continue monitoring cognitive status and ADL requirements.\n3. Follow up in 3 months for reassessment.\n4. Daughter advised to continue safety measures at home.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "F03.B0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), moderate, without behavioral disturbance: F03.B0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (moderate): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is moderate.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "126",
+        "label": "Dementia/Moderate",
+        "from": [
+          "F03B0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:41:37+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

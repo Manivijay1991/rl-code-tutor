@@ -9,18 +9,16 @@ import { app, $, savePrefs, ui } from "./state.js";
 export function renderTopics() {
   const nav = $("topics");
   const topic = app.prefs.topic;
-  const chips = [
-    h("button", { class: "chip-btn", type: "button", "aria-pressed": String(!topic && !app.focus), on: { click: () => setTopic(null) } }, "All topics"),
-    ...app.manifest.topics.map((tp) =>
-      h("button", { class: "chip-btn", type: "button", "aria-pressed": String(topic === tp.id && !app.focus), title: tp.description, on: { click: () => setTopic(tp.id) } },
-        tp.title),
-    ),
-  ];
-  if (app.focus) {
-    chips.push(h("button", { class: "chip-btn focus-chip", type: "button", "aria-pressed": "true", title: "Stop focused practice", on: { click: clearFocus } },
-      `Trap: ${trapName(app.focus)} ✕`));
-  }
-  mount(nav, chips);
+  const total = app.manifest.topics.reduce((n, tp) => n + tp.scenarios, 0);
+  // A native select scales to any number of topics and is keyboard and screen-reader friendly as is.
+  const select = h("select", { class: "topic-select", "aria-label": "Topic", title: "Practice topic", on: { change: (e) => setTopic(e.target.value || null) } },
+    h("option", { value: "", selected: !topic }, `All topics (${total})`),
+    app.manifest.topics.map((tp) => h("option", { value: tp.id, selected: topic === tp.id }, `${tp.title} (${tp.scenarios})`)));
+  const focusChip = app.focus
+    ? h("button", { class: "chip-btn focus-chip", type: "button", "aria-pressed": "true", title: "Stop focused practice", on: { click: clearFocus } },
+      `Trap: ${trapName(app.focus)} ✕`)
+    : null;
+  mount(nav, select, focusChip);
   renderHeaderStats();
 }
 

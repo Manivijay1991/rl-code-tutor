@@ -78,7 +78,7 @@ function hero() {
     h("div", { class: "stat-grid", "aria-label": "What is inside" },
       statTile("book", stats.scenarios, "clinical cases", "Practice notes to read and code"),
       statTile("target", stats.traps, "coding traps", "Common mistakes the tutor spots and coaches"),
-      statTile("chart", stats.topics, "topics", topics.map((tp) => tp.title).join(", ")),
+      statTile("chart", stats.topics, "topics", "Conditions and documentation skills: pick one, or practice them all"),
       statTile("bulb", ACTIONS.length, "coaching styles", "Ways the tutor can teach you after a miss")));
 }
 

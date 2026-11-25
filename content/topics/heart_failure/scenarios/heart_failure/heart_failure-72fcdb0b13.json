@@ -1,0 +1,108 @@
+{
+  "id": "heart_failure-72fcdb0b13",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint\nRoutine follow-up for heart failure.\n\nHPI\nThe patient is an 89-year-old woman who presents today for a scheduled follow-up regarding her chronic diastolic heart failure. She reports that she has been feeling well and denies any shortness of breath, increased fatigue, or significant swelling in her lower extremities over the past month. She states that she is managing her symptoms effectively at home and feels stable. She reports good adherence to her current medication regimen and denies any side effects.\n\nMedication List\nFurosemide 40mg daily\nLisinopril 10mg daily\nSpironolactone 25mg daily\n\nExam\nThe patient is alert and oriented x3. She appears in no acute distress. Her skin is warm and dry. Breath sounds are clear bilaterally and no crackles are noted. Heart sounds are regular with no murmurs. Lower extremities show no edema. Vital signs are stable: Blood pressure 128/78, Heart Rate 72, Respiratory Rate 16, Oxygen Saturation 98% on room air.\n\nAssessment\nThe patient has chronic HFpEF. Her condition is currently stable with no signs of worsening.\n\nPlan\nContinue current medication regimen. Follow up in 3 months for a routine evaluation.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "I50.32"
+  ],
+  "explanations": [
+    "Chronic diastolic heart failure: I50.32 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.33"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents diastolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5032"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:40+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

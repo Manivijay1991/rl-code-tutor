@@ -1,0 +1,95 @@
+{
+  "id": "dementia_severity-c0f660218b",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "severe",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline.\n\nHPI: Pt is a 68-year-old female presenting for follow-up of dementia. She is accompanied by her daughter today. Daughter reports significant decline in activities of daily living (ADLs) and independent living. Pt requires frequent prompting for dressing and bathing. Memory is significantly impaired; pt is unable to recall recent events or recognize familiar surroundings at times. However, pt is calm and cooperative during the interview. No behavioral disturbances noted.\n\nMedication List:\n- Donepezil 10mg QD\n- Memantine 20mg BID\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nNeuro: Memory loss, orientation issues. No tremors or gait changes.\nPsych: No mood disturbances.\nCV: No chest pain or palpitations.\nRespiratory: No SOB or cough.\nGI: No nausea or diarrhea.\n\nSocial History: Retired. Lives with daughter. No tobacco or alcohol use.\n\nFamily History: Mother had memory loss in late 70s. Father had hypertension.\n\nFamily History: Mother had memory loss in late 70s. Father had hypertension.\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\neGFR: 75 mL/min/1.73m2\nVitamin D: 30 ng/mL\n\nExam:\nGeneral: Pt is alert, calm, and cooperative.\nNeuro: Oriented to person only. Significant deficits in orientation to time and place. Speech is clear but slow. Affect is flat. No tremors or facial grimacing.\nSkin: Intact, no rashes.\nCV: RRR, regular S1, S2.\nLungs: CTAB.\n\nAssessment:\n1. Severe dementia. Pt shows significant functional decline and cognitive impairment.\n\nPlan:\n1. Continue current medications.\n2. Continue monitoring for safety at home.\n3. F/u in 3 months for reassessment of cognitive status.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "F03.C0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), severe, without behavioral disturbance: F03.C0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (severe): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "125",
+        "label": "Dementia/Severe",
+        "from": [
+          "F03C0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:41:43+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

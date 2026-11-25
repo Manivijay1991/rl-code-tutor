@@ -1,0 +1,106 @@
+{
+  "id": "stroke_sequelae-64bc31b9aa",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_right",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for right-sided hemiparesis.\n\nHPI: Patient is an 89-year-old female with a history of a prior ischemic stroke. She presents for a follow-up evaluation of her residual right-sided hemiparesis. \n(Copied forward from prior visit): Patient reports stable mobility and manages daily activities with assistance. No new neurological complaints reported. She continues to experience decreased motor strength on the right side following her previous cerebral infarction.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nNeurological: Positive for right-sided hemiparesis. Negative for dizziness, headache, or vision changes.\nMusculoskeletal: Positive for weakness in right upper and lower extremities. Negative for joint pain.\nRespiratory: Negative for shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nNeurological: Significant for residual right-sided hemiparesis. Strength is 3/5 in the right upper and lower extremities. Sensation is intact. Reflexes are symmetric.\n\nAssessment:\n1. Right-sided hemiparesis status post ischemic stroke.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue physical therapy twice weekly to maintain mobility and strength.\n3. Follow up in 3 months for neurological reassessment.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "I69.351"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, right side, dominant by default: I69.351 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.353"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I69.359"
+      ],
+      "confusion": "unspecified_side",
+      "lean": "neutral",
+      "why": "The affected side is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69351"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:57+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

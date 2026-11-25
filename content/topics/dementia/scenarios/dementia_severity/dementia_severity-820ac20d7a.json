@@ -1,0 +1,150 @@
+{
+  "id": "dementia_severity-820ac20d7a",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "mild",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for Alzheimer's disease and behavioral changes.\n\nVitals: BP 138/82, HR 74, Temp 98.4 F, SpO2 96% on RA, Weight 142 lbs.\n\nRecent Labs: HbA1c: 6.2%, eGFR: 68, TSH: 2.1 mIU/L, Vitamin B12: 450 pg/mL.\n\nSocial History: Lives at home with her daughter and two grandchildren. Retired teacher. No tobacco or alcohol use.\n\nFamily History: Mother had early-onset dementia; Father had hypertension and heart disease.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nNeurological: Positive for memory loss and occasional agitation. Negative for tremors or gait instability.\nPsychiatric: Positive for evening agitation. Negative for sleep disturbances.\nGenitourinary: Negative for dysuria or incontinence.\nIntegumentary: Negative for rashes or pressure sores.\n\nHPI: [Copied Forward] Patient is an 86-year-old female with a known history of Alzheimer's disease. She presents for a scheduled follow-up to monitor cognitive decline and manage associated symptoms. She is currently managed on a regimen of cholinesterase inhibitors. She reports difficulty with short-term memory and executive functioning.\n\n[Current Update] Today, the patient’s daughter reports that the patient has been increasingly agitated during the evening hours. These episodes of agitation occur approximately three times a week, often involving repetitive questioning and restlessness. The patient remains oriented to person and place but shows significant disorientation to time. She continues to have a mild stage of cognitive impairment.\n\nMedication List:\n- Donepezil 10mg daily\n- Lisinopril 10mg daily\n- Multivitamin daily\n\nExam:\nGeneral: Alert and cooperative, though appears slightly restless.\nNeurological: Speech is clear but slow. Gait is steady with a single-point cane. Memory: Impaired recall of recent events. Mood: Appears mildly agitated during the interview.\n\nAssessment:\n1. Alzheimer's disease, mild dementia.\n2. Agitation associated with dementia.\n\nPlan:\n1. Continue current dosage of Donepezil.\n2. Discussed behavioral management strategies with the daughter, including a simplified evening routine to reduce agitation.\n3. Will monitor for any increase in the severity of agitation and follow up in 3 months.\n\nElectronically signed, J. Lindqvist, MD, 05/14/2026",
+  "answer": [
+    "G30.9",
+    "F02.A11"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), mild, with agitation: F02.A11."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.A11"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.811"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (mild): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is mild.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.A0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.A11"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "G309",
+          "F02A11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:48:41+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

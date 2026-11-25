@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-41dc442191",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_right",
+    "handedness": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for residual stroke symptoms.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 28.4.\n\nRecent Labs: HbA1c 6.8%, eGFR 88 mL/min/1.73m2, Lipid Panel: Total Cholesterol 190 mg/dL, LDL 102 mg/dL, HDL 45 mg/dL, Triglycerides 150 mg/dL.\n\nHistory of Present Illness:\n[Copied Forward from 03/15/2026]\nPatient is a 51-year-old male presenting for follow-up regarding a past ischemic stroke. He reports stable baseline symptoms but notes ongoing right-sided hemiparesis. He is left-hand dominant and manages most activities of daily living independently despite the physical limitations. He denies any recent falls or worsening of motor function.\n\n[Update]\nThe patient reports that his right-sided hemiparesis remains stable. He is able to perform most tasks using his left hand. He denies any new balance issues or changes in sensation. He continues to participate in a regular stretching routine.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nNeurological: Positive for right-sided hemiparesis. Negative for dizziness or loss of consciousness.\nMusculoskeletal: Positive for decreased strength in right upper and lower extremities.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath.\nGastrointestinal: Negative for abdominal pain or changes in bowel habits.\nGenitourinary: Negative for dysuria or incontinence.\n\nSocial History:\nThe patient is married and works as a software engineer. He lives in a single-story home. He exercises three times a week and does not smoke.\n\nFamily History:\nFather had a myocardial infarction at age 62. Mother has hypertension.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nNeurological: Grossly intact sensation to light touch in all extremities. Significant right-sided hemiparesis noted in the right arm and leg. Strength is 3/5 in the right upper extremity and 4/5 in the right lower extremity. Reflexes are 2+ throughout. Cranial nerves II-XII are grossly intact. Gait is steady with a slight limp on the right side.\n\nAssessment:\n1. Residual right-sided hemiparesis following a prior ischemic stroke.\n2. Hyperlipidemia.\n\nPlan:\n1. Continue current medications.\n2. Encourage continued physical therapy for right-sided hemiparesis.\n3. Routine follow-up in 3 months.\n\nElectronically signed, J. Lindqvist, NP, 10/14/2026",
+  "answer": [
+    "I69.353"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, right non-dominant side: I69.353 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.351"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69353"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:42+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

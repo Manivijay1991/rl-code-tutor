@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-f74b505277",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"Feeling down and tired for several months.\"\n\nHPI: Pt is a 68 y.o. female presenting for f/u of mood symptoms. Pt reports persistent low mood, decreased interest in previous hobbies, and significant fatigue over the last 3 months. Pt describes feelings of worthlessness and disrupted sleep patterns, specifically early morning awakening. Pt states she finds it difficult to concentrate on daily tasks. Denies any thoughts of self-harm. Symptoms have persisted for a duration consistent with a single episode. Pt reports some improvement with recent lifestyle changes but notes persistent symptoms.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Multivitamin QD\n\nReview of Systems:\nConstitutional: Fatigue, sleep disturbance.\nPsychiatric: Depressed mood, low energy.\nNeurological: Denies tremors or dizziness.\nAll other systems reviewed and negative.\n\nSocial History: Retired; lives with husband. Non-smoker. Occasional social outings.\n\nFamily History: Mother had hypertension; Father had history of depression.\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'4\", 155 lbs\n\nRecent Labs:\nHbA1c: 5.7%\nTSH: 2.1 mIU/L\nCMP: WNL\n\nExam:\nGen: Well-appearing, pleasant.\nPsych: Cooperative, full speech, normal affect. Thought process linear. Insight and judgment intact.\nPhysical: CTAB, RRR, lungs clear, no acute distress.\n\nAssessment:\n1. Major depressive disorder, single episode.\n\nPlan:\n- Continue current dose of Sertraline.\n- Encouraged increased physical activity and social engagement.\n- Pt to continue journaling mood and sleep patterns.\n- F/u in 4 weeks to monitor progress.\n\nElectronically signed,\nS. Patel, DO\n10/14/2026",
+  "answer": [
+    "F32.9"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severity not documented (no HCC): F32.9."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "No severity is documented: do not assume one.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents single episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:15+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

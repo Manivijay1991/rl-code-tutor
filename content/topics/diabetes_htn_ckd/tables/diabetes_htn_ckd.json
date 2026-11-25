@@ -1,0 +1,427 @@
+{
+  "id": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note_age": {
+    "min": 45
+  },
+  "slots": {
+    "stage": {
+      "label": "CKD stage",
+      "values": [
+        "3a",
+        "3b",
+        "4",
+        "5",
+        "esrd"
+      ],
+      "labels": {
+        "3a": "Stage 3a",
+        "3b": "Stage 3b",
+        "4": "Stage 4",
+        "5": "Stage 5",
+        "esrd": "End stage renal disease"
+      },
+      "evidence": {
+        "3a": [
+          "stage 3a"
+        ],
+        "3b": [
+          "stage 3b"
+        ],
+        "4": [
+          "stage 4"
+        ],
+        "5": [
+          "stage 5"
+        ],
+        "esrd": [
+          "end stage renal disease",
+          "ESRD"
+        ]
+      },
+      "describe": {
+        "3a": "The provider documents CKD stage 3a. Include a recent eGFR between 45 and 59.",
+        "3b": "The provider documents CKD stage 3b. Include a recent eGFR between 30 and 44.",
+        "4": "The provider documents CKD stage 4. Include a recent eGFR between 15 and 29.",
+        "5": "The provider documents CKD stage 5 (not ESRD). Include a recent eGFR below 15.",
+        "esrd": "The provider documents end stage renal disease. Include a recent eGFR below 15."
+      }
+    },
+    "hypertension": {
+      "label": "Hypertension",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "labels": {
+        "no": "Not documented",
+        "yes": "Documented"
+      },
+      "evidence": {
+        "no": [],
+        "yes": [
+          "hypertension",
+          "HTN"
+        ]
+      },
+      "describe": {
+        "yes": "The patient also has hypertension. Do not say whether the CKD is or is not caused by it."
+      }
+    },
+    "dialysis": {
+      "label": "Dialysis status",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "labels": {
+        "no": "Not on dialysis",
+        "yes": "On maintenance dialysis"
+      },
+      "evidence": {
+        "no": [],
+        "yes": [
+          "dialysis",
+          "hemodialysis"
+        ]
+      },
+      "describe": {
+        "yes": "The patient is on maintenance hemodialysis."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "stage": [
+        "3a",
+        "3b",
+        "4",
+        "5"
+      ],
+      "dialysis": "yes"
+    }
+  ],
+  "note_forbid": [
+    "not due to diabetes",
+    "unrelated to diabetes",
+    "not due to hypertension",
+    "unrelated to hypertension",
+    "heart failure",
+    "CHF",
+    "HFrEF",
+    "insulin",
+    "metformin",
+    "glipizide",
+    "oral hypoglycemic",
+    "type 1",
+    "T1DM",
+    "neuropathy",
+    "retinopathy",
+    "NSAID",
+    "NSAIDs",
+    "naproxen",
+    "ibuprofen",
+    "hyperglycemia",
+    "hypoglycemia",
+    "poorly controlled",
+    "uncontrolled"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "require": [
+        [
+          "type 2 diabetes",
+          "T2DM"
+        ],
+        [
+          "CKD",
+          "chronic kidney disease",
+          "end stage renal disease",
+          "ESRD"
+        ]
+      ],
+      "describe": "The patient has type 2 diabetes managed with diet only (no diabetes medication) and chronic kidney disease; do not say whether the kidney disease is caused by the diabetes or by hypertension."
+    }
+  ],
+  "confusions": {
+    "missed_with_link": {
+      "description": "Coded diabetes without complications although the 'with' convention links diabetes and CKD.",
+      "lean": "under"
+    },
+    "missed_htn_ckd_link": {
+      "description": "Coded hypertension separately instead of hypertensive CKD.",
+      "lean": "under"
+    },
+    "wrong_htn_ckd_code": {
+      "description": "Used the hypertensive CKD code for the wrong stage range.",
+      "lean": "neutral"
+    },
+    "missed_code_also": {
+      "description": "Left out the CKD stage code that the combination codes ask for.",
+      "lean": "under"
+    },
+    "under_staged": {
+      "description": "Coded a lower CKD stage than documented.",
+      "lean": "under"
+    },
+    "missed_dialysis_status": {
+      "description": "Left out dialysis status Z99.2.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "diabetes",
+      "rules": [
+        {
+          "codes": [
+            "E11.22"
+          ],
+          "explain": "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+          "refs": [
+            "OCG I.A.15",
+            "OCG I.C.4.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.9"
+              ],
+              "confusion": "missed_with_link",
+              "why": "The 'with' convention presumes the diabetes caused the CKD."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "htn",
+      "rules": [
+        {
+          "when": {
+            "hypertension": "yes",
+            "stage": [
+              "3a",
+              "3b",
+              "4"
+            ]
+          },
+          "codes": [
+            "I12.9"
+          ],
+          "explain": "Hypertension with CKD stage 1-4 is presumed linked: I12.9. Both links apply at once: diabetes with CKD and hypertensive CKD.",
+          "refs": [
+            "OCG I.C.9.a.2"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I10"
+              ],
+              "confusion": "missed_htn_ckd_link",
+              "why": "Hypertension and CKD are presumed linked: I12.-, not I10."
+            },
+            {
+              "codes": [
+                "I12.0"
+              ],
+              "confusion": "wrong_htn_ckd_code",
+              "why": "I12.0 is for stage 5 or ESRD only."
+            }
+          ]
+        },
+        {
+          "when": {
+            "hypertension": "yes"
+          },
+          "codes": [
+            "I12.0"
+          ],
+          "explain": "Hypertension with CKD stage 5 or ESRD: I12.0 (HCC 326).",
+          "refs": [
+            "OCG I.C.9.a.2"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I12.9"
+              ],
+              "confusion": "wrong_htn_ckd_code",
+              "why": "I12.9 is for stage 1-4 or unspecified CKD."
+            },
+            {
+              "codes": [
+                "I10"
+              ],
+              "confusion": "missed_htn_ckd_link",
+              "why": "Hypertension and CKD are presumed linked: I12.-, not I10."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    },
+    {
+      "id": "ckd",
+      "rules": [
+        {
+          "when": {
+            "stage": "3a"
+          },
+          "codes": [
+            "N18.31"
+          ],
+          "explain": "The CKD stage is coded in addition: N18.31.",
+          "refs": [
+            "OCG I.C.14.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_code_also",
+              "why": "E11.22 says to use an additional code for the CKD stage."
+            }
+          ]
+        },
+        {
+          "when": {
+            "stage": "3b"
+          },
+          "codes": [
+            "N18.32"
+          ],
+          "explain": "The CKD stage is coded in addition: N18.32.",
+          "refs": [
+            "OCG I.C.14.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_code_also",
+              "why": "E11.22 says to use an additional code for the CKD stage."
+            },
+            {
+              "codes": [
+                "N18.31"
+              ],
+              "confusion": "under_staged",
+              "why": "Code the documented stage."
+            }
+          ]
+        },
+        {
+          "when": {
+            "stage": "4"
+          },
+          "codes": [
+            "N18.4"
+          ],
+          "explain": "The CKD stage is coded in addition: N18.4.",
+          "refs": [
+            "OCG I.C.14.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_code_also",
+              "why": "E11.22 says to use an additional code for the CKD stage."
+            },
+            {
+              "codes": [
+                "N18.32"
+              ],
+              "confusion": "under_staged",
+              "why": "Code the documented stage."
+            }
+          ]
+        },
+        {
+          "when": {
+            "stage": "5"
+          },
+          "codes": [
+            "N18.5"
+          ],
+          "explain": "The CKD stage is coded in addition: N18.5.",
+          "refs": [
+            "OCG I.C.14.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_code_also",
+              "why": "E11.22 says to use an additional code for the CKD stage."
+            },
+            {
+              "codes": [
+                "N18.4"
+              ],
+              "confusion": "under_staged",
+              "why": "Code the documented stage."
+            }
+          ]
+        },
+        {
+          "when": {
+            "stage": "esrd"
+          },
+          "codes": [
+            "N18.6"
+          ],
+          "explain": "The CKD stage is coded in addition: N18.6.",
+          "refs": [
+            "OCG I.C.14.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_code_also",
+              "why": "E11.22 says to use an additional code for the CKD stage."
+            },
+            {
+              "codes": [
+                "N18.5"
+              ],
+              "confusion": "under_staged",
+              "why": "Code the documented stage."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "rules": [
+        {
+          "when": {
+            "dialysis": "yes"
+          },
+          "codes": [
+            "Z99.2"
+          ],
+          "explain": "On maintenance dialysis: add Z99.2.",
+          "refs": [
+            "OCG I.C.14.a.1",
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_dialysis_status",
+              "why": "Dialysis status is reported with Z99.2."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "id": "heart_failure-0b2ce29ef7",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Follow-up for heart failure.\n\nHPI: 90 y/o male pt presents for routine follow-up of chronic systolic heart failure. Pt reports feeling well today. Denies any increased shortness of breath, orthopnea, or paroxysmal nocturnal dyspnea. No reports of peripheral edema or weight gain over the last week. Pt states he is maintaining his current activity level and tolerating his medications well. He denies any chest pain or palpitations. Stable status since last visit.\n\nMedication List:\n- Lisinopril 10mg QD\n- Carvedilol 6.25mg BID\n- Spironolactone 25mg QD\n- Furosemide 40mg QD\n\nVitals:\nBP: 122/74\nHR: 68 (RRR)\nRR: 18\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 178 lbs (Stable)\n\nRecent Labs:\neGFR: 62\nNa: 138\nK: 4.8\nCr: 1.1\nBNP: 180\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nRespiratory: No cough, wheezing, or SOB.\nCardiovascular: No chest pain, palpitations, or syncope.\nGI: No nausea, vomiting, or diarrhea.\nMSK: No joint pain or swelling.\nNeuro: No dizziness or confusion.\n\nSocial History: Lives with wife in a single-story home. Retired. Walks short distances daily. No tobacco use. Occasional alcohol.\n\nFamily History: Father had coronary artery disease. Mother had stroke.\n\nExam:\nGeneral: Well-appearing, alert and oriented x3. In no acute distress.\nRespiratory: CTAB. No crackles or wheezes.\nCardiovascular: RRR. S1, S2 heard. No murmurs, rubs, or gallops.\nExtremities: No pitting edema. Good capillary refill.\nSkin: Dry, no rashes.\n\nAssessment:\n1. Chronic HFrEF: Pt is currently stable. EF remains at 30%. No signs of fluid overload or worsening symptoms.\n\nPlan:\n- Continue current medication regimen.\n- Continue daily weight monitoring.\n- Follow up in 3 months for routine labs and clinic visit.\n- Instructed to call office if weight gain >3 lbs in 24 hours.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "I50.22"
+  ],
+  "explanations": [
+    "Chronic systolic heart failure: I50.22 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.23"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I50.32"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents systolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5022"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:01+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

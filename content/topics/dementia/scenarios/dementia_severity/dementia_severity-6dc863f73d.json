@@ -1,0 +1,63 @@
+{
+  "id": "dementia_severity-6dc863f73d",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "mci",
+    "severity": "unspecified",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow up for memory concerns.\n\nHPI: 75-year-old female presents for scheduled follow-up of cognitive status. Pt reports occasional difficulty with word-finding and remembering recent events. She notes she is still independent with ADLs but requires more effort for complex tasks. She denies any recent falls or changes in mood. Pt is calm and cooperative throughout the encounter.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 72\nTSH: 2.1\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nNeurological: Reports some forgetfulness; no tremors or gait changes.\nPsychiatric: No mood disturbances or sleep issues.\nOther systems: All negative.\n\nSocial History: Lives with her spouse. Retired teacher. Non-smoker. No alcohol use.\n\nFamily History: Mother had hypertension. Father had heart disease.\n\nExam:\nGeneral: Well-appearing, alert, and cooperative.\nSpeech: Clear, though slightly hesitant with some word-finding.\nMood/Affect: Calm, appropriate affect.\nNeurological: Alert and oriented to person, place, and time. Normal gait. No focal deficits noted.\nMental Status: Pt demonstrates mild cognitive impairment. No behavioral or mood disturbances observed.\n\nAssessment:\n1. Mild cognitive impairment.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Monitor cognitive status at next visit.\n3. Encourage continued engagement in social activities and mental stimulation.\n4. Follow up in 6 months.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "G31.84"
+  ],
+  "explanations": [
+    "Mild cognitive impairment is not dementia: G31.84 (no HCC). Code dementia only when the provider documents it."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "coded_dementia_for_mci",
+      "lean": "over",
+      "why": "The provider documents mild cognitive impairment, not dementia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0,
+        "gap": 0.341,
+        "direction": "over",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:49:08+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

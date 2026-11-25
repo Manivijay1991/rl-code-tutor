@@ -1,0 +1,79 @@
+{
+  "id": "stroke_sequelae-4d04ee937e",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "none",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for history of stroke.\n\nHPI\nPt is a 56-year-old female presenting for routine follow-up after a previous ischemic stroke. Pt reports feeling well and denies any new symptoms or concerns. She is here for monitoring and continued management of her history.\n\nMedication List\n- Aspirin 81mg daily\n- Atorvastatin 40mg daily\n\nExam\nGen: Well-appearing, in no acute distress.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\nNeuro: Alert and oriented x3. Speech clear. Facial symmetry intact. Motor strength 5/5 throughout. Coordination and gait normal. No residual deficits noted.\n\nAssessment\n1. History of ischemic stroke. Pt is stable and asymptomatic at this time.\n\nPlan\n1. Continue current medications.\n2. Routine follow-up in 6 months.\n3. Pt advised to seek immediate care for any sudden neurological changes.\n\nElectronically signed,\nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "Z86.73"
+  ],
+  "explanations": [
+    "A past ischemic stroke with no residual deficits: Z86.73, personal history (no HCC). I63 codes are for the acute stroke only."
+  ],
+  "refs": [
+    "OCG I.C.9.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "coded_acute_stroke",
+      "lean": "over",
+      "why": "I63 codes are for the acute stroke episode; after discharge use Z86.73 or I69.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I69.30"
+      ],
+      "confusion": "sequela_without_deficit",
+      "lean": "over",
+      "why": "No residual deficit is documented, so there is no sequela to code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:04+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

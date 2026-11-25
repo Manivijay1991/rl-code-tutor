@@ -1,0 +1,95 @@
+{
+  "id": "heart_failure-f8be13614b",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint\nIncreased shortness of breath and leg swelling.\n\nHPI\nThe patient is a 79-year-old woman presenting for a follow-up visit regarding her known systolic heart failure. She reports a significant increase in symptoms over the past week. She describes worsening shortness of breath, particularly when performing minimal activities such as walking to the mailbox. She also notes that her bilateral lower extremity edema has increased significantly, stating that her shoes no longer fit comfortably. She denies any chest pain, palpitations, or recent fever. She has been compliant with her current medication regimen but notes she feels more fatigued than usual. These symptoms are consistent with an acute on chronic exacerbation of her underlying condition.\n\nMedication List\nFurosemide 40mg daily\nLisinopril 10mg daily\nCarvedilol 6.25mg twice daily\nSpironolactone 25mg daily\n\nReview of Systems\nConstitutional: Reports increased fatigue.\nRespiratory: Positive for dyspnea on exertion. Denies cough or sputum production.\nCardiovascular: Denies chest pain or palpitations.\nMusculoskeletal: Positive for bilateral lower extremity swelling.\nNeurological: No focal weakness or numbness reported.\n\nSocial History\nThe patient lives at home with her spouse. She enjoys gardening and walking in her neighborhood. She denies tobacco or alcohol use.\n\nFamily History\nMother had a history of coronary artery disease. Father had a history of stroke.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 18 breaths/min\nOxygen Saturation: 95% on room air\nWeight: 178 lbs (Up 4 lbs from last visit)\n\nRecent Labs\nSodium: 136 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\nBNP: 850 pg/mL\nEjection Fraction: 30%\n\nExam\nThe patient appears in mild respiratory distress. Heart sounds are regular with an S3 gallop noted. Lungs show mild crackles at the bases. Significant pitting edema is observed in both lower extremities extending to the mid-calf.\n\nAssessment\n1. Acute on chronic exacerbation of systolic heart failure (HFrEF). The patient's clinical presentation, including weight gain and increased edema, indicates a need for intensified diuretic therapy.\n\nPlan\n1. Increase Furosemide dose to 80mg daily to address fluid overload.\n2. Instruct patient to monitor daily weights and report any weight gain of more than 2 pounds in 24 hours.\n3. Follow up in one week for a reassessment of fluid status.\n4. Continue current ACE inhibitor and beta-blocker dosages.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "I50.23"
+  ],
+  "explanations": [
+    "Acute on chronic systolic heart failure: I50.23 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.21"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5023"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:35+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

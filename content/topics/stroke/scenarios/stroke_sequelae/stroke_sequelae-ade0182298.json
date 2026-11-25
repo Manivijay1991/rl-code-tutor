@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-ade0182298",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_right",
+    "handedness": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for mobility and strength.\n\nHPI: Patient is a 73-year-old male who presents for a follow-up evaluation regarding residual right-sided hemiparesis following a previous ischemic stroke. The patient reports that his functional mobility is stable, though he continues to experience some weakness in his right upper and lower extremities. He notes that he is right-handed, which complicates some activities of daily living, but he is managing well with current compensatory strategies. He denies any recent falls or significant changes in his motor function since the last evaluation. He reports consistent adherence to his physical therapy regimen and is seeking an update on his current status and maintenance plan.\n\nVitals: BP 134/82, HR 76, SpO2 98% on room air, Temp 98.6 F, BMI 27.4.\n\nRecent Labs: HbA1c: 6.8%, eGFR: 72 mL/min/1.73m2, LDL: 95 mg/dL, Creatinine: 1.1 mg/dL.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n\nFamily History: Father had myocardial infarction at age 65. Mother had hypertension and type 2 diabetes.\nSocial History: Retired engineer. Lives with his wife. Non-smoker. Occasional social drinking.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nNeurological: Positive for right-sided hemiparesis; negative for dizziness or vision changes.\nMusculoskeletal: Positive for decreased strength in right arm; negative for joint pain.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished.\nNeurological: Patient is right-hand dominant. Significant motor weakness noted in the right upper and lower extremities secondary to a past ischemic stroke. Reflexes are 2+ throughout. Sensation is intact to light touch.\nMusculoskeletal: Good range of motion in all joints. Strength: Right arm 3/5, Left arm 5/5. Right leg 4/5, Left leg 5/5.\n\nAssessment:\n1. Residual right-sided hemiparesis following an ischemic stroke.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue physical therapy 2x weekly focusing on gait stability and upper extremity strengthening.\n3. Follow up in 3 months for a repeat neurological exam.\n\nElectronically signed,\nH. Tanaka, PA-C\nMay 14, 2026",
+  "answer": [
+    "I69.351"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, right dominant side: I69.351 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.353"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69351"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:59:09+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

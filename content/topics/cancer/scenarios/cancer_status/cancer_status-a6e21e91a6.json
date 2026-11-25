@@ -1,0 +1,64 @@
+{
+  "id": "cancer_status-a6e21e91a6",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for history of right lung cancer.\n\nHPI: The patient is a 55-year-old female presenting for a routine follow-up regarding her history of malignant neoplasm of the right lung. She underwent surgical resection and subsequent treatment several years ago. She reports feeling well and denies any new respiratory symptoms, such as cough, shortness of breath, or chest pain. She states she has not experienced any systemic symptoms or weight loss since her primary treatment was completed. She is here today for a surveillance evaluation to ensure stability.\n\nMedication List:\n- Multivitamin daily\n- Lisinopril 10 mg daily\n\nReview of Systems:\nThe patient denies any recent cough, fever, chills, night sweats, or unintended weight loss. She denies any bone pain or new-onset shortness of breath. She denies any changes in vision or hearing.\n\nSocial History: The patient is a non-smoker and works full-time as an administrative assistant. She lives with her spouse and two children.\n\nFamily History: Mother had hypertension. Father had a history of heart disease. No family history of malignancy reported.\n\nVitals:\nBP: 128/82 mmHg\nHR: 74 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs:\nWBC: 7.2 x 10^9/L\nHemoglobin: 13.5 g/dL\nPlatelets: 210 x 10^3/uL\neGFR: 88 mL/min/1.73m2\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nRespiratory: Lungs are clear to auscultation bilaterally. No wheezing or crackles noted.\nCardiovascular: Regular rate and rhythm. No murmurs.\nAbdomen: Soft, non-tender, no masses.\n\nAssessment:\n1. History of cancer of the right lung. The primary site was treated years ago and remains clear. Current clinical status shows no evidence of disease.\n\nPlan:\n1. Continue routine surveillance.\n2. Patient will return in six months for a follow-up visit.\n3. Patient advised to report any new symptoms immediately.\n\nElectronically signed, M. Okafor, PA-C, 05/14/2026",
+  "answer": [
+    "Z85.118"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 0,
+        "gap": 1.136,
+        "direction": "over",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:44:55+00:00",
+    "style": {
+      "age": 55,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "M. Okafor"
+    }
+  }
+}

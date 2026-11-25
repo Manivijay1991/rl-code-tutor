@@ -1,0 +1,108 @@
+{
+  "id": "dementia_severity-f3c79abff8",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "mild",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Evaluation of cognitive status and evening behavior.\n\nHPI: [Copied Forward] Patient is a 77-year-old female with a history of cognitive decline. She presents for follow-up of her dementia. She has been experiencing increasing difficulty with short-term memory and executive function. She is generally cooperative but shows signs of progressive cognitive impairment.\n\n[Today's Update] The patient’s daughter reports that the patient has been experiencing increased agitation in the evenings. These episodes are characterized by restlessness and irritability. The patient remains stable during daytime hours but becomes more agitated as the sun sets.\n\nMedication List:\n- Donepezil 10mg daily\n- Meloxicam 15mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F\n\nReview of Systems:\n- Neurological: Positive for memory loss, positive for evening agitation.\n- Psychiatric: Positive for irritability.\n- Systemic: Negative for fever, chills, or weight loss.\n\nExam:\nGeneral: Alert, oriented to person only.\nBehavior: Appears mildly agitated during the interview.\nNeurological: Gait is steady. Speech is clear but hesitant.\n\nAssessment:\n1. Mild dementia: Progressing as expected.\n2. Agitation: New onset of evening irritability.\n\nPlan:\n1. Continue current cognitive medication.\n2. Add low-dose trazodone at bedtime to address evening agitation.\n3. Follow up in 3 months.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "F03.A11"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), mild, with agitation: F03.A11."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.911"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (mild): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is mild.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03A11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:35:58+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

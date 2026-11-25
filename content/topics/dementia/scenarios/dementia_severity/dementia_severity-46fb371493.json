@@ -1,0 +1,91 @@
+{
+  "id": "dementia_severity-46fb371493",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "unspecified",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline.\n\nHPI: Pt is a 90-year-old male presenting for routine follow-up of dementia. He is accompanied by his daughter today. Daughter reports that he is generally calm and cooperative at home, though he has been more forgetful over the last 6 months. He remains independent with most ADLs but requires some prompting for complex tasks. No reports of behavioral issues or mood disturbances. Pt is alert and oriented to person but confused regarding current year and month.\n\nMedication List:\n- Donepezil 10mg daily\n- Multivitamin daily\n\nReview of Systems:\nHEENT: Denies vision/hearing changes.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies nausea, diarrhea.\nMSK: Denies joint pain.\nNeuro: Positive for memory loss. Negative for tremors or gait changes.\n\nSocial History: Retired. Lives at home with daughter. No tobacco/alcohol use.\n\nFamily History: Father had memory issues in his 80s. Mother had hypertension.\n\nVitals:\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 55\nTSH: 2.1\n\nExam:\nGen: Elderly male, well-groomed, appears calm and cooperative.\nNeuro: Alert and oriented to person. Confused to time/place. Speech is clear. No facial droop. Gait steady.\nPsych: No evidence of mood disturbance or behavioral issues.\nSkin: Intact, no new lesions.\n\nAssessment:\n1. Dementia: Stable at this time. Pt remains cooperative and engaged during the visit.\n\nPlan:\n1. Continue current medication regimen.\n2. Continue monitoring cognitive status.\n3. Follow up in 3 months for repeat evaluation.\n\nElectronically signed, L. Moreau, DO, 10/14/2026",
+  "answer": [
+    "F03.90"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), unspecified severity, without behavioral disturbance: F03.90."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.911"
+      ],
+      "confusion": "unsupported_behavior",
+      "lean": "over",
+      "why": "No behavioral disturbance is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F0390"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:41:14+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

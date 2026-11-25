@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-3f570cec56",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "bka_right",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Follow-up for hypertension.\n\nHPI: Pt is a 90 y.o. male presenting for routine follow-up of HTN. Pt reports feeling well overall. Denies any recent falls, shortness of breath, or chest pain. He notes he is using his prosthesis for mobility as usual. No new complaints today.\n\nMedication List:\n- Lisinopril 10mg QD\n- Amlodipine 5mg QD\n- Atorvastatin 20mg QD\n\nVitals:\nBP: 138/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Hgb: 13.2 / 12.1\neGFR: 65\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change.\nCV: No chest pain, palpitations, or edema.\nResp: No SOB or cough.\nGI: No nausea, vomiting, or diarrhea.\nMSK: No joint pain or stiffness.\nNeuro: No dizziness or numbness.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had HTN. Mother had stroke.\n\nExam:\nGen: Alert and oriented x3. Appears stated age. CTAB.\nCV: RRR, no murmurs, rubs, or gallops.\nLungs: Clear to auscultation bilaterally.\nMSK: Right below-knee amputation site intact. Prosthesis in place. Good range of motion in remaining joints.\nNeuro: Alert, steady gait with assistance.\n\nAssessment:\n1. Hypertension: Well-controlled on current regimen.\n2. Status post right BKA: Stable.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue monitoring BP at home.\n3. Return to clinic in 3 months for routine follow-up.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "Z89.511"
+  ],
+  "explanations": [
+    "Acquired absence of the right leg below the knee: Z89.511 (HCC 409). A status that still applies is coded at every visit where it is documented."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.598,
+        "gap": -0.598,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z89.611"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "The amputation is below the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.512"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89511"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:09+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

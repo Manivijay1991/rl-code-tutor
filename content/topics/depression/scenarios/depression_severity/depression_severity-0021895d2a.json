@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-0021895d2a",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "full_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for MDD.\n\nHPI\nThe patient is a 70-year-old male who presents today for a scheduled follow-up regarding his history of major depressive disorder, recurrent. He reports that he has been feeling stable and productive over the last several months. He notes that his previous symptoms of low energy and persistent sadness have not returned. He continues to engage in his hobbies and social activities regularly. He denies any current sleep disturbances or changes in appetite. He states that his mood remains consistent and he feels capable of managing his daily responsibilities effectively.\n\nReview of Systems\nThe patient reports no recent changes in appetite, sleep patterns, or energy levels. He denies any chest pain, shortness of breath, or joint pain. He denies any recent headaches or neurological symptoms. He denies any significant changes in bowel habits or urinary frequency.\n\nSocial History\nThe patient is retired and lives with his wife. He enjoys gardening and walking for exercise. He denies tobacco use and reports occasional social drinking.\n\nFamily History\nHis father had hypertension and his mother had type 2 diabetes. There is no known family history of mental health conditions.\n\nMedication List\nSertraline 50mg daily.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nGlucose: 105 mg/dL\neGFR: 82 mL/min/1.73m2\n\nExam\nThe patient appears well-groomed and is in no acute distress. He is alert and oriented to person, place, and time. His affect is full and congruent with his reported mood. Speech is normal in rate, volume, and tone. Thought process is linear and goal-directed. Insight and judgment are intact.\n\nAssessment\n1. Major depressive disorder, recurrent. The patient is currently in full remission. He has shown excellent stability on his current medication regimen.\n\nPlan\n1. Continue current dosage of Sertraline.\n2. Continue to monitor mood and any potential side effects.\n3. Follow up in 3 months for a routine check.\n\nElectronically signed, J. Lindqvist, NP, 10/14/2026",
+  "answer": [
+    "F33.42"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, in full remission (no HCC): F33.42."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents full remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.41"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is full, not partial.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:31+00:00",
+    "style": {
+      "age": 70,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

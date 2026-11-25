@@ -1,0 +1,72 @@
+{
+  "id": "cancer_status-e36e856ab5",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for colon cancer.\n\nHPI: (Copied Forward) Patient is a 66-year-old male who presented with a known malignant neoplasm of the colon. He has been managed for these findings and is currently being monitored for response to treatment.\n\nUpdate: The patient returns today for a follow-up on his colon carcinoma. He reports that he is currently receiving chemotherapy to manage the primary site. He reports manageable fatigue but denies any new localized pain or systemic symptoms. He is tolerating the current treatment regimen well.\n\nMedication List:\n- Chemotherapy agent (as scheduled)\n- Ondansetron 8mg as needed for nausea\n- Multivitamin\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Positive for fatigue; negative for fever, chills, or weight loss.\n- GI: Negative for abdominal pain, diarrhea, or constipation.\n- MSK: Negative for joint pain or swelling.\n- Neuro: Negative for headache or dizziness.\n\nExam: Patient is alert and oriented x3. Appearance is stable. Abdomen is soft, non-distended, and non-tender. No palpable masses. No acute distress noted.\n\nAssessment:\n1. Colon carcinoma, currently receiving chemotherapy.\n\nPlan:\n1. Continue current chemotherapy cycle.\n2. Monitor for side effects of systemic therapy.\n3. Follow up in 4 weeks for further evaluation.\n\nElectronically signed,\nL. Moreau, MD\nOctober 14, 2026",
+  "answer": [
+    "C18.9"
+  ],
+  "explanations": [
+    "Cancer of the colon under current treatment is a current malignancy: C18.9."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.038"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.363,
+        "gap": -0.363,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "22"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.363,
+    "hccs": [
+      {
+        "hcc": "22",
+        "label": "Bladder/Colorectal/and Other Cancers",
+        "from": [
+          "C189"
+        ],
+        "weight": 0.363
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:08+00:00",
+    "style": {
+      "age": 66,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "cancer_status-91aa26ea5c",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for history of right lung cancer.\n\nHPI: (Copied forward) Patient is a 75-year-old male with a history of malignancy of the right lung. The primary carcinoma was surgically removed and treated several years ago. Treatment is complete. The patient reports feeling well and denies any new respiratory symptoms, cough, or chest pain.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss.\nRespiratory: Negative for cough, shortness of breath.\nCardiovascular: Negative for palpitations, chest pain.\nMusculoskeletal: Negative for joint pain.\n\nExam: Patient is alert and oriented x3. Respiratory effort is even and unlabored. Lungs are clear to auscultation bilaterally. No masses or tenderness noted on chest wall.\n\nAssessment:\n1. History of cancer of the right lung. The primary site shows no evidence of local recurrence. Treatment is complete and no further intervention is indicated at this time.\n\nPlan:\n1. Continue routine monitoring.\n2. Follow up in 6 months for surveillance.\n\nElectronically signed,\nL. Moreau, NP\nMay 14, 2026",
+  "answer": [
+    "Z85.118"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 0,
+        "gap": 1.136,
+        "direction": "over",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:35+00:00",
+    "style": {
+      "age": 75,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "L. Moreau"
+    }
+  }
+}

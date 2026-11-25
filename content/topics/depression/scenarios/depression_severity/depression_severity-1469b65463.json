@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-1469b65463",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nThe patient is a 36-year-old woman presenting for a follow-up evaluation of her major depressive disorder. She reports that her symptoms have been persistent over the last several weeks, characterized by low energy, poor sleep quality, and a diminished interest in her usual hobbies. She describes her current mood as moderate in intensity, noting that while she is still able to perform her daily responsibilities, she feels frequently fatigued and unmotivated. She denies any acute changes in her circumstances since the last visit and reports that she is adhering to her current medication regimen.\n\nMedication List\nSertraline 50mg daily\n\nExam\nThe patient appears well-groomed and is cooperative with the interview. Her affect is somewhat flat, and her speech is normal in rate and volume. She demonstrates congruent mood and maintains good eye contact throughout the encounter.\n\nAssessment\nMajor depressive disorder, single episode, currently moderate.\n\nPlan\nContinue current dose of Sertraline. The patient will continue to monitor her symptoms and will return to the clinic in four weeks for a follow-up evaluation to assess her progress.\n\nElectronically signed, L. Moreau, DO, 05/12/2026",
+  "answer": [
+    "F32.1"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, moderate (HCC 155): F32.1."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.0"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents moderate (HCC 155); mild has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity is documented: do not use the unspecified code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F321"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:36:53+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

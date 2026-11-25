@@ -1,0 +1,8 @@
+{
+  "id": "cancer",
+  "title": "Cancer",
+  "kind": "hcc",
+  "description": "Current cancer versus personal history, and metastases.",
+  "order": 50,
+  "enabled": true
+}

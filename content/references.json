@@ -1,19 +1,27 @@
 {
+  "ICD-10-CM Index: Diabetes, poorly controlled": {
+    "title": "Alphabetic Index, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: F32-F33": {
+    "title": "Tabular List: major depressive disorder, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: I48": {
+    "title": "Tabular List: atrial fibrillation and flutter, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "OCG I.A.13": {
+    "title": "Etiology/manifestation convention (code first, use additional code)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=10"
+  },
   "OCG I.A.15": {
     "title": "The \"with\" convention",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=11"
   },
-  "OCG I.C.4.a": {
-    "title": "Diabetes mellitus",
-    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=39"
-  },
-  "OCG I.C.4.a.3": {
-    "title": "Diabetes and the use of insulin, oral hypoglycemics and injectable non-insulin drugs",
-    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=40"
-  },
-  "OCG I.C.9.a.2": {
-    "title": "Hypertensive chronic kidney disease",
-    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=50"
+  "OCG I.B.14": {
+    "title": "Documentation by clinicians other than the patient's provider (BMI)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=16"
   },
   "OCG I.C.14.a": {
     "title": "Chronic kidney disease",
@@ -23,9 +31,57 @@
     "title": "Stages of chronic kidney disease",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=62"
   },
+  "OCG I.C.2.d": {
+    "title": "Primary malignancy previously excised",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=34"
+  },
+  "OCG I.C.2.m": {
+    "title": "Current malignancy versus personal history of malignancy",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=38"
+  },
   "OCG I.C.21.c.3": {
     "title": "Status Z codes",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=93"
+  },
+  "OCG I.C.21.c.4": {
+    "title": "History (of) Z codes",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=97"
+  },
+  "OCG I.C.4.a": {
+    "title": "Diabetes mellitus",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=39"
+  },
+  "OCG I.C.4.a.3": {
+    "title": "Diabetes and the use of insulin, oral hypoglycemics and injectable non-insulin drugs",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=40"
+  },
+  "OCG I.C.5.b.1": {
+    "title": "Psychoactive substance use: in remission",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=43"
+  },
+  "OCG I.C.5.b.2": {
+    "title": "Psychoactive substance use, abuse and dependence",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=43"
+  },
+  "OCG I.C.5.d": {
+    "title": "Dementia: etiology and severity",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=45"
+  },
+  "OCG I.C.6.a": {
+    "title": "Dominant/nondominant side",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=45"
+  },
+  "OCG I.C.9.a.1": {
+    "title": "Hypertension with heart disease",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=50"
+  },
+  "OCG I.C.9.a.2": {
+    "title": "Hypertensive chronic kidney disease",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=50"
+  },
+  "OCG I.C.9.d": {
+    "title": "Sequelae of cerebrovascular disease",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=53"
   },
   "OCG IV.I": {
     "title": "Outpatient: chronic diseases",
@@ -34,9 +90,5 @@
   "OCG IV.J": {
     "title": "Outpatient: code all documented conditions that coexist",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=114"
-  },
-  "ICD-10-CM Index: Diabetes, poorly controlled": {
-    "title": "Alphabetic Index, in the FY 2027 ICD-10-CM files",
-    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   }
 }

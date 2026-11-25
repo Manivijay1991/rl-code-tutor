@@ -1,0 +1,392 @@
+{
+  "id": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note_age": {
+    "min": 50
+  },
+  "slots": {
+    "type": {
+      "label": "Type documented",
+      "values": [
+        "paroxysmal",
+        "persistent",
+        "permanent",
+        "unspecified"
+      ],
+      "labels": {
+        "paroxysmal": "Paroxysmal",
+        "persistent": "Persistent",
+        "permanent": "Permanent",
+        "unspecified": "Not specified"
+      },
+      "evidence": {
+        "paroxysmal": [
+          "paroxysmal atrial fibrillation",
+          "paroxysmal AFib",
+          "paroxysmal AF"
+        ],
+        "persistent": [
+          "persistent atrial fibrillation",
+          "persistent AFib",
+          "persistent AF"
+        ],
+        "permanent": [
+          "permanent atrial fibrillation",
+          "permanent AFib",
+          "permanent AF"
+        ],
+        "unspecified": [
+          "atrial fibrillation",
+          "AFib"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "paroxysmal": "The provider documents paroxysmal atrial fibrillation.",
+        "persistent": "The provider documents persistent atrial fibrillation (not longstanding).",
+        "permanent": "The provider documents permanent atrial fibrillation.",
+        "unspecified": "The provider documents atrial fibrillation without naming its type."
+      }
+    },
+    "status": {
+      "label": "Current or history",
+      "values": [
+        "current",
+        "resolved"
+      ],
+      "labels": {
+        "current": "Current (treated or monitored)",
+        "resolved": "Cured by ablation, no treatment"
+      },
+      "evidence": {
+        "current": [],
+        "resolved": [
+          "status post ablation",
+          "resolved after ablation",
+          "no recurrence since"
+        ]
+      },
+      "describe": {
+        "current": "The atrial fibrillation is current: the provider monitors it and the patient takes rate-control medication.",
+        "resolved": "The atrial fibrillation was cured by catheter ablation years ago: no recurrence, and no rate-control, rhythm or anticoagulant medication now."
+      }
+    },
+    "anticoagulant": {
+      "label": "Long-term anticoagulant",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "labels": {
+        "no": "No",
+        "yes": "Yes"
+      },
+      "evidence": {
+        "no": [],
+        "yes": [
+          "apixaban",
+          "rivaroxaban",
+          "warfarin",
+          "dabigatran",
+          "edoxaban"
+        ]
+      },
+      "describe": {
+        "no": "The patient takes no anticoagulant (for example, low stroke risk).",
+        "yes": "The patient takes a long-term anticoagulant for stroke prevention (e.g. apixaban)."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "status": "resolved",
+      "type": [
+        "paroxysmal",
+        "persistent",
+        "permanent"
+      ]
+    },
+    {
+      "status": "resolved",
+      "anticoagulant": "yes"
+    }
+  ],
+  "note_forbid": [
+    "atrial flutter",
+    "flutter",
+    "mitral stenosis",
+    "valvular",
+    "valve replacement",
+    "heart failure",
+    "stroke",
+    "pacemaker",
+    "Wolff",
+    "aspirin",
+    "clopidogrel",
+    "antiplatelet"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "require": [
+        [
+          "atrial fibrillation",
+          "AFib"
+        ]
+      ]
+    },
+    {
+      "when": {
+        "type": "unspecified"
+      },
+      "forbid": [
+        "paroxysmal",
+        "persistent",
+        "permanent",
+        "chronic atrial",
+        "longstanding",
+        "long-standing"
+      ]
+    },
+    {
+      "when": {
+        "type": "persistent"
+      },
+      "forbid": [
+        "longstanding",
+        "long-standing",
+        "chronic atrial"
+      ]
+    },
+    {
+      "when": {
+        "type": [
+          "paroxysmal",
+          "permanent"
+        ]
+      },
+      "forbid": [
+        "chronic atrial",
+        "longstanding",
+        "long-standing"
+      ]
+    },
+    {
+      "when": {
+        "anticoagulant": "no"
+      },
+      "forbid": [
+        "anticoagulant therapy",
+        "anticoagulation therapy",
+        "on anticoagulation"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_specified": {
+      "description": "Used unspecified atrial fibrillation (I48.91) when the type is documented.",
+      "lean": "neutral"
+    },
+    "wrong_af_type": {
+      "description": "Coded a different type of atrial fibrillation than documented.",
+      "lean": "neutral"
+    },
+    "assumed_type": {
+      "description": "Coded a type of atrial fibrillation the provider did not document.",
+      "lean": "neutral"
+    },
+    "resolved_coded_current": {
+      "description": "Coded current atrial fibrillation after it was cured and is no longer treated.",
+      "lean": "over"
+    },
+    "current_coded_history": {
+      "description": "Coded personal history while the atrial fibrillation is still current.",
+      "lean": "under"
+    },
+    "missed_anticoagulant": {
+      "description": "Left out long-term anticoagulant use (Z79.01).",
+      "lean": "under"
+    },
+    "antiplatelet_vs_anticoagulant": {
+      "description": "Used the antiplatelet code (Z79.02) for an anticoagulant.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "afib",
+      "rules": [
+        {
+          "when": {
+            "status": "resolved"
+          },
+          "codes": [
+            "Z86.79"
+          ],
+          "explain": "Atrial fibrillation cured by ablation, with no recurrence and no treatment: personal history, Z86.79 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I48.91"
+              ],
+              "confusion": "resolved_coded_current",
+              "why": "It no longer exists and is not treated: code the history, not current AF."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "paroxysmal"
+          },
+          "codes": [
+            "I48.0"
+          ],
+          "explain": "Paroxysmal atrial fibrillation: I48.0 (HCC 238).",
+          "refs": [
+            "ICD-10-CM Tabular: I48"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I48.91"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (paroxysmal) is documented."
+            },
+            {
+              "codes": [
+                "I48.21"
+              ],
+              "confusion": "wrong_af_type",
+              "why": "The provider documents paroxysmal, not permanent."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "persistent"
+          },
+          "codes": [
+            "I48.19"
+          ],
+          "explain": "Persistent atrial fibrillation, not documented as longstanding: I48.19, other persistent (HCC 238).",
+          "refs": [
+            "ICD-10-CM Tabular: I48"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I48.11"
+              ],
+              "confusion": "wrong_af_type",
+              "why": "Longstanding persistent is not documented."
+            },
+            {
+              "codes": [
+                "I48.91"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (persistent) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "permanent"
+          },
+          "codes": [
+            "I48.21"
+          ],
+          "explain": "Permanent atrial fibrillation: I48.21 (HCC 238).",
+          "refs": [
+            "ICD-10-CM Tabular: I48"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I48.20"
+              ],
+              "confusion": "wrong_af_type",
+              "why": "Permanent has its own code; I48.20 is chronic AF, unspecified."
+            },
+            {
+              "codes": [
+                "I48.91"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (permanent) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified"
+          },
+          "codes": [
+            "I48.91"
+          ],
+          "explain": "Current atrial fibrillation without a documented type: I48.91 (HCC 238).",
+          "refs": [
+            "ICD-10-CM Tabular: I48"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I48.0"
+              ],
+              "confusion": "assumed_type",
+              "why": "The provider does not document the type."
+            },
+            {
+              "codes": [
+                "Z86.79"
+              ],
+              "confusion": "current_coded_history",
+              "why": "The atrial fibrillation is current (treated and monitored)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anticoag",
+      "rules": [
+        {
+          "when": {
+            "anticoagulant": "yes"
+          },
+          "codes": [
+            "Z79.01"
+          ],
+          "explain": "Long-term anticoagulant use: add Z79.01.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_anticoagulant",
+              "why": "Long-term anticoagulant therapy is documented."
+            },
+            {
+              "codes": [
+                "Z79.02"
+              ],
+              "confusion": "antiplatelet_vs_anticoagulant",
+              "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01)."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-1d9872d065",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "persistent",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for persistent atrial fibrillation.\n\nHPI\nThe patient is an 86-year-old male presenting today for a follow-up evaluation of persistent AFib. He reports that his heart rate remains relatively stable on his current regimen. He denies any episodes of lightheadedness, syncope, or significant palpitations. He notes some occasional fatigue but states his functional capacity remains unchanged. He does not report any shortness of breath during his daily activities. He is currently managed with rate-control medication and has not required any changes to his dosage recently. He denies any chest pain or associated symptoms of tachycardia.\n\nReview of Systems\nThe patient reports no recent fevers, chills, or cough. He denies any unintentional weight loss or night sweats. He reports no changes in bowel habits or urinary frequency. He denies any new-onset numbness or weakness in his extremities. He denies any recent falls or acute injuries.\n\nSocial History\nThe patient lives at home with his spouse. He is retired and enjoys gardening and watching television. He reports a limited alcohol intake and denies any tobacco use.\n\nFamily History\nHis father had hypertension and a history of coronary artery disease. His mother had type 2 diabetes.\n\nMedication List\nMetoprolol 50mg daily\nLisinopril 10mg daily\nAtorvastatin 20mg daily\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented to person, place, and time. His skin is warm and dry with no cyanosis or edema. Heart rate is regular but fast at 88 beats per minute. Rhythm is irregular. Blood pressure is 132/82 mmHg. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended. Extremities are symmetric with no visible swelling.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 88 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 97% on room air\n\nRecent Labs\nHemoglobin: 13.5 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nGlucose: 108 mg/dL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nAssessment\n1. Persistent atrial fibrillation: The patient's condition is currently being managed with rate-control therapy. His heart rate is well-controlled. Given his low clinical risk profile, he does not require any anticoagulant.\n\nPlan\n1. Continue current metoprolol dosage for rate control of his persistent AFib.\n2. Continue current blood pressure and cholesterol medications.\n3. Patient to continue monitoring for any new symptoms of tachycardia.\n4. Follow up in three months for a repeat evaluation.\n\nElectronically signed, P. O'Brien, PA-C, 05/12/2026",
+  "answer": [
+    "I48.19"
+  ],
+  "explanations": [
+    "Persistent atrial fibrillation, not documented as longstanding: I48.19, other persistent (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.11"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Longstanding persistent is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (persistent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4819"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:57:43+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

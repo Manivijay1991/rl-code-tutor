@@ -1,0 +1,129 @@
+{
+  "id": "atrial_fibrillation-1f6e3ad662",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rhythm management.\n\nHPI: Pt is a 78-year-old male presenting for routine follow-up of atrial fibrillation. Pt reports feeling generally well, denying any palpitations, syncope, or chest pain. He is currently managed on rate control and anticoagulation. Pt reports good adherence to his medications. Denies shortness of breath or increased fatigue. No new concerns reported at this time.\n\nMedication List:\n- Apixaban 5mg BID\n- Metoprolol 25mg daily\n- Lisinopril 10mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight changes.\nCV: Denies chest pain, palpitations, syncope.\nResp: Denies SOB, cough.\nNeuro: Denies headache, weakness, numbness.\nMSK: Denies joint pain.\nGI: Denies abdominal pain, diarrhea, constipation.\n\nSocial History: Retired. Lives with wife. No tobacco use. Occasional alcohol use.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nRecent Labs:\n- HbA1c: 6.2%\n- eGFR: 65 mL/min\n- K+: 4.1 mEq/L\n- Na+: 138 mEq/L\n- INR: N/A (on DOAC)\n\nVitals:\nBP: 128/78\nHR: 72 (regular)\nRR: 16\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 185 lbs\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops. Cap refill <2 sec.\nResp: CTAB, no wheezes or rales.\nNeuro: Alert, coherent, no focal deficits.\nSkin: No rashes or lesions.\n\nAssessment:\n1. Atrial fibrillation: Pt is currently stable on rate control and apixaban. No signs of tachycardia or rapid heart rate during today's visit.\n2. Hypertension: Well controlled on current regimen.\n\nPlan:\n- Continue current medications as prescribed.\n- Continue apixaban for prevention of systemic events related to AFib.\n- Continue metoprolol for rate control of AFib.\n- F/u in 6 months for routine monitoring.\n\nElectronically signed, T. Haddad, MD, 05/12/2026",
+  "answer": [
+    "I48.91",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Current atrial fibrillation without a documented type: I48.91 (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.0",
+        "Z79.01"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "The provider does not document the type.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.79",
+        "Z79.01"
+      ],
+      "confusion": "current_coded_history",
+      "lean": "under",
+      "why": "The atrial fibrillation is current (treated and monitored).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "238"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4891"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:58:05+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

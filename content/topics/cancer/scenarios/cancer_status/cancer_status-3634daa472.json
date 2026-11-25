@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-3634daa472",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "history",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain in the spine and hips.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 27.4.\n\nRecent Labs: Hemoglobin 12.4 g/dL, WBC 6.5 x 10^9/L, Platelets 210 x 10^9/L, Calcium 9.4 mg/dL, Creatinine 0.9 mg/dL, eGFR 82 mL/min/1.73m2.\n\nMedication List:\n- Naproxen 500mg every 12 hours as needed for pain.\n- Calcium carbonate 600mg daily.\n- Lisinopril 10mg daily.\n\nFamily History: Mother had breast cancer; Father had hypertension.\n\nSocial History: Retired teacher; lives with her husband; non-smoker; occasional alcohol use.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or unintended weight loss.\nMusculoskeletal: Positive for aching pain in the lumbar spine and right hip.\nNeurological: Negative for numbness or weakness.\nGastrointestinal: Negative for changes in bowel habits.\nGenitourinary: Negative for dysuria.\nRespiratory: Negative for shortness of breath.\n\nHPI: (Copied Forward) Patient is a 72-year-old female with a history of cancer of the right breast. The primary malignancy was surgically removed and treated several years ago. At that time, the patient achieved a complete response to treatment, and there has been no evidence of local recurrence since the initial intervention. The patient has remained stable until this visit.\n\n(Today's Update): The patient presents today reporting increased discomfort in her back and right hip over the last three weeks. She describes the pain as a dull, constant ache that worsens with activity. She denies any new localized swelling or skin changes at the primary site.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Tenderness to palpation over the lumbar spine and right greater trochanter. Range of motion is slightly limited by discomfort.\nIntegumentary: No visible lesions or skin changes.\n\nAssessment:\n1. Bone metastases: The patient is experiencing symptomatic pain related to her known metastases to bone.\n2. History of cancer of the right breast: The primary site remains stable with no evidence of local recurrence.\n\nPlan:\n1. Pain Management: Continue Naproxen as needed. Discussed scheduled use if pain persists.\n2. Bone Health: Continue Calcium carbonate daily.\n3. Follow-up: Scheduled for a follow-up in 3 months to monitor pain levels and stability.\n\nElectronically signed,\nA. Rivera, MD\nMay 14, 2026",
+  "answer": [
+    "Z85.3",
+    "C79.51"
+  ],
+  "explanations": [
+    "The right female breast cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.3 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C50.911",
+        "C79.51"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.3"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.341,
+        "gap": -2.341,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.3",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:50:35+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "substance_use",
+  "title": "Alcohol use",
+  "kind": "hcc",
+  "description": "Alcohol use disorder severity and remission versus social drinking.",
+  "order": 100,
+  "enabled": true
+}

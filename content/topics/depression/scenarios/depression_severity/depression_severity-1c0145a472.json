@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-1c0145a472",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Depressed mood.\n\nHPI: Pt is a 90-year-old female presenting for f/u of MDD. Pt reports persistent low mood, poor appetite, and significant fatigue over the past month. Describes feeling \"heavy\" and \"hopeless.\" She notes decreased interest in daily activities and difficulty concentrating. Pt reports sleep is interrupted but she denies any auditory or visual distortions. She is currently experiencing a severe episode of symptoms. No evidence of psychosis.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Melatonin 3mg PO HS\n\nReview of Systems:\nConstitutional: Fatigue, decreased appetite.\nPsychiatric: Depressed mood, low energy.\nNeurological: Denies tremors, falls, or confusion.\nAll other systems reviewed and negative.\n\nSocial History: Lives with daughter. Retired. Non-smoker. No alcohol use.\n\nFamily History: Mother had hypertension. Father had history of depression.\n\nFamily History: Mother had hypertension. Father had history of depression.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 115 lbs\n\nRecent Labs:\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\neGFR: 65 mL/min/1.73m2\n\nExam:\nGen: 90 y/o female, appears older than stated age. Appreciable psychomotor retardation.\nMood: Depressed, tearful.\nAffect: Constricted.\nSpeech: Slow, coherent.\nCognition: Alert and oriented x3.\nPhysical: CTAB, RRR, lungs clear. No acute distress.\n\nAssessment:\n1. Major depressive disorder, recurrent. Current episode is severe without psychotic features.\n\nPlan:\n1. Continue Sertraline 50mg PO QD.\n2. Discussed importance of routine and social engagement.\n3. Pt to f/u in 4 weeks to monitor response to current regimen.\n4. Encouraged pt to contact clinic immediately if symptoms worsen.\n\nElectronically signed,\nM. Okafor, NP\n05/14/2026",
+  "answer": [
+    "F33.2"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, severe without psychotic features (HCC 155): F33.2."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.3"
+      ],
+      "confusion": "unsupported_psychotic",
+      "lean": "over",
+      "why": "Psychotic features are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.299,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "152"
+        ],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F332"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:25+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

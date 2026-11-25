@@ -1,0 +1,132 @@
+{
+  "id": "heart_failure-29e4ba2980",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Follow-up for heart failure and hypertension.\n\nHPI: 80-year-old female presents for routine follow-up of chronic systolic heart failure and HTN. Pt reports feeling well today. Denies any increased shortness of breath, orthopnea, or paroxysmal nocturnal dyspnea. Denies any recent weight gain or lower extremity edema. Pt states she is tolerating her current medication regimen well. No chest pain or palpitations reported. Pt reports stable activity levels.\n\nMedication List:\n- Lisinopril 10mg daily\n- Carvedilol 12.5mg BID\n- Spironolactone 25mg daily\n- Furosemide 40mg daily PRN\n- Amlodipine 5mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nCV: No chest pain, palpitations, or syncope.\nResp: No SOB, cough, or wheezing.\nGI: No nausea, vomiting, or abdominal pain.\nMSK: No joint pain or swelling.\nNeuro: No dizziness or numbness.\n\nSocial History: Retired. Lives at home with her daughter. Independent with ADLs. Non-smoker. Occasional alcohol consumption.\n\nFamily History: Mother had HTN and stroke. Father had coronary artery disease.\n\nVitals:\nBP: 128/78\nHR: 68 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 155 lbs (stable)\n\nRecent Labs:\nBMP: Na 138, K 4.2, Cr 1.1, eGFR 72.\nBNP: 210 (stable).\nEKG: NSR, no acute changes.\nEcho (previous): EF 30%.\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, S1, S2, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or rales.\nExt: No pitting edema. Skin warm and dry.\n\nAssessment:\n1. Chronic HFrEF: Patient is currently stable on her medication regimen. No signs of fluid overload or worsening symptoms.\n2. Hypertension: Well-controlled with current meds.\n\nPlan:\n- Continue current medications as prescribed.\n- Continue daily weight monitoring.\n- F/u in 3 months for repeat labs and BP check.\n- Instructed to call office if weight increases >3 lbs in 24 hours.\n\nElectronically signed,\nT. Haddad, NP\n05/14/2026",
+  "answer": [
+    "I11.0",
+    "I50.22"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Chronic systolic heart failure: I50.22 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.22"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.23"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.32"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents systolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I110",
+          "I5022"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:17+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

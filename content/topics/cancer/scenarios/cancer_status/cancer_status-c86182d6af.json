@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-c86182d6af",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow up for metastatic cancer.\n\nHPI\n67 y/o female pt presents for f/u of history of carcinoma of the right lung. Primary malignancy was surgically removed and treated several years ago. Pt reports feeling stable at this time. Previous imaging and clinical review indicate no evidence of local recurrence at the primary site. However, pt is currently presenting for management of liver metastases that have developed. Pt denies acute pain or new systemic symptoms.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB, no wheezing.\nAbd: Soft, non-tender, no organomegaly.\nNeuro: Alert and oriented x3.\n\nAssessment\n1. Liver metastases from primary right lung carcinoma.\n2. History of carcinoma of the right lung, stable with no evidence of local recurrence.\n\nPlan\n1. Liver metastases: Discussed treatment options. Will monitor labs and imaging.\n2. Right lung: Continue surveillance. No active treatment indicated for primary site.\nF/u in 3 months.\n\nElectronically signed, T. Haddad, NP, 05/12/2026",
+  "answer": [
+    "Z85.118",
+    "C78.7"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91",
+        "C78.7"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.209,
+        "gap": -4.209,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.118",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:23+00:00",
+    "style": {
+      "age": 67,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "id": "dementia_severity-5fa4ac9150",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "moderate",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for cognitive decline.\n\nHPI\nThe patient is an 89-year-old woman presenting today for a routine evaluation of her dementia. She was brought in by her daughter, who reports that the patient has been experiencing increasing difficulty with memory and daily tasks over the last year. The daughter notes that while the patient is becoming more dependent on others for complex activities, she remains pleasant and is not exhibiting any behavioral disturbances. The patient was calm and cooperative during the encounter.\n\nMedication List\nDonepezil 10mg daily\nMeloxicam 15mg daily\n\nExam\nThe patient is an 89-year-old female who appears well-nourished and is dressed appropriately for the weather. She is alert and oriented to person, but demonstrates impaired orientation to time and place. Her mood is stable, and she is cooperative with all testing. Speech is clear and coherent. Cognition is consistent with a moderate dementia.\n\nAssessment\n1. Moderate dementia.\n\nPlan\n1. Continue current medication regimen.\n2. Provide education to the daughter regarding safety measures at home.\n3. Follow up in three months for continued monitoring of cognitive status.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "F03.B0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), moderate, without behavioral disturbance: F03.B0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (moderate): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is moderate.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "126",
+        "label": "Dementia/Moderate",
+        "from": [
+          "F03B0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:36:00+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

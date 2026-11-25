@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-cacab96297",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nHPI: Patient is a 57-year-old woman with a history of major depressive disorder, single episode. She reports a stable mood over the last month. She continues to experience low energy and occasional difficulty concentrating. She denies any new concerns since the last visit.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nNeurological: Negative\nPsychiatric: Positive (Depressed mood)\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\n\nMedication List:\nSertraline 100mg daily\n\nExam:\nGeneral: Well-appearing, cooperative, and oriented to person, place, and time.\nPsychiatric: Affect is flat. Mood is reported as \"okay.\" Speech is normal in rate and volume. Thought process is linear.\n\nAssessment:\nMajor depressive disorder, single episode.\n\nPlan:\nContinue current dosage of Sertraline. Patient will return in four weeks for follow-up.\n\nElectronically signed, \nS. Patel, NP\nOctober 14, 2026",
+  "answer": [
+    "F32.9"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severity not documented (no HCC): F32.9."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "No severity is documented: do not assume one.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents single episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:49:29+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "id": "dementia_severity-eac31c0e57",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "severe",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for dementia and behavioral issues.\n\nHPI\nPt is an 87 y.o. female presenting for follow-up of dementia. Daughter reports significant behavioral changes, specifically noting frequent episodes of agitation in the evenings. Pt is often confused and requires constant supervision. No acute changes in physical health reported today.\n\nMedication List\nDonepezil 10mg daily\nQuetiapine 12.5mg at bedtime\nLisinopril 10mg daily\n\nExam\nPt is alert but appears confused. Speech is coherent but slow. Gait is steady with a walker. Vitals: BP 132/78, HR 74, RR 16, Temp 98.6F. Neuro: Oriented to person only. General appearance is well-groomed. NAD otherwise.\n\nAssessment\n1. Severe dementia: Pt continues to show significant cognitive decline. \n2. Agitation: Evening episodes are noted and impacting quality of life.\n\nPlan\n- Continue current medications.\n- Increase Quetiapine dose slightly if evening agitation persists.\n- Continue safety precautions at home.\n- F/u in 3 months.\n\nElectronically signed, R. Mensah, DO, 10/14/2026",
+  "answer": [
+    "F03.C11"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), severe, with agitation: F03.C11."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.911"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (severe): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.C0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "125",
+        "label": "Dementia/Severe",
+        "from": [
+          "F03C11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:41:45+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

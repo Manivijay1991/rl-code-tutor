@@ -1,0 +1,127 @@
+{
+  "id": "atrial_fibrillation-6839585d56",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "paroxysmal",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for management of paroxysmal AFib.\n\nHPI\nThe patient is a 77-year-old woman presenting today for a routine follow-up of her paroxysmal atrial fibrillation. She reports that she has been experiencing intermittent palpitations and occasional fluttering sensations in her chest over the last few months. She states that these episodes occur unpredictably and typically last for a few minutes to an hour before subsiding. She denies any associated syncope, chest pain, or shortness of breath during these episodes. She is currently adherent to her prescribed rate-control medication and her long-term anticoagulant for prevention of serious complications. She reports feeling generally well otherwise and denies any new concerns since her last visit.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, lightheadedness, or palpitations today. She denies fevers, chills, or cough. She denies any recent falls or changes in her mobility. She denies any significant weight changes.\n\nSocial History\nThe patient lives at home with her spouse. She is a retired schoolteacher and enjoys gardening and walking. She denies current tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension and a history of paroxysmal AFib. Her father had a history of coronary artery disease.\n\nMedication List\nApixaban 5 mg twice daily\nMetoprolol succinate 50 mg daily\nLisinopril 10 mg daily\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\neGFR: 68 mL/min/1.73m2\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^3/uL\n\nExam\nThe patient is a well-appearing, alert, and oriented 77-year-old female in no acute distress. Her skin is warm and dry. Heart rate is regular and rhythmic with an S1 and S2 sound. No murmurs, rubs, or gallops are noted. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended. Extremities are intact with no edema.\n\nAssessment\n1. Paroxysmal atrial fibrillation: The patient continues to experience intermittent episodes of paroxysmal AFib. She is currently stable on her current rate-control regimen.\n\nPlan\n1. Continue apixaban for continued anticoagulation and prevention of thromboembolic events.\n2. Continue metoprolol succinate for rate control.\n3. Patient will continue to monitor for symptoms of paroxysmal AFib and will call the office if she experiences any new concerning symptoms.\n4. Follow up in 3 months for a repeat evaluation of her atrial fibrillation status.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "I48.0",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Paroxysmal atrial fibrillation: I48.0 (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91",
+        "Z79.01"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paroxysmal) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.21",
+        "Z79.01"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "The provider documents paroxysmal, not permanent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.0"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.0",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I480"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:56:23+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

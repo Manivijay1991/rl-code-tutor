@@ -1,0 +1,167 @@
+{
+  "id": "diabetes_htn_ckd-b79420d7c7",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for CKD and hypertension.\n\nHPI\nPt is an 87 y.o. female presenting for routine f/u of chronic kidney disease and T2DM. Pt reports feeling stable. She manages her type 2 diabetes primarily through diet and exercise. She reports adherence to low-sodium diet for hypertension. No new complaints of edema or fatigue.\n\nMedication List\nLisinopril 10mg daily\nAmlodipine 5mg daily\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6 F.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nExt: No pedal edema noted.\n\nAssessment\n1. CKD stage 5: Recent labs show eGFR < 15. Pt remains stable on current regimen.\n2. Hypertension: Well-controlled on current meds.\n3. T2DM: Managed via diet only.\n\nPlan\n1. Continue current meds.\n2. Continue renal-friendly diet.\n3. F/u in 3 months for labs and BP check.\n\nElectronically signed, R. Mensah, DO, 05/12/2026",
+  "answer": [
+    "E11.22",
+    "I12.0",
+    "N18.5"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "Hypertension with CKD stage 5 or ESRD: I12.0 (HCC 326).",
+    "The CKD stage is coded in addition: N18.5."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "I12.0",
+        "N18.5"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.9",
+        "N18.5"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I10",
+        "N18.5"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "Hypertension and CKD are presumed linked: I12.-, not I10.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.0"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.0",
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.981,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:55:51+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

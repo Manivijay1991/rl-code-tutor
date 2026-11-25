@@ -1,0 +1,132 @@
+{
+  "id": "dementia_severity-1aaf80fbe0",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "unspecified",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for memory loss and evening restlessness.\n\nHPI: 90 y/o female pt presents for routine follow-up of Alzheimer's disease. Pt lives with daughter and has been experiencing increased agitation in the evenings, specifically during sundowning hours. Daughter reports pt becomes more restless and difficult to soothe at night. Pt is generally stable during daytime hours but shows increased irritability as the day ends. No recent falls or acute changes in mobility noted.\n\nMedication List:\n- Donepezil 10mg daily\n- Memantine 10mg BID\n- Lorazepam 0.5mg PRN for agitation\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change.\nNeuro: Positive for memory deficit and evening agitation. Negative for tremors or gait changes.\nCV: No chest pain or palpitations.\nResp: No SOB or cough.\nGI: No nausea or diarrhea.\nMSK: No joint pain.\n\nSocial History: Lives with daughter. Retired. Non-smoker. No alcohol use.\n\nFamily History: Mother had memory loss; Father had hypertension.\n\nFamily History: Mother had memory loss; Father had hypertension.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.4 F\nSpO2: 96% on RA\nHt/Wt: 54 kg\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 52 mL/min\nTSH: 2.1 mIU/L\nSodium: 138 mEq/L\nPotassium: 4.1 mEq/L\n\nExam:\nGen: Elderly female pt, appears well-groomed.\nNeuro: Alert, oriented to person only. Speech clear but slow. Affect is somewhat flat.\nPsych: Signs of agitation noted during visit; pt was restless in chair.\nSkin: Intact, no pressure ulcers.\nMusculoskeletal: Steady gait with a cane.\n\nAssessment:\n1. Alzheimer's disease.\n2. Agitation.\n\nPlan:\n1. Continue current medications for Alzheimer's disease.\n2. Discussed management of evening agitation with daughter.\n3. Consider adjusting PRN lorazepam if agitation persists.\n4. Follow up in 3 months.\n\nElectronically signed, M. Okafor, NP, 05/12/2026",
+  "answer": [
+    "G30.9",
+    "F02.811"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), unspecified severity, with agitation: F02.811."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.811"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B11"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.80"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.911"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "G309",
+          "F02811"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:41:53+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}
