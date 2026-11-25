@@ -13,11 +13,11 @@
       "maxItems": 50,
       "items": {
         "type": "object",
-        "required": ["confusion", "bucket", "action", "reward"],
+        "required": ["confusion", "miss_level", "action", "reward"],
         "additionalProperties": false,
         "properties": {
           "confusion": {"type": "string", "pattern": "^[a-z0-9_]+:[a-z0-9_]+$"},
-          "bucket": {"enum": [1, 2, 3]},
+          "miss_level": {"enum": [1, 2, 3]},
           "action": {"enum": ["rule_refresh", "contrast_pair", "find_meat", "guiding_question", "walkthrough", "easier_case"]},
           "reward": {"enum": [0, 1]}
         }

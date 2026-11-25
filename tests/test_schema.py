@@ -3,7 +3,7 @@ import json
 import pytest
 
 from coding_tutor.bundle.export import build_bundle, contract_problems, load_scenario_files
-from coding_tutor.live.policy import BUCKETS, MAX_BATCH, MAX_CLIENT_LEN
+from coding_tutor.live.policy import MAX_BATCH, MAX_CLIENT_LEN, MISS_LEVELS
 from coding_tutor.paths import BUNDLE_PATH, SCENARIOS_DIR, TABLES_DIR
 from coding_tutor.rl.simulator import ACTIONS
 from coding_tutor.schema import load_schema, validate
@@ -107,9 +107,12 @@ def test_event_schema_matches_python_rules():
     item = load_schema("event")["properties"]["events"]["items"]["properties"]
     batch = load_schema("event")["properties"]
     assert item["action"]["enum"] == list(ACTIONS)
-    assert item["bucket"]["enum"] == list(BUCKETS)
+    assert item["miss_level"]["enum"] == list(MISS_LEVELS)
     assert batch["events"]["maxItems"] == MAX_BATCH
     assert batch["client"]["maxLength"] == MAX_CLIENT_LEN
-    good = {"events": [{"confusion": "t:c", "bucket": 1, "action": "walkthrough", "reward": 1}], "client": "web/0.1"}
+    good = {
+        "events": [{"confusion": "t:c", "miss_level": 1, "action": "walkthrough", "reward": 1}],
+        "client": "web/0.1",
+    }
     assert validate(good, load_schema("event")) == []
     assert validate({"events": [{**good["events"][0], "user": "x"}]}, load_schema("event"))

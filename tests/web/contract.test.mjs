@@ -26,7 +26,7 @@ test("a renamed field breaks the contract", () => {
 });
 
 test("events the app sends match the event schema", () => {
-  const settled = [{ confusion: "diabetes_complications:missed_with_link", bucket: 2, action: "contrast_pair", reward: 1, scenarioId: "x" }];
+  const settled = [{ confusion: "diabetes_complications:missed_with_link", missLevel: 2, action: "contrast_pair", reward: 1, scenarioId: "x" }];
   assert.deepEqual(validate({ events: toEvents(settled), client: CLIENT }, eventSchema), []);
 });
 

@@ -1,4 +1,4 @@
-"""Teaching-action policies. Context = (confusion, miss bucket 1/2/3+).
+"""Teaching-action policies. Context = (confusion, miss level 1/2/3+).
 
 Every policy is an `Agent` record of functions sharing hidden state:
   act(ctx) -> action
@@ -16,7 +16,7 @@ from typing import NamedTuple
 
 from coding_tutor.rl.simulator import ACTIONS, Env, Student, best_action
 
-Ctx = tuple[str, int]  # (confusion, miss bucket)
+Ctx = tuple[str, int]  # (confusion, miss level)
 Update = Callable[[Ctx, str, int, Ctx | None], None]
 
 
@@ -107,7 +107,7 @@ def eps_greedy(eps: float = 0.1, seed: int = 0) -> Agent:
 def q_learning(alpha: float = 0.1, gamma: float = 0.5, eps: float = 0.1, seed: int = 0) -> Agent:
     """Return a tabular Q-learning policy.
 
-    The next state is the same confusion one bucket higher when the retry is missed.
+    The next state is the same confusion one miss level higher when the retry is missed.
     """
     rng = random.Random(seed)
     q: dict[tuple, float] = {}

@@ -32,11 +32,11 @@ Pipeline inside `src/coding_tutor/`:
 4. `rl/` — simulator (`simulator.py`), policies (`policies.py`), experiment (`experiment.py`).
 5. `bundle/export.py` — rebuilds every scenario's answer, distractors (trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine into `web/data/bundle.json`; refuses to write if it does not match `schemas/bundle.schema.json`. Re-run after any table or scenario change.
    `web/js/` — static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward, spaced-review gaps), `selector.js` (pending reward → due review → unseen → weakest; `queuePreview` lists the upcoming traps in that order), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `api.js` (live bandit client), `common.js` (prefs, theme, dates, shared by both pages), `home.js` (home page: hero, animated walkthrough, and a passive directional flow diagram of how the next case is chosen, with the pick-order strip), `app.js` (assessment page controller). Pages: `index.html` → `practice.html?topic=<id>` (`#progress` opens the progress drawer). Animations respect prefers-reduced-motion; layouts are checked from 320px to 1920px. Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
-6. `live/` — live bandit service (optional; `web/config.json` `api`: null = offline, "/api" = same origin, or a URL). Browser still chooses actions with Thompson sampling over its own counts + shared counts from `GET /v1/policy` (capped at `SHARED_CAP`=20 pseudo-trials). Settled rewards go to `POST /v1/events` as exactly `{confusion, bucket, action, reward}` (`schemas/event.schema.json`; `policy.py` rejects any other field). `app.py` stdlib WSGI `make_app` (injected `Store`, confusions, CORS allowlist, rate limiter, clock; paths accept an `/api` prefix); `stores/` backends build a `Store` (record, arm_rows, total_events): `stores/sqlite.py` now (arm totals + append-only event log, no identifiers, day granularity), Redis for Vercel TODO. `server.py` = standalone API.
-7. `devserver/` — `coding-tutor-serve [--with-api]`: static files (`static.py`) plus, optionally, the live API under `/api` on one origin, answering `/config.json` as `{"api": "/api"}` (the file on disk is untouched).
+6. `live/` — live bandit service (optional; `web/config.json` `api`: null = offline, "/api" = same origin, or a URL). Browser still chooses actions with Thompson sampling over its own counts + shared counts from `GET /v1/policy` (capped at `SHARED_CAP`=20 pseudo-trials). Settled rewards go to `POST /v1/events` as exactly `{confusion, miss_level, action, reward}` (`schemas/event.schema.json`; `policy.py` rejects any other field). `app.py` stdlib WSGI `make_app` (injected `Store`, confusions, CORS allowlist, rate limiter, clock; paths accept an `/api` prefix); `stores/` backends build a `Store` (record, arm_rows, total_events): `stores/sqlite.py` now (arm totals + append-only event log, no identifiers, day granularity), Redis for Vercel TODO. `server.py` = standalone API.
+7. `devserver/` — `coding-tutor-serve [--no-api]`: static files (`static.py`) plus, by default, the live API under `/api` on one origin, answering `/config.json` as `{"api": "/api"}`. `web/config.json` also defaults to `"/api"`; the page falls back to offline when the API is unreachable.
 
 ## RL design
-- **Use a contextual Thompson-sampling bandit only** to choose *how to teach* after a wrong answer. Context = (confusion, miss count bucketed 1/2/3+).
+- **Use a contextual Thompson-sampling bandit only** to choose *how to teach* after a wrong answer. Context = (confusion, miss level 1/2/3+).
 - **Actions:** rule_refresh, contrast_pair, find_meat, guiding_question, walkthrough, easier_case.
 - **Reward:** correct on a NEW question with the same confusion (never the immediate retry).
 - **What to practice next:** simple rules (weakest confusion first + spaced review), not Q-learning.
@@ -58,7 +58,7 @@ Pipeline inside `src/coding_tutor/`:
 - Standard library first; ask before adding a dependency.
 - Inject dependencies (random.Random, policies, storage, LLM client) as parameters;
   policies implement one shared interface (`coding_tutor.rl.policies.Agent`): name, act(ctx), update(ctx, action, reward, next_ctx),
-  where ctx = (confusion, miss bucket 1/2/3).
+  where ctx = (confusion, miss level 1/2/3).
 - No secrets, API keys, student identifiers or patient data in code, tests, fixtures or logs.
 
 ## Accessibility (web, WCAG 2.2 AA)

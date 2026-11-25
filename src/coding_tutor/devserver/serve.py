@@ -1,12 +1,12 @@
 """Serve the web UI on localhost (standard library only).
 
-    python -m coding_tutor.devserver.serve                 # static UI only, http://127.0.0.1:8765
-    python -m coding_tutor.devserver.serve --with-api      # UI + live bandit API at /api (SQLite), like Vercel
+    python -m coding_tutor.devserver.serve                 # UI + live bandit API at /api (SQLite), like Vercel
+    python -m coding_tutor.devserver.serve --no-api        # static UI only (the page then runs offline)
     python -m coding_tutor.devserver.serve --port 9000 --no-browser
 
-With --with-api the UI and the API share one origin, exactly as on Vercel: the API answers under
-/api/v1/..., and /config.json is answered with {"api": "/api"} so the page uses it (web/config.json
-on disk is not changed). Run `python -m coding_tutor.bundle.export` first so web/data/bundle.json exists.
+By default the UI and the API share one origin, exactly as on Vercel: the API answers under /api/v1/...,
+and /config.json is answered with {"api": "/api"}. `--with-api` is still accepted (it is the default).
+Run `python -m coding_tutor.bundle.export` first so web/data/bundle.json exists.
 """
 
 from __future__ import annotations
@@ -75,8 +75,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(description="Serve the Coding Tutor web UI locally.", allow_abbrev=False)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--no-browser", action="store_true", help="do not open a browser tab")
-    ap.add_argument("--with-api", action="store_true", help="also run the live bandit API at /api (same origin)")
-    ap.add_argument("--db", type=Path, default=API_DB_PATH, help="SQLite file for --with-api")
+    ap.add_argument("--no-api", dest="with_api", action="store_false", help="static UI only, without the live API")
+    ap.add_argument("--with-api", dest="with_api", action="store_true", help="run the live API at /api (the default)")
+    ap.add_argument("--db", type=Path, default=API_DB_PATH, help="SQLite file for the API")
     return ap.parse_args(argv)
 
 

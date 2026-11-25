@@ -31,7 +31,7 @@ test("unseen traps come first and topic filters", () => {
 
 test("a pending reward picks a NEW case with the same trap", () => {
   const miss = recordOutcome(emptyProgress(), bundle.scenarios[0], {
-    ...base, firstOption: bundle.scenarios[0].options[1], action: "contrast_pair", missBucket: 1,
+    ...base, firstOption: bundle.scenarios[0].options[1], action: "contrast_pair", missLevel: 1,
   }).progress;
   for (let seed = 0; seed < 10; seed++) {
     const r = nextScenario(bundle, miss, { rng: makeRng(seed) });
@@ -43,7 +43,7 @@ test("a pending reward picks a NEW case with the same trap", () => {
 
 test("easier_case picks the case with the fewest codes", () => {
   const miss = recordOutcome(emptyProgress(), bundle.scenarios[2], {
-    ...base, firstOption: bundle.scenarios[2].options[1], action: "easier_case", missBucket: 1,
+    ...base, firstOption: bundle.scenarios[2].options[1], action: "easier_case", missLevel: 1,
   }).progress;
   const r = nextScenario(bundle, miss, { rng: makeRng(3) });
   assert.equal(r.reason, "easier");
@@ -82,7 +82,7 @@ test("queue preview: new traps in order, then a miss jumps to the front as a re-
     [["t:x", "new"], ["t:y", "new"], ["u:z", "new"]]);
   // miss trap x on case a1: a NEW case with x exists (a2, a3), so x jumps to the front
   const miss = recordOutcome(emptyProgress(), bundle.scenarios[0], {
-    ...base, firstOption: bundle.scenarios[0].options[1], action: "walkthrough", missBucket: 1,
+    ...base, firstOption: bundle.scenarios[0].options[1], action: "walkthrough", missLevel: 1,
   }).progress;
   const q = queuePreview(bundle, miss, 4, { order });
   assert.deepEqual(q[0], { confusion: "t:x", reason: "reward" });
@@ -91,7 +91,7 @@ test("queue preview: new traps in order, then a miss jumps to the front as a re-
 
 test("queue preview: a trap with no other case cannot be re-tested yet", () => {
   const miss = recordOutcome(emptyProgress(), bundle.scenarios[3], {
-    ...base, firstOption: bundle.scenarios[3].options[1], action: "walkthrough", missBucket: 1,
+    ...base, firstOption: bundle.scenarios[3].options[1], action: "walkthrough", missLevel: 1,
   }).progress;
   assert.ok(!queuePreview(bundle, miss, 4, { order: ["t:x", "t:y", "u:z"] }).some((q) => q.reason === "reward"));
 });
@@ -108,7 +108,7 @@ test("queue preview: due reviews come before new traps, weakest last", () => {
 
 test("queue preview: easier_case is labelled and seen traps fall back to weakest", () => {
   const miss = recordOutcome(emptyProgress(), bundle.scenarios[2], {
-    ...base, firstOption: bundle.scenarios[2].options[1], action: "easier_case", missBucket: 1,
+    ...base, firstOption: bundle.scenarios[2].options[1], action: "easier_case", missLevel: 1,
   }).progress;
   const q = queuePreview(bundle, miss, 10, { order: ["t:x", "t:y", "u:z"] });
   assert.deepEqual(q[0], { confusion: "t:x", reason: "easier" });

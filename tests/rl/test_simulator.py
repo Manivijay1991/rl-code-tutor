@@ -15,8 +15,8 @@ def student(skill, profile="reader", misses=None):
 
 
 @pytest.mark.parametrize(("misses", "b"), [(0, 1), (1, 1), (2, 2), (3, 3), (7, 3)])
-def test_bucket(misses, b):
-    assert sim.bucket(misses) == b
+def test_miss_level(misses, b):
+    assert sim.miss_level(misses) == b
 
 
 def test_make_env_is_deterministic():

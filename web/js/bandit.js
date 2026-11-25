@@ -1,7 +1,7 @@
 // Contextual Thompson-sampling bandit that chooses HOW to teach after a wrong answer.
-// Context = (confusion, miss bucket 1/2/3+). Reward = correct on the next NEW question with the
+// Context = (confusion, miss level 1/2/3+). Reward = correct on the next NEW question with the
 // same confusion (recorded by progress.js), never the immediate re-pick.
-// State is a plain object {"<confusion>|<bucket>|<action>": [alpha, beta]}; updates return a new object.
+// State is a plain object {"<confusion>|<missLevel>|<action>": [alpha, beta]}; updates return a new object.
 
 export const ACTIONS = [
   "rule_refresh",
@@ -23,8 +23,8 @@ export const ACTION_LABELS = {
 
 const PRIOR = [1, 1];
 
-/** Miss bucket used in the context: 1, 2 or 3 (3+). */
-export function bucket(misses) {
+/** Miss level used in the context: 1, 2 or 3 (3+). */
+export function missLevel(misses) {
   return misses <= 1 ? 1 : misses === 2 ? 2 : 3;
 }
 
@@ -115,13 +115,13 @@ export function posteriorMeans(bandit, confusion, b) {
   );
 }
 
-/** Contexts with at least `minTrials` rewards: [{confusion, bucket, best, mean, trials}], most trials first. */
+/** Contexts with at least `minTrials` rewards: [{confusion, missLevel, best, mean, trials}], most trials first. */
 export function learnedContexts(bandit, minTrials = 2) {
   const byCtx = {};
   for (const [k, [alpha, beta]] of Object.entries(bandit)) {
     const [confusion, b, action] = k.split("|");
     const trials = alpha + beta - PRIOR[0] - PRIOR[1];
-    const ctx = (byCtx[`${confusion}|${b}`] ??= { confusion, bucket: Number(b), trials: 0, best: null, mean: -1 });
+    const ctx = (byCtx[`${confusion}|${b}`] ??= { confusion, missLevel: Number(b), trials: 0, best: null, mean: -1 });
     ctx.trials += trials;
     const mean = alpha / (alpha + beta);
     if (trials > 0 && mean > ctx.mean) Object.assign(ctx, { best: action, mean });

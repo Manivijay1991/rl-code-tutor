@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 import {
   ACTIONS,
-  bucket,
+  missLevel,
   chooseAction,
   counts,
   learnedContexts,
@@ -14,8 +14,8 @@ import {
 } from "../../web/js/bandit.js";
 import { makeRng } from "../../web/js/random.js";
 
-test("bucket", () => {
-  assert.deepEqual([0, 1, 2, 3, 9].map(bucket), [1, 1, 2, 3, 3]);
+test("missLevel", () => {
+  assert.deepEqual([0, 1, 2, 3, 9].map(missLevel), [1, 1, 2, 3, 3]);
 });
 
 test("samples stay in range and match the mean", () => {
@@ -61,6 +61,6 @@ test("posterior means and learned contexts", () => {
   b = updateBandit(b, "t:c", 2, "rule_refresh", 0);
   assert.equal(posteriorMeans(b, "t:c", 2).find_meat, 0.75);
   assert.equal(posteriorMeans(b, "t:c", 2).walkthrough, 0.5);
-  assert.deepEqual(learnedContexts(b, 2).map((c) => [c.confusion, c.bucket, c.best, c.trials]), [["t:c", 2, "find_meat", 3]]);
+  assert.deepEqual(learnedContexts(b, 2).map((c) => [c.confusion, c.missLevel, c.best, c.trials]), [["t:c", 2, "find_meat", 3]]);
   assert.deepEqual(learnedContexts(b, 10), []);
 });

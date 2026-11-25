@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { BATCH, OUTBOX_LIMIT, enqueue, fetchPolicy, flush, loadConfig, toEvents } from "../../web/js/api.js";
+import { BATCH, OUTBOX_LIMIT, enqueue, fetchPolicy, flush, loadConfig, toEvents, upgradeEvent } from "../../web/js/api.js";
 import { SHARED_CAP, combinedCounts } from "../../web/js/bandit.js";
 
 const json = (body, status = 200) => ({ ok: status < 300, status, json: async () => body });
-const E = { confusion: "t:c", bucket: 1, action: "walkthrough", reward: 1 };
+const E = { confusion: "t:c", miss_level: 1, action: "walkthrough", reward: 1 };
 
 test("config: valid URL, trailing slash trimmed; anything else is offline", async () => {
   assert.deepEqual(await loadConfig(async () => json({ api: "https://api.example.org/" })), { api: "https://api.example.org" });
@@ -27,12 +27,23 @@ test("policy fetch returns arms or null", async () => {
 });
 
 test("events carry only the four allowed fields", () => {
-  const out = toEvents([{ ...E, scenarioId: "s1", extra: "secret" }]);
-  assert.deepEqual(out, [E]);
+  const settled = { confusion: E.confusion, missLevel: 1, action: E.action, reward: E.reward, scenarioId: "s1", extra: "secret" };
+  assert.deepEqual(toEvents([settled]), [E]);
+});
+
+test("events queued before the rename are upgraded from bucket to miss_level", async () => {
+  const old = { confusion: "t:c", bucket: 2, action: "walkthrough", reward: 0 };
+  const upgraded = { confusion: "t:c", miss_level: 2, action: "walkthrough", reward: 0 };
+  assert.deepEqual(upgradeEvent(old), upgraded);
+  assert.equal(upgradeEvent(E), E); // current events pass through untouched
+  assert.deepEqual(enqueue([old], [E]), [upgraded, E]);
+  const sent = [];
+  await flush("https://a", [old], async (url, init) => { sent.push(JSON.parse(init.body)); return json({}, 202); });
+  assert.deepEqual(sent[0].events, [upgraded]);
 });
 
 test("outbox keeps the newest events", () => {
-  const many = Array.from({ length: OUTBOX_LIMIT + 5 }, (_, i) => ({ ...E, bucket: (i % 3) + 1 }));
+  const many = Array.from({ length: OUTBOX_LIMIT + 5 }, (_, i) => ({ ...E, miss_level: (i % 3) + 1 }));
   assert.equal(enqueue([], many).length, OUTBOX_LIMIT);
   assert.deepEqual(enqueue([E], []), [E]);
 });

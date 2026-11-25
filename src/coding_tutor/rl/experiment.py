@@ -21,7 +21,7 @@ from coding_tutor.engine.rules import load_tables
 from coding_tutor.rl import policies
 from coding_tutor.rl import simulator as sim
 from coding_tutor.rl.policies import Agent
-from coding_tutor.rl.simulator import ACTIONS, Env, Student, bucket
+from coding_tutor.rl.simulator import ACTIONS, Env, Student, miss_level
 
 MakeAgent = Callable[[Env, int], Agent]
 
@@ -46,12 +46,12 @@ def teach_after_miss(env: Env, agent: Agent, s: Student, c: str) -> tuple[int, b
     Returns:
         (reward, whether the policy picked the hidden best action).
     """
-    ctx = (c, bucket(s.misses[c]))
+    ctx = (c, miss_level(s.misses[c]))
     a = agent.act(ctx)
     best = a == sim.best_action(env, s, c)
     sim.teach(env, s, c, a)
     r = int(sim.answer(env, s, c))
-    agent.update(ctx, a, r, None if r else (c, bucket(s.misses[c])))
+    agent.update(ctx, a, r, None if r else (c, miss_level(s.misses[c])))
     return r, best
 
 
@@ -155,7 +155,7 @@ def main(argv: list[str] | None = None) -> None:
     """Run every policy and print a comparison table."""
     args = parse_args(argv)
     n_conf = len(confusion_ids())
-    print(f"{n_conf} confusions x 3 miss buckets = {n_conf * 3} contexts, {len(ACTIONS)} actions")
+    print(f"{n_conf} confusions x 3 miss levels = {n_conf * 3} contexts, {len(ACTIONS)} actions")
     print(f"{args.students} students x {args.questions} questions, {args.seeds} seeds\n")
     print(
         f"{'policy':22} {'reward':>7} {'late':>7} {'mastery+':>9} {'best-act':>9}  learning curve (reward per window)"

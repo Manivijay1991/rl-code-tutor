@@ -68,22 +68,23 @@ flowchart TD
 Re-picks after hints never count as the reward; only the first pick on the NEW case does. The same flow
 is drawn natively (no Mermaid library, works offline) on the home page.
 
-### Live bandit API (optional): the tutor learns from every student
+### Live bandit API (on by default): the tutor learns from every student
 
-Run the UI and the API together locally, on one origin exactly like a Vercel deployment:
+The UI and the API run together on one origin, exactly like a Vercel deployment:
 
 ```powershell
-coding-tutor-serve --with-api      # http://127.0.0.1:8765 ; API at /api/v1/... ; SQLite at data\api.sqlite
+coding-tutor-serve                 # http://127.0.0.1:8765 ; API at /api/v1/... ; SQLite at data\api.sqlite
+coding-tutor-serve --no-api        # static UI only; the page then works offline
 ```
 
-Or run the API alone (`coding-tutor-api`, port 8780) and set `web/config.json` to
-`{"api": "http://127.0.0.1:8780"}`. With `{"api": null}` (the default) the app runs fully offline and
-each browser learns alone. `{"api": "/api"}` means "same origin".
+`web/config.json` defaults to `{"api": "/api"}` (same origin). If the API cannot be reached, the app keeps
+working offline and each browser learns alone. Use `{"api": null}` to switch sharing off for a deployment,
+or run the API alone (`coding-tutor-api`, port 8780) with `{"api": "http://127.0.0.1:8780"}`.
 
 - The browser still chooses the coaching style. It combines the student's own results with the shared
   counts from `GET /v1/policy`, capped at 20 pseudo-trials per arm so personal results still matter.
 - When a reward settles (next NEW case with the same trap), it sends `POST /v1/events` with exactly
-  `{confusion, bucket, action, reward}`. No ids, answers, notes or IPs are stored; days are the finest time grain.
+  `{confusion, miss_level, action, reward}`. No ids, answers, notes or IPs are stored; days are the finest time grain.
 - Students can turn sharing off in Progress → Learning together. Unsent events wait in an outbox.
 - Server: standard-library WSGI (`coding_tutor.live.app.make_app`), CORS allowlist, 64 KB body limit,
   per-client rate limit. Storage is pluggable (`live/stores/`): SQLite now, a hosted store for deployment.

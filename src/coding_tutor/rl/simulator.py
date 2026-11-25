@@ -8,7 +8,7 @@ Hidden from the policy:
 
 Loop per question (mirrors CLAUDE.md):
   pick confusion (simple rule: weakest observed first) -> student answers ->
-  if wrong: policy picks action for context (confusion, miss bucket) -> student learns ->
+  if wrong: policy picks action for context (confusion, miss level) -> student learns ->
   NEW question with the same confusion -> reward = 1 if correct.
 
 Env and Student are plain records; every step is a function. `answer` and `teach` update the
@@ -67,8 +67,8 @@ class Student(NamedTuple):
     right: dict[str, int]
 
 
-def bucket(misses: int) -> int:
-    """Return the miss bucket used in the policy context: 1, 2 or 3 (3+)."""
+def miss_level(misses: int) -> int:
+    """Return the miss level used in the policy context: 1, 2 or 3 (3+)."""
     return 1 if misses <= 1 else 2 if misses == 2 else 3
 
 
@@ -93,7 +93,7 @@ def mastery(s: Student) -> float:
 def gain(env: Env, s: Student, confusion: str, action: str) -> float:
     """Return the fraction of the remaining skill gap that `action` closes (capped at MAX_GAIN)."""
     g = BASE_GAIN[env.kind[confusion]][action] + PROFILE_BONUS[s.profile].get(action, 0.0)
-    if bucket(s.misses.get(confusion, 0)) == 3:
+    if miss_level(s.misses.get(confusion, 0)) == 3:
         g += STUCK_BONUS.get(action, 0.0)
     return min(g, MAX_GAIN)
 

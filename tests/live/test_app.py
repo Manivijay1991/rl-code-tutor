@@ -13,7 +13,7 @@ from coding_tutor.live.stores import Store
 from coding_tutor.live.stores import sqlite as storage
 
 CONFUSIONS = frozenset({"dm:missed_with_link"})
-EVENT = {"confusion": "dm:missed_with_link", "bucket": 1, "action": "contrast_pair", "reward": 1}
+EVENT = {"confusion": "dm:missed_with_link", "miss_level": 1, "action": "contrast_pair", "reward": 1}
 ORIGIN = "http://127.0.0.1:8765"
 
 

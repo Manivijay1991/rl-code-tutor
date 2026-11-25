@@ -45,7 +45,7 @@ def test_dev_server_serves_ui_config_and_api(tmp_path):
             assert json.loads(resp.read()) == {"api": "/api"}  # overrides the file on disk
         event = {
             "confusion": "diabetes_complications:missed_with_link",
-            "bucket": 1,
+            "miss_level": 1,
             "action": "walkthrough",
             "reward": 1,
         }
@@ -64,7 +64,8 @@ def test_dev_server_serves_ui_config_and_api(tmp_path):
 
 def test_parse_args():
     args = serve.parse_args(["--port", "9000", "--no-browser"])
-    assert (args.port, args.no_browser, args.with_api) == (9000, True, False)
+    assert (args.port, args.no_browser, args.with_api) == (9000, True, True)  # the API is on by default
     assert serve.parse_args(["--with-api"]).with_api is True
+    assert serve.parse_args(["--no-api"]).with_api is False
     with pytest.raises(SystemExit):
         serve.parse_args(["--po", "1"])  # no abbreviations

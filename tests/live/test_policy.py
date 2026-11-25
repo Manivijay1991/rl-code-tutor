@@ -12,7 +12,7 @@ from coding_tutor.live.policy import (
 )
 
 CONFUSIONS = frozenset({"dm:missed_with_link", "ckd:wrong_ckd_stage"})
-GOOD = {"confusion": "dm:missed_with_link", "bucket": 2, "action": "contrast_pair", "reward": 1}
+GOOD = {"confusion": "dm:missed_with_link", "miss_level": 2, "action": "contrast_pair", "reward": 1}
 
 
 def test_known_confusions(tables):
@@ -29,9 +29,9 @@ def test_parse_event_ok():
     ("change", "message"),
     [
         ({"confusion": "dm:nope"}, "unknown confusion"),
-        ({"bucket": 4}, "bucket"),
-        ({"bucket": "2"}, "bucket"),
-        ({"bucket": True}, "bucket"),
+        ({"miss_level": 4}, "miss_level"),
+        ({"miss_level": "2"}, "miss_level"),
+        ({"miss_level": True}, "miss_level"),
         ({"action": "nap"}, "unknown action"),
         ({"reward": 2}, "reward"),
         ({"reward": True}, "reward"),
@@ -39,9 +39,9 @@ def test_parse_event_ok():
     ],
     ids=[
         "confusion",
-        "bucket_range",
-        "bucket_str",
-        "bucket_bool",
+        "miss_level_range",
+        "miss_level_str",
+        "miss_level_bool",
         "action",
         "reward_range",
         "reward_bool",

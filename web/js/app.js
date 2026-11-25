@@ -15,7 +15,7 @@ import {
   evidenceScore,
   leanSummary,
   migrate,
-  nextMissBucket,
+  nextMissLevel,
   recordOutcome,
 } from "./progress.js";
 import { shuffled } from "./random.js";
@@ -216,7 +216,7 @@ function nextQuestion() {
     firstPick: null,
     hintsUsed: 0,
     action: null,
-    missBucket: null,
+    missLevel: null,
     hint: null,
     hintState: {},
     lit: new Set(),
@@ -460,8 +460,8 @@ function submit() {
   q.lastWrong = opt;
   if (q.action === null) {
     const conf = `${q.scenario.table}:${opt.confusion}`;
-    q.missBucket = nextMissBucket(app.progress, conf);
-    q.action = chooseAction(app.progress.bandit, conf, q.missBucket, Math.random, app.prefs.share ? app.shared?.arms : null);
+    q.missLevel = nextMissLevel(app.progress, conf);
+    q.action = chooseAction(app.progress.bandit, conf, q.missLevel, Math.random, app.prefs.share ? app.shared?.arms : null);
   }
   if (q.hintsUsed < MAX_HINTS) showHint(opt);
   else q.phase = "stuck";
@@ -507,7 +507,7 @@ function finish(result) {
     hintsUsed: q.hintsUsed,
     revealed: result === "revealed",
     action: q.action,
-    missBucket: q.missBucket,
+    missLevel: q.missLevel,
     evidence: q.evidence,
     date: today(),
   });
@@ -796,7 +796,7 @@ function insights() {
     learned.length
       ? learned.map((c) => h("div", { class: "insight" }, icon("bulb", 16),
           h("span", {}, h("b", {}, ACTION_LABELS[c.best]), ` works best for "${trapName(c.confusion)}"`,
-            c.bucket > 1 ? ` after ${c.bucket === 3 ? "3+" : c.bucket} misses` : "", ` (${Math.round(c.mean * 100)}%, ${c.trials} cases).`)))
+            c.missLevel > 1 ? ` after ${c.missLevel === 3 ? "3+" : c.missLevel} misses` : "", ` (${Math.round(c.mean * 100)}%, ${c.trials} cases).`)))
       : h("p", { class: "note-small" }, "Your tutor tries different coaching styles after a miss and learns which ones help you on the next new case. Insights appear here as you practice."));
 }
 

@@ -10,7 +10,7 @@
 // "pending" on C. The next NEW question containing C settles it: reward 1 if that question is
 // answered correctly on the first pick, else 0. Re-picks inside a question never count.
 
-import { bucket, updateBandit } from "./bandit.js";
+import { missLevel, updateBandit } from "./bandit.js";
 
 export const PROGRESS_VERSION = 1;
 const HISTORY_LIMIT = 300;
@@ -52,9 +52,9 @@ export function accuracy(progress, confusion) {
   return s.seen ? s.right / s.seen : null;
 }
 
-/** Miss bucket the next miss on this trap would fall into (used to pick the teaching action). */
-export function nextMissBucket(progress, confusion) {
-  return bucket(confStats(progress, confusion).misses + 1);
+/** Miss level the next miss on this trap would fall into (used to pick the teaching action). */
+export function nextMissLevel(progress, confusion) {
+  return missLevel(confStats(progress, confusion).misses + 1);
 }
 
 /**
@@ -88,8 +88,8 @@ function settleRewards(progress, scenario, confusions, firstCorrect) {
     const p = pending[c];
     if (!p || p.scenarioId === scenario.id) continue;
     const reward = firstCorrect ? 1 : 0;
-    bandit = updateBandit(bandit, c, p.bucket, p.action, reward);
-    settled.push({ confusion: c, bucket: p.bucket, action: p.action, reward });
+    bandit = updateBandit(bandit, c, p.missLevel, p.action, reward);
+    settled.push({ confusion: c, missLevel: p.missLevel, action: p.action, reward });
     delete pending[c];
   }
   return { bandit, pending, settled };
@@ -103,7 +103,7 @@ function settleRewards(progress, scenario, confusions, firstCorrect) {
  *   hintsUsed,        0-3
  *   revealed,         the student asked for the answer
  *   action,           teaching action chosen after the first miss (or null)
- *   missBucket,       bucket used for that action
+ *   missLevel,        miss level (1, 2, 3+) used for that action
  *   evidence,         {hit, missed, extra} when the student marked sentences, else null
  *   date,             "YYYY-MM-DD"
  * }
@@ -117,7 +117,7 @@ export function recordOutcome(progress, scenario, outcome) {
 
   const { bandit, pending, settled } = settleRewards(progress, scenario, confusions, firstCorrect);
   if (fellFor && outcome.action) {
-    pending[fellFor] = { action: outcome.action, bucket: outcome.missBucket, scenarioId: scenario.id };
+    pending[fellFor] = { action: outcome.action, missLevel: outcome.missLevel, scenarioId: scenario.id };
   }
 
   const conf = { ...progress.conf };
@@ -216,7 +216,12 @@ export function leanSummary(progress) {
 export function migrate(stored) {
   if (!stored || stored.version !== PROGRESS_VERSION) return emptyProgress();
   const { calibration, ...rest } = stored; // removed with the Sure/Guessing control
-  return { ...emptyProgress(), ...rest };
+  // Pending rewards saved before the rename stored the miss level as `bucket`.
+  const pending = Object.fromEntries(Object.entries(rest.pending ?? {}).map(([c, p]) => {
+    const { bucket, ...keep } = p;
+    return [c, { ...keep, missLevel: keep.missLevel ?? bucket }];
+  }));
+  return { ...emptyProgress(), ...rest, pending };
 }
 
 function round3(x) {

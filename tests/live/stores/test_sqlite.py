@@ -1,3 +1,5 @@
+import sqlite3
+
 from coding_tutor.live.policy import Event
 from coding_tutor.live.stores import sqlite as storage
 
@@ -25,6 +27,25 @@ def test_persists_on_disk(tmp_path):
     storage.record(con, [E1], "d")
     con.close()
     assert storage.arm_rows(storage.connect(path)) == [("dm:x", 1, "walkthrough", 1, 0)]
+
+
+def test_legacy_bucket_columns_are_renamed_and_data_kept(tmp_path):
+    path = tmp_path / "old.sqlite"
+    old = sqlite3.connect(path)
+    old.executescript(
+        "CREATE TABLE arms(confusion TEXT, bucket INTEGER, action TEXT, successes INTEGER NOT NULL DEFAULT 0, "
+        "failures INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(confusion, bucket, action));"
+        "CREATE TABLE events(id INTEGER PRIMARY KEY, day TEXT NOT NULL, confusion TEXT NOT NULL,"
+        " bucket INTEGER NOT NULL, action TEXT NOT NULL, reward INTEGER NOT NULL, client TEXT NOT NULL DEFAULT '');"
+        "INSERT INTO arms VALUES ('dm:x', 2, 'walkthrough', 3, 1);"
+        "INSERT INTO events(day, confusion, bucket, action, reward) VALUES ('d', 'dm:x', 2, 'walkthrough', 1);"
+    )
+    old.close()
+    con = storage.connect(path)
+    assert storage.arm_rows(con) == [("dm:x", 2, "walkthrough", 3, 1)]
+    storage.record(con, [Event("dm:x", 2, "walkthrough", 1)], "d")
+    assert storage.arm_rows(con) == [("dm:x", 2, "walkthrough", 4, 1)] and storage.total_events(con) == 2
+    assert storage.rename_legacy_columns(con) == []  # already migrated: nothing to do
 
 
 def test_no_identifier_columns():
