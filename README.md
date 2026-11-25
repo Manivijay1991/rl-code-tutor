@@ -6,6 +6,9 @@ decides every answer; a Thompson-sampling bandit chooses *how to teach* after a 
 > CRC (Certified Risk Adjustment Coder) is a credential of AAPC. This project is not affiliated with or
 > endorsed by AAPC, AHIMA, AMA or CMS. All decision tables and generated
 > scenarios are **drafts** until reviewed by a certified coder. Not for production coding.
+>
+> You need a prior understanding of ICD-10-CM codes. This tool covers only about 30% of the CRC exam;
+> it is not a complete exam-prep course.
 
 ## Setup (Windows / PowerShell)
 

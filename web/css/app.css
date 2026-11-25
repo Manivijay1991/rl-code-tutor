@@ -541,7 +541,7 @@ body[data-view="home"] .topbar { justify-content: space-between; }
 .loop h3 { margin: 0 0 4px; font-size: 15px; letter-spacing: -0.01em; }
 .loop p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
 .loop-foot { display: flex; gap: 8px; align-items: center; font-size: 13.5px; color: var(--ink-2); margin: 12px 0 0; }
-.trust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.trust { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .trust .card { box-shadow: none; padding: 16px; }
 .trust h3 { margin: 0 0 4px; font-size: 14.5px; display: flex; gap: 6px; align-items: center; }
 .trust p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
