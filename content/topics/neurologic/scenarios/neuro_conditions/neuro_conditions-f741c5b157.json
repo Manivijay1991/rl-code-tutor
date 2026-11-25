@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-f741c5b157",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "parkinsons"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for Parkinson's disease.\n\nVitals: BP 128/82, HR 74, RR 16, Temp 98.6 F, SpO2 98% on room air, BMI 26.4.\n\nRecent Labs: HbA1c 6.2%, eGFR 78 mL/min/1.73m2, TSH 2.1 mIU/L, Vitamin D 30 ng/mL.\n\nSocial History: Retired teacher. Lives with her husband. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nReview of Systems:\nConstitutional: Denies fatigue, weight change, or chills.\nNeurological: Denies dizziness, numbness, or vision changes.\nMusculoskeletal: Reports mild stiffness in the morning.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath or cough.\nGastrointestinal: Denies abdominal pain or diarrhea.\nGenitourinary: Denies dysuria.\nPsychiatric: Denies anxiety or depression.\n\nHPI: [Copied Forward] Patient is a 72-year-old female with a known history of Parkinson's disease. She presents for a routine follow-up to monitor disease progression and medication efficacy. She currently manages symptoms with a stable regimen of carbidopa-levodopa. She reports overall stability in her mobility and ability to perform activities of daily living.\n\n[Update] Today, the patient reports that she feels she is managing her symptoms well. She states that her medications are effective and she has not experienced any significant increase in tremors or rigidity since the last visit. She denies any issues with speech or balance. She is currently compliant with her prescribed regimen.\n\nMedication List:\n- Carbidopa-levodopa 250/100 mg, three times daily.\n- Atorvastatin 20 mg daily.\n- Lisinopril 10 mg daily.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nNeurological: Normal gait with mild shuffling. Resting tremor noted in bilateral hands. Muscle tone is slightly increased in upper extremities. Speech is clear and at a normal volume. No involuntary movements noted.\nMusculoskeletal: No joint swelling or erythema.\n\nAssessment:\n1. Parkinson's disease: Stable on current carbidopa-levodopa dosage. No evidence of adverse motor reactions.\n\nPlan:\n1. Continue current dosage of carbidopa-levodopa.\n2. Continue current antihypertensive and lipid-lowering medications.\n3. Follow up in 3 months for routine evaluation.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "G20.A1"
+  ],
+  "explanations": [
+    "Parkinson's disease without dyskinesia and without fluctuations: G20.A1 (HCC 199)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G20.C"
+      ],
+      "confusion": "parkinsonism_vs_parkinsons",
+      "lean": "neutral",
+      "why": "Parkinson's disease is documented, not parkinsonism.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.615,
+        "correct": 0.615,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G20.A2"
+      ],
+      "confusion": "unsupported_fluctuations",
+      "lean": "over",
+      "why": "Motor fluctuations are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.615,
+        "correct": 0.615,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.615,
+    "hccs": [
+      {
+        "hcc": "199",
+        "label": "Parkinson and Other Degenerative Disease of Basal Ganglia",
+        "from": [
+          "G20A1"
+        ],
+        "weight": 0.615
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:14+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

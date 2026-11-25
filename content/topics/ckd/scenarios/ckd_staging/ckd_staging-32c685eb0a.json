@@ -1,0 +1,64 @@
+{
+  "id": "ckd_staging-32c685eb0a",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: Pt is a 90 y/o male presenting for f/u of chronic kidney disease. Pt reports feeling well overall. Denies any acute changes in urinary output or new flank pain. He notes mild aching in bilateral knees, consistent with known osteoarthritis. He is adherent to current medications. No new complaints since last visit.\n\nMedication List:\n- Vitamin D supplement daily\n- Analgesic PRN for joint pain\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nGenitourinary: No dysuria, hematuria, or nocturia.\nMusculoskeletal: Mild bilateral knee pain.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives at home with spouse. No tobacco or alcohol use.\n\nFamily History: Father had osteoarthritis. Mother had vitamin D deficiency.\n\nVitals:\nBP: 122/74\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 165 lbs\n\nRecent Labs:\neGFR: 94 (consistent with stage 1)\nUrine Albumin: Trace\nVitamin D: Low\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nMSK: Mild tenderness and decreased ROM in bilateral knees.\nRenal: No palpable masses, no CVA tenderness.\n\nAssessment:\n1. Chronic kidney disease: Pt currently at stage 1. eGFR remains stable at 94. Urine albumin trace.\n2. Osteoarthritis: Bilateral knees. Stable.\n3. Vitamin D deficiency: Ongoing management.\n\nPlan:\n1. Continue current medications.\n2. Monitor renal function with f/u labs in 6 months.\n3. Continue Vitamin D supplementation.\n4. Continue to manage knee pain as needed.\n\nProblem List:\n- Chronic kidney disease (stage 1)\n- Osteoarthritis of both knees\n- Vitamin D deficiency\n\nElectronically signed, S. Patel, PA-C, 05/14/2026",
+  "answer": [
+    "N18.1"
+  ],
+  "explanations": [
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-24T17:24:11+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "osteoarthritis of both knees"
+      ],
+      "credential": "PA-C",
+      "signer": "S. Patel"
+    }
+  }
+}

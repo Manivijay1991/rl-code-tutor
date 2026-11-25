@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-277328a2a1",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "unspecified_depression",
+    "status": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"Feeling down lately\"\n\nHPI: Pt is a 78-year-old female presenting for follow-up regarding depression. She reports a persistent low mood over the last 3 months. Pt states she has less interest in her usual hobbies and feels fatigued most days. She denies significant changes in sleep patterns or appetite. She notes that her mood is constant but does not describe specific triggers. She is seeking management of these symptoms today.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Lisinopril 10mg PO QD\n- Amlodipine 5mg PO QD\n\nReview of Systems:\nConstitutional: Fatigue, no fever, no weight change.\nPsychiatric: Low mood, no sleep disturbance.\nNeurological: No tremors, no gait changes.\nAll other systems reviewed and negative.\n\nSocial History: Retired teacher. Lives with her spouse in a single-story home. Non-smoker. Occasional social gatherings with friends.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes. No known history of depression in immediate family.\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'4\", 145 lbs\n\nRecent Labs:\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\neGFR: 72 mL/min\n\nExam:\nGen: Alert and oriented x3. Appears well-groomed.\nPsych: Cooperative, speech is normal rate and volume. Affect is flat. Mood is described as \"sad.\" Thought process is linear. Insight and judgment intact.\nPhysical: CTAB. RRR. Lungs clear. Heart regular rhythm, no murmurs.\n\nAssessment:\n1. Depression\n\nPlan:\n1. Continue current dose of Sertraline.\n2. Discussed importance of regular physical activity and social engagement.\n3. Pt to continue monitoring mood and report any significant changes.\n4. Follow up in 4 weeks for reassessment of depression.\n\nElectronically signed,\nL. Moreau, PA-C\nMay 14, 2026",
+  "answer": [
+    "F32.A"
+  ],
+  "explanations": [
+    "'Depression' without 'major depressive disorder' is F32.A, depression unspecified (no HCC). Do not upgrade it to major depression."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.9"
+      ],
+      "confusion": "coded_mdd_without_documentation",
+      "lean": "over",
+      "why": "Major depressive disorder is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "coded_mdd_without_documentation",
+      "lean": "over",
+      "why": "Neither major depression nor a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T04:43:48+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "acceptable_sources-e69de5e875",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "unsigned_note"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Visit Date: May 14, 2026\n\nNote status: unsigned\n\nChief Complaint\nFollow-up for chronic obstructive pulmonary disease.\n\nHPI\nThe patient is a 90-year-old female who presents today for a scheduled outpatient follow-up regarding her chronic obstructive pulmonary disease. She reports that she has been feeling stable over the last few months. She denies any recent increase in shortness of breath or changes in her cough. She states that her current inhaler regimen is effective in managing her symptoms during daily activities. She reports good compliance with her medications and denies any side effects. She is seeking a routine evaluation of her status and continued management.\n\nReview of Systems\nConstitutional: Denies fever, chills, or unintended weight loss.\nRespiratory: Denies productive cough, wheezing, or chest pain.\nCardiovascular: Denies palpitations or edema.\nMusculoskeletal: Denies joint pain or stiffness.\nNeurological: Denies dizziness or syncope.\n\nSocial History\nThe patient lives at home with her daughter. She is retired and enjoys gardening and light walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension and a history of chronic obstructive pulmonary disease. Father had a history of coronary artery disease.\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nPlatelets: 210 x 10^9/L\neGFR: 58 mL/min/1.73m2\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 95% on room air\nWeight: 135 lbs\n\nMedication List\n1. Tiotropium inhaler\n2. Lisinopril 10 mg daily\n3. Vitamin D3 1000 IU daily\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress.\nRespiratory: Breath sounds are clear in all fields. No wheezing or crackles noted.\nCardiovascular: Regular rate and rhythm. No murmurs heard.\nMusculoskeletal: Gait is steady with a cane.\n\nAssessment\n1. Chronic obstructive pulmonary disease: The patient's condition is currently assessed as stable. She reports good symptom control on her current inhaler.\n\nPlan\n1. Continue the current inhaler regimen as prescribed.\n2. Follow up in the clinic in three months for a routine evaluation of her chronic obstructive pulmonary disease.",
+  "answer": [],
+  "explanations": [
+    "A note must be signed with the provider's credentials to be used. Unsigned: no code (ask the provider to sign it)."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_unsigned_note",
+      "lean": "over",
+      "why": "Without a signature and credentials the note cannot support a code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:13+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka",
+      "signed": false
+    }
+  }
+}

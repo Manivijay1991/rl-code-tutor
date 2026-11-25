@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-639f7ac3e8",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: \"My right knee hurts when I walk.\"\n\nHPI: Patient is a 69-year-old female presenting for evaluation of right knee pain. Patient reports a gradual onset of dull, aching pain in the right knee over the last 4 months. She notes that the pain is most prominent during prolonged walking or climbing stairs. She describes a sensation of \"grinding\" and stiffness in the morning that improves with movement. She denies any acute trauma, locking, or sudden giving way of the joint. She has tried rest and over-the-counter acetaminophen for relief with only partial success.\n\nMedication List:\n- Acetaminophen 650mg every 6 hours as needed for pain.\n\nVitals:\nBP: 124/76, HR: 74, SpO2: 98% on room air, Temp: 98.6 F, Weight: 158 lbs.\n\nRecent Labs:\n- Hemoglobin: 13.2 g/dL\n- White Blood Cell Count: 7.4 x 10^9/L\n- Platelets: 210 x 10^9/L\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or fatigue.\n- Musculoskeletal: Positive for right knee pain and stiffness. Negative for hip pain or shoulder pain.\n- Neurological: Negative for numbness or tingling.\n- Integumentary: Negative for rashes or skin changes.\n- Respiratory: Negative for shortness of breath or cough.\n\nSocial History: Retired teacher. Lives with her spouse. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had osteoarthritis. Father had history of cataracts.\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nMusculoskeletal: Right knee shows mild swelling and decreased range of motion compared to the left side. Crepitus noted upon palpation of the patellofemoral joint. No erythema or warmth noted. Strength is 5/5 in quadriceps and hamstrings.\n\nAssessment:\n1. Knee osteoarthritis, right.\n\nPlan:\n1. Recommended physical therapy to strengthen surrounding musculature.\n2. Discussed weight management and low-impact exercises (swimming, cycling).\n3. Continue current regimen of acetaminophen as needed.\n4. Follow up in 4 weeks to assess progress with physical therapy.\n\nProblem List:\n- chronic systolic heart failure (HFrEF)\n- status post appendectomy\n- status post cholecystectomy\n- status post tonsillectomy\n\nElectronically signed,\nA. Rivera, NP\nOctober 14, 2026",
+  "answer": [],
+  "explanations": [
+    "Heart failure appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0,
+        "gap": 0.36,
+        "direction": "over",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:28:15+00:00",
+    "style": {
+      "age": 69,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

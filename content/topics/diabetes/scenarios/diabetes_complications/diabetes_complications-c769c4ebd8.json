@@ -1,0 +1,115 @@
+{
+  "id": "diabetes_complications-c769c4ebd8",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for T1DM and polyneuropathy.\n\nHPI\nPt is an 83y female presenting for routine management of type 1 diabetes mellitus. Pt reports stable glucose levels and continues to use insulin for glycemic control. She complains of persistent tingling and numbness in bilateral feet, consistent with her known polyneuropathy. Denies acute changes in sensation or new-onset ulcers.\n\nMedication List\nInsulin glargine (long-acting)\nInsulin lispro (rapid-acting) PRN\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F, SpO2 97% on RA.\nPhysical: Skin intact, no visible ulcers on feet. Decreased sensation to monofilament testing in bilateral toes. No edema.\nNeuro: Gait steady, RRR, CTAB.\n\nAssessment\n1. Type 1 diabetes mellitus.\n2. Polyneuropathy.\n\nPlan\n1. Continue current insulin regimen.\n2. Monitor blood glucose logs.\n3. Foot care education provided; pt to inspect feet daily.\n4. F/u in 3 months.\n\nElectronically signed\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "E10.42"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: E10.42.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "G62.9"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1042"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:35+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

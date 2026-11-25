@@ -1,0 +1,116 @@
+{
+  "id": "diabetes_complications-a083358e29",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for polyneuropathy and T2DM.\n\nHPI: Pt is a 60-year-old female presenting for routine follow-up of type 2 diabetes and associated peripheral neuropathy. Pt reports stable symptoms of \"pins and needles\" sensation in bilateral feet. Denies acute worsening of symptoms, new-onset weakness, or skin breakdown on feet. Pt reports adherence to diet and exercise for glycemic management. Denies any recent falls or injuries. Pt also reports occasional heartburn, managed with lifestyle.\n\nMedication List:\n- Omeprazole 20mg PO daily\n- Multivitamin daily\n- OTC medications as needed\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nHEENT: Denies vision changes, rhinorrhea.\nRespiratory: Denies SOB, cough.\nGI: Reports occasional heartburn.\nMSK: Denies joint pain.\nNeuro: Reports bilateral foot tingling.\nSkin: Denies rashes.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had T2DM. Father had seasonal allergic rhinitis.\n\nVitals:\nBP: 122/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'5\"\nWeight: 165 lbs\n\nRecent Labs:\nHbA1c: 7.2%\neGFR: 82\nCMP: WNL\n\nExam:\nGeneral: Alert, cooperative, in no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nNeurological: Sensation diminished to light touch in distal toes bilaterally. Deep tendon reflexes 2+ throughout. Gait steady.\nSkin: No ulcers or lesions noted on feet.\n\nAssessment:\n1. Type 2 diabetes mellitus: Stable, currently diet controlled.\n2. Polyneuropathy: Chronic, stable symptoms.\n3. Gastroesophageal reflux disease: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan:\n1. Continue current diet and exercise regimen for T2DM management.\n2. Monitor peripheral neuropathy symptoms; continue podiatry follow-up for foot care.\n3. Continue current medications for GERD.\n4. F/u in 3 months for lab work and clinical assessment.\n\nProblem List:\n- Type 2 diabetes (diet controlled)\n- Polyneuropathy\n- Gastroesophageal reflux disease\n- Seasonal allergic rhinitis\n\nElectronically signed, H. Tanaka, DO, 05/14/2026",
+  "answer": [
+    "E11.42"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: the combination code E11.42 captures both."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding the two separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "G62.9"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1142"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:31+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "DO",
+      "signer": "H. Tanaka"
+    }
+  }
+}

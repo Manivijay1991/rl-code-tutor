@@ -1,0 +1,74 @@
+{
+  "id": "ckd_staging-244138c430",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for renal function.\n\nHPI: [Copied Forward] Patient is an 83-year-old male with a history of chronic kidney disease. He presents for routine monitoring of his renal status and management of symptoms. He reports stable energy levels but notes occasional fatigue.\n\nUpdate: The patient reports he has been feeling well since the last visit. He denies any new shortness of breath or significant changes in urine output. He continues to adhere to his current regimen.\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 185 lbs.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nCardiovascular: Negative for chest pain, palpitations.\nRespiratory: Negative for cough, dyspnea.\nGenitourinary: Negative for dysuria, hematuria.\nMusculoskeletal: Negative for joint pain.\n\nMedication List:\n- Lisinopril 10mg daily\n- Furosemide 40mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nCardiovascular: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Chronic kidney disease, stage 4. Most recent laboratory work shows an eGFR of 22.\n\nPlan:\n1. Continue current medications.\n2. Order repeat BMP in 3 months to monitor renal function.\n3. Patient instructed to report any sudden weight gain.\n\nElectronically signed, M. Okafor, MD, 05/14/2026",
+  "answer": [
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD stage 4: N18.4."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 4 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.514,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.514,
+    "hccs": [
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:31+00:00",
+    "style": {
+      "age": 83,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "M. Okafor"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "hip_fracture-e2cc48aa24",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "right",
+    "encounter": "healing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint\nFollow-up for right hip pain and mobility.\n\nHPI\nThe patient is a 77-year-old woman who presents today for a routine follow-up six weeks after surgical repair of a closed hip fracture involving the right femoral neck. She is currently status post the surgical procedure and is participating in a structured physical therapy program to regain mobility. She reports that the pain in her right hip has significantly decreased since the surgery, although she still experiences some discomfort when transitioning from a seated to a standing position. She notes that she is able to perform basic activities of daily living but feels some stiffness in the area. She denies any drainage, redness, or increased warmth at the incision site. She reports that her physical therapy sessions are progressing well and she is focused on improving her gait.\n\nMedication List\n- Acetaminophen 650mg every 6 hours as needed for pain.\n- Multivitamin daily.\n\nVitals\nBlood Pressure: 132/84 mmHg\nHeart Rate: 76 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^3/uL\nPlatelet Count: 210 x 10^3/uL\nCreatinine: 1.0 mg/dL\neGFR: 82 mL/min/1.73m2\n\nReview of Systems\nThe patient denies fever, chills, or night sweats. She denies any shortness of breath or chest pain. She reports mild localized stiffness in the right hip but denies any systemic symptoms. She denies any changes in bowel or bladder function.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She is a retired school teacher and enjoys gardening and walking in the park. She denies current tobacco or alcohol use.\n\nFamily History\nMother had hypertension. Father had a history of coronary artery disease. No known family history of malignancy.\n\nExam\nThe patient is alert and oriented x3. She appears in no acute distress. Physical exam of the right hip reveals a well-approximated surgical incision that is dry and intact without signs of drainage or erythema. Range of motion in the right hip is limited by pain but shows improvement compared to the immediate postoperative period. Strength is currently 4/5 in the right lower extremity. Gait is steady with the use of a walker.\n\nAssessment\n1. Status post surgical repair of a closed hip fracture of the right femoral neck. The patient is currently in the healing phase and is making steady progress with physical therapy.\n\nPlan\n1. Continue current physical therapy regimen three times per week.\n2. Continue Acetaminophen as needed for pain management.\n3. Follow up in 4 weeks for continued monitoring of the right hip.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "S72.001D"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the right femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.001D."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.001A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z87.81"
+      ],
+      "confusion": "healing_coded_as_history",
+      "lean": "under",
+      "why": "The fracture is still healing; history is for a healed fracture.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:55+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

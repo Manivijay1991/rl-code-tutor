@@ -1,0 +1,141 @@
+{
+  "id": "copd_respiratory-1e3b95b080",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd",
+    "respiratory": "chronic_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nFollow-up for chronic respiratory conditions.\n\nHPI\nThe patient is an 86-year-old male presenting today for a scheduled follow-up regarding his chronic obstructive pulmonary disease and associated respiratory issues. He reports that his breathing remains consistent with his baseline. He continues to use home oxygen for management of his chronic respiratory failure. He reports that he is able to perform activities of daily living with reasonable ease, though he experiences shortness of breath during exertion. He denies any recent changes in his cough, sputum production, or significant changes in his oxygen requirements. He reports adherence to his current medication regimen.\n\nMedication List\n1. Tiotropium and Fluticasone inhaler\n2. Albuterol HFA as needed\n3. Home oxygen (continuous)\n\nReview of Systems\nConstitutional: Negative for fever, chills, or unintended weight loss.\nRespiratory: Positive for chronic shortness of breath; negative for productive cough or chest pain.\nCardiovascular: Negative for palpitations or edema.\nNeurological: Negative for dizziness or confusion.\nMusculoskeletal: Negative for joint pain.\n\nSocial History\nThe patient lives at home with his spouse. He is a former smoker who quit several years ago. He enjoys watching television and light gardening.\n\nFamily History\nFather had hypertension and coronary artery disease. Mother had type 2 diabetes.\n\nVitals\nTemperature: 98.2 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 18 breaths/min\nOxygen Saturation: 92% on home oxygen\nWeight: 175 lbs\n\nRecent Labs\nHemoglobin: 13.8 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nPlatelets: 210 x 10^9/L\neGFR: 62 mL/min/1.73m2\n\nExam\nGeneral: The patient is alert and oriented x3, appearing in no acute distress.\nRespiratory: Lung sounds are diminished in the lower lobes with scattered wheezes noted. No accessory muscle use.\nCardiovascular: Regular rate and rhythm; S1 and S2 are distinct.\nExtremities: No cyanosis or peripheral edema noted.\n\nAssessment\n1. COPD: Stable. The patient’s chronic obstructive pulmonary disease is well-managed at this time.\n2. Chronic respiratory failure: The patient continues to demonstrate chronic respiratory failure. He remains hypoxic on room air and requires continuous home oxygen to maintain adequate systemic oxygenation.\n\nPlan\n1. Continue current maintenance medications.\n2. Continue use of home oxygen as prescribed.\n3. Follow up in three months for a repeat evaluation of respiratory status.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "J44.9",
+    "J96.11",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Stable COPD: J44.9 (HCC 280).",
+    "Chronic respiratory failure with hypoxia: J96.11 (HCC 213), plus Z99.81 for the home oxygen."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.1",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "unsupported_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9",
+        "Z99.81"
+      ],
+      "confusion": "missed_respiratory_failure",
+      "lean": "under",
+      "why": "The provider diagnoses chronic respiratory failure: J96.11 (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.689,
+        "gap": -0.37,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "213"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J44.9",
+        "J96.10",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_respiratory_failure",
+      "lean": "neutral",
+      "why": "Hypoxia is documented: J96.11.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9",
+        "J96.21",
+        "Z99.81"
+      ],
+      "confusion": "acute_on_chronic_unsupported",
+      "lean": "over",
+      "why": "Only chronic respiratory failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.689,
+    "hccs": [
+      {
+        "hcc": "213",
+        "label": "Cardio-Respiratory Failure and Shock",
+        "from": [
+          "J9611"
+        ],
+        "weight": 0.37
+      },
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:19:30+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

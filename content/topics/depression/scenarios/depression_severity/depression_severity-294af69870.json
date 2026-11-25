@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-294af69870",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "full_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for mood.\n\nHPI: Patient is a 78-year-old male with a history of major depressive disorder, single episode. He reports a stable mood over the last several months. He denies significant changes in sleep, appetite, or interest in activities. He states he feels well and is continuing with his current routine.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nNeuro: Negative\nPsychiatric: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\n\nMedication List:\nSertraline 50mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nMood: Euthymic.\nAffect: Full range, congruent to mood.\nSpeech: Normal rate and volume.\nThought Process: Linear and goal-directed.\n\nAssessment:\nMajor depressive disorder, single episode. The patient is currently in full remission.\n\nPlan:\n1. Continue current medication.\n2. Follow up in 3 months for routine monitoring.\n\nElectronically signed, \nR. Mensah, NP\nOctober 14, 2026",
+  "answer": [
+    "F32.5"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, in full remission (no HCC): F32.5."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents full remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.4"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is full, not partial.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:09+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

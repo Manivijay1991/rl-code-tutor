@@ -1,0 +1,96 @@
+{
+  "id": "ckd_staging-427abfbfc2",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3_unspecified",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: The patient is a 52-year-old man presenting for a routine follow-up of his chronic kidney disease. He reports feeling generally well and denies any acute symptoms such as edema, shortness of breath, or significant fatigue. He continues to manage his symptoms and is adherent to his current regimen. He notes occasional sneezing and itchy eyes during spring months, consistent with his seasonal allergic rhinitis. He denies any new-onset neurological symptoms or significant changes in his renal function since the last visit.\n\nMedication List:\n- Vitamin D supplement\n- Seasonal allergy medication as needed\n\nSocial History: The patient lives with his spouse and two children. He works full-time as a project manager and enjoys hiking on weekends. He denies tobacco use and reports occasional alcohol consumption.\n\nFamily History: Father had a history of chronic kidney disease. Mother has a history of vitamin D deficiency.\n\nReview of Systems: Negative for chest pain, shortness of breath, peripheral edema, or urinary changes. Negative for polyuria or polydipsia. Negative for joint pain or skin rashes.\n\nVitals:\nBP: 128/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\n\nRecent Labs:\neGFR: 42 mL/min/1.73m2\nVitamin D: 28 ng/mL\n\nExam: The patient is alert and oriented x3. He appears in no acute distress. Skin is clear and dry. No peripheral edema noted in lower extremities. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs.\n\nAssessment:\n1. Chronic kidney disease, stage 3.\n2. Vitamin D deficiency.\n3. Seasonal allergic rhinitis.\n\nPlan:\n1. Continue current management for chronic kidney disease. Monitor renal function with repeat labs in three months.\n2. Continue Vitamin D supplementation to maintain adequate levels.\n3. Continue seasonal allergy medications as needed during peak seasons.\n4. Patient instructed to maintain adequate hydration and follow up as scheduled.\n\nProblem List:\n- Chronic kidney disease, stage 3\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed, M. Okafor, NP, 05/14/2026",
+  "answer": [
+    "N18.30"
+  ],
+  "explanations": [
+    "Stage 3 without a 3a/3b specification: N18.30."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.3"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "N18.3 needs a 5th character.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.127,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1830"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:42+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "vitamin D deficiency"
+      ],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

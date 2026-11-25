@@ -1,0 +1,100 @@
+{
+  "id": "obesity_bmi-52c8a06104",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "obesity",
+    "bmi": "32"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for weight management.\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F, BMI 32.4.\n\nRecent Labs: HbA1c 5.8%, Lipid Panel: Total Cholesterol 185, LDL 102, HDL 45, Triglycerides 150. eGFR 88.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for congestion, sore throat.\nCardiovascular: Negative for chest pain, palpitations, or edema.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for abdominal pain, diarrhea, or constipation.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for dizziness or numbness.\n\nSocial History: Retired teacher. Lives with husband. Walks for leisure 3 times per week. Non-smoker.\n\nFamily History: Mother had hypertension and type 2 diabetes. Father had myocardial infarction at age 65.\n\nHPI: [Copied Forward] Patient is a 72-year-old female presenting for follow-up of hypertension and weight management. She reports consistent adherence to her current medications. She notes she has been attempting to increase her daily step count but finds it difficult to maintain a consistent routine due to occasional knee stiffness. She reports no recent episodes of dizziness or syncope.\n\nExam: General: Well-appearing, alert, and in no acute distress. Constitutional: No tremors, no cachexia. Cardiovascular: Regular rate and rhythm, no murmurs, no gallops. Respiratory: Clear to auscultation bilaterally. Extremities: No edema, pulses 2+ bilaterally.\n\nAssessment: 1. Obesity. 2. Hypertension.\n\nPlan:\nThe patient was counseled today regarding the management of obesity. We discussed the importance of a balanced caloric intake and a gradual increase in physical activity. The patient was advised to focus on increasing fiber intake and reducing processed carbohydrates. We discussed a goal of 30 minutes of moderate activity on most days. Patient will continue current medications for blood pressure and cholesterol. Follow-up in 3 months for weight check and lab review.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "E66.9",
+    "Z68.32"
+  ],
+  "explanations": [
+    "Obesity documented by the provider: E66.9. The coder does not upgrade it to morbid obesity from the BMI.",
+    "BMI 32.x with a provider weight diagnosis: add Z68.32."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.01",
+        "Z68.32"
+      ],
+      "confusion": "morbid_from_bmi",
+      "lean": "over",
+      "why": "Only the provider can diagnose morbid obesity; the BMI does not change the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "48"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.9",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 32.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:56+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

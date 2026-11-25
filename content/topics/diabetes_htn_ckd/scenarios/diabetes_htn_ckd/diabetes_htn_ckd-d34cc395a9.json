@@ -1,0 +1,124 @@
+{
+  "id": "diabetes_htn_ckd-d34cc395a9",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for renal and glucose management.\n\nHPI: Pt is a 66-year-old female presenting for routine follow-up of chronic kidney disease and type 2 diabetes. Pt reports feeling generally well today. Denies any acute shortness of breath, chest pain, or significant edema in lower extremities. She reports maintaining her current diet and exercise routine to manage her glucose levels. She reports stable energy levels. No new concerns voiced regarding renal function or systemic symptoms.\n\nMedication List:\n- Multivitamin daily\n- Vitamin D supplement\n- Diet only for T2DM\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies nausea, vomiting, diarrhea.\nMSK: Denies joint pain.\nNeuro: Denies dizziness, numbness.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol.\n\nFamily History: Mother had CKD. Father had T2DM.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 165 lbs\n\nRecent Labs:\neGFR: 12 mL/min/1.73m2\nHbA1c: 7.2%\nBMP: K+ 4.2, Phos 3.8, BUN 65\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB.\nAbd: Soft, non-tender, non-distended.\nExt: No pitting edema.\nSkin: Intact, no lesions.\n\nAssessment:\n1. End stage renal disease: Pt is stable but currently has a low eGFR.\n2. Type 2 diabetes: Managed with diet only at this time.\n3. Chronic kidney disease: Progressing as expected.\n\nPlan:\n- Continue current diet for T2DM.\n- Monitor renal function and electrolytes.\n- Follow up in 3 months for repeat labs and clinic visit.\n- Encouraged continued hydration and balanced protein intake.\n\nElectronically signed,\nE. Castillo, MD\nOctober 14, 2026",
+  "answer": [
+    "E11.22",
+    "N18.6"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.6."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.6"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.981,
+        "gap": -0.815,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.5"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.981,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:57:18+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

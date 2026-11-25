@@ -1,0 +1,96 @@
+{
+  "id": "diabetes_complications-ff9973650c",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for management of type 2 diabetes.\n\nHPI\nThe patient is an 81-year-old male presenting for a scheduled follow-up regarding his type 2 diabetes mellitus. He reports that he has been managing his glucose levels with a combination of long-term insulin and an oral hypoglycemic agent. He states that he feels well and has not experienced any acute issues since his last visit. He denies any recent symptoms or concerns regarding his glucose levels.\n\nMedication List\n- Insulin glargine\n- Metformin 500mg BID\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented to person, place, and time. Skin is intact with no signs of infection or breakdown. Pulse is 72 bpm, blood pressure is 128/82 mmHg, and oxygen saturation is 98% on room air.\n\nAssessment\nType 2 diabetes without complications.\n\nPlan\nThe patient will continue his current regimen of insulin and metformin. We will monitor his laboratory results at the next visit. He was instructed to contact the office if he experiences any new symptoms.\n\nElectronically signed,\nJ. Lindqvist, PA-C\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:57+00:00",
+    "style": {
+      "age": 81,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

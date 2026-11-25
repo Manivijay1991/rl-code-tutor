@@ -1,0 +1,89 @@
+{
+  "id": "hip_fracture-6500e7f10d",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "left",
+    "encounter": "initial"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint: Left hip pain following a fall.\n\nHPI: Copied Forward: Patient is an 89-year-old female with a history of mobility issues who presented with localized pain in the left hip. She reports a gradual increase in discomfort over time.\nUpdate: The patient presents today for an acute injury. She fell two days ago and reports significant pain and inability to bear weight on her left hip. She denies any head injury or loss of consciousness.\n\nVitals: BP 140/82, HR 84, SpO2 96% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nMusculoskeletal: Positive (left hip pain)\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\n\nExam: Patient is alert and oriented x3. She is in significant distress due to pain. Physical exam reveals exquisite tenderness and deformity over the left femoral neck. Range of motion is severely limited. Neurovascular status of the distal extremity is intact.\n\nAssessment:\n1. Fracture of the left femoral neck.\n\nPlan: X-ray today reveals a closed fracture of the left femoral neck. I have initiated pain management and referred the patient for urgent orthopedic surgery.\n\nElectronically signed, \nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "S72.002A"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the left femur, newly diagnosed, active treatment: 7th character A (HCC 402): S72.002A."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.002D"
+      ],
+      "confusion": "subsequent_for_initial",
+      "lean": "under",
+      "why": "The fracture is newly diagnosed and under active treatment: 7th character A.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.467,
+        "gap": -0.467,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "402"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "S72.001A"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left hip is fractured.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0.467,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.467,
+    "hccs": [
+      {
+        "hcc": "402",
+        "label": "Hip Fracture/Dislocation",
+        "from": [
+          "S72002A"
+        ],
+        "weight": 0.467
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:31+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

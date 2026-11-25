@@ -1,0 +1,125 @@
+{
+  "id": "diabetes_complications-6441daf681",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for chronic conditions.\n\nHPI: Patient is a 75-year-old male presenting for a scheduled follow-up. [Copied Forward]: Patient has a history of type 2 diabetes and chronic kidney disease stage 4. He reports stable symptoms with no acute concerns regarding renal function or glucose levels. He maintains a regular routine and reports adherence to his current management plan. [Current Update]: Patient states he feels well today and continues to manage his health through lifestyle modifications. He denies any new fatigue or changes in urinary output.\n\nVitals: BP 128/74, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\n- No medications for glucose management.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nRenal: No edema noted in lower extremities.\n\nAssessment:\n1. Type 2 diabetes: Currently diet controlled.\n2. Chronic kidney disease stage 4: Condition is unrelated to diabetes.\n\nPlan:\n1. Continue current diet and exercise regimen for glucose management.\n2. Monitor renal function labs.\n3. Follow up in 3 months.\n\nElectronically signed,\nL. Moreau, NP\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "N18.4"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:33+00:00",
+    "style": {
+      "age": 75,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "L. Moreau"
+    }
+  }
+}

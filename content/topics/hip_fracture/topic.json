@@ -1,0 +1,8 @@
+{
+  "id": "hip_fracture",
+  "title": "Hip fracture encounters",
+  "kind": "hcc",
+  "description": "7th characters: new fracture (A) versus follow-up while healing (D) versus a healed fracture (history).",
+  "order": 100,
+  "enabled": true
+}

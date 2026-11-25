@@ -1,0 +1,74 @@
+{
+  "id": "ckd_staging-c701538180",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease.\n\nHPI\nThe patient is an 81-year-old male presenting for a routine follow-up of his chronic kidney disease. He reports feeling generally well today and denies any acute shortness of breath, significant fatigue, or changes in urinary output. He is aware of his condition and is currently managing his symptoms at home. He reports adherence to his prescribed medication regimen and denies any new side effects.\n\nMedication List\nLisinopril 10mg daily\nFurosemide 40mg daily\nSevelamer 800mg with meals\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented to person, place, and time. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally. Lower extremities show no significant edema. Blood pressure is 138/82 mmHg.\n\nAssessment\nChronic kidney disease, stage 4. Recent laboratory results indicate an eGFR of 22 mL/min/1.73m², confirming the progression of his renal function.\n\nPlan\nContinue current medications as prescribed. Monitor potassium levels and renal function. Follow up in three months for repeat lab work and clinical evaluation.\n\nElectronically signed, J. Lindqvist, PA-C\n05/14/2026",
+  "answer": [
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD stage 4: N18.4."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 4 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.514,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.514,
+    "hccs": [
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:49+00:00",
+    "style": {
+      "age": 81,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

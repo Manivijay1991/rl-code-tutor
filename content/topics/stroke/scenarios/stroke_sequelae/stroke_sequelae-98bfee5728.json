@@ -1,0 +1,106 @@
+{
+  "id": "stroke_sequelae-98bfee5728",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_left",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for left-sided hemiparesis.\n\nHPI: The patient is a 73-year-old male presenting today for a follow-up evaluation regarding residual left-sided hemiparesis following a previous ischemic stroke. He reports that his mobility remains limited on the left side, though he is attempting to maintain his current level of independence with activities of daily living. He denies any recent falls or significant changes in his functional status since the last visit. He reports that his strength remains consistent, but he continues to require assistance with certain tasks involving his left side. He is seeking a review of his current status and a discussion regarding ongoing rehabilitation goals.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Aspirin 81mg daily\n\nReview of Systems: The patient denies chest pain, shortness of breath, fever, chills, or recent weight changes. He denies any new neurological symptoms or changes in vision. He denies any episodes of dizziness or loss of balance.\n\nSocial History: The patient lives with his wife in a single-story home. He is retired and enjoys gardening and watching television. He denies tobacco or alcohol use.\n\nFamily History: Father had a history of hypertension and a myocardial infarction. Mother had type 2 diabetes.\n\nVitals:\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 74 mL/min/1.73m2\nLDL: 88 mg/dL\nTSH: 2.1 mIU/L\n\nExam: The patient is alert and oriented to person, place, and time. He appears in no acute distress. Neurological exam reveals lingering left-sided hemiparesis. Muscle strength is 4/5 in the left upper and lower extremities. Sensation is intact to light touch throughout. Gait is steady but slightly slower on the left side. No new focal neurological deficits are noted.\n\nAssessment: 73-year-old male with stable left-sided hemiparesis following a history of ischemic stroke.\n\nPlan: Continue current medications. The patient will continue with his current physical therapy regimen to maintain strength and mobility. We will monitor his blood pressure and lipid levels at the next scheduled visit. Follow up in three months.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "I69.354"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, left side, non-dominant by default: I69.354 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.352"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I69.359"
+      ],
+      "confusion": "unspecified_side",
+      "lean": "neutral",
+      "why": "The affected side is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69354"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:22+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

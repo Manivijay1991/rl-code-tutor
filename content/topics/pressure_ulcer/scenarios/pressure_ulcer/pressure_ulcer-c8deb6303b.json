@@ -1,0 +1,62 @@
+{
+  "id": "pressure_ulcer-c8deb6303b",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Wound care for right heel.\n\nHPI: Copied Forward: Patient is an 83-year-old male who presents for ongoing management of a pressure ulcer located on the right heel. The patient reports the area remains tender but notes no new drainage or increased pain since the last evaluation. He continues to use a pressure-redistributing mattress at home.\n\nVitals: BP 138/82, HR 76, SpO2 96% on room air, Temp 98.4 F.\n\nReview of Systems:\nConstitutional: Negative\nIntegumentary: Positive (wound site)\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAspirin 81mg daily\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: Examination of the right heel reveals a pressure ulcer. The wound bed is visible and the surrounding skin is intact. No purulent drainage or systemic symptoms noted.\n\nAssessment:\nPressure ulcer on the right heel.\n\nPlan:\n1. Continue current wound care regimen.\n2. Apply topical dressing to the pressure ulcer on the right heel.\n3. Continue pressure-redistributing surface at home.\n4. Follow up in 2 weeks for wound assessment.\n\nElectronically signed, M. Okafor, MD, 05/14/2026",
+  "answer": [
+    "L89.619"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage not documented: L89.619 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.612"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "No stage is documented: use the unspecified-stage code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 0,
+        "gap": 0.838,
+        "direction": "over",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:29+00:00",
+    "style": {
+      "age": 83,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "M. Okafor"
+    }
+  }
+}

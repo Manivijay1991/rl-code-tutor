@@ -1,0 +1,132 @@
+{
+  "id": "dementia_severity-2493b547cb",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "unspecified",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for Alzheimer's disease and behavioral concerns.\n\nHPI\n[Copied Forward]\nPatient is an 81-year-old female with a known history of Alzheimer's disease. She presents for ongoing management of cognitive decline and associated behavioral symptoms. She has been experiencing periodic episodes of agitation, particularly during the evening hours. The family reports that these episodes are becoming more frequent over the last month.\n\n[Update]\nThe patient is seen today with her daughter. The daughter reports that the evening agitation persists, though it is currently managed with the current regimen. The patient remains stable but continues to show decline in activities of daily living.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.2 F\n\nReview of Systems\nConstitutional: Negative\nNeurological: Positive (memory loss)\nPsychiatric: Positive (behavioral changes)\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\n\nMedication List\nDonepezil 10mg daily\nMemantine 20mg daily\nLorazepam 0.5mg as needed for agitation\n\nExam\nGeneral: Alert, oriented to person only.\nBehavior: Appears calm during the encounter.\nNeurological: Gait is steady; speech is clear but slow.\nPsychiatric: Cooperative with the examiner.\n\nAssessment\nAlzheimer's disease with associated evening agitation.\n\nPlan\n1. Continue current medications for Alzheimer's disease.\n2. Continue as needed medication for episodes of agitation.\n3. Follow up in 3 months.\n\nElectronically signed,\nR. Mensah, DO\n10/14/2026",
+  "answer": [
+    "G30.9",
+    "F02.811"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), unspecified severity, with agitation: F02.811."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.811"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B11"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.80"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.911"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "G309",
+          "F02811"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:36:18+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

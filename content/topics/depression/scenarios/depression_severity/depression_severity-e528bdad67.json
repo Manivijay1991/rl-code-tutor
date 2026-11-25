@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-e528bdad67",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "severe_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Depression and auditory hallucinations\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F\n\nReview of Systems:\nConstitutional: Negative for fever or chills.\nPsychiatric: Positive for depressed mood, feelings of worthlessness, and auditory hallucinations.\nNeurological: Negative for tremors or gait instability.\nOther: Negative.\n\nHPI: \n[Copied Forward] Patient is an 83-year-old male with a history of major depressive disorder, recurrent. He reports persistent low mood and significant fatigue over the last several months. He describes feeling a sense of profound hopelessness and social withdrawal.\n\n[Current Update] The patient reports that his symptoms have worsened since the last visit. He describes his current state as severe. He specifically reports hearing voices that tell him he is a failure, which he identifies as mood-congruent delusions. He expresses distress regarding these voices.\n\nMedication List:\n- Sertraline 100mg daily\n- Quetiapine 50mg at bedtime\n\nExam:\nGeneral: Elderly male, appearing disheveled and slowed in speech.\nPsychiatric: Affect is flat and constricted. Mood is severely depressed. He exhibits mood-congruent delusions with psychotic features. Thought process is coherent but slowed. Insight is limited.\n\nAssessment:\n1. Major depressive disorder, recurrent, severe with psychotic features.\n\nPlan:\n1. Continue Sertraline and Quetiapine as prescribed.\n2. Increase Quetiapine dosage slightly to address psychotic features.\n3. Scheduled follow-up in two weeks to monitor safety and medication efficacy.\n\nElectronically signed, M. Okafor, MD, 10/14/2026",
+  "answer": [
+    "F33.3"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, severe with psychotic features (HCC 152): F33.3."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.2"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "Psychotic features are documented: they change the code and the HCC (152).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.484,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "152"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.3"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.484,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.484,
+    "hccs": [
+      {
+        "hcc": "152",
+        "label": "Psychosis/Except Schizophrenia",
+        "from": [
+          "F333"
+        ],
+        "weight": 0.484
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:49:50+00:00",
+    "style": {
+      "age": 83,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "M. Okafor"
+    }
+  }
+}

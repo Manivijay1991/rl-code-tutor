@@ -1,0 +1,8 @@
+{
+  "id": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis",
+  "kind": "hcc",
+  "description": "Rheumatoid arthritis versus osteoarthritis, rheumatoid factor, and methotrexate use.",
+  "order": 94,
+  "enabled": true
+}

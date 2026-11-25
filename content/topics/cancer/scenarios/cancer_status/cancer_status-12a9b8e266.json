@@ -1,0 +1,123 @@
+{
+  "id": "cancer_status-12a9b8e266",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain.\n\nHPI: Pt is a 60-year-old male presenting for f/u regarding prostate cancer. Pt is currently receiving chemotherapy for the malignancy. He reports increased dull, aching pain in the lumbar spine and left hip over the last 3 weeks. Describes pain as constant, rated 6/10, worse with weight-bearing. Denies any new neurological deficits or saddle anesthesia. Pt states he has been compliant with current regimen but seeks better pain management.\n\nMedication List:\n- Chemotherapy agent (current)\n- Naproxen 500mg BID\n- Lisinopril 10mg QD\n\nReview of Systems:\nConstitutional: No fever, chills, or unintended weight loss.\nMSK: Positive for lumbar and hip pain. No joint swelling.\nNeuro: No numbness or tingling.\nGU: Normal urinary flow, no dysuria.\n\nSocial History: Retired; lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had diabetes.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 195 lbs\n\nRecent Labs:\nHb: 13.2 g/dL\nWBC: 7.4 x 10^9/L\nPlt: 210 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 82 mL/min/1.73m2\n\nExam:\nGen: Well-appearing male in no acute distress.\nCV: RRR, CTAB.\nResp: Clear to auscultation bilaterally.\nMSK: Tenderness noted over L4-L5 and left greater trochanteric process. No erythema or warmth.\nNeuro: Strength 5/5 throughout. Sensation intact.\n\nAssessment:\n1. Prostate cancer, currently receiving chemotherapy.\n2. Bone metastases.\n\nPlan:\n1. Continue current chemotherapy protocol as scheduled.\n2. Address bone metastasis pain: Start low-dose oxycodone 5mg TID PRN for breakthrough pain.\n3. Continue current blood pressure medications.\n4. Follow up in 4 weeks for symptom review and lab work.\n\nElectronically signed, R. Mensah, DO, 10/14/2026",
+  "answer": [
+    "C61",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the prostate under current treatment is a current malignancy: C61.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.46",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C61"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 2.341,
+        "gap": -2.155,
+        "direction": "under",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C61",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:11+00:00",
+    "style": {
+      "age": 60,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

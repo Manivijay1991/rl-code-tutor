@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-2964936958",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for lung cancer and liver involvement.\n\nHPI: Patient is an 83-year-old female with a known history of cancer of the right lung. She is currently receiving chemotherapy for the primary site. Patient reports stable symptoms but notes increased fatigue and mild upper quadrant discomfort over the last month. She reports adherence to her current medication regimen and manageable side effects from her treatment.\n\nMedication List:\n- Pembrolizumab 200mg IV every 3 weeks\n- Prednisone 5mg daily\n- Ondansetron 8mg as needed for nausea\n\nVitals: BP 128/82, HR 76, SpO2 96% on room air, Temp 98.4 F, Weight 145 lbs.\n\nRecent Labs:\n- Hemoglobin: 11.2 g/dL\n- White Blood Cell Count: 4.5 x 10^9/uL\n- Platelets: 150 x 10^3/uL\n- ALT: 88 U/L\n- AST: 92 U/L\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever, chills, or night sweats.\nRespiratory: Negative for shortness of breath or productive cough.\nGastrointestinal: Positive for mild abdominal discomfort. Negative for nausea, vomiting, or diarrhea.\nMusculoskeletal: Negative for joint pain or weakness.\nNeurological: Negative for dizziness or confusion.\n\nSocial History: Retired. Lives at home with her daughter. Non-smoker.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: Breath sounds clear to auscultation in the right lung. No wheezing or stridor.\nAbdominal: Soft, non-tender, and non-distended. Mild tenderness noted in the right upper quadrant.\nExtremities: No edema noted.\n\nAssessment:\n1. Cancer of the right lung, currently receiving chemotherapy.\n2. Liver metastases, newly identified on recent imaging and clinical presentation.\n\nPlan:\n1. Continue current chemotherapy protocol for the primary malignancy.\n2. Initiate management for liver metastases including monitoring of hepatic enzymes.\n3. Order follow-up liver function tests in two weeks.\n4. Patient instructed to report any severe abdominal pain or jaundice immediately.\n\nElectronically signed, \nH. Tanaka, NP\nMay 14, 2026",
+  "answer": [
+    "C34.91",
+    "C78.7"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118",
+        "C78.7"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.90",
+        "C78.7"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 4.209,
+        "gap": -3.073,
+        "direction": "under",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.91",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "by": "17"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:12+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

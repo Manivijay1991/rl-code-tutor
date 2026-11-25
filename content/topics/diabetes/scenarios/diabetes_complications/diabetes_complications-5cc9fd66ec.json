@@ -1,0 +1,119 @@
+{
+  "id": "diabetes_complications-5cc9fd66ec",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes and neuropathy.\n\nHPI: 85-year-old female pt presents for routine f/u of T1DM and polyneuropathy. Pt reports stable glucose levels on current insulin regimen. Denies episodes of significant tremors or severe balance issues today. Reports mild tingling in bilateral feet, which she describes as a chronic finding. Pt denies acute changes in sensation or motor function. She continues to manage symptoms with current medications.\n\nMedication List:\n- Insulin glargine (long-acting)\n- Vitamin D supplement\n- Omeprazole\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change.\nHEENT: No vision changes or headaches.\nCV: No chest pain or palpitations.\nResp: No SOB or cough.\nGI: Occasional reflux, no nausea.\nMSK: Mild bilateral foot tingling.\nNeuro: No acute weakness or focal deficits.\n\nSocial History: Retired. Lives at home with daughter. No tobacco or alcohol use.\n\nFamily History: Mother had T1DM. Father had history of heart disease.\n\nVitals:\nBP: 122/74\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 135 lbs\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 62\nVitamin D: 30 ng/mL\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nCV: RRR, CTAB.\nLungs: CTAB.\nExtremities: Symmetric strength 5/5. Decreased sensation to light touch noted in distal toes bilaterally. No ulcers or lesions.\n\nAssessment:\n1. T1DM: Stable on insulin.\n2. Polyneuropathy: Pt reports chronic tingling. Note: This condition is not related to diabetes.\n3. Gastroesophageal reflux disease: Stable.\n4. Vitamin D deficiency: Improving with supplementation.\n\nPlan:\n- Continue current insulin regimen.\n- Continue Vitamin D supplement.\n- Continue omeprazole for GERD.\n- F/u in 3 months for labs and A1c.\n\nProblem List:\n- T1DM\n- Polyneuropathy (not related to diabetes)\n- Gastroesophageal reflux disease\n- Vitamin D deficiency\n\nElectronically signed, M. Okafor, DO, 05/14/2026",
+  "answer": [
+    "E10.9",
+    "G62.9"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code each separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.42",
+        "G62.9"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Provider documentation of no link overrides the presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E109"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:39+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "vitamin D deficiency"
+      ],
+      "credential": "DO",
+      "signer": "M. Okafor"
+    }
+  }
+}

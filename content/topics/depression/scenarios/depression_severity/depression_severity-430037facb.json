@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-430037facb",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nThe patient is an 86-year-old male presenting for a follow-up evaluation of his mood. He reports that his symptoms have significantly worsened over the last month. He describes a pervasive sense of sadness, profound fatigue, and a loss of interest in activities he previously enjoyed, such as gardening and spending time with his grandchildren. He reports significant sleep disturbances, specifically early morning awakening, and a noticeable decrease in appetite. He states that he feels \"heavy\" and \"hopeless\" most of the day. He denies any thoughts of self-harm. He notes that he is struggling to complete basic daily tasks and feels a lack of energy to engage with his peers. He denies any perceptual disturbances or a break from reality.\n\nReview of Systems\nNegative for chest pain, shortness of breath, or palpitations. Negative for tremors or tremors. Negative for weight changes. Negative for fever or chills. Negative for visual or auditory changes. Negative for any changes in thought content.\n\nSocial History\nThe patient is retired and lives with his wife in a single-story home. He enjoys walking in his garden and watching news programs. He does not smoke and drinks only occasional glasses of wine with dinner.\n\nFamily History\nFather had hypertension and a history of depression. Mother had type 2 diabetes.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 178 lbs\n\nRecent Labs\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^3/uL\nGlucose: 108 mg/dL\neGFR: 68 mL/min/1.73m2\n\nMedication List\nSertraline 50mg daily\nLisinopril 10mg daily\n\nExam\nThe patient appears well-groomed but shows a slumped posture and a flat affect. He is cooperative but speaks with a low volume and slow rate. He is oriented to person, place, and time. Cognition is intact for his age. Mood is described as \"very low.\" Speech is normal in content but diminished in volume. No evidence of tremors or gait instability.\n\nAssessment\nThe patient's symptoms are consistent with a major depressive disorder, single episode. The current episode is characterized as severe without psychotic features. He is not currently showing evidence of any perceptual disturbances.\n\nPlan\nContinue current dose of Sertraline. We will monitor his response to the current regimen. The patient was advised to contact the office immediately if his symptoms worsen or if he experiences an increase in hopelessness. Follow-up in four weeks.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "F32.2"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severe without psychotic features (HCC 155): F32.2."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.3"
+      ],
+      "confusion": "unsupported_psychotic",
+      "lean": "over",
+      "why": "Psychotic features are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.299,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "152"
+        ],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F322"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:49:18+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

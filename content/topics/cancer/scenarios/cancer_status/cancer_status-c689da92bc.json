@@ -1,0 +1,64 @@
+{
+  "id": "cancer_status-c689da92bc",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "history",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for prostate cancer.\n\nHPI: Copied forward from prior visit: Patient is an 81-year-old male who was diagnosed with prostate carcinoma several years ago. He underwent a primary resection and subsequent treatment. He reports feeling well and denies any new urinary symptoms, bone pain, or systemic fatigue. He is here for a routine surveillance evaluation.\n\nMedication List:\n- Atorvastatin 20mg daily\n- Lisinopril 10mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nAbdomen: Soft, non-tender, no masses.\nGenitourinary: No palpable masses or tenderness.\n\nAssessment:\n1. Prostate cancer. The patient's primary cancer was removed and treated years ago. Current status shows treatment is complete. There is no evidence of local recurrence at the primary site. There is no evidence of disease at other sites.\n\nPlan:\n1. Continue current surveillance.\n2. No further intervention is directed at the site of the original malignancy at this time.\n3. Follow up in 6 months.\n\nElectronically signed, \nR. Mensah, DO\nOctober 14, 2026",
+  "answer": [
+    "Z85.46"
+  ],
+  "explanations": [
+    "The prostate cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.46 (no HCC). Any metastasis is still coded as a current secondary malignancy."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C61"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:18+00:00",
+    "style": {
+      "age": 81,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

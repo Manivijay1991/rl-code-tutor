@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-05d3bf56de",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "uc"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint\nFollow-up for ulcerative colitis.\n\nHPI\nThe patient is a 79-year-old female who presents today for a scheduled follow-up evaluation of her ulcerative colitis. She reports that she has been feeling well and has been asymptomatic for several months. She denies any recent episodes of diarrhea, abdominal cramping, or urgency. She states that she has been adherent to her current medication regimen and feels that her condition is stable. She is here to monitor her progress and ensure her ulcerative colitis remains in remission.\n\nReview of Systems\nThe patient reports no recent fever, chills, or night sweats. She denies any unintentional weight loss or changes in appetite. She denies any joint pain or skin rashes. She denies any shortness of breath or chest pain. She reports no recent headaches or vision changes.\n\nSocial History\nThe patient lives at home with her spouse. She reports being retired and enjoys gardening and walking. She denies tobacco use and reports social drinking only on holidays.\n\nFamily History\nHer mother had hypertension and her father had type 2 diabetes. There is no family history of inflammatory bowel disease.\n\nMedication List\n- Mesalamine 2.5g daily\n- Vitamin D3 2000 IU daily\n- Calcium Carbonate 500mg daily\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^9/L\nPlatelet Count: 210 x 10^9/L\nAlbumin: 3.8 g/dL\neGFR: 68 mL/min/1.73m2\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress.\nAbdomen: Soft, non-tender, and non-distended. Bowel sounds are present in all four quadrants. No masses or guarding noted.\nSkin: No visible rashes or lesions.\n\nAssessment\nThe patient is a 79-year-old woman with ulcerative colitis. She is currently in remission and remains stable on her current dose of mesalamine. Her laboratory results are within normal limits, and she shows no clinical signs of flare-up.\n\nPlan\nContinue current medication, including mesalamine. The patient will continue to monitor for any symptoms of activity. We will follow up in six months for a repeat evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "K51.90"
+  ],
+  "explanations": [
+    "Ulcerative colitis, extent not stated, no complications: K51.90 (HCC 81)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K51.00"
+      ],
+      "confusion": "assumed_site",
+      "lean": "neutral",
+      "why": "Pancolitis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.244,
+        "correct": 0.244,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.244,
+    "hccs": [
+      {
+        "hcc": "81",
+        "label": "Ulcerative Colitis",
+        "from": [
+          "K5190"
+        ],
+        "weight": 0.244
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:31+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

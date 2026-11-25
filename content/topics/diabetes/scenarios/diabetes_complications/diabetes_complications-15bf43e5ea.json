@@ -1,0 +1,129 @@
+{
+  "id": "diabetes_complications-15bf43e5ea",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease and type 2 diabetes.\n\nHPI: Patient is a 74-year-old female with a history of type 2 diabetes mellitus and CKD stage 4. She reports stable glucose levels and no significant new symptoms today. She continues to take her long-term oral hypoglycemic medication as prescribed. Patient reports compliance with her current regimen and denies any recent acute changes in renal function.\n\nVitals: BP 128/76, HR 74, SpO2 98% on room air, Weight 155 lbs.\n\nReview of Systems:\nGeneral: Negative\nHEENT: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Positive (reports mild joint stiffness)\nNeurological: Negative\n\nMedication List:\n- Glipizide 5mg daily\n- Atorvastatin 20mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: Dry skin noted on bilateral lower extremities.\nMusculoskeletal: Mildly tender joints in hands.\nRenal: No edema noted.\n\nAssessment:\n1. CKD stage 4: eGFR is currently 22. Patient is stable on current management.\n2. Type 2 diabetes: Stable on glipizide.\n3. Joint stiffness: Assessment suggests this is not due to diabetes.\n\nPlan:\n- Continue current medications.\n- Follow up in 3 months for lab work.\n\nElectronically signed, \nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:27:55+00:00",
+    "style": {
+      "age": 74,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

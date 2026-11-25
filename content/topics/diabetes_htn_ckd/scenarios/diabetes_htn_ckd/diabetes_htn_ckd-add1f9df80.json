@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_htn_ckd-add1f9df80",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease and diabetes.\n\nHPI: The patient is an 86-year-old male presenting for a routine follow-up of his chronic kidney disease and type 2 diabetes. He reports feeling well overall today. He continues to manage his glucose levels primarily through dietary modifications and has not required any pharmacological intervention for his glucose levels to date. He reports adherence to a low-sodium and low-protein diet as previously discussed. He denies any new symptoms of fatigue, shortness of breath, or significant changes in urinary output. He notes that he has been monitoring his blood pressure at home and remains within his target range.\n\nMedication List:\n- Multivitamin\n- Vitamin D3\n- Aspirin (daily)\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight changes.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies cough or shortness of breath.\nGastrointestinal: Denies nausea, vomiting, or abdominal pain.\nGenitourinary: Denies dysuria or hematuria.\nNeurological: Denies dizziness or numbness.\n\nSocial History: The patient lives at home with his wife. He is retired and enjoys gardening. He does not smoke and drinks alcohol occasionally.\n\nFamily History: Father had coronary artery disease. Mother had type 2 diabetes.\n\nVitals:\nBP: 128/78\nHR: 72 bpm\nTemp: 98.4 F\nSpO2: 97% on room air\nWeight: 185 lbs\n\nRecent Labs:\neGFR: 38 mL/min/1.73m²\nHbA1c: 6.8%\nCreatinine: 1.9 mg/dL\nPotassium: 4.2 mEq/L\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Chronic kidney disease, stage 3b: The patient's renal function remains stable with a current eGFR of 38.\n2. Type 2 diabetes: Glucose management remains stable via diet alone.\n\nPlan:\n1. Continue current diet and lifestyle modifications for CKD and T2DM.\n2. Monitor renal function and electrolytes every 3 to 6 months.\n3. Follow up in 4 months for repeat labs.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "E11.22",
+    "N18.32"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.32."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.32"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.293,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.293,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:56:58+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

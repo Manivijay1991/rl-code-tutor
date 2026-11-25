@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-17e874ac4e",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "crohns_small"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint\nFollow-up for Crohn's disease.\n\nHPI\nThe patient is a 77-year-old female presenting today for a routine follow-up of her Crohn's disease. She reports that she has been feeling well and has experienced no significant flare-ups of symptoms over the last three months. She denies any new abdominal pain, significant changes in bowel habits, or systemic symptoms such as fever or chills. She continues to tolerate her current maintenance therapy well and notes that her energy levels remain stable. She is here primarily for monitoring of her condition and to ensure her current regimen remains effective.\n\nMedication List\n- Adalimumab 40 mg subcutaneous every other week\n- Folic acid 1 mg daily\n\nReview of Systems\nThe patient reports no recent fevers, chills, or night sweats. She denies any joint pain or skin rashes. She denies any significant weight loss or changes in appetite. She reports no shortness of breath or chest pain. Her gastrointestinal symptoms are currently well-controlled.\n\nSocial History\nThe patient lives at home with her spouse. She enjoys gardening and walking in her neighborhood. She reports a balanced diet and occasional social outings. She denies any tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension and her father had type 2 diabetes. There is no known family history of inflammatory bowel disease.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 72 mL/min/1.73m2\nCBC: Within normal limits\nCRP: 4.2 mg/L (Stable)\n\nExam\nThe patient is a well-appearing, alert, and oriented 77-year-old female. She is in no acute distress. Abdomen is soft, non-tender, and non-distended. Bowel sounds are present in all four quadrants. No masses or organomegaly are palpable. Skin is intact without rashes or lesions.\n\nAssessment\nThe patient has Crohn's disease of the terminal ileum. Her condition is currently stable on her existing maintenance therapy. She shows no signs of active inflammation or acute exacerbation at this time.\n\nPlan\n1. Continue current maintenance therapy with Adalimumab.\n2. Continue current folic acid supplementation.\n3. Follow up in six months for routine monitoring.\n4. Patient instructed to contact the office immediately if she develops severe abdominal pain or systemic symptoms.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "K50.00"
+  ],
+  "explanations": [
+    "Crohn's disease of the small intestine (ileum), no complications: K50.00 (HCC 80)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K50.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The small intestine is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.55,
+        "correct": 0.55,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.55,
+    "hccs": [
+      {
+        "hcc": "80",
+        "label": "Crohns Disease (Regional Enteritis)",
+        "from": [
+          "K5000"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:51+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

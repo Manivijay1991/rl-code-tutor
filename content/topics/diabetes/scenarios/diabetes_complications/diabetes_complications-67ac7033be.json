@@ -1,0 +1,114 @@
+{
+  "id": "diabetes_complications-67ac7033be",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes management.\n\nHPI: [Copied Forward] Patient is a 50-year-old female with a history of type 2 diabetes and seasonal allergic rhinitis. She reports consistent adherence to her oral hypoglycemic regimen. She denies any recent acute episodes of illness. She notes that her blood glucose readings have been elevated over the past month.\n\n[Current Update] The patient presents today for a routine follow-up. She reports that her blood glucose levels have remained consistently high, which she describes as hyperglycemia. She attributes this to a recent increase in stress at work. She denies any blurred vision, excessive thirst, or frequent urination. She notes that her seasonal allergic rhinitis symptoms are currently stable and well-managed with over-the-counter antihistamines. She has been taking metformin daily as prescribed.\n\nMedication List:\n- Metformin 1000mg BID\n- Vitamin D3 2000 IU daily\n- Loratadine 10mg daily (as needed for allergies)\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 28.4.\n\nRecent Labs:\n- HbA1c: 8.4%\n- eGFR: 82 mL/min/1.73m2\n- Vitamin D: 24 ng/mL\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight changes.\n- HEENT: Positive for seasonal nasal congestion.\n- Respiratory: Negative for cough or shortness of breath.\n- Cardiovascular: Negative for chest pain or palpitations.\n- Gastrointestinal: Negative for abdominal pain or diarrhea.\n- Genitourinary: Negative for dysuria.\n- Musculoskeletal: Negative for joint pain.\n- Neurological: Negative for numbness or tingling.\n\nSocial History: The patient works full-time in an office setting. She is a non-smoker and consumes alcohol socially on weekends. She lives with her spouse and two children.\n\nFamily History: Mother has type 2 diabetes. Father has a history of seasonal allergies.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No new lesions or rashes noted.\nNeck: No lymphadenopathy.\nRespiratory: Lungs clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm, no murmurs.\nNeurological: Grossly intact.\n\nAssessment:\n1. Type 2 diabetes mellitus: The patient's condition is currently poorly controlled as evidenced by her elevated HbA1c and reported hyperglycemia.\n2. Vitamin D deficiency: Stable.\n3. Seasonal allergic rhinitis: Stable.\n\nPlan:\n1. Continue Metformin 1000mg BID.\n2. Increase Vitamin D3 dosage to 5000 IU daily for 3 months.\n3. Patient instructed to monitor blood glucose more frequently and maintain a log for the next 30 days.\n4. Follow up in 3 months for repeat HbA1c and laboratory work.\n\nProblem List:\n- Type 2 diabetes\n- Hyperglycemia\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed, J. Lindqvist, DO,",
+  "answer": [
+    "E11.65",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Diabetes documented as poorly controlled, out of control, or with hyperglycemia is coded to diabetes with hyperglycemia.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Index: Diabetes, poorly controlled",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.84"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.649 is hypoglycemia, not hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:03+00:00",
+    "style": {
+      "age": 50,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "DO",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

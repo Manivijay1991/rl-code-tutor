@@ -1,0 +1,132 @@
+{
+  "id": "dementia_severity-4527183474",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "unspecified",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for memory loss.\n\nHPI: Pt is a 66-year-old female presenting for scheduled follow-up of Alzheimer's disease. Pt is accompanied by daughter today. Daughter reports pt remains stable at home, though she requires frequent prompting for ADLs and medication management. Pt is calm and cooperative during the encounter. No changes in orientation or functional status reported since last visit. Pt denies any significant behavioral issues or mood changes.\n\nMedication List:\n- Donepezil 10mg daily\n- Memantine 20mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nNeurological: Positive for memory deficit; negative for tremors, gait changes, or focal weakness.\nPsychiatric: No mood disturbances noted.\nOther: Negative.\n\nSocial History: Pt lives at home with daughter. Retired teacher. No tobacco or alcohol use.\n\nFamily History: Mother had dementia; Father had hypertension.\n\nFamily History: Mother had dementia; Father had hypertension.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\neGFR: 82 mL/min/1.73m2\nVitamin D: 30 ng/mL\n\nExam:\nGen: 66 y/o female, well-nourished, alert and cooperative.\nNeuro: Speech clear but slow. Oriented to person and place, less so to time. Normal gait and station. No focal neurological deficits.\nPsych: Calm and cooperative. No behavioral or mood disturbances observed.\nSkin: NAD.\n\nAssessment:\n1. Alzheimer's disease. Pt is currently stable on current regimen.\n\nPlan:\n1. Continue Donepezil 10mg daily.\n2. Continue Memantine 20mg daily.\n3. Encourage continued safety measures at home with daughter assistance.\n4. Follow up in 3 months for routine evaluation.\n\nElectronically signed, E. Castillo, MD, 10/14/2026",
+  "answer": [
+    "G30.9",
+    "F02.80"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), unspecified severity, without behavioral disturbance: F02.80."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.80"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B0"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.811"
+      ],
+      "confusion": "unsupported_behavior",
+      "lean": "over",
+      "why": "No behavioral disturbance is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.90"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "G309",
+          "F0280"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:48:32+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

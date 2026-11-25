@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-77b700e3b0",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"I have been feeling very down lately.\"\n\nHPI: The patient is a 73-year-old male who presents today for a follow-up evaluation regarding his mood. He reports a persistent low mood over the last several months, noting a loss of interest in his previous hobbies, such as gardening and woodworking. He describes feeling fatigued most days and reports a decrease in his ability to concentrate on daily tasks. He states that he often feels tearful and has experienced changes in his sleep patterns, specifically difficulty falling asleep at night. He denies any thoughts of harming himself or others. He notes that his symptoms have been persistent rather than intermittent. He is seeking management for his major depressive disorder.\n\nReview of Systems: The patient denies chest pain, shortness of breath, or palpitations. He denies fever, chills, or night sweats. He denies recent weight changes. He reports decreased appetite. He denies any neurological deficits or tremors. He denies any visual or auditory changes.\n\nSocial History: The patient is retired and lives with his wife in a single-family home. He enjoys walking and spending time in his yard. He denies any tobacco or alcohol use.\n\nFamily History: His father had hypertension and a history of depression. His mother had type 2 diabetes.\n\nVitals:\nBP: 132/84 mmHg\nHR: 72 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\nCMP: Within normal limits\n\nMedication List:\nSertraline 50mg daily\nLisinopril 10mg daily\n\nExam: The patient appears well-groomed and is dressed appropriately for the weather. He is alert and oriented to person, place, and time. His speech is normal in rate and volume. His affect is constricted, and his mood is described as \"sad.\" He demonstrates good eye contact. Motor activity is normal without tremors or gait abnormalities.\n\nAssessment:\nMajor depressive disorder, single episode.\n\nPlan:\nThe patient will continue his current regimen of Sertraline 50mg daily. We discussed the importance of consistent medication adherence. I encouraged the patient to engage in regular physical activity, such as daily walks. We will meet again in four weeks to monitor his progress and evaluate the effectiveness of the current treatment plan.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "F32.9"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severity not documented (no HCC): F32.9."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "No severity is documented: do not assume one.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents single episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:13+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-b83c63ee0d",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "epilepsy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for epilepsy.\n\nHPI\nPt is a 56 y.o. female presenting for routine follow-up of epilepsy. Pt reports stable condition with no recent seizure activity since last visit. Denies any adverse effects from current medications. Compliant with daily regimen.\n\nMedication List\nLevetiracetam 500mg BID.\n\nExam\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 122/80, HR 72, RR 16, Temp 98.6 F.\nNeuro: CTAB. RRR. Cranial nerves II-XII intact. Strength 5/5 throughout. Gait steady.\nSkin: NAD.\n\nAssessment\n1. Epilepsy: Well controlled on levetiracetam.\n\nPlan\n1. Continue current dose of levetiracetam.\n2. Pt to continue monitoring for any changes in seizure frequency.\n3. Return to clinic in 6 months for routine f/u.\n\nElectronically signed,\nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "G40.909"
+  ],
+  "explanations": [
+    "Epilepsy, not intractable: G40.909 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G40.919"
+      ],
+      "confusion": "unsupported_intractable",
+      "lean": "over",
+      "why": "Intractable is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "symptom_for_diagnosis",
+      "lean": "neutral",
+      "why": "Epilepsy is documented; do not code the seizure symptom.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40909"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:44+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

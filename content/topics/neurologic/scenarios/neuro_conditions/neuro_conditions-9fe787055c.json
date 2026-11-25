@@ -1,0 +1,80 @@
+{
+  "id": "neuro_conditions-9fe787055c",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "single_seizure_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for history of seizure.\n\nHPI\nPt is an 83 y.o. female presenting for routine follow-up. Pt reports a single seizure occurred several years ago. She describes it as a one-time event with no subsequent episodes. Pt denies any recurring activity or loss of consciousness since that time. She is currently not taking any medications for this condition. No other neurological complaints reported today.\n\nMedication List\nMultivitamin daily\nAspirin 81mg daily\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nNeuro: Speech clear, gait steady. Cranial nerves II-XII intact. No focal deficits. Reflexes 2+ symmetric.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\n\nAssessment\n1. History of isolated seizure. Pt is stable and asymptomatic.\n\nPlan\n1. Continue to monitor. No medications indicated at this time. Pt to f/u in 12 months or PRN if new symptoms develop.\n\nElectronically signed\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z86.69"
+  ],
+  "explanations": [
+    "One seizure years ago, none since and no treatment: personal history, Z86.69 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "coded_resolved_seizure",
+      "lean": "over",
+      "why": "The seizure is not current: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0,
+        "gap": 0.245,
+        "direction": "over",
+        "extra_hccs": [
+          "201"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G40.909"
+      ],
+      "confusion": "coded_resolved_seizure",
+      "lean": "over",
+      "why": "Epilepsy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0,
+        "gap": 0.245,
+        "direction": "over",
+        "extra_hccs": [
+          "201"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:07+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "id": "diabetes_complications-1cc8a432d5",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and hypoglycemia.\n\nHPI\nThe patient is a 52-year-old woman presenting today for a routine follow-up of her type 2 diabetes mellitus. She reports that her glucose levels have been relatively stable; however, she experienced a recent hypoglycemic episode. She describes feeling shaky and lightheaded. She currently manages her condition through diet and exercise alone and does not take any medications for her glucose levels. She states she is monitoring her carbohydrate intake closely to prevent further occurrences.\n\nMedication List\nMultivitamins\nVitamin D3\n\nExam\nThe patient is a well-appearing female in no acute distress. She is alert and oriented to person, place, and time. Skin is warm and dry. Heart rate is 72 bpm, blood pressure is 118/76 mmHg, and respiratory rate is 16 breaths per minute.\n\nAssessment\n1. Type 2 diabetes mellitus, currently diet controlled.\n2. Hypoglycemia.\n\nPlan\nContinue current diet and exercise regimen. Patient will monitor blood glucose levels more frequently and keep a log of meals and symptoms. Follow up in three months.\n\nElectronically signed, A. Rivera, NP, 05/14/2026",
+  "answer": [
+    "E11.649"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:25+00:00",
+    "style": {
+      "age": 52,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

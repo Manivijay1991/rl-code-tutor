@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-dbc302476b",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "sickle_cell_disease"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint\nFollow-up for sickle cell disease.\n\nHPI\nPt is a 56 y.o. female presenting for routine f/u of sickle cell disease. Pt reports she is feeling well today and is currently stable. She denies any episodes of pain or recent complications. She is adherent to her current medication regimen and reports no side effects.\n\nMedication List\nHydroxyurea 1000mg PO daily.\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB, no wheezes or rales.\nExt: No edema, pulses palpable.\nNeuro: Alert and oriented x3, no focal deficits.\n\nAssessment\n1. Sickle cell disease: Stable. Pt is currently asymptomatic and tolerating hydroxyurea well.\n\nPlan\n1. Continue current hydroxyurea dose.\n2. Routine f/u in 6 months or as needed.\n3. Pt to call office immediately if any symptoms develop.\n\nElectronically signed,\nD. Kowalski, MD\n05/14/2026",
+  "answer": [
+    "D57.1"
+  ],
+  "explanations": [
+    "Sickle cell disease without crisis: D57.1 (HCC 107)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.3"
+      ],
+      "confusion": "disease_coded_as_trait",
+      "lean": "under",
+      "why": "Sickle cell disease is documented, not the trait.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.457,
+        "gap": -0.457,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "107"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.457,
+    "hccs": [
+      {
+        "hcc": "107",
+        "label": "Sickle Cell Anemia (Hb-SS) and Thalassemia Beta Zero",
+        "from": [
+          "D571"
+        ],
+        "weight": 0.457
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:34+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

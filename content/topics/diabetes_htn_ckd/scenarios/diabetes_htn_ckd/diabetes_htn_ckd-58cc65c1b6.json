@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_htn_ckd-58cc65c1b6",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for CKD and diabetes.\n\nVitals: BP 128/74, HR 76, SpO2 98% on room air, Temp 98.6 F, Weight 158 lbs.\n\nRecent Labs: eGFR 22 mL/min/1.73m², HbA1c 7.1%, Creatinine 2.4 mg/dL, Potassium 4.5 mEq/L.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nFamily History: Mother had type 2 diabetes and stroke. Father had myocardial infarction.\n\nSocial History: Retired teacher. Lives with her husband. Non-smoker. Occasional social drinking.\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nEyes: Denies vision changes.\nEars/Nose/Throat: Denies drainage or sore throat.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath or cough.\nGastrointestinal: Denies nausea, vomiting, or abdominal pain.\nGenitourinary: Denies dysuria or frequency.\nMusculoskeletal: Denies joint pain or swelling.\nNeurological: Denies numbness or tingling.\nSkin: Denies new rashes or lesions.\n\nHPI: Patient is a 72-year-old female with a history of CKD and type 2 diabetes. She presents for a routine follow-up. She reports feeling stable currently. She continues to manage her glucose levels through a low-carbohydrate diet and regular physical activity. She denies any new symptoms of uremia or significant changes in her lab trends. (Copied forward from previous visit).\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nSkin: Intact, no and signs of edema.\nLungs: Clear to auscultation bilaterally.\nHeart: Regular rate and rhythm, no murmurs.\nExtremities: No edema noted.\n\nAssessment:\n1. CKD: Patient currently meets the criteria for stage 4. Recent labs show an eGFR of 22.\n2. Type 2 diabetes: Managed via diet. HbA1c remains stable.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Monitor renal function with labs in 3 months.\n3. Continue diet-based management for glucose control.\n4. Patient instructed to report any new symptoms of fatigue or decreased urine output.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "N18.4"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.68,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:57:05+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

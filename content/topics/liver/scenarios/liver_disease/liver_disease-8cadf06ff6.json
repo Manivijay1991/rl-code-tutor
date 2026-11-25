@@ -1,0 +1,68 @@
+{
+  "id": "liver_disease-8cadf06ff6",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "alcoholic_cirrhosis_ascites"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for liver disease.\n\nHPI: Patient is a 51-year-old male who presented for initial evaluation of chronic liver disease. He reports a history of significant long-term alcohol consumption. He reports symptoms of abdominal swelling and discomfort. He denies fever, chills, or acute pain. He reports some fatigue but denies significant weight loss or changes in appetite. Patient was diagnosed with alcoholic cirrhosis and began management for ascites. He reports that he has successfully ceased all alcohol consumption.\n\nUpdate: The patient returns today for a follow-up on his condition. He states that he has remained sober for six months. He reports that the abdominal swelling is stable but remains present. He denies any new episodes of acute pain or significant changes in his daily activities. He reports he is taking his medications as prescribed.\n\nMedication List:\n- Spironolactone 100mg daily\n- Furosemide 40mg daily\n- Lactulose 2g four times daily\n\nVitals: BP 128/82, HR 76, Temp 98.6 F, SpO2 98% on room air, Weight 210 lbs.\n\nRecent Labs:\n- ALT: 62 U/L\n- AST: 88 U/L\n- Albumin: 3.1 g/dL\n- INR: 1.4\n- Creatinine: 1.1 mg/dL\n- eGFR: 65 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss, or night sweats.\nEyes: Negative for jaundice.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Positive for abdominal swelling. Negative for nausea, vomiting, or bloody stools.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for tremors or confusion.\n\nSocial History: Patient is a non-smoker. He reports he no longer drinks alcohol. He works as a construction laborer. He lives with his spouse.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nExam: Patient is a well-groomed male in no acute distress. Skin is intact without significant jaundice. Abdomen is protuberant with visible ascites. Soft and non-tender. No masses noted. Lungs are clear to auscultation. Heart sounds are regular.\n\nAssessment: \n1. Alcoholic cirrhosis: Stable. Patient remains abstinent from alcohol.\n2. Ascites: Managed with current diuretic regimen.\n\nPlan:\n1. Continue current diuretic regimen.\n2. Monitor renal function and electrolytes every 3 months.\n3. Continue alcohol abstinence.\n4. Follow up in 3 months for repeat lab work and physical exam.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "K70.31"
+  ],
+  "explanations": [
+    "Alcoholic cirrhosis with ascites: K70.31 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K70.30"
+      ],
+      "confusion": "missed_ascites",
+      "lean": "under",
+      "why": "Ascites is documented: K70.31.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7031"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:44+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

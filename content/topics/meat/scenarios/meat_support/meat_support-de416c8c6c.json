@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-de416c8c6c",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Low back pain\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 27.4\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nMusculoskeletal: Positive for localized low back pain and stiffness. Negative for joint swelling.\nNeurological: Negative for numbness, tingling, or weakness in lower extremities.\nRespiratory: Negative for shortness of breath or wheezing.\nGastrointestinal: Negative for abdominal pain or changes in bowel habits.\nGenitourinary: Negative for dysuria.\nSkin: Negative for rashes.\n\nSocial History: The patient is a 51-year-old male who works as a warehouse manager. He reports a non-smoking status and drinks alcohol socially on weekends. He lives with his spouse and two children.\n\nFamily History: Father is alive and healthy. Mother is deceased due to natural causes. No known family history of hereditary conditions.\n\nRecent Labs:\neGFR: 88 mL/min/1.73m2\nHbA1c: 5.4%\nTSH: 2.1 mIU/L\n\nMedication List:\n- Naproxen 500mg as needed for pain\n- Tiotropium 18 mcg inhaled\n- Lisinopril 10mg daily\n\nProblem List:\n- Status post appendectomy\n- Status post cholecystectomy\n- Status post tonsillectomy\n\nHPI: (Copied Forward) Patient is a 51-year-old male presenting with a 3-week history of dull, aching pain in the lumbar region. He describes the pain as starting after lifting heavy boxes at work. The pain is constant but worsens with prolonged sitting or standing. He denies any radiating pain down the legs or any \"electric shock\" sensations. He has attempted over-the-counter NSAIDs with moderate relief.\n\nUpdate: Today, the patient reports that the pain has persisted despite rest. He notes that the stiffness is most prominent in the morning. He denies any recent falls or acute trauma. He is seeking a management plan to improve mobility.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Palpable tenderness over the L4-L5 paraspinal muscles. Range of motion is limited by discomfort. Straight leg raise test is negative bilaterally. No spinal deformity noted.\n\nAssessment:\n1. Low back pain: Mechanical in nature, likely exacerbated by occupational lifting.\n\nPlan:\n1. Conservative management: Continue with NSAIDs as needed.\n2. Physical Therapy: Referred to PT for core strengthening and stretching exercises.\n3. Activity Modification: Advised to use proper lifting techniques at work and take frequent breaks.\n4. Follow-up: Return to clinic in 4 weeks to assess progress with PT.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:21:56+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-b26d3d9673",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "itp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint\nFollow-up for chronic immune thrombocytopenia.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a routine follow-up of her chronic immune thrombocytopenia. She reports that she has been feeling well overall and denies any recent episodes of easy bruising, petechiae, or mucosal bleeding. She states that her energy levels have remained stable and she has not experienced any significant fatigue or systemic symptoms since her last evaluation. She is currently managed with observation and periodic monitoring of her peripheral blood counts. She expresses no concerns regarding her current condition at this time.\n\nReview of Systems\nThe patient reports no recent fevers, chills, or night sweats. She denies any unintended weight loss or changes in appetite. She reports no shortness of breath, chest pain, or palpitations. She denies any joint pain or muscle aches. She reports no changes in bowel habits or urinary frequency.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She enjoys gardening and walking in her neighborhood. She reports she does not smoke and drinks alcohol only occasionally.\n\nFamily History\nHer mother had hypertension and her father had a history of type 2 diabetes. She has one brother who has high cholesterol.\n\nMedication List\n1. Aspirin 81 mg daily\n2. Vitamin D3 1000 IU daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nPlatelet count: 92,000/uL\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 6,200/uL\neGFR: 72 mL/min\n\nExam\nThe patient is a well-appearing, well-nourished 79-year-old woman in no acute distress. Her skin is clear without visible petechiae or ecchymosis. Mucous membranes are moist and intact. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended.\n\nAssessment\n1. Chronic immune thrombocytopenia. The patient's platelet count remains stable within her known baseline range. She is currently asymptomatic.\n\nPlan\n1. Continue to monitor the patient's immune thrombocytopenia with serial CBC tests every three months.\n2. Educate the patient on signs of bleeding and the importance of avoiding activities that increase the risk of trauma.\n3. Follow up in 90 days for repeat labs and clinical evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "D69.3"
+  ],
+  "explanations": [
+    "Immune thrombocytopenia: D69.3 (HCC 112)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D69.6"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "ITP is documented: D69.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.45,
+        "gap": -0.45,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "112"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.45,
+    "hccs": [
+      {
+        "hcc": "112",
+        "label": "Immune Thrombocytopenia and Specified Coagulation Defects and Hemorrhagic Conditions",
+        "from": [
+          "D693"
+        ],
+        "weight": 0.45
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:40+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

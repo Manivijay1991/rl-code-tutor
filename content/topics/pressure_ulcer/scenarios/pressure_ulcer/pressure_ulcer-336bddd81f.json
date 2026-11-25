@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-336bddd81f",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "4"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nEvaluation of a pressure ulcer over the sacrum.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a follow-up evaluation of a chronic pressure ulcer. She reports that the wound has been present for several months. She notes that she is primarily bedbound and requires assistance with repositioning. She describes the wound as painful, particularly when she attempts to shift her weight. She states that she has been using a pressure-redistributing mattress but feels the wound is not improving as quickly as she would like. She denies any new drainage or systemic symptoms such as fever or chills.\n\nMedication List\n1. Lisinopril 10mg daily\n2. Atorvastatin 20mg daily\n3. Amlodipine 5mg daily\n\nReview of Systems\nThe patient denies any chest pain, shortness of breath, or palpitations. She denies any recent changes in vision or hearing. She denies any new-onset weakness or numbness in her extremities. She denies any systemic symptoms of illness.\n\nSocial History\nThe patient lives at home with her daughter. She is retired and spends most of her time in a recliner or in bed. She does not smoke and drinks alcohol occasionally.\n\nFamily History\nHer mother had hypertension and a history of heart disease. Her father had a history of stroke.\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.4 F\nSpO2: 97% on room air\nWeight: 154 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 8.2 x 10^9/L\nAlbumin: 3.8 g/dL\neGFR: 62 mL/min/1.73m2\n\nExam\nThe patient is alert and oriented x3. On physical examination, there is a large pressure ulcer located over the sacrum. The wound measures approximately 5cm x 6cm. It is documented as a stage 4 pressure ulcer. The wound bed shows visible muscle and bone. The surrounding skin is intact but shows some maceration. There is no purulent drainage noted today.\n\nAssessment\n1. Stage 4 pressure ulcer of the sacrum.\n\nPlan\nThe patient will continue with a specialized wound care regimen. I will perform a dressing change today using a silver-impregnated foam dressing to manage the pressure ulcer. I have instructed the patient and her daughter to ensure she is repositioned at least every two hours. We will monitor the size and depth of the wound at each visit. She was advised to maintain adequate protein intake to support tissue repair. Follow-up is scheduled in two weeks for a re-evaluation of the site.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "L89.154"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage 4: L89.154 (HCC 379)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.965,
+        "gap": -1.965,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.153"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 1.965,
+        "gap": -0.89,
+        "direction": "under",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.965,
+    "hccs": [
+      {
+        "hcc": "379",
+        "label": "Pressure Ulcer of Skin with Necrosis Through to Muscle/Tendon/Bone",
+        "from": [
+          "L89154"
+        ],
+        "weight": 1.965
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:58+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

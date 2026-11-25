@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-5cab1d80fb",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "cvid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint: Follow-up for common variable immunodeficiency.\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on room air, BMI 26.4.\n\nRecent Labs: IgG 450 mg/dL, IgM 150 mg/dL, IgA 120 mg/dL, CBC: WBC 3,200, Hemoglobin 12.4, Platelets 155,000.\n\nMedication List:\n- Subcutaneous Immunoglobulin (monthly)\n- Prednisone 5mg daily\n- Ceftin 500mg every 8 hours as needed for infections\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nRespiratory: Negative for cough or shortness of breath.\nSkin: Negative for new rashes or lesions.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for headaches or dizziness.\nGastrointestinal: Negative for abdominal pain or diarrhea.\n\nSocial History: The patient is a retired school teacher living with her spouse. She reports an active lifestyle, including walking for exercise. She denies tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes. No known history of primary immunodeficiency in immediate family.\n\nHPI: (Copied forward from prior visit) Patient is a 72-year-old female with a known history of common variable immunodeficiency. She reports stable symptoms over the last month. She continues to receive monthly immunoglobulin infusions to manage her condition. She reports no recent signs of infection or significant flare-ups. She denies any new concerns or side effects from her current regimen.\n\nExam: Patient is a well-appearing, alert, and oriented 72-year-old woman. Skin is clear and intact. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. No lymphadenopathy noted in the cervical, axillary, or inguinal regions.\n\nAssessment: \n1. Common variable immunodeficiency (CVID): The patient is stable on her current monthly immunoglobulin maintenance. Laboratory values remain consistent with her baseline for CVID.\n\nPlan:\n1. Continue monthly immunoglobulin infusions as scheduled.\n2. Continue current medication regimen.\n3. Patient to call the office if she develops signs of a new infection, such as fever or persistent respiratory symptoms.\n4. Follow up in 3 months for laboratory monitoring and clinical evaluation.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "D83.9"
+  ],
+  "explanations": [
+    "Common variable immunodeficiency: D83.9 (HCC 114)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D84.9"
+      ],
+      "confusion": "nonspecific_immunodeficiency",
+      "lean": "under",
+      "why": "CVID is documented: D83.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.262,
+        "gap": -2.262,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "114"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.262,
+    "hccs": [
+      {
+        "hcc": "114",
+        "label": "Common Variable and Combined Immunodeficiencies",
+        "from": [
+          "D839"
+        ],
+        "weight": 2.262
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:22+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-59d7db714a",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nShortness of breath.\n\nHPI\nPt is an 87-year-old female presenting for f/u of chronic respiratory symptoms. Pt reports persistent dyspnea on exertion and increased productive cough over the last month. She reports stable symptoms despite current management. Pt uses home oxygen at night to manage nocturnal symptoms. Denies fever, chills, or acute chest pain.\n\nMedication List\n1. Tiotropium inhaled 1x daily\n2. Prednisone 5mg daily\n3. Albuterol HFA 2 puffs q4h PRN\n4. Home oxygen (nocturnal only)\n\nExam\nGen: Well-appearing, in no acute distress. \nResp: Tachypneic, diminished breath sounds in bilateral lower lobes, prolonged expiratory phase. \nCV: RRR, regular rhythm, no murmurs. \nExt: No edema.\nVitals: BP 132/78, HR 82, RR 20, SpO2 92% on RA.\n\nAssessment\n1. Emphysema: Stable but symptomatic.\n\nPlan\n1. Continue current inhaler regimen.\n2. Maintain home oxygen at night as tolerated.\n3. F/u in 3 months.\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [
+    "J43.9",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-.",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:16:40+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

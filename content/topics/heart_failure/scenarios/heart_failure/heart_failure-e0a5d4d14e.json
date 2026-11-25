@@ -1,0 +1,132 @@
+{
+  "id": "heart_failure-e0a5d4d14e",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint\nFollow-up for heart failure and hypertension.\n\nHPI\nPt is a 61-year-old male presenting for routine follow-up of chronic HFpEF and HTN. Pt reports feeling well today. Denies SOB, orthopnea, or peripheral edema. States he has been adherent to medications and diet. No recent changes in weight or activity tolerance. Condition is stable.\n\nMedication List\nLisinopril 20mg daily\nFurosemide 40mg daily\nAmlodipine 5mg daily\n\nExam\nPt in no acute distress. Alert and oriented x3. BP 128/78, HR 72, RR 16, SpO2 98% on RA. CTAB. Heart RRR, no murmurs. Lungs clear to auscultation. No pedal edema.\n\nAssessment\n1. Chronic HFpEF: Stable at this time.\n2. Hypertension: Well-controlled on current regimen.\n\nPlan\n1. Continue current medications as prescribed.\n2. Monitor weight daily and report any rapid gains.\n3. Follow up in 3 months for routine check.\n\nElectronically signed,\nK. Nguyen, DO\n10/14/2026",
+  "answer": [
+    "I11.0",
+    "I50.32"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Chronic diastolic heart failure: I50.32 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.32"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.33"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.22"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents diastolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I110",
+          "I5032"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:32+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

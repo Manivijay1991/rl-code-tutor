@@ -1,0 +1,111 @@
+{
+  "id": "obesity_bmi-4e8e23296d",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "obesity",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for weight management.\n\nHPI: The patient is a 73-year-old male presenting today for a scheduled follow-up to discuss his weight and general health maintenance. He reports that he has been trying to incorporate more movement into his daily routine but finds it difficult to maintain consistency. He notes that his appetite remains stable, but he acknowledges a tendency to snack in the evenings. He is seeking guidance on structured nutritional changes and exercise goals. He denies any acute chest pain, shortness of breath, or significant joint pain that would limit his mobility at this time.\n\nReview of Systems: The patient reports no chest pain, palpitations, or syncope. He denies any shortness of breath at rest or with mild exertion. He denies polyuria, polydipsia, or blurred vision. He denies any recent fevers, chills, or night sweats. He denies any significant joint pain or muscle weakness.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking in the neighborhood. He denies tobacco use and reports occasional social alcohol consumption.\n\nFamily History: His father had hypertension and a history of heart disease. His mother had type 2 diabetes.\n\nMedication List: Multivitamin daily.\n\nVitals: BP: 132/82, HR: 74, RR: 16, Temp: 98.6 F, BMI: 42.8.\n\nRecent Labs: HbA1c: 6.1%, eGFR: 78 mL/min, Lipid Panel: LDL 110 mg/dL, HDL 45 mg/dL, Triglycerides 150 mg/dL.\n\nExam: The patient is a well-appearing, alert, and oriented male in no acute distress. He is alert and cooperative throughout the encounter. Skin is warm and dry. Heart and lungs are clear to auscultation. No peripheral edema noted.\n\nAssessment: The patient presents with obesity. His current weight and BMI of 42.8 indicate a need for continued intervention regarding lifestyle modifications. He is currently at low risk for glycemic issues based on recent lab results.\n\nPlan: We discussed a comprehensive plan to address his obesity. I provided education on caloric density and the importance of increasing lean protein intake. We will focus on a gradual increase in daily walking and resistance training. The patient will aim for 30 minutes of moderate activity four days a week. He will return in three months for a follow-up on weight progress and lab monitoring.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "E66.9",
+    "Z68.41"
+  ],
+  "explanations": [
+    "Obesity documented by the provider: E66.9. The coder does not upgrade it to morbid obesity from the BMI.",
+    "BMI 42.x with a provider weight diagnosis: add Z68.41 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.01",
+        "Z68.41"
+      ],
+      "confusion": "morbid_from_bmi",
+      "lean": "over",
+      "why": "Only the provider can diagnose morbid obesity; the BMI does not change the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E66.9",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 42.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "Z6841"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:12+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

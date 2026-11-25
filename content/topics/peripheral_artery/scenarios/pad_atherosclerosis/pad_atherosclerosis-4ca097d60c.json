@@ -1,0 +1,88 @@
+{
+  "id": "pad_atherosclerosis-4ca097d60c",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "rest_pain",
+    "side": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Left foot pain.\n\nHPI: Pt is an 85 y/o female presenting for f/u of chronic leg pain. Pt reports persistent rest pain in her left foot. She notes the discomfort is constant and does not improve with elevation or rest. She denies any open wounds or skin breakdown. Pt states the symptoms have been progressing over the last month. No associated fever or chills.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 40mg QD\n- Aspirin 81mg QD\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nCV: No chest pain, SOB, or palpitations.\nMSK: Positive for left foot pain. No joint swelling.\nNeuro: No numbness or tingling.\nSkin: No rashes or lesions.\n\nSocial History: Retired. Lives at home with daughter. No tobacco use. Occasional alcohol.\n\nFamily History: Mother had hypertension. Father had coronary artery disease.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 34%\nHgb: 11.2 g/dL\neGFR: 62 mL/min\n\nExam:\nGen: Alert and oriented x3, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs.\nResp: CTAB.\nExtremities: Left lower extremity shows diminished pulses compared to right. No edema noted. Skin intact on left foot. No evidence of wound or skin breakdown.\n\nAssessment:\n1. Atherosclerosis of the native leg arteries. Pt is experiencing rest pain in the left foot.\n2. Chronic hypertension.\n3. Hyperlipidemia.\n\nPlan:\n1. Atherosclerosis: Continue current antiplatelet and lipid-lowering meds. Referral to vascular surgery for further evaluation of the left leg.\n2. Hypertension: Continue Lisinopril.\n3. Hyperlipidemia: Continue Atorvastatin.\n4. F/u: Return to clinic in 4 weeks or sooner if symptoms worsen.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "I70.222"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the left leg with rest pain (HCC 264): I70.222."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.221"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0.455,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.212"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Rest pain is documented: it is a higher stage (HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.455,
+        "gap": -0.455,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "264"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.455,
+    "hccs": [
+      {
+        "hcc": "264",
+        "label": "Vascular Disease with Complications",
+        "from": [
+          "I70222"
+        ],
+        "weight": 0.455
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:49+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

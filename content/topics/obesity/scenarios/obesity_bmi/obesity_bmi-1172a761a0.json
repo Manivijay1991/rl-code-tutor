@@ -1,0 +1,111 @@
+{
+  "id": "obesity_bmi-1172a761a0",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "obesity",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint\nFollow-up for weight management.\n\nHPI\nPt is a 68-year-old female presenting for f/u regarding weight management. Pt reports difficulty with consistent diet and exercise routine over the last 6 months. She reports increased fatigue during physical activity. Denies chest pain, shortness of breath, or palpitations. Pt states she has been attempting to increase daily step count but struggles with consistency due to work schedule. Goal is to reduce overall weight to improve mobility and general health.\n\nMedication List\nLisinopril 20mg daily\nMetformin 500mg BID\nAtorvastatin 40mg daily\n\nReview of Systems\nGeneral: Denies fever, chills, weight changes.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies abdominal pain, diarrhea, constipation.\nMSK: Reports mild joint aching in knees.\nNeuro: Denies dizziness, numbness.\n\nSocial History\nRetired teacher. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: Hypertension, Type 2 DM.\nFather: MI at age 65.\n\nVitals\nBP: 138/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nBMI: 42.4\n\nRecent Labs\nHbA1c: 6.8%\neGFR: 72\nLDL: 92\nGlucose: 115\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs.\nLungs: CTAB.\nAbd: Soft, non-tender, no masses.\nExt: No edema, stable gait.\n\nAssessment\n1. Obesity: Pt presents with a BMI of 42.4. Currently stable on medications but requires improved lifestyle modifications.\n2. Type 2 DM: Well-controlled.\n3. Hypertension: Stable.\n\nPlan\n1. Diet and activity counseling: Discussed caloric deficit and importance of consistent aerobic exercise (30 min/day). Encouraged increasing fiber intake and reducing processed sugars.\n2. Medications: Continue current Lisinopril, Metformin, and Atorvastatin.\n3. F/u: Return to clinic in 3 months for weight check and lab work.\n\nElectronically signed,\nS. Patel, DO\n05/14/2026",
+  "answer": [
+    "E66.9",
+    "Z68.41"
+  ],
+  "explanations": [
+    "Obesity documented by the provider: E66.9. The coder does not upgrade it to morbid obesity from the BMI.",
+    "BMI 42.x with a provider weight diagnosis: add Z68.41 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.01",
+        "Z68.41"
+      ],
+      "confusion": "morbid_from_bmi",
+      "lean": "over",
+      "why": "Only the provider can diagnose morbid obesity; the BMI does not change the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E66.9",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 42.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "Z6841"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:52+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

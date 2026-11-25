@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-204a80bc8f",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "colostomy",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nPt is an 83 y.o. female presenting for routine follow-up of HTN. Pt reports feeling well today. Denies any chest pain, shortness of breath, or dizziness. Pt notes she is managing her daily routine well. No new concerns expressed.\n\nMedication List\nLisinopril 10mg QD\nAmlodipine 5mg QD\nHydrochlorothiazide 12.5mg QD\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 132/82, HR 74, RR 16, Temp 98.6 F.\nCV: RRR, CTAB, no murmurs.\nResp: CTAB, no wheezes or crackles.\nAbdomen: Soft, non-tender. Colostomy is in place and appears healthy.\nExt: WNL.\n\nAssessment\n1. Hypertension: Well-controlled on current regimen.\n2. Colostomy: Status post previous surgery, stable.\n\nPlan\n1. Continue current medications.\n2. Continue monitoring BP.\n3. Return to clinic in 3 months for routine f/u.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "Z93.3"
+  ],
+  "explanations": [
+    "Colostomy in place: Z93.3, colostomy status (HCC 463). Z43.3 is only for an encounter for care of the colostomy itself."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The colostomy is documented and present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.673,
+        "gap": -0.673,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "463"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z43.3"
+      ],
+      "confusion": "attention_vs_status",
+      "lean": "neutral",
+      "why": "The visit is not for care of the colostomy; report the status, Z93.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0.673,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z93.2"
+      ],
+      "confusion": "wrong_ostomy",
+      "lean": "neutral",
+      "why": "It is a colostomy, not an ileostomy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0.673,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.673,
+    "hccs": [
+      {
+        "hcc": "463",
+        "label": "Artificial Openings for Feeding or Elimination",
+        "from": [
+          "Z933"
+        ],
+        "weight": 0.673
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:20+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

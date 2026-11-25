@@ -1,0 +1,61 @@
+{
+  "id": "gi_conditions-117989e9bf",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_pancreatitis_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for past medical history.\n\nHPI: Patient is a 57-year-old female presenting for a routine follow-up. Patient reports she had one episode of acute pancreatitis years ago. The condition is fully resolved. She currently denies any abdominal pain, nausea, or dyspepsia. She reports feeling well overall and maintains a stable weight.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 27.4.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nGastrointestinal: Negative for abdominal pain, nausea, vomiting, diarrhea.\nRespiratory: Negative for cough, shortness of breath.\nMusculoskeletal: Negative for joint pain, stiffness.\n\nMedication List:\nMultivitamin (Daily)\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nAbdomen: Soft, non-tender, non-distended. Normal bowel sounds. No guarding or rebound tenderness.\n\nAssessment:\n1. History of acute pancreatitis.\n2. Patient is currently asymptomatic with no active pancreatic disease.\n\nPlan:\n1. Continue to monitor health status.\n2. Return to clinic as needed or for routine annual wellness exam.\n\nElectronically signed, \nS. Patel, NP\nOctober 14, 2026",
+  "answer": [
+    "Z87.19"
+  ],
+  "explanations": [
+    "A past acute pancreatitis that resolved: personal history, Z87.19 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K86.1"
+      ],
+      "confusion": "history_coded_chronic",
+      "lean": "over",
+      "why": "There is no current or chronic pancreatitis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.357,
+        "correct": 0,
+        "gap": 0.357,
+        "direction": "over",
+        "extra_hccs": [
+          "79"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:31+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

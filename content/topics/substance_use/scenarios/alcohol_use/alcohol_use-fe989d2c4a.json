@@ -1,0 +1,79 @@
+{
+  "id": "alcohol_use-fe989d2c4a",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_mild",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint\nFollow-up for alcohol use and general health maintenance.\n\nHPI\nThe patient is a 77-year-old female who presents today for a follow-up evaluation. She reports that she continues to consume alcohol on a regular basis. During the interview, she admits to current alcohol consumption, stating she enjoys having a drink daily. She denies any significant changes in her physical health or severe distressing symptoms related to her consumption. The primary focus of today's visit is to address her ongoing alcohol use and provide support for behavioral changes. She expresses a desire to maintain her health while managing her habits.\n\nReview of Systems\nThe patient reports no chest pain, shortness of breath, or palpitations. She denies any recent fevers, chills, or night sweats. She reports no joint pain or significant muscle aches. She denies any changes in bowel habits or urinary frequency. She denies any dizziness or significant falls.\n\nSocial History\nThe patient lives in a private residence with her spouse. She is retired and spends most of her time gardening and participating in a local community center. She reports daily alcohol consumption.\n\nFamily History\nHer mother had hypertension and type 2 diabetes. Her father had a history of coronary artery disease. Her siblings are all healthy.\n\nMedication List\nMultivitamin daily.\n\nVitals\nBlood Pressure: 132/84 mmHg\nHeart Rate: 76 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^3/uL\nPlatelet Count: 210 x 10^3/uL\nGlucose: 105 mg/dL\neGFR: 72 mL/min/1.73m2\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress. She is alert and oriented to person, place, and time. Skin is warm and dry without rashes. Cardiovascular: Regular rate and rhythm, no murmurs. Pulmonary: Clear to auscultation bilaterally. Abdomen: Soft, non-tender, no masses. Neurological: Cranial nerves intact, steady gait.\n\nAssessment\n1. Alcohol use disorder, mild. The patient continues to consume alcohol daily.\n\nPlan\n1. Alcohol use disorder, mild: Discussed the risks associated with continued alcohol consumption. Provided education on harm reduction and the importance of moderation. Encouraged the patient to keep a log of her daily intake. Will follow up in three months to monitor progress and continue behavioral support.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "F10.10"
+  ],
+  "explanations": [
+    "Alcohol use disorder, mild, indexes to alcohol abuse: F10.10 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.20"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "A mild use disorder is abuse (F10.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0,
+        "gap": 0.242,
+        "direction": "over",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F10.90"
+      ],
+      "confusion": "unspecified_use",
+      "lean": "under",
+      "why": "A use disorder with a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:39+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

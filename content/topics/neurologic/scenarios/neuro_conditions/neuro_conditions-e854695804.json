@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-e854695804",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "ms_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for multiple sclerosis.\n\nHPI: Patient is a 57-year-old woman with a history of multiple sclerosis who presents today for a routine follow-up. Copied forward from previous visit: Patient reports stable neurological status with occasional reports of mild fatigue. She denies any new focal weakness or significant sensory changes since the last evaluation. She reports consistent adherence to her current medication regimen. Today, she notes that her mobility remains stable and she is managing symptoms well at home.\n\nMedication List:\n- Interferon beta-1a (subcutaneous)\n- Baclofen 10mg\n- Gabapentin 300mg\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nReview of Systems:\nNeurological: Positive for fatigue. Negative for numbness, weakness, or tremors.\nMusculoskeletal: Negative for joint pain.\nConstitutional: Negative for weight change.\n\nExam:\nGeneral: Alert and oriented x3. In no acute distress.\nNeurological: Cranial nerves II-XII intact. Strength 5/5 in all extremities. Gait is steady and coordinated. Reflexes are symmetric. Sensation intact to light touch.\n\nAssessment:\n1. Multiple sclerosis: Patient is currently stable on her current therapy.\n\nPlan:\n1. Continue current medications for multiple sclerosis.\n2. Follow up in 6 months for routine evaluation.\n\nElectronically signed,\nS. Patel, NP\nOctober 14, 2026",
+  "answer": [
+    "G35.D"
+  ],
+  "explanations": [
+    "Multiple sclerosis without a documented type: G35.D (HCC 198). G35 itself is a header in FY2027."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G35"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "G35 needs more characters in FY2027.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G35.A"
+      ],
+      "confusion": "assumed_type",
+      "lean": "over",
+      "why": "The provider does not document relapsing-remitting MS.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.647,
+    "hccs": [
+      {
+        "hcc": "198",
+        "label": "Multiple Sclerosis",
+        "from": [
+          "G35D"
+        ],
+        "weight": 0.647
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:19+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

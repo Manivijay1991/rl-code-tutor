@@ -1,0 +1,366 @@
+{
+  "id": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note_age": {
+    "min": 65
+  },
+  "slots": {
+    "side": {
+      "label": "Side",
+      "values": [
+        "right",
+        "left"
+      ],
+      "labels": {
+        "right": "Right hip",
+        "left": "Left hip"
+      },
+      "evidence": {
+        "right": [
+          "right hip",
+          "right femoral neck",
+          "right femur"
+        ],
+        "left": [
+          "left hip",
+          "left femoral neck",
+          "left femur"
+        ]
+      },
+      "describe": {
+        "right": "The right hip is affected.",
+        "left": "The left hip is affected."
+      }
+    },
+    "encounter": {
+      "label": "Stage of care",
+      "values": [
+        "initial",
+        "healing",
+        "healed"
+      ],
+      "labels": {
+        "initial": "New fracture, active treatment",
+        "healing": "Follow-up while healing",
+        "healed": "Completely healed"
+      },
+      "evidence": {
+        "initial": [
+          [
+            "x-ray today",
+            "X-ray today",
+            "radiograph today"
+          ]
+        ],
+        "healing": [
+          [
+            "healing",
+            "post-operative",
+            "postoperative",
+            "status post"
+          ]
+        ],
+        "healed": [
+          [
+            "healed",
+            "fully healed",
+            "completely healed"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "initial": "After a fall two days ago, an x-ray today shows a closed fracture of the femoral neck (part not specified); the provider starts treatment and refers for urgent orthopedic surgery.",
+        "healing": "Six weeks after surgical repair of a closed femoral neck fracture (part not specified); routine follow-up while it heals, with physical therapy.",
+        "healed": "A femoral neck fracture years ago has completely healed; no further care is needed for it, and today's visit is for something else."
+      }
+    }
+  },
+  "note_forbid": [
+    "intertrochanteric",
+    "subtrochanteric",
+    "pertrochanteric",
+    "subcapital",
+    "transcervical",
+    "midcervical",
+    "basicervical",
+    "open fracture",
+    "pathological",
+    "pathologic",
+    "osteoporotic fracture",
+    "osteoporosis",
+    "nonunion",
+    "malunion",
+    "delayed healing",
+    "dislocation",
+    "infection",
+    "both hips",
+    "bilateral",
+    "prosthetic joint",
+    "hip replacement",
+    "arthroplasty"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "require": [
+        [
+          "femoral neck",
+          "neck of the femur",
+          "hip fracture"
+        ]
+      ]
+    },
+    {
+      "when": {
+        "encounter": "initial"
+      },
+      "forbid": [
+        "healing",
+        "healed",
+        "post-operative",
+        "postoperative",
+        "status post",
+        "weeks ago",
+        "months ago",
+        "years ago"
+      ]
+    },
+    {
+      "when": {
+        "encounter": "healing"
+      },
+      "forbid": [
+        "healed",
+        "fully healed",
+        "years ago",
+        "x-ray today",
+        "new fracture",
+        "acute fracture"
+      ]
+    },
+    {
+      "when": {
+        "encounter": "healed"
+      },
+      "forbid": [
+        "healing",
+        "post-operative",
+        "postoperative",
+        "x-ray today",
+        "acute fracture",
+        "physical therapy"
+      ]
+    }
+  ],
+  "confusions": {
+    "initial_for_subsequent": {
+      "description": "Used the initial-encounter 7th character (A) at a follow-up visit while the fracture heals.",
+      "lean": "over"
+    },
+    "subsequent_for_initial": {
+      "description": "Used the subsequent-encounter 7th character (D) for a newly diagnosed fracture under active treatment.",
+      "lean": "under"
+    },
+    "healing_coded_as_history": {
+      "description": "Coded history of fracture while the fracture is still healing.",
+      "lean": "under"
+    },
+    "healed_coded_as_fracture": {
+      "description": "Coded a fracture that has completely healed.",
+      "lean": "over"
+    },
+    "wrong_side": {
+      "description": "Coded the wrong side.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "fracture",
+      "rules": [
+        {
+          "when": {
+            "side": "right",
+            "encounter": "initial"
+          },
+          "codes": [
+            "S72.001A"
+          ],
+          "explain": "Closed fracture of the neck of the right femur, newly diagnosed, active treatment: 7th character A (HCC 402): S72.001A.",
+          "refs": [
+            "OCG I.C.19.a",
+            "OCG I.C.19.c"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S72.001D"
+              ],
+              "confusion": "subsequent_for_initial",
+              "why": "The fracture is newly diagnosed and under active treatment: 7th character A."
+            },
+            {
+              "codes": [
+                "S72.002A"
+              ],
+              "confusion": "wrong_side",
+              "why": "The right hip is fractured."
+            }
+          ]
+        },
+        {
+          "when": {
+            "side": "left",
+            "encounter": "initial"
+          },
+          "codes": [
+            "S72.002A"
+          ],
+          "explain": "Closed fracture of the neck of the left femur, newly diagnosed, active treatment: 7th character A (HCC 402): S72.002A.",
+          "refs": [
+            "OCG I.C.19.a",
+            "OCG I.C.19.c"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S72.002D"
+              ],
+              "confusion": "subsequent_for_initial",
+              "why": "The fracture is newly diagnosed and under active treatment: 7th character A."
+            },
+            {
+              "codes": [
+                "S72.001A"
+              ],
+              "confusion": "wrong_side",
+              "why": "The left hip is fractured."
+            }
+          ]
+        },
+        {
+          "when": {
+            "side": "right",
+            "encounter": "healing"
+          },
+          "codes": [
+            "S72.001D"
+          ],
+          "explain": "Closed fracture of the neck of the right femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.001D.",
+          "refs": [
+            "OCG I.C.19.a",
+            "OCG I.C.19.c"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S72.001A"
+              ],
+              "confusion": "initial_for_subsequent",
+              "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC)."
+            },
+            {
+              "codes": [
+                "Z87.81"
+              ],
+              "confusion": "healing_coded_as_history",
+              "why": "The fracture is still healing; history is for a healed fracture."
+            }
+          ]
+        },
+        {
+          "when": {
+            "side": "left",
+            "encounter": "healing"
+          },
+          "codes": [
+            "S72.002D"
+          ],
+          "explain": "Closed fracture of the neck of the left femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.002D.",
+          "refs": [
+            "OCG I.C.19.a",
+            "OCG I.C.19.c"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S72.002A"
+              ],
+              "confusion": "initial_for_subsequent",
+              "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC)."
+            },
+            {
+              "codes": [
+                "Z87.81"
+              ],
+              "confusion": "healing_coded_as_history",
+              "why": "The fracture is still healing; history is for a healed fracture."
+            }
+          ]
+        },
+        {
+          "when": {
+            "side": "right",
+            "encounter": "healed"
+          },
+          "codes": [
+            "Z87.81"
+          ],
+          "explain": "A hip fracture that has completely healed, with treatment finished: personal history, Z87.81 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S72.001D"
+              ],
+              "confusion": "healed_coded_as_fracture",
+              "why": "The fracture has healed and needs no more care: Z87.81."
+            },
+            {
+              "codes": [
+                "S72.001A"
+              ],
+              "confusion": "healed_coded_as_fracture",
+              "why": "The fracture has healed; an initial-encounter code would add HCC 402."
+            }
+          ]
+        },
+        {
+          "when": {
+            "side": "left",
+            "encounter": "healed"
+          },
+          "codes": [
+            "Z87.81"
+          ],
+          "explain": "A hip fracture that has completely healed, with treatment finished: personal history, Z87.81 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S72.002D"
+              ],
+              "confusion": "healed_coded_as_fracture",
+              "why": "The fracture has healed and needs no more care: Z87.81."
+            },
+            {
+              "codes": [
+                "S72.002A"
+              ],
+              "confusion": "healed_coded_as_fracture",
+              "why": "The fracture has healed; an initial-encounter code would add HCC 402."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

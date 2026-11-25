@@ -1,0 +1,94 @@
+{
+  "id": "ckd_staging-8e9d0568d6",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for CKD.\n\nHPI\nPt is a 77 y.o. female presenting for follow-up of chronic kidney disease. Pt reports feeling stable overall. Denies any acute changes in symptoms. She notes occasional mild heartburn, which she manages with lifestyle and meds. Reports no new edema, fatigue, or shortness of breath. Denies any recent falls or changes in mobility. Pt here for routine monitoring of stage 5 renal function.\n\nMedication List\nOmeprazole 20mg daily\nVitamin D supplement daily\nLisinopril 10mg daily\n\nReview of Systems\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Reports occasional reflux. No nausea/vomiting.\nMSK: Denies joint pain.\nNeuro: Denies dizziness, numbness.\n\nSocial History\nRetired. Lives with spouse. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: CKD.\nFather: Stroke.\n\nVitals\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWt: 145 lbs\n\nRecent Labs\neGFR: 12 mL/min/1.73m2\nCreatinine: 5.8 mg/dL\nHemoglobin: 10.2 g/dL\nPotassium: 4.8 mEq/L\nVitamin D: 22 ng/mL\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nSkin: Intact, no rashes.\nHeart: RRR, regular S1/S2. No murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No edema.\nNeurological: NAD.\n\nAssessment\n1. Chronic kidney disease, stage 5. Stable on current regimen.\n2. Gastroesophageal reflux disease. Stable.\n3. Vitamin D deficiency.\n\nPlan\n1. CKD: Continue monitoring labs. Follow up in 3 months.\n2. GERD: Continue Omeprazole.\n3. Vitamin D: Continue supplementation.\n\nProblem List\n1. Chronic kidney disease, stage 5\n2. Vitamin D deficiency\n3. Gastroesophageal reflux disease\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "N18.5"
+  ],
+  "explanations": [
+    "CKD stage 5 (not documented as ESRD): N18.5."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.6"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 5 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.815,
+        "gap": -0.301,
+        "direction": "under",
+        "extra_hccs": [
+          "327"
+        ],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:57+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

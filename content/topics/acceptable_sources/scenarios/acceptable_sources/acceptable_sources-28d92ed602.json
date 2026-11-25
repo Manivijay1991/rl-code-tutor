@@ -1,0 +1,69 @@
+{
+  "id": "acceptable_sources-28d92ed602",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "office_visit"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Chief Complaint\nCOPD follow-up.\n\nHPI\nPt is a 75-year-old female presenting for a face-to-face office visit for management of chronic obstructive pulmonary disease. Pt reports she has been feeling well since last seen. Denies increased shortness of breath, increased sputum production, or productive cough. Reports good adherence to current inhaler regimen. No new concerns voiced today.\n\nMedication List\n1. Tiotropium inhaler daily\n2. Lisinopril 10mg daily\n\nExam\nGen: Well-appearing, in no acute distress.\nRespiratory: CTAB, RRR, lungs clear to auscultation bilaterally. No wheezing or rales.\nCV: RRR, no murmurs.\nExt: No edema.\n\nAssessment\n1. Chronic obstructive pulmonary disease: Stable.\n\nPlan\nContinue current management plan for chronic obstructive pulmonary disease. Pt to continue current inhaler as prescribed. F/u in 3 months for routine clinic visit.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "A signed face-to-face visit with an acceptable provider (MD, DO, NP or PA) that assesses COPD supports J44.9 (HCC 280)."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "rejected_acceptable_source",
+      "lean": "under",
+      "why": "The visit is face to face, signed with credentials and addresses COPD: it supports J44.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:00+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

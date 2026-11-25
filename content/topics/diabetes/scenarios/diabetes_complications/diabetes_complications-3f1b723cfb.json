@@ -1,0 +1,114 @@
+{
+  "id": "diabetes_complications-3f1b723cfb",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and foot discomfort.\n\nHPI\nThe patient is an 80-year-old man presenting for a routine evaluation of his type 2 diabetes mellitus and associated peripheral neuropathy. He reports occasional tingling and numbness in his toes but denies any acute fractures or open wounds. He maintains a consistent regimen of diet and exercise to manage his glucose levels. He states that his symptoms remain stable and have not worsened since the last visit.\n\nMedication List\nNone.\n\nExam\nThe patient is alert and oriented. Physical exam reveals intact sensation to light touch in the bilateral feet, though some diminished sensation is noted in the distal toes. No ulcers or signs of infection are present. Skin is dry but intact.\n\nAssessment\n1. Type 2 diabetes: Currently diet controlled.\n2. Peripheral neuropathy: The patient’s neuropathy is unrelated to diabetes.\n\nPlan\nContinue current lifestyle modifications focusing on diet and exercise. The patient will return in three months for a follow-up evaluation of his feet and glucose management.\n\nElectronically signed, A. Rivera, NP, 05/12/2026",
+  "answer": [
+    "E11.9",
+    "G62.9"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified)."
+  ],
+  "refs": [
+    "OCG I.A.15"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:59+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

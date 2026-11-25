@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-9bfd058711",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "epilepsy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for seizure management.\n\nHPI: Pt is a 75 y.o. female presenting for routine f/u of epilepsy. She reports being stable on current regimen. Denies any recent seizures or adverse effects from medications. Pt reports good compliance with her daily routine. She reports no issues with memory or coordination.\n\nMedication List:\n- Levetiracetam 500mg BID\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nResp: CTAB, no wheezing.\nNeuro: Cranial nerves intact. Gait steady. No focal deficits.\nSkin: NAD.\n\nAssessment:\n1. Epilepsy: Well controlled on levetiracetam. Pt is stable at this time.\n\nPlan:\n- Continue levetiracetam 500mg BID.\n- Continue current management plan.\n- Return to clinic in 6 months for routine f/u.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "G40.909"
+  ],
+  "explanations": [
+    "Epilepsy, not intractable: G40.909 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G40.919"
+      ],
+      "confusion": "unsupported_intractable",
+      "lean": "over",
+      "why": "Intractable is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "symptom_for_diagnosis",
+      "lean": "neutral",
+      "why": "Epilepsy is documented; do not code the seizure symptom.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40909"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:58+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "meat_support-e045dbdde9",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Follow-up for low back pain.\n\nHPI: [Copied Forward] Patient is a 66-year-old female presenting for management of low back pain. She reports intermittent aching in the lumbar region, exacerbated by prolonged sitting. She denies radiating pain to the lower extremities or any associated weakness. She has been using heat therapy and over-the-counter analgesics with moderate relief.\n\nUpdate: The patient reports that her low back pain has remained stable over the last month. She denies any new episodes of sharp pain or increased stiffness. She continues to use heat packs as needed.\n\nMedication List:\n- Sertraline 50mg daily\n- Naproxen 220mg as needed for pain\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nMusculoskeletal: Positive (back pain)\nNeurological: Negative\nPsychiatric: Negative\nRespiratory: Negative\nCardiovascular: Negative\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Mild tenderness to palpation over the lumbar spine. Range of motion is within functional limits. No spinal step-off noted. No neurological deficits in lower extremities.\n\nAssessment:\n1. Low back pain: Stable. The patient reports good management with current conservative measures.\n2. Major depressive disorder, recurrent, moderate: Reviewed. Patient reports stable mood and continues her current medication regimen.\n\nPlan:\n1. Low back pain: Continue current home management and heat therapy.\n2. Major depressive disorder, recurrent, moderate: Continue sertraline 50mg daily. Will monitor at next visit.\n\nProblem List:\n- Low back pain\n- Major depressive disorder, recurrent, moderate\n- Status post cholecystectomy\n- Status post appendectomy\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "F33.1"
+  ],
+  "explanations": [
+    "The provider addressed recurrent moderate major depression: F33.1. Severity matters; unspecified recurrent MDD (F33.9) does not map to a V28 HCC."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "The condition was addressed at the visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity (moderate) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F331"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:26:07+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "hip_fracture-0540375afc",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "right",
+    "encounter": "healing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint\nFollow-up for right hip surgery.\n\nHPI\nThe patient is an 88-year-old woman presenting for a routine postoperative follow-up six weeks after surgical repair of a closed hip fracture. She is currently status post repair of the right femoral neck. She reports that she is participating in physical therapy as instructed and is experiencing steady progress with her mobility. She notes that the right hip feels stable and she is managing her pain well with her current regimen. She denies any significant setbacks during her rehabilitation.\n\nMedication List\nAcetaminophen 650mg every 6 hours as needed for pain.\n\nExam\nThe patient is alert and oriented. She is seated in a chair. Surgical site on the right hip is well-approximated with no signs of drainage or erythema. Range of motion in the right femur is limited but improving. Neurovascular status is intact distally.\n\nAssessment\nThe patient is progressing well at six weeks postoperative following the repair of a closed right femoral neck fracture. The site is healing as expected.\n\nPlan\nContinue current physical therapy schedule. Monitor progress of the right hip during follow-up visits.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "S72.001D"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the right femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.001D."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.001A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z87.81"
+      ],
+      "confusion": "healing_coded_as_history",
+      "lean": "under",
+      "why": "The fracture is still healing; history is for a healed fracture.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:15+00:00",
+    "style": {
+      "age": 88,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

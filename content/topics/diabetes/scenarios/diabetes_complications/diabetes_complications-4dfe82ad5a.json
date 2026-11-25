@@ -1,0 +1,118 @@
+{
+  "id": "diabetes_complications-4dfe82ad5a",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for T2DM and hypoglycemia.\n\nHPI: Pt is a 90 y.o. male presenting for routine follow-up of type 2 diabetes mellitus. Pt reports stable status overall but mentions a recent hypoglycemic episode. He describes feeling shaky and diaphoretic last week. He continues to take his prescribed insulin and oral hypoglycemic medications as directed. Denies any recent falls or syncope. Pt reports adherence to current regimen.\n\nMedication List:\n- Insulin glargine\n- Glipizide\n- Metformin 500mg BID\n- Omeprazole 20mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nHEENT: Occasional nasal congestion (seasonal).\nGI: Occasional heartburn.\nMSK: No joint pain.\nNeuro: No tremors or seizures.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had T2DM. Mother had GERD.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWt: 175 lbs\nHt: 5'8\"\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 58\nCreatinine: 1.2 mg/dL\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nAbd: Soft, non-tender, non-distended.\nExt: WNL.\n\nAssessment:\n1. T2DM: Pt is 90 y.o. male with stable type 2 diabetes mellitus.\n2. Hypoglycemia: Pt experienced a hypoglycemic episode; will monitor.\n3. GERD: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan:\n- Continue current insulin and glipizide.\n- Continue metformin 500mg BID.\n- Instructed pt to monitor blood glucose more frequently and carry fast-acting glucose.\n- F/u in 3 months for labs and clinic visit.\n\nProblem List:\n- T2DM\n- Hypoglycemia\n- GERD\n- Seasonal allergic rhinitis\n\nElectronically signed, A. Rivera, DO, 05/14/2026",
+  "answer": [
+    "E11.649",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:31:01+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "DO",
+      "signer": "A. Rivera"
+    }
+  }
+}

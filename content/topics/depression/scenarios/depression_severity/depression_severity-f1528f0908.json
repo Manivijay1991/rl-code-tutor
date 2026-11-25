@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-f1528f0908",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nPt is an 85-year-old female presenting for follow-up of MDD. Pt reports a single episode of depressive symptoms beginning approximately 18 months ago. She describes a persistent low mood, decreased interest in previous hobbies, and significant fatigue. She notes that while she feels \"better\" than she did at the peak of her symptoms, she still experiences frequent tearfulness and difficulty concentrating on daily tasks. She denies any thoughts of self-harm. Pt reports improved sleep and appetite over the last month. She is currently stable on her current regimen but acknowledges that her mood fluctuates.\n\nMedication List\nSertraline 50mg PO QD\nMelatonin 3mg PO HS\nMultivitamin PO QD\n\nReview of Systems\nConstitutional: Fatigue present, no weight change.\nPsychiatric: Depressed mood, tearfulness, decreased concentration. Denies any other symptoms.\nNeurological: No tremors, no gait changes.\nRespiratory: No SOB, no cough.\nCardiovascular: No chest pain, no palpitations.\n\nSocial History\nRetired. Lives with her daughter and son-in-law. No tobacco or alcohol use.\n\nFamily History\nMother: Hypertension, stroke.\nFather: Type 2 Diabetes.\nSiblings: One brother, deceased of natural causes.\n\nVitals\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\neGFR: 68 mL/min\nCBC: WNL\n\nExam\nGeneral: Alert and oriented x3. Appears slightly teary but well-groomed.\nPsych: Cooperative, speech normal rate/volume. Affect is somewhat constricted. Mood is \"okay.\" Insight and judgment intact.\nPhysical: CTAB. RRR. Lungs clear. No acute distress.\n\nAssessment\n1. Major depressive disorder, single episode. Pt is currently in partial remission. Symptoms are managed but not fully resolved.\n\nPlan\n1. Continue Sertraline 50mg QD.\n2. Continue current dose of Melatonin for sleep.\n3. Continue monitoring mood.\n4. Pt to return in 4 weeks for follow-up.\n\nElectronically signed,\nD. Kowalski, DO\n10/14/2026",
+  "answer": [
+    "F32.4"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, in partial remission (no HCC): F32.4."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents partial remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.5"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is partial, not full.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:43:10+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

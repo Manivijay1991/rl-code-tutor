@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-3d72c1839c",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"Feeling low and tired lately.\"\n\nHPI: Pt is a 90-year-old male presenting for f/u of mood. Pt reports persistent low mood and decreased interest in hobbies over the past several weeks. He describes a \"heavy\" feeling but notes he is still able to perform activities of daily living. Pt reports improved sleep recently but states he feels \"slow\" mentally. No acute distress. He notes he is still trying to stay active with his grandchildren. He reports no significant changes in appetite or weight. He denies any acute physical complaints.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Sertraline 50mg daily\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nHeight: 5'10\"\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 65\nTSH: 2.1 mIU/L\nCMP: WNL\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever, chills, or weight loss.\nPsychiatric: Positive for low mood. Negative for insomnia.\nNeurological: Negative for tremors or gait changes.\nMSK: Negative for joint pain.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional social gatherings.\n\nFamily History: Father had hypertension. Mother had diabetes.\n\nExam:\nGen: 90 y/o male, well-groomed, appears tired but cooperative.\nPsych: Alert and oriented x3. Speech is clear and normal rate/volume. Mood is \"down.\" Affect is somewhat flat but congruent to mood. Thought process is linear and goal-oriented. Insight and judgment intact.\n\nAssessment:\n1. Major depressive disorder, single episode. Current presentation is mild.\n\nPlan:\n1. Continue current dose of Sertraline.\n2. Pt to continue monitoring mood and report any worsening of symptoms.\n3. F/u in 4 weeks for follow-up.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "F32.0"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, mild (no HCC in V28): F32.0."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "The provider documents mild; moderate maps to an HCC that mild does not.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.0"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents single episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:42:41+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

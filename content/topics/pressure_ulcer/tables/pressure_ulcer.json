@@ -1,0 +1,487 @@
+{
+  "id": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note_age": {
+    "min": 65
+  },
+  "slots": {
+    "site": {
+      "label": "Site",
+      "values": [
+        "sacral",
+        "right_heel"
+      ],
+      "labels": {
+        "sacral": "Sacral region",
+        "right_heel": "Right heel"
+      },
+      "evidence": {
+        "sacral": [
+          "sacral",
+          "sacrum"
+        ],
+        "right_heel": [
+          "right heel"
+        ]
+      },
+      "describe": {
+        "sacral": "The pressure ulcer is over the sacrum.",
+        "right_heel": "The pressure ulcer is on the right heel."
+      }
+    },
+    "stage": {
+      "label": "Stage",
+      "values": [
+        "2",
+        "3",
+        "4",
+        "unstageable",
+        "unspecified",
+        "healed"
+      ],
+      "labels": {
+        "2": "Stage 2",
+        "3": "Stage 3",
+        "4": "Stage 4",
+        "unstageable": "Unstageable",
+        "unspecified": "Not documented",
+        "healed": "Completely healed"
+      },
+      "evidence": {
+        "2": [
+          "stage 2"
+        ],
+        "3": [
+          "stage 3"
+        ],
+        "4": [
+          "stage 4"
+        ],
+        "unstageable": [
+          "unstageable"
+        ],
+        "unspecified": [],
+        "healed": [
+          "completely healed",
+          "fully healed",
+          "has healed"
+        ]
+      },
+      "describe": {
+        "2": "The provider documents a stage 2 pressure ulcer and treats it.",
+        "3": "The provider documents a stage 3 pressure ulcer and treats it.",
+        "4": "The provider documents a stage 4 pressure ulcer and treats it.",
+        "unstageable": "The provider documents the pressure ulcer as unstageable because the wound base is covered by eschar, and treats it.",
+        "unspecified": "The provider documents a pressure ulcer and treats it, but states no stage and does not describe its depth.",
+        "healed": "A pressure ulcer that was treated earlier has now completely healed; nothing is left to treat. Do not mention its former stage."
+      }
+    }
+  },
+  "note_forbid": [
+    "diabetic",
+    "diabetes",
+    "venous ulcer",
+    "arterial ulcer",
+    "osteomyelitis",
+    "infection",
+    "infected",
+    "cellulitis",
+    "gangrene",
+    "deep tissue",
+    "stage 1",
+    "left heel",
+    "buttock",
+    "hip"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "stage": "unspecified"
+      },
+      "forbid": [
+        "eschar",
+        "slough",
+        "bone",
+        "tendon",
+        "muscle",
+        "full-thickness",
+        "partial-thickness",
+        "full thickness",
+        "partial thickness",
+        "blister",
+        "unstageable",
+        "stage"
+      ]
+    },
+    {
+      "when": {
+        "stage": "healed"
+      },
+      "forbid": [
+        "stage",
+        "eschar",
+        "slough",
+        "dressing change",
+        "wound care"
+      ]
+    },
+    {
+      "when": {},
+      "require": [
+        [
+          "pressure ulcer",
+          "pressure injury",
+          "decubitus ulcer"
+        ]
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_documented": {
+      "description": "Used the unspecified-stage code when the stage (or unstageable) is documented.",
+      "lean": "under"
+    },
+    "understated_stage": {
+      "description": "Coded a lower stage than documented.",
+      "lean": "under"
+    },
+    "overstated_stage": {
+      "description": "Coded a higher stage than documented.",
+      "lean": "over"
+    },
+    "assumed_stage": {
+      "description": "Coded a stage the provider did not document.",
+      "lean": "over"
+    },
+    "healed_coded": {
+      "description": "Coded a pressure ulcer that is completely healed.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "ulcer",
+      "rules": [
+        {
+          "when": {
+            "site": "sacral",
+            "stage": "2"
+          },
+          "codes": [
+            "L89.152"
+          ],
+          "explain": "Pressure ulcer of the sacral region, stage 2: L89.152 (HCC 382).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.159"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "The stage is documented: it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "L89.153"
+              ],
+              "confusion": "overstated_stage",
+              "why": "The documented stage is 2."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "sacral",
+            "stage": "3"
+          },
+          "codes": [
+            "L89.153"
+          ],
+          "explain": "Pressure ulcer of the sacral region, stage 3: L89.153 (HCC 381).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.159"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "The stage is documented: it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "L89.152"
+              ],
+              "confusion": "understated_stage",
+              "why": "The documented stage is 3."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "sacral",
+            "stage": "4"
+          },
+          "codes": [
+            "L89.154"
+          ],
+          "explain": "Pressure ulcer of the sacral region, stage 4: L89.154 (HCC 379).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.159"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "The stage is documented: it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "L89.153"
+              ],
+              "confusion": "understated_stage",
+              "why": "The documented stage is 4."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "sacral",
+            "stage": "unstageable"
+          },
+          "codes": [
+            "L89.150"
+          ],
+          "explain": "Pressure ulcer of the sacral region, unstageable (base covered by eschar or slough): L89.150 (HCC 381).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.159"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "Unstageable is a documented stage (L89.--0), not 'unspecified'."
+            },
+            {
+              "codes": [
+                "L89.154"
+              ],
+              "confusion": "assumed_stage",
+              "why": "Do not assign a stage the provider could not determine."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "sacral",
+            "stage": "unspecified"
+          },
+          "codes": [
+            "L89.159"
+          ],
+          "explain": "Pressure ulcer of the sacral region, stage not documented: L89.159 (no HCC).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.152"
+              ],
+              "confusion": "assumed_stage",
+              "why": "No stage is documented: use the unspecified-stage code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "sacral",
+            "stage": "healed"
+          },
+          "codes": [],
+          "explain": "A pressure ulcer documented as completely healed is not coded.",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.159"
+              ],
+              "confusion": "healed_coded",
+              "why": "No code is assigned for a completely healed pressure ulcer."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "right_heel",
+            "stage": "2"
+          },
+          "codes": [
+            "L89.612"
+          ],
+          "explain": "Pressure ulcer of the right heel, stage 2: L89.612 (HCC 382).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.619"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "The stage is documented: it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "L89.613"
+              ],
+              "confusion": "overstated_stage",
+              "why": "The documented stage is 2."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "right_heel",
+            "stage": "3"
+          },
+          "codes": [
+            "L89.613"
+          ],
+          "explain": "Pressure ulcer of the right heel, stage 3: L89.613 (HCC 381).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.619"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "The stage is documented: it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "L89.612"
+              ],
+              "confusion": "understated_stage",
+              "why": "The documented stage is 3."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "right_heel",
+            "stage": "4"
+          },
+          "codes": [
+            "L89.614"
+          ],
+          "explain": "Pressure ulcer of the right heel, stage 4: L89.614 (HCC 379).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.619"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "The stage is documented: it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "L89.613"
+              ],
+              "confusion": "understated_stage",
+              "why": "The documented stage is 4."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "right_heel",
+            "stage": "unstageable"
+          },
+          "codes": [
+            "L89.610"
+          ],
+          "explain": "Pressure ulcer of the right heel, unstageable (base covered by eschar or slough): L89.610 (HCC 381).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.619"
+              ],
+              "confusion": "unspecified_when_documented",
+              "why": "Unstageable is a documented stage (L89.--0), not 'unspecified'."
+            },
+            {
+              "codes": [
+                "L89.614"
+              ],
+              "confusion": "assumed_stage",
+              "why": "Do not assign a stage the provider could not determine."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "right_heel",
+            "stage": "unspecified"
+          },
+          "codes": [
+            "L89.619"
+          ],
+          "explain": "Pressure ulcer of the right heel, stage not documented: L89.619 (no HCC).",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.612"
+              ],
+              "confusion": "assumed_stage",
+              "why": "No stage is documented: use the unspecified-stage code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "site": "right_heel",
+            "stage": "healed"
+          },
+          "codes": [],
+          "explain": "A pressure ulcer documented as completely healed is not coded.",
+          "refs": [
+            "OCG I.C.12.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L89.619"
+              ],
+              "confusion": "healed_coded",
+              "why": "No code is assigned for a completely healed pressure ulcer."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

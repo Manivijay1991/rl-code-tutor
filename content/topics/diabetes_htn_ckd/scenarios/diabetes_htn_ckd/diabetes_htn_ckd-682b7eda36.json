@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_htn_ckd-682b7eda36",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease and type 2 diabetes.\n\nHPI\nThe patient is an 89-year-old woman presenting for a scheduled follow-up. She reports feeling well overall but notes occasional fatigue. She continues to manage her type 2 diabetes primarily through dietary modifications and has not reported any recent acute symptoms related to her renal function. She remains stable on her current regimen.\n\nMedication List\nMultivitamins, Vitamin D supplement.\n\nExam\nThe patient appears well-nourished and in no acute distress. She is alert and oriented. Skin is intact without new lesions. Blood pressure is 128/78 mmHg. Heart rate is 72 beats per minute. Lungs are clear to auscultation.\n\nAssessment\n1. Chronic kidney disease, stage 4. Recent laboratory results show an eGFR of 22 mL/min/1.73m2.\n2. Type 2 diabetes. Currently managed with diet only.\n\nPlan\nWe will continue to monitor her renal function closely. The patient will maintain her current diet to manage her glucose levels. We will repeat her labs in three months to track her CKD progression.\n\nElectronically signed\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "E11.22",
+    "N18.4"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.68,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:54:19+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

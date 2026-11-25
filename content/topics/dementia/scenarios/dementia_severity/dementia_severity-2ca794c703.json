@@ -1,0 +1,91 @@
+{
+  "id": "dementia_severity-2ca794c703",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "mild",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for cognitive decline.\n\nHPI\nThe patient is an 86-year-old male presenting today for a scheduled follow-up regarding his cognitive status. He is accompanied by his daughter, who reports that he has been experiencing increasing forgetfulness over the past several months. She notes that he occasionally has difficulty remembering recent conversations or identifying familiar objects, though he remains largely independent in his daily activities. The patient is pleasant, calm, and cooperative throughout the encounter. There are no reports of behavioral issues or mood disturbances. He continues to live at home with his daughter's assistance.\n\nReview of Systems\nThe patient denies any recent falls, chest pain, shortness of breath, or changes in vision. He denies any significant weight changes or recent infections. He denies any sleep disturbances.\n\nSocial History\nThe patient is retired and lives in a private residence with his daughter. He enjoys listening to music and watching television. He does not smoke and does not consume alcohol.\n\nFamily History\nHis father had hypertension and a history of cognitive decline. His mother had a history of diabetes.\n\nMedication List\n1. Donepezil 10mg daily\n2. Lisinopril 10mg daily\n3. Atorvastatin 20mg daily\n\nVitals\nBP: 128/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs\nHbA1c: 6.4%\neGFR: 62 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented to person and place but shows some impairment in orientation to time. Speech is clear and coherent. He demonstrates mild dementia during the evaluation, characterized by some difficulty with short-term recall and word-finding. His gait is steady, and his muscle strength is 5/5 throughout.\n\nAssessment\n1. Mild dementia: The patient presents with mild dementia. He is currently stable and remains cooperative. No significant behavioral or mood disturbances were noted during today's assessment.\n\nPlan\n1. Continue current medication regimen.\n2. Maintain current safety precautions at home.\n3. Follow up in three months for continued monitoring of cognitive status.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "F03.A0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), mild, without behavioral disturbance: F03.A0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (mild): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is mild.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03A0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:48:06+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-18f21b2c21",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "2"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Follow-up for pressure ulcer.\n\nVitals: BP 134/82, HR 76, SpO2 96% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nIntegumentary: Positive for skin breakdown on right heel.\nMusculoskeletal: Negative for new joint pain.\nNeurological: Negative for numbness or tingling.\n\nHPI: (Copied Forward) Patient is an 89-year-old female presenting for evaluation of a chronic pressure injury. She reports decreased mobility and difficulty with weight-bearing. The patient reports localized discomfort at the site of the lesion. She is compliant with current wound care instructions.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nSkin: Examination of the right heel reveals a stage 2 pressure ulcer. The area shows partial-thickness skin loss with a pinkish base. No drainage or surrounding erythema noted.\n\nAssessment:\n1. Stage 2 pressure ulcer of the right heel.\n\nPlan:\n1. Continue current wound care regimen.\n2. Apply hydrocolloid dressing to the right heel.\n3. Patient instructed to perform frequent pressure reliefs and use of offloading devices.\n4. Follow up in two weeks for reassessment.\n\nElectronically signed, S. Patel, NP, 05/14/2026",
+  "answer": [
+    "L89.612"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 2: L89.612 (HCC 382)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.838,
+        "gap": -0.838,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.613"
+      ],
+      "confusion": "overstated_stage",
+      "lean": "over",
+      "why": "The documented stage is 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 0.838,
+        "gap": 0.237,
+        "direction": "over",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.838,
+    "hccs": [
+      {
+        "hcc": "382",
+        "label": "Pressure Ulcer of Skin with Partial Thickness Skin Loss",
+        "from": [
+          "L89612"
+        ],
+        "weight": 0.838
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:17+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-dfdf0df2f7",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Evaluation of liver pain and abdominal discomfort.\n\nHPI: [Copied Forward] Patient is a 76-year-old male with a history of cancer of the right lung. The primary carcinoma was surgically removed and treated several years ago. Treatment was completed, and there is no evidence of local recurrence at the original site. Patient has been stable on surveillance.\n\n[Update] Today, the patient presents for follow-up regarding new onset of dull aching in the upper right quadrant of the abdomen. He reports a gradual increase in discomfort over the last month, which is exacerbated by deep breaths. He denies fever, chills, or unintended weight loss. He notes that the primary site remains stable.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nRecent Labs:\n- ALT: 68 U/L (High)\n- AST: 72 U/L (High)\n- Bilirubin: 1.1 mg/dL\n- Creatinine: 1.1 mg/dL\n- eGFR: 72 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss, or fatigue.\nRespiratory: Negative for cough, shortness of breath, or wheezing.\nGastrointestinal: Positive for RUQ abdominal pain. Negative for nausea, vomiting, or diarrhea.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness or numbness.\n\nSocial History: Retired engineer. Lives with his wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished, in no acute distress.\nRespiratory: Clear to auscultation bilaterally. No wheezing or crackles.\nAbdomen: Soft, non-tender, and non-distended. Mild tenderness noted in the right upper quadrant. No guarding or rebound.\nSkin: No visible lesions or jaundice.\n\nAssessment:\n1. Liver metastases: New imaging and laboratory findings suggest progression of the malignant neoplasm to the liver.\n2. History of cancer of the right lung: Stable, no evidence of local recurrence.\n\nPlan:\n1. Order CT of the abdomen and pelvis with contrast to further evaluate the liver metastasis.\n2. Monitor liver function tests monthly.\n3. Discuss palliative options for abdominal pain if symptoms persist.\n4. Follow up in two weeks to review imaging.\n\nElectronically signed,\nR. Mensah, MD\nOctober 14, 2026",
+  "answer": [
+    "Z85.118",
+    "C78.7"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91",
+        "C78.7"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.209,
+        "gap": -4.209,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.118",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:05+00:00",
+    "style": {
+      "age": 76,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "R. Mensah"
+    }
+  }
+}

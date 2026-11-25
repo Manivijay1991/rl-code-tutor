@@ -1,0 +1,114 @@
+{
+  "id": "diabetes_complications-07871122ff",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for polyneuropathy and T2DM.\n\nHPI\n80 y.o. male presents for routine follow-up. Pt reports persistent tingling and burning sensations in bilateral feet. Pt states symptoms are stable. Pt reports T2DM is currently diet controlled. Denies any acute changes in sensation or motor function. Pt notes that the polyneuropathy is not related to diabetes.\n\nMedication List\nMultivitamin daily.\nNo medications for diabetes.\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6 F, SpO2 98% on RA.\nNeuro: Sensation diminished in distal toes. Reflexes 2+ throughout. Strength 5/5 in all extremities.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\n\nAssessment\n1. T2DM: Stable, managed via diet and exercise.\n2. Polyneuropathy: Chronic, stable. As noted, this condition is not due to diabetes.\n\nPlan\n1. Continue current diet.\n2. Monitor symptoms of polyneuropathy.\n3. F/u in 3 months.\n\nElectronically signed, K. Nguyen, MD, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "G62.9"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified)."
+  ],
+  "refs": [
+    "OCG I.A.15"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:45+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "K. Nguyen"
+    }
+  }
+}

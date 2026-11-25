@@ -1,0 +1,89 @@
+{
+  "id": "liver_disease-51991dfe13",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "hep_c_chronic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for chronic hepatitis C.\n\nHPI\nPt is an 83 y.o. female presenting for scheduled f/u. Pt reports feeling well today. Denies any new fatigue, jaundice, or abdominal pain. She is aware of her chronic hepatitis C diagnosis and is currently being monitored. Pt reports compliance with all current medications. No new concerns voiced at this time.\n\nMedication List\nMultivitamin daily\nAtorvastatin 20mg daily\nLisinopril 10mg daily\n\nExam\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6F, SpO2 98% RA.\nCV: RRR, CTAB.\nResp: CTAB, no wheezes/rales.\nAbdomen: Soft, non-tender, no organomegaly.\nExt: WNL.\n\nAssessment\n1. Chronic hepatitis C: Pt is currently being monitored; not yet treated. Stable.\n\nPlan\n1. Continue monitoring of chronic hepatitis C. \n2. Order repeat liver function tests and CBC in 6 months.\n3. Follow up in 6 months for labs and clinical review.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "B18.2"
+  ],
+  "explanations": [
+    "Chronic viral hepatitis C: B18.2 (HCC 65)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B19.20"
+      ],
+      "confusion": "unspecified_hepatitis",
+      "lean": "under",
+      "why": "The hepatitis C is documented as chronic: B18.2 (HCC 65).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.185,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "65"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z86.19"
+      ],
+      "confusion": "current_coded_history",
+      "lean": "under",
+      "why": "The infection is still present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.185,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "65"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.185,
+    "hccs": [
+      {
+        "hcc": "65",
+        "label": "Chronic Hepatitis",
+        "from": [
+          "B182"
+        ],
+        "weight": 0.185
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:47+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "id": "dementia_severity-1eadc11638",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "unspecified",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for dementia and behavioral changes.\n\nHPI\nPt is an 80 y.o. female presenting for evaluation of dementia. She is seen today for management of cognitive decline and associated behavioral symptoms. Daughter reports increased episodes of agitation in the evenings, specifically during sunset hours. Pt becomes restless and difficult to soothe during these periods. Pt remains functional but requires significant prompting for ADLs. No recent falls or acute changes in mobility reported. Pt is currently stable on current regimen but shows increased irritability.\n\nMedication List\n- Donepezil 10mg daily\n- Memantine 20mg daily\n- Lorazepam 0.5mg BID PRN for agitation\n\nReview of Systems\nNegative for chest pain, SOB, fever, or chills. Negative for recent falls. No acute changes in vision or hearing.\n\nSocial History\nLives with daughter and grandchildren. Retired. No tobacco or alcohol use.\n\nFamily History\nMother had history of memory loss. Father had hypertension.\n\nFamily History\nMother had history of memory loss. Father had hypertension.\n\nVitals\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/WBC: WNL\n\nRecent Labs\neGFR: 62\nHbA1c: 6.4%\nTSH: 2.1\n\nExam\nGeneral: Alert, oriented to person only. Appears tired but cooperative.\nNeuro: Speech clear but slow. Gait steady. No focal deficits noted.\nPsych: Notable agitation noted during assessment; pt became restless and required redirection.\nCardio: RRR, regular rhythm.\nLungs: CTAB.\nSkin: Intact, no breakdown.\n\nAssessment\n1. Dementia: Pt continues to show cognitive decline.\n2. Agitation: Evening agitation noted; likely related to sundowning.\n\nPlan\n1. Continue current medications for dementia and agitation.\n2. Discussed non-pharmacological interventions with daughter, including routine and environmental cues.\n3. Continue to monitor for safety at home.\n4. Follow up in 3 months.\n\nElectronically signed,\nT. Haddad, NP\n10/14/2026",
+  "answer": [
+    "F03.911"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), unspecified severity, with agitation: F03.911."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03911"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:48:02+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

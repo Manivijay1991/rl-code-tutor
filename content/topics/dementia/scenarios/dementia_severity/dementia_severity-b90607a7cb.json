@@ -1,0 +1,95 @@
+{
+  "id": "dementia_severity-b90607a7cb",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "severe",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for dementia.\n\nHPI: Patient is an 89-year-old female who presents today for a scheduled follow-up regarding her dementia. (Copied forward from previous visit) Update: The patient arrived today accompanied by her daughter. She remains calm and cooperative during the encounter. She is currently experiencing significant cognitive decline. There are no reports of behavioral disturbances or mood issues. She continues to require assistance with activities of daily living.\n\nMedication List:\n- Donepezil 10mg daily\n- Memantine 20mg daily\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.4F.\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight changes.\n- Neurological: Positive for cognitive decline.\n- Psychiatric: Negative for mood disturbances or behavioral issues.\n- Respiratory: Negative for shortness of breath.\n- Cardiovascular: Negative for chest pain.\n\nExam:\nGeneral: Elderly female, appears well-nourished and groomed. \nBehavior: Calm, cooperative, and pleasant. \nNeurological: Oriented to person only. Speech is clear but slow. Gait is steady with a walker.\n\nAssessment:\n1. Severe dementia.\n\nPlan:\n1. Continue current medications for cognitive support.\n2. Continue to monitor for any changes in safety or functional status.\n3. Follow up in 3 months.\n\nElectronically signed, S. Patel, NP, 05/14/2026",
+  "answer": [
+    "F03.C0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), severe, without behavioral disturbance: F03.C0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (severe): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "125",
+        "label": "Dementia/Severe",
+        "from": [
+          "F03C0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:48:24+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

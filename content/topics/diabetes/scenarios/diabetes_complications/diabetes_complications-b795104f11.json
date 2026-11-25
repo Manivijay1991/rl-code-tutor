@@ -1,0 +1,123 @@
+{
+  "id": "diabetes_complications-b795104f11",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes and neuropathy.\n\nHPI: [Copied forward from previous visit] Patient is an 88-year-old female presenting for management of type 2 diabetes and chronic peripheral neuropathy. She reports stable symptoms with current regimen.\n\nUpdate: Patient reports she is continuing her long-term medications without significant side effects. She notes some tingling in her feet but states it remains stable. She denies any new acute symptoms or changes in her mobility.\n\nVitals: BP 128/80, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 145 lbs.\n\nReview of Systems:\nConstitutional: Negative\nNeurological: Positive (numbness in feet)\nMusculoskeletal: Negative\nSkin: Negative\nAll other systems reviewed and negative.\n\nMedication List:\n- Insulin and oral hypoglycemic (glipizide)\n- Gabapentin\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nNeurological: Symmetrical muscle strength. Diminished sensation to light touch in bilateral toes.\nSkin: Intact, no ulcers noted.\n\nAssessment:\n1. Type 2 diabetes: Stable on current insulin and oral hypoglycemic medications.\n2. Polyneuropathy: Chronic condition. It is noted that this is unrelated to diabetes.\n\nPlan:\nContinue current insulin and oral hypoglycemic regimen. Continue gabapentin for neuropathy. Follow up in 3 months.\n\nElectronically signed, T. Haddad, DO, 05/12/2026",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:32+00:00",
+    "style": {
+      "age": 88,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "T. Haddad"
+    }
+  }
+}

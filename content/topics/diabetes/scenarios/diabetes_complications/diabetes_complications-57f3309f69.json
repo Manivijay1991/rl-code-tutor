@@ -1,0 +1,94 @@
+{
+  "id": "diabetes_complications-57f3309f69",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 1 diabetes and hypoglycemia.\n\nHPI: Pt is a 68-year-old female presenting for routine follow-up of T1DM and hyperlipidemia. Pt reports long-term insulin use. Pt reports experiencing a recent hypoglycemic episode. Denies severe tremors, diaphoresis, or confusion during the event. Pt states she monitors blood glucose regularly. Current management involves insulin and lifestyle modifications for GERD. No acute complaints today.\n\nMedication List:\n- Insulin (long-acting and rapid-acting)\n- Omeprazole 20mg daily\n- Atorvastatin 40mg daily\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 82\nGlucose (fasting): 115 mg/dL\nLDL: 88 mg/dL\nHDL: 52 mg/dL\nTriglycerides: 140 mg/dL\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight changes.\nHEENT: Denies vision changes, sore throat.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies nausea, vomiting, abdominal pain.\nMSK: Denies joint pain, swelling.\nNeuro: Denies numbness, tingling, weakness.\n\nSocial History: Retired, lives with husband. Non-smoker. Occasional alcohol.\n\nFamily History: Mother had T1DM. Father had hyperlipidemia.\n\nExam:\nGen: Well-appearing, alert, oriented x3.\nCV: RRR, regular rhythm, no murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, non-distended.\nSkin: No rashes or lesions.\nExtremities: WNL, no edema.\n\nAssessment:\n1. Type 1 diabetes mellitus.\n2. Hypoglycemia.\n3. Hyperlipidemia.\n4. Gastroesophageal reflux disease.\n\nPlan:\n1. Continue current insulin regimen.\n2. Educate on hypoglycemia management and emergency glucagon use.\n3. Continue atorvastatin for hyperlipidemia.\n4. Continue omeprazole for GERD.\n5. F/u in 3 months for lab work and A1c.\n\nProblem List:\n- Type 1 diabetes\n- Hypoglycemia\n- Hyperlipidemia\n- Gastroesophageal reflux disease\n\nElectronically signed, J. Lindqvist, PA-C, 05/12/2026",
+  "answer": [
+    "E10.649"
+  ],
+  "explanations": [
+    "Type 1 diabetes with hypoglycemia without coma: E10.649.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.65"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E10.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.649",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E10649"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:45+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "hyperlipidemia"
+      ],
+      "credential": "PA-C",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

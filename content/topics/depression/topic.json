@@ -1,0 +1,8 @@
+{
+  "id": "depression",
+  "title": "Depression",
+  "kind": "hcc",
+  "description": "Major depression: single or recurrent, severity, psychotic features and remission.",
+  "order": 40,
+  "enabled": true
+}

@@ -1,0 +1,158 @@
+{
+  "id": "ckd_staging-5fd7a36964",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "yes",
+    "dialysis": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for renal maintenance.\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 185 lbs.\n\nRecent Labs: eGFR: 12 mL/min/1.73m2, Potassium: 4.2, Creatinine: 7.8, Hemoglobin: 10.2.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Sevelamer 800mg and 1200mg (on dialysis days)\n- Ferrous sulfate 325mg daily\n\nFamily History: Father had hypertension and history of stroke. Mother had seasonal allergic rhinitis.\n\nSocial History: Retired; lives with wife; non-smoker; occasional alcohol use.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or abdominal pain.\nMusculoskeletal: Denies joint pain or swelling.\nNeurological: Denies numbness or weakness.\nAllergic: Positive for seasonal allergic rhinitis.\n\nHPI: (Copied forward from previous visit) Patient is a 76-year-old male with a history of hypertension and chronic kidney disease. He reports regular hemodialysis treatments. He denies any recent acute changes in his condition or significant episodes of fluid overload. He reports adherence to his hypertension medications.\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted.\nSkin: Intact, no new lesions.\n\nAssessment:\n1. End stage renal disease: Patient remains on maintenance hemodialysis. Labs confirm an eGFR of 12, consistent with ESRD.\n2. Hypertension: Currently stable on medication.\n3. Hyperlipidemia: Stable on statin therapy.\n4. Seasonal allergic rhinitis: Stable, no acute flare-ups reported today.\n\nPlan:\n- Continue current hemodialysis schedule.\n- Continue hypertension and hyperlipidemia medications.\n- Monitor potassium and phosphorus levels.\n- Follow up in 4 weeks for routine labs and vitals.\n\nProblem List:\n- End stage renal disease\n- Hypertension\n- Hyperlipidemia\n- Seasonal allergic rhinitis\n\nElectronically signed, \nS. Patel, MD\nMay 14, 2026",
+  "answer": [
+    "I12.0",
+    "N18.6",
+    "Z99.2"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only.",
+    "Patient on dialysis: add Z99.2 dependence on renal dialysis."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "Z99.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.6"
+      ],
+      "confusion": "missed_dialysis_status",
+      "lean": "under",
+      "why": "Dialysis status is reported with Z99.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:20+00:00",
+    "style": {
+      "age": 76,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "MD",
+      "signer": "S. Patel"
+    }
+  }
+}

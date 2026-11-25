@@ -1,0 +1,58 @@
+{
+  "id": "alcohol_use-e9ae9a76e3",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "social_drinking",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension.\n\nHPI: Pt is a 75-year-old female presenting for routine management of HTN. Pt reports she feels well today. She states she drinks socially, typically a glass of wine on weekends. Pt reports she is currently drinking a glass of wine this evening. No reports of chest pain, SOB, or syncope.\n\nMedication List:\n- Lisinopril 10mg daily\n- Amlodipine 5mg daily\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 132/84, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\nCV: RRR, CTAB, no murmurs.\nResp: Clear to auscultation bilaterally.\nExt: No edema, pulses 2+ and equal.\n\nAssessment:\n1. Hypertension: Well-controlled on current regimen.\n\nPlan:\n1. Continue Lisinopril 10mg daily.\n2. Continue Amlodipine 5mg daily.\n3. Return to clinic in 6 months for routine follow-up.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [],
+  "explanations": [
+    "Social drinking without a provider diagnosis is not coded."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "coded_social_drinking",
+      "lean": "over",
+      "why": "The provider does not diagnose an alcohol use disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:38+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

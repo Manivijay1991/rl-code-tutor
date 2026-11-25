@@ -1,0 +1,8 @@
+{
+  "id": "heart_failure",
+  "title": "Heart failure",
+  "kind": "hcc",
+  "description": "Heart failure type and acuity, and hypertensive heart disease.",
+  "order": 70,
+  "enabled": true
+}

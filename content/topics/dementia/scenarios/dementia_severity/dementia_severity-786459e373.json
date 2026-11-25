@@ -1,0 +1,150 @@
+{
+  "id": "dementia_severity-786459e373",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "alzheimers",
+    "severity": "mild",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline and behavioral changes.\n\nHPI: Pt is an 86 y/o female presenting for follow-up of known Alzheimer's disease. Daughter reports pt has been increasingly difficult to manage at home. Specifically, she notes episodes of agitation in the evenings, leading to disrupted sleep and increased stress for the caregiver. Pt remains functional for ADLs but requires significant prompting. No recent falls or acute changes in mobility. Pt is stable on current medications but requires adjustment for behavioral symptoms.\n\nMedication List:\n- Donepezil 10mg daily\n- Memantine 10mg daily\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs:\neGFR: 65\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight loss.\nNeuro: Positive for memory loss and evening agitation. Negative for tremors.\nCV: No chest pain, SOB, or palpitations.\nResp: No cough or wheezing.\nMSK: No joint pain or decreased range of motion.\n\nSocial History: Lives with daughter and grandchildren. Retired teacher. Non-smoker. No alcohol use.\n\nFamily History: Mother had dementia. Father had hypertension.\n\nExam:\nGeneral: Alert, pleasant, and cooperative.\nNeuro: Oriented to person, but disoriented to time and place. Speech is clear. Gait steady.\nPsych: Shows signs of mild dementia. Affect is congruent with mood. No acute distress.\n\nAssessment:\n1. Alzheimer's disease.\n2. Mild dementia.\n3. Agitation in the evening.\n\nPlan:\n1. Continue Donepezil and Memantine.\n2. Start Quetiapine 12.5mg at bedtime to address evening agitation.\n3. Educate daughter on medication side effects and importance of consistent dosing.\n4. F/u in 3 months for medication efficacy and safety review.\n\nElectronically signed,\nA. Rivera, NP\nMay 14, 2026",
+  "answer": [
+    "G30.9",
+    "F02.A11"
+  ],
+  "explanations": [
+    "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+    "Alzheimer's disease (F02.-, dementia in other diseases), mild, with agitation: F02.A11."
+  ],
+  "refs": [
+    "OCG I.A.13",
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F02.A11"
+      ],
+      "confusion": "missed_underlying",
+      "lean": "under",
+      "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.811"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (mild): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is mild.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F02.A0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G30.9",
+        "F03.A11"
+      ],
+      "confusion": "wrong_dementia_category",
+      "lean": "neutral",
+      "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "G309",
+          "F02A11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:41:59+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

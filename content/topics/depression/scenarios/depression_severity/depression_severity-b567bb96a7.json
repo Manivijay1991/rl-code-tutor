@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-b567bb96a7",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Depressed mood and low energy.\n\nHPI: The patient is a 47-year-old man presenting for a follow-up evaluation of his major depressive disorder, recurrent. He reports that his current symptoms have been persistent for the past three weeks. He describes a pervasive sense of sadness, significant lethargy, and a lack of interest in his usual hobbies. He notes that he feels slowed down physically and has been struggling to complete daily tasks at work. He denies any history of auditory or visual distortions, confirming the current episode is severe without psychotic features. He reports that his sleep has been interrupted by early morning awakenings and that his appetite has decreased. He states that while his mood is very low, he remains oriented to person, place, and time.\n\nMedication List:\n- Sertraline 100mg daily\n- Melatonin 3mg at bedtime\n\nReview of Systems:\nConstitutional: Fatigue, poor appetite.\nPsychiatric: Depressed mood, low energy.\nNeurological: None reported.\nAll other systems reviewed and are negative.\n\nSocial History: The patient is employed full-time in an office setting. He lives with his wife and two children. He enjoys hiking and woodworking in his spare time.\n\nFamily History: Father has a history of hypertension and depression. Mother has a history of type 2 diabetes.\n\nVitals:\nBP: 128/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 195 lbs\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nTSH: 2.1 mIU/L\nGlucose: 104 mg/dL\n\nExam: The patient appears well-groomed but displays a flat affect. He is cooperative but speaks with a slow, monotone voice. He maintains fair eye contact. Cognition is intact with no evidence of confusion. Movement is slowed but purposeful.\n\nAssessment:\n1. Major depressive disorder, recurrent. The patient is experiencing a severe episode without psychotic features at this time.\n\nPlan:\n1. Continue current dose of Sertraline.\n2. Discussed the importance of sleep hygiene and regular physical activity.\n3. Patient will return in four weeks for a follow-up to monitor symptom progression and medication efficacy.\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "F33.2"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, severe without psychotic features (HCC 155): F33.2."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.3"
+      ],
+      "confusion": "unsupported_psychotic",
+      "lean": "over",
+      "why": "Psychotic features are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.299,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "152"
+        ],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F332"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:58:58+00:00",
+    "style": {
+      "age": 47,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

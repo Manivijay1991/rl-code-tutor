@@ -1,0 +1,68 @@
+{
+  "id": "neuro_conditions-d4a81f6e75",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "seizure_disorder"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for seizure disorder.\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on room air, Weight 195 lbs.\n\nRecent Labs: Sodium 140 mEq/L, Potassium 4.2 mEq/L, Glucose 98 mg/dL, eGFR 88 mL/min/1.73m2.\n\nMedication List:\n- Levetiracetam 500mg BID\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nNeurological: Positive for occasional tingling in fingers; negative for tremors, gait instability, or loss of consciousness.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nMusculoskeletal: Negative for joint pain or swelling.\n\nSocial History: Patient is a 51-year-old male. He works full-time in an office setting. He reports no tobacco or illicit drug use. He enjoys hiking and spends his weekends with his family.\n\nFamily History: Father had hypertension. Mother has type 2 diabetes. No known history of seizure disorder in the immediate family.\n\nHPI: [Copied Forward] Patient is a 51-year-old male who presents for evaluation of a seizure disorder. He reports a history of generalized tonic-clonic events beginning in his late 20s. He has been managed on levetiracetam for several years. He denies recent breakthrough events or significant side effects.\n\nUpdate: Today, the patient reports that his seizure disorder remains well-controlled. He has not experienced any involuntary movements or loss of awareness since his last follow-up. He notes some mild tingling in his extremities but denies any other neurological concerns. He continues to perform his job duties without limitations.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nNeurological: Cranial nerves II-XII intact. Motor strength 5/5 throughout. Reflexes 2+ and symmetric. Sensation intact to light touch. Coordination is normal; finger-to-nose testing is accurate. Gait is steady.\n\nAssessment:\n1. Seizure disorder: Currently stable and well-controlled on his current medication regimen.\n\nPlan:\n1. Continue current dosage of levetiracetam.\n2. Patient instructed to maintain a seizure diary and report any changes in frequency or severity.\n3. Return to clinic in 6 months for routine follow-up.\n\nElectronically signed, \nJ. Lindqvist, NP\nMay 14, 2026",
+  "answer": [
+    "G40.909"
+  ],
+  "explanations": [
+    "'Seizure disorder' indexes to epilepsy, unspecified: G40.909 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "symptom_for_diagnosis",
+      "lean": "neutral",
+      "why": "A seizure disorder is a diagnosis (G40.909), not the symptom R56.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40909"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:04+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

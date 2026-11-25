@@ -1,0 +1,61 @@
+{
+  "id": "liver_disease-008bc86a14",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "hep_c_cured"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for history of Hepatitis C.\n\nHPI: 85-year-old female presents for routine follow-up regarding past Hepatitis C infection. Pt underwent antiviral therapy several years ago and achieved a sustained virologic response. Pt reports feeling well overall and denies any current symptoms of fatigue, abdominal pain, or jaundice. She reports no new concerns and is here today for monitoring and to confirm status.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nHEENT: No vision changes or sore throat.\nCV: No chest pain or palpitations.\nResp: No shortness of breath.\nGI: No nausea, vomiting, or diarrhea.\nMSK: No joint pain.\nSkin: No new rashes.\n\nSocial History: Retired. Lives with her daughter. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 145 lbs\n\nRecent Labs:\nALT: 24 U/L\nAST: 22 U/L\nTotal Bilirubin: 0.8 mg/dL\nAlbumin: 4.2 g/dL\nPlatelets: 240k\nINR: 1.0\n\nExam:\nGen: Elderly female, well-developed, well-nourished. Appears in no acute distress.\nCV: RRR, regular rhythm. No murmurs.\nLungs: CTAB, no wheezes or crackles.\nAbdomen: Soft, non-tender, non-distended. No organomegaly.\nSkin: Intact, no lesions.\nNeuro: Alert and oriented x3. Normal gait.\n\nAssessment:\n1. History of Hepatitis C. Pt achieved SVR during previous treatment. No evidence of current infection or liver damage. Labs remain within normal limits.\n\nPlan:\n- Continue current medications.\n- No further treatment required for Hepatitis C at this time.\n- Routine follow-up in 12 months.\n- Encourage healthy diet and exercise.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "Z86.19"
+  ],
+  "explanations": [
+    "Hepatitis C cured with no current infection: personal history, Z86.19 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B18.2"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "The hepatitis C was cured (sustained virologic response): code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.185,
+        "correct": 0,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "65"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:50+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

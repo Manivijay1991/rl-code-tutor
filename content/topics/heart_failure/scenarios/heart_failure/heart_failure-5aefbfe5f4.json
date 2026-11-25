@@ -1,0 +1,123 @@
+{
+  "id": "heart_failure-5aefbfe5f4",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint\nShortness of breath and increased swelling.\n\nHPI\nPt is an 87 y/o female presenting for f/u of heart failure with preserved ejection fraction. Pt reports worsening dyspnea on exertion and increased pitting edema in bilateral lower extremities over the past week. Pt states she has been feeling more fatigued. She denies chest pain or syncope. Pt has a hx of hypertension. Exam reveals increased peripheral edema compared to previous visit.\n\nMedication List\nFurosemide 40mg PO BID\nLisinopril 10mg PO daily\nAmlodipine 5mg PO daily\n\nExam\nGeneral: Alert, in no acute distress.\nCV: RRR, regular rhythm.\nLungs: Mild crackles at bases.\nExtremities: 2+ pitting edema to mid-calf.\nVitals: BP 142/88, HR 78, RR 18, SpO2 95% on RA.\n\nAssessment\n1. Acute on chronic heart failure (HFpEF)\n2. Hypertension\n\nPlan\n1. Increase furosemide dose to 80mg PO BID for acute exacerbation of heart failure.\n2. Continue current HTN regimen.\n3. Pt to monitor weight daily and call office if rapid weight gain occurs.\n4. F/u in 2 weeks.\n\nElectronically signed, R. Mensah, DO, 05/12/2026",
+  "answer": [
+    "I11.0",
+    "I50.33"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Acute on chronic diastolic heart failure: I50.33 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.33"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.32"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.31"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5033"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "224"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:26+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

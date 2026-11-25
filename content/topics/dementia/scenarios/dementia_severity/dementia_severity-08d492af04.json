@@ -1,0 +1,108 @@
+{
+  "id": "dementia_severity-08d492af04",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "mild",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for dementia and behavioral issues.\n\nHPI\nPt is an 83yF presenting for routine follow-up of dementia. She lives with her daughter. Daughter reports that the patient has been experiencing increasing agitation in the evenings, specifically becoming restless and difficult to soothe during the sundowning period. Patient remains functional but shows noticeable cognitive decline. No recent falls or acute changes in mobility reported.\n\nMedication List\nDonepezil 10mg daily\nMelatonin 3mg PRN at bedtime\n\nExam\nPt is alert and oriented to person and place only. Cooperative but appears slightly agitated during the interview. RRR, CTAB, WNL. Gait steady.\n\nAssessment\n1. Mild dementia: Pt shows steady progression of cognitive impairment.\n2. Agitation: Evening episodes noted by caregiver.\n\nPlan\n1. Continue current dementia medication.\n2. Discussed non-pharmacological interventions for evening agitation, including routine and calming environment.\n3. Continue monitoring cognitive status.\n4. F/u in 3 months.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/12/2026",
+  "answer": [
+    "F03.A11"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), mild, with agitation: F03.A11."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.911"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (mild): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is mild.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03A11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:41:29+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

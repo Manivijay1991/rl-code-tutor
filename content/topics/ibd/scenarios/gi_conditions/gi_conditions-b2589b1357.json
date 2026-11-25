@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-b2589b1357",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "crohns"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint\nFollow-up for Crohn's disease.\n\nHPI\nPt is a 56 y.o. female presenting for routine f/u of Crohn's disease. Pt reports feeling well and reports that symptoms have been stable. She remains in remission on current maintenance therapy. Denies any acute abdominal pain, diarrhea, or fever. No new concerns voiced today.\n\nMedication List\nAdalimumab (injections)\nFolic acid\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 122/78, HR 72, Temp 98.6 F, RR 16.\nAbdomen: Soft, non-tender, non-distended. Normal bowel sounds. No guarding or rebound.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nExt: WNL.\n\nAssessment\n1. Crohn's disease: Pt currently in remission on maintenance therapy. Stable.\n\nPlan\n1. Continue current maintenance medications.\n2. Continue routine monitoring.\n3. Pt to f/u in 6 months for routine check.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "K50.90"
+  ],
+  "explanations": [
+    "Crohn's disease, site not stated, no complications: K50.90 (HCC 80)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K50.00"
+      ],
+      "confusion": "assumed_site",
+      "lean": "neutral",
+      "why": "The site is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.55,
+        "correct": 0.55,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.55,
+    "hccs": [
+      {
+        "hcc": "80",
+        "label": "Crohns Disease (Regional Enteritis)",
+        "from": [
+          "K5090"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:25+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

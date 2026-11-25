@@ -1,0 +1,132 @@
+{
+  "id": "heart_failure-d242e71196",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Follow-up for heart failure and hypertension.\n\nHPI: Patient is a 78-year-old male with a history of chronic heart failure and hypertension. He reports that he has been feeling well since the last visit. He denies any increased shortness of breath, orthopnea, or significant swelling in his lower extremities. He reports compliance with his current medication regimen. He notes no recent changes in weight or activity tolerance.\n\nMedication List:\n- Lisinopril 20mg daily\n- Furosemide 40mg daily\n- Spironolactone 25mg daily\n\nVitals: BP 128/76, HR 74, SpO2 98% on room air, Temp 98.6F, Weight 185 lbs.\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or fatigue.\n- Respiratory: Negative for cough or wheezing.\n- Cardiovascular: Negative for palpitations or chest pain.\n- Musculoskeletal: Negative for joint pain.\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard, no murmurs, rubs, or gallops.\nPulmonary: Clear to auscultation bilaterally.\nExtremities: No pedal edema noted.\n\nAssessment:\n1. Chronic HFpEF: Patient is clinically stable at this time with no signs of volume overload.\n2. Hypertension: Well-controlled on current medications.\n\nPlan:\n- Continue current medications for chronic heart failure and hypertension.\n- Patient to monitor daily weight and report any gains over 3 lbs in 24 hours.\n- Follow up in 3 months.\n\nElectronically signed, R. Mensah, NP, 10/14/2026",
+  "answer": [
+    "I11.0",
+    "I50.32"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Chronic diastolic heart failure: I50.32 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.32"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.33"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.22"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents diastolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I110",
+          "I5032"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:43+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

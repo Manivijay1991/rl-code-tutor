@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-14b9a8df73",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "crohns_small"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint\nFollow-up for Crohn's disease.\n\nHPI\nThe patient is a 36-year-old woman presenting today for a routine follow-up of her Crohn's disease. She reports that her symptoms have been well-controlled since her last visit. She denies any acute abdominal pain, fever, or recent changes in bowel habits. She states that she is currently adhering to her maintenance medication regimen and feels she is doing well overall.\n\nMedication List\nAdalimumab 40mg subcutaneous every two weeks.\n\nExam\nThe patient is alert and oriented. She appears in no acute distress. Her abdomen is soft and non-tender without any palpable masses or guarding. Bowel sounds are present in all four quadrants. Vital signs are stable and within normal limits.\n\nAssessment\nThe patient has a diagnosis of Crohn's disease of the terminal ileum. Her condition is currently stable on her current maintenance therapy.\n\nPlan\nContinue current maintenance medication. The patient will continue to monitor for any new symptoms and will return to the clinic in six months for a follow-up evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "K50.00"
+  ],
+  "explanations": [
+    "Crohn's disease of the small intestine (ileum), no complications: K50.00 (HCC 80)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K50.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The small intestine is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.55,
+        "correct": 0.55,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.55,
+    "hccs": [
+      {
+        "hcc": "80",
+        "label": "Crohns Disease (Regional Enteritis)",
+        "from": [
+          "K5000"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:27+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

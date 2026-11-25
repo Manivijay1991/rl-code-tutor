@@ -1,0 +1,89 @@
+{
+  "id": "diabetes_complications-8461622483",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for diabetes.\n\nHPI\nPt is an 87yF presenting for routine follow-up of her T2DM. She reports feeling well and stable. She reports adherence to her current management plan and denies any acute symptoms or recent illnesses. She states she is managing her blood glucose levels primarily through lifestyle modifications.\n\nMedication List\nNone.\n\nExam\nGeneral: Alert, pleasant, in no acute distress.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\nHeart: RRR, regular rhythm.\nLungs: CTAB.\nAbdomen: Soft, non-tender, non-distended.\nExtremities: WNL, no edema.\nNeuro: Alert and oriented x3.\n\nAssessment\n1. T2DM without complications. Currently diet controlled.\n\nPlan\n1. Continue current diet and exercise regimen for glucose management.\n2. Routine follow-up in 3 months.\n3. Patient instructed to call if any concerns arise.\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [
+    "E11.9"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:25:47+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

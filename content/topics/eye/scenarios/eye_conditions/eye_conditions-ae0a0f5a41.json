@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-ae0a0f5a41",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "wet_amd_scar"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision changes.\n\nHPI\nThe patient is a 77-year-old woman presenting today for a follow-up evaluation regarding her vision. She was recently evaluated by an ophthalmologist who diagnosed her with exudative age-related macular degeneration in the right eye. The ophthalmologist noted that there is an inactive scar present in the area of the macula. The patient reports that her vision has stabilized since her last evaluation and she does not currently experience significant fluctuations in visual acuity. She states she is managing her symptoms well and is not experiencing new episodes of fluid accumulation or rapid vision loss. She is seeking a clinical update to ensure her condition remains stable and to discuss any necessary adjustments to her maintenance.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\neGFR: 68 mL/min/1.73m2\nHbA1c: 6.4%\nTSH: 2.1 mIU/L\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, or palpitations. She denies any recent falls or syncopal episodes. She denies any numbness or tingling in her extremities. She reports no recent changes in appetite or weight. She denies any joint pain or swelling.\n\nSocial History\nThe patient is a retired school teacher. She lives in a single-story home with her spouse. She reports walking for exercise three times a week. She denies tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension and a history of heart disease. Her father had a history of stroke.\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm. No murmurs, rubs, or gallops.\nRespiratory: Clear to auscultation bilaterally.\nMusculoskeletal: Normal gait, no joint swelling noted.\nNeurological: Cranial nerves II-XII intact. Sensation intact in all extremities.\n\nAssessment\n1. Exudative age-related macular degeneration of the right eye with an inactive scar.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan\nThe patient was reviewed and the stability of her vision was discussed. The ophthalmologist has determined that no injection is needed at this time due to the inactive status of the lesion. We will continue current medications for blood pressure and cholesterol management. She will follow up in six months for a routine check.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "H35.3213"
+  ],
+  "explanations": [
+    "Exudative (wet) AMD, right eye, with inactive scar: H35.3213 (HCC 300)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3211"
+      ],
+      "confusion": "wrong_cnv_status",
+      "lean": "neutral",
+      "why": "The wet AMD has an inactive scar, not active neovascularization.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0.596,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "H35.30"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type, eye and stage are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.596,
+        "gap": -0.596,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "300"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.596,
+    "hccs": [
+      {
+        "hcc": "300",
+        "label": "Exudative Macular Degeneration",
+        "from": [
+          "H353213"
+        ],
+        "weight": 0.596
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:44+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

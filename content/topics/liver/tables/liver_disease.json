@@ -1,0 +1,348 @@
+{
+  "id": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note_age": {
+    "min": 35
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "cirrhosis",
+        "alcoholic_cirrhosis",
+        "alcoholic_cirrhosis_ascites",
+        "hep_c_chronic",
+        "hep_c_cured",
+        "fatty_liver"
+      ],
+      "labels": {
+        "cirrhosis": "Cirrhosis, cause not stated",
+        "alcoholic_cirrhosis": "Alcoholic cirrhosis",
+        "alcoholic_cirrhosis_ascites": "Alcoholic cirrhosis with ascites",
+        "hep_c_chronic": "Chronic hepatitis C",
+        "hep_c_cured": "Hepatitis C cured (SVR)",
+        "fatty_liver": "Fatty liver"
+      },
+      "evidence": {
+        "cirrhosis": [
+          "cirrhosis"
+        ],
+        "alcoholic_cirrhosis": [
+          "alcoholic cirrhosis"
+        ],
+        "alcoholic_cirrhosis_ascites": [
+          [
+            "alcoholic cirrhosis"
+          ],
+          [
+            "ascites"
+          ]
+        ],
+        "hep_c_chronic": [
+          "chronic hepatitis C"
+        ],
+        "hep_c_cured": [
+          "sustained virologic response",
+          "SVR"
+        ],
+        "fatty_liver": [
+          "fatty liver",
+          "hepatic steatosis"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "cirrhosis": "The provider documents cirrhosis of the liver; the cause is not stated.",
+        "alcoholic_cirrhosis": "The provider documents alcoholic cirrhosis without ascites; the patient no longer drinks.",
+        "alcoholic_cirrhosis_ascites": "The provider documents alcoholic cirrhosis with ascites; the patient no longer drinks.",
+        "hep_c_chronic": "The provider documents chronic hepatitis C, being monitored; not yet treated.",
+        "hep_c_cured": "Hepatitis C was cured with antiviral treatment years ago (sustained virologic response); there is no current infection and no liver damage.",
+        "fatty_liver": "The provider documents fatty liver (hepatic steatosis) on ultrasound, managed with diet and exercise."
+      }
+    }
+  },
+  "note_forbid": [
+    "hepatocellular",
+    "liver cancer",
+    "transplant",
+    "encephalopathy",
+    "varices",
+    "hepatorenal",
+    "portal hypertension",
+    "hepatitis B",
+    "HIV",
+    "cryptogenic",
+    "biliary",
+    "NASH",
+    "steatohepatitis",
+    "alcohol use disorder",
+    "alcohol dependence",
+    "alcohol abuse",
+    "alcoholism"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "cirrhosis"
+      },
+      "forbid": [
+        "alcoholic",
+        "alcohol-related",
+        "hepatitis",
+        "fatty",
+        "steatosis",
+        "ascites"
+      ]
+    },
+    {
+      "when": {
+        "condition": "alcoholic_cirrhosis"
+      },
+      "forbid": [
+        "ascites",
+        "hepatitis",
+        "fatty",
+        "steatosis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "alcoholic_cirrhosis_ascites"
+      },
+      "forbid": [
+        "hepatitis",
+        "fatty",
+        "steatosis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "hep_c_chronic"
+      },
+      "forbid": [
+        "cirrhosis",
+        "cured",
+        "sustained virologic",
+        "SVR",
+        "resolved",
+        "fatty",
+        "steatosis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "hep_c_cured"
+      },
+      "forbid": [
+        "chronic hepatitis C",
+        "active hepatitis",
+        "cirrhosis",
+        "fatty",
+        "steatosis",
+        "viral load detected"
+      ]
+    },
+    {
+      "when": {
+        "condition": "fatty_liver"
+      },
+      "forbid": [
+        "cirrhosis",
+        "alcoholic",
+        "fibrosis",
+        "hepatitis"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_specified": {
+      "description": "Used unspecified cirrhosis when alcoholic cirrhosis is documented.",
+      "lean": "neutral"
+    },
+    "assumed_cause": {
+      "description": "Coded a cause of cirrhosis the provider did not document.",
+      "lean": "neutral"
+    },
+    "missed_ascites": {
+      "description": "Left out documented ascites (alcoholic cirrhosis with ascites).",
+      "lean": "under"
+    },
+    "unsupported_ascites": {
+      "description": "Coded ascites that is not documented.",
+      "lean": "over"
+    },
+    "unspecified_hepatitis": {
+      "description": "Used unspecified viral hepatitis C instead of chronic hepatitis C.",
+      "lean": "under"
+    },
+    "current_coded_history": {
+      "description": "Coded personal history while the hepatitis C is still present.",
+      "lean": "under"
+    },
+    "history_coded_active": {
+      "description": "Coded current hepatitis C after it was cured.",
+      "lean": "over"
+    },
+    "coded_cirrhosis": {
+      "description": "Coded cirrhosis when only fatty liver is documented.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "liver",
+      "rules": [
+        {
+          "when": {
+            "condition": "cirrhosis"
+          },
+          "codes": [
+            "K74.60"
+          ],
+          "explain": "Cirrhosis of the liver with no cause documented: K74.60 (HCC 64).",
+          "refs": [
+            "ICD-10-CM Tabular: K70-K77"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K70.30"
+              ],
+              "confusion": "assumed_cause",
+              "why": "Alcohol is not documented as the cause."
+            },
+            {
+              "codes": [
+                "K74.69"
+              ],
+              "confusion": "assumed_cause",
+              "why": "K74.69 is for other specified cirrhosis; no type is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "alcoholic_cirrhosis"
+          },
+          "codes": [
+            "K70.30"
+          ],
+          "explain": "Alcoholic cirrhosis without ascites: K70.30 (HCC 64).",
+          "refs": [
+            "ICD-10-CM Tabular: K70-K77"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K74.60"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The cause (alcohol) is documented."
+            },
+            {
+              "codes": [
+                "K70.31"
+              ],
+              "confusion": "unsupported_ascites",
+              "why": "Ascites is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "alcoholic_cirrhosis_ascites"
+          },
+          "codes": [
+            "K70.31"
+          ],
+          "explain": "Alcoholic cirrhosis with ascites: K70.31 (HCC 64).",
+          "refs": [
+            "ICD-10-CM Tabular: K70-K77"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K70.30"
+              ],
+              "confusion": "missed_ascites",
+              "why": "Ascites is documented: K70.31."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "hep_c_chronic"
+          },
+          "codes": [
+            "B18.2"
+          ],
+          "explain": "Chronic viral hepatitis C: B18.2 (HCC 65).",
+          "refs": [
+            "ICD-10-CM Tabular: K70-K77"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "B19.20"
+              ],
+              "confusion": "unspecified_hepatitis",
+              "why": "The hepatitis C is documented as chronic: B18.2 (HCC 65)."
+            },
+            {
+              "codes": [
+                "Z86.19"
+              ],
+              "confusion": "current_coded_history",
+              "why": "The infection is still present."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "hep_c_cured"
+          },
+          "codes": [
+            "Z86.19"
+          ],
+          "explain": "Hepatitis C cured with no current infection: personal history, Z86.19 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "B18.2"
+              ],
+              "confusion": "history_coded_active",
+              "why": "The hepatitis C was cured (sustained virologic response): code the history."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "fatty_liver"
+          },
+          "codes": [
+            "K76.0"
+          ],
+          "explain": "Fatty liver: K76.0 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: K70-K77"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K74.60"
+              ],
+              "confusion": "coded_cirrhosis",
+              "why": "Cirrhosis is not documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

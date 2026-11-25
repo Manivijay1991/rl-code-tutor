@@ -1,0 +1,61 @@
+{
+  "id": "blood_immune-fb5ec2a1d0",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "thrombocytopenia"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint: Follow-up for laboratory results.\n\nHPI: [Copied Forward] Patient is a 77-year-old female presenting for a follow-up evaluation of laboratory work. She reports no recent bruising, petechiae, or unusual bleeding episodes. She denies fever, chills, or significant fatigue. \n\n[Update] Today, the patient reports she has been feeling well and denies any new symptoms since the last visit. She is here specifically to discuss her recent blood work.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight changes.\nIntegumentary: Negative for bruising, petechiae, or rashes.\nHEENT: Negative for vision changes or headaches.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for palpitations or chest pain.\nMusculoskeletal: Negative for joint pain or swelling.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Vitamin D3 1000 IU daily\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No visible petechiae or ecchymoses noted.\nCardiovascular: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\n\nAssessment:\n1. Mild thrombocytopenia of unclear cause.\n\nPlan:\n1. Order a repeat CBC to monitor the platelet count. \n2. Continue current medications as prescribed.\n3. Follow up in 4 weeks to review repeat labs.\n\nElectronically signed, R. Mensah, PA-C, 05/14/2026",
+  "answer": [
+    "D69.6"
+  ],
+  "explanations": [
+    "Thrombocytopenia without a documented cause: D69.6 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D69.3"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "over",
+      "why": "The provider does not document immune thrombocytopenia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.45,
+        "correct": 0,
+        "gap": 0.45,
+        "direction": "over",
+        "extra_hccs": [
+          "112"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:43+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

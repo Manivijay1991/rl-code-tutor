@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-76caca0473",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nPain in right shoulder and back.\n\nHPI\nPt is an 80-year-old female with a known malignant neoplasm of the right breast. Pt is currently receiving chemotherapy for the primary site. She presents today reporting increased discomfort in her right shoulder and mid-back region over the last 2 weeks. Pt describes the pain as a dull ache, rated 6/10, exacerbated by movement and rest. She notes that the cancer has spread to bone, and she is seeking better pain management. She denies any new neurological deficits or sudden onset of severe pain.\n\nMedication List\n1. Chemotherapy agent (current cycle)\n2. Acetaminophen 650mg BID PRN\n3. Lisinopril 10mg daily\n4. Atorvastatin 20mg daily\n\nReview of Systems\nConstitutional: No fever, chills, or unintended weight loss. \nMusculoskeletal: Positive for back and shoulder pain. No joint swelling or redness.\nNeurological: Denies numbness or tingling.\nRespiratory: No shortness of breath or cough.\nGI: No nausea or changes in bowel habits.\n\nSocial History\nLives at home with her daughter. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: Breast cancer.\nFather: Hypertension.\nSiblings: No known history of malignancy.\n\nVitals\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs\nCBC: WBC 7.2, Hb 11.8, Plt 210\nBMP: Na 138, K 4.1, Cr 1.1, eGFR 72\nCalcium: 9.8 mg/dL\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nRespiratory: CTAB, lungs clear to auscultation.\nMusculoskeletal: Tenderness noted over right scapula and mid-back. No gross deformity.\nSkin: No new lesions or changes noted.\n\nAssessment\n1. Malignant neoplasm of right breast.\n2. Bone metastases.\n\nPlan\n1. Continue current chemotherapy regimen.\n2. For bone metastases: Initiate scheduled physical therapy for mobility.\n3. Pain management: Increase Acetaminophen to 1000mg every 6 hours PRN for breakthrough pain.\n4. Follow up in 4 weeks to monitor pain levels and treatment tolerance.\n\nElectronically signed,\nT. Haddad, NP\n05/14/2026",
+  "answer": [
+    "C50.911",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the right female breast under current treatment is a current malignancy: C50.911.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.3",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.919",
+        "C79.51"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right breast: use the right-breast code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.911"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 2.341,
+        "gap": -2.155,
+        "direction": "under",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C50.911",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:50:11+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

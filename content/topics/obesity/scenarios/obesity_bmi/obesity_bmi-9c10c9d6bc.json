@@ -1,0 +1,78 @@
+{
+  "id": "obesity_bmi-9c10c9d6bc",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "52"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nPt is an 83 y.o. female presenting for routine f/u of HTN. Pt reports she has been feeling well overall. Denies chest pain, SOB, or syncope. Reports adherence to current meds. BP readings at home have been stable.\n\nMedication List\nLisinopril 20mg daily\nAmlodipine 5mg daily\nHydrochlorothiazide 12.5mg daily\n\nExam\nVitals: BP 138/82, HR 72, RR 16, Temp 98.6F, BMI 52.4.\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB, no murmurs.\nResp: CTAB, no wheezes or rales.\nExt: No edema noted.\n\nAssessment\n1. Hypertension: Stable and well-controlled on current regimen.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue home BP monitoring.\n3. Return to clinic in 3 months for f/u.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.43"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "48"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:40+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

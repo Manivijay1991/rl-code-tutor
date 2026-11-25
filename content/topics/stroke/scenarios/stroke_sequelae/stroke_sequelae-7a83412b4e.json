@@ -1,0 +1,79 @@
+{
+  "id": "stroke_sequelae-7a83412b4e",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "none",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for history of CVA.\n\nHPI: Pt is a 90-year-old male presenting for routine follow-up. Pt has a history of an ischemic stroke that occurred several years ago. He reports feeling well today and denies any recent headaches, dizziness, or vision changes. He notes he has been stable on his current regimen. He is here for monitoring of his chronic conditions and neurological status post-event.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 165 lbs\n\nRecent Labs:\nHbA1c: 6.8%\neGFR: 62\nTSH: 2.1\nBMP: WNL\n\nReview of Systems:\nConstitutional: No fevers, chills, or fatigue.\nNeurological: No head pain, no vision changes, no tremors.\nCardiovascular: No chest pain, no palpitations.\nRespiratory: No shortness of breath, no cough.\nMSK: No joint pain, no stiffness.\n\nSocial History: Pt lives at home with his wife. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension and CHD. Mother had type 2 diabetes.\n\nExam:\nGeneral: Pt appears well-nourished, alert, and oriented x3. In no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nNeurological: Cranial nerves II-XII intact. Motor strength 5/5 throughout. Coordination and gait are steady. No focal deficits noted. Pt shows no residual deficits from previous event.\n\nAssessment:\n1. History of ischemic stroke. Pt is currently stable with no residual deficits.\n2. Hypertension. Well-controlled on Lisinopril.\n3. Hyperlipidemia. Stable on Atorvastatin.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue aspirin for secondary prevention.\n3. Follow up in 6 months for routine monitoring.\n4. Encourage continued low-sodium diet and regular walking.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "Z86.73"
+  ],
+  "explanations": [
+    "A past ischemic stroke with no residual deficits: Z86.73, personal history (no HCC). I63 codes are for the acute stroke only."
+  ],
+  "refs": [
+    "OCG I.C.9.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "coded_acute_stroke",
+      "lean": "over",
+      "why": "I63 codes are for the acute stroke episode; after discharge use Z86.73 or I69.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I69.30"
+      ],
+      "confusion": "sequela_without_deficit",
+      "lean": "over",
+      "why": "No residual deficit is documented, so there is no sequela to code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:33+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

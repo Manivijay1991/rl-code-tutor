@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-0973b9f37a",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for breast cancer and management of bone pain.\n\nHPI\nThe patient is a 77-year-old woman who presents today for a follow-up visit regarding her diagnosis of cancer of the right breast. She is currently receiving chemotherapy and reports that she is managing several side effects, including fatigue and mild nausea. Of primary concern today is a recent increase in localized pain in her lower back and hips. She describes the pain as a dull, aching sensation that is exacerbated by movement. Imaging has confirmed that the malignancy is metastatic to bone. She expresses concern regarding her mobility and is seeking better pain management strategies. She reports that she is adhering to her current treatment regimen but finds the systemic side effects of her systemic therapy challenging to manage.\n\nMedication List\n- Cyclophosphamide\n- Doxorubicin\n- Prednisone\n- Acetaminophen (PRN)\n- Omeprazole\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 97% on room air\nWeight: 154 lbs\n\nRecent Labs\nHemoglobin: 11.2 g/dL\nWhite Blood Cell Count: 4.5 x 10^9/uL\nPlatelets: 145 x 10^3/uL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nReview of Systems\nThe patient denies any shortness of breath, chest pain, or palpitations. She reports mild fatigue. She denies any new neurological deficits or changes in vision. She reports localized aching in the skeletal system. She denies any changes in bowel or bladder habits.\n\nSocial History\nThe patient is a retired school teacher who lives with her husband. She enjoys gardening and walking in the park. She denies tobacco or alcohol use.\n\nFamily History\nMother had breast cancer. Father had hypertension.\n\nExam\nThe patient is alert and oriented x3. She appears in no acute distress. Her skin is intact and dry. There are no visible masses or skin changes noted on the right breast. She demonstrates a slight limp when walking due to discomfort in her lower extremities. Spine and hips show no acute tenderness to palpation.\n\nAssessment\n1. Cancer of the right breast, currently on active treatment.\n2. Bone metastases with associated chronic pain.\n\nPlan\nWe will continue the current chemotherapy protocol as scheduled. To address the bone metastasis pain, we will initiate a scheduled dose of a non-NSAID analgesic. We will monitor her laboratory values and renal function closely during this cycle. She will follow up in four weeks.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "C50.911",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the right female breast under current treatment is a current malignancy: C50.911.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.3",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.919",
+        "C79.51"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right breast: use the right-breast code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.911"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 2.341,
+        "gap": -2.155,
+        "direction": "under",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C50.911",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:57+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

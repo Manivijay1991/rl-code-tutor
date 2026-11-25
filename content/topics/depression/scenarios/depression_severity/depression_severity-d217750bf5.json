@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-d217750bf5",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nRecent Labs: HbA1c: 6.2%, TSH: 2.1 mIU/L, Vitamin D: 30 ng/mL.\n\nSocial History: The patient is an 86-year-old retired schoolteacher. She lives at home with her daughter. She enjoys knitting and gardening. She denies tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes. Sister has a history of heart disease.\n\nReview of Systems:\nGeneral: Negative for fatigue or weight changes.\nPsychiatric: Positive for low mood, occasional tearfulness. Negative for sleep disturbances.\nNeurological: Negative for tremors or gait instability.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath.\n\nHPI: (Copied Forward) Patient is an 86-year-old female presenting for management of major depressive disorder, recurrent. She reports a persistent low mood and a lack of interest in previous hobbies. She notes that while her symptoms have improved since the last visit, she still experiences periods of lethargy and tearfulness. She denies any thoughts of self-harm.\n\nUpdate: Today, the patient reports that she feels more capable of performing her daily activities. She notes that her energy levels have stabilized, though she still feels a sense of heaviness most days. She is compliant with her current medication regimen and reports no significant side effects. She denies any recent acute stressors.\n\nMedication List:\nSertraline 50mg daily\nMultivitamin daily\n\nExam:\nGeneral: Well-appearing, groomed, and cooperative.\nPsychiatric: Affect is somewhat constricted but congruent with mood. Speech is normal in rate and volume. Thought process is linear and goal-directed. Insight and judgment are intact.\n\nAssessment:\n1. Major depressive disorder, recurrent. The patient is currently in partial remission. She shows steady progress with her current medication.\n\nPlan:\n1. Continue current dose of Sertraline.\n2. Continue to monitor for symptoms of depression.\n3. Follow up in 4 weeks for continued monitoring of mood and medication efficacy.\n\nElectronically signed, J. Lindqvist, MD, 05/14/2026",
+  "answer": [
+    "F33.41"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, in partial remission (no HCC): F33.41."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents partial remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.42"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is partial, not full.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:49:54+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

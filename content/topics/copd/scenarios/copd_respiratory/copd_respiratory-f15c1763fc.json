@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-f15c1763fc",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nFollow-up for chronic obstructive pulmonary disease.\n\nHPI\nThe patient is a 77-year-old woman who presents today for a scheduled follow-up regarding her chronic obstructive pulmonary disease. She reports that her symptoms have been well-controlled over the past few months. She denies any increased shortness of breath, productive cough, or chest pain. She notes that she continues to use home oxygen at night to assist with her breathing and reports that she is satisfied with her current management plan. She denies any recent infections or significant changes in her activity level.\n\nMedication List\n- Tiotropium (Inhaler)\n- Salmeterol/Fluticasone (Inhaler)\n- Lisinopril\n- Atorvastatin\n- Home oxygen (Nocturnal use only)\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 18 breaths/min\nOxygen Saturation: 94% on room air\nWeight: 155 lbs\n\nRecent Labs\n- Hemoglobin: 13.2 g/dL\n- White Blood Cell Count: 7.5 x 10^9/L\n- Platelets: 210 x 10^9/L\n- eGFR: 62 mL/min/1.73m2\n\nReview of Systems\nThe patient denies fever, chills, or night sweats. She denies any recent weight loss. She denies new-onset cough or sputum production. She denies calf pain or swelling. She denies palpitations or syncope.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She retired five years ago and enjoys gardening and knitting. She denies current tobacco or alcohol use.\n\nFamily History\nMother had hypertension and hypertension. Father had type 2 diabetes. Siblings are healthy.\n\nExam\nThe patient appears well-nourished and in no acute distress. She is alert and oriented to person, place, and time. Skin is warm and dry. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. No pedal edema noted.\n\nAssessment\n1. COPD, stable. The patient is currently stable on her existing regimen.\n\nPlan\n1. Continue current maintenance medications as prescribed.\n2. Continue use of home oxygen at night as needed for comfort.\n3. Follow up in the clinic in six months or sooner if symptoms worsen.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "J44.9",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Stable COPD: J44.9 (HCC 280).",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.1",
+        "Z99.81"
+      ],
+      "confusion": "unsupported_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:16:02+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

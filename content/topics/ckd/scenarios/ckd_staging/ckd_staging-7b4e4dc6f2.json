@@ -1,0 +1,133 @@
+{
+  "id": "ckd_staging-7b4e4dc6f2",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and renal function.\n\nHPI: Pt is a 75-year-old female presenting for routine follow-up of HTN and ESRD. Pt reports feeling generally well today. Denies any new-onset shortness of breath, chest pain, or syncope. Reports stable energy levels. Pt continues to manage joint pain from osteoarthritis of both knees with current regimen. Complains of occasional sneezing and itchy eyes during spring months, consistent with seasonal allergic rhinitis. No changes in renal symptoms.\n\nMedication List:\n- Lisinopril 10mg daily\n- Hydrochlorothiazide 12.5mg daily\n- Acetaminophen 650mg BID PRN for joint pain\n- Loratadine 10mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nCV: No chest pain, palpitations, or edema.\nResp: No SOB or cough.\nGI: No nausea, vomiting, or diarrhea.\nMSK: Chronic knee pain, stable.\nAllergic: Seasonal symptoms only.\nNeuro: No headaches or dizziness.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had HTN. Father had ESRD.\n\nVitals:\nBP: 138/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 155 lbs\n\nRecent Labs:\neGFR: 12 mL/min/1.73m2\nCreatinine: 4.8 mg/dL\nPotassium: 4.9 mEq/L\nHbA1c: 5.8%\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB, no murmurs.\nLungs: Clear to auscultation bilaterally.\nExt: No pedal edema. Mild swelling noted in both knees consistent with osteoarthritis.\n\nAssessment:\n1. End stage renal disease: Pt is stable on current management. eGFR remains low at 12.\n2. Hypertension: Well-controlled on current meds.\n3. Osteoarthritis of both knees: Chronic, stable.\n4. Seasonal allergic rhinitis: Managed with antihistamines.\n\nPlan:\n- Continue current medications for HTN and ESRD.\n- Monitor renal labs and electrolytes in 3 months.\n- Continue PRN acetaminophen for knee pain.\n- Follow up in 3 months.\n\nProblem List:\n- End stage renal disease\n- Hypertension\n- Osteoarthritis of both knees\n- Seasonal allergic rhinitis\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "I12.0",
+    "N18.6"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.6"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.6"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5",
+        "N18.6"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.5"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:56+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "osteoarthritis of both knees",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

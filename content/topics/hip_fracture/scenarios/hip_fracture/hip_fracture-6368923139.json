@@ -1,0 +1,80 @@
+{
+  "id": "hip_fracture-6368923139",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "right",
+    "encounter": "healing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint\nFollow-up for right hip.\n\nHPI\nPt is an 80-year-old female presenting for a routine post-operative follow-up. She is 6 weeks status post surgical repair of a closed femoral neck fracture. Pt reports she is currently participating in physical therapy as scheduled. She reports some expected soreness but states she is making progress with mobility. No new complaints or complications since the surgery. Pt is compliant with all home exercise protocols.\n\nMedication List\n- Acetaminophen 650mg BID PRN for pain\n- Multivitamin daily\n\nReview of Systems\nConstitutional: No fever, chills, or fatigue.\nMusculoskeletal: Positive for mild right hip pain. No other joint pain.\nNeurological: No numbness or tingling in lower extremities.\nRespiratory: No SOB or cough.\nCV: No chest pain or palpitations.\n\nSocial History\nPt lives at home with her daughter. Retired. No tobacco or alcohol use.\n\nFamily History\nMother: Hypertension.\nFather: Type 2 Diabetes.\n\nVitals\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 155 lbs\n\nRecent Labs\nHbA1c: 6.2%\neGFR: 72\nWBC: 8.0\nHct: 38%\n\nExam\nGeneral: Pt alert and oriented x3. Appears in no acute distress.\nMusculoskeletal: Right hip shows stable surgical site. No signs of active inflammation or redness. Decreased ROM compared to baseline but improving. Strength is graded 4/5. Gait is steady with a walker.\nNeuro: Sensation intact to lower extremities. Reflexes 2+ throughout.\nSkin: Surgical incision is well-approximated and dry.\n\nAssessment\n1. Status post surgical repair of right femoral neck fracture. Pt is healing well at the 6-week mark.\n\nPlan\n1. Continue current physical therapy regimen.\n2. Continue current medication list for pain management.\n3. Follow-up in 4 weeks for repeat evaluation of the right hip.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "S72.001D"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the right femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.001D."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.001A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z87.81"
+      ],
+      "confusion": "healing_coded_as_history",
+      "lean": "under",
+      "why": "The fracture is still healing; history is for a healed fracture.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:25+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

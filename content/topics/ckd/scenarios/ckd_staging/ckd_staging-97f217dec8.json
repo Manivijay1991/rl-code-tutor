@@ -1,0 +1,88 @@
+{
+  "id": "ckd_staging-97f217dec8",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease.\n\nHPI\nThe patient is a 73-year-old male presenting for a routine follow-up of his chronic kidney disease. He reports feeling generally stable but notes occasional fatigue and mild swelling in his lower extremities. He denies any acute shortness of breath, chest pain, or significant changes in urinary output. He continues to manage his symptoms with his current medication regimen and reports adherence to his prescribed treatment plan.\n\nMedication List\nLisinopril 10mg daily\nSevelamer 800mg daily\nEpoetin alfa 4000 units subcutaneous weekly\nVitamin D and Calcium carbonate supplement\n\nExam\nThe patient appears in no acute distress. Skin is intact with some dry texture. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. Edema is noted in the bilateral ankles. Blood pressure is 138/84 mmHg. Heart rate is 72 bpm.\n\nAssessment\n1. End stage renal disease. Most recent laboratory work shows an eGFR of 12 mL/min/1.73m², confirming the progression of his chronic kidney disease.\n\nPlan\n1. Continue current medications as prescribed.\n2. Monitor laboratory values every three months to track renal function.\n3. Patient instructed to monitor for increased swelling or weight gain and call the office if symptoms worsen.\n\nElectronically signed, H. Tanaka, PA-C, 05/14/2026",
+  "answer": [
+    "N18.6"
+  ],
+  "explanations": [
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only."
+  ],
+  "refs": [
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.5",
+        "N18.6"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.5"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:27+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

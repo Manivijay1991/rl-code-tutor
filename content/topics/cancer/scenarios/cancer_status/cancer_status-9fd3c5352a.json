@@ -1,0 +1,123 @@
+{
+  "id": "cancer_status-9fd3c5352a",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain.\n\nHPI: Pt is a 60-year-old female presenting for follow-up of colon carcinoma. Pt is currently receiving chemotherapy for the primary site. She reports new onset of dull, aching pain in the lumbar region and left hip over the past 3 weeks. Pain is described as constant but exacerbated by weight-bearing and movement. She denies any fever, chills, or localized redness. She reports mild fatigue but denies significant shortness of breath or chest pain.\n\nMedication List:\n- Chemotherapy agent (current cycle)\n- Oxycodone 5mg BID PRN for pain\n- Naproxen 220mg BID (held today due to renal labs)\n\nSocial History: Lives with husband. Retired teacher. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension; Father had type 2 diabetes.\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever or chills.\nMSK: Positive for lumbar and hip pain. Negative for joint swelling.\nCV: Negative for chest pain or palpitations.\nResp: Negative for SOB or cough.\nGI: Negative for change in bowel habits or bleeding.\n\nVitals:\nBP: 128/82\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHb: 11.2 g/dL\nWBC: 6.4 K/uL\nPlt: 145 K/uL\nCr: 1.1 mg/dL\neGFR: 72\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nResp: CTAB, lungs clear.\nMSK: Tenderness to palpation over L3-L5 and left greater trochanter. No focal and neurological deficits.\n\nAssessment:\n1. Colon carcinoma, currently receiving chemotherapy.\n2. Bone metastases to lumbar spine and left hip.\n\nPlan:\n1. Continue current chemotherapy protocol as scheduled.\n2. Initiate scheduled radiation for bone metastasis to provide palliation of pain.\n3. Continue oxycodone 5mg BID PRN as needed for breakthrough pain.\n4. F/u in 2 weeks for pain management assessment.\n\nElectronically signed,\nH. Tanaka, DO\nMay 14, 2026",
+  "answer": [
+    "C18.9",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the colon under current treatment is a current malignancy: C18.9.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.038",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C18.9"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.363,
+        "correct": 2.341,
+        "gap": -1.978,
+        "direction": "under",
+        "extra_hccs": [
+          "22"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C18.9",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "22",
+        "label": "Bladder/Colorectal/and Other Cancers",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:45:16+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "H. Tanaka"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-a988f996a7",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: \"Feeling down and tired lately.\"\n\nHPI: Pt is a 60-year-old female presenting for f/u of her major depressive disorder, recurrent. Pt reports a persistent low mood over the past 3 weeks. Describes feeling \"heavy\" and experiencing diminished interest in hobbies. Reports some fatigue and difficulty concentrating at work. Pt states sleep is slightly interrupted but not significantly impaired. Appetite is stable. Pt denies any thoughts of self-harm. She notes that while her mood is consistently low, she is still able to perform daily activities and maintain her work schedule. She describes the current episode as mild.\n\nMedication List:\n- Sertraline 50mg PO QD\n- Multivitamin PO QD\n\nReview of Systems:\nConstitutional: Fatigue reported.\nPsychiatric: Low mood, decreased concentration.\nNeurological: NAD.\nOther: Denies chest pain, shortness of breath, or vision changes.\n\nSocial History: Pt is married and works as a part-time consultant. Lives in a single-story home with her spouse. Non-smoker. Occasional social outings.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes. No known history of mental health conditions in immediate family.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 5'4\"\nWt: 155 lbs\n\nRecent Labs:\nHbA1c: 5.6%\nTSH: 2.1 mIU/L\nCMP: WNL\n\nExam:\nGen: Well-appearing, cooperative.\nPsych: Alert and oriented x3. Speech is coherent and normal rate/volume. Affect is somewhat constricted but congruent to mood. Insight and judgment are intact.\nPhysical: CTAB, RRR, lungs clear.\n\nAssessment:\n1. Major depressive disorder, recurrent. Current episode is mild.\n\nPlan:\n1. Continue current dose of Sertraline.\n2. Encouraged continued engagement in regular physical activity and social interaction.\n3. Pt to monitor mood and report any significant changes or worsening of symptoms.\n4. F/u in 4 weeks for follow-up.\n\nElectronically signed, R. Mensah, DO, 10/14/2026",
+  "answer": [
+    "F33.0"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, mild (no HCC in V28): F33.0."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "The provider documents mild; moderate maps to an HCC that mild does not.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.0"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:17+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

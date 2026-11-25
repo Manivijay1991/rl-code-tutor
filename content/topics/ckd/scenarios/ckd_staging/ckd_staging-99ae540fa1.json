@@ -1,0 +1,61 @@
+{
+  "id": "ckd_staging-99ae540fa1",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for renal labs.\n\nHPI: Pt is a 75-year-old female presenting for routine monitoring of CKD. She reports feeling well today with no new complaints of edema or fatigue. She is adherent to current medications.\n\nMedication List:\nLisinopril 10mg daily\nHydrochlorothiazide 12.5mg daily\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nExt: No pedal edema noted.\nVitals: BP 132/82, HR 74, Temp 98.6, SpO2 98% on RA.\n\nAssessment:\n1. CKD stage 1. Recent labs show eGFR of 92. Urinalysis positive for albumin.\n\nPlan:\n1. Continue current regimen.\n2. F/u labs in 6 months to monitor renal function and albuminuria.\n3. Encourage low sodium diet.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "N18.1"
+  ],
+  "explanations": [
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:53+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

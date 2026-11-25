@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-d111a71a00",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "4"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up for a pressure ulcer on the right heel.\n\nHPI\nThe patient is an 80-year-old male who presents today for a follow-up evaluation of a chronic pressure ulcer located on the right heel. He reports that the wound has not shown significant improvement since his last visit. He notes that he experiences some discomfort when applying pressure to the area but denies any new drainage or systemic symptoms. He continues to be primarily bedbound due to significant mobility limitations.\n\nMedication List\n- Lisinopril 10 mg daily\n- Atorvastatin 40 mg daily\n- Amlodipine 5 mg daily\n- Multivitamin daily\n\nVitals\nBlood Pressure: 138/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 96% on room air\nWeight: 185 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nAlbumin: 3.4 g/dL\neGFR: 62 mL/min/1.73m2\n\nReview of Systems\nThe patient denies fever, chills, or night sweats. He denies shortness of breath or chest pain. He denies any new-onset dizziness or syncope. He reports no changes in appetite or bowel habits. He denies any new joint pain or muscle weakness.\n\nSocial History\nThe patient lives at home with his spouse. He is a former smoker, having quit 20 years ago. He does not currently consume alcohol or recreational drugs. He is mostly sedentary and spends the majority of his time in a chair or bed.\n\nFamily History\nFather had a history of hypertension and a myocardial infarction. Mother had a history of stroke.\n\nExam\nGeneral: The patient is alert and oriented x3, appearing in no acute distress.\nSkin: Examination of the lower extremities reveals a large pressure ulcer on the right heel. The wound is characterized as a stage 4 pressure injury. The wound bed shows extensive tissue loss with visible underlying structures. The surrounding skin is intact but appears thin. No active drainage is noted during the current exam.\n\nAssessment\n1. Stage 4 pressure ulcer of the right heel.\n\nPlan\n1. Wound Care: The pressure ulcer on the right heel will be managed with a specialized dressing. I have instructed the nursing staff to perform a daily dressing change using a non-adherent layer followed by a foam dressing.\n2. Pressure Relief: The patient will continue to use a pressure-redistributing mattress. He was advised to avoid direct pressure on the right heel whenever possible.\n3. Follow-up: The patient will return in two weeks for a wound measurement and reassessment of the pressure injury.\n\nElectronically signed, H. Tanaka, MD, 10/14/2026",
+  "answer": [
+    "L89.614"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 4: L89.614 (HCC 379)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.965,
+        "gap": -1.965,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.613"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 1.965,
+        "gap": -0.89,
+        "direction": "under",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.965,
+    "hccs": [
+      {
+        "hcc": "379",
+        "label": "Pressure Ulcer of Skin with Necrosis Through to Muscle/Tendon/Bone",
+        "from": [
+          "L89614"
+        ],
+        "weight": 1.965
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:18+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "pad_atherosclerosis-0baa8fdf5f",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "rest_pain",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Right foot pain.\n\nHPI: [Copied Forward] Patient is a 77-year-old female presenting with chronic discomfort in the right lower extremity. She reports consistent rest pain in the right foot, which persists even when she is not active. The patient notes that the symptoms are localized specifically to the right leg. She denies any skin breakdown or open wounds.\n\nVitals: BP 134/82, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nCardiovascular: Negative\nRespiratory: Negative\nMusculoskeletal: Positive (right foot pain)\nNeurological: Negative\nIntegumentary: Negative\n\nMedication List:\n- Aspirin 81mg daily\n- Atorvastatin 40mg daily\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nRight Lower Extremity: Palpable pedal pulses are diminished. Skin is intact without any break in surface. Notable atherosclerosis of the native leg arteries. No signs of skin breakdown or drainage.\n\nAssessment:\n1. Atherosclerosis of the right leg arteries with rest pain in the right foot.\n\nPlan:\n1. Continue current antiplatelet and lipid-lowering medications.\n2. Refer to vascular surgery for further imaging of the right lower extremity.\n3. Follow up in 4 weeks.\n\nElectronically signed, \nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "I70.221"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the right leg with rest pain (HCC 264): I70.221."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.222"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0.455,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.211"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Rest pain is documented: it is a higher stage (HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.455,
+        "gap": -0.455,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "264"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.455,
+    "hccs": [
+      {
+        "hcc": "264",
+        "label": "Vascular Disease with Complications",
+        "from": [
+          "I70221"
+        ],
+        "weight": 0.455
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T14:13:03+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

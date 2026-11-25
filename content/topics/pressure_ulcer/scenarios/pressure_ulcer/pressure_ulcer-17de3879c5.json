@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-17de3879c5",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "unstageable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Sacral pressure ulcer management.\n\nHPI: [Copied Forward] Patient is a 77-year-old female presenting for evaluation of a pressure injury. She reports difficulty with mobility and is primarily bedbound. She reports localized discomfort at the site of the wound.\n[Update] Patient returns for a follow-up of her pressure ulcer over the sacrum. She reports that the area remains painful but there have been no new drainage issues. She continues to use a pressure-redistributing mattress.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 134/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nIntegumentary: Positive (Sacral wound)\nMusculoskeletal: Positive (Limited mobility)\nAll other systems negative.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nSkin: Large pressure ulcer over the sacrum. The wound is unstageable as the wound base is covered by eschar. No surrounding erythema noted.\n\nAssessment:\n1. Unstageable pressure ulcer of the sacrum.\n\nPlan:\n1. Continue wound care and dressing changes.\n2. Maintain pressure-redistributing surface.\n3. Follow up in two weeks for reassessment.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "L89.150"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, unstageable (base covered by eschar or slough): L89.150 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "Unstageable is a documented stage (L89.--0), not 'unspecified'.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.154"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "Do not assign a stage the provider could not determine.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.965,
+        "correct": 1.075,
+        "gap": 0.89,
+        "direction": "over",
+        "extra_hccs": [
+          "379"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89150"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:01+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

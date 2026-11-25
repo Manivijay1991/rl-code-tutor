@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-717f0b4a1e",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "3"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up of pressure ulcer.\n\nHPI\nPt is an 87y/o female presenting for follow-up of a pressure injury on the right heel. She reports some discomfort but denies fever or chills. Wound appears to be progressing slowly. She has been diligent with offloading and dressing changes at home.\n\nMedication List\nLisinopril 10mg QD\nAtorvastatin 20mg QD\nAspirin 81mg QD\n\nExam\nGen: Well-appearing, alert, oriented x3.\nSkin: Pressure ulcer on the right heel noted. Wound is a stage 3 pressure injury. Granulation tissue present. No purulent drainage or foul odor. Periwound skin intact.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6F, SpO2 97% on RA.\n\nAssessment\n1. Pressure ulcer of the right heel.\n\nPlan\n- Continue current wound care regimen.\n- Cleanse with normal saline, apply antimicrobial dressing.\n- Maintain strict offloading of the right heel.\n- F/u in 2 weeks for wound re-evaluation.\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [
+    "L89.613"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 3: L89.613 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.612"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 1.075,
+        "gap": -0.237,
+        "direction": "under",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89613"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:09+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

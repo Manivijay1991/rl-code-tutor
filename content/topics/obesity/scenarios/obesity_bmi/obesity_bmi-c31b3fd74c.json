@@ -1,0 +1,78 @@
+{
+  "id": "obesity_bmi-c31b3fd74c",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "52"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension.\n\nVitals: BP 142/88, HR 74, SpO2 98% on RA, Temp 98.6F. BMI 52.4.\n\nMedication List:\n- Lisinopril 20mg daily\n- Amlodipine 5mg daily\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or fatigue.\n- Cardiovascular: Negative for chest pain or palpitations.\n- Respiratory: Negative for shortness of breath or cough.\n- Neurological: Negative for dizziness or syncope.\n\nHPI: (Copied forward) Patient is a 77-year-old female presenting for management of hypertension. She reports adherence to her current medication regimen. She denies any recent episodes of lightheadedness or headache. She reports stable blood pressure readings at home.\n\nExam:\nGeneral: Alert and oriented x3. In no acute distress.\nCardiovascular: Regular rate and rhythm. S1, S2 distinct. No murmurs.\nRespiratory: Lungs clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Hypertension: Currently stable on Lisinopril and Amlodipine.\n\nPlan:\n1. Continue current medications.\n2. Patient to continue monitoring home blood pressure and keep a log.\n3. Return to clinic in 3 months for follow-up and lab work.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.43"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "48"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:03+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

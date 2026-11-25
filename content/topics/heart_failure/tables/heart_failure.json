@@ -1,0 +1,315 @@
+{
+  "id": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note_age": {
+    "min": 50
+  },
+  "slots": {
+    "hf_type": {
+      "label": "Type of heart failure",
+      "values": [
+        "systolic",
+        "diastolic"
+      ],
+      "labels": {
+        "systolic": "Systolic (HFrEF)",
+        "diastolic": "Diastolic (HFpEF)"
+      },
+      "evidence": {
+        "systolic": [
+          "systolic heart failure",
+          "HFrEF",
+          "heart failure with reduced ejection fraction"
+        ],
+        "diastolic": [
+          "diastolic heart failure",
+          "HFpEF",
+          "heart failure with preserved ejection fraction"
+        ]
+      },
+      "describe": {
+        "systolic": "Systolic heart failure (reduced ejection fraction, e.g. EF 30%).",
+        "diastolic": "Diastolic heart failure (preserved ejection fraction, e.g. EF 60%)."
+      }
+    },
+    "acuity": {
+      "label": "Acuity",
+      "values": [
+        "chronic",
+        "acute_on_chronic"
+      ],
+      "labels": {
+        "chronic": "Chronic, stable",
+        "acute_on_chronic": "Acute on chronic"
+      },
+      "evidence": {
+        "chronic": [
+          "chronic systolic",
+          "chronic diastolic",
+          "chronic heart failure",
+          "chronic HFrEF",
+          "chronic HFpEF"
+        ],
+        "acute_on_chronic": [
+          "acute on chronic"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "chronic": "The heart failure is chronic and stable (no exacerbation).",
+        "acute_on_chronic": "An acute exacerbation of the chronic heart failure (acute on chronic), with worsening edema and dyspnea; the provider adjusts the diuretic."
+      }
+    },
+    "hypertension": {
+      "label": "Hypertension",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "labels": {
+        "no": "Not documented",
+        "yes": "Documented"
+      },
+      "evidence": {
+        "no": [],
+        "yes": [
+          "hypertension",
+          "HTN"
+        ]
+      },
+      "describe": {
+        "yes": "The patient also has hypertension. Do not say whether the heart failure is or is not caused by it."
+      }
+    }
+  },
+  "note_forbid": [
+    "CKD",
+    "chronic kidney",
+    "kidney disease",
+    "renal insufficiency",
+    "renal failure",
+    "dialysis",
+    "cardiomyopathy",
+    "pulmonary hypertension",
+    "rheumatic",
+    "NSAID",
+    "NSAIDs",
+    "naproxen",
+    "ibuprofen",
+    "atrial fibrillation",
+    "AFib",
+    "hypertensive crisis",
+    "end-stage heart failure",
+    "end stage heart failure",
+    "not due to hypertension",
+    "unrelated to hypertension"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "acuity": "chronic"
+      },
+      "forbid": [
+        "acute on chronic",
+        "exacerbation",
+        "decompensated",
+        "acute heart failure"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_htn_hf_link": {
+      "description": "Coded hypertension and heart failure separately instead of hypertensive heart disease (I11.0).",
+      "lean": "under"
+    },
+    "acuity_down": {
+      "description": "Coded chronic heart failure when an acute-on-chronic exacerbation is documented.",
+      "lean": "under"
+    },
+    "acuity_up": {
+      "description": "Coded an acute exacerbation that is not documented.",
+      "lean": "over"
+    },
+    "acute_only": {
+      "description": "Coded acute heart failure when it is acute on chronic.",
+      "lean": "neutral"
+    },
+    "unspecified_hf": {
+      "description": "Used unspecified heart failure (I50.9) when type and acuity are documented.",
+      "lean": "under"
+    },
+    "wrong_hf_type": {
+      "description": "Confused systolic and diastolic heart failure.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "htn",
+      "rules": [
+        {
+          "when": {
+            "hypertension": "yes"
+          },
+          "codes": [
+            "I11.0"
+          ],
+          "explain": "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+          "refs": [
+            "OCG I.C.9.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I10"
+              ],
+              "confusion": "missed_htn_hf_link",
+              "why": "The classification presumes a causal link between hypertension and heart failure."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    },
+    {
+      "id": "hf",
+      "rules": [
+        {
+          "when": {
+            "hf_type": "systolic",
+            "acuity": "chronic"
+          },
+          "codes": [
+            "I50.22"
+          ],
+          "explain": "Chronic systolic heart failure: I50.22 (HCC 226).",
+          "refs": [
+            "OCG I.C.9.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.23"
+              ],
+              "confusion": "acuity_up",
+              "why": "No acute exacerbation is documented."
+            },
+            {
+              "codes": [
+                "I50.9"
+              ],
+              "confusion": "unspecified_hf",
+              "why": "The type and acuity are documented: do not use I50.9."
+            },
+            {
+              "codes": [
+                "I50.32"
+              ],
+              "confusion": "wrong_hf_type",
+              "why": "The provider documents systolic heart failure."
+            }
+          ]
+        },
+        {
+          "when": {
+            "hf_type": "systolic",
+            "acuity": "acute_on_chronic"
+          },
+          "codes": [
+            "I50.23"
+          ],
+          "explain": "Acute on chronic systolic heart failure: I50.23 (HCC 224).",
+          "refs": [
+            "OCG I.C.9.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.22"
+              ],
+              "confusion": "acuity_down",
+              "why": "An acute exacerbation of chronic heart failure is documented (HCC 224)."
+            },
+            {
+              "codes": [
+                "I50.21"
+              ],
+              "confusion": "acute_only",
+              "why": "It is acute on chronic, not a new acute heart failure."
+            }
+          ]
+        },
+        {
+          "when": {
+            "hf_type": "diastolic",
+            "acuity": "chronic"
+          },
+          "codes": [
+            "I50.32"
+          ],
+          "explain": "Chronic diastolic heart failure: I50.32 (HCC 226).",
+          "refs": [
+            "OCG I.C.9.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.33"
+              ],
+              "confusion": "acuity_up",
+              "why": "No acute exacerbation is documented."
+            },
+            {
+              "codes": [
+                "I50.9"
+              ],
+              "confusion": "unspecified_hf",
+              "why": "The type and acuity are documented: do not use I50.9."
+            },
+            {
+              "codes": [
+                "I50.22"
+              ],
+              "confusion": "wrong_hf_type",
+              "why": "The provider documents diastolic heart failure."
+            }
+          ]
+        },
+        {
+          "when": {
+            "hf_type": "diastolic",
+            "acuity": "acute_on_chronic"
+          },
+          "codes": [
+            "I50.33"
+          ],
+          "explain": "Acute on chronic diastolic heart failure: I50.33 (HCC 224).",
+          "refs": [
+            "OCG I.C.9.a.1"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.32"
+              ],
+              "confusion": "acuity_down",
+              "why": "An acute exacerbation of chronic heart failure is documented (HCC 224)."
+            },
+            {
+              "codes": [
+                "I50.31"
+              ],
+              "confusion": "acute_only",
+              "why": "It is acute on chronic, not a new acute heart failure."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

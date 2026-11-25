@@ -1,0 +1,106 @@
+{
+  "id": "ckd_staging-913f43e104",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and chronic kidney disease.\n\nHPI: The patient is a 77-year-old woman who presents today for a scheduled follow-up of her hypertension and chronic kidney disease. She reports feeling generally well today and denies any acute shortness of breath, chest pain, or significant fatigue. She notes that her joint pain from osteoarthritis of both knees remains stable and is manageable with her current regimen. She denies any recent changes in urinary frequency or significant edema in her lower extremities.\n\nMedication List:\n- Lisinopril 20mg daily\n- Hydrochlorothiazide 12.5mg daily\n- Naproxen 500mg as needed for joint pain\n- Cholecalciferol 2000 IU daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nCardiovascular: Negative for palpitations or syncope.\nRespiratory: Negative for cough or wheezing.\nMusculoskeletal: Positive for chronic aching in both knees.\nGenitourinary: Negative for dysuria or hematuria.\n\nSocial History: The patient lives at home with her spouse. She is retired and enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had osteoarthritis.\n\nVitals:\nBP: 132/84 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\nWeight: 155 lbs\n\nRecent Labs:\neGFR: 94 mL/min/1.73m2\nUrinalysis: Positive for albumin.\nVitamin D level: 22 ng/mL (low).\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard. No murmurs.\nPulmonary: Clear to auscultation bilaterally.\nMusculoskeletal: Mild swelling and decreased range of motion noted in both knees.\nExtremities: No peripheral edema noted.\n\nAssessment:\n1. Hypertension: Well-controlled on current medication.\n2. Chronic kidney disease, stage 1: Patient shows albumin in the urine; however, eGFR remains stable at 94.\n3. Vitamin D deficiency: Confirmed by recent labs.\n4. Osteoarthritis of both knees: Stable.\n\nPlan:\nContinue current antihypertensive and CKD management. Increase Vitamin D supplementation. Continue to monitor renal function and protein excretion. Follow up in 4 months.\n\nProblem List:\n- Hypertension\n- Chronic kidney disease, stage 1\n- Vitamin D deficiency\n- Osteoarthritis of both knees\n\nElectronically signed, J. Lindqvist, MD\nMay 14, 2026",
+  "answer": [
+    "I12.9",
+    "N18.1"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.1"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.1"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0,
+        "gap": 0.815,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:16+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "osteoarthritis of both knees"
+      ],
+      "credential": "MD",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

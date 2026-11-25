@@ -1,0 +1,856 @@
+{
+  "id": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note_age": {
+    "min": 65
+  },
+  "slots": {
+    "type": {
+      "label": "Type of cognitive disorder",
+      "values": [
+        "unspecified",
+        "alzheimers",
+        "mci"
+      ],
+      "labels": {
+        "unspecified": "Dementia, type not specified",
+        "alzheimers": "Alzheimer's disease",
+        "mci": "Mild cognitive impairment"
+      },
+      "evidence": {
+        "unspecified": [
+          "dementia"
+        ],
+        "alzheimers": [
+          "Alzheimer's disease",
+          "Alzheimer disease",
+          "Alzheimer's dementia"
+        ],
+        "mci": [
+          "mild cognitive impairment"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "unspecified": "The provider documents dementia without naming a type or cause.",
+        "alzheimers": "The provider documents Alzheimer's disease (dementia due to Alzheimer's disease).",
+        "mci": "The provider documents mild cognitive impairment and states it is not dementia; never use the word dementia."
+      }
+    },
+    "severity": {
+      "label": "Documented stage",
+      "values": [
+        "unspecified",
+        "mild",
+        "moderate",
+        "severe"
+      ],
+      "labels": {
+        "unspecified": "Not documented",
+        "mild": "Mild",
+        "moderate": "Moderate",
+        "severe": "Severe"
+      },
+      "evidence": {
+        "unspecified": [],
+        "mild": [
+          "mild dementia",
+          "mild Alzheimer",
+          "mild stage"
+        ],
+        "moderate": [
+          "moderate dementia",
+          "moderate Alzheimer",
+          "moderate stage"
+        ],
+        "severe": [
+          "severe dementia",
+          "severe Alzheimer",
+          "severe stage"
+        ]
+      },
+      "describe": {
+        "unspecified": "The provider does not state a stage or severity.",
+        "mild": "The provider documents the stage as mild (e.g. 'mild dementia' or 'mild Alzheimer's disease').",
+        "moderate": "The provider documents the stage as moderate (e.g. 'moderate dementia' or 'moderate Alzheimer's disease').",
+        "severe": "The provider documents the stage as severe (e.g. 'severe dementia' or 'severe Alzheimer's disease')."
+      }
+    },
+    "behavior": {
+      "label": "Behavioral disturbance",
+      "values": [
+        "none",
+        "agitation"
+      ],
+      "labels": {
+        "none": "None documented",
+        "agitation": "Agitation"
+      },
+      "evidence": {
+        "none": [],
+        "agitation": [
+          "agitation",
+          "agitated"
+        ]
+      },
+      "describe": {
+        "none": "No behavioral, psychotic, mood or anxiety disturbance: the patient is calm and cooperative.",
+        "agitation": "The provider documents agitation (for example, episodes of agitation in the evenings) and addresses it."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "type": "mci",
+      "severity": [
+        "mild",
+        "moderate",
+        "severe"
+      ]
+    },
+    {
+      "type": "mci",
+      "behavior": "agitation"
+    }
+  ],
+  "note_forbid": [
+    "vascular dementia",
+    "Lewy",
+    "frontotemporal",
+    "Parkinson",
+    "hallucination",
+    "hallucinations",
+    "delusion",
+    "delusions",
+    "psychotic",
+    "psychosis",
+    "paranoid",
+    "depression",
+    "depressive",
+    "anxiety",
+    "wandering",
+    "aggression",
+    "aggressive",
+    "combative",
+    "stroke",
+    "traumatic brain injury",
+    "alcohol use disorder",
+    "alcohol-related"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "type": "unspecified"
+      },
+      "forbid": [
+        "Alzheimer"
+      ]
+    },
+    {
+      "when": {
+        "type": "mci"
+      },
+      "forbid": [
+        "dementia",
+        "Alzheimer",
+        "neurocognitive disorder"
+      ]
+    },
+    {
+      "when": {
+        "type": [
+          "unspecified",
+          "alzheimers"
+        ],
+        "severity": "unspecified"
+      },
+      "forbid": [
+        "mild",
+        "moderate",
+        "severe",
+        "advanced",
+        "early-stage",
+        "late-stage",
+        "end-stage"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_underlying": {
+      "description": "Left out the underlying condition (G30.9) that is coded first with dementia in other diseases (F02.-).",
+      "lean": "under"
+    },
+    "wrong_dementia_category": {
+      "description": "Used unspecified dementia (F03.-) when the dementia is due to Alzheimer's disease (F02.-).",
+      "lean": "neutral"
+    },
+    "assumed_severity": {
+      "description": "Coded a dementia stage the provider did not document.",
+      "lean": "over"
+    },
+    "missed_severity": {
+      "description": "Used an unspecified-severity code when the provider documented the stage.",
+      "lean": "under"
+    },
+    "wrong_severity": {
+      "description": "Coded a different stage than documented.",
+      "lean": "neutral"
+    },
+    "missed_behavior": {
+      "description": "Left out documented agitation (dementia with behavioral disturbance).",
+      "lean": "under"
+    },
+    "unsupported_behavior": {
+      "description": "Coded a behavioral disturbance that is not documented.",
+      "lean": "over"
+    },
+    "coded_dementia_for_mci": {
+      "description": "Coded dementia when the provider documented mild cognitive impairment.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "etiology",
+      "rules": [
+        {
+          "when": {
+            "type": "alzheimers"
+          },
+          "codes": [
+            "G30.9"
+          ],
+          "explain": "Alzheimer's disease: G30.9, sequenced first; the dementia is then coded with F02.- (dementia in other diseases classified elsewhere).",
+          "refs": [
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_underlying",
+              "why": "F02.- is a manifestation code: code first the underlying Alzheimer's disease (G30.9)."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    },
+    {
+      "id": "dementia",
+      "rules": [
+        {
+          "when": {
+            "type": "mci"
+          },
+          "codes": [
+            "G31.84"
+          ],
+          "explain": "Mild cognitive impairment is not dementia: G31.84 (no HCC). Code dementia only when the provider documents it.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.A0"
+              ],
+              "confusion": "coded_dementia_for_mci",
+              "why": "The provider documents mild cognitive impairment, not dementia."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "unspecified",
+            "behavior": "none"
+          },
+          "codes": [
+            "F03.90"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), unspecified severity, without behavioral disturbance: F03.90.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.B0"
+              ],
+              "confusion": "assumed_severity",
+              "why": "The stage is not documented: use the unspecified-severity code."
+            },
+            {
+              "codes": [
+                "F03.911"
+              ],
+              "confusion": "unsupported_behavior",
+              "why": "No behavioral disturbance is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "unspecified",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F03.911"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), unspecified severity, with agitation: F03.911.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.B11"
+              ],
+              "confusion": "assumed_severity",
+              "why": "The stage is not documented: use the unspecified-severity code."
+            },
+            {
+              "codes": [
+                "F03.90"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "mild",
+            "behavior": "none"
+          },
+          "codes": [
+            "F03.A0"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), mild, without behavioral disturbance: F03.A0.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.90"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (mild): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F03.B0"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is mild."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "mild",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F03.A11"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), mild, with agitation: F03.A11.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.911"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (mild): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F03.B11"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is mild."
+            },
+            {
+              "codes": [
+                "F03.A0"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "moderate",
+            "behavior": "none"
+          },
+          "codes": [
+            "F03.B0"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), moderate, without behavioral disturbance: F03.B0.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.90"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (moderate): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F03.A0"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is moderate."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "moderate",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F03.B11"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), moderate, with agitation: F03.B11.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.911"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (moderate): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F03.A11"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is moderate."
+            },
+            {
+              "codes": [
+                "F03.B0"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "severe",
+            "behavior": "none"
+          },
+          "codes": [
+            "F03.C0"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), severe, without behavioral disturbance: F03.C0.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.90"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (severe): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F03.B0"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is severe."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "unspecified",
+            "severity": "severe",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F03.C11"
+          ],
+          "explain": "Dementia of unspecified type (F03.-), severe, with agitation: F03.C11.",
+          "refs": [
+            "OCG I.C.5.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F03.911"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (severe): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F03.B11"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is severe."
+            },
+            {
+              "codes": [
+                "F03.C0"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "unspecified",
+            "behavior": "none"
+          },
+          "codes": [
+            "F02.80"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), unspecified severity, without behavioral disturbance: F02.80.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.B0"
+              ],
+              "confusion": "assumed_severity",
+              "why": "The stage is not documented: use the unspecified-severity code."
+            },
+            {
+              "codes": [
+                "F02.811"
+              ],
+              "confusion": "unsupported_behavior",
+              "why": "No behavioral disturbance is documented."
+            },
+            {
+              "codes": [
+                "F03.90"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "unspecified",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F02.811"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), unspecified severity, with agitation: F02.811.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.B11"
+              ],
+              "confusion": "assumed_severity",
+              "why": "The stage is not documented: use the unspecified-severity code."
+            },
+            {
+              "codes": [
+                "F02.80"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            },
+            {
+              "codes": [
+                "F03.911"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "mild",
+            "behavior": "none"
+          },
+          "codes": [
+            "F02.A0"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), mild, without behavioral disturbance: F02.A0.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.80"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (mild): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F02.B0"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is mild."
+            },
+            {
+              "codes": [
+                "F03.A0"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "mild",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F02.A11"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), mild, with agitation: F02.A11.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.811"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (mild): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F02.B11"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is mild."
+            },
+            {
+              "codes": [
+                "F02.A0"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            },
+            {
+              "codes": [
+                "F03.A11"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "moderate",
+            "behavior": "none"
+          },
+          "codes": [
+            "F02.B0"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), moderate, without behavioral disturbance: F02.B0.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.80"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (moderate): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F02.A0"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is moderate."
+            },
+            {
+              "codes": [
+                "F03.B0"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "moderate",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F02.B11"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), moderate, with agitation: F02.B11.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.811"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (moderate): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F02.A11"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is moderate."
+            },
+            {
+              "codes": [
+                "F02.B0"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            },
+            {
+              "codes": [
+                "F03.B11"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "severe",
+            "behavior": "none"
+          },
+          "codes": [
+            "F02.C0"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), severe, without behavioral disturbance: F02.C0.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.80"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (severe): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F02.B0"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is severe."
+            },
+            {
+              "codes": [
+                "F03.C0"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "type": "alzheimers",
+            "severity": "severe",
+            "behavior": "agitation"
+          },
+          "codes": [
+            "F02.C11"
+          ],
+          "explain": "Alzheimer's disease (F02.-, dementia in other diseases), severe, with agitation: F02.C11.",
+          "refs": [
+            "OCG I.C.5.d",
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F02.811"
+              ],
+              "confusion": "missed_severity",
+              "why": "The provider documents the stage (severe): it decides the code and the HCC."
+            },
+            {
+              "codes": [
+                "F02.B11"
+              ],
+              "confusion": "wrong_severity",
+              "why": "The documented stage is severe."
+            },
+            {
+              "codes": [
+                "F02.C0"
+              ],
+              "confusion": "missed_behavior",
+              "why": "Agitation is documented: use the 'with agitation' code."
+            },
+            {
+              "codes": [
+                "F03.C11"
+              ],
+              "confusion": "wrong_dementia_category",
+              "why": "Dementia due to Alzheimer's disease is F02.- (in other diseases), not F03.- (unspecified dementia)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note_age": {
+    "min": 25
+  },
+  "slots": {
+    "status": {
+      "label": "HIV documentation",
+      "values": [
+        "asymptomatic",
+        "aids",
+        "prior_hiv_illness",
+        "inconclusive"
+      ],
+      "labels": {
+        "asymptomatic": "HIV positive, never ill from it",
+        "aids": "AIDS documented",
+        "prior_hiv_illness": "Past HIV-related illness, now well",
+        "inconclusive": "Inconclusive HIV test"
+      },
+      "evidence": {
+        "asymptomatic": [
+          [
+            "HIV positive",
+            "HIV infection"
+          ],
+          [
+            "asymptomatic",
+            "no HIV-related illness"
+          ]
+        ],
+        "aids": [
+          "AIDS"
+        ],
+        "prior_hiv_illness": [
+          [
+            "HIV"
+          ],
+          [
+            "Pneumocystis pneumonia",
+            "PCP pneumonia"
+          ]
+        ],
+        "inconclusive": [
+          [
+            "inconclusive",
+            "indeterminate"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "asymptomatic": "The patient is HIV positive and has never had an HIV-related illness or AIDS; the provider documents asymptomatic HIV infection.",
+        "aids": "The provider documents AIDS (acquired immunodeficiency syndrome) and manages it with antiretroviral therapy; no new opportunistic infection today.",
+        "prior_hiv_illness": "Years ago the patient had Pneumocystis pneumonia from HIV; now well on antiretroviral therapy with an undetectable viral load and no symptoms.",
+        "inconclusive": "A recent HIV screening result was inconclusive (indeterminate); confirmatory testing is pending and no diagnosis has been made."
+      }
+    }
+  },
+  "note_forbid": [
+    "hepatitis",
+    "tuberculosis",
+    "Kaposi",
+    "lymphoma",
+    "cryptococc",
+    "toxoplasm",
+    "wasting",
+    "candidiasis",
+    "thrush",
+    "pregnan",
+    "PrEP",
+    "exposure"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "status": "asymptomatic"
+      },
+      "forbid": [
+        "AIDS",
+        "Pneumocystis",
+        "PCP",
+        "opportunistic",
+        "inconclusive",
+        "indeterminate"
+      ]
+    },
+    {
+      "when": {
+        "status": "aids"
+      },
+      "forbid": [
+        "asymptomatic",
+        "Pneumocystis",
+        "inconclusive",
+        "indeterminate"
+      ]
+    },
+    {
+      "when": {
+        "status": "prior_hiv_illness"
+      },
+      "forbid": [
+        "AIDS",
+        "asymptomatic",
+        "inconclusive",
+        "indeterminate"
+      ]
+    },
+    {
+      "when": {
+        "status": "inconclusive"
+      },
+      "forbid": [
+        "HIV positive",
+        "HIV infection",
+        "AIDS",
+        "antiretroviral",
+        "viral load",
+        "Pneumocystis",
+        "asymptomatic"
+      ]
+    }
+  ],
+  "confusions": {
+    "overstated_hiv": {
+      "description": "Coded HIV disease (B20) for asymptomatic HIV infection.",
+      "lean": "over"
+    },
+    "understated_hiv": {
+      "description": "Coded asymptomatic HIV (Z21) when AIDS or a prior HIV-related illness is documented.",
+      "lean": "under"
+    },
+    "coded_unconfirmed_hiv": {
+      "description": "Coded HIV infection from an inconclusive test.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "hiv",
+      "rules": [
+        {
+          "when": {
+            "status": "asymptomatic"
+          },
+          "codes": [
+            "Z21"
+          ],
+          "explain": "HIV positive with no symptoms and no HIV-related illness ever: Z21 (HCC 1).",
+          "refs": [
+            "OCG I.C.1.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "B20"
+              ],
+              "confusion": "overstated_hiv",
+              "why": "B20 is for AIDS or any HIV-related illness, current or past."
+            }
+          ]
+        },
+        {
+          "when": {
+            "status": "aids"
+          },
+          "codes": [
+            "B20"
+          ],
+          "explain": "AIDS documented: B20, HIV disease (HCC 1).",
+          "refs": [
+            "OCG I.C.1.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z21"
+              ],
+              "confusion": "understated_hiv",
+              "why": "AIDS is documented: B20, not asymptomatic status."
+            }
+          ]
+        },
+        {
+          "when": {
+            "status": "prior_hiv_illness"
+          },
+          "codes": [
+            "B20"
+          ],
+          "explain": "Once a patient has had an HIV-related illness, B20 is used at every later encounter, even when well with an undetectable viral load.",
+          "refs": [
+            "OCG I.C.1.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z21"
+              ],
+              "confusion": "understated_hiv",
+              "why": "A prior HIV-related illness means B20 from then on."
+            }
+          ]
+        },
+        {
+          "when": {
+            "status": "inconclusive"
+          },
+          "codes": [
+            "R75"
+          ],
+          "explain": "Inconclusive HIV test without a confirmed diagnosis: R75 (no HCC). Code only confirmed HIV.",
+          "refs": [
+            "OCG I.C.1.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z21"
+              ],
+              "confusion": "coded_unconfirmed_hiv",
+              "why": "HIV is not confirmed; Z21 would add HCC 1."
+            },
+            {
+              "codes": [
+                "B20"
+              ],
+              "confusion": "coded_unconfirmed_hiv",
+              "why": "HIV is not confirmed."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

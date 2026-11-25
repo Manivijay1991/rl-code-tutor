@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-0d1a60239d",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "full_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nHPI: The patient is a 68-year-old male presenting for a scheduled follow-up regarding his diagnosis of major depressive disorder, single episode. He reports feeling stable and consistent with his goals for improved mood and energy. He denies any recent periods of low mood or significant changes in his daily functioning. He reports that his sleep patterns have normalized and his appetite is stable. He states he is satisfied with his current progress and feels he is maintaining his routine effectively.\n\nMedication List: Sertraline 50mg daily.\n\nExam: The patient is alert and oriented. He appears well-groomed with a pleasant affect and congruent mood. Speech is normal in rate, tone, and volume. Thought process is linear and goal-directed. Insight and judgment are intact.\n\nAssessment: Major depressive disorder, single episode. The patient is currently in full remission.\n\nPlan: Continue current medication regimen. The patient will continue to monitor his symptoms and return to the clinic in three months for a routine follow-up.\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "F32.5"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, in full remission (no HCC): F32.5."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents full remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.4"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is full, not partial.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:12+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

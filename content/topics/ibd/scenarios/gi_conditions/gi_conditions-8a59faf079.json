@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-8a59faf079",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "crohns"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for Crohn's disease.\n\nHPI: Pt is a 90 y.o. male presenting for routine follow-up of Crohn's disease. Pt reports feeling well and states he has been asymptomatic for several months. He is currently stable on maintenance therapy. Denies abdominal pain, diarrhea, or weight loss. Reports good compliance with current regimen. No new concerns voiced today.\n\nMedication List:\n- Adalimumab (biologic)\n- Vitamin D3\n- Multivitamin\n- Lisinopril 10mg QD\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nGI: Denies abdominal pain, nausea, vomiting, diarrhea.\nMSK: Denies joint pain or stiffness.\nNeuro: Denies dizziness or confusion.\nCV: Denies chest pain or palpitations.\n\nSocial History: Retired. Lives with wife. No tobacco use. Occasional social drinking.\n\nFamily History: Father had hypertension. Mother had arthritis.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 155 lbs\n\nRecent Labs:\nCBC: WNL.\nCMP: WNL.\nCRP: Within normal limits.\n\nExam:\nGen: Well-appearing, alert and oriented x3.\nCV: RRR, no murmurs.\nResp: CTAB.\nAbdomen: Soft, non-tender, non-distended. No guarding or rebound.\nMusculoskeletal: Steady gait, no acute distress.\nSkin: No noted rashes or lesions.\n\nAssessment:\n1. Crohn's disease: Currently in remission. Pt is stable on current maintenance therapy. No signs of flare-up at this time.\n\nPlan:\n- Continue current maintenance therapy as prescribed.\n- Routine labs to monitor for signs of inflammation.\n- Pt to call office if any new symptoms develop.\n- Follow up in 6 months.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "K50.90"
+  ],
+  "explanations": [
+    "Crohn's disease, site not stated, no complications: K50.90 (HCC 80)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K50.00"
+      ],
+      "confusion": "assumed_site",
+      "lean": "neutral",
+      "why": "The site is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.55,
+        "correct": 0.55,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.55,
+    "hccs": [
+      {
+        "hcc": "80",
+        "label": "Crohns Disease (Regional Enteritis)",
+        "from": [
+          "K5090"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:47+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

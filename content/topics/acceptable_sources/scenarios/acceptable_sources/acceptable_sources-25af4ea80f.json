@@ -1,0 +1,60 @@
+{
+  "id": "acceptable_sources-25af4ea80f",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "unsigned_note"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Visit Date: 05/14/2026\nNote status: unsigned\n\nChief Complaint: COPD follow-up\n\nVitals: BP 128/82, HR 74, SpO2 96% on room air, Temp 98.6 F, RR 18\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nRespiratory: Negative for increased shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or confusion.\n\nHPI: Copied forward from previous visit: Patient is a 77-year-old female presenting for routine management of chronic obstructive pulmonary disease. She reports good adherence to her current maintenance medications. She denies any acute changes in symptoms over the last month.\n\nMedication List:\n- Tiotropium 18 mcg and 1.5 mcg inhalation powder daily\n- Lisinopril 10 mg daily\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nRespiratory: Lung sounds are clear to auscultation bilaterally. No wheezing or crackles noted.\nCardiovascular: Regular rate and rhythm; S1 and S2 heard.\nExtremities: No edema noted.\n\nAssessment:\n1. COPD: Stable at this time.\n\nPlan:\n1. Continue current maintenance inhaler.\n2. Follow up in 4 months for routine monitoring.",
+  "answer": [],
+  "explanations": [
+    "A note must be signed with the provider's credentials to be used. Unsigned: no code (ask the provider to sign it)."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_unsigned_note",
+      "lean": "over",
+      "why": "Without a signature and credentials the note cannot support a code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:03:28+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah",
+      "signed": false
+    }
+  }
+}

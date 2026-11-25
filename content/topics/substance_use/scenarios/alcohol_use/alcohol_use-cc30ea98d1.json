@@ -1,0 +1,79 @@
+{
+  "id": "alcohol_use-cc30ea98d1",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_mild",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint\nFollow-up for alcohol use.\n\nHPI\nThe patient is a 36-year-old woman presenting for a scheduled follow-up regarding her alcohol consumption. She reports that she is currently drinking and expresses a desire to manage her intake. She notes that her consumption has been consistent over the past month. She denies any significant physical symptoms or safety concerns related to her usage at this time. She is seeking guidance on reduction strategies and behavioral modifications.\n\nMedication List\nNone.\n\nExam\nThe patient is alert and oriented to person, place, and time. She appears in no acute distress. Speech is clear and coherent. Vital signs are stable. Physical examination is unremarkable.\n\nAssessment\nAlcohol use disorder, mild. The patient is currently drinking but is motivated to discuss management.\n\nPlan\nWe discussed the diagnosis of alcohol use disorder, mild. The patient was educated on the risks of continued consumption and the importance of moderation. We discussed behavioral strategies to reduce daily intake. The patient will return in four weeks for a follow-up to monitor progress.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "F10.10"
+  ],
+  "explanations": [
+    "Alcohol use disorder, mild, indexes to alcohol abuse: F10.10 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.20"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "A mild use disorder is abuse (F10.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0,
+        "gap": 0.242,
+        "direction": "over",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F10.90"
+      ],
+      "confusion": "unspecified_use",
+      "lean": "under",
+      "why": "A use disorder with a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:50+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

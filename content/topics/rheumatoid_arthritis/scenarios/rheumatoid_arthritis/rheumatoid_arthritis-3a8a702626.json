@@ -1,0 +1,69 @@
+{
+  "id": "rheumatoid_arthritis-3a8a702626",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "ra_seropositive",
+    "methotrexate": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint\nChronic joint pain and stiffness.\n\nHPI\nThe patient is an 86-year-old male who presents today for a follow-up evaluation of his rheumatoid arthritis. He reports persistent aching and stiffness, particularly in the mornings, which significantly impacts his activities of daily living. He notes that the discomfort is most prominent in his hands and his feet. He describes a gradual progression of symptoms over several years. He currently manages his symptoms with over-the-counter analgesics and regular physical therapy. He denies any systemic symptoms such as fever, chills, or significant fatigue. He also reports no symptoms involving his chest, lungs, or internal organs.\n\nMedication List\n- Acetaminophen 650mg every 6 hours as needed for pain.\n- Multivitamin daily.\n\nReview of Systems\nConstitutional: Negative for fever, chills, or weight changes.\nMusculoskeletal: Positive for joint pain and morning stiffness in the hands and feet.\nNeurological: Negative for numbness or tingling.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\n\nSocial History\nThe patient lives at home with his wife. He is retired and enjoys gardening and walking. He denies tobacco use and consumes alcohol occasionally.\n\nFamily History\nFather had hypertension. Mother had diabetes. No known history of autoimmune disease in the immediate family.\n\nVitals\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.4 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs\nRheumatoid Factor: Positive\nComplete Blood Count: Within normal limits\nComprehensive Metabolic Panel: Within normal limits\n\nExam\nGeneral: The patient is a well-appearing, alert, and oriented 86-year-old male in no acute distress.\nMusculoskeletal: Examination of the hands reveals symmetrical swelling and tenderness of the MCP joints and wrists. Examination of the feet reveals mild swelling and tenderness of the MTP joints and ankles. No evidence of systemic organ involvement was noted during the physical assessment.\n\nAssessment\nThe patient has seropositive rheumatoid arthritis affecting the hands and feet. He is currently stable on his current regimen of acetaminophen and physical therapy. There is no evidence of extra-articular involvement at this time.\n\nPlan\n1. Continue current management with acetaminophen for pain control.\n2. Continue participation in physical therapy to maintain range of motion and strength.\n3. Monitor for any new systemic symptoms or worsening of joint swelling.\n4. Follow up in 4 months for a routine evaluation.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "M05.79"
+  ],
+  "explanations": [
+    "Rheumatoid arthritis with rheumatoid factor, multiple sites, no organ involvement: M05.79 (HCC 93)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Rheumatoid factor and multiple sites are documented: M05.79.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.617,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M0579"
+        ],
+        "weight": 0.617
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:29+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "id": "pad_atherosclerosis-553cf3d4bf",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "claudication",
+    "side": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Calf pain while walking.\n\nHPI:\nThe patient is an 86-year-old male who presents today for a follow-up evaluation of chronic discomfort in his left lower extremity. He reports that he experiences significant calf pain specifically during periods of exertion, such as during a short walk. He notes that the discomfort is consistent with intermittent claudication. He states that the pain typically subsides shortly after he stops walking and rests. He denies any pain while at rest and denies any skin breakdown or lesions. He reports that the symptoms are localized specifically to the left leg. He has been trying to manage his activity levels but remains concerned about his mobility.\n\nMedication List:\n- Aspirin 81 mg daily\n- Atorvastatin 40 mg daily\n\nVitals:\nBP: 138/82 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 96% on room air\nWeight: 185 lbs\n\nRecent Labs:\neGFR: 68 mL/min/1.73m2\nHbA1c: 6.2%\nLDL: 88 mg/dL\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight loss.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath.\nMusculoskeletal: Reports calf pain with exertion only.\nIntegumentary: No reports of skin changes.\n\nSocial History:\nThe patient lives with his wife in a single-story home. He is retired and enjoys gardening and walking in his neighborhood. He denies tobacco or alcohol use.\n\nFamily History:\nFather had a history of coronary artery disease. Mother had hypertension.\n\nExam:\nThe patient is alert and oriented x3 in no acute distress. Cardiovascular exam reveals regular rate and rhythm with no murmurs. Pulmonary exam is clear to auscultation. Lower extremity exam reveals diminished pulses in the left foot. There is no evidence of skin breakdown or open wounds. The left leg shows signs of atherosclerotic changes. No edema is noted.\n\nAssessment:\n1. Atherosclerosis of the native leg arteries with intermittent claudication. The patient demonstrates symptoms localized to the left lower extremity.\n\nPlan:\n1. Continue current aspirin and statin regimen.\n2. Encourage supervised walking programs to improve functional capacity.\n3. Instruct patient to monitor for any new skin changes.\n4. Follow up in three months for reassessment of symptoms.\n\nElectronically signed, \nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "I70.212"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the left leg with intermittent claudication (no HCC in V28): I70.212."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.211"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.222"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Rest pain is not documented (it would add HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0,
+        "gap": 0.455,
+        "direction": "over",
+        "extra_hccs": [
+          "264"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I73.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Atherosclerosis with claudication is documented: I70.21-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:57+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

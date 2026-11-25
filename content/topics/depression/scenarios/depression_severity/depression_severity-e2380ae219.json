@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-e2380ae219",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nThe patient is an 89-year-old woman presenting for a scheduled follow-up regarding her major depressive disorder, single episode. She reports that her mood has improved since the previous visit, though she continues to experience some periods of low energy and diminished interest in social activities. She denies any acute distress or significant changes in her daily functioning. She reports consistent adherence to her current medication regimen and notes a steady improvement in her overall outlook.\n\nMedication List\nSertraline 50mg daily\n\nExam\nThe patient appears well-groomed and is alert and oriented to person, place, and time. Her affect is somewhat constricted but appropriate to the conversation. Speech is normal in rate and volume. She demonstrates a cooperative attitude during the interview.\n\nAssessment\n1. Major depressive disorder, single episode. The patient is currently in partial remission.\n\nPlan\nContinue current medication and monitor progress. The patient will return to the clinic in four weeks for a follow-up evaluation of her symptoms and medication efficacy.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "F32.4"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, in partial remission (no HCC): F32.4."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents partial remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.5"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is partial, not full.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:07+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

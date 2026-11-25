@@ -1,0 +1,123 @@
+{
+  "id": "cancer_status-232f46d713",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nPain in the lower back and hips.\n\nHPI\nThe patient is a 72-year-old woman who presents today for evaluation of worsening localized bone pain. She has a known diagnosis of colon cancer and is currently receiving chemotherapy for the primary malignancy. She reports that over the last three weeks, she has experienced increasing aching in her lumbar spine and pelvic region. She describes the sensation as a constant dull ache that worsens with movement. She is seeking management of these symptoms associated with her metastatic to bone progression.\n\nMedication List\n- Chemotherapy agent (current cycle)\n- Acetaminophen 650mg every 6 hours as needed for pain\n- Lisinopril 10mg daily\n\nExam\nThe patient is alert and oriented. She appears in moderate distress due to discomfort. Physical examination reveals tenderness upon palpation of the lumbar spine and bilateral hips. No new focal neurological deficits are noted. Gait is steady but guarded.\n\nAssessment\n1. Colon cancer, currently receiving chemotherapy.\n2. Bone metastases.\n\nPlan\nWe will continue the current chemotherapy regimen. For the management of pain from bone metastasis, I have increased her acetaminophen dosage. She will be monitored for any increasing neurological symptoms or changes in mobility. She will return in two weeks for a follow-up.\n\nElectronically signed, J. Lindqvist, DO, 05/14/2026",
+  "answer": [
+    "C18.9",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the colon under current treatment is a current malignancy: C18.9.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.038",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C18.9"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.363,
+        "correct": 2.341,
+        "gap": -1.978,
+        "direction": "under",
+        "extra_hccs": [
+          "22"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C18.9",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "22",
+        "label": "Bladder/Colorectal/and Other Cancers",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:51+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-6edf1a9244",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "bka_right",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nPt is a 56 y.o. female presenting for routine f/u of HTN. She reports feeling well overall, denying any recent syncope or chest pain. She notes her prosthetic fit remains stable. She currently manages blood pressure with daily medications. No new concerns voiced today.\n\nMedication List\nLisinopril 20mg QD\nAmlodipine 5mg QD\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nExtremities: Right below-knee amputation; site is well-healed. Prosthesis in place. No edema.\nNeuro: Grossly intact.\n\nAssessment\n1. Hypertension: Stable on current regimen.\n2. Status post right BKA: Stable.\n\nPlan\n1. Continue current HTN medications as prescribed.\n2. Continue use of prosthesis.\n3. Follow up in 3 months for routine BP check.\n\nElectronically signed,\nD. Kowalski, MD\n05/14/2026",
+  "answer": [
+    "Z89.511"
+  ],
+  "explanations": [
+    "Acquired absence of the right leg below the knee: Z89.511 (HCC 409). A status that still applies is coded at every visit where it is documented."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.598,
+        "gap": -0.598,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z89.611"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "The amputation is below the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.512"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89511"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:28+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

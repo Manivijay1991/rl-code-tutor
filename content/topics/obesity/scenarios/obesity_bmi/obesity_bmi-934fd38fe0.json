@@ -1,0 +1,76 @@
+{
+  "id": "obesity_bmi-934fd38fe0",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "37"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint\nFollow-up for hypertension.\n\nHPI\nThe patient is a 36-year-old female presenting for a routine follow-up of her hypertension. She reports that she has been consistent with her current medication regimen and denies any recent episodes of dizziness, palpitations, or shortness of breath. She notes that her home blood pressure readings have remained stable over the last month. She denies any headaches or visual changes.\n\nMedication List\nLisinopril 20mg daily.\n\nExam\nThe patient is alert and oriented. She appears in no acute distress. Heart rate is 72 beats per minute, blood pressure is 132/82 mmHg. Respiratory rate is 16 breaths per minute. BMI 37.7. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. No peripheral edema noted.\n\nAssessment\n1. Hypertension: The patient's blood pressure is currently well-controlled on her current dosage of Lisinopril.\n\nPlan\n1. Continue Lisinopril 20mg daily.\n2. Patient instructed to continue monitoring blood pressure at home and keeping a log.\n3. Follow up in 3 months for a repeat blood pressure check.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.37"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:56+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

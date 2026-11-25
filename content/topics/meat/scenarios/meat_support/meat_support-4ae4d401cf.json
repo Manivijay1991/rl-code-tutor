@@ -1,0 +1,88 @@
+{
+  "id": "meat_support-4ae4d401cf",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Low back pain\n\nVitals: BP 128/82, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F, BMI 24.2\n\nRecent Labs: Hemoglobin 12.4 g/dL, Hematocrit 38%, WBC 6.5, Glucose 98 mg/dL (fasting)\n\nMedication List:\n- Sertraline 50 mg daily\n- Naproxen 220 mg every 8 hours as needed for pain\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for congestion or drainage.\nRespiratory: Negative for cough or shortness of breath.\nCardiovascular: Negative for palpitations or chest pain.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nMusculoskeletal: Positive for low back aching.\nNeurological: Negative for numbness or tingling.\nPsychiatric: Negative for suicidal ideation.\n\nSocial History: Retired teacher. Lives with her spouse. No tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had osteoarthritis.\n\nHistory of Present Illness: \n(Copied Forward): Patient is an 85-year-old female presenting with chronic low back pain. She describes a dull, aching sensation in the lumbar region that is exacerbated by prolonged standing or walking. She denies any radiating pain down the lower extremities or recent trauma to the spine. Symptoms have been persistent for several months. She reports that OTC analgesics provide some relief but do not fully eliminate the discomfort.\n\nUpdate: The patient reports that her back pain has remained steady over the last month. She continues to experience discomfort during housework but notes that the intensity has not worsened.\n\nExam:\nGeneral: Well-developed, well-nourished, in no acute distress.\nMusculoskeletal: Lumbar spine is stable. Tenderness noted over the L4-L5 paraspinal muscles. Range of motion is limited by discomfort but within expected limits for her age. No spinal deformity noted.\n\nProblem List:\n- Low back pain\n- Major depressive disorder, recurrent, moderate\n- Status post appendectomy\n- Status post cholecystectomy\n- Status post tonsillectomy\n\nAssessment:\n1. Low back pain: Stable. The patient's pain is well-managed with current medications.\n2. Major depressive disorder, recurrent, moderate: Symptoms reviewed; patient reports feeling stable on her current regimen.\n\nPlan:\n1. Low back pain: Continue Naproxen as needed. Recommend gentle stretching exercises.\n2. Major depressive disorder, recurrent, moderate: Continue Sertraline 50 mg daily. We will monitor for any changes in mood or side effects at the next follow-up.\n\nElectronically signed,\nD. Kowalski, PA-C\nMay 14, 2026",
+  "answer": [
+    "F33.1"
+  ],
+  "explanations": [
+    "The provider addressed recurrent moderate major depression: F33.1. Severity matters; unspecified recurrent MDD (F33.9) does not map to a V28 HCC."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "The condition was addressed at the visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity (moderate) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F331"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:25:58+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "D. Kowalski"
+    }
+  }
+}

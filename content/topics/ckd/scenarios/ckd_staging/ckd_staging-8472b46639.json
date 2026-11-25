@@ -1,0 +1,143 @@
+{
+  "id": "ckd_staging-8472b46639",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and chronic kidney disease.\n\nHPI: Pt is a 78-year-old male presenting for routine follow-up of hypertension and CKD. Pt reports feeling well today. Denies any new shortness of breath, chest pain, or peripheral edema. Reports adherence to current medications. Denies any recent changes in urine output or significant fatigue.\n\nMedication List:\n- Lisinopril 20mg QD\n- Atorvastatin 40mg QD\n- Omeprazole 20mg QD\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies abdominal pain, nausea.\nMSK: Denies joint pain.\nNeuro: Denies dizziness, numbness.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had hyperlipidemia.\n\nFamily History: Father had hypertension. Mother had hyperlipidemia.\n\nVitals:\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHeight: 5'10\"\nWeight: 185 lbs\n\nRecent Labs:\neGFR: 38 mL/min/1.73m2\nCreatinine: 2.1 mg/dL\nLDL: 88 mg/dL\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCV: RRR, regular rhythm, no murmurs.\nLungs: CTAB.\nExt: No edema, pulses 2+ bilaterally.\nSkin: NAD.\n\nAssessment:\n1. Hypertension: Stable, well-controlled on current regimen.\n2. Chronic kidney disease, stage 3b: Stable and monitored.\n3. Hyperlipidemia: Controlled.\n4. Gastroesophageal reflux disease: Stable.\n\nPlan:\nContinue current medications as prescribed. Patient to continue monitoring BP at home. Follow up in 3 months for labs and blood pressure check.\n\nProblem List:\n- Hypertension\n- Chronic kidney disease, stage 3b\n- Hyperlipidemia\n- Gastroesophageal reflux disease\n\nElectronically signed,\nD. Kowalski, PA-C\n05/12/2026",
+  "answer": [
+    "I12.9",
+    "N18.32"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.32"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.32"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.127,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "3a is less severe than the documented 3b.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3b is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:21+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "PA-C",
+      "signer": "D. Kowalski"
+    }
+  }
+}

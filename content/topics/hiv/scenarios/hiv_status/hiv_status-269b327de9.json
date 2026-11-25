@@ -1,0 +1,80 @@
+{
+  "id": "hiv_status-269b327de9",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "inconclusive"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint\nFollow-up on recent lab work.\n\nHPI\nPt is an 83 y.o. female presenting for follow-up of laboratory results. Pt reports feeling well today and denies any new acute concerns or symptoms. Recent HIV screening result was returned as indeterminate. Pt is aware that the result is inconclusive at this time. Confirmatory testing has been ordered and is currently pending. No diagnosis has been made.\n\nMedication List\nMultivitamin daily.\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\nHeart: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB, no wheezes or rales.\nAbdomen: Soft, non-tender, no masses.\nExtremities: WNL.\n\nAssessment\n1. Indeterminate HIV screening result.\n\nPlan\n1. Await results of pending confirmatory testing.\n2. Follow up in 2 weeks to review results and determine next steps.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "R75"
+  ],
+  "explanations": [
+    "Inconclusive HIV test without a confirmed diagnosis: R75 (no HCC). Code only confirmed HIV."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z21"
+      ],
+      "confusion": "coded_unconfirmed_hiv",
+      "lean": "over",
+      "why": "HIV is not confirmed; Z21 would add HCC 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0,
+        "gap": 0.301,
+        "direction": "over",
+        "extra_hccs": [
+          "1"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "B20"
+      ],
+      "confusion": "coded_unconfirmed_hiv",
+      "lean": "over",
+      "why": "HIV is not confirmed.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0,
+        "gap": 0.301,
+        "direction": "over",
+        "extra_hccs": [
+          "1"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:09+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

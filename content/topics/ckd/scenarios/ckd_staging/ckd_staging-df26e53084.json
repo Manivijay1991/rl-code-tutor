@@ -1,0 +1,95 @@
+{
+  "id": "ckd_staging-df26e53084",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for kidney disease.\n\nHPI: [Copied Forward] Patient is a 57-year-old female presenting for evaluation of chronic kidney disease. She reports stable condition with no acute changes in renal function or systemic symptoms.\n[Today's Update] Patient reports feeling well today. She denies any new edema, fatigue, or changes in urine output. She continues to manage her symptoms as directed.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nCardiovascular: Negative for palpitations, chest pain.\nRespiratory: Negative for shortness of breath, cough.\nGenitourinary: Negative for dysuria, hematuria.\nMusculoskeletal: Negative for joint pain.\n\nMedication List:\nLisinopril 10mg daily\nAmlodipine 5mg daily\n\nExam:\nGeneral: Alert and oriented x3. In no acute distress.\nExtremities: No peripheral edema noted.\nSkin: No rashes or lesions.\n\nAssessment:\nChronic kidney disease, stage 3b. Current labs show an eGFR of 38 mL/min/1.73m2.\n\nPlan:\nContinue current medication regimen. Monitor renal function with labs in 3 months. Patient advised to maintain low sodium diet.\n\nElectronically signed, S. Patel, NP, 05/14/2026",
+  "answer": [
+    "N18.32"
+  ],
+  "explanations": [
+    "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a)."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "3a is less severe than the documented 3b.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3b is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:17+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

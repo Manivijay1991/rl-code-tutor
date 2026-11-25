@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_htn_ckd-3c2a50b4a6",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease and type 2 diabetes.\n\nHPI: Patient is a 57-year-old female presenting for scheduled follow-up. Per prior notes: Patient has a history of type 2 diabetes and CKD. She reports she is managing her glucose levels through diet alone. She denies any acute changes in renal function or new symptoms of uremia. She continues to monitor her intake and reports adherence to her nutritional plan.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nSkin: Negative for rashes.\nGenitourinary: Negative for dysuria.\nRespiratory: Negative for shortness of breath.\nMusculoskeletal: Negative for joint pain.\n\nMedication List:\n1. Multivitamin\n2. Vitamin D supplement\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCardiovascular: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. CKD stage 5: Most recent lab work shows an eGFR of 12 mL/min/1.73m².\n2. Type 2 diabetes: Currently managed by diet only.\n\nPlan:\n1. Continue current diet for management of type 2 diabetes.\n2. Monitor renal function and electrolytes monthly.\n3. Follow up in 3 months for routine labs.\n\nElectronically signed, S. Patel, NP, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "N18.5"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.5."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.5"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.981,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.981,
+        "gap": -0.815,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.981,
+        "gap": -0.301,
+        "direction": "under",
+        "extra_hccs": [
+          "327"
+        ],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.981,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:57:10+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

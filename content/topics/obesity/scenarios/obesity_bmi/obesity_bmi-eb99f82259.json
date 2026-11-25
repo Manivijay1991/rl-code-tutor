@@ -1,0 +1,108 @@
+{
+  "id": "obesity_bmi-eb99f82259",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "morbid_obesity",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Weight management.\n\nHPI: Pt is a 90-year-old female presenting for follow-up regarding weight management. Pt reports difficulty with weight loss despite attempting some dietary changes. She notes increased fatigue and joint pain in both knees when walking. She currently maintains a sedentary lifestyle due to mobility concerns. Pt denies any acute shortness of breath, chest pain, or recent falls. She is seeking guidance on structured weight loss and exercise options suitable for her age.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals:\nBP: 138/84\nHR: 76 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHeight: 5'2\"\nWeight: 325 lbs\nBMI: 42.4\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 65\nTSH: 2.1 mIU/L\nLDL: 88 mg/dL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or unintended weight loss.\nCardiovascular: No chest pain, palpitations, or edema.\nRespiratory: No cough or SOB.\nMusculoskeletal: Positive for bilateral knee pain.\nNeurological: No dizziness or syncope.\n\nSocial History: Pt lives at home with her daughter. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension and Type 2 Diabetes. Father had a history of stroke.\n\nExam:\nGeneral: Well-appearing, pleasant, alert and oriented x3.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nMusculoskeletal: Mild swelling and tenderness noted at bilateral knees.\nSkin: Intact, no rashes.\n\nAssessment:\n1. Morbid obesity. Pt currently presents with a BMI of 42.4.\n2. Bilateral knee pain, likely exacerbated by weight.\n\nPlan:\n1. Weight Management: Discussed importance of caloric deficit. Pt advised to focus on high-protein, low-calorie meals.\n2. Activity: Encouraged low-impact movements, such as chair exercises or short walks as tolerated.\n3. Referral: Pt to be referred to a weight management program for structured nutritional counseling.\n4. F/u: Return to clinic in 3 months for weight check and lab review.\n\nElectronically signed,\nM. Okafor, NP\nMay 14, 2026",
+  "answer": [
+    "E66.01",
+    "Z68.41"
+  ],
+  "explanations": [
+    "Morbid (severe) obesity documented by the provider: E66.01 (HCC 48).",
+    "BMI 42.x with a provider weight diagnosis: add Z68.41 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9",
+        "Z68.41"
+      ],
+      "confusion": "missed_morbid",
+      "lean": "under",
+      "why": "The provider documents morbid obesity: E66.01, not E66.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.01",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 42.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "E6601",
+          "Z6841"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:03+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "M. Okafor"
+    }
+  }
+}

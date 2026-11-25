@@ -1,0 +1,153 @@
+{
+  "id": "diabetes_htn_ckd-15b9e9f1b7",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "3a",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for hypertension and type 2 diabetes.\n\nHPI\nThe patient is a 68-year-old woman presenting for a routine follow-up of her chronic kidney disease and hypertension. She reports feeling well and denies any acute symptoms such as edema, shortness of breath, or changes in urinary output. She continues to manage her type 2 diabetes through dietary modifications alone and reports adherence to her current regimen. She also monitors her blood pressure at home.\n\nMedication List\nLisinopril 10mg daily\nAmlodipine 5mg daily\n\nExam\nThe patient is alert and oriented. Her blood pressure is 132/82 mmHg. She is non-distressed. No peripheral edema is noted. Heart sounds are regular. Lungs are clear to auscultation.\n\nAssessment\n1. Hypertension: Currently stable on medication.\n2. Type 2 diabetes: Managed with diet only.\n3. Chronic kidney disease: Currently documented as stage 3a. Recent laboratory results show an eGFR of 52.\n\nPlan\nContinue current medications for hypertension. Maintain current dietary plan for type 2 diabetes. Continue monitoring renal function and blood pressure. Follow up in 3 months.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "I12.9",
+    "N18.31"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "Hypertension with CKD stage 1-4 is presumed linked: I12.9. Both links apply at once: diabetes with CKD and hypertensive CKD.",
+    "The CKD stage is coded in addition: N18.31."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "I12.9",
+        "N18.31"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I10",
+        "N18.31"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "Hypertension and CKD are presumed linked: I12.-, not I10.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.0",
+        "N18.31"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.981,
+        "correct": 0.293,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "I12.9"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.293,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.293,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1831"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:54:10+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

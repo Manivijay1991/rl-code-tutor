@@ -1,0 +1,94 @@
+{
+  "id": "diabetes_complications-777747a264",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 1 diabetes and recent hypoglycemia.\n\nHPI\nThe patient is a 73-year-old male presenting for a routine follow-up regarding his type 1 diabetes. He has been managed with long-term insulin therapy and reports consistent adherence to his injection schedule. He reports that he experienced a hypoglycemic episode approximately two weeks ago following a missed meal. He noted symptoms of shakiness and sweating but was able to resolve the episode with a fast-acting glucose source. He denies any current symptoms of dizziness, confusion, or persistent fatigue. He reports stable management of his seasonal allergic rhinitis and takes a daily supplement for vitamin D deficiency. He denies any recent changes to his activity level or caloric intake.\n\nMedication List\n- Insulin (long-term)\n- Vitamin D supplement\n- Antihistamine (as needed for seasonal allergic rhinitis)\n\nReview of Systems\nThe patient reports no chest pain, shortness of breath, or palpitations. He denies recent fevers or chills. He reports no changes in vision, hearing, or balance. He denies any acute abdominal pain or urinary symptoms.\n\nSocial History\nThe patient is retired and lives with his spouse. He enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History\nFather had type 1 diabetes. Mother had seasonal allergic rhinitis.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 122/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs\nHbA1c: 7.4%\neGFR: 82 mL/min/1.73m2\nVitamin D: 32 ng/mL\n\nExam\nThe patient is a well-appearing, alert, and oriented male in no acute distress. Skin is warm and dry. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. Neurological exam shows intact strength and sensation in all extremities.\n\nAssessment\n1. Type 1 diabetes mellitus: Stable on insulin.\n2. Hypoglycemia: One recent episode reported.\n3. Vitamin D deficiency: Stable on supplementation.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan\n1. Continue current insulin regimen as prescribed.\n2. Monitor blood glucose levels closely, especially during periods of increased physical activity.\n3. Continue Vitamin D supplementation.\n4. Follow up in three months for routine labs and glucose monitoring.\n\nProblem List\n- Type 1 diabetes\n- Hypoglycemia\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed, S. Patel, MD, 05/14/2026",
+  "answer": [
+    "E10.649"
+  ],
+  "explanations": [
+    "Type 1 diabetes with hypoglycemia without coma: E10.649.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.65"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E10.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.649",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E10649"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:06+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "vitamin D deficiency"
+      ],
+      "credential": "MD",
+      "signer": "S. Patel"
+    }
+  }
+}

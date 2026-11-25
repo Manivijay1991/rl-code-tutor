@@ -1,0 +1,112 @@
+{
+  "id": "dementia_severity-5afa13c6a0",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "moderate",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for memory loss and behavior.\n\nHPI: Patient is a 78-year-old male with a history of dementia. He presents today for a routine follow-up of his cognitive decline and associated behaviors. [Copied Forward from previous visit]: Patient has been experiencing progressive memory loss and difficulty with executive functioning. Family reports increasing confusion and difficulty completing daily tasks.\n\nVitals: BP 134/82, HR 76, SpO2 98% on RA, Temp 98.6 F.\n\nReview of Systems:\nNeurological: Positive for memory loss.\nPsychiatric: Positive for agitation.\nOther Systems: Negative.\n\nMedication List:\n- Donepezil 10mg daily\n- Quetiapine 12.5mg at bedtime\n\nExam:\nGeneral: Alert, oriented to person only.\nBehavior: Patient appears calm during the interview but shows signs of restlessness.\nCognition: Significant deficits in short-term recall and orientation.\n\nAssessment:\n1. Moderate dementia: Patient continues to exhibit significant cognitive impairment.\n2. Agitation: Patient experiences episodes of agitation in the evenings, which is contributing to caregiver strain.\n\nPlan:\n1. Continue current dosage of Donepezil.\n2. Continue Quetiapine to manage evening agitation.\n3. Follow up in 3 months for reassessment of cognitive status.\n\nElectronically signed, R. Mensah, NP, 10/14/2026",
+  "answer": [
+    "F03.B11"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), moderate, with agitation: F03.B11."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.911"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (moderate): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.A11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is moderate.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "126",
+        "label": "Dementia/Moderate",
+        "from": [
+          "F03B11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:36:03+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

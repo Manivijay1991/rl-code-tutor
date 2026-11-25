@@ -1,0 +1,132 @@
+{
+  "id": "ckd_staging-af47956938",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease and hypertension.\n\nHPI: [Copied Forward] Patient is a 59-year-old male with a known history of hypertension and chronic kidney disease stage 5. He presents for routine monitoring of his renal function and blood pressure. He reports stable symptoms and adherence to his current medication regimen. He denies any new-onset edema, shortness of breath, or significant changes in urinary output.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F, Weight 195 lbs.\n\nRecent Labs: eGFR: 12 mL/min/1.73m2, Sodium: 138 mEq/L, Potassium: 4.8 mEq/L, Creatinine: 4.2 mg/dL.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Cholecalciferol 2000 IU daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nEyes: Negative for vision changes.\nENT: Negative for rhinorrhea or sore throat.\nRespiratory: Negative for cough or wheezing.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for numbness or tingling.\n\nSocial History: Retired construction worker. Lives with wife. Non-smoker. Occasional social alcohol use.\n\nFamily History: Father had hypertension and hyperlipidemia. Mother had hyperlipidemia.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: RRR, no murmurs, rubs, or gallops.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No pitting edema noted.\nSkin: No new lesions or rashes.\n\nAssessment:\n1. Chronic kidney disease stage 5: Stable based on current eGFR of 12.\n2. Hypertension: Currently managed; blood pressure is within goal range.\n3. Hyperlipidemia: Stable on current statin therapy.\n4. Vitamin D deficiency: Ongoing management.\n\nPlan:\n1. Continue current medications for hypertension and hyperlipidemia.\n2. Continue Vitamin D supplementation.\n3. Monitor renal function and electrolytes every 3 months.\n4. Return to clinic in 3 months for follow-up.\n\nProblem List:\n- Chronic kidney disease stage 5\n- Hypertension\n- Hyperlipidemia\n- Vitamin D deficiency\n\nElectronically signed,\nA. Rivera, PA-C\nMay 14, 2026",
+  "answer": [
+    "I12.0",
+    "N18.5"
+  ],
+  "explanations": [
+    "Hypertension with CKD stage 5 or ESRD: I12.0, plus N18.5/N18.6.",
+    "CKD stage 5 (not documented as ESRD): N18.5."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I12.9",
+        "N18.5"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.9 is for stage 1-4 or unspecified CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I10",
+        "N18.5"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.6"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 5 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "I120",
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:24+00:00",
+    "style": {
+      "age": 59,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "hyperlipidemia"
+      ],
+      "credential": "PA-C",
+      "signer": "A. Rivera"
+    }
+  }
+}

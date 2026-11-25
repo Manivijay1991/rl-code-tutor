@@ -1,0 +1,91 @@
+{
+  "id": "ckd_staging-9c40866875",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for kidney disease.\n\nHPI: Pt is a 78 y.o. female presenting for follow-up of known chronic kidney disease. Pt reports she is feeling generally stable today but notes occasional fatigue. Denies any new shortness of breath, chest pain, or acute changes in mobility. She reports adherence to current medications. No concerns regarding her seasonal allergic rhinitis. She continues to manage her vitamin D deficiency as instructed.\n\nMedication List:\n- Vitamin D supplement\n- Seasonal allergy medications (PRN)\n\nReview of Systems:\nConstitutional: Positive for mild fatigue. Negative for fever, chills, or weight changes.\nRespiratory: Negative for cough or SOB.\nCV: Negative for palpitations or chest pain.\nMSK: Negative for joint pain.\nGU: Negative for dysuria or frequency.\n\nSocial History: Retired. Lives at home with her spouse. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had known kidney issues. Father deceased at age 82.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 145 lbs\n\nRecent Labs:\neGFR: 12 mL/min/1.73m2\nCreatinine: 5.2 mg/dL\nHemoglobin: 10.4 g/dL\nVitamin D: 22 ng/mL\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nRespiratory: CTAB.\nCV: RRR, no murmurs.\nAbdomen: Soft, non-tender, non-distended.\nExtremities: No edema noted.\nSkin: Intact, no rashes.\n\nAssessment:\n1. End stage renal disease. Pt is currently stable but requires ongoing monitoring of labs and renal function.\n2. Vitamin D deficiency. Levels remain low; continuing current supplementation.\n3. Seasonal allergic rhinitis. Stable.\n\nPlan:\n- Continue current vitamin D regimen.\n- Monitor renal function with repeat labs in 3 months.\n- Follow up in clinic as scheduled.\n\nProblem List:\n- End stage renal disease\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed,\nA. Rivera, PA-C\n05/14/2026",
+  "answer": [
+    "N18.6"
+  ],
+  "explanations": [
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only."
+  ],
+  "refs": [
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.5",
+        "N18.6"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.5"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-24T17:25:07+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "vitamin D deficiency"
+      ],
+      "credential": "PA-C",
+      "signer": "A. Rivera"
+    }
+  }
+}

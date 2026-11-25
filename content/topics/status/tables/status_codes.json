@@ -1,0 +1,383 @@
+{
+  "id": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "slots": {
+    "condition": {
+      "label": "Status documented",
+      "values": [
+        "bka_right",
+        "aka_left",
+        "toe_right",
+        "colostomy",
+        "ileostomy"
+      ],
+      "labels": {
+        "bka_right": "Right below-knee amputation",
+        "aka_left": "Left above-knee amputation",
+        "toe_right": "Right great toe amputation",
+        "colostomy": "Colostomy",
+        "ileostomy": "Ileostomy"
+      },
+      "evidence": {
+        "bka_right": [
+          "right below-knee amputation",
+          "right below the knee amputation",
+          "right BKA"
+        ],
+        "aka_left": [
+          "left above-knee amputation",
+          "left above the knee amputation",
+          "left AKA"
+        ],
+        "toe_right": [
+          "right great toe amputation",
+          "amputation of the right great toe"
+        ],
+        "colostomy": [
+          "colostomy"
+        ],
+        "ileostomy": [
+          "ileostomy"
+        ]
+      },
+      "describe": {
+        "bka_right": "The patient had a right below-knee amputation years ago and uses a prosthesis.",
+        "aka_left": "The patient had a left above-knee amputation years ago and uses a prosthesis.",
+        "toe_right": "The patient had the right great toe amputated years ago.",
+        "colostomy": "The patient has a colostomy from a past surgery.",
+        "ileostomy": "The patient has an ileostomy from a past surgery."
+      }
+    },
+    "state": {
+      "label": "Current state",
+      "values": [
+        "present",
+        "reversed"
+      ],
+      "labels": {
+        "present": "Present now",
+        "reversed": "Ostomy reversed"
+      },
+      "evidence": {
+        "present": [],
+        "reversed": [
+          "reversed",
+          "reversal",
+          "takedown"
+        ]
+      },
+      "describe": {
+        "present": "The status is current (the limb is absent or the stoma is in place); the provider notes it at this routine visit for another reason.",
+        "reversed": "The ostomy was reversed (taken down) in the past; the patient no longer has a stoma."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "condition": [
+        "bka_right",
+        "aka_left",
+        "toe_right"
+      ],
+      "state": "reversed"
+    }
+  ],
+  "note_forbid": [
+    "diabetes",
+    "diabetic",
+    "peripheral arterial",
+    "PAD",
+    "gangrene",
+    "ulcer",
+    "osteomyelitis",
+    "cancer",
+    "Crohn",
+    "colitis",
+    "diverticulitis",
+    "infection",
+    "complication",
+    "phantom",
+    "hernia",
+    "dermatitis",
+    "stump pain",
+    "revision"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "colostomy",
+          "ileostomy"
+        ],
+        "state": "present"
+      },
+      "forbid": [
+        "closed",
+        "closure"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "colostomy",
+          "ileostomy"
+        ]
+      },
+      "forbid": [
+        "amputation",
+        "prosthesis"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "bka_right",
+          "aka_left",
+          "toe_right"
+        ]
+      },
+      "forbid": [
+        "colostomy",
+        "ileostomy",
+        "stoma",
+        "ostomy"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_status": {
+      "description": "Left out a documented status that still applies.",
+      "lean": "under"
+    },
+    "wrong_level": {
+      "description": "Coded the wrong amputation level.",
+      "lean": "neutral"
+    },
+    "wrong_side": {
+      "description": "Coded the wrong side.",
+      "lean": "neutral"
+    },
+    "attention_vs_status": {
+      "description": "Used an 'attention to' encounter code (Z43.-) instead of the status code (Z93.-).",
+      "lean": "neutral"
+    },
+    "wrong_ostomy": {
+      "description": "Confused a colostomy and an ileostomy.",
+      "lean": "neutral"
+    },
+    "reversed_coded": {
+      "description": "Coded an ostomy that was reversed.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "status",
+      "rules": [
+        {
+          "when": {
+            "condition": "bka_right"
+          },
+          "codes": [
+            "Z89.511"
+          ],
+          "explain": "Acquired absence of the right leg below the knee: Z89.511 (HCC 409). A status that still applies is coded at every visit where it is documented.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "The amputation status is documented and still applies."
+            },
+            {
+              "codes": [
+                "Z89.611"
+              ],
+              "confusion": "wrong_level",
+              "why": "The amputation is below the knee."
+            },
+            {
+              "codes": [
+                "Z89.512"
+              ],
+              "confusion": "wrong_side",
+              "why": "The right leg is affected."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "aka_left"
+          },
+          "codes": [
+            "Z89.612"
+          ],
+          "explain": "Acquired absence of the left leg above the knee: Z89.612 (HCC 409).",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "The amputation status is documented and still applies."
+            },
+            {
+              "codes": [
+                "Z89.512"
+              ],
+              "confusion": "wrong_level",
+              "why": "The amputation is above the knee."
+            },
+            {
+              "codes": [
+                "Z89.611"
+              ],
+              "confusion": "wrong_side",
+              "why": "The left leg is affected."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "toe_right"
+          },
+          "codes": [
+            "Z89.411"
+          ],
+          "explain": "Acquired absence of the right great toe: Z89.411 (no HCC in V28; leg amputations map to HCC 409).",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "The amputation status is documented and still applies."
+            },
+            {
+              "codes": [
+                "Z89.511"
+              ],
+              "confusion": "wrong_level",
+              "why": "Only the great toe is absent, not the leg below the knee."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "colostomy",
+            "state": "present"
+          },
+          "codes": [
+            "Z93.3"
+          ],
+          "explain": "Colostomy in place: Z93.3, colostomy status (HCC 463). Z43.3 is only for an encounter for care of the colostomy itself.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "The colostomy is documented and present."
+            },
+            {
+              "codes": [
+                "Z43.3"
+              ],
+              "confusion": "attention_vs_status",
+              "why": "The visit is not for care of the colostomy; report the status, Z93.3."
+            },
+            {
+              "codes": [
+                "Z93.2"
+              ],
+              "confusion": "wrong_ostomy",
+              "why": "It is a colostomy, not an ileostomy."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ileostomy",
+            "state": "present"
+          },
+          "codes": [
+            "Z93.2"
+          ],
+          "explain": "Ileostomy in place: Z93.2, ileostomy status (HCC 463). Z43.2 is only for an encounter for care of the ileostomy itself.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "The ileostomy is documented and present."
+            },
+            {
+              "codes": [
+                "Z43.2"
+              ],
+              "confusion": "attention_vs_status",
+              "why": "The visit is not for care of the ileostomy; report the status, Z93.2."
+            },
+            {
+              "codes": [
+                "Z93.3"
+              ],
+              "confusion": "wrong_ostomy",
+              "why": "It is an ileostomy, not a colostomy."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "colostomy",
+            "state": "reversed"
+          },
+          "codes": [],
+          "explain": "The colostomy was reversed: the patient no longer has one, so there is no status to report.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z93.3"
+              ],
+              "confusion": "reversed_coded",
+              "why": "A reversed colostomy is no longer present."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ileostomy",
+            "state": "reversed"
+          },
+          "codes": [],
+          "explain": "The ileostomy was reversed: the patient no longer has one, so there is no status to report.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z93.2"
+              ],
+              "confusion": "reversed_coded",
+              "why": "A reversed ileostomy is no longer present."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

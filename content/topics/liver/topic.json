@@ -1,0 +1,8 @@
+{
+  "id": "liver",
+  "title": "Liver disease",
+  "kind": "hcc",
+  "description": "Cirrhosis types and ascites, chronic versus cured hepatitis C, and fatty liver.",
+  "order": 89,
+  "enabled": true
+}

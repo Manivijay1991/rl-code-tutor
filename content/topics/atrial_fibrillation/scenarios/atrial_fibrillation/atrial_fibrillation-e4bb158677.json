@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-e4bb158677",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "permanent",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for management of heart rhythm.\n\nHPI\nThe patient is an 89-year-old woman who presents today for a routine follow-up of her permanent atrial fibrillation. She reports feeling well overall and denies any new palpitations, lightheadedness, or shortness of breath. She is currently managed with a rate-control strategy and reports good compliance with her prescribed medications. She currently does not require any anticoagulant medications due to her low risk profile.\n\nMedication List\nMetoprolol 25mg daily.\n\nExam\nThe patient is alert and oriented. Her blood pressure is 128/78 mmHg and heart rate is 72 beats per minute. She appears in no acute distress. Heart sounds are regular with a rate of 72 bpm. No murmurs are noted. Lungs are clear to auscultation.\n\nAssessment\n1. Permanent atrial fibrillation: The patient is stable on her current rate-control regimen.\n\nPlan\nWe will continue the current dosage of Metoprolol for her atrial fibrillation. She will follow up in six months for a routine evaluation.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "I48.21"
+  ],
+  "explanations": [
+    "Permanent atrial fibrillation: I48.21 (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.20"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Permanent has its own code; I48.20 is chronic AF, unspecified.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (permanent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4821"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:55:01+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

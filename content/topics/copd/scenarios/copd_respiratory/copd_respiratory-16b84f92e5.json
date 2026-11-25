@@ -1,0 +1,141 @@
+{
+  "id": "copd_respiratory-16b84f92e5",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "chronic_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: The patient is a 52-year-old man who presents for a follow-up evaluation of his chronic respiratory conditions. He reports a persistent shortness of breath that limits his ability to perform activities of daily living. He currently utilizes home oxygen on a continuous basis to manage his symptoms. He states that while his breathing is generally stable, he experiences increased fatigue during mild exertion. He denies any recent chest pain, fever, or productive cough. He is seeking to optimize his current management plan.\n\nMedication List:\n- Supplemental oxygen (continuous)\n- Tiotropium\n- Salmeterol\n\nReview of Systems:\nConstitutional: Reports mild fatigue. No fevers or chills.\nRespiratory: Positive for shortness of breath. Denies cough.\nCardiovascular: Denies chest pain or palpitations.\nMusculoskeletal: Denies joint pain.\nNeurological: Denies dizziness or syncope.\n\nSocial History: The patient is a non-smoker. He works as a freelance consultant and lives with his spouse. He reports moderate exercise tolerance.\n\nFamily History: Father had a history of emphysema. Mother had hypertension.\n\nVitals:\nBP: 132/84 mmHg\nHR: 78 bpm\nRR: 20 breaths/min\nSpO2: 91% on home oxygen\nTemp: 98.6 F\nWeight: 195 lbs\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^9/L\neGFR: 82 mL/min/1.73m2\n\nExam: The patient appears in no acute distress but shows signs of labored breathing. Chest is symmetric with decreased breath sounds in the lower lobes. No wheezing or crackles noted. Skin is clear without cyanosis. Heart sounds are regular with no murmurs.\n\nAssessment:\n1. Emphysema: The patient's condition remains stable but continues to impact his functional capacity.\n2. Chronic respiratory failure with hypoxia: The patient requires continued management of his hypoxemic state.\n\nPlan:\n1. Continue current home oxygen regimen.\n2. Maintain current bronchodilator medications.\n3. Follow up in three months for a repeat pulmonary function test.\n4. Patient instructed to seek immediate care if he experiences increased respiratory distress.\n\nElectronically signed, L. Moreau, PA-C, 05/14/2026",
+  "answer": [
+    "J43.9",
+    "J96.11",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-.",
+    "Chronic respiratory failure with hypoxia: J96.11 (HCC 213), plus Z99.81 for the home oxygen."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "Z99.81"
+      ],
+      "confusion": "missed_respiratory_failure",
+      "lean": "under",
+      "why": "The provider diagnoses chronic respiratory failure: J96.11 (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.689,
+        "gap": -0.37,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "213"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "J96.10",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_respiratory_failure",
+      "lean": "neutral",
+      "why": "Hypoxia is documented: J96.11.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "J96.21",
+        "Z99.81"
+      ],
+      "confusion": "acute_on_chronic_unsupported",
+      "lean": "over",
+      "why": "Only chronic respiratory failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.689,
+    "hccs": [
+      {
+        "hcc": "213",
+        "label": "Cardio-Respiratory Failure and Shock",
+        "from": [
+          "J9611"
+        ],
+        "weight": 0.37
+      },
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:16:43+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "cancer_status-8bddf2e489",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for breast cancer.\n\nHPI: Pt is a 90-year-old female presenting for routine oncology follow-up. Pt has a known malignant neoplasm of the right breast. She is currently receiving chemotherapy for the primary site. Pt reports feeling tired but denies significant pain, shortness of breath, or new systemic symptoms. She states she is tolerating the current treatment regimen well. No concerns regarding nausea or significant fatigue today.\n\nMedication List:\n- Chemotherapy (current regimen)\n- Multivitamin daily\n- Acetaminophen 500mg PRN for discomfort\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight loss.\nRespiratory: No cough, SOB, or wheezing.\nGI: No nausea, vomiting, or diarrhea.\nMSK: No joint pain or swelling.\nNeuro: No dizziness or confusion.\n\nSocial History: Lives with daughter. Retired. Non-smoker.\n\nFamily History: Mother had hypertension. Father had diabetes.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWt: 125 lbs\n\nRecent Labs:\nWBC: 5.2\nHgb: 11.8\nPlt: 150k\neGFR: 65\n\nExam:\nGen: Elderly female, well-groomed, in no acute distress.\nCV: RRR, S1, S2. No murmurs.\nResp: CTAB, no wheezing.\nAbdomen: Soft, non-tender, no masses.\nSkin: Intact.\nRight Breast: Exam shows primary site of malignancy. No visible changes or new masses today.\n\nAssessment:\n1. Cancer of the right breast. Pt is on active treatment.\n\nPlan:\n1. Continue current chemotherapy cycle as scheduled.\n2. Monitor for side effects including fatigue and neutropenia.\n3. F/u in 3 weeks for next cycle.\n4. Advised pt to call office immediately for fever >100.4 F.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "C50.911"
+  ],
+  "explanations": [
+    "Cancer of the right female breast under current treatment is a current malignancy: C50.911."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.3"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "23"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C50.919"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right breast: use the right-breast code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "from": [
+          "C50911"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:52+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

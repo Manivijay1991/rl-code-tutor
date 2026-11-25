@@ -1,0 +1,384 @@
+{
+  "id": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note_age": {
+    "min": 25
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "crohns",
+        "crohns_small",
+        "uc",
+        "uc_pancolitis",
+        "ibs",
+        "chronic_pancreatitis",
+        "acute_pancreatitis_history"
+      ],
+      "labels": {
+        "crohns": "Crohn's disease, site not stated",
+        "crohns_small": "Crohn's disease of the small intestine",
+        "uc": "Ulcerative colitis, extent not stated",
+        "uc_pancolitis": "Ulcerative pancolitis",
+        "ibs": "Irritable bowel syndrome",
+        "chronic_pancreatitis": "Chronic pancreatitis",
+        "acute_pancreatitis_history": "Acute pancreatitis years ago, resolved"
+      },
+      "evidence": {
+        "crohns": [
+          "Crohn's disease",
+          "Crohn disease"
+        ],
+        "crohns_small": [
+          [
+            "Crohn's disease",
+            "Crohn disease"
+          ],
+          [
+            "small intestine",
+            "small bowel",
+            "ileum",
+            "terminal ileum"
+          ]
+        ],
+        "uc": [
+          "ulcerative colitis"
+        ],
+        "uc_pancolitis": [
+          [
+            "ulcerative colitis",
+            "ulcerative pancolitis"
+          ],
+          [
+            "pancolitis"
+          ]
+        ],
+        "ibs": [
+          "irritable bowel syndrome",
+          "IBS"
+        ],
+        "chronic_pancreatitis": [
+          "chronic pancreatitis"
+        ],
+        "acute_pancreatitis_history": [
+          [
+            "pancreatitis"
+          ],
+          [
+            "resolved",
+            "years ago"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "crohns": "The provider documents Crohn's disease, in remission on maintenance therapy; the part of the bowel is not stated.",
+        "crohns_small": "The provider documents Crohn's disease of the terminal ileum (small intestine), stable on maintenance therapy.",
+        "uc": "The provider documents ulcerative colitis, in remission on mesalamine; its extent is not stated.",
+        "uc_pancolitis": "The provider documents ulcerative pancolitis (the whole colon), in remission on mesalamine.",
+        "ibs": "The provider documents irritable bowel syndrome; colonoscopy was normal and there is no inflammatory bowel disease.",
+        "chronic_pancreatitis": "The provider documents chronic pancreatitis managed with pancreatic enzyme replacement; the cause is not stated.",
+        "acute_pancreatitis_history": "The patient had one episode of acute pancreatitis years ago that fully resolved; no current pancreatic disease."
+      }
+    }
+  },
+  "note_forbid": [
+    "fistula",
+    "abscess",
+    "obstruction",
+    "stricture",
+    "bleeding",
+    "blood in stool",
+    "hematochezia",
+    "perforation",
+    "colectomy",
+    "ostomy",
+    "alcohol-induced",
+    "alcoholic",
+    "gallstone",
+    "biliary",
+    "pancreatic cancer",
+    "celiac",
+    "diverticul"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "crohns"
+      },
+      "forbid": [
+        "ileum",
+        "ileal",
+        "small intestine",
+        "small bowel",
+        "large intestine",
+        "colon",
+        "colitis",
+        "IBS",
+        "irritable"
+      ]
+    },
+    {
+      "when": {
+        "condition": "crohns_small"
+      },
+      "forbid": [
+        "colon",
+        "colitis",
+        "large intestine",
+        "IBS",
+        "irritable"
+      ]
+    },
+    {
+      "when": {
+        "condition": "uc"
+      },
+      "forbid": [
+        "pancolitis",
+        "proctitis",
+        "left-sided",
+        "rectosigmoid",
+        "Crohn",
+        "IBS",
+        "irritable"
+      ]
+    },
+    {
+      "when": {
+        "condition": "uc_pancolitis"
+      },
+      "forbid": [
+        "proctitis",
+        "left-sided",
+        "Crohn",
+        "IBS",
+        "irritable"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ibs"
+      },
+      "forbid": [
+        "Crohn",
+        "colitis",
+        "inflammatory bowel",
+        "IBD",
+        "pancreatitis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "chronic_pancreatitis"
+      },
+      "forbid": [
+        "acute pancreatitis",
+        "Crohn",
+        "colitis",
+        "IBS",
+        "irritable"
+      ]
+    },
+    {
+      "when": {
+        "condition": "acute_pancreatitis_history"
+      },
+      "forbid": [
+        "chronic pancreatitis",
+        "enzyme",
+        "Crohn",
+        "colitis",
+        "IBS",
+        "irritable"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_specified": {
+      "description": "Used an unspecified-site code when the site or extent is documented.",
+      "lean": "neutral"
+    },
+    "assumed_site": {
+      "description": "Coded a site or extent the provider did not document.",
+      "lean": "neutral"
+    },
+    "ibs_coded_as_ibd": {
+      "description": "Coded inflammatory bowel disease when the provider documents irritable bowel syndrome.",
+      "lean": "over"
+    },
+    "history_coded_chronic": {
+      "description": "Coded chronic pancreatitis for a past acute attack that resolved.",
+      "lean": "over"
+    },
+    "chronic_coded_acute": {
+      "description": "Coded acute pancreatitis or history when chronic pancreatitis is documented.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "gi",
+      "rules": [
+        {
+          "when": {
+            "condition": "crohns"
+          },
+          "codes": [
+            "K50.90"
+          ],
+          "explain": "Crohn's disease, site not stated, no complications: K50.90 (HCC 80).",
+          "refs": [
+            "ICD-10-CM Tabular: K50-K86"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K50.00"
+              ],
+              "confusion": "assumed_site",
+              "why": "The site is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "crohns_small"
+          },
+          "codes": [
+            "K50.00"
+          ],
+          "explain": "Crohn's disease of the small intestine (ileum), no complications: K50.00 (HCC 80).",
+          "refs": [
+            "ICD-10-CM Tabular: K50-K86"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K50.90"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The small intestine is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "uc"
+          },
+          "codes": [
+            "K51.90"
+          ],
+          "explain": "Ulcerative colitis, extent not stated, no complications: K51.90 (HCC 81).",
+          "refs": [
+            "ICD-10-CM Tabular: K50-K86"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K51.00"
+              ],
+              "confusion": "assumed_site",
+              "why": "Pancolitis is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "uc_pancolitis"
+          },
+          "codes": [
+            "K51.00"
+          ],
+          "explain": "Ulcerative pancolitis, no complications: K51.00 (HCC 81).",
+          "refs": [
+            "ICD-10-CM Tabular: K50-K86"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K51.90"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The extent (pancolitis) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ibs"
+          },
+          "codes": [
+            "K58.9"
+          ],
+          "explain": "Irritable bowel syndrome: K58.9 (no HCC). It is not inflammatory bowel disease.",
+          "refs": [
+            "ICD-10-CM Tabular: K50-K86"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K51.90"
+              ],
+              "confusion": "ibs_coded_as_ibd",
+              "why": "IBS is not ulcerative colitis or Crohn's disease."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "chronic_pancreatitis"
+          },
+          "codes": [
+            "K86.1"
+          ],
+          "explain": "Chronic pancreatitis: K86.1 (HCC 79).",
+          "refs": [
+            "ICD-10-CM Tabular: K50-K86"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z87.19"
+              ],
+              "confusion": "chronic_coded_acute",
+              "why": "The pancreatitis is chronic and current."
+            },
+            {
+              "codes": [
+                "K85.90"
+              ],
+              "confusion": "chronic_coded_acute",
+              "why": "Chronic pancreatitis is K86.1, not acute pancreatitis."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "acute_pancreatitis_history"
+          },
+          "codes": [
+            "Z87.19"
+          ],
+          "explain": "A past acute pancreatitis that resolved: personal history, Z87.19 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K86.1"
+              ],
+              "confusion": "history_coded_chronic",
+              "why": "There is no current or chronic pancreatitis."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

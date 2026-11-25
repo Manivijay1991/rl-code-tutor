@@ -1,0 +1,141 @@
+{
+  "id": "copd_respiratory-778dacfa2d",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd_exacerbation",
+    "respiratory": "chronic_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nIncreased shortness of breath and cough.\n\nHPI\nPt is a 61 y/o male with a hx of COPD presenting for f/u. Pt reports acute exacerbation of symptoms over the past 3 days, characterized by increased dyspnea and productive cough. Pt reports feeling more short of breath than baseline. Pt currently uses home oxygen continuously at home.\n\nMedication List\n1. Prednisone 40mg daily\n2. Tiotropium inhaler\n3. Home oxygen (continuous)\n\nExam\nGeneral: Alert, in mild respiratory distress.\nVitals: HR 92, RR 22, SpO2 89% on 2L NC.\nLungs: Diminished breath sounds, scattered wheezes throughout.\nCV: RRR, CTAB.\nExt: No edema noted.\n\nAssessment\n1. Acute exacerbation of COPD.\n2. Chronic respiratory failure with hypoxia.\n\nPlan\n1. Start steroid burst: Prednisone 40mg PO daily for 5 days.\n2. Continue current home oxygen regimen.\n3. Follow up in 2 weeks to monitor symptoms.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "J44.1",
+    "J96.11",
+    "Z99.81"
+  ],
+  "explanations": [
+    "COPD with an acute exacerbation: J44.1 (same HCC 280 as stable COPD, but a different code).",
+    "Chronic respiratory failure with hypoxia: J96.11 (HCC 213), plus Z99.81 for the home oxygen."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "under",
+      "why": "An acute exacerbation is documented: J44.1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "Z99.81"
+      ],
+      "confusion": "missed_respiratory_failure",
+      "lean": "under",
+      "why": "The provider diagnoses chronic respiratory failure: J96.11 (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.689,
+        "gap": -0.37,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "213"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "J96.10",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_respiratory_failure",
+      "lean": "neutral",
+      "why": "Hypoxia is documented: J96.11.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J44.1",
+        "J96.21",
+        "Z99.81"
+      ],
+      "confusion": "acute_on_chronic_unsupported",
+      "lean": "over",
+      "why": "Only chronic respiratory failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.689,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.689,
+    "hccs": [
+      {
+        "hcc": "213",
+        "label": "Cardio-Respiratory Failure and Shock",
+        "from": [
+          "J9611"
+        ],
+        "weight": 0.37
+      },
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J441"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:19:40+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-8fc7824b96",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Right knee pain.\n\nHPI: Pt is an 80 y/o female presenting for evaluation of chronic right knee pain. Pt reports gradual onset of aching and stiffness, worse in the morning and after prolonged standing. Describes it as a \"grinding\" sensation. No acute injury, no swelling, and no redness noted. Pt reports improved with rest but discomfort limits her ability to walk long distances. Denies any fever or chills.\n\nMedication List:\n- Acetaminophen 650mg BID PRN\n- Multivitamin daily\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 5'4\"\nWt: 145 lbs\n\nRecent Labs:\nWBC: 7.2\nHgb: 13.1\nPlt: 210\neGFR: 78\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight change.\nMSK: Positive for right knee pain and stiffness. Negative for joint swelling or warmth.\nNeuro: Negative for numbness or tingling.\nRespiratory: Negative for cough or SOB.\nCV: Negative for chest pain.\n\nSocial History: Pt is retired. Lives with her spouse. Non-smoker. Occasional gardener.\n\nFamily History: Mother had hypertension. Father had osteoarthritis.\n\nExam:\nGen: Well-appearing, alert and oriented x3. CTAB.\nMSK: Right knee shows mild joint space narrowing. No significant erythema or warmth. Mild tenderness to palpation over the patellofemoral joint. ROM is limited by discomfort but otherwise intact. No instability noted.\n\nAssessment:\n1. Right knee osteoarthritis.\n\nPlan:\n1. Continue current acetaminophen as needed for pain.\n2. Recommended physical therapy for strengthening and range of motion.\n3. Follow up in 4 weeks to assess progress with PT.\n\nProblem List:\n- COPD\n- Status post appendectomy\n- Status post cholecystectomy\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "COPD appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:22:22+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

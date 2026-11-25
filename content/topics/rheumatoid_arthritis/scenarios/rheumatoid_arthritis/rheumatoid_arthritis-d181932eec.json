@@ -1,0 +1,108 @@
+{
+  "id": "rheumatoid_arthritis-d181932eec",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "ra_seropositive",
+    "methotrexate": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint: Joint pain and stiffness.\n\nHPI: (Copied Forward) Patient is a 77-year-old female with a long-standing history of rheumatoid arthritis. She reports chronic symmetrical involvement of the hands and feet. Symptoms include morning stiffness and occasional flare-ups of joint swelling. She has been stable on her current medication regimen without significant side effects.\n(Update) Today, the patient reports that her symptoms remain well-controlled. She notes minimal discomfort in her MCP joints and no new swelling in her MTP joints. She denies any systemic symptoms or fevers.\n\nMedication List:\n- Methotrexate 15mg (weekly)\n- Folic acid 1mg (daily)\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F\n\nReview of Systems:\n- Constitutional: Negative\n- Musculoskeletal: Positive (joint pain)\n- Neurological: Negative\n- Integumentary: Negative\n- Cardiovascular: Negative\n- Respiratory: Negative\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Symmetrical swelling noted in the MCP joints of both hands. Mild tenderness over the MTP joints of both feet. No significant erythema or warmth. Range of motion is slightly limited by stiffness.\n\nAssessment:\n1. Rheumatoid arthritis, seropositive (RF positive). Symptoms are currently stable.\n\nPlan:\n1. Continue methotrexate weekly.\n2. Continue folic acid daily to mitigate side effects.\n3. Follow up in 3 months for routine monitoring.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "M05.79",
+    "Z79.631"
+  ],
+  "explanations": [
+    "Rheumatoid arthritis with rheumatoid factor, multiple sites, no organ involvement: M05.79 (HCC 93).",
+    "Long-term methotrexate (an antimetabolite): Z79.631."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9",
+        "Z79.631"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Rheumatoid factor and multiple sites are documented: M05.79.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M05.79"
+      ],
+      "confusion": "missed_drug_therapy",
+      "lean": "under",
+      "why": "Long-term methotrexate is documented: Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M05.79",
+        "Z79.899"
+      ],
+      "confusion": "nonspecific_drug_code",
+      "lean": "neutral",
+      "why": "Methotrexate has its own long-term use code, Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.617,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M0579"
+        ],
+        "weight": 0.617
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:13+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

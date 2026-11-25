@@ -1,0 +1,123 @@
+{
+  "id": "cancer_status-404842267b",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain.\n\nHPI: Pt is a 78 y/o male presenting for f/u of prostate cancer. Pt is currently receiving chemotherapy for the malignancy. He reports increased aching and discomfort in the lumbar spine and left hip over the last 2 weeks. He describes the pain as a dull constant ache, rated 6/10, exacerbated by weight-bearing and aggravated at night. He denies any new neurological deficits, saddle anesthesia, or sudden weakness. He is seeking better pain management for the bone metastasis.\n\nMedication List:\n- Chemotherapy agent (current cycle)\n- Acetaminophen 650mg BID PRN\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nHt/Wbc: 14.2 / 7.8\nPlt: 210k\neGFR: 62\n\nReview of Systems:\nConstitutional: Denies fever, chills, or unintended weight loss.\nMSK: Positive for lumbar and hip pain. Denies joint swelling.\nNeuro: Denies numbness or tingling.\nGU: Denies urinary retention or hematuria.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nExam:\nGen: Elderly male, appears stated, in no acute distress.\nCV: RRR, regular rhythm.\nLungs: CTAB.\nMSK: Palpable tenderness noted over L4-L5 and left greater trochanter. No erythema or warmth. Gait is steady but guarded.\n\nAssessment:\n1. Prostate carcinoma.\n2. Bone metastases.\n\nPlan:\n1. Continue current chemotherapy protocol.\n2. For pain, start scheduled scheduled acetaminophen and consider escalating to a low-dose opioid if pain persists.\n3. F/u in 4 weeks to monitor treatment response and pain levels.\n\nElectronically signed, T. Haddad, MD, 10/14/2026",
+  "answer": [
+    "C61",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the prostate under current treatment is a current malignancy: C61.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.46",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C61"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 2.341,
+        "gap": -2.155,
+        "direction": "under",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C61",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:50:44+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

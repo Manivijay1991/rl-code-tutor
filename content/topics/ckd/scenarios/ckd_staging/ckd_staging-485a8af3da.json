@@ -1,0 +1,118 @@
+{
+  "id": "ckd_staging-485a8af3da",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "4",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for hypertension and chronic kidney disease.\n\nHPI\nThe patient is a 66-year-old male presenting for a routine follow-up of his chronic kidney disease and hypertension. He reports feeling well overall today, denying any new-onset edema, significant fatigue, or changes in urinary output. He maintains a stable diet and reports adherence to his current medication regimen. He states that his blood pressure has been well-controlled at home.\n\nMedication List\nLisinopril 10mg daily\nHydrochlorothiazide 12.5mg daily\n\nExam\nThe patient appears well-nourished and in no acute distress. Blood pressure is 132/82 mmHg. Heart rate is 72 bpm. Lungs are clear to auscultation. No peripheral edema noted. Skin is warm and dry.\n\nAssessment\n1. Chronic kidney disease, stage 4. Recent lab work shows an eGFR of 22 mL/min/1.73m2.\n2. Hypertension. Currently stable on oral medications.\n\nPlan\nContinue current medications for hypertension and CKD. We will repeat laboratory work in three months to monitor renal function and electrolytes. Patient instructed to report any sudden weight gain or shortness of breath.\n\nElectronically signed, H. Tanaka, PA-C, 05/14/2026",
+  "answer": [
+    "I12.9",
+    "N18.4"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 4: N18.4."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.4"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.514,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.4"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.514,
+        "gap": 0.301,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.32"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 4 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.514,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.514,
+    "hccs": [
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:15+00:00",
+    "style": {
+      "age": 66,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

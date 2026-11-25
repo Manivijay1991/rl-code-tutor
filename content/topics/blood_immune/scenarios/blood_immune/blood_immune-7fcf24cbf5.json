@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-7fcf24cbf5",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "cvid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint: Follow-up for immunodeficiency.\n\nHPI: Pt is an 85-year-old female presenting for scheduled evaluation of common variable immunodeficiency. She reports adherence to her monthly immunoglobulin infusions. She denies any new fevers, chills, or significant infections over the past month. She reports feeling well overall with no new respiratory symptoms or fatigue. She is here to maintain her current treatment regimen.\n\nMedication List:\n- IVIG (monthly infusion)\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nReview of Systems:\nGeneral: No fever, chills, weight changes, or fatigue.\nHEENT: No vision changes, ear pain, or sore throat.\nRespiratory: No cough, shortness of breath, or wheezing.\nCV: No chest pain, palpitations, or edema.\nGI: No nausea, vomiting, or diarrhea.\nMSK: No joint pain or stiffness.\nSkin: No rashes or lesions.\nNeuro: No dizziness or confusion.\n\nSocial History: Retired. Lives with her daughter. No tobacco use. Occasional alcohol.\n\nFamily History: Mother had hypertension. Father had Type 2 diabetes.\n\nVitals:\nBP: 128/74\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 5'4\"\nWt: 145 lbs\n\nRecent Labs:\nWBC: 3.2 (low)\nHemoglobin: 11.8\nPlatelets: 140\neGFR: 65\n\nExam:\nGen: Well-appearing, pleasant.\nHEENT: Normocephalic, CTAB, non-toxic.\nNeck: Supple, no lymphadenopathy.\nCV: RRR, no murmurs.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No edema, full ROM.\nSkin: No rashes noted.\n\nAssessment:\n1. Common variable immunodeficiency (CVID). Pt is stable on current monthly IG infusions. No active infections reported.\n\nPlan:\n1. Continue monthly immunoglobulin infusions as scheduled.\n2. Continue current medications for hypertension and hyperlipidemia.\n3. Continue monitoring CBC and renal function.\n4. Follow up in 3 months or sooner if she develops signs of infection.\n\nElectronically signed,\nD. Kowalski, DO\n10/14/2026",
+  "answer": [
+    "D83.9"
+  ],
+  "explanations": [
+    "Common variable immunodeficiency: D83.9 (HCC 114)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D84.9"
+      ],
+      "confusion": "nonspecific_immunodeficiency",
+      "lean": "under",
+      "why": "CVID is documented: D83.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.262,
+        "gap": -2.262,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "114"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.262,
+    "hccs": [
+      {
+        "hcc": "114",
+        "label": "Common Variable and Combined Immunodeficiencies",
+        "from": [
+          "D839"
+        ],
+        "weight": 2.262
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:05+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

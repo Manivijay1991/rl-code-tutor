@@ -1,0 +1,103 @@
+{
+  "id": "ckd_staging-b31fdfabee",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "1",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for hypertension and kidney function.\n\nHPI\nThe patient is a 36-year-old woman presenting today for a routine follow-up of her hypertension and chronic kidney disease. She reports feeling well and denies any recent episodes of syncope, shortness of breath, or significant edema. She has been compliant with her current medication regimen and reports regular blood pressure monitoring at home. She is here to review her most recent laboratory results and discuss management of her CKD.\n\nMedication List\nLisinopril 10mg daily\nHydrochlorothiazide 12.5mg daily\n\nExam\nThe patient is alert and oriented x3. She appears in no acute distress. Vital signs are stable. Heart rate is regular with normal S1 and S2. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended. No peripheral edema is noted in the lower extremities.\n\nAssessment\n1. Hypertension: Well-controlled on current medications.\n2. Chronic kidney disease: The patient has CKD stage 1. Recent labs show an eGFR of 94 mL/min/1.73m2. Urinalysis revealed the presence of albumin in the urine.\n\nPlan\nContinue current medications for hypertension and CKD. Order follow-up urinalysis and serum creatinine in three months. Patient instructed to maintain low-sodium diet.\n\nElectronically signed, L. Moreau, DO, 05/12/2026",
+  "answer": [
+    "I12.9",
+    "N18.1"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 1: N18.1."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.1"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.1"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0,
+        "gap": 0.815,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "The note documents stage 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T16:22:42+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

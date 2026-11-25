@@ -1,0 +1,114 @@
+{
+  "id": "diabetes_complications-4470e01d22",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and peripheral neuropathy.\n\nHPI\nThe patient is a 79-year-old male presenting for a routine follow-up of his chronic conditions. He reports that his blood glucose levels remain stable and he continues to manage his type 2 diabetes mellitus through diet and exercise alone. He currently takes no medications for his glucose management. He also reports ongoing sensations of tingling and numbness in his feet, consistent with his known polyneuropathy. He notes that these symptoms have remained stable over the last three months. He denies any acute changes in sensation or new-onset weakness.\n\nMedication List\nDietary modifications only.\n\nExam\nThe patient is alert and oriented. He appears in no acute distress. Neurological exam reveals diminished sensation to light touch in the distal lower extremities. Strength is 5/5 in all major muscle groups. Reflexes are diminished at the ankles.\n\nAssessment\n1. Type 2 diabetes mellitus: Currently diet controlled.\n2. Polyneuropathy: The patient's peripheral neuropathy is not related to diabetes.\n\nPlan\nContinue current diet and exercise regimen for glucose management. Monitor sensation in lower extremities. Follow up in three months.\n\nElectronically signed, J. Lindqvist, DO, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "G62.9"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified)."
+  ],
+  "refs": [
+    "OCG I.A.15"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:22+00:00",
+    "style": {
+      "age": 79,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

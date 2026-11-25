@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-46274f4f56",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nHPI: The patient is a 67-year-old man who presents today for a follow-up evaluation of his major depressive disorder. He reports that his mood has remained persistently low over the last several weeks. He describes a pervasive sense of sadness and a decreased interest in previously enjoyed activities, such as gardening and woodworking. He notes that his sleep patterns have been disrupted, characterized by early morning awakening and difficulty falling asleep. He also reports a notable decrease in his appetite and a general lack of energy throughout the day. He states that he has been struggling to concentrate on daily tasks and feels a sense of heaviness in his limbs. He denies any recent changes in his physical health that might be contributing to his symptoms. He is currently compliant with his prescribed regimen but expresses frustration with the slow pace of his improvement.\n\nMedication List:\n- Sertraline 100mg daily\n- Melatonin 3mg at bedtime\n\nReview of Systems:\nConstitutional: Fatigue, decreased appetite.\nPsychiatric: Depressed mood, low energy, impaired concentration.\nNeurological: No tremors or gait changes noted.\nAll other systems reviewed and are negative.\n\nSocial History: The patient is retired and lives with his wife. He enjoys woodworking as a hobby. He denies tobacco use and reports occasional social outings with friends.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes. No known history of psychiatric conditions in the immediate family.\n\nVitals:\nBP: 132/84 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\nCMP: Within normal limits.\n\nExam:\nThe patient is a well-groomed man who appears his stated age. He is cooperative and engaged in the conversation. His speech is normal in rate and volume. Affect is constricted and mood is described as \"down.\" Thought process is linear and goal-directed. Cognition is intact. No physical abnormalities noted during the brief physical assessment.\n\nAssessment:\nMajor depressive disorder, recurrent.\n\nPlan:\n1. Continue current dose of Sertraline.\n2. Maintain Melatonin for sleep hygiene.\n3. Continue to monitor mood and concentration.\n4. Follow up in four weeks for continued evaluation of symptoms.\n\nElectronically signed, T. Haddad, DO, 05/14/2026",
+  "answer": [
+    "F33.9"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, severity not documented (no HCC): F33.9."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "No severity is documented: do not assume one.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.9"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:58:54+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "T. Haddad"
+    }
+  }
+}

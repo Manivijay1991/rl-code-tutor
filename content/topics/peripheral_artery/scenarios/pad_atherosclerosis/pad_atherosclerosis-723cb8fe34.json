@@ -1,0 +1,88 @@
+{
+  "id": "pad_atherosclerosis-723cb8fe34",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "rest_pain",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint\nPain in right foot.\n\nHPI\nPt is an 83-year-old female presenting for evaluation of chronic pain. Pt reports constant rest pain in the right foot. Pt states symptoms have been progressing over several months. Pt denies any open wounds or skin breakdown. Symptoms are localized to the right lower extremity.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 40mg daily\nAspirin 81mg daily\n\nExam\nGeneral: Alert, oriented, in no acute distress.\nVitals: BP 138/82, HR 74, RR 16, Temp 98.6F, SpO2 97% on RA.\nMusculoskeletal: Right foot and lower extremity show diminished pulses. No skin breakdown or break in integrity noted. Left side unremarkable.\nNeuro: Sensation intact to light touch.\n\nAssessment\n1. Atherosclerosis of the right leg arteries. Pt presents with stable rest pain. No skin breakdown noted at this time.\n\nPlan\n1. Continue current antiplatelet and lipid-lowering meds.\n2. Scheduled for follow-up in 3 months to monitor symptoms.\n3. Instructed to report any new skin changes immediately.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "I70.221"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the right leg with rest pain (HCC 264): I70.221."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.222"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0.455,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.211"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Rest pain is documented: it is a higher stage (HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.455,
+        "gap": -0.455,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "264"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.455,
+    "hccs": [
+      {
+        "hcc": "264",
+        "label": "Vascular Disease with Complications",
+        "from": [
+          "I70221"
+        ],
+        "weight": 0.455
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:45+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

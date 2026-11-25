@@ -1,0 +1,58 @@
+{
+  "id": "pressure_ulcer-d94837f627",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up of right heel pressure ulcer.\n\nHPI\nPt is an 86y female presenting for follow-up of a pressure ulcer on the right heel. She reports that the area has been improving consistently since last visit. She denies any new pain, drainage, or discomfort at the site. She states she has been diligent with offloading. Physical exam today shows the pressure ulcer on the right heel is completely healed. No remaining tissue loss or irritation noted. Pt expresses satisfaction with progress.\n\nMedication List\nLisinopril 10mg QD\nAmlodipine 5mg QD\nAtorvastatin 20mg QD\nMultivitamin daily\n\nReview of Systems\nConstitutional: Denies fever, chills, fatigue.\nIntegumentary: Denies new rashes, itching, or new lesions.\nMusculoskeletal: Denies joint pain or stiffness.\nAll other systems reviewed and negative.\n\nSocial History\nPt lives at home with her daughter. Retired. No tobacco or alcohol use.\n\nFamily History\nMother: Hypertension, stroke.\nFather: Heart disease.\n\nVitals\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 54 kg\n\nRecent Labs\nHbA1c: 6.8%\neGFR: 62\nWBC: 8.2 (WNL)\nHgb: 12.1\n\nExam\nGeneral: Alert and oriented x3. Appears well-nourished. CTAB.\nSkin: Skin is intact and dry. No erythema or warmth noted to the right heel. The pressure ulcer on the right heel is fully healed. No drainage or granulation tissue noted.\nMusculoskeletal: No edema noted. Strength 5/5 in lower extremities.\n\nAssessment\n1. Pressure ulcer, right heel: Completely healed. No further treatment indicated at this time.\n\nPlan\n1. Discharge from wound follow-up.\n2. Continue current medications as prescribed.\n3. Patient advised to continue offloading and skin protection to prevent recurrence.\n4. F/u as needed for any new skin concerns.\n\nElectronically signed, A. Rivera, NP, 10/14/2026",
+  "answer": [],
+  "explanations": [
+    "A pressure ulcer documented as completely healed is not coded."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "healed_coded",
+      "lean": "over",
+      "why": "No code is assigned for a completely healed pressure ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:17:27+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

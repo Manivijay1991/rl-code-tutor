@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-529b50c692",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "med_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Low back pain.\n\nHPI: The patient is a 52-year-old male who presents today for evaluation of persistent low back pain. He reports that the discomfort began approximately three weeks ago after lifting several heavy boxes in his garage. He describes the pain as a dull ache located in the lumbar region that occasionally radiates into his right buttock. He rates the severity as a 6 out of 10. He notes that the pain is most prominent in the morning and after prolonged sitting at his desk for work. He denies any numbness, tingling, or weakness in his lower extremities. He has attempted over-the-counter ibuprofen with mild relief.\n\nMedication List:\n- Ibuprofen 400mg as needed\n- Venlafaxine 75mg daily\n\nSocial History: The patient works as an office manager and sits for roughly six hours a day. He lives with his wife and two children. He reports that he does not smoke and drinks alcohol socially on weekends. He exercises occasionally by walking his dog.\n\nFamily History: The patient's father has hypertension. His mother has osteoarthritis. There is no history of significant hereditary conditions in the immediate family.\n\nReview of Systems: The patient denies chest pain, shortness of breath, fever, chills, or unintended weight changes. He denies any neurological deficits or bowel/bladder incontinence. He denies any recent falls or acute trauma.\n\nVitals:\nBP: 128/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\n\nRecent Labs:\neGFR: 88 mL/min/1.73m2\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\n\nExam: The patient is alert and in no acute distress. Physical exam reveals tenderness to palpation over the lumbar spine. Range of motion is limited by discomfort. Straight leg raise test is negative bilaterally. Neurological exam shows intact sensation and motor strength in all lower extremity muscle groups. No spinal step-off is noted.\n\nProblem List:\n- Status post appendectomy\n- Status post cholecystectomy\n- Status post tonsillectomy\n\nAssessment: The patient presents with acute lumbar strain. The symptoms are consistent with muscular strain related to heavy lifting.\n\nPlan: The patient will begin a regimen of physical therapy twice weekly to focus on core strengthening and stretching. He is advised to use heat packs for symptomatic relief and to practice proper lifting techniques. He will follow up in four weeks to assess progress.\n\nElectronically signed,\nL. Moreau, PA-C\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "An antidepressant on the list does not establish major depression; coders do not infer diagnoses from medications."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_from_med_list",
+      "lean": "over",
+      "why": "Only the provider can document a diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:22:16+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

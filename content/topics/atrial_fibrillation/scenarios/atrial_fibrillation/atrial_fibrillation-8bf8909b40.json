@@ -1,0 +1,63 @@
+{
+  "id": "atrial_fibrillation-8bf8909b40",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "status": "resolved",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for history of atrial fibrillation.\n\nHPI\nThe patient is a 52-year-old male presenting for a routine follow-up regarding his history of atrial fibrillation. He originally underwent a catheter ablation procedure several years ago to manage his arrhythmia. He reports that he has had no recurrence since the procedure and feels well. He denies any palpitations, shortness of breath, dizziness, or syncope. Because he has remained stable and asymptomatic, he is not currently taking any medication for rate or rhythm control. He also confirms that he does not require any medication for his heart condition at this time.\n\nMedication List\nMultivitamin daily.\nLisinopril 10mg daily.\n\nVitals\nBP: 122/78 mmHg\nHR: 74 bpm (regular)\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\n\nRecent Labs\neGFR: 88 mL/min/1.73m2\nHbA1c: 5.6%\nTSH: 2.1 mIU/L\nPotassium: 4.2 mEq/L\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, chills, weight changes, or polyuria. He denies any neurological deficits or changes in vision.\n\nSocial History\nThe patient works as a software engineer. He reports exercising three times a week and non-smoking status. He drinks one to two alcoholic beverages on weekends.\n\nFamily History\nFather: Hypertension, myocardial infarction at age 65.\nMother: Type 2 diabetes, deceased at age 78.\nSiblings: One brother with hypertension.\n\nExam\nGeneral: Well-appearing, alert, and in no acute distress.\nCardiovascular: Regular rate and rhythm. S1, S2 heard clearly. No murmurs, rubs, or gallops noted. Capillary refill is less than 2 seconds.\nRespiratory: Clear to auscultation bilaterally.\nNeurological: Alert and oriented x3. Cranial nerves intact. No focal weakness or sensory loss.\n\nAssessment\n1. Atrial fibrillation, status post ablation. The patient is clinically stable with no recurrence since the procedure. He remains at low risk for complications and does not require any medication for rhythm or rate management.\n\nPlan\n1. Continue current monitoring.\n2. Follow up in 12 months for routine evaluation of atrial fibrillation.\n3. Patient instructed to seek immediate medical attention if he experiences new palpitations or chest pain.\n\nElectronically signed,\nL. Moreau, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z86.79"
+  ],
+  "explanations": [
+    "Atrial fibrillation cured by ablation, with no recurrence and no treatment: personal history, Z86.79 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "resolved_coded_current",
+      "lean": "over",
+      "why": "It no longer exists and is not treated: code the history, not current AF.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "238"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:56:48+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

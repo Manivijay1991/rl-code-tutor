@@ -1,0 +1,61 @@
+{
+  "id": "blood_immune-229b1f8f03",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "sickle_cell_trait"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint\nFollow-up for laboratory review.\n\nHPI\nThe patient is a 77-year-old woman who presents today for a routine follow-up to review recent laboratory results. She reports feeling well overall and denies any recent fatigue, shortness of breath, or generalized weakness. She is here primarily to discuss the findings of her recent blood work. She notes she has been asymptomatic and has not experienced any significant changes in her baseline health since her last evaluation.\n\nReview of Systems\nThe patient reports no fevers, chills, or night sweats. She denies any recent chest pain, palpitations, or syncope. She reports no joint pain, skin rashes, or neurological changes. She denies any changes in bowel habits or urinary symptoms.\n\nSocial History\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and walking. She reports being a former social smoker but has not used tobacco products in over 20 years. She denies any alcohol or illicit drug use.\n\nFamily History\nHer mother had hypertension and type 2 diabetes. Her father had a history of coronary artery disease. Her siblings are all healthy.\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nHematocrit: 38%\nWhite Blood Cell Count: 7.2 x 10^9/L\nPlatelets: 210 x 10^9/L\neGFR: 68 mL/min/1.73m2\n\nMedication List\nLisinopril 10 mg daily\nAtorvastatin 20 mg daily\nMultivitamin daily\n\nExam\nThe patient is a well-appearing, alert, and oriented 77-year-old female in no acute distress. Her skin is warm and dry. Heart sounds are regular with no murmurs, rubs, or gallops. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended. Extremities show no edema.\n\nAssessment\n1. Screening Laboratory Evaluation: The patient's laboratory results were reviewed today. The screening revealed that she has sickle cell trait. I have discussed with the patient that this is a carrier state and not a disease. She understands that this finding is incidental and does not require any specific treatment or intervention at this time.\n\nPlan\n1. Education: Provided counseling regarding the meaning of sickle cell trait as a carrier status.\n2. Monitoring: Continue current medications for blood pressure and cholesterol management.\n3. Follow-up: Return to the clinic in 6 months for a routine physical examination and laboratory review.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "D57.3"
+  ],
+  "explanations": [
+    "Sickle cell trait (carrier): D57.3 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.1"
+      ],
+      "confusion": "trait_coded_as_disease",
+      "lean": "over",
+      "why": "A carrier trait is not sickle cell disease (HCC 107).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.457,
+        "correct": 0,
+        "gap": 0.457,
+        "direction": "over",
+        "extra_hccs": [
+          "107"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:54+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-58342c306c",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "wet_amd_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision changes.\n\nHPI\nPt is a 56 y/o female presenting for scheduled management of exudative age-related macular degeneration of the right eye. Pt reports stable vision but continues to monitor for fluctuations. Reviewed hx of vision loss and previous treatments.\n\nMedication List\nCurrent medications not specified.\n\nExam\nRight eye: Fundus exam reveals active choroidal neovascularization. Dilated fundus exam shows significant subretinal fluid. Visual acuity remains stable for today's visit.\n\nAssessment\n1. Exudative age-related macular degeneration of the right eye with active CNV.\n\nPlan\n1. Administered anti-VEGF injection to the right eye today.\n2. Pt to monitor for any sudden changes in vision.\n3. F/u in appropriate timeframe for next injection and monitoring of active CNV.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "H35.3211"
+  ],
+  "explanations": [
+    "Exudative (wet) AMD, right eye, with active choroidal neovascularization: H35.3211 (HCC 300)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3111"
+      ],
+      "confusion": "wet_dry_confused",
+      "lean": "neutral",
+      "why": "Wet (exudative) AMD is documented; dry AMD has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.596,
+        "gap": -0.596,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "300"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "H35.3212"
+      ],
+      "confusion": "wrong_cnv_status",
+      "lean": "neutral",
+      "why": "The neovascularization is documented as active.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0.596,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.596,
+    "hccs": [
+      {
+        "hcc": "300",
+        "label": "Exudative Macular Degeneration",
+        "from": [
+          "H353211"
+        ],
+        "weight": 0.596
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:24+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

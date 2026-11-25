@@ -1,0 +1,111 @@
+{
+  "id": "diabetes_complications-02725499e4",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes management.\n\nHPI: Patient is an 88-year-old female with a history of type 2 diabetes. She has been managed with an oral hypoglycemic agent for several years. She reports occasional fatigue but denies any acute changes in vision or sensation.\n(Copied forward from prior visit): Patient reports adherence to medication. She notes that her blood glucose readings have been elevated recently. She denies any significant weight changes or acute illnesses.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F, Weight 145 lbs.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nNeurological: Negative for dizziness or syncope.\nGenitourinary: Negative for dysuria.\n\nMedication List:\nMetformin 500mg PO BID\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No new lesions or rashes noted.\nExtremities: No edema, pulses palpable.\n\nAssessment:\nType 2 diabetes mellitus.\nHyperglycemia.\n\nPlan:\nContinue current metformin regimen. Patient advised to monitor home glucose readings more frequently. Follow up in 3 months.\n\nElectronically signed, \nL. Moreau, NP\nOctober 14, 2026",
+  "answer": [
+    "E11.65",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Diabetes documented as poorly controlled, out of control, or with hyperglycemia is coded to diabetes with hyperglycemia.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Index: Diabetes, poorly controlled",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.84"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.649 is hypoglycemia, not hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:19+00:00",
+    "style": {
+      "age": 88,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "L. Moreau"
+    }
+  }
+}

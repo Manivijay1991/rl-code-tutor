@@ -1,0 +1,90 @@
+{
+  "id": "alcohol_use-5dbd9ec560",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_moderate",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint: Follow-up for alcohol use.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss.\nHEENT: Negative for vision changes.\nRespiratory: Negative for shortness of breath.\nCardiovascular: Negative for chest pain.\nGastrointestinal: Negative for nausea or abdominal pain.\nNeurological: Negative for tremors or dizziness.\nMusculoskeletal: Negative for joint pain.\n\nHPI: Copied Forward: Patient is an 89-year-old female presenting for ongoing management of alcohol use. She reports consistent consumption.\nUpdate: The patient reports she is currently drinking and continues to consume alcohol daily. She expresses a desire to manage her intake but admits difficulty with consistency. She denies any new acute physical symptoms.\n\nMedication List:\n- Multivitamin daily\n- Atorvastatin 20mg daily\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished.\nPsychiatric: Cooperative, normal mood, congruent affect.\nSkin: No significant lesions or rashes.\n\nAssessment:\n1. Alcohol use disorder, moderate.\n\nPlan:\n1. Discussed the risks associated with alcohol use disorder, moderate.\n2. Encouraged the patient to reduce daily consumption.\n3. Will follow up in four weeks to monitor progress.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "F10.20"
+  ],
+  "explanations": [
+    "Alcohol use disorder, moderate or severe, indexes to alcohol dependence: F10.20 (HCC 139)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "Moderate or severe use disorder is dependence (F10.2-); abuse has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.242,
+        "gap": -0.242,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "139"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F10.90"
+      ],
+      "confusion": "unspecified_use",
+      "lean": "under",
+      "why": "A use disorder with a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.242,
+        "gap": -0.242,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "139"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.242,
+    "hccs": [
+      {
+        "hcc": "139",
+        "label": "Alcohol Use Disorder/Moderate/Severe/Alcohol Use with Specified Non-Psychotic Complications",
+        "from": [
+          "F1020"
+        ],
+        "weight": 0.242
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:49+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

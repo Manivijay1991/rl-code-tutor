@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-38189cfa75",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "severe_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nPt is an 83 y.o. female presenting for f/u of major depressive disorder, single episode. Pt reports persistent low mood, profound fatigue, and difficulty with activities of daily living. Pt describes feeling \"hopeless\" and reports mood-congruent delusions regarding her health and mortality. Symptoms are persistent and have worsened over the last month. Pt denies any recent changes in medication adherence.\n\nMedication List\nSertraline 50mg daily\nQuetiapine 25mg qhs\n\nExam\nGeneral: Alert and oriented x3. Appears depressed and tearful.\nPsych: Speech slow, coherent. Mood: Depressed. Affect: Constricted. Thought process: Linear. Content: Includes mood-congruent delusions. Insight: Poor. Judgment: Impaired.\nVitals: BP 132/80, HR 74, RR 16, Temp 98.6 F.\n\nAssessment\n1. Major depressive disorder, single episode, severe with psychotic features. Pt is currently experiencing a severe episode with psychotic features and requires continued close monitoring and pharmacological management.\n\nPlan\n1. Continue current medications. \n2. Increase Quetiapine to 50mg qhs to address psychotic features.\n3. F/u in 2 weeks to monitor response to dosage adjustment.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "F32.3"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severe with psychotic features (HCC 152): F32.3."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.2"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "Psychotic features are documented: they change the code and the HCC (152).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.484,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "152"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.3"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents single episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.484,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.484,
+    "hccs": [
+      {
+        "hcc": "152",
+        "label": "Psychosis/Except Schizophrenia",
+        "from": [
+          "F323"
+        ],
+        "weight": 0.484
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:01+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

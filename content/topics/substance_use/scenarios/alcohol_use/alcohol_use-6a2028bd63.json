@@ -1,0 +1,89 @@
+{
+  "id": "alcohol_use-6a2028bd63",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_moderate",
+    "remission": "yes"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint: Follow-up for alcohol use disorder.\n\nHPI: Pt is an 85-year-old female presenting for follow-up of alcohol use disorder, moderate. Pt reports she has not consumed any alcohol for over a year. She reports she feels stable and denies any cravings or urges to drink. She is currently compliant with her treatment plan and reports a good quality of life. She denies any recent falls, changes in mood, or sleep disturbances.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Multivitamin daily\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nHEENT: No vision changes, no hearing loss.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: No abdominal pain, no changes in bowel habits.\nMSK: No joint pain, no stiffness.\nNeuro: No tremors, no memory issues.\n\nSocial History: Lives with daughter. Retired. Denies tobacco use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 132/80\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 12.4\nWt: 145 lbs\n\nRecent Labs:\neGFR: 65\nHbA1c: 5.8%\nTSH: 2.1\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, no murmurs.\nLungs: CTAB.\nAbd: Soft, non-tender, no organomegaly.\nExt: WNL, no edema.\n\nAssessment:\n1. Alcohol use disorder, moderate. Pt is in sustained remission. She has been abstinent for over 12 months and remains stable.\n2. Hypertension. Well-controlled on current meds.\n3. Hyperlipidemia. Stable.\n\nPlan:\n1. Alcohol use disorder, moderate: Continue current plan. Pt to continue avoiding alcohol. Encourage continued participation in support groups as desired.\n2. Hypertension: Continue Lisinopril 10mg QD.\n3. Hyperlipidemia: Continue Atorvastatin 20mg QD.\nFollow up in 3 months.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "F10.21"
+  ],
+  "explanations": [
+    "Alcohol use disorder, moderate or severe, in remission: F10.21, alcohol dependence in remission (HCC 139)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.20"
+      ],
+      "confusion": "missed_remission",
+      "lean": "neutral",
+      "why": "The provider documents remission.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0.242,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F10.11"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "Moderate or severe use disorder is dependence (F10.2-).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.242,
+        "gap": -0.242,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "139"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.242,
+    "hccs": [
+      {
+        "hcc": "139",
+        "label": "Alcohol Use Disorder/Moderate/Severe/Alcohol Use with Specified Non-Psychotic Complications",
+        "from": [
+          "F1021"
+        ],
+        "weight": 0.242
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:50+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "neuro_conditions-0ff7478887",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "epilepsy_intractable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for seizure management.\n\nHPI\nThe patient is a 36-year-old woman presenting for a follow-up evaluation of her epilepsy. She reports that she has been experiencing frequent breakthrough seizures despite being adherent to her current pharmacological regimen. She describes the seizures as occurring approximately three times per week, characterized by brief periods of tonic-clonic activity. She notes that these episodes have persisted despite the use of two concurrent medications. She denies any recent changes in her sleep patterns or significant new symptoms. She remains concerned about the lack of seizure control on her current treatment plan.\n\nMedication List\nLevetiracetam 1000mg BID\nLamotrigine 200mg BID\n\nExam\nThe patient is alert and oriented to person, place, and time. She is in no acute distress. Neurological examination reveals normal motor strength and sensation in all four extremities. Cranial nerves II-XII are intact. Reflexes are 2+ and symmetric. Coordination is normal.\n\nAssessment\nThe patient has intractable epilepsy. Despite the current use of two anti-epileptic medications, she continues to experience breakthrough seizures. Her condition is currently refractory to her existing pharmacological management.\n\nPlan\nWe will discuss the possibility of adding a third medication or exploring alternative therapies. I will also order an updated EEG to assess current electrical activity. We will continue current medications for now.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "G40.919"
+  ],
+  "explanations": [
+    "Intractable epilepsy without status epilepticus: G40.919 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G40.909"
+      ],
+      "confusion": "missed_intractable",
+      "lean": "under",
+      "why": "Intractable (drug-resistant) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40919"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:46+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

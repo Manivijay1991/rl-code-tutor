@@ -1,0 +1,112 @@
+{
+  "id": "dementia_severity-099f11dccf",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "severe",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline and evening behaviors.\n\nHPI: Pt is a 78-year-old male presenting for f/u of dementia. Caregiver reports significant decline in functional status over the last 6 months. Pt requires maximum assistance with ADLs and is non-verbal at times. Notable for severe dementia. Caregivers specifically report frequent episodes of agitation in the evenings, which interferes with sleep and safety. Pt is currently managed on a regimen of medications to address these symptoms.\n\nMedication List:\n- Donepezil 10mg daily\n- Quetiapine 12.5mg at bedtime\n- Lisinopril 10mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change.\nNeuro: Frequent confusion, severe dementia noted.\nPsych: Agitation in evening hours.\nMSK: No joint pain.\nCV: No chest pain or palpitations.\n\nSocial History: Retired. Lives with spouse and daughter. No tobacco or alcohol use.\n\nFamily History: Father had memory loss in late 70s. Mother had hypertension.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 65\nTSH: 2.1 mIU/L\nVitamin D: 30 ng/mL\n\nExam:\nGeneral: Pt seated in chair, appears tired.\nNeuro: Confused to time and place. Significant cognitive impairment consistent with severe dementia. Limited purposeful movement.\nPsych: Currently calm, but history of agitation is noted.\nSkin: Intact, no pressure ulcers.\nCV: RRR, regular S1, S2.\nLungs: CTAB.\n\nAssessment:\n1. Dementia: Pt shows progressive decline in memory and executive function.\n2. Severe dementia: Significant functional impairment noted.\n3. Agitation: Evening episodes reported; currently stable on low-dose antipsychotic.\n\nPlan:\n1. Continue current medications.\n2. Monitor for increased agitation; if worsening, consider titration of evening dose.\n3. Caregiver education provided on safety.\n4. F/u in 3 months.\n\nElectronically signed,\nT. Haddad, MD\n10/14/2026",
+  "answer": [
+    "F03.C11"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), severe, with agitation: F03.C11."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.911"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (severe): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.C0"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "125",
+        "label": "Dementia/Severe",
+        "from": [
+          "F03C11"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:48:28+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

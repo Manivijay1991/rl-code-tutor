@@ -1,0 +1,70 @@
+{
+  "id": "meat_support-502d5c1495",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "copd",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Low back pain\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F, RR 16\n\nRecent Labs: Hemoglobin 13.2 g/dL, White Blood Cell Count 7.0 x 10^9/L, Platelets 210 x 10^9/L.\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nRespiratory: Denies shortness of breath, cough.\nMusculoskeletal: Positive for low back pain; denies joint swelling.\nNeurological: Denies numbness or tingling in lower extremities.\nAll other systems: Reviewed and negative.\n\nSocial History: Retired; lives with husband. Non-smoker. Occasional gardening.\n\nFamily History: Father had hypertension. Mother had osteoarthritis.\n\nHPI: [Copied Forward] Patient is a 69-year-old female presenting for evaluation of low back pain. She reports a dull ache in the lumbar region that began approximately two weeks ago. She notes the pain is exacerbated by prolonged standing and improved with rest. She denies any radiating pain to the legs, incontinence, or recent falls. She has tried over-the-counter heat packs with moderate relief.\n\n[Today's Update] The patient states the low back pain has persisted for several days but has not worsened in intensity. She continues to use heat and reports some improvement during periods of rest. She denies any new symptoms.\n\nMedication List:\nTiotropium (Spiriva) 18mcg inhaler\nLisinopril 10mg daily\nNaproxen 500mg as needed for back pain\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Tenderness noted over the lumbar spine. Range of motion is limited by discomfort. No spinal step-off noted. Strength is 5/5 in bilateral lower extremities. Sensation is intact to light touch.\n\nProblem List:\n- COPD\n- Status post appendectomy\n- Status post cholecystectomy\n- Status post tonsillectomy\n- Low back pain\n\nAssessment:\n1. Low back pain: The patient's symptoms appear to be musculoskeletal in nature. She is stable regarding her primary chronic condition.\n2. COPD: Chronic obstructive pulmonary disease is stable.\n\nPlan:\n1. Low back pain: Will monitor symptoms and continue conservative management with heat and scheduled Naproxen as needed.\n2. COPD: Continue current tiotropium regimen. \n\nElectronically signed,\nA. Rivera, NP\nMay 14, 2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:26:24+00:00",
+    "style": {
+      "age": 69,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "A. Rivera"
+    }
+  }
+}

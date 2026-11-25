@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-9c9b30fbdd",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "uc_pancolitis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for ulcerative pancolitis.\n\nHPI: (Copied Forward) Patient is an 89-year-old female with a history of ulcerative pancolitis. She has been managed on mesalamine for several years. She reports stable symptoms with no recent flares of the pancolitis.\n(Update) Today, the patient reports she is feeling well and maintains a regular bowel habit. She denies any increase in urgency or frequency. She continues to tolerate her current medication without side effects.\n\nVitals: BP 128/74, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nGI: Negative\nMSK: Negative\nNeuro: Negative\nCV: Negative\nResp: Negative\n\nMedication List:\n- Mesalamine 2.5g daily\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nAbdomen: Soft, non-tender, non-distended. Normal bowel sounds. No guarding or rebound.\n\nAssessment:\n1. Ulcerative pancolitis: Currently in remission. Patient is stable on mesalamine.\n\nPlan:\n1. Continue current dose of mesalamine.\n2. Follow up in 6 months for routine monitoring.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "K51.00"
+  ],
+  "explanations": [
+    "Ulcerative pancolitis, no complications: K51.00 (HCC 81)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K51.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The extent (pancolitis) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.244,
+        "correct": 0.244,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.244,
+    "hccs": [
+      {
+        "hcc": "81",
+        "label": "Ulcerative Colitis",
+        "from": [
+          "K5100"
+        ],
+        "weight": 0.244
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:23+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

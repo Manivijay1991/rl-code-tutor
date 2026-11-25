@@ -1,0 +1,443 @@
+{
+  "id": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note_age": {
+    "min": 45
+  },
+  "slots": {
+    "deficit": {
+      "label": "Residual deficit",
+      "values": [
+        "none",
+        "hemiplegia_right",
+        "hemiplegia_left",
+        "aphasia"
+      ],
+      "labels": {
+        "none": "None",
+        "hemiplegia_right": "Right hemiparesis",
+        "hemiplegia_left": "Left hemiparesis",
+        "aphasia": "Aphasia"
+      },
+      "evidence": {
+        "none": [
+          "no residual"
+        ],
+        "hemiplegia_right": [
+          "right hemiparesis",
+          "right-sided hemiparesis",
+          "right hemiplegia",
+          "right-sided hemiplegia"
+        ],
+        "hemiplegia_left": [
+          "left hemiparesis",
+          "left-sided hemiparesis",
+          "left hemiplegia",
+          "left-sided hemiplegia"
+        ],
+        "aphasia": [
+          "aphasia"
+        ]
+      },
+      "describe": {
+        "none": "A past ischemic stroke with no residual deficits: the neurological exam is normal.",
+        "hemiplegia_right": "Residual right-sided hemiparesis from a past ischemic stroke, addressed at this visit.",
+        "hemiplegia_left": "Residual left-sided hemiparesis from a past ischemic stroke, addressed at this visit.",
+        "aphasia": "Residual expressive aphasia from a past ischemic stroke, addressed at this visit; no weakness."
+      }
+    },
+    "handedness": {
+      "label": "Dominant hand",
+      "values": [
+        "right",
+        "left",
+        "not_documented"
+      ],
+      "labels": {
+        "right": "Right-handed",
+        "left": "Left-handed",
+        "not_documented": "Not documented"
+      },
+      "evidence": {
+        "right": [
+          "right-handed",
+          "right hand dominant",
+          "right-hand dominant"
+        ],
+        "left": [
+          "left-handed",
+          "left hand dominant",
+          "left-hand dominant"
+        ],
+        "not_documented": []
+      },
+      "describe": {
+        "right": "The patient is right-handed.",
+        "left": "The patient is left-handed.",
+        "not_documented": "Do not mention handedness or hand dominance."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "deficit": [
+        "none",
+        "aphasia"
+      ],
+      "handedness": [
+        "right",
+        "left"
+      ]
+    }
+  ],
+  "note_forbid": [
+    "acute stroke",
+    "new stroke",
+    "hemorrhagic",
+    "hemorrhage",
+    "TIA",
+    "transient ischemic",
+    "dysphagia",
+    "dysarthria",
+    "facial droop",
+    "neglect",
+    "cognitive deficit",
+    "ataxia",
+    "seizure",
+    "spasticity",
+    "contracture",
+    "monoplegia"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "require": [
+        [
+          "ischemic stroke",
+          "cerebral infarction",
+          "CVA"
+        ]
+      ]
+    },
+    {
+      "when": {
+        "handedness": "not_documented"
+      },
+      "forbid": [
+        "dominant",
+        "handed"
+      ]
+    },
+    {
+      "when": {
+        "deficit": [
+          "none",
+          "aphasia"
+        ]
+      },
+      "forbid": [
+        "weakness",
+        "hemiparesis",
+        "hemiplegia",
+        "paresis"
+      ]
+    },
+    {
+      "when": {
+        "deficit": [
+          "none",
+          "hemiplegia_right",
+          "hemiplegia_left"
+        ]
+      },
+      "forbid": [
+        "aphasia",
+        "dysphasia",
+        "speech difficulty",
+        "word-finding"
+      ]
+    }
+  ],
+  "confusions": {
+    "coded_acute_stroke": {
+      "description": "Used an acute stroke code (I63.-) after the acute episode.",
+      "lean": "over"
+    },
+    "history_with_deficit": {
+      "description": "Coded personal history (Z86.73) when a residual deficit is documented.",
+      "lean": "under"
+    },
+    "sequela_without_deficit": {
+      "description": "Coded a stroke sequela when no residual deficit is documented.",
+      "lean": "over"
+    },
+    "wrong_dominance": {
+      "description": "Picked the wrong dominant or non-dominant side.",
+      "lean": "neutral"
+    },
+    "unspecified_side": {
+      "description": "Used an unspecified-side code when the side is documented.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "sequela",
+      "rules": [
+        {
+          "when": {
+            "deficit": "none"
+          },
+          "codes": [
+            "Z86.73"
+          ],
+          "explain": "A past ischemic stroke with no residual deficits: Z86.73, personal history (no HCC). I63 codes are for the acute stroke only.",
+          "refs": [
+            "OCG I.C.9.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I63.9"
+              ],
+              "confusion": "coded_acute_stroke",
+              "why": "I63 codes are for the acute stroke episode; after discharge use Z86.73 or I69.-."
+            },
+            {
+              "codes": [
+                "I69.30"
+              ],
+              "confusion": "sequela_without_deficit",
+              "why": "No residual deficit is documented, so there is no sequela to code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "deficit": "aphasia"
+          },
+          "codes": [
+            "I69.320"
+          ],
+          "explain": "Residual aphasia from a past ischemic stroke: I69.320, a sequela code (no HCC in V28).",
+          "refs": [
+            "OCG I.C.9.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "history_with_deficit",
+              "why": "A residual deficit is documented: code the sequela (I69.-), not Z86.73."
+            },
+            {
+              "codes": [
+                "I63.9"
+              ],
+              "confusion": "coded_acute_stroke",
+              "why": "I63 codes are for the acute stroke episode only."
+            }
+          ]
+        },
+        {
+          "when": {
+            "deficit": "hemiplegia_right",
+            "handedness": "right"
+          },
+          "codes": [
+            "I69.351"
+          ],
+          "explain": "Residual hemiparesis after an ischemic stroke, right dominant side: I69.351 (HCC 253).",
+          "refs": [
+            "OCG I.C.9.d",
+            "OCG I.C.6.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I69.353"
+              ],
+              "confusion": "wrong_dominance",
+              "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant."
+            },
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "history_with_deficit",
+              "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73."
+            }
+          ]
+        },
+        {
+          "when": {
+            "deficit": "hemiplegia_right",
+            "handedness": "left"
+          },
+          "codes": [
+            "I69.353"
+          ],
+          "explain": "Residual hemiparesis after an ischemic stroke, right non-dominant side: I69.353 (HCC 253).",
+          "refs": [
+            "OCG I.C.9.d",
+            "OCG I.C.6.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I69.351"
+              ],
+              "confusion": "wrong_dominance",
+              "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant."
+            },
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "history_with_deficit",
+              "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73."
+            }
+          ]
+        },
+        {
+          "when": {
+            "deficit": "hemiplegia_right",
+            "handedness": "not_documented"
+          },
+          "codes": [
+            "I69.351"
+          ],
+          "explain": "Residual hemiparesis after an ischemic stroke, right side, dominant by default: I69.351 (HCC 253).",
+          "refs": [
+            "OCG I.C.9.d",
+            "OCG I.C.6.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I69.353"
+              ],
+              "confusion": "wrong_dominance",
+              "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant."
+            },
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "history_with_deficit",
+              "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73."
+            },
+            {
+              "codes": [
+                "I69.359"
+              ],
+              "confusion": "unspecified_side",
+              "why": "The affected side is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "deficit": "hemiplegia_left",
+            "handedness": "right"
+          },
+          "codes": [
+            "I69.354"
+          ],
+          "explain": "Residual hemiparesis after an ischemic stroke, left non-dominant side: I69.354 (HCC 253).",
+          "refs": [
+            "OCG I.C.9.d",
+            "OCG I.C.6.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I69.352"
+              ],
+              "confusion": "wrong_dominance",
+              "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant."
+            },
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "history_with_deficit",
+              "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73."
+            }
+          ]
+        },
+        {
+          "when": {
+            "deficit": "hemiplegia_left",
+            "handedness": "left"
+          },
+          "codes": [
+            "I69.352"
+          ],
+          "explain": "Residual hemiparesis after an ischemic stroke, left dominant side: I69.352 (HCC 253).",
+          "refs": [
+            "OCG I.C.9.d",
+            "OCG I.C.6.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I69.354"
+              ],
+              "confusion": "wrong_dominance",
+              "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant."
+            },
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "history_with_deficit",
+              "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73."
+            }
+          ]
+        },
+        {
+          "when": {
+            "deficit": "hemiplegia_left",
+            "handedness": "not_documented"
+          },
+          "codes": [
+            "I69.354"
+          ],
+          "explain": "Residual hemiparesis after an ischemic stroke, left side, non-dominant by default: I69.354 (HCC 253).",
+          "refs": [
+            "OCG I.C.9.d",
+            "OCG I.C.6.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I69.352"
+              ],
+              "confusion": "wrong_dominance",
+              "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant."
+            },
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "history_with_deficit",
+              "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73."
+            },
+            {
+              "codes": [
+                "I69.359"
+              ],
+              "confusion": "unspecified_side",
+              "why": "The affected side is documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coding Tutor delivery files (web/data/)",
+  "description": "The contract between the Python build step (coding_tutor.bundle.export writes it) and the static web app (web/js reads it): manifest.json validates against #/$defs/manifest, each topic file against #/$defs/topic_file. Both sides test against this file.",
+  "$ref": "#/$defs/manifest",
+  "$defs": {
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Z][0-9][0-9A-Z](\\.[0-9A-Z]{1,4})?$"
+    },
+    "table": {
+      "type": "object",
+      "required": [
+        "title",
+        "topic",
+        "question",
+        "status",
+        "slots",
+        "confusions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string",
+          "description": "id of the topic folder the table belongs to"
+        },
+        "question": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "reviewed"
+          ]
+        },
+        "slots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "label",
+              "values"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "values": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "confusions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "description",
+              "lean"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "lean": {
+                "$ref": "#/$defs/lean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "lean": {
+      "enum": [
+        "over",
+        "under",
+        "neutral"
+      ]
+    },
+    "scenario": {
+      "type": "object",
+      "required": [
+        "id",
+        "table",
+        "slots",
+        "note",
+        "evidence",
+        "options",
+        "explanations",
+        "refs",
+        "risk_score"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "table": {
+          "type": "string"
+        },
+        "slots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "start",
+              "end",
+              "slot"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "slot": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/option"
+          }
+        },
+        "explanations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "risk_score": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "required": [
+        "codes",
+        "correct"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/code"
+          }
+        },
+        "correct": {
+          "type": "boolean"
+        },
+        "confusion": {
+          "type": "string"
+        },
+        "lean": {
+          "$ref": "#/$defs/lean"
+        },
+        "why": {
+          "type": "string"
+        },
+        "deciding": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "pivot": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "slot",
+                "value"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "slot": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "gap": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "segment",
+                "student",
+                "correct",
+                "gap",
+                "direction",
+                "extra_hccs",
+                "missing_hccs"
+              ],
+              "properties": {
+                "segment": {
+                  "type": "string"
+                },
+                "student": {
+                  "type": "number"
+                },
+                "correct": {
+                  "type": "number"
+                },
+                "gap": {
+                  "type": "number"
+                },
+                "direction": {
+                  "enum": [
+                    "over",
+                    "under",
+                    "none"
+                  ]
+                },
+                "extra_hccs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "missing_hccs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "description": "web/data/manifest.json: small, always fetched fresh. Lists the topics and points at one immutable, content-hashed file per topic.",
+      "required": [
+        "version",
+        "generated",
+        "code_set",
+        "topics",
+        "tables",
+        "hccs",
+        "references"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "generated": {
+          "type": "string"
+        },
+        "code_set": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "topics": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/topic_entry"
+          }
+        },
+        "tables": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/table"
+          }
+        },
+        "hccs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "references": {
+          "description": "reference id -> title and link (content/references.json), for the refs the scenarios cite",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "title",
+              "url"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https://"
+              }
+            }
+          }
+        }
+      }
+    },
+    "topic_entry": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "kind",
+        "description",
+        "order",
+        "file",
+        "scenarios",
+        "tables"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "hcc",
+            "documentation"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "string",
+          "pattern": "^topics/[a-z][a-z0-9_]*\\.[0-9a-f]{10}\\.json$"
+        },
+        "scenarios": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tables": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "topic_file": {
+      "type": "object",
+      "description": "web/data/topics/<id>.<hash>.json: one topic's scenarios and the code descriptions they use.",
+      "required": [
+        "topic",
+        "codes",
+        "scenarios"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "topic": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "desc",
+              "billable"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "desc": {
+                "type": "string"
+              },
+              "billable": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/scenario"
+          }
+        }
+      }
+    }
+  }
+}

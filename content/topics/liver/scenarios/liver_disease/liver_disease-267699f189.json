@@ -1,0 +1,68 @@
+{
+  "id": "liver_disease-267699f189",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "alcoholic_cirrhosis_ascites"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for liver disease.\n\nHPI: The patient is an 86-year-old male presenting for a follow-up evaluation of his chronic liver condition. He reports that he has been experiencing increasing abdominal girth and a feeling of fullness. He notes that his fatigue has been persistent over the last month. He states that he successfully ceased all alcohol consumption several months ago and remains sober. He reports no new episodes of fever, chills, or acute pain. He denies any recent changes in his mental status or significant weight loss.\n\nMedication List:\n- Spironolactone 25 mg daily\n- Lactulose 30 mL three times daily\n- Vitamin K 10 mg daily\n\nVitals:\nBP: 132/78 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 97% on room air\nWeight: 185 lbs\n\nRecent Labs:\nAST: 88 U/L\nALT: 72 U/L\nAlbumin: 2.8 g/dL\nINR: 1.4\nPlatelets: 110,000/uL\nBilirubin: 1.8 mg/dL\neGFR: 55 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Denies fever, chills, or night sweats.\nGastrointestinal: Reports increased abdominal girth. Denies nausea, vomiting, or black stools.\nNeurological: Denies confusion or tremors.\nMusculoskeletal: Denies joint pain.\n\nSocial History: Retired. Lives with his wife. He no longer drinks alcohol.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nAbdomen: Significant distension noted. Firm, non-tender. Palpable fluid waves present.\nExtremities: 1+ pitting edema in bilateral lower extremities.\n\nAssessment:\nThe patient is an 86-year-old male with a history of alcoholic cirrhosis. He currently presents with worsening ascites. His laboratory values show a decline in albumin and a slight elevation in INR, consistent with his chronic condition. He has successfully maintained sobriety.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Monitor for signs of infection or worsening fluid accumulation.\n3. Follow up in four weeks for a repeat laboratory panel and clinical reassessment.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "K70.31"
+  ],
+  "explanations": [
+    "Alcoholic cirrhosis with ascites: K70.31 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K70.30"
+      ],
+      "confusion": "missed_ascites",
+      "lean": "under",
+      "why": "Ascites is documented: K70.31.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7031"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:47+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

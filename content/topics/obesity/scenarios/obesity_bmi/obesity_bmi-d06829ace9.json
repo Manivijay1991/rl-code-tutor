@@ -1,0 +1,78 @@
+{
+  "id": "obesity_bmi-d06829ace9",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "52"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension.\n\nVitals: BP 138/84, HR 76, SpO2 98% on RA, Temp 98.6 F. BMI 52.4.\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath.\nNeurological: Denies dizziness or syncope.\nMusculoskeletal: Denies joint pain.\n\nHPI: [Copied Forward] Patient is an 89-year-old female presenting for management of essential hypertension. She reports stable blood pressure readings at home and denies any recent episodes of lightheadedness. She is adherent to her current antihypertensive regimen.\n[Today's Update] The patient reports continued stability with her current medications. She denies any new symptoms or side effects. She remains ambulatory and independent with her daily activities.\n\nMedication List:\n- Lisinopril 10mg daily\n- Amlodipine 5mg daily\n- Hydrochlorothiazide 12.5mg daily\n\nExam:\nGeneral: Alert and oriented x3. Well-appearing for her age.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Hypertension: Well-controlled on current regimen.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Patient to continue monitoring blood pressure at home and keep a log for the next visit.\n3. Return to clinic in 3 months for routine follow-up.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.43"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "48"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:52+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-8ac35bea73",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nThe patient is an 81-year-old woman presenting for a follow-up evaluation of her major depressive disorder. She reports a persistent low mood and a lack of interest in previously enjoyed activities over the past several weeks. She describes feeling fatigued most days and notes that her sleep has been interrupted by difficulty falling asleep. She denies any recent changes in her physical health that she believes are contributing to her mood. She continues to experience symptoms consistent with her recurrent diagnosis. She states that she is managing to complete her daily routine but finds it increasingly difficult to maintain her energy levels. She is currently taking her prescribed medications as directed and reports no significant side effects at this time.\n\nMedication List\nSertraline 50mg daily\nMelatonin 3mg at bedtime\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, or palpitations. She denies any recent weight changes or changes in appetite. She denies any joint pain or muscle aches. She denies any headaches or dizziness. She denies any changes in bowel or bladder habits. She reports persistent low mood and fatigue.\n\nSocial History\nThe patient lives in a private residence with her spouse. She is retired and spends most of her time gardening and participating in a local knitting club. She denies any tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension. Her father had a history of coronary artery disease. Her siblings are healthy.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nGlucose: 104 mg/dL\nTSH: 2.1 mIU/L\neGFR: 72 mL/min/1.73m2\n\nExam\nThe patient is an 81-year-old woman who appears well-groomed. She is cooperative and maintains good eye contact. Her speech is clear and coherent. Her affect is flat, but her mood is reported as sad. Cognition is intact with no signs of disorientation. Physical exam is unremarkable.\n\nAssessment\nMajor depressive disorder, recurrent.\n\nPlan\n1. Continue current dose of Sertraline.\n2. Continue Melatonin for sleep support.\n3. Follow up in four weeks for a repeat evaluation of mood and medication efficacy.\n4. Encouraged continued engagement with social activities and hobbies.\n\nElectronically signed, P. O'Brien, DO, 05/14/2026",
+  "answer": [
+    "F33.9"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, severity not documented (no HCC): F33.9."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "No severity is documented: do not assume one.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.9"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:50:00+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "P. O'Brien"
+    }
+  }
+}

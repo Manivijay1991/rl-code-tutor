@@ -1,0 +1,89 @@
+{
+  "id": "cancer_status-e6041f0bec",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for oncology treatment.\n\nHPI: The patient is a 70-year-old male who presents today for a follow-up visit regarding his diagnosis of cancer of the right lung. He is currently receiving chemotherapy and reports that he has been managing the side effects of his systemic treatment. He describes moderate fatigue and some mild nausea, but he states that these symptoms are manageable with his current supportive medications. He denies any new respiratory distress, significant weight loss, or new-onset pain. He reports that his energy levels have been stable over the last two weeks. He is compliant with his treatment schedule and expresses a desire to continue with the current plan of care.\n\nMedication List:\n- Chemotherapy agent (as prescribed)\n- Ondansetron 8mg as needed for nausea\n- Multivitamin daily\n\nSocial History: The patient resides in a single-story home with his wife. He is a former smoker (quit 10 years ago) and enjoys gardening. He works part-time as a consultant.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes. Siblings are healthy.\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever, chills, or night sweats.\nRespiratory: Negative for cough, wheezing, or shortness of breath.\nGastrointestinal: Positive for occasional nausea. Negative for abdominal pain or changes in bowel habits.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for headaches or dizziness.\n\nVitals:\nBlood Pressure: 132/84 mmHg\nHeart Rate: 76 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 96% on room air\n\nRecent Labs:\nWBC: 4.2 x 10^9/L\nHemoglobin: 11.8 g/dL\nPlatelets: 145 x 10^3/uL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nExam: The patient is alert and oriented x3. He appears in no acute distress. Lungs are clear to auscultation. Heart sounds are regular with no murmurs. Abdomen is soft, non-tender, and non-distended. Extremities are intact without edema.\n\nAssessment: 70-year-old male with cancer of the right lung who is currently receiving chemotherapy. The condition is localized and shows no evidence of progression to other sites at this time.\n\nPlan: Continue current chemotherapy protocol. Monitor for signs of infection or severe neutropenia. Follow up in four weeks for the next cycle of treatment.\n\nElectronically signed, J. Lindqvist, NP, 10/14/2026",
+  "answer": [
+    "C34.91"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.136,
+        "gap": -1.136,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "20"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.90"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 1.136,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.136,
+    "hccs": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "from": [
+          "C3491"
+        ],
+        "weight": 1.136
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:26+00:00",
+    "style": {
+      "age": 70,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "copd_respiratory-194dcf0e4f",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "copd",
+    "respiratory": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint\nFollow-up for COPD.\n\nHPI\nPt is a 56-year-old female presenting for routine follow-up of chronic obstructive pulmonary disease. Pt reports she has been feeling well overall since the last visit. She denies increased shortness of breath, productive cough, or chest pain. She notes she is maintaining her activity level and does not require any supplemental breathing support at home. She reports good adherence to current medications and lifestyle modifications.\n\nMedication List\n1. Tiotropium inhaler daily\n2. Salbutamol inhaler PRN\n\nExam\nGen: Alert, oriented, in no acute distress.\nResp: CTAB. Breath sounds clear bilaterally. No wheezes or rales.\nCV: RRR, regular rhythm.\nExt: No edema.\nVitals: BP 128/82, HR 74, RR 16, SpO2 97% on room air.\n\nAssessment\n1. COPD, stable.\n\nPlan\n1. Continue current maintenance medications as prescribed.\n2. Continue smoking cessation counseling.\n3. F/u in 4 months for routine check.\n\nElectronically signed,\nD. Kowalski, MD\n05/14/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "Stable COPD: J44.9 (HCC 280)."
+  ],
+  "refs": [
+    "OCG I.C.10.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.1"
+      ],
+      "confusion": "unsupported_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:14+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

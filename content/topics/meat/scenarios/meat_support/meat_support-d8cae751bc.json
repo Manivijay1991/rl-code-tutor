@@ -1,0 +1,87 @@
+{
+  "id": "meat_support-d8cae751bc",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Low back pain\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F\n\nHPI: [Copied Forward] Patient is a 74-year-old female presenting with chronic low back pain. She describes a dull ache in the lumbar region that began several months ago. She reports that the pain is exacerbated by prolonged sitting or standing and is partially relieved by heat application. She denies any radiating pain down the extremities, numbness, or weakness. She reports a steady, non-progressive pain level. \n\n[Today's Update] The patient reports that her low back pain remains consistent since the last visit. She denies any new sharp sensations or increased severity.\n\nReview of Systems:\nConstitutional: Negative\nMusculoskeletal: Positive (Low back pain)\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nSkin: Negative\n\nMedication List:\n- Lisinopril 10mg daily\n- Furosemide 40mg daily\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Tenderness noted over the lumbar spine upon palpation. Range of motion is slightly limited by discomfort. No spinal step-off noted.\n\nProblem List:\n- chronic systolic heart failure\n- status post appendectomy\n- status post cholecystectomy\n- status post tonsillectomy\n\nAssessment:\n1. Low back pain: Stable. Patient reports no change in symptoms.\n2. chronic systolic heart failure: Reviewed. Patient is currently stable on her current regimen.\n\nPlan:\n1. Low back pain: Continue current home stretching and heat therapy.\n2. chronic systolic heart failure: Continue Lisinopril and Furosemide as prescribed. Will monitor for any changes in fluid status.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "I50.22"
+  ],
+  "explanations": [
+    "The provider addressed chronic systolic heart failure at this visit, so it is supported: I50.22."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.36,
+        "gap": -0.36,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Type (systolic) and acuity (chronic) are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5022"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:28:37+00:00",
+    "style": {
+      "age": 74,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

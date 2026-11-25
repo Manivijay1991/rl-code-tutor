@@ -1,0 +1,63 @@
+{
+  "id": "dementia_severity-ff1a6e05dd",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "mci",
+    "severity": "unspecified",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for memory concerns.\n\nHPI: (Copied forward from previous visit) The patient is a 78-year-old male presenting for evaluation of progressive short-term memory loss and occasional difficulty with word-finding. He reports that his family has noticed he struggles to remember recent conversations and occasionally loses his keys. He denies any significant changes in his activities of daily living or personality. He remains independent with all self-care tasks.\n\n(Current update) The patient returns today for a follow-up evaluation. He reports that his memory lapses continue but remain stable since the last appointment. He denies any new episodes of confusion or disorientation. He remains calm and cooperative throughout the encounter. There is no evidence of behavioral disturbances or mood changes.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Donepezil 5mg daily\n\nVitals: BP 134/82, HR 74, Temp 98.6F, SpO2 98% on room air, BMI 26.4.\n\nRecent Labs:\n- HbA1c: 6.2%\n- eGFR: 68 mL/min/1.73m2\n- TSH: 2.1 mIU/L\n- Vitamin B12: 450 pg/mL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nNeurological: Positive for mild cognitive impairment; negative for tremors or gait instability.\nPsychiatric: Negative for mood disturbances or sleep changes.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nGenitourinary: Negative for dysuria.\n\nSocial History: Retired engineer. Lives with his wife in a single-story home. No tobacco or alcohol use.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nExam:\nGeneral: Well-developed, well-nourished male who appears his stated age. He is calm and cooperative.\nNeurological: Alert and oriented to person, place, and time. Speech is clear. Gait is steady. Reflexes are 2+ throughout.\nMental Status: The patient demonstrates mild cognitive impairment during the interview. He is able to follow multi-step commands and engage in conversation.\n\nAssessment:\n1. Mild cognitive impairment.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue monitoring of cognitive status at every visit.\n3. Encourage continued social engagement and mental stimulation.\n4. Follow up in 3 months.\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [
+    "G31.84"
+  ],
+  "explanations": [
+    "Mild cognitive impairment is not dementia: G31.84 (no HCC). Code dementia only when the provider documents it."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "coded_dementia_for_mci",
+      "lean": "over",
+      "why": "The provider documents mild cognitive impairment, not dementia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0,
+        "gap": 0.341,
+        "direction": "over",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T04:36:49+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

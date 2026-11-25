@@ -1,0 +1,60 @@
+{
+  "id": "acceptable_sources-890ec59e53",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "unsigned_note"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Date: 05/14/2026\nNote status: unsigned\n\nChief Complaint: COPD follow-up.\n\nHPI: (Copied Forward) Patient is an 89-year-old female with a history of chronic obstructive pulmonary disease. She reports stable symptoms with regular use of maintenance inhaler therapy. She denies significant shortness of breath at rest or increased sputum production.\n\nUpdate: The patient presents today for a routine follow-up of her chronic obstructive pulmonary disease. She states she has been feeling well since the last visit and has been adherent to her medications. She denies any new cough or chest pain.\n\nVitals: BP 128/74, HR 76, SpO2 96% on room air, Temp 98.2 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nRespiratory: Negative for cough, wheezing.\nCardiovascular: Negative for palpitations, edema.\nGastrointestinal: Negative for nausea, diarrhea.\nNeurological: Negative for dizziness, syncope.\n\nMedication List:\n- Tiotropium and formoterol inhaler\n- Lisinopril 10mg daily\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nRespiratory: Lungs clear to auscultation bilaterally. No wheezing noted.\nCardiovascular: Regular rate and rhythm. No murmurs.\n\nAssessment:\n1. COPD: Stable.\n\nPlan:\nContinue current maintenance inhaler therapy. Follow up in 3 months.",
+  "answer": [],
+  "explanations": [
+    "A note must be signed with the provider's credentials to be used. Unsigned: no code (ask the provider to sign it)."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_unsigned_note",
+      "lean": "over",
+      "why": "Without a signature and credentials the note cannot support a code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:18+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "signed": false
+    }
+  }
+}

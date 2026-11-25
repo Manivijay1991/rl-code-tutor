@@ -1,0 +1,60 @@
+{
+  "id": "status_codes-9892a87419",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "ileostomy",
+    "state": "reversed"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for gastrointestinal health and stoma history.\n\nHPI\nThe patient is a 73-year-old male presenting today for a routine follow-up regarding his history of bowel surgery. He reports that he previously had an ileostomy. He underwent a surgical reversal of the stoma several years ago and is currently living without a stoma. He reports that his digestion has been stable since the takedown procedure. He denies any current abdominal pain, persistent diarrhea, or significant changes in bowel habits. He states he feels well and has no concerns regarding his nutritional intake or energy levels.\n\nReview of Systems\nNegative for fever, chills, weight loss, or abdominal pain. Denies nausea, vomiting, or shortness of breath. Denies any changes in appetite.\n\nSocial History\nThe patient is retired and lives at home with his wife. He enjoys walking and gardening. He denies tobacco or alcohol use.\n\nFamily History\nFather had hypertension. Mother had a history of stroke.\n\nMedication List\nMultivitamin daily.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'10\"\nWeight: 185 lbs\n\nRecent Labs\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nPlatelet Count: 210 x 10^9/L\nGlucose: 105 mg/dL\neGFR: 82 mL/min/1.73m2\n\nExam\nGeneral: The patient is alert and oriented x3. He appears well-nourished and in no acute distress.\nAbdomen: Soft, non-tender, and non-distended. Bowel sounds are present in all four quadrants. No masses or guarding noted.\nSkin: Intact, no signs of irritation or breakdown.\n\nAssessment\n1. Status post ileostomy reversal. The patient is clinically stable and asymptomatic following the surgical reversal of his previous stoma.\n\nPlan\n1. Continue current activity level.\n2. Follow up in 6 months for routine monitoring.\n3. Encouraged to maintain a high-fiber diet to support healthy digestion following the takedown.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "The ileostomy was reversed: the patient no longer has one, so there is no status to report."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.2"
+      ],
+      "confusion": "reversed_coded",
+      "lean": "over",
+      "why": "A reversed ileostomy is no longer present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0,
+        "gap": 0.673,
+        "direction": "over",
+        "extra_hccs": [
+          "463"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:46+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

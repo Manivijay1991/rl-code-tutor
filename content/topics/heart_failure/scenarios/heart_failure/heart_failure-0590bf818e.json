@@ -1,0 +1,108 @@
+{
+  "id": "heart_failure-0590bf818e",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Follow-up for heart failure.\n\nHPI: Patient is a 72-year-old female who presents for a follow-up evaluation of chronic diastolic heart failure. She was previously seen in the clinic for management of heart failure with preserved ejection fraction. She reports that her symptoms have been well-controlled since the last visit. She denies any shortness of breath at rest, paroxysmal nocturnal dyspnea, or orthopnea. She reports stable weight and no significant peripheral edema. She is currently adherent to her prescribed medications and reports a good tolerance to the current regimen.\n\nMedication List:\n- Furosemide 40mg daily\n- Lisinopril 10mg daily\n- Spironolactone 25mg daily\n- Metoprolol Succinate 25mg daily\n\nVitals: BP 128/76, HR 72, RR 16, SpO2 98% on room air, Temp 98.6 F, Weight 158 lbs.\n\nRecent Labs:\n- Sodium: 138 mEq/L\n- Potassium: 4.2 mEq/L\n- BUN: 18 mg/dL\n- Creatinine: 0.9 mg/dL\n- eGFR: 78 mL/min/1.73m2\n- BNP: 140 pg/mL\n- HbA1c: 6.4%\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nCardiovascular: Negative for palpitations or chest pain.\nRespiratory: Negative for cough or wheezing.\nGastrointestinal: Negative for nausea or abdominal pain.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness or syncope.\n\nSocial History: Retired teacher, lives with husband. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had coronary artery disease. Father had a history of stroke.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nCardiovascular: Regular rhythm, S1 and S2 heard clearly. No S3 or S4. No murmurs. Capillary refill <2 seconds.\nPulmonary: Clear to auscultation bilaterally. No crackles or wheezes.\nExtremities: No pretibial edema. Full range of motion in all joints.\n\nAssessment:\n1. Chronic HFpEF: The patient’s condition remains stable. She is currently asymptomatic and shows no signs of fluid overload.\n\nPlan:\n1. Continue current medication regimen for chronic heart failure.\n2. Patient instructed to monitor daily weight and report any gains of more than 3 pounds in a day.\n3. Follow up in 3 months for routine laboratory work and clinical evaluation.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "I50.32"
+  ],
+  "explanations": [
+    "Chronic diastolic heart failure: I50.32 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.33"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents diastolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5032"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:29+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-8b95fbf7eb",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "2"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Wound care for sacrum.\n\nHPI: Pt is a 90 y.o. male presenting for f/u of a pressure ulcer located over the sacrum. Pt reports the area is painful but reports no drainage or fever. Pt is currently bedbound due to decreased mobility. Wound was first noted 2 weeks ago. Pt denies any new symptoms since last visit.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Meloxicam 15mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nIntegumentary: Pain at sacrum. No rashes elsewhere.\nMusculoskeletal: Generalized weakness, decreased mobility.\nAll other systems reviewed and negative.\n\nSocial History: Pt lives at home with a part-time caregiver. Retired. Non-smoker. No alcohol use.\n\nFamily History: Father had HTN. Mother had stroke.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 165 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 65\nWBC: 8.0 (WNL)\n\nExam:\nGeneral: Alert, oriented x3. Appears in no acute distress.\nSkin: Notable stage 2 pressure ulcer over the sacrum. Wound measures approx 2cm x 3cm. Erythema noted at periphery. No purulent drainage. Wound bed is pink and moist. Surrounding skin intact.\n\nAssessment:\n1. Stage 2 pressure ulcer of the sacrum.\n\nPlan:\n1. Pressure ulcer: Continue current wound care. Cleanse with normal saline. Apply hydrocolloid dressing to the sacrum site. \n2. Education: Discussed importance of frequent repositioning and pressure relief. \n3. F/u: Return to clinic in 2 weeks for wound assessment.\n\nElectronically signed, \nL. Moreau, DO\n10/14/2026",
+  "answer": [
+    "L89.152"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage 2: L89.152 (HCC 382)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.838,
+        "gap": -0.838,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.153"
+      ],
+      "confusion": "overstated_stage",
+      "lean": "over",
+      "why": "The documented stage is 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 0.838,
+        "gap": 0.237,
+        "direction": "over",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "382"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.838,
+    "hccs": [
+      {
+        "hcc": "382",
+        "label": "Pressure Ulcer of Skin with Partial Thickness Skin Loss",
+        "from": [
+          "L89152"
+        ],
+        "weight": 0.838
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:16:47+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

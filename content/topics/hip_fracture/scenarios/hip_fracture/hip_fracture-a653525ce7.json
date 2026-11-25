@@ -1,0 +1,89 @@
+{
+  "id": "hip_fracture-a653525ce7",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "right",
+    "encounter": "initial"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint\nPain in right hip.\n\nHPI\nPt is a 75 y/o female presenting for evaluation of right hip pain following a fall 2 days ago. Pt reports immediate pain and inability to bear weight. Exam and imaging performed today.\n\nMedication List\nAcetaminophen 650mg BID PRN.\n\nExam\nGen: Alert, oriented x3, in acute distress due to pain.\nMSK: Significant tenderness and edema over the right hip. Limited ROM.\nVitals: BP 130/80, HR 88, RR 18, Temp 98.6.\n\nAssessment\n1. Hip fracture.\n2. Closed fracture of the right femoral neck.\n\nPlan\nX-ray today confirms a closed fracture of the right femoral neck. Initiated pain management and mobility restrictions. Referred to orthopedic surgery for urgent evaluation and surgical intervention. Pt instructed to follow up with surgery and instructed on weight-bearing restrictions.\n\nElectronically signed,\nE. Castillo, DO\n05/12/2026",
+  "answer": [
+    "S72.001A"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the right femur, newly diagnosed, active treatment: 7th character A (HCC 402): S72.001A."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.001D"
+      ],
+      "confusion": "subsequent_for_initial",
+      "lean": "under",
+      "why": "The fracture is newly diagnosed and under active treatment: 7th character A.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.467,
+        "gap": -0.467,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "402"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "S72.002A"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right hip is fractured.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0.467,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.467,
+    "hccs": [
+      {
+        "hcc": "402",
+        "label": "Hip Fracture/Dislocation",
+        "from": [
+          "S72001A"
+        ],
+        "weight": 0.467
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:21+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

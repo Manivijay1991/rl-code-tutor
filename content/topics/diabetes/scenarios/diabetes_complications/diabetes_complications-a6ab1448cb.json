@@ -1,0 +1,120 @@
+{
+  "id": "diabetes_complications-a6ab1448cb",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and polyneuropathy.\n\nHPI\nThe patient is a 62-year-old man presenting for a routine follow-up of his type 2 diabetes mellitus and associated peripheral neuropathy. He reports that his blood glucose levels have remained relatively stable over the last three months. Regarding his polyneuropathy, he describes a persistent tingling sensation in both feet, which he notes is most prominent at night. He denies any acute changes in sensation, new-onset weakness, or significant ulcerations. He continues to take his oral hypoglycemic medication daily. He also reports occasional heartburn, which he manages with lifestyle modifications.\n\nMedication List\n- Metformin 1000mg BID\n- Omeprazole 20mg daily\n- Vitamin D3 2000 IU daily\n\nReview of Systems\nNegative for chest pain, shortness of breath, or palpitations. Negative for recent fevers or chills. Negative for changes in vision or hearing. Positive for occasional reflux. Positive for tingling in bilateral feet. Negative for falls or syncopal episodes.\n\nSocial History\nThe patient is a retired construction worker. He lives with his wife and two children. He reports a non-smoking status and drinks alcohol socially on weekends.\n\nFamily History\nFather had type 2 diabetes and a history of heart disease. Mother had gastroesophageal reflux disease.\n\nRecent Labs\nHbA1c: 7.1%\neGFR: 78 mL/min/1.73m2\nVitamin D: 28 ng/mL\nGlucose (fasting): 126 mg/dL\n\nVitals\nBP: 128/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 195 lbs\n\nExam\nGeneral: Alert and oriented x3. Well-nourished and in no acute distress.\nSkin: No ulcers or lesions noted on lower extremities.\nNeurological: Decreased sensation to monofilament and vibration at the great toes bilaterally. Reflexes are diminished at the ankles.\nGastrointestinal: No abdominal tenderness.\n\nAssessment\n1. Type 2 diabetes mellitus: Stable on current oral medication.\n2. Polyneuropathy: Symptomatic with tingling; currently stable.\n3. Vitamin D deficiency: Mild deficiency noted on recent labs.\n4. Gastroesophageal reflux disease: Stable.\n\nPlan\n- Continue current dose of metformin.\n- Continue Vitamin D3 supplementation.\n- Schedule follow-up in three months for repeat HbA1c.\n- Patient advised to monitor foot health daily for any skin changes.\n\nProblem List\n- Type 2 diabetes\n- Polyneuropathy\n- Vitamin D deficiency\n- Gastroesophageal reflux disease\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [
+    "E11.42",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: the combination code E11.42 captures both.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "Z79.84",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding the two separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.84"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.42"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1142"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:38+00:00",
+    "style": {
+      "age": 62,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

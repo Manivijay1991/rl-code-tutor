@@ -1,0 +1,80 @@
+{
+  "id": "alcohol_use-5f090e0bc6",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_mild",
+    "remission": "yes"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint: Follow-up for alcohol use history.\n\nHPI: The patient is a 79-year-old woman who presents today for a follow-up appointment regarding her history of alcohol use. She reports that she has successfully maintained sobriety and has not consumed any alcohol for over a year. She expresses a desire to maintain her current lifestyle and remains committed to her goals. She reports no current physical symptoms or concerns related to her previous alcohol use. She feels stable and is satisfied with her progress in maintaining sobriety.\n\nMedication List:\n- Multivitamin daily\n- Vitamin D3 2000 IU daily\n\nReview of Systems:\nGeneral: No fatigue, no fever, no weight changes.\nHEENT: No vision changes, no hearing loss.\nCardiovascular: No chest pain, no palpitations.\nRespiratory: No shortness of breath, no cough.\nGastrointestinal: No abdominal pain, no changes in bowel habits.\nMusculoskeletal: No joint pain, no falls.\nNeurological: No dizziness, no tremors.\n\nSocial History: The patient lives at home with her spouse. She enjoys gardening and walking. She retired five years ago.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/78\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs:\nHemoglobin: 12.8 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nGlucose: 104 mg/dL\neGFR: 74 mL/min/1.73m2\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nSkin: No rashes, no jaundice.\nPsychiatric: Normal mood and affect.\nNeurological: Cranial nerves intact, steady gait, normal speech.\n\nAssessment:\nThe patient has a history of alcohol use disorder, mild. She is currently in sustained remission, as she has not consumed alcohol in over a year. She is doing well and demonstrates good insight into her health.\n\nPlan:\n1. Continue current plan for alcohol use disorder, mild.\n2. Provide positive reinforcement for remaining in sustained remission.\n3. Encourage continued participation in social activities and hobbies.\n4. Follow up in 6 months for routine check-up.\n\nElectronically signed, \nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "F10.11"
+  ],
+  "explanations": [
+    "Alcohol use disorder, mild, in remission: F10.11."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "missed_remission",
+      "lean": "neutral",
+      "why": "The provider documents remission.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F10.21"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "A mild use disorder is abuse (F10.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0,
+        "gap": 0.242,
+        "direction": "over",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:54+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

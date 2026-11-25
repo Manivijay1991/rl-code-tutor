@@ -1,0 +1,141 @@
+{
+  "id": "ckd_staging-4c05a1bf3f",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3_unspecified",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and joint pain.\n\nHPI: Pt is a 90 y.o. female presenting for routine follow-up of hypertension, CKD, and osteoarthritis. Pt reports she is feeling well today. Denies any recent falls, dizziness, or shortness of breath. She notes occasional \"burning\" in the chest related to GERD but states it is well-controlled with current meds. She reports mild stiffness in both knees but denies significant limitations in mobility. No new complaints since last visit.\n\nMedication List:\n- Lisinopril 10mg QD\n- Omeprazole 20mg QD\n- Naproxen 500mg BID PRN for joint pain\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nCV: No chest pain, palpitations, or orthopnea.\nResp: No cough or SOB.\nGI: Occasional heartburn; no nausea/diarrhea.\nMSK: Bilateral knee stiffness; no acute injury.\nNeuro: No headache or confusion.\n\nSocial History: Lives at home with her daughter. Retired. No tobacco or alcohol use.\n\nFamily History: Mother had HTN. Father had osteoarthritis.\n\nRecent Labs:\neGFR: 42 mL/min/1.73m2\nHbA1c: 5.4%\nBMP: Na+ 138, K+ 4.5, Cr 1.9, BUN 34\n\nVitals:\nBP: 138/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Hgb: 34%/10.2\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs.\nResp: CTAB, no wheezes.\nMSK: Bilateral knees show mild swelling and decreased range of motion.\nSkin: Intact, no rashes.\n\nAssessment:\n1. Hypertension: Stable on current dosage.\n2. CKD stage 3: Stable.\n3. Osteoarthritis: Bilateral knees, managed with PRN NSAIDs.\n4. GERD: Stable on PPI.\n\nPlan:\n- Continue current Lisinopril and Omeprazole.\n- Continue PRN Naproxen for knee pain.\n- F/u in 3 months for labs and BP check.\n- Encourage hydration.\n\nProblem List:\n- Hypertension\n- CKD stage 3\n- Osteoarthritis of both knees\n- Gastroesophageal reflux disease\n\nElectronically signed,\nE. Castillo, NP\n10/14/2026",
+  "answer": [
+    "I12.9",
+    "N18.30"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "Stage 3 without a 3a/3b specification: N18.30."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.30"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.30"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.127,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.3"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "N18.3 needs a 5th character.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.127,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1830"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:24:46+00:00",
+    "style": {
+      "age": 90,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "osteoarthritis of both knees"
+      ],
+      "credential": "NP",
+      "signer": "E. Castillo"
+    }
+  }
+}

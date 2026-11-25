@@ -1,0 +1,89 @@
+{
+  "id": "cancer_status-d11e92cf96",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for right breast cancer.\n\nHPI\nPt is a 56 y/o female presenting for routine oncology follow-up. Pt is currently receiving chemotherapy for a malignant neoplasm of the right breast. She reports feeling generally well but notes mild fatigue. No new symptoms reported. She denies any systemic complaints.\n\nMedication List\n- Cyclophosphamide/Doxorubicin (Cycle 3)\n- Ondansetron 8mg PRN for N/V\n- Multivitamin daily\n\nExam\nGen: Well-appearing, alert, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB, no wheezing.\nSkin: No new lesions noted.\nBreast: Stable appearance of right breast.\nVitals: BP 122/78, HR 74, Temp 98.6F, SpO2 98% on RA.\n\nAssessment\n1. Right breast cancer: Pt is currently receiving chemotherapy. No distant spread noted at this time.\n\nPlan\n1. Continue current chemo regimen.\n2. Monitor for side effects.\n3. F/u in 3 weeks for next cycle.\n\nElectronically signed,\nD. Kowalski, MD\n10/15/2026",
+  "answer": [
+    "C50.911"
+  ],
+  "explanations": [
+    "Cancer of the right female breast under current treatment is a current malignancy: C50.911."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.3"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "23"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C50.919"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right breast: use the right-breast code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "from": [
+          "C50911"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:40+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

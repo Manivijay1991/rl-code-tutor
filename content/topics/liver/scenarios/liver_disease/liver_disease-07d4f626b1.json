@@ -1,0 +1,85 @@
+{
+  "id": "liver_disease-07d4f626b1",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "alcoholic_cirrhosis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for liver condition.\n\nHPI: 80-year-old female pt presents for scheduled follow-up of alcoholic cirrhosis. Pt reports feeling well overall. She states she has maintained sobriety and no longer drinks. Denies recent episodes of jaundice, fever, or significant abdominal pain. Reports stable energy levels and appetite. No acute concerns today.\n\nMedication List:\n- Spironolactone 25mg daily\n- Multivitamin daily\n- Vitamin K 1.0mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nHEENT: No vision changes or sore throat.\nRespiratory: No SOB or cough.\nGI: No nausea, vomiting, or change in bowel habits.\nMSK: No joint pain.\nNeuro: No dizziness or confusion.\n\nSocial History: Retired. Lives with daughter. No current alcohol use. Non-smoker.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 142 lbs\n\nRecent Labs:\nALT: 42 U/L\nAST: 58 U/L\nAlbumin: 3.2 g/dL\nINR: 1.3\nPlatelets: 145k\neGFR: 62 mL/min\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nSkin: No jaundice, no spider angiomata.\nAbdomen: Soft, non-tender, non-distended. No palpable masses.\nLungs: CTAB.\nHeart: RRR, no murmurs.\nExtremities: No edema.\n\nAssessment:\n1. Alcoholic cirrhosis. Pt is stable and currently abstinent from alcohol.\n\nPlan:\n- Continue current medications as prescribed.\n- Continue alcohol abstinence.\n- F/u in 3 months for repeat labs and clinical assessment.\n- Instructed to call if any new symptoms develop.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "K70.30"
+  ],
+  "explanations": [
+    "Alcoholic cirrhosis without ascites: K70.30 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K74.60"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The cause (alcohol) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K70.31"
+      ],
+      "confusion": "unsupported_ascites",
+      "lean": "over",
+      "why": "Ascites is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7030"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:20:43+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

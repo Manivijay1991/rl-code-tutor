@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-fb0c797d5f",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "itp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint: Follow-up for low platelets.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Height 5'10\", Weight 185 lbs.\n\nRecent Labs: Platelet count: 62,000/uL. WBC: 6.2 x 10^9/uL. Hemoglobin: 14.1 g/dL. Hematocrit: 42%. eGFR: 88 mL/min/1.73m2.\n\nMedication List:\n- Prednisone 10mg daily\n- Vitamin B12 supplement\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue, or weight change.\nIntegumentary: Positive for occasional easy bruising on lower extremities. Negative for rashes or pruritus.\nHEENT: Negative for vision changes or sore throat.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for palpitations or chest pain.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for headaches or numbness.\n\nSocial History: Patient is a non-smoker. He works as a software engineer and lives with his spouse. He reports moderate exercise three times per week.\n\nFamily History: Father has hypertension; Mother has type 2 diabetes. No family history of bleeding disorders.\n\nHPI: (Copied Forward) Patient is a 51-year-old male with a known history of immune thrombocytopenia. He initially presented with persistent bruising and petechiae. He has been managed conservatively with monitoring of his hematologic parameters. He reports stable symptoms with no recent episodes of significant bleeding. He is compliant with his current medication regimen.\n\nExam: General: Well-appearing, in no acute distress. Skin: No active bleeding noted; scattered ecchymoses on bilateral shins. Cardiovascular: Regular rate and rhythm, no murmurs. Respiratory: Clear to auscultation bilaterally. Neurological: Alert and oriented x3, no focal deficits.\n\nAssessment:\n1. Chronic immune thrombocytopenia: Patient remains stable on current management. Platelet count is currently 62,000/uL, which is an improvement from the previous month but remains below the normal range.\n\nPlan:\n1. Continue current monitoring of platelet counts every 3 months.\n2. Maintain current medication regimen.\n3. Patient instructed to report any significant epistaxis or gastrointestinal bleeding immediately.\n4. Follow up in 90 days for repeat lab work.\n\nElectronically signed,\nJ. Lindqvist, NP\nOctober 14, 2026",
+  "answer": [
+    "D69.3"
+  ],
+  "explanations": [
+    "Immune thrombocytopenia: D69.3 (HCC 112)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D69.6"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "ITP is documented: D69.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.45,
+        "gap": -0.45,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "112"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.45,
+    "hccs": [
+      {
+        "hcc": "112",
+        "label": "Immune Thrombocytopenia and Specified Coagulation Defects and Hemorrhagic Conditions",
+        "from": [
+          "D693"
+        ],
+        "weight": 0.45
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:58+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

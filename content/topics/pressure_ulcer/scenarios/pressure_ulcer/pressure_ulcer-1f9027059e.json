@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-1f9027059e",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "unstageable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up for pressure ulcer.\n\nHPI\n[Copied Forward] Patient is an 81-year-old female presenting for management of a pressure injury. The patient reports the wound is stable but experiences occasional discomfort. She reports adherence to a turning schedule and skin barrier protection.\n\n[Update] The patient returns today for continued management of the wound on her right heel. She reports no new issues with mobility or pain levels.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nVitals: BP 128/82, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems\nGeneral: Negative\nIntegumentary: Positive (wound site)\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam\nSkin: Pressure ulcer noted on the right heel. The wound is classified as unstageable because the wound base is covered by eschar. No drainage noted. Surrounding skin is intact.\n\nAssessment\n1. Pressure ulcer, unstageable, right heel.\n\nPlan\n1. Continue current wound care protocol for the pressure ulcer.\n2. Apply hydrogel dressing to the right heel.\n3. Reinforce pressure offloading and frequent repositioning.\n4. Follow up in 2 weeks.\n\nElectronically signed,\nR. Mensah, DO\n05/14/2026",
+  "answer": [
+    "L89.610"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, unstageable (base covered by eschar or slough): L89.610 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "Unstageable is a documented stage (L89.--0), not 'unspecified'.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.614"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "Do not assign a stage the provider could not determine.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.965,
+        "correct": 1.075,
+        "gap": 0.89,
+        "direction": "over",
+        "extra_hccs": [
+          "379"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89610"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:20+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

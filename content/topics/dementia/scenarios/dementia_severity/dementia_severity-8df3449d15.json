@@ -1,0 +1,91 @@
+{
+  "id": "dementia_severity-8df3449d15",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "mild",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline.\n\nHPI: [Copied Forward] Patient is an 84-year-old male presenting for evaluation of progressive memory loss and cognitive impairment. He has been experiencing difficulty with word-finding and recalling recent events over the past year. Family members note he is becoming more reliant on others for complex tasks.\n\n[Update] The patient returns today for a follow-up on his dementia. He remains stable and is currently exhibiting signs of mild dementia. He is able to engage in coherent conversation and follows simple instructions well. He denies any recent falls or significant changes in his functional status at home. His spouse reports that he is calm and cooperative during daily activities.\n\nMedication List:\n- Donepezil 10mg daily\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.4 F, Weight 175 lbs.\n\nRecent Labs:\n- HbA1c: 6.2%\n- eGFR: 62 mL/min/1.73m2\n- TSH: 2.1 mIU/L\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nNeurological: Positive for mild dementia. Negative for tremors or gait instability.\nPsychiatric: Negative for mood disturbances or behavioral issues.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nMusculoskeletal: Negative for joint pain.\nGenitourinary: Negative for dysuria.\n\nSocial History: Retired engineer. Lives with his wife in a single-story home. No tobacco or alcohol use.\n\nFamily History: Father had memory issues in his 80s. Mother had hypertension.\n\nExam:\nGeneral: Well-appearing, groomed, and cooperative.\nSpeech: Clear, though occasionally hesitant with word retrieval.\nMood: Calm and pleasant.\nCognition: Oriented to person, place, and time. Demonstrates mild dementia. No evidence of behavioral disturbances.\nNeurological: Cranial nerves II-XII intact. Normal gait and station.\n\nAssessment:\n1. Mild dementia.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue monitoring cognitive status.\n3. Encourage continued engagement in social activities and mental stimulation.\n4. Follow up in 3 months for reassessment.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "F03.A0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), mild, without behavioral disturbance: F03.A0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (mild): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is mild.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03A0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:41:27+00:00",
+    "style": {
+      "age": 84,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

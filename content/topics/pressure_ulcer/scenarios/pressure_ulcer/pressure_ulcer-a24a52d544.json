@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-a24a52d544",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "sacral",
+    "stage": "3"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up for pressure ulcer.\n\nHPI\nThe patient is a 77-year-old female presenting today for a scheduled evaluation of a pressure ulcer located over the sacrum. She reports that the wound has been persistent and is causing localized discomfort. She has been managed with regular repositioning and topical treatments. She notes that while the area remains painful, she has not experienced any drainage or fever since the last visit. She expresses a desire to continue her current treatment regimen to promote wound healing.\n\nMedication List\n- Lisinopril 10 mg daily\n- Atorvastatin 20 mg daily\n- Amlodipine 5 mg daily\n\nReview of Systems\nThe patient reports no recent fevers, chills, or night sweats. She denies any shortness of breath or chest pain. She reports no new-onset joint pain or vision changes. She denies any significant changes in appetite or bowel habits.\n\nSocial History\nThe patient lives at home with her spouse. She is a retired teacher and enjoys gardening and reading. She denies tobacco or alcohol use.\n\nFamily History\nMother: Hypertension, Stroke.\nFather: Coronary Artery Disease.\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.4 F\nSpO2: 97% on room air\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nAlbumin: 3.8 g/dL\neGFR: 68 mL/min/1.73m2\n\nExam\nGeneral: The patient appears well-nourished and is in no acute distress.\nSkin: Physical examination reveals a stage 3 pressure ulcer over the sacrum. The wound measures approximately 3 cm x 4 cm. The wound bed shows visible granulation tissue and some slough. The surrounding skin is intact but erythematous.\n\nAssessment\n1. Stage 3 pressure ulcer of the sacrum.\n\nPlan\nThe patient will continue with a regimen of wound cleansing and topical dressing changes. I have instructed the patient and her caregivers to maintain a strict turning schedule every two hours to reduce pressure on the sacrum. We will monitor the wound for any changes in size or appearance. The patient will return in two weeks for a follow-up wound assessment.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "L89.153"
+  ],
+  "explanations": [
+    "Pressure ulcer of the sacral region, stage 3: L89.153 (HCC 381)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.159"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.075,
+        "gap": -1.075,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.152"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 1.075,
+        "gap": -0.237,
+        "direction": "under",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": [
+          "381"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.075,
+    "hccs": [
+      {
+        "hcc": "381",
+        "label": "Pressure Ulcer of Skin with Full Thickness Skin Loss",
+        "from": [
+          "L89153"
+        ],
+        "weight": 1.075
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:16:51+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "cancer_status-741cca59d1",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for prostate cancer.\n\nHPI: Copied forward from 05/12/2026: Patient is a 57-year-old male who presented for management of prostate adenocarcinoma. He reports localized symptoms but denies systemic involvement. He is currently undergoing radiation to address the primary site. He reports a good tolerance to the treatment plan thus far with manageable fatigue.\n\nMedication List:\n- Liraglutide 1.2mg daily\n- Lisinopril 10mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6F, Weight 195 lbs.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, night sweats.\nRespiratory: Negative for cough, shortness of breath.\nGenitourinary: Positive for localized discomfort.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for weakness or numbness.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nAbdomen: Soft, non-tender, no masses.\nGenitourinary: Normal external appearance.\n\nAssessment:\n1. Prostate adenocarcinoma: The patient is currently receiving radiation for his malignant neoplasm. He remains stable on his current regimen.\n\nPlan:\n1. Continue current radiation schedule.\n2. Monitor for side effects related to treatment.\n3. Follow up in 4 weeks.\n\nElectronically signed, S. Patel, NP, 10/15/2026",
+  "answer": [
+    "C61"
+  ],
+  "explanations": [
+    "Cancer of the prostate under current treatment is a current malignancy: C61."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.46"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "23"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "from": [
+          "C61"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:50:40+00:00",
+    "style": {
+      "age": 57,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

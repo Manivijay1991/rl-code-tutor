@@ -1,0 +1,111 @@
+{
+  "id": "obesity_bmi-a36bc5d096",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "obesity",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for weight management.\n\nHPI: Patient is a 57-year-old woman presenting for a follow-up visit regarding obesity. She reports a steady weight gain over the last six months despite attempts at dietary modification. She notes increased fatigue and joint discomfort. Patient reports adherence to previous exercise recommendations but states she struggles with consistent caloric tracking.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Height 5'4\", Weight 238 lbs, BMI 42.\n\nMedication List:\n- Multivitamin daily\n- Vitamin D3 1000 IU daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or night sweats.\nRespiratory: Negative for cough or shortness of breath.\nMusculoskeletal: Positive for bilateral knee discomfort.\nNeurological: Negative for headaches or dizziness.\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nRespiratory: Clear to auscultation bilaterally.\nMusculoskeletal: Mild tenderness noted over bilateral knees.\n\nAssessment:\n1. Obesity.\n\nPlan:\nDiscussed obesity and its impact on joint health. Provided intensive diet and activity counseling. Encouraged increasing daily step count and focusing on a high-protein, low-calorie meal plan. Patient will return in four weeks for progress check.\n\nElectronically signed, S. Patel, NP, 05/14/2026",
+  "answer": [
+    "E66.9",
+    "Z68.41"
+  ],
+  "explanations": [
+    "Obesity documented by the provider: E66.9. The coder does not upgrade it to morbid obesity from the BMI.",
+    "BMI 42.x with a provider weight diagnosis: add Z68.41 (BMI 40 or more maps to HCC 48 on its own)."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.01",
+        "Z68.41"
+      ],
+      "confusion": "morbid_from_bmi",
+      "lean": "over",
+      "why": "Only the provider can diagnose morbid obesity; the BMI does not change the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0.186,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "missed_bmi",
+      "lean": "under",
+      "why": "The BMI is documented and the provider diagnosed the weight condition: add the Z68 code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E66.9",
+        "Z68.37"
+      ],
+      "confusion": "wrong_bmi_code",
+      "lean": "neutral",
+      "why": "The BMI is 42.x.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "48"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "48",
+        "label": "Morbid Obesity",
+        "from": [
+          "Z6841"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:01+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

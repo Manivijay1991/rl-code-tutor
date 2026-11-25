@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-89c24d4079",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "wet_amd_scar"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision changes.\n\nHPI\nPt is an 80-year-old female presenting for follow-up of vision loss in the right eye. Pt reports gradual decrease in central vision and distortion of objects. Pt states she has been seeing a blurry area in the center of her vision for several months. She denies sudden loss of vision, floaters, or flashes. Pt is here for evaluation of her macular degeneration.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAspirin 81mg daily\n\nReview of Systems\nConstitutional: No fever, chills, or weight changes.\nHEENT: Vision changes in RE. No ear pain.\nCV: No chest pain, palpitations, or SOB.\nResp: No cough or wheezing.\nGI: No abdominal pain or diarrhea.\nMSK: No joint pain or swelling.\nNeuro: No dizziness or syncope.\n\nSocial History\nRetired. Lives with daughter. No tobacco or alcohol use.\n\nFamily History\nMother: Hypertension, stroke.\nFather: Heart disease.\n\nVitals\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 34%\nWBC: 7.2\nHbA1c: 6.4%\neGFR: 62\n\nExam\nGeneral: Alert, oriented x3. In no acute distress.\nEyes: RE: Funduscopic exam reveals exudative age-related macular degeneration. Notable disciform scar present. No active fluid noted. RE visual acuity decreased compared to baseline.\nNeuro: Alert, coherent, intact.\nMusculoskeletal: No acute injuries.\n\nAssessment\n1. Exudative age-related macular degeneration of the right eye.\n2. Inactive scar noted on funduscopic exam.\n\nPlan\n1. Reviewed ophthalmology findings. Pt understands that the current condition is stable.\n2. No injection needed at this time based on clinical stability.\n3. Continue current medications.\n4. F/u in 6 months for vision monitoring.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "H35.3213"
+  ],
+  "explanations": [
+    "Exudative (wet) AMD, right eye, with inactive scar: H35.3213 (HCC 300)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3211"
+      ],
+      "confusion": "wrong_cnv_status",
+      "lean": "neutral",
+      "why": "The wet AMD has an inactive scar, not active neovascularization.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0.596,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "H35.30"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type, eye and stage are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.596,
+        "gap": -0.596,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "300"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.596,
+    "hccs": [
+      {
+        "hcc": "300",
+        "label": "Exudative Macular Degeneration",
+        "from": [
+          "H353213"
+        ],
+        "weight": 0.596
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:03:44+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

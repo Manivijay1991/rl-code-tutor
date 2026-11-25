@@ -1,0 +1,8 @@
+{
+  "id": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD",
+  "kind": "hcc",
+  "description": "All three together: the 'with' link, hypertensive CKD and the stage code.",
+  "order": 25,
+  "enabled": true
+}

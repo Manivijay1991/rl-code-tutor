@@ -1,0 +1,8 @@
+{
+  "id": "copd",
+  "title": "COPD and respiratory failure",
+  "kind": "hcc",
+  "description": "COPD, exacerbation or emphysema; chronic respiratory failure versus home oxygen alone.",
+  "order": 87,
+  "enabled": true
+}

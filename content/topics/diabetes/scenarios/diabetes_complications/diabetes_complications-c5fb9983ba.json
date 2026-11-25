@@ -1,0 +1,122 @@
+{
+  "id": "diabetes_complications-c5fb9983ba",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for T2DM and foot pain.\n\nHPI: Pt is a 50-year-old male presenting for routine management of type 2 diabetes mellitus and associated peripheral neuropathy. Pt reports ongoing tingling and mild burning sensations in bilateral feet, worse at night. He states the symptoms are stable and do not interfere with daily activities. He has been on long-term insulin therapy. He denies any new acute injuries to the feet or sudden changes in sensation. Denies any recent infections or skin breakdown. Pt reports adherence to insulin regimen.\n\nMedication List:\n- Insulin glargine, subcutaneous daily\n- Vitamin D3 supplement\n- Loratadine 10mg daily PRN\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nNeurological: Positive for tingling in feet. Denies weakness or falls.\nMSK: Denies joint pain.\nRespiratory: Denies SOB, cough.\nAll others: Negative.\n\nSocial History: Works full-time as a technician. Non-smoker. Occasional alcohol use. Lives with spouse.\n\nFamily History: Father had T2DM. Mother had seasonal allergies.\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 195 lbs\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 82\nVitamin D: 22 ng/mL\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nNeurological: Sensation diminished to large-fiber touch bilaterally at toes. Reflexes 1+ at ankles. Strength 5/5 throughout.\nSkin: Intact skin on bilateral feet, no ulcers.\n\nAssessment:\n1. T2DM: Stable on insulin.\n2. Polyneuropathy: Pt has symptoms of peripheral neuropathy; however, this is not due to diabetes.\n3. Vitamin D deficiency: Persistent low levels.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan:\n- Continue current insulin regimen.\n- Continue Vitamin D supplementation.\n- Monitor foot health monthly.\n- F/u in 3 months for labs and A1c.\n\nProblem List:\n- T2DM\n- Polyneuropathy (unrelated to diabetes)\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed,\nP. O'Brien, NP\n05/14/2026",
+  "answer": [
+    "E11.9",
+    "G62.9",
+    "Z79.4"
+  ],
+  "explanations": [
+    "The provider states the polyneuropathy is not diabetic: code diabetes without complications and the polyneuropathy separately.",
+    "Polyneuropathy not due to diabetes is coded separately (G62.9 when no cause is specified).",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.42",
+        "G62.9",
+        "Z79.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "Documentation of another cause overrides the 'with' presumption.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "The polyneuropathy still needs its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "G62.9"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:03+00:00",
+    "style": {
+      "age": 50,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "NP",
+      "signer": "P. O'Brien"
+    }
+  }
+}

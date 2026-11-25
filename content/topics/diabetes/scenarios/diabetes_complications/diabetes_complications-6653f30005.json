@@ -1,0 +1,111 @@
+{
+  "id": "diabetes_complications-6653f30005",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and recent hypoglycemia.\n\nHPI\nThe patient is an 83-year-old male presenting for a follow-up regarding his management of type 2 diabetes. He reports that he has been using insulin for a long-term period to manage his glucose levels. During this most recent interval, he experienced a hypoglycemic episode, which resulted in some dizziness and tremors. He states he is currently not taking any oral medications for his glucose management. He reports adherence to his current insulin regimen but notes the recent episode was unexpected.\n\nMedication List\nInsulin glargine daily injection.\n\nExam\nThe patient appears in no acute distress. He is alert and oriented to person, place, and time. Skin is warm and dry. Heart rate is 72 beats per minute; blood pressure is 128/82 mmHg. Respiratory effort is even and unlabored.\n\nAssessment\n1. Type 2 diabetes mellitus\n2. Hypoglycemia\n\nPlan\nWe will continue the current insulin therapy. I will instruct the patient on monitoring for symptoms of hypoglycemia and how to treat a hypoglycemic episode immediately. We will monitor his glucose trends at the next visit.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "E11.649",
+    "Z79.4"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649.",
+    "Long-term insulin use in type 2 diabetes: add Z79.4."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.4 is required for routine insulin use in type 2 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:27+00:00",
+    "style": {
+      "age": 83,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

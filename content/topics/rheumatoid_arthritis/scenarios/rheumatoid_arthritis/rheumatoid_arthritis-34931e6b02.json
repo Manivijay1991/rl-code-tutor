@@ -1,0 +1,108 @@
+{
+  "id": "rheumatoid_arthritis-34931e6b02",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "ra_seropositive",
+    "methotrexate": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for joint pain.\n\nVitals: BP 128/74, HR 76, SpO2 98% on room air, Temp 98.2 F, HR 76.\n\nHPI: (Copied Forward) Patient is an 89-year-old female with a history of rheumatoid arthritis. She reports chronic stiffness and aching in the small joints of her hands and feet. She has been managed on methotrexate and folic acid for several years.\n\nUpdate: The patient reports that her symptoms have remained stable over the last three months. She denies any new systemic symptoms or significant flares. She continues to experience mild morning stiffness but manages well with her current regimen.\n\nReview of Systems:\nConstitutional: Negative\nMusculoskeletal: Positive (Joint pain)\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\nSkin: Negative\n\nMedication List:\n- Methotrexate (Weekly)\n- Folic Acid\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nMusculoskeletal: Mild swelling noted in the MCP joints and MTP joints. No significant erythema or warmth. Range of motion is preserved in the wrists and ankles.\n\nAssessment:\n1. Rheumatoid arthritis: Seropositive (RF positive) status. Stable on current medication.\n\nPlan:\n1. Continue methotrexate weekly and folic acid.\n2. Continue current management of rheumatoid arthritis in the hands and feet.\n3. Follow up in 4 months.\n\nElectronically signed, \nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "M05.79",
+    "Z79.631"
+  ],
+  "explanations": [
+    "Rheumatoid arthritis with rheumatoid factor, multiple sites, no organ involvement: M05.79 (HCC 93).",
+    "Long-term methotrexate (an antimetabolite): Z79.631."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9",
+        "Z79.631"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Rheumatoid factor and multiple sites are documented: M05.79.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M05.79"
+      ],
+      "confusion": "missed_drug_therapy",
+      "lean": "under",
+      "why": "Long-term methotrexate is documented: Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M05.79",
+        "Z79.899"
+      ],
+      "confusion": "nonspecific_drug_code",
+      "lean": "neutral",
+      "why": "Methotrexate has its own long-term use code, Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.617,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M0579"
+        ],
+        "weight": 0.617
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:32+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

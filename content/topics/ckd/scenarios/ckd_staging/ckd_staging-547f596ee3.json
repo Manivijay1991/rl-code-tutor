@@ -1,0 +1,143 @@
+{
+  "id": "ckd_staging-547f596ee3",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease and blood pressure management.\n\nVitals: BP 138/84, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 28.4.\n\nRecent Labs: eGFR 41 mL/min/1.73m², Sodium 138 mEq/L, Potassium 4.8 mEq/L, Creatinine 1.9 mg/dL.\n\nHistory:\nSocial History: Retired construction worker. Lives with wife. Non-smoker. Occasional alcohol use.\nFamily History: Father had hypertension. Mother had osteopenia.\nProblem List:\n1. Chronic kidney disease stage 3b\n2. Hypertension\n3. Seasonal allergic rhinitis\n4. Vitamin D deficiency\n\nMedication List:\n- Lisinopril 10 mg daily\n- Chlorthalidone 12.5 mg daily\n- Vitamin D3 2000 IU daily\n\nHPI:\n[Copied Forward]: Patient is a 73-year-old male with a history of hypertension and chronic kidney disease stage 3b. He presents for routine monitoring of his renal function and blood pressure. He reports adherence to his current medication regimen. He denies any recent changes in urinary output, edema, or shortness of breath. He reports occasional sneezing and itchy eyes during spring months consistent with his known seasonal allergic rhinitis. He denies any new-onset fatigue or bone pain.\n\nCurrent Update: The patient reports that his blood pressure has remained stable at home, generally ranging between 130/80 and 140/85. He denies any side effects from his medications. He continues to take his Vitamin D supplement as prescribed.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nEyes: Positive for seasonal itching.\nEars/Nose/Throat: Positive for seasonal sneezing and runny nose.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for cough or dyspnea.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nGenitourinary: Negative for dysuria or hematuria.\nMusculoskeletal: Negative for joint pain or fractures.\nNeurological: Negative for numbness or weakness.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No rashes or significant lesions.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard, no murmurs.\nLungs: Clear to auscultation bilaterally.\nExtremities: No peripheral edema noted.\n\nAssessment:\n1. Chronic kidney disease stage 3b: Stable at this time based on current eGFR of 41.\n2. Hypertension: Well-controlled on current ACE inhibitor and diuretic.\n3. Seasonal allergic rhinitis: Stable.\n4. Vitamin D deficiency: Ongoing supplementation.\n\nPlan:\n- Continue current medications for hypertension and CKD.\n- Order repeat BMP in 3 months to monitor renal function.\n- Continue Vitamin D3 supplementation.\n- Return to clinic in 3 months for follow-up.\n\nElectronically signed, E. Castillo, NP, 05/14/2026",
+  "answer": [
+    "I12.9",
+    "N18.32"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.32"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.32"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.127,
+        "gap": 0.688,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "3a is less severe than the documented 3b.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3b is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:26:31+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "vitamin D deficiency"
+      ],
+      "credential": "NP",
+      "signer": "E. Castillo"
+    }
+  }
+}

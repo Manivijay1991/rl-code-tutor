@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-1a64704eba",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "severe_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Depression and hallucinations.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever or chills.\nPsychiatric: Positive for low mood and hallucinations.\nNeurological: Negative for tremors or gait instability.\nOther: Negative.\n\nHPI: \n[Copied Forward] Patient is an 89-year-old female who presents for management of major depressive disorder, single episode. She reports persistent low mood and sleep disturbances.\n[Current Update] Today, the patient reports that her symptoms have worsened significantly. She describes a severe lack of energy and a pervasive sense of hopelessness. She specifically mentions hearing voices that tell her she is being punished for past mistakes, which are mood-congruent delusions. She appears visibly distressed during the interview.\n\nMedication List: \nSertraline 50mg daily.\n\nExam:\nGeneral: Elderly female in no acute distress, appearing tearful. \nPsychiatric: Affect is flat and constricted. Speech is slow. Thought process is linear but preoccupied with delusional content. Insight is poor.\n\nAssessment: \nMajor depressive disorder, single episode, severe with psychotic features. The patient is experiencing an escalation in delusional thinking.\n\nPlan: \nIncrease Sertraline dosage. Schedule a follow-up appointment in two weeks to monitor safety and medication efficacy.\n\nElectronically signed, \nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "F32.3"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severe with psychotic features (HCC 152): F32.3."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.2"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "Psychotic features are documented: they change the code and the HCC (152).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.484,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "152"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F33.3"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents single episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.484,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.484,
+    "hccs": [
+      {
+        "hcc": "152",
+        "label": "Psychosis/Except Schizophrenia",
+        "from": [
+          "F323"
+        ],
+        "weight": 0.484
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:49:20+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "liver_disease-8c1af6fe86",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "cirrhosis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for liver condition.\n\nHPI: 90 y/o male pt presents for routine follow-up of cirrhosis. Pt reports feeling generally well today. Denies any acute abdominal pain, fever, chills, or significant fatigue. Reports stable appetite and activity levels. No new concerns since last visit. Pt is here for monitoring of his chronic liver condition.\n\nMedication List:\n- Pantoprazole 40mg PO QD\n- Vitamin K 1.0mg PO QD\n- Multivitamin daily\n\nVitals:\nBP: 128/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 165 lbs\n\nRecent Labs:\nALT: 45 U/L\nAST: 52 U/L\nAlbumin: 3.2 g/dL\nINR: 1.3\nPlatelets: 145,000\neGFR: 55 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nGI: No nausea, vomiting, or changes in bowel habits.\nMSK: No joint pain or stiffness.\nNeuro: No confusion or tremors.\nCV: No chest pain or palpitations.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional social drinking.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nExam:\nGen: Well-appearing, alert, and oriented x3. In no acute distress.\nCV: RRR, regular rhythm.\nLungs: CTAB, no wheezes or rales.\nAbdomen: Soft, non-tender. No guarding. No palpable masses.\nSkin: No new lesions.\nExt: No edema.\n\nAssessment:\n1. Cirrhosis. Stable at this time.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Routine lab work to monitor liver function and coagulation status.\n3. Follow up in 3 months for repeat labs and clinical evaluation.\n4. Patient instructed to report any acute symptoms or changes in status immediately.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "K74.60"
+  ],
+  "explanations": [
+    "Cirrhosis of the liver with no cause documented: K74.60 (HCC 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K70.30"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "neutral",
+      "why": "Alcohol is not documented as the cause.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K74.69"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "neutral",
+      "why": "K74.69 is for other specified cirrhosis; no type is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.447,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.447,
+    "hccs": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "from": [
+          "K7460"
+        ],
+        "weight": 0.447
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:31+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-8a92236c0f",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nPt is an 87y female presenting for f/u of major depressive disorder. She reports persistent low mood and decreased energy over the last month. She states she is struggling with motivation but remains functional in ADLs. She denies any thoughts of self-harm. Symptoms are described as mild at this time. She notes she is still taking her current meds as prescribed.\n\nMedication List\nSertraline 50mg PO QD\n\nExam\nPt alert and oriented x3. Appears slightly tearful but cooperative. Speech is normal rate and volume. Mood is depressed. Affect is congruent. Thought process is linear. Insight and judgment are intact. NAD.\n\nAssessment\n1. Major depressive disorder, recurrent. Current episode is mild.\n\nPlan\n1. Continue current dose of Sertraline.\n2. Pt to continue monitoring mood and report any changes.\n3. F/u in 4 weeks.\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [
+    "F33.0"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, mild (no HCC in V28): F33.0."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "The provider documents mild; moderate maps to an HCC that mild does not.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F32.0"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:43:17+00:00",
+    "style": {
+      "age": 87,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

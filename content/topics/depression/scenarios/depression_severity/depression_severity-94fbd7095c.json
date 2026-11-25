@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-94fbd7095c",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "severe_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow up for depression.\n\nHPI\nPt is a 73 y.o. female presenting for f/u of MDD, recurrent. Pt reports persistent low mood, profound fatigue, and anhedonia over the last 4 weeks. She describes feelings of worthlessness and reports mood-congruent delusions regarding her physical health. Pt notes these symptoms are severe and impacting her ability to perform ADLs. She denies any recent changes in sleep or appetite.\n\nMedication List\nSertraline 100mg daily.\n\nExam\nPt is a 73 y.o. female. Alert and oriented x3. Affect is flat, mood is depressed. Speech is slow but coherent. Psychotic features are present as evidenced by mood-congruent delusions. No tremors or gait instability noted. Vital signs are stable.\n\nAssessment\n1. Major depressive disorder, recurrent, severe with psychotic features.\n\nPlan\nContinue current dose of Sertraline. Provided supportive counseling regarding delusional content. Pt to f/u in 2 weeks to monitor response to medication and safety.\n\nElectronically signed, M. Okafor, PA-C, 05/14/2026",
+  "answer": [
+    "F33.3"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, severe with psychotic features (HCC 152): F33.3."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.2"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "Psychotic features are documented: they change the code and the HCC (152).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.484,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "152"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.3"
+      ],
+      "confusion": "single_vs_recurrent",
+      "lean": "neutral",
+      "why": "The provider documents recurrent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.484,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.484,
+    "hccs": [
+      {
+        "hcc": "152",
+        "label": "Psychosis/Except Schizophrenia",
+        "from": [
+          "F333"
+        ],
+        "weight": 0.484
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:26+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "M. Okafor"
+    }
+  }
+}

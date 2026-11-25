@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CRC Coding Tutor</title>
+    <meta name="description" content="Free practice for CRC risk adjustment coding: read the note, find the evidence, pick the codes, and get coached when you miss." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='9' fill='%230f766e'/%3E%3Cpath d='M10 8.5h9l4 4v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 9 23.5V10a1.5 1.5 0 0 1 1-1.5Z' fill='white'/%3E%3Crect x='11.5' y='14.2' width='9' height='2.6' rx='1.3' fill='%23facc15'/%3E%3C/svg%3E" />
+    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/app.css" />
+    <script type="module" src="js/pages/home/main.js"></script>
+  </head>
+  <body data-view="home">
+    <a class="skip" href="#home">Skip to content</a>
+
+    <header class="topbar">
+      <a class="brand" href="index.html" id="brand" title="Home">
+        <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--accent)" />
+          <path d="M10 8.5h9l4 4v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 9 23.5V10a1.5 1.5 0 0 1 1-1.5Z" fill="var(--logo-paper)" />
+          <path d="M19 8.5v4h4" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round" />
+          <rect x="11.5" y="14.2" width="9" height="2.6" rx="1.3" fill="var(--logo-mark)" />
+          <path d="M11.5 19.3h6.5M11.5 22h4" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" opacity=".55" />
+        </svg>
+        <span>
+          <span class="brand-name">CRC Coding Tutor</span>
+          <span class="brand-sub">Adaptive CRC coding practice</span>
+        </span>
+      </a>
+      <span class="spacer"></span>
+      <div class="top-actions">
+        <a class="btn small" href="practice.html" data-start>Start assessment</a>
+        <button class="icon-btn" id="btn-theme" type="button" aria-label="Switch theme" title="Switch theme"></button>
+      </div>
+    </header>
+
+    <main class="home" id="home" aria-label="Welcome"></main>
+
+    <footer class="foot">
+      Free and non-commercial. CRC (Certified Risk Adjustment Coder) is a credential of AAPC; this tool is not affiliated with or endorsed by AAPC, AHIMA, AMA or CMS.
+      Scenarios are <strong>drafts</strong> until reviewed by a certified coder. Requires a prior understanding of ICD-10-CM codes; covers only about 30% of the CRC exam. ICD-10-CM and CMS-HCC data from CMS.
+      <span id="code-set"></span>
+    </footer>
+  </body>
+</html>

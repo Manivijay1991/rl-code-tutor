@@ -1,0 +1,127 @@
+{
+  "id": "atrial_fibrillation-01d36dc975",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "persistent",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for persistent AFib.\n\nHPI\n83 y.o. female presents for routine follow-up of persistent atrial fibrillation. Pt reports stable condition. Denies palpitations, syncope, or shortness of breath. Reports good adherence to rate control and anticoagulation. No concerns voiced today.\n\nMedication List\nApixaban 5 mg BID\nMetoprolol 25 mg daily\nLisinopril 10 mg daily\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 74 (regular), RR 16, Temp 98.6F, SpO2 98% on RA.\nHeart: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB, no wheezes or rales.\nExtremities: No edema, pulses 2+ bilaterally.\nNeuro: NAD.\n\nAssessment\n1. Persistent AFib: Pt is currently stable on rate control.\n2. Atrial fibrillation: Currently managed with apixaban for prophylaxis.\n\nPlan\n1. Continue current medications.\n2. Continue apixaban as prescribed.\n3. Follow up in 3 months for repeat evaluation.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "I48.19",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Persistent atrial fibrillation, not documented as longstanding: I48.19, other persistent (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.11",
+        "Z79.01"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Longstanding persistent is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91",
+        "Z79.01"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (persistent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.19"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.19",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4819"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:56:30+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

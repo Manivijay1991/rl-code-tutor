@@ -1,0 +1,96 @@
+{
+  "id": "pad_atherosclerosis-ebe792b756",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "claudication",
+    "side": "right"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Calf pain when walking.\n\nHPI: Pt is an 80-year-old female presenting for f/u of atherosclerotic changes. She reports persistent calf pain specifically when walking. She describes this as claudication. Pain is noted only in the right leg. She denies any pain while at rest. No skin breakdown or lesions present. Pt states symptoms have been consistent over the last few months.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 40mg QD\n- Aspirin 81mg QD\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations, SOB.\nMSK: Reports calf pain with exertion. No joint swelling.\nSkin: Denies rashes or lesions.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives in a single-story home with her daughter. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had myocardial infarction at age 65.\n\nFamily History: Mother had hypertension. Father had myocardial infarction at age 65.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 34%\nHgb: 11.2 g/dL\neGFR: 62\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nCV: RRR, regular rhythm. No murmurs.\nPulmonary: CTAB.\nExtremities: Right lower extremity shows diminished pulses compared to left. Skin is intact. No edema. No visible lesions or skin breakdown noted.\n\nAssessment:\n1. Atherosclerosis of the native leg arteries with intermittent claudication. Symptoms localized to the right leg.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Instructed pt on supervised exercise program to improve walking distance.\n3. Advised to monitor for any new skin changes or increased pain.\n4. F/u in 3 months for progress.\n\nElectronically signed,\nT. Haddad, NP\n05/14/2026",
+  "answer": [
+    "I70.211"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the right leg with intermittent claudication (no HCC in V28): I70.211."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.212"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.221"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Rest pain is not documented (it would add HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0,
+        "gap": 0.455,
+        "direction": "over",
+        "extra_hccs": [
+          "264"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I73.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Atherosclerosis with claudication is documented: I70.21-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T14:18:53+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-7de12d8a52",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Pain in right shoulder and back.\n\nVitals: BP 138/84, HR 76, SpO2 96% on RA, Temp 98.1 F, HR 76, RR 18.\n\nRecent Labs: Hemoglobin: 11.2 g/dL, White Blood Cell Count: 4.5 x 10^9/uL, Platelets: 145 x 10^9/uL, Creatinine: 1.1 mg/dL, eGFR: 72 mL/min/1.73m2.\n\nMedication List:\n- Letrozole 2.5 mg daily\n- Prednisone 5 mg daily\n- Oxycodone 5 mg every 6 hours as needed for pain\n- Vitamin D3 2000 IU daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or night sweats.\nMusculoskeletal: Positive for right shoulder pain and mid-back aching.\nNeurological: Negative for numbness or tingling.\nGastrointestinal: Negative for nausea or changes in bowel habits.\nRespiratory: Negative for shortness of breath or cough.\n\nSocial History: Retired teacher. Lives with her daughter in a single-story home. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had hypertension. Sister had diabetes.\n\nFamily History: Father had myocardial infarction at age 65. Mother had hypertension.\n\nHPI: Patient is an 85-year-old female with a known malignant neoplasm of the right breast. She is currently receiving chemotherapy to manage the primary site. She reports that while the primary site is being managed, she has developed increasing discomfort in her upper back and right shoulder. She describes the pain as a dull, constant ache that worsens with movement. She states she has been taking her prescribed analgesics but reports that the discomfort is becoming more persistent.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nMusculoskeletal: Palpable tenderness over the right scapula and upper thoracic spine. No obvious deformity or erythema.\nSkin: No new lesions noted.\n\nAssessment:\n1. Malignant neoplasm of the right breast: Patient is on active treatment and tolerating the regimen well.\n2. Bone metastasis: Patient is experiencing localized pain secondary to metastases to bone.\n\nPlan:\n1. Continue current chemotherapy regimen as scheduled.\n2. Initiate physical therapy for pain management and mobility.\n3. Adjust pain management protocol; increase oxycodone dose if pain remains poorly controlled.\n4. Follow up in 4 weeks to monitor bone metastasis symptoms.\n\nElectronically signed, \nD. Kowalski, PA-C\nOctober 14, 2026",
+  "answer": [
+    "C50.911",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the right female breast under current treatment is a current malignancy: C50.911.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.3",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.919",
+        "C79.51"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right breast: use the right-breast code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C50.911"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 2.341,
+        "gap": -2.155,
+        "direction": "under",
+        "extra_hccs": [
+          "23"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C50.911",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:58:40+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "D. Kowalski"
+    }
+  }
+}

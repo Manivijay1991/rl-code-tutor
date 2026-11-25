@@ -1,0 +1,127 @@
+{
+  "id": "atrial_fibrillation-8aa4449047",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "persistent",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Palpitations and follow-up for arrhythmia.\n\nHPI: [Copied Forward] Patient is a 77-year-old female presenting for evaluation of persistent atrial fibrillation. She reports occasional fluttering sensations in her chest. She is currently managed on a rate-control regimen and anticoagulation. She denies any syncopal episodes or falls. \n\n[Current Update] Today, the patient reports that her palpitations have been stable over the last month. She denies any shortness of breath or chest pain. She continues to take her medications as prescribed and reports adherence.\n\nVitals: BP 128/82, HR 84, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nConstitutional: Negative\nCardiovascular: Positive (palpitations)\nRespiratory: Negative\nNeurological: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\n\nMedication List:\n- Apixaban 5mg BID\n- Metoprolol 25mg daily\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard. No murmurs, rubs, or gallops. Capillary refill <2 seconds.\nRespiratory: Clear to auscultation bilaterally.\n\nAssessment:\n1. Persistent AFib: Patient is currently stable on rate control and anticoagulation.\n\nPlan:\n1. Continue current medication regimen including apixaban for prevention of thromboembolic events.\n2. Monitor heart rate and rhythm.\n3. Follow up in 3 months.\n\nElectronically signed, \nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "I48.19",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Persistent atrial fibrillation, not documented as longstanding: I48.19, other persistent (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.11",
+        "Z79.01"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Longstanding persistent is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91",
+        "Z79.01"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (persistent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.19"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.19",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4819"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:54:57+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

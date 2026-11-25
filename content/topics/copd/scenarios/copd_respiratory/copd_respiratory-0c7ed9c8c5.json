@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-0c7ed9c8c5",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: Pt is a 60 y.o. female presenting for f/u of emphysema. Pt reports ongoing dyspnea, primarily during exertion. She states her symptoms are stable but she continues to require home oxygen at night to manage nocturnal symptoms. Denies recent fever, productive cough, or chest pain. Pt reports adherence to current meds and oxygen regimen.\n\nMedication List:\n- Tiotropium inhaler daily\n- Salmeterol inhaler BID\n- Prednisone 5mg daily\n- Albuterol HFA PRN\n\nSocial History: Retired teacher. Former smoker (30 pack-year hx). Lives with husband. No illicit drug use.\n\nFamily History: Mother had hypertension. Father had history of emphysema.\n\nReview of Systems:\nConstitutional: Negative for fever/chills.\nRespiratory: Positive for dyspnea on exertion. Negative for cough or sputum.\nCardiovascular: Negative for chest pain or palpitations.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or syncope.\n\nVitals:\nBP: 132/82\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 94% on room air\nRR: 18\n\nRecent Labs:\nHbA1c: 5.7%\neGFR: 82\nCBC: WNL\nCMP: WNL\n\nExam:\nGeneral: Alert, cooperative, in no acute distress.\nRespiratory: CTAB. Decreased breath sounds in bilateral lower lobes. No wheezing.\nCardiovascular: RRR, S1, S2 heard. No murmurs.\nExtremities: No edema.\nSkin: Intact, no rashes.\n\nAssessment:\n1. Emphysema. Pt is stable on current maintenance therapy and nocturnal home oxygen.\n\nPlan:\n1. Continue current medications.\n2. Continue home oxygen as prescribed for nighttime use.\n3. Follow up in 3 months for routine check.\n4. Encouraged pulmonary rehab.\n\nElectronically signed,\nR. Mensah, DO\nOctober 14, 2026",
+  "answer": [
+    "J43.9",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-.",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:45+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

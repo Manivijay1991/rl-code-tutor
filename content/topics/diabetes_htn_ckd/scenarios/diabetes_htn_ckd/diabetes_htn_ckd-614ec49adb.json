@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_htn_ckd-614ec49adb",
+  "table": "diabetes_htn_ckd",
+  "title": "Diabetes, hypertension and CKD together",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow-up for chronic kidney disease and type 2 diabetes.\n\nHPI\nThe patient is a 79-year-old female presenting today for a routine follow-up of her chronic kidney disease and type 2 diabetes. She reports that she feels generally well and has been managing her blood glucose levels through dietary modifications alone. She denies any recent episodes of significant fatigue, shortness of breath, or changes in urinary output. She reports adherence to her low-sodium and low-sugar diet. She notes occasional mild swelling in her ankles, which she attributes to standing for long periods. She denies any acute pain or recent infections.\n\nMedication List\nDietary modifications only.\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 155 lbs\n\nRecent Labs\neGFR: 38 mL/min/1.73m2\nHbA1c: 6.8%\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.9 mg/dL\n\nReview of Systems\nConstitutional: Denies fever, chills, or weight loss.\nEyes: No vision changes.\nCardiovascular: No chest pain or palpitations.\nRespiratory: No cough or shortness of breath.\nGastrointestinal: No nausea, vomiting, or diarrhea.\nGenitourinary: No dysuria or hematuria.\nMusculoskeletal: No joint pain or stiffness.\nNeurological: No dizziness or syncope.\n\nSocial History\nThe patient lives at home with her spouse. She is retired and enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had type 2 diabetes. Father had a history of CKD.\n\nExam\nGeneral: Alert and oriented x3. Well-nourished and in no acute distress.\nCardiovascular: Regular rate and rhythm. S1, S2 heard clearly. No murmurs.\nRespiratory: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, non-distended.\nExtremities: Trace pedal edema noted bilaterally. No calf tenderness.\n\nAssessment\n1. Chronic kidney disease, stage 3b.\n2. Type 2 diabetes.\n\nPlan\n1. Continue current dietary management for type 2 diabetes.\n2. Monitor kidney function with repeat labs in 3 months.\n3. Educated patient on fluid intake and low-sodium diet for CKD management.\n4. Follow up in 3 months for routine evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "E11.22",
+    "N18.32"
+  ],
+  "explanations": [
+    "Type 2 diabetes and CKD are linked by the 'with' convention unless the provider says otherwise: E11.22 (HCC 37).",
+    "The CKD stage is coded in addition: N18.32."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.32"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The 'with' convention presumes the diabetes caused the CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "E11.22 says to use an additional code for the CKD stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.293,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Code the documented stage.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.293,
+        "correct": 0.293,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.293,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:54:14+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

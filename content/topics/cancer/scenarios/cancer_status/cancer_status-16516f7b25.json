@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-16516f7b25",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "breast_right",
+    "status": "history",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for metastatic liver disease.\n\nHPI\nThe patient is a 68-year-old woman presenting for evaluation of metastatic disease. She originally had cancer of the right breast which was surgically removed and treated several years ago. Her primary treatment is complete, and clinical monitoring shows no evidence of local recurrence at the primary site. However, the patient now presents with symptoms related to liver metastases. She reports mild abdominal discomfort and fatigue. She is not currently seeking treatment for the original site but requires management for the systemic spread.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\n\nExam\nThe patient is alert and oriented. Vital signs are stable. Physical exam reveals a soft, non-tender abdomen without hepatomegaly or palpable masses. Skin is intact. No new masses are noted on the chest wall.\n\nAssessment\n1. Metastatic liver disease secondary to right breast carcinoma.\n2. History of breast cancer with no evidence of local recurrence.\n\nPlan\nWe will monitor the progression of the liver metastases. We discussed the goals of care and symptom management. The patient will return in four weeks for a follow-up assessment of her abdominal symptoms.\n\nElectronically signed, K. Nguyen, PA-C, 05/12/2026",
+  "answer": [
+    "Z85.3",
+    "C78.7"
+  ],
+  "explanations": [
+    "The right female breast cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.3 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C50.911",
+        "C78.7"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.3"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.209,
+        "gap": -4.209,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.3",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:44:11+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

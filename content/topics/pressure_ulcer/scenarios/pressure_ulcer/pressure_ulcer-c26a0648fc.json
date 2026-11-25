@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-c26a0648fc",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "4"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up for a pressure ulcer on the right heel.\n\nHPI\nThe patient is a 76-year-old male who presents today for a follow-up evaluation of a pressure ulcer located on the right heel. The patient reports that the wound has been present for several months. He notes that while he manages to keep the area clean, he has noticed significant drainage and some persistent pain during movement. He has been utilizing a pressure-relieving mattress at home and following the prescribed wound care regimen. He denies any recent fever, chills, or systemic malaise. He states that his mobility remains limited, necessitating the use of a wheelchair for most activities of daily living.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Amlodipine 5mg daily\n- Multivitamin daily\n\nVitals\nBP: 138/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 18 breaths/min\nSpO2: 96% on room air\nWeight: 185 lbs\n\nRecent Labs\nHbA1c: 6.8%\neGFR: 65 mL/min/1.73m2\nWBC: 8.2 x 10^9/L\nHemoglobin: 13.4 g/dL\n\nReview of Systems\nConstitutional: Denies fever or chills.\nIntegumentary: Positive for a chronic wound on the right heel.\nMusculoskeletal: Reports chronic pain in the right lower extremity.\nNeurological: Denies numbness or tingling.\nAll other systems reviewed and are negative.\n\nSocial History\nThe patient lives at home with his wife. He is retired and spends most of his time watching television and reading. He does not smoke and drinks alcohol only occasionally.\n\nFamily History\nFather: Hypertension, Myocardial Infarction.\nMother: Stroke.\nSiblings: One brother with hypertension.\n\nExam\nThe patient is alert and oriented x3. Physical exam reveals a large pressure ulcer on the right heel. The wound is documented as a stage 4 pressure ulcer. There is visible granulation tissue and some slough present at the base of the wound. The surrounding skin is intact but appears slightly erythematous. Capillary refill is present.\n\nAssessment\n1. Pressure ulcer of the right heel, stage 4.\n\nPlan\n1. Wound Care: Continue current dressing protocol. Debride the area of non-viable tissue as needed.\n2. Pressure Management: Patient instructed to continue using the pressure-relieving mattress and to perform frequent weight shifts.\n3. Follow-up: Return to the clinic in two weeks for a wound measurement and re-evaluation.\n\nElectronically signed, L. Moreau, PA-C, 05/14/2026",
+  "answer": [
+    "L89.614"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 4: L89.614 (HCC 379)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.965,
+        "gap": -1.965,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.613"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 1.965,
+        "gap": -0.89,
+        "direction": "under",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.965,
+    "hccs": [
+      {
+        "hcc": "379",
+        "label": "Pressure Ulcer of Skin with Necrosis Through to Muscle/Tendon/Bone",
+        "from": [
+          "L89614"
+        ],
+        "weight": 1.965
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:14+00:00",
+    "style": {
+      "age": 76,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

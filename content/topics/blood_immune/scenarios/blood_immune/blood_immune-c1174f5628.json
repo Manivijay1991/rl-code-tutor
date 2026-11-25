@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-c1174f5628",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "itp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint\nFollow-up for chronic immune thrombocytopenia.\n\nHPI\nThe patient is an 86-year-old male who presents today for a scheduled follow-up regarding his chronic immune thrombocytopenia. He reports feeling generally well and denies any recent episodes of easy bruising, petechiae, or spontaneous bleeding. He notes that he has been compliant with his current management plan and has not experienced any significant changes in his activity level or physical endurance. He denies any recent fevers, chills, or signs of infection. He is here primarily for monitoring of his platelet counts and to discuss his stable condition.\n\nMedication List\n1. Prednisone 5mg daily\n2. Aspirin 81mg daily\n3. Multivitamin daily\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs\nPlatelet Count: 88,000/uL\nHemoglobin: 13.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/uL\neGFR: 62 mL/min/1.73m2\n\nReview of Systems\nThe patient denies any recent headaches, dizziness, or syncope. He reports no joint pain or muscle aches. He denies any shortness of breath or chest pain. He denies any recent visual disturbances or auditory changes. He denies any changes in bowel or bladder habits.\n\nSocial History\nThe patient is retired and lives at home with his wife. He enjoys gardening and walking in the neighborhood. He denies tobacco use and reports social drinking on weekends only.\n\nFamily History\nFather had hypertension and a history of heart disease. Mother had type 2 diabetes. No known family history of bleeding disorders.\n\nExam\nThe patient is alert and oriented x3. He is in no acute distress. Skin is intact with no visible petechiae or ecchymosis noted on the extremities or trunk. Mucous membranes are moist. No lymphadenopathy is palpated. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally.\n\nAssessment\n1. Chronic immune thrombocytopenia. The patient's platelet count remains stable at 88,000/uL. He continues to tolerate his current maintenance regimen well without significant side effects.\n\nPlan\n1. Continue current medications as prescribed.\n2. Monitor platelet counts every 3 months.\n3. Patient instructed to report any significant bruising or bleeding immediately.\n4. Follow up in 3 months for repeat labs.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "D69.3"
+  ],
+  "explanations": [
+    "Immune thrombocytopenia: D69.3 (HCC 112)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D69.6"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "ITP is documented: D69.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.45,
+        "gap": -0.45,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "112"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.45,
+    "hccs": [
+      {
+        "hcc": "112",
+        "label": "Immune Thrombocytopenia and Specified Coagulation Defects and Hemorrhagic Conditions",
+        "from": [
+          "D693"
+        ],
+        "weight": 0.45
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:15+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

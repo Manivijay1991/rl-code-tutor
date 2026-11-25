@@ -1,0 +1,149 @@
+{
+  "id": "diabetes_complications-e5680eebba",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes and CKD stage 4.\n\nHPI: (Copied Forward) Patient is an 86-year-old female presenting for management of type 2 diabetes and chronic kidney disease stage 4. She reports being adherent to her current management plan. She denies any acute changes in renal function or fluctuations in blood glucose levels. She maintains a consistent routine of diet and exercise to manage her conditions. \n\n(Today's Update): The patient returns today for a routine follow-up. She reports feeling well and denies any new symptoms. She continues to manage her type 2 diabetes through diet only. She notes that her energy levels are stable and she has no concerns regarding her CKD stage 4 at this time.\n\nVitals: BP 128/74, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nRecent Labs: eGFR 22 mL/min/1.73m2, HbA1c 7.1%, Creatinine 2.4 mg/dL, LDL 95 mg/dL, Glucose 118 mg/dL.\n\nMedication List: \n- Atorvastatin 20mg daily\n- Omeprazole 20mg daily\n\nSocial History: Retired; lives at home with her daughter. Non-smoker. Occasional social outings.\n\nFamily History: Mother had type 2 diabetes. Father had hyperlipidemia.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nEyes: Negative for vision changes.\nHEENT: Negative for sore throat, rhinorrhea.\nCardiovascular: Negative for chest pain, palpitations.\nRespiratory: Negative for cough, SOB.\nGastrointestinal: Positive for occasional heartburn.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for numbness, tingling.\nPsychiatric: Negative for anxiety, depression.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. \nSkin: No new lesions or rashes. \nLungs: Clear to auscultation bilaterally. \nHeart: Regular rate and rhythm, no murmurs. \nAbdomen: Soft, non-tender, no masses. \nExtremities: No edema noted.\n\nAssessment:\n1. Type 2 diabetes: Managed by diet and exercise.\n2. CKD stage 4: Stable on current management.\n3. Hyperlipidemia: Stable on atorvastatin.\n4. Gastroesophageal reflux disease: Stable on omeprazole.\n\nPlan:\n1. Continue current diet-only management for type 2 diabetes.\n2. Continue monitoring renal function and eGFR.\n3. Continue current medications for hyperlipidemia and GERD.\n4. Follow up in 3 months.\n\nProblem List:\n- Type 2 diabetes\n- CKD stage 4\n- Hyperlipidemia\n- Gastroesophageal reflux disease\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "E11.22",
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD is listed under 'with' for diabetes in the Index, so the link is presumed: use the combination code E11.22.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.4"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The provider does not have to write 'due to'; 'with' presumes the link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.2",
+        "N18.4"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "E11.2 is a subcategory; a 5th character is required.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.68,
+        "gap": -0.166,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:29:37+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

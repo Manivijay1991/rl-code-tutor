@@ -1,0 +1,123 @@
+{
+  "id": "heart_failure-11328521e3",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Worsening shortness of breath and leg swelling.\n\nHPI: [Copied Forward] Patient is a 77-year-old female with a history of systolic heart failure and hypertension. She presents for follow-up management of her chronic conditions. She reports stable symptoms and adherence to her current medication regimen. No reports of paroxysmal nocturnal dyspnea or orthopnea since the last visit.\n\n[Update] Today, the patient reports a significant increase in dyspnea over the last 48 hours, describing it as \"getting harder to breathe\" even while resting. She notes increased swelling in both ankles and feet, which she states is more severe than usual. She denies chest pain or fever.\n\nVitals: BP 148/92, HR 88, SpO2 94% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: Positive for shortness of breath. Negative for cough.\nCardiovascular: Positive for edema. Negative for chest pain.\nNeurological: Negative for dizziness or syncope.\n\nExam: Patient appears in mild respiratory distress. Lung sounds reveal bilateral crackles in the lower lobes. S1 and S2 heard; no murmurs noted. Pitting edema noted to the mid-shin bilaterally.\n\nAssessment:\n1. Acute on chronic heart failure with reduced ejection fraction (EF 30%).\n2. Hypertension.\n\nPlan:\n1. Increase furosemide dosage to address acute exacerbation of heart failure symptoms.\n2. Monitor weight daily and report gains over 2 lbs.\n3. Follow up in one week for reassessment of fluid status.\n\nMedication List:\n- Furosemide 40mg daily\n- Lisinopril 10mg daily\n- Carvedilol 12.5mg twice daily\n\nElectronically signed, R. Mensah, PA-C, 05/14/2026",
+  "answer": [
+    "I11.0",
+    "I50.23"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Acute on chronic systolic heart failure: I50.23 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.23"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.22"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.21"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5023"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "224"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:38+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

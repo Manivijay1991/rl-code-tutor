@@ -1,0 +1,421 @@
+{
+  "id": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note_age": {
+    "min": 50
+  },
+  "slots": {
+    "severity": {
+      "label": "Documented stage",
+      "values": [
+        "pvd_unspecified",
+        "claudication",
+        "rest_pain",
+        "ulcer"
+      ],
+      "labels": {
+        "pvd_unspecified": "PVD, nothing more",
+        "claudication": "Atherosclerosis with claudication",
+        "rest_pain": "Atherosclerosis with rest pain",
+        "ulcer": "Atherosclerosis with foot ulcer"
+      },
+      "evidence": {
+        "pvd_unspecified": [
+          "peripheral vascular disease",
+          "PVD"
+        ],
+        "claudication": [
+          "claudication"
+        ],
+        "rest_pain": [
+          "rest pain"
+        ],
+        "ulcer": [
+          "ulcer",
+          "ulceration"
+        ]
+      },
+      "describe": {
+        "pvd_unspecified": "The provider documents peripheral vascular disease (PVD), stable, with no symptoms described and no mention of atherosclerosis.",
+        "claudication": "The provider documents atherosclerosis of the native leg arteries with intermittent claudication (calf pain when walking); no rest pain, no ulcer.",
+        "rest_pain": "The provider documents atherosclerosis of the native leg arteries with rest pain in the foot; no ulcer.",
+        "ulcer": "The provider documents atherosclerosis of the native leg arteries with a non-healing arterial ulcer on the top of the foot (not heel, not toe); its depth is not described."
+      }
+    },
+    "side": {
+      "label": "Side",
+      "values": [
+        "right",
+        "left"
+      ],
+      "labels": {
+        "right": "Right leg",
+        "left": "Left leg"
+      },
+      "evidence": {
+        "right": [
+          "right leg",
+          "right lower extremity",
+          "right foot"
+        ],
+        "left": [
+          "left leg",
+          "left lower extremity",
+          "left foot"
+        ]
+      },
+      "describe": {
+        "right": "Only the right leg is affected.",
+        "left": "Only the left leg is affected."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "severity": "pvd_unspecified",
+      "side": "left"
+    }
+  ],
+  "note_forbid": [
+    "diabetes",
+    "diabetic",
+    "bypass graft",
+    "stent",
+    "venous",
+    "gangrene",
+    "amputation",
+    "aneurysm",
+    "embolism",
+    "DVT",
+    "bilateral",
+    "both legs",
+    "heel",
+    "toe",
+    "ankle ulcer",
+    "fat layer",
+    "muscle",
+    "bone",
+    "pressure ulcer",
+    "pressure injury"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "severity": [
+          "claudication",
+          "rest_pain",
+          "ulcer"
+        ]
+      },
+      "require": [
+        [
+          "atherosclerosis",
+          "atherosclerotic"
+        ]
+      ]
+    },
+    {
+      "when": {
+        "severity": "pvd_unspecified"
+      },
+      "forbid": [
+        "atherosclerosis",
+        "atherosclerotic",
+        "pain"
+      ]
+    }
+  ],
+  "confusions": {
+    "assumed_atherosclerosis": {
+      "description": "Coded atherosclerosis or a complication that is not documented.",
+      "lean": "over"
+    },
+    "unspecified_when_specified": {
+      "description": "Used unspecified PVD (I73.9) when atherosclerosis with a complication is documented.",
+      "lean": "under"
+    },
+    "understated_severity": {
+      "description": "Coded a lower stage of atherosclerosis than documented.",
+      "lean": "under"
+    },
+    "overstated_severity": {
+      "description": "Coded a higher stage of atherosclerosis than documented.",
+      "lean": "over"
+    },
+    "wrong_side": {
+      "description": "Coded the wrong leg.",
+      "lean": "neutral"
+    },
+    "missed_ulcer_code": {
+      "description": "Left out the ulcer code (L97.-) that the atherosclerosis-with-ulceration code asks for.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "pad",
+      "rules": [
+        {
+          "when": {
+            "severity": "pvd_unspecified"
+          },
+          "codes": [
+            "I73.9"
+          ],
+          "explain": "Peripheral vascular disease without documented atherosclerosis or a complication: I73.9 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: I70-I73"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I70.211"
+              ],
+              "confusion": "assumed_atherosclerosis",
+              "why": "Atherosclerosis and claudication are not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "severity": "claudication",
+            "side": "right"
+          },
+          "codes": [
+            "I70.211"
+          ],
+          "explain": "Atherosclerosis of native arteries of the right leg with intermittent claudication (no HCC in V28): I70.211.",
+          "refs": [
+            "ICD-10-CM Tabular: I70-I73"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I70.212"
+              ],
+              "confusion": "wrong_side",
+              "why": "The right leg is affected."
+            },
+            {
+              "codes": [
+                "I70.221"
+              ],
+              "confusion": "overstated_severity",
+              "why": "Rest pain is not documented (it would add HCC 264)."
+            },
+            {
+              "codes": [
+                "I73.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Atherosclerosis with claudication is documented: I70.21-."
+            }
+          ]
+        },
+        {
+          "when": {
+            "severity": "claudication",
+            "side": "left"
+          },
+          "codes": [
+            "I70.212"
+          ],
+          "explain": "Atherosclerosis of native arteries of the left leg with intermittent claudication (no HCC in V28): I70.212.",
+          "refs": [
+            "ICD-10-CM Tabular: I70-I73"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I70.211"
+              ],
+              "confusion": "wrong_side",
+              "why": "The left leg is affected."
+            },
+            {
+              "codes": [
+                "I70.222"
+              ],
+              "confusion": "overstated_severity",
+              "why": "Rest pain is not documented (it would add HCC 264)."
+            },
+            {
+              "codes": [
+                "I73.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Atherosclerosis with claudication is documented: I70.21-."
+            }
+          ]
+        },
+        {
+          "when": {
+            "severity": "rest_pain",
+            "side": "right"
+          },
+          "codes": [
+            "I70.221"
+          ],
+          "explain": "Atherosclerosis of native arteries of the right leg with rest pain (HCC 264): I70.221.",
+          "refs": [
+            "ICD-10-CM Tabular: I70-I73"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I70.222"
+              ],
+              "confusion": "wrong_side",
+              "why": "The right leg is affected."
+            },
+            {
+              "codes": [
+                "I70.211"
+              ],
+              "confusion": "understated_severity",
+              "why": "Rest pain is documented: it is a higher stage (HCC 264)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "severity": "rest_pain",
+            "side": "left"
+          },
+          "codes": [
+            "I70.222"
+          ],
+          "explain": "Atherosclerosis of native arteries of the left leg with rest pain (HCC 264): I70.222.",
+          "refs": [
+            "ICD-10-CM Tabular: I70-I73"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I70.221"
+              ],
+              "confusion": "wrong_side",
+              "why": "The left leg is affected."
+            },
+            {
+              "codes": [
+                "I70.212"
+              ],
+              "confusion": "understated_severity",
+              "why": "Rest pain is documented: it is a higher stage (HCC 264)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "severity": "ulcer",
+            "side": "right"
+          },
+          "codes": [
+            "I70.235"
+          ],
+          "explain": "Atherosclerosis of native arteries of the right leg with ulceration of the foot (HCC 263), plus the ulcer code: I70.235.",
+          "refs": [
+            "ICD-10-CM Tabular: I70-I73"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I70.245"
+              ],
+              "confusion": "wrong_side",
+              "why": "The right leg is affected."
+            },
+            {
+              "codes": [
+                "I70.221"
+              ],
+              "confusion": "understated_severity",
+              "why": "Ulceration is documented: it is the highest stage (HCC 263)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "severity": "ulcer",
+            "side": "left"
+          },
+          "codes": [
+            "I70.245"
+          ],
+          "explain": "Atherosclerosis of native arteries of the left leg with ulceration of the foot (HCC 263), plus the ulcer code: I70.245.",
+          "refs": [
+            "ICD-10-CM Tabular: I70-I73"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I70.235"
+              ],
+              "confusion": "wrong_side",
+              "why": "The left leg is affected."
+            },
+            {
+              "codes": [
+                "I70.222"
+              ],
+              "confusion": "understated_severity",
+              "why": "Ulceration is documented: it is the highest stage (HCC 263)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ulcer",
+      "rules": [
+        {
+          "when": {
+            "severity": "ulcer",
+            "side": "right"
+          },
+          "codes": [
+            "L97.519"
+          ],
+          "explain": "I70.23- says to use an additional code for the ulcer's site and severity: L97.519 (other part of right foot, severity not documented).",
+          "refs": [
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_ulcer_code",
+              "why": "Use an additional code (L97.-) to identify the ulcer."
+            }
+          ]
+        },
+        {
+          "when": {
+            "severity": "ulcer",
+            "side": "left"
+          },
+          "codes": [
+            "L97.529"
+          ],
+          "explain": "I70.24- says to use an additional code for the ulcer's site and severity: L97.529 (other part of left foot, severity not documented).",
+          "refs": [
+            "OCG I.A.13"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_ulcer_code",
+              "why": "Use an additional code (L97.-) to identify the ulcer."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    }
+  ]
+}

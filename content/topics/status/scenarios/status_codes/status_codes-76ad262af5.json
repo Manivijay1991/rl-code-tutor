@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-76ad262af5",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "colostomy",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Routine follow-up for hypertension.\n\nHPI: [Copied Forward] Patient is a 77-year-old female who presents for management of chronic hypertension. She reports stable blood pressure control on her current regimen. She denies any recent changes in her cardiovascular status or symptoms of dizziness. She notes that she continues to manage her daily routine comfortably.\n\n[Current Update] The patient reports feeling well today. She denies any new concerns regarding her gastrointestinal health or the site of her colostomy.\n\nMedication List:\n- Lisinopril 20mg daily\n- Amlodipine 5mg daily\n\nVitals: BP 134/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Cardiovascular: Negative\n- Respiratory: Negative\n- Gastrointestinal: Negative\n- Musculoskeletal: Negative\n- Neurological: Negative\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nAbdomen: Soft, non-tender. Colostomy is in place, appears healthy with no signs of irritation.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\n\nAssessment:\n1. Hypertension: Well-controlled on current medications.\n2. Status post-surgery: Patient has a permanent colostomy.\n\nPlan:\n1. Continue current antihypertensive medications.\n2. Routine monitoring of blood pressure.\n3. Follow up in 3 months.\n\nElectronically signed, \nR. Mensah, PA-C\n05/14/2026",
+  "answer": [
+    "Z93.3"
+  ],
+  "explanations": [
+    "Colostomy in place: Z93.3, colostomy status (HCC 463). Z43.3 is only for an encounter for care of the colostomy itself."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The colostomy is documented and present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.673,
+        "gap": -0.673,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "463"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z43.3"
+      ],
+      "confusion": "attention_vs_status",
+      "lean": "neutral",
+      "why": "The visit is not for care of the colostomy; report the status, Z93.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0.673,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z93.2"
+      ],
+      "confusion": "wrong_ostomy",
+      "lean": "neutral",
+      "why": "It is a colostomy, not an ileostomy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0.673,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.673,
+    "hccs": [
+      {
+        "hcc": "463",
+        "label": "Artificial Openings for Feeding or Elimination",
+        "from": [
+          "Z933"
+        ],
+        "weight": 0.673
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:37+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

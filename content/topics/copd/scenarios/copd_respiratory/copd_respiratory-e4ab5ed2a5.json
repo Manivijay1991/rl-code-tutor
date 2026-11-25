@@ -1,0 +1,69 @@
+{
+  "id": "copd_respiratory-e4ab5ed2a5",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: 68 y.o. female pt presents for f/u of chronic respiratory symptoms. Pt reports mild shortness of breath on exertion over the past 3 months. Describes a progressive increase in dyspnea during daily activities like walking and gardening. Denies fever, productive cough, or chest pain. Pt states she is currently managing symptoms without any supplemental breathing support. No reports of acute distress.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: Positive for exertional dyspnea. Negative for cough or sputum production.\nCardiovascular: Negative for palpitations or chest pain.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or syncope.\n\nSocial History: Retired. Lives with husband. Former smoker (30 pack-year hx). No alcohol or illicit drug use.\n\nFamily History: Mother had hypertension. Father had emphysema.\n\nMedication List:\n- Tiotropium inhaler daily\n- Lisinopril 10mg daily\n- Multivitamin daily\n\nVitals:\nBP: 132/82\nHR: 76 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nRR: 18\nHt: 5'4\"\nWt: 155 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 82 mL/min\nCBC: WNL\nCMP: WNL\n\nExam:\nGen: Well-appearing, alert, and oriented x3. In no acute distress.\nRespiratory: CTAB. Decreased breath sounds in bilateral lower lobes. Diffuse expiratory wheezing noted. No accessory muscle use.\nCV: RRR, no murmurs, rubs, or gallops.\nExt: No edema.\n\nAssessment:\n1. Emphysema: Pt is stable on current maintenance therapy. No signs of acute distress.\n2. Hypertension: Well-controlled on Lisinopril.\n\nPlan:\n1. Continue current inhaler and antihypertensive regimen.\n2. Encourage pulmonary rehab and regular low-impact exercise.\n3. F/u in 3 months for routine check.\n\nElectronically signed, S. Patel, DO, 05/12/2026",
+  "answer": [
+    "J43.9"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-."
+  ],
+  "refs": [
+    "OCG I.C.10.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 5,
+    "created": "2026-11-25T14:16:37+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

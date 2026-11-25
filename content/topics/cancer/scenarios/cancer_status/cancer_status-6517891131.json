@@ -1,0 +1,89 @@
+{
+  "id": "cancer_status-6517891131",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for lung cancer.\n\nHPI: Patient is an 81-year-old female with a known malignant neoplasm of the right lung. She is currently receiving chemotherapy. She reports feeling fatigued and has experienced some shortness of breath during exertion over the last two weeks. She denies any new acute pain or fevers. She is tolerating the current treatment regimen well otherwise.\n\nVitals: BP 128/82, HR 78, SpO2 96% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever, chills, or unintended weight loss.\nRespiratory: Positive for mild exertional dyspnea. Negative for productive cough or hemoptysis.\nMusculoskeletal: Negative for new-onset bone pain or weakness.\nNeurological: Negative for headache or dizziness.\n\nMedication List:\n- Chemotherapy (current cycle)\n- Prednisone 5mg daily\n- Lisinopril 10mg daily\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: Clear to auscultation bilaterally. No wheezing or crackles.\nIntegumentary: No new skin lesions or rashes.\n\nAssessment:\n1. Malignant neoplasm of the right lung. Patient is on active treatment.\n\nPlan:\n1. Continue current chemotherapy schedule.\n2. Monitor for increased fatigue or respiratory distress.\n3. Follow up in 4 weeks for repeat imaging and laboratory work.\n\nElectronically signed, J. Lindqvist, MD, 05/14/2026",
+  "answer": [
+    "C34.91"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.136,
+        "gap": -1.136,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "20"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.90"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 1.136,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.136,
+    "hccs": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "from": [
+          "C3491"
+        ],
+        "weight": 1.136
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:00+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "depression_severity-8b3d2b86c8",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "recurrent",
+    "status": "partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nFollow-up for depression.\n\nHPI\nThe patient is a 66-year-old man presenting for a scheduled follow-up regarding his major depressive disorder. He reports that his mood has stabilized over the past month, though he still experiences intermittent low energy and a lack of interest in previous hobbies. He denies any acute distress or significant changes in sleep patterns. He notes that while he feels better than during his last visit, he is not yet back to his baseline functioning.\n\nMedication List\nSertraline 100mg daily.\n\nExam\nThe patient is a well-groomed male who appears calm and cooperative. His affect is stable and congruent with his reported mood. Speech is normal in rate and volume. Thought process is linear and goal-directed. He denies any perceptual disturbances.\n\nAssessment\n1. Major depressive disorder, recurrent. The patient is currently in partial remission.\n\nPlan\n1. Continue current dosage of Sertraline.\n2. Continue to monitor symptoms and mood stability.\n3. Follow up in four weeks.\n\nElectronically signed, H. Tanaka, PA-C, 05/14/2026",
+  "answer": [
+    "F33.41"
+  ],
+  "explanations": [
+    "Major depressive disorder, recurrent, in partial remission (no HCC): F33.41."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents partial remission: code the remission, not an active severity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F33.42"
+      ],
+      "confusion": "wrong_remission",
+      "lean": "neutral",
+      "why": "The remission is partial, not full.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:37:27+00:00",
+    "style": {
+      "age": 66,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

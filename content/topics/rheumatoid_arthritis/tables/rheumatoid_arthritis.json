@@ -1,0 +1,288 @@
+{
+  "id": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note_age": {
+    "min": 35
+  },
+  "slots": {
+    "diagnosis": {
+      "label": "Arthritis documented",
+      "values": [
+        "ra_unspecified",
+        "ra_seropositive",
+        "osteoarthritis"
+      ],
+      "labels": {
+        "ra_unspecified": "Rheumatoid arthritis, nothing more",
+        "ra_seropositive": "Seropositive RA, multiple sites",
+        "osteoarthritis": "Osteoarthritis of both knees"
+      },
+      "evidence": {
+        "ra_unspecified": [
+          "rheumatoid arthritis"
+        ],
+        "ra_seropositive": [
+          [
+            "rheumatoid arthritis"
+          ],
+          [
+            "rheumatoid factor positive",
+            "seropositive",
+            "RF positive"
+          ]
+        ],
+        "osteoarthritis": [
+          [
+            "osteoarthritis"
+          ],
+          [
+            "both knees",
+            "bilateral knees",
+            "bilateral knee"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "ra_unspecified": "The provider documents rheumatoid arthritis without rheumatoid factor status and without naming joints.",
+        "ra_seropositive": "The provider documents seropositive (rheumatoid factor positive) rheumatoid arthritis of the hands and feet, without organ involvement.",
+        "osteoarthritis": "The provider documents primary osteoarthritis of both knees; there is no inflammatory arthritis."
+      }
+    },
+    "methotrexate": {
+      "label": "Methotrexate",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "labels": {
+        "no": "No",
+        "yes": "Long-term methotrexate"
+      },
+      "evidence": {
+        "no": [],
+        "yes": [
+          "methotrexate"
+        ]
+      },
+      "describe": {
+        "no": "No disease-modifying drug (managed with acetaminophen and physical therapy).",
+        "yes": "The patient takes methotrexate weekly long term, with folic acid."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "diagnosis": "osteoarthritis",
+      "methotrexate": "yes"
+    }
+  ],
+  "note_forbid": [
+    "adalimumab",
+    "etanercept",
+    "hydroxychloroquine",
+    "sulfasalazine",
+    "leflunomide",
+    "prednisone",
+    "steroid",
+    "tofacitinib",
+    "infliximab",
+    "juvenile",
+    "psoriatic",
+    "gout",
+    "lupus",
+    "rheumatoid lung",
+    "vasculitis",
+    "nodule",
+    "myopathy",
+    "polyneuropathy",
+    "interstitial",
+    "seronegative"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "diagnosis": "ra_unspecified"
+      },
+      "forbid": [
+        "seropositive",
+        "rheumatoid factor",
+        "RF",
+        "anti-CCP",
+        "osteoarthritis",
+        "hand",
+        "hands",
+        "wrist",
+        "wrists",
+        "knee",
+        "knees",
+        "foot",
+        "feet",
+        "ankle",
+        "shoulder",
+        "elbow",
+        "MCP",
+        "PIP"
+      ]
+    },
+    {
+      "when": {
+        "diagnosis": "ra_seropositive"
+      },
+      "require": [
+        [
+          "hands",
+          "wrists",
+          "MCP"
+        ],
+        [
+          "feet",
+          "MTP",
+          "ankles"
+        ]
+      ],
+      "forbid": [
+        "osteoarthritis"
+      ]
+    },
+    {
+      "when": {
+        "diagnosis": "osteoarthritis"
+      },
+      "forbid": [
+        "rheumatoid",
+        "inflammatory arthritis",
+        "methotrexate"
+      ]
+    }
+  ],
+  "confusions": {
+    "coded_ra_for_oa": {
+      "description": "Coded rheumatoid arthritis when the provider documents osteoarthritis.",
+      "lean": "over"
+    },
+    "unspecified_when_specified": {
+      "description": "Used rheumatoid arthritis, unspecified (M06.9) when rheumatoid factor and sites are documented.",
+      "lean": "neutral"
+    },
+    "assumed_rf_status": {
+      "description": "Coded rheumatoid factor status the provider did not document.",
+      "lean": "neutral"
+    },
+    "missed_drug_therapy": {
+      "description": "Left out long-term methotrexate (Z79.631).",
+      "lean": "under"
+    },
+    "nonspecific_drug_code": {
+      "description": "Used 'other long-term drug therapy' (Z79.899) when a specific code exists.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "arthritis",
+      "rules": [
+        {
+          "when": {
+            "diagnosis": "ra_unspecified"
+          },
+          "codes": [
+            "M06.9"
+          ],
+          "explain": "Rheumatoid arthritis, nothing more specified: M06.9 (HCC 93).",
+          "refs": [
+            "ICD-10-CM Tabular: M05-M06"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "M05.70"
+              ],
+              "confusion": "assumed_rf_status",
+              "why": "Rheumatoid factor status is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": "ra_seropositive"
+          },
+          "codes": [
+            "M05.79"
+          ],
+          "explain": "Rheumatoid arthritis with rheumatoid factor, multiple sites, no organ involvement: M05.79 (HCC 93).",
+          "refs": [
+            "ICD-10-CM Tabular: M05-M06"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "M06.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Rheumatoid factor and multiple sites are documented: M05.79."
+            }
+          ]
+        },
+        {
+          "when": {
+            "diagnosis": "osteoarthritis"
+          },
+          "codes": [
+            "M17.0"
+          ],
+          "explain": "Bilateral primary osteoarthritis of the knees: M17.0 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: M05-M06"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "M06.9"
+              ],
+              "confusion": "coded_ra_for_oa",
+              "why": "Osteoarthritis is not rheumatoid arthritis (HCC 93)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drug",
+      "rules": [
+        {
+          "when": {
+            "methotrexate": "yes"
+          },
+          "codes": [
+            "Z79.631"
+          ],
+          "explain": "Long-term methotrexate (an antimetabolite): Z79.631.",
+          "refs": [
+            "OCG I.C.21.c.3"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_drug_therapy",
+              "why": "Long-term methotrexate is documented: Z79.631."
+            },
+            {
+              "codes": [
+                "Z79.899"
+              ],
+              "confusion": "nonspecific_drug_code",
+              "why": "Methotrexate has its own long-term use code, Z79.631."
+            }
+          ]
+        },
+        {
+          "codes": []
+        }
+      ]
+    }
+  ]
+}

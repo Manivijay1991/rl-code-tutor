@@ -1,0 +1,94 @@
+{
+  "id": "ckd_staging-6e614862a2",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for CKD.\n\nHPI: The patient is a 70-year-old male presenting for a scheduled follow-up regarding his chronic kidney disease. He reports feeling generally stable today. He denies any new onset of shortness of breath, significant edema, or acute changes in urinary output. He notes that he manages his symptoms well but acknowledges the ongoing limitations of his condition. He is here to review his current renal function and adjust his management plan as needed.\n\nMedication List:\n- Omeprazole 20mg daily\n- Vitamin D supplement 2000 IU daily\n- Phosphate binder (as needed with meals)\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nHEENT: No vision changes or sore throat.\nRespiratory: Denies cough or wheezing.\nCardiovascular: Denies chest pain or palpitations.\nGastrointestinal: Denies abdominal pain; reports occasional acid reflux.\nGenitourinary: No dysuria or hematuria.\nMusculoskeletal: Denies joint pain.\nNeurological: No numbness or tingling.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking. He denies tobacco use and drinks alcohol socially on weekends.\n\nFamily History: Father had chronic kidney disease. Mother had gastroesophageal reflux disease.\n\nVitals:\nBP: 132/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 97% on room air\nWeight: 185 lbs\n\nRecent Labs:\neGFR: 12 mL/min/1.73m2\nSerum Potassium: 4.8 mEq/L\nSerum Phosphorus: 3.5 mg/dL\nCalcium: 9.2 mg/dL\nHemoglobin: 10.8 g/dL\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rhythm, no murmurs.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No pedal edema noted. Skin is intact.\n\nAssessment:\n1. Chronic kidney disease, stage 5.\n2. Gastroesophageal reflux disease.\n3. Vitamin D deficiency.\n\nPlan:\n1. Continue current medications for CKD.\n2. Monitor electrolyte levels and renal function every 3 months.\n3. Continue Vitamin D supplementation for deficiency.\n4. Continue Omeprazole for reflux management.\n5. Patient instructed to report any rapid weight gain or significant changes in laboratory values.\n\nProblem List:\n1. Chronic kidney disease, stage 5\n2. Gastroesophageal reflux disease\n3. Vitamin D deficiency\n\nElectronically signed, R. Mensah, PA-C, 05/14/2026",
+  "answer": [
+    "N18.5"
+  ],
+  "explanations": [
+    "CKD stage 5 (not documented as ESRD): N18.5."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.6"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 5 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.815,
+        "gap": -0.301,
+        "direction": "under",
+        "extra_hccs": [
+          "327"
+        ],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:20+00:00",
+    "style": {
+      "age": 70,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "vitamin D deficiency"
+      ],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

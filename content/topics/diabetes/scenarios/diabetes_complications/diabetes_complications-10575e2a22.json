@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_complications-10575e2a22",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for management of chronic conditions.\n\nHPI: The patient is a 55-year-old female presenting today for a routine follow-up of her known chronic conditions. She currently manages type 2 diabetes mellitus and chronic kidney disease stage 4. The patient reports that she feels stable and has not experienced any acute issues since her last visit. She continues to manage her blood glucose levels exclusively through diet and exercise. She denies any recent changes in urinary output, significant edema, or new fatigue. Regarding her renal status, she notes she continues to follow her prescribed fluid and nutritional guidelines. She reports good adherence to her lifestyle modifications.\n\nMedication List:\n- Vitamin D supplement\n- Lipid-lowering medication\n\nVitals:\nBP: 122/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 165 lbs\n\nRecent Labs:\neGFR: 22 mL/min/1.73m2\nHbA1c: 6.8%\nLDL: 95 mg/dL\nVitamin D: 28 ng/mL\n\nReview of Systems:\nConstitutional: Denies fever, chills, or unintended weight change.\nHEENT: Denies vision changes or headaches.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath or cough.\nGastrointestinal: Denies nausea, vomiting, or abdominal pain.\nGenitourinary: Denies dysuria or changes in urine frequency.\nMusculoskeletal: Denies joint pain or muscle weakness.\nNeurological: Denies numbness or tingling.\n\nSocial History: The patient works full-time as an administrative assistant. She lives with her husband and two children. She denies tobacco or alcohol use.\n\nFamily History: Mother has a history of hyperlipidemia. Father had a history of coronary artery disease.\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nCardiovascular: Regular rate and rhythm. No murmurs heard.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted. Pulses are palpable.\nSkin: No new rashes or lesions.\n\nAssessment:\n1. Type 2 diabetes: Currently diet controlled.\n2. Chronic kidney disease stage 4: The patient's renal decline is not related to diabetes.\n3. Hyperlipidemia: Stable on current medication.\n4. Vitamin D deficiency: Ongoing management with supplementation.\n\nPlan:\n- Continue current diet and exercise regimen for blood glucose management.\n- Continue current lipid-lowering medication and Vitamin D supplementation.\n- Monitor renal function with follow-up labs in 3 months.\n- Patient instructed to call the office if she experiences any new symptoms or significant changes in renal function.\n\nProblem List:\n- Type 2 diabetes\n- Chronic kidney disease stage 4\n- Hyperlipidemia\n- Vitamin D deficiency\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "N18.4"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:26:16+00:00",
+    "style": {
+      "age": 55,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "hyperlipidemia"
+      ],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

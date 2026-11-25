@@ -1,0 +1,103 @@
+{
+  "id": "ckd_staging-1bbf81bdf2",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "2",
+    "hypertension": "yes",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for hypertension and CKD.\n\nHPI: Patient is a 77-year-old female presenting for a scheduled follow-up of her chronic kidney disease and hypertension. Patient reports feeling well today with no acute complaints. She denies any recent edema, changes in urinary output, or shortness of breath. She reports compliance with her current medication regimen and stable blood pressure readings at home.\n\nVitals: BP 134/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\n- Lisinopril 10mg daily\n- Amlodipine 5mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nRenal: No and no flank tenderness.\nExtremities: No peripheral edema.\n\nAssessment:\n1. Chronic kidney disease: Patient currently presents with CKD stage 2. Most recent labs show a stable eGFR of 72 mL/min/1.73m2.\n2. Hypertension: Blood pressure is well-controlled on current medications.\n\nPlan:\n- Continue current medication regimen for hypertension and CKD.\n- Follow up in 6 months for repeat labs and blood pressure check.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "I12.9",
+    "N18.2"
+  ],
+  "explanations": [
+    "Hypertension with CKD is presumed linked: I12.9 for CKD stage 1-4 (sequenced first), plus the N18 stage code.",
+    "CKD stage 2: N18.2."
+  ],
+  "refs": [
+    "OCG I.C.9.a.2",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "N18.2"
+      ],
+      "confusion": "missed_htn_ckd_link",
+      "lean": "under",
+      "why": "The classification presumes a link between hypertension and CKD.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.0",
+        "N18.2"
+      ],
+      "confusion": "wrong_htn_ckd_code",
+      "lean": "neutral",
+      "why": "I12.0 is for stage 5 or ESRD only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0,
+        "gap": 0.815,
+        "direction": "over",
+        "extra_hccs": [
+          "326"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I12.9",
+        "N18.1"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "The note documents stage 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T16:22:48+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

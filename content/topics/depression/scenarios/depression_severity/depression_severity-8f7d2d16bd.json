@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-8f7d2d16bd",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nVitals: BP 134/82, HR 76, SpO2 98% on room air, Temp 98.6 F, BMI 28.4.\nRecent Labs: Hemoglobin 14.2 g/dL, White Blood Cell Count 7.0 x 10^9/L, TSH 2.1 mIU/L, Vitamin D 30 ng/mL.\n\nSocial History: The patient is a 51-year-old male who works full-time in a corporate office. He lives with his spouse and two children. He reports a sedentary lifestyle and occasional recreational hiking.\n\nFamily History: Father has a history of hypertension. Mother has a history of type 2 diabetes. No known family history of psychiatric conditions.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nNeurological: Negative for tremors, numbness, or weakness.\nPsychiatric: Positive for depressed mood and insomnia. Negative for perceptual disturbances.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea or abdominal pain.\n\nHPI: Patient is a 51-year-old male presenting for a follow-up evaluation of major depressive disorder, single episode. He reports that his symptoms have been persistent over the last several months. He describes a pervasive sense of sadness and a significant decrease in interest in previously enjoyed activities. He notes difficulty concentrating at work and frequent sleep disturbances. He denies any history of perceptual disturbances. The patient describes his symptoms as severe at this time, noting that his energy levels are consistently low and he feels overwhelmed by daily responsibilities. He reports that he has been taking his current medications as prescribed but feels he has not seen a significant improvement in his mood.\n\nMedication List:\nSertraline 100mg daily\nMelatonin 3mg at bedtime\n\nExam:\nGeneral: Well-developed, well-nourished male in no acute distress.\nPsychiatric: Affect is constricted and flat. Mood is reported as \"down.\" Speech is normal in rate and volume. Thought process is linear and goal-oriented. Concentration is slightly impaired. Insight and judgment are intact.\n\nAssessment:\n1. Major depressive disorder, single episode. The patient is currently experiencing a severe episode without psychotic features.\n\nPlan:\n1. Continue current dosage of Sertraline.\n2. Discussed potential for dose adjustment if symptoms do not improve over the next four weeks.\n3. Encouraged continued participation in regular physical activity and consistent sleep hygiene.\n4. Follow up in 4 weeks for a reassessment of symptoms.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "F32.2"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severe without psychotic features (HCC 155): F32.2."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.3"
+      ],
+      "confusion": "unsupported_psychotic",
+      "lean": "over",
+      "why": "Psychotic features are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.299,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "152"
+        ],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F322"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T04:42:59+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

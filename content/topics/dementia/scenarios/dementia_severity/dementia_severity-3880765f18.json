@@ -1,0 +1,95 @@
+{
+  "id": "dementia_severity-3880765f18",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "severe",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline.\n\nHPI: The patient is a 73-year-old male presenting for a scheduled follow-up regarding his ongoing dementia. He was brought in by his spouse today. The patient currently presents with significant cognitive impairment, which the clinical team characterizes as severe dementia. He has difficulty with complex tasks, following multi-step instructions, and recalling recent events. Despite these cognitive deficits, the patient remains calm and cooperative throughout the encounter. There are no reports of behavioral disturbances or mood-related issues at this time. The primary goal of today's visit is to monitor his functional status and manage symptoms associated with his severe stage of cognitive decline.\n\nMedication List:\n- Donepezil 10mg daily\n- Memantine 20mg daily\n\nReview of Systems:\nThe patient denies any recent falls, changes in appetite, or sleep disturbances. He denies any acute chest pain or shortness of breath. He denies any new-onset urinary incontinence.\n\nSocial History:\nThe patient lives at home with his wife. He is retired and spends most of his time watching television and engaging in quiet activities. He denies any tobacco or alcohol use.\n\nFamily History:\nHis father had a history of cognitive decline in his late 70s. His mother had hypertension.\n\nVitals:\nBP: 132/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 6.4%\nTSH: 2.1 mIU/L\neGFR: 68 mL/min/1.73m2\n\nExam:\nThe patient is a well-developed, well-nourished male who is alert and cooperative. He is seated in a chair and is making good eye contact. His speech is clear but slow. He is able to state his name and current year. His gait is steady, and he is able to stand from a chair without assistance. Neurological exam shows normal muscle strength and sensation.\n\nAssessment:\nThe patient has severe dementia. He is currently stable on his current medication regimen. He shows no signs of behavioral issues or mood disturbances at this visit.\n\nPlan:\n1. Continue current medications for dementia management.\n2. Continue to monitor cognitive decline and functional abilities.\n3. Follow up in three months for a repeat evaluation.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "F03.C0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), severe, without behavioral disturbance: F03.C0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (severe): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "125"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "125",
+        "label": "Dementia/Severe",
+        "from": [
+          "F03C0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:36:07+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

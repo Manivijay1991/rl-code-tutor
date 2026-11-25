@@ -1,0 +1,95 @@
+{
+  "id": "ckd_staging-dea2a49d13",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3b",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint\nFollow up for chronic kidney disease.\n\nHPI\nPt is a 77-year-old female presenting for routine follow up of chronic kidney disease. She reports feeling well today with no acute complaints. She has been adherent to current medications and dietary restrictions. No new symptoms of edema or fatigue reported since last visit.\n\nMedication List\nLisinopril 10mg daily\nAspirin 81mg daily\nAtorvastatin 20mg daily\n\nExam\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nExt: No pedal edema noted.\nSkin: Intact, no rashes.\n\nAssessment\n1. Chronic kidney disease, stage 3b. Recent labs show eGFR of 38 mL/min/1.73m2. Pt remains stable on current regimen.\n\nPlan\n1. Continue current medications.\n2. Continue renal-friendly diet.\n3. F/u in 3 months for labs and BP check.\n\nElectronically signed, K. Nguyen, DO, 05/12/2026",
+  "answer": [
+    "N18.32"
+  ],
+  "explanations": [
+    "CKD stage 3b: N18.32 (maps to a higher V28 HCC than 3a)."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.31"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "3a is less severe than the documented 3b.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "N18.30"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 3b is documented; do not use unspecified stage 3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "329"
+        ],
+        "missing_hccs": [
+          "328"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "328",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3B)",
+        "from": [
+          "N1832"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:27:57+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

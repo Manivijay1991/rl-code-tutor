@@ -1,0 +1,87 @@
+{
+  "id": "atrial_fibrillation-8a2c988655",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "permanent",
+    "status": "current",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rhythm.\n\nHPI: Pt is an 85-year-old female presenting for routine management of permanent AFib. Pt reports feeling generally well today. Denies palpitations, syncope, or chest pain. She is currently managed on rate-control medications. Pt states she feels stable and is not experiencing any significant shortness of breath during activities of daily living. No new concerns voiced.\n\nMedication List:\n- Metoprolol 50mg BID\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nCV: No palpitations, no chest pain.\nResp: No SOB, no cough.\nNeuro: No dizziness, no focal weakness.\nMSK: No joint pain.\n\nSocial History: Retired. Lives with her daughter. Independent with ADLs. Non-smoker.\n\nFamily History: Mother had hypertension. Father had coronary artery disease.\n\nVitals:\nBP: 128/78\nHR: 74 (irregular)\nTemp: 98.6 F\nRR: 16\nSpO2: 97% on RA\n\nRecent Labs:\neGFR: 62\nHbA1c: 6.4%\nTSH: 2.1\nK+: 4.0\nNa+: 138\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, irregular. S1, S2 heard. No murmurs.\nResp: CTAB.\nNeuro: NAD.\nExt: No edema.\n\nAssessment:\n1. Permanent atrial fibrillation. Pt is currently stable on rate control. Pt is at low risk for complications and is not currently on any anticoagulant.\n\nPlan:\n1. Continue current rate control medications.\n2. Continue monitoring of permanent AFib.\n3. Follow up in 6 months for routine evaluation.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "I48.21"
+  ],
+  "explanations": [
+    "Permanent atrial fibrillation: I48.21 (HCC 238)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.20"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "Permanent has its own code; I48.20 is chronic AF, unspecified.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (permanent) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I4821"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:56:33+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

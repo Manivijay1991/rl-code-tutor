@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-c21a664e47",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain.\n\nHPI: (Copied Forward) Patient is a 78-year-old male with a history of cancer of the right lung. The primary malignancy was surgically removed and treated several years ago. He has completed all primary treatments and has remained stable since the conclusion of his initial treatment plan.\n\n(Current Update) Patient presents today for evaluation of persistent, aching pain in the lower spine and pelvic region. He reports that the pain has gradually increased in intensity over the last three months, particularly when standing for long periods or climbing stairs. He denies any new shortness of breath, significant weight loss, or fever. He notes that the pain is dull and constant but is not radiating to his extremities.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Alendronate 70mg weekly\n- Calcium carbonate 500mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, RR 16.\n\nRecent Labs:\n- Hemoglobin: 13.2 g/dL\n- White Blood Cell Count: 7.4 x 10^9/L\n- Platelets: 210 x 10^9/L\n- Creatinine: 1.1 mg/dL\n- eGFR: 72 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, night sweats, or weight loss.\nRespiratory: Negative for cough, dyspnea, or wheezing.\nMusculoskeletal: Positive for localized back and pelvic pain. Negative for joint swelling or redness.\nNeurological: Negative for numbness, tingling, or weakness.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for changes in bowel habits or abdominal pain.\nGenitourinary: Negative for dysuria or incontinence.\n\nSocial History: Retired. Lives with his wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nExam: Patient is alert and oriented x3. Good skin turgor. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. Musculoskeletal exam reveals tenderness over the lumbar spine and sacroiliac joints. No palpable masses or focal deformities noted. Gait is steady but slightly guarded due to discomfort.\n\nAssessment:\n1. Bone metastasis: Patient presents with new-onset spinal and pelvic pain. Imaging and clinical presentation are consistent with spread of his previous right lung cancer to the skeletal system.\n2. History of cancer of the right lung: Patient remains stable at the primary site with no evidence of local recurrence.\n\nPlan:\n1. Order CT of the spine and pelvis to further characterize the bone metastasis.\n2. Continue current medications.\n3. Discuss pain management options, including the potential addition of a low-dose analgesic if pain persists.\n4. Follow up in 4 weeks to review imaging.\n\nElectronically signed,\nT. Haddad, MD\nOctober 14, 2026",
+  "answer": [
+    "Z85.118",
+    "C79.51"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91",
+        "C79.51"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.341,
+        "gap": -2.341,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.118",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:40+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

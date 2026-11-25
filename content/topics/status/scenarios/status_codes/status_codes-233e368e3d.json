@@ -1,0 +1,60 @@
+{
+  "id": "status_codes-233e368e3d",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "ileostomy",
+    "state": "reversed"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for abdominal discomfort and surgical history review.\n\nHPI\nPt is a 68-year-old female presenting for follow-up. Pt reports intermittent abdominal pressure and mild discomfort. She notes that she previously had an ileostomy following a prior surgical procedure. She later underwent a formal reversal of the stoma. She currently has no stoma. She denies acute pain, fever, or significant changes in bowel habits since the reversal. She states she is managing well overall but wants to ensure no issues are developing.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'4\", 155 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 78 mL/min\nTSH: 2.1 mIU/L\nCBC: WNL\n\nReview of Systems\nConstitutional: Denies fever, chills, fatigue.\nGI: Reports mild abdominal pressure; denies nausea, vomiting, diarrhea, or constipation.\nMSK: Denies joint pain or swelling.\nNeuro: Denies numbness, tingling, or weakness.\nCV: Denies chest pain or palpitations.\n\nSocial History\nRetired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: Hypertension, Stroke.\nFather: Myocardial Infarction.\nSiblings: No significant medical history reported.\n\nExam\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nAbdomen: Soft, non-distended. Mild tenderness to palpation in lower quadrants. No guarding or rebound. Bowel sounds present.\nSkin: Intact. No signs of irritation at previous site.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\n\nAssessment\n1. Status post ileostomy reversal. Pt is currently stable and asymptomatic for acute issues.\n2. Mild abdominal discomfort.\n\nPlan\n1. Continue current medications as prescribed.\n2. Monitor abdominal symptoms; if pressure increases or pain becomes severe, pt to call office.\n3. Follow up in 6 months for routine check.\n\nElectronically signed,\nS. Patel, DO\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "The ileostomy was reversed: the patient no longer has one, so there is no status to report."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.2"
+      ],
+      "confusion": "reversed_coded",
+      "lean": "over",
+      "why": "A reversed ileostomy is no longer present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0,
+        "gap": 0.673,
+        "direction": "over",
+        "extra_hccs": [
+          "463"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:30+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

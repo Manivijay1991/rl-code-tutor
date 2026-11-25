@@ -1,0 +1,92 @@
+{
+  "id": "pressure_ulcer-5722eca2b2",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "4"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint: Wound care for right heel.\n\nHPI: Pt is a 66-year-old female presenting for scheduled wound care of a pressure ulcer located on the right heel. Pt reports increased discomfort and drainage over the last week. She reports compliance with offloading measures and dressing changes. No new systemic symptoms reported.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Amlodipine 5mg QD\n\nSocial History: Retired; lives with spouse. Non-smoker. Independent with ADLs.\n\nFamily History: Mother had hypertension. Father had a history of stroke.\n\nReview of Systems: Denies fever, chills, or shortness of breath. Denies chest pain. Denies polyuria or polydipsia. Denies acute joint pain. No changes in bowel or bladder habits.\n\nVitals:\nBP: 132/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 158 lbs\n\nRecent Labs:\nHbA1c: 6.8%\neGFR: 72 mL/min\nWBC: 8.5 x 10^9/L\nHgb: 12.4 g/dL\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nSkin: Right heel shows a stage 4 pressure ulcer. Wound bed contains visible tissue and some slough. Size: 4cm x 3cm x 2cm. Periwound skin is intact but erythematous. No purulent drainage noted. Distal pulses palpable.\n\nAssessment:\n1. Pressure ulcer on right heel, stage 4.\n\nPlan:\n1. Wound care: Cleanse with normal saline. Apply hydrogel and non-adherent dressing.\n2. Offloading: Continue use of specialty boot.\n3. Follow up: Return to clinic in 1 week for dressing change and reassessment.\n\nElectronically signed, E. Castillo, MD, 05/14/2026",
+  "answer": [
+    "L89.614"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage 4: L89.614 (HCC 379)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "unspecified_when_documented",
+      "lean": "under",
+      "why": "The stage is documented: it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.965,
+        "gap": -1.965,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "L89.613"
+      ],
+      "confusion": "understated_stage",
+      "lean": "under",
+      "why": "The documented stage is 4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.075,
+        "correct": 1.965,
+        "gap": -0.89,
+        "direction": "under",
+        "extra_hccs": [
+          "381"
+        ],
+        "missing_hccs": [
+          "379"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.965,
+    "hccs": [
+      {
+        "hcc": "379",
+        "label": "Pressure Ulcer of Skin with Necrosis Through to Muscle/Tendon/Bone",
+        "from": [
+          "L89614"
+        ],
+        "weight": 1.965
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:24+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

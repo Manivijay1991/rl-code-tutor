@@ -1,0 +1,110 @@
+{
+  "id": "diabetes_complications-bf0ed5b3de",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hyperglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes mellitus and hyperglycemia.\n\nHistory of Present Illness\nThe patient is a 79-year-old female presenting for a follow-up appointment regarding her management of type 2 diabetes mellitus. She reports that she has been focusing on her diet and exercise to manage her blood glucose levels. However, she notes that her blood sugar readings have been consistently elevated over the past month. She reports experiencing symptoms of hyperglycemia, including increased thirst and frequent urination. She denies any acute distress or recent changes in her baseline health status. She currently manages her condition using only dietary modifications and does not take any medications for her glucose levels.\n\nMedication List\nVitamin D supplement\nAntacid as needed for gastroesophageal reflux disease\n\nReview of Systems\nConstitutional: Denies fever, chills, or unintended weight change.\nHEENT: Denies vision changes or headaches.\nCardiovascular: Denies chest pain or palpitations.\nGastrointestinal: Reports occasional heartburn; denies nausea or vomiting.\nGenitourinary: Reports increased frequency of urination.\nMusculoskeletal: Denies joint pain or muscle weakness.\nNeurological: Denies dizziness or numbness.\n\nSocial History\nThe patient lives at home with her spouse. She retired five years ago and enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had type 2 diabetes. Father had coronary artery disease.\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 145 lbs\n\nRecent Labs\nHbA1c: 8.4%\neGFR: 62 mL/min\nVitamin D: 22 ng/mL\n\nExam\nGeneral: Alert and oriented x3. Well-nourished appearance.\nSkin: Intact, no rashes or lesions.\nHeart: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses.\n\nAssessment\n1. Type 2 diabetes mellitus: The patient's glucose levels are currently poorly controlled as evidenced by her elevated HbA1c.\n2. Hyperglycemia: Patient reports symptoms of hyperglycemia.\n3. Vitamin D deficiency: Stable.\n4. Gastroesophageal reflux disease: Stable.\n\nPlan\n1. Continue diet and exercise for management of type 2 diabetes mellitus.\n2. Increase Vitamin D supplementation to address deficiency.\n3. Continue current management of gastroesophageal reflux disease.\n4. Follow up in 3 months for repeat HbA1c and monitoring of hyperglycemia.\n\nProblem List\n1. Type 2 diabetes mellitus\n2. Hyperglycemia\n3. Vitamin D deficiency\n4. Gastroesophageal reflux disease\n\nElectronically signed, K. Nguyen, PA-C\n05/14/2026",
+  "answer": [
+    "E11.65"
+  ],
+  "explanations": [
+    "Diabetes documented as poorly controlled, out of control, or with hyperglycemia is coded to diabetes with hyperglycemia."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Index: Diabetes, poorly controlled"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hyperglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.649 is hypoglycemia, not hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:30:36+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

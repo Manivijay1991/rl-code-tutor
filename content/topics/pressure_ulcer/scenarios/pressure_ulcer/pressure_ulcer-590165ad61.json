@@ -1,0 +1,58 @@
+{
+  "id": "pressure_ulcer-590165ad61",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up for pressure ulcer.\n\nHPI\nThe patient is a 66-year-old male presenting for a follow-up evaluation of a pressure ulcer. He reports that the area has been improving steadily. He denies any new pain, drainage, or systemic symptoms. He states that the skin is intact and that the previous site of concern is no longer bothersome.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAspirin 81mg daily\n\nExam\nThe patient is alert and oriented. Skin is intact and dry. Physical examination of the right heel reveals that the previous pressure ulcer has completely healed. There is no remaining tissue loss or drainage. The surrounding skin is healthy with no signs of irritation.\n\nAssessment\n1. Pressure ulcer, right heel: The wound has healed.\n\nPlan\n1. The pressure ulcer on the right heel is now fully healed. No further active treatment or intervention is required at this time. The patient was instructed to continue regular repositioning to prevent future skin breakdown. Follow up as needed.\n\nElectronically signed, H. Tanaka, PA-C, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "A pressure ulcer documented as completely healed is not coded."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.619"
+      ],
+      "confusion": "healed_coded",
+      "lean": "over",
+      "why": "No code is assigned for a completely healed pressure ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:24+00:00",
+    "style": {
+      "age": 66,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

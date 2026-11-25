@@ -1,0 +1,79 @@
+{
+  "id": "alcohol_use-eb416733e7",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_mild",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint: Follow-up for alcohol use.\n\nHPI: Pt is an 80-year-old female presenting for follow-up regarding alcohol consumption. Pt admits to current alcohol use, stating she drinks daily. She reports feeling regular and maintains she is not seeking to stop at this time but is open to discussing harm reduction. No acute complaints of physical illness today. She denies any recent falls or significant changes in sleep patterns.\n\nMedication List:\n- Multivitamin daily\n- Lisinopril 10mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight loss.\nHEENT: Denies vision changes, headaches.\nRespiratory: Denies SOB, cough.\nCV: Denies chest pain, palpitations.\nGI: Denies nausea, abdominal pain.\nMSK: Denies joint pain.\nNeuro: Denies tremors, confusion.\n\nSocial History: Pt lives alone in a private residence. Retired. Reports current daily alcohol use. No tobacco use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 132/84\nHR: 76 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 12.4\nWBC: 7.2\nGlucose: 110\neGFR: 62\n\nExam:\nGen: Well-appearing, alert, oriented x3.\nCV: RRR, S1, S2, no murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no masses.\nNeuro: Alert, coherent, no tremors noted.\nSkin: Intact, no rashes.\n\nAssessment:\n1. Alcohol use disorder, mild. Pt currently drinking.\n\nPlan:\n1. Discussed alcohol use disorder, mild. Counseled pt on risks of continued use at her age. Pt advised to monitor intake and stay hydrated. Will f/u in 3 months to monitor status.\n\nElectronically signed, T. Haddad, NP, 05/12/2026",
+  "answer": [
+    "F10.10"
+  ],
+  "explanations": [
+    "Alcohol use disorder, mild, indexes to alcohol abuse: F10.10 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.20"
+      ],
+      "confusion": "severity_up",
+      "lean": "over",
+      "why": "A mild use disorder is abuse (F10.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0,
+        "gap": 0.242,
+        "direction": "over",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F10.90"
+      ],
+      "confusion": "unspecified_use",
+      "lean": "under",
+      "why": "A use disorder with a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:42+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

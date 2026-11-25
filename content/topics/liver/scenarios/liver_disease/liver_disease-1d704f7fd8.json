@@ -1,0 +1,61 @@
+{
+  "id": "liver_disease-1d704f7fd8",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "hep_c_cured"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for history of hepatitis C.\n\nHPI\nThe patient is an 89-year-old female presenting today for a routine follow-up regarding her history of hepatitis C. She reports feeling well and has no new concerns or symptoms. She successfully completed a course of antiviral treatment several years ago. She achieved a sustained virologic response and has remained stable since that time. She reports no signs of liver damage or discomfort.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is alert and oriented x3. She appears healthy and in no acute distress. Skin is warm and dry. Abdomen is soft, non-tender, and non-distended. No hepatomegaly is noted. Lungs are clear to auscultation. Heart sounds are regular with no murmurs.\n\nAssessment\n1. History of hepatitis C, cured. The patient achieved SVR and currently has no active infection. There is no evidence of liver damage.\n\nPlan\nContinue current observation. No further medications are required at this time. The patient will return for a follow-up in one year.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "Z86.19"
+  ],
+  "explanations": [
+    "Hepatitis C cured with no current infection: personal history, Z86.19 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B18.2"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "The hepatitis C was cured (sustained virologic response): code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.185,
+        "correct": 0,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "65"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:39+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

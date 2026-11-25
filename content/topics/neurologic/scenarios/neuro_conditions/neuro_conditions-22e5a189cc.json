@@ -1,0 +1,68 @@
+{
+  "id": "neuro_conditions-22e5a189cc",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "seizure_disorder"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for seizure disorder management.\n\nHPI\nThe patient is a 79-year-old woman presenting today for a scheduled follow-up to monitor her seizure disorder. She reports that her condition has been well-controlled since her last visit. She denies any recent loss of consciousness, involuntary movements, or episodes of tonic-clonic activity. She reports no adverse side effects from her current medication regimen, noting that she feels stable and is able to perform her activities of daily living without interruption. She denies any new concerns regarding her neurological status.\n\nMedication List\n- Levetiracetam 500mg twice daily\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems\nThe patient reports no recent headaches, visual changes, or focal weakness. She denies any chest pain, shortness of breath, or palpitations. She reports no changes in sleep patterns or appetite.\n\nSocial History\nThe patient lives in a private residence with her spouse. She is retired and enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension. Her father had a history of coronary artery disease.\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 74 mL/min/1.73m2\nTSH: 2.1 mIU/L\nLDL: 88 mg/dL\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress. She is alert and oriented to person, place, and time.\nNeurological: Cranial nerves II-XII are intact. No tremors or involuntary movements noted. Strength is 5/5 in all extremities. Reflexes are 2+ and symmetric. Gait is steady and coordinated.\nCardiovascular: Regular rate and rhythm. No murmurs, rubs, or gallops.\nRespiratory: Lungs are clear to auscultation bilaterally.\n\nAssessment\n1. Seizure disorder: Currently stable and well-controlled on levetiracetam.\n\nPlan\n1. Continue current dosage of levetiracetam.\n2. Continue current medications for hypertension and hyperlipidemia.\n3. Follow up in 6 months for routine monitoring of her seizure disorder.\n4. Patient instructed to report any new episodes immediately.\n\nElectronically signed, D. Kowalski, NP, 10/14/2026",
+  "answer": [
+    "G40.909"
+  ],
+  "explanations": [
+    "'Seizure disorder' indexes to epilepsy, unspecified: G40.909 (HCC 201)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "R56.9"
+      ],
+      "confusion": "symptom_for_diagnosis",
+      "lean": "neutral",
+      "why": "A seizure disorder is a diagnosis (G40.909), not the symptom R56.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.245,
+        "correct": 0.245,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.245,
+    "hccs": [
+      {
+        "hcc": "201",
+        "label": "Seizure Disorders and Convulsions",
+        "from": [
+          "G40909"
+        ],
+        "weight": 0.245
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:50+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

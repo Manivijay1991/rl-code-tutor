@@ -1,0 +1,8 @@
+{
+  "id": "neurologic",
+  "title": "Epilepsy, Parkinson's and MS",
+  "kind": "hcc",
+  "description": "Epilepsy and intractability, seizure disorder versus a past seizure, Parkinson's disease, MS type.",
+  "order": 92,
+  "enabled": true
+}

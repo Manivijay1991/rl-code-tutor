@@ -1,0 +1,106 @@
+{
+  "id": "stroke_sequelae-d93150f1f2",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_left",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for left-sided hemiparesis.\n\nHPI\n(Copied Forward): Patient is a 57-year-old female presenting for follow-up regarding persistent left-sided hemiparesis following a prior ischemic stroke. Patient reports stable mobility and no significant changes in functional status since the last evaluation. \n\n(Today's Update): The patient reports that her mobility remains consistent. She continues to manage daily activities with some assistance but reports no new complications or worsening of the left-sided hemiparesis. She denies any new neurological symptoms or pain.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nNeurological: Positive (left-sided hemiparesis)\nMusculoskeletal: Negative\nCardiovascular: Negative\nRespiratory: Negative\n\nMedication List:\n- Aspirin 81 mg daily\n- Atorvastatin 40 mg daily\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nNeurological: Alert and oriented. Significant residual left-sided hemiparesis noted in the upper and lower extremities. Strength is diminished on the left side compared to the right. Sensation is intact.\n\nAssessment:\n1. Left-sided hemiparesis secondary to a previous ischemic stroke.\n\nPlan:\n1. Continue current aspirin and statin regimen.\n2. Continue current physical therapy program.\n3. Follow up in 3 months for routine neurological evaluation.\n\nElectronically signed,\nS. Patel, NP\nMay 14, 2026",
+  "answer": [
+    "I69.354"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, left side, non-dominant by default: I69.354 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.352"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I69.359"
+      ],
+      "confusion": "unspecified_side",
+      "lean": "neutral",
+      "why": "The affected side is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69354"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:06+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

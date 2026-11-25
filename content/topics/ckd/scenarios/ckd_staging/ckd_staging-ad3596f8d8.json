@@ -1,0 +1,64 @@
+{
+  "id": "ckd_staging-ad3596f8d8",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "2",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: The patient is an 86-year-old male presenting today for a scheduled follow-up regarding his chronic kidney disease. He reports feeling well overall and denies any acute concerns such as edema, changes in urinary output, or significant fatigue. He remains stable on his current regimen. He mentions that his seasonal allergic rhinitis is currently well-managed with over-the-counter medications. He also notes that he continues to take his vitamin D supplement as prescribed. He denies any recent fevers, chills, or shortness of breath.\n\nMedication List:\n- Vitamin D supplement\n- Seasonal allergy medication (as needed)\n\nSocial History: The patient lives at home with his spouse. He retired several years ago and enjoys gardening and watching television. He denies tobacco or alcohol use.\n\nFamily History: Father had a history of renal issues. Mother had a history of vitamin D deficiency.\n\nReview of Systems: The patient reports no recent fevers, chills, weight changes, or joint pain. He denies any chest pain or shortness of breath. Denies any neurological changes or vision loss.\n\nVitals:\nBP: 128/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 97% on room air\n\nRecent Labs:\neGFR: 74 mL/min/1.73m2\nCreatinine: 1.4 mg/dL\nVitamin D level: 32 ng/mL\n\nExam: The patient is alert and oriented x3. He appears well-nourished and in no acute distress. Skin is warm and dry. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. Extremities show no edema.\n\nAssessment:\n1. Chronic kidney disease, currently identified as stage 2. The patient's eGFR remains stable within the expected range for his age.\n2. Vitamin D deficiency. Current levels are stable on supplementation.\n3. Seasonal allergic rhinitis. Patient reports good control.\n\nPlan:\n1. Continue current management for chronic kidney disease. Monitor renal function with repeat labs in 6 months.\n2. Continue vitamin D supplementation.\n3. Continue seasonal allergy medications as needed for symptoms.\n\nProblem List:\n- Chronic kidney disease, stage 2\n- Vitamin D deficiency\n- Seasonal allergic rhinitis\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "N18.2"
+  ],
+  "explanations": [
+    "CKD stage 2: N18.2."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.1"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "The note documents stage 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:05+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "vitamin D deficiency"
+      ],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

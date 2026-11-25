@@ -1,0 +1,128 @@
+{
+  "id": "diabetes_complications-241fbfe2d3",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 2 diabetes and chronic kidney disease.\n\nHPI\nThe patient is a 57-year-old male presenting for a routine follow-up of his known chronic conditions. He currently has type 2 diabetes mellitus, which is currently managed by diet and exercise alone. He reports that his blood glucose levels have remained stable since his last visit. He also has chronic kidney disease stage 4. The patient notes that his renal function has remained stable over the last six months. He denies any acute changes in renal function, new onset of edema, or significant fatigue. He reports that his chronic kidney disease stage 4 is not related to diabetes. He also manages vitamin D deficiency and seasonal allergic rhinitis, reporting mild symptoms during pollen season.\n\nMedication List\nVitamin D supplement.\n\nReview of Systems\nNegative for chest pain, shortness of breath, or palpitations. Negative for fevers, chills, or night sweats. Negative for changes in urinary output or new-onset swelling. Negative for significant weight changes.\n\nSocial History\nThe patient works full-time as a supervisor and lives with his spouse and two children. He reports a non-smoking status and drinks alcohol occasionally on weekends.\n\nFamily History\nFather had type 2 diabetes and coronary artery disease. Mother had a history of vitamin D deficiency and osteoarthritis.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nWeight: 210 lbs\nHeight: 5'10\"\n\nRecent Labs\neGFR: 22 mL/min/1.73m2\nHbA1c: 6.8%\nSerum Vitamin D: 28 ng/mL\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress.\nCardiovascular: Regular rate and rhythm; S1, S2 heard.\nRespiratory: Lungs clear to auscultation bilaterally.\nRenal: No peripheral edema noted.\nSkin: No significant rashes or lesions.\n\nAssessment\n1. Type 2 diabetes mellitus: Stable, currently diet controlled.\n2. Chronic kidney disease stage 4: Stable. It is noted that this condition is not due to diabetes.\n3. Vitamin D deficiency: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan\n1. Continue current diet and exercise regimen for blood glucose management.\n2. Monitor renal function with follow-up labs in three months.\n3. Continue vitamin D supplementation.\n4. Follow up in 3 months.\n\nProblem List\n1. Type 2 diabetes mellitus\n2. Chronic kidney disease stage 4\n3. Vitamin D deficiency\n4. Seasonal allergic rhinitis\n\nElectronically signed, D. Kowalski, PA-C, 05/14/2026",
+  "answer": [
+    "E11.9",
+    "N18.4"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:29:53+00:00",
+    "style": {
+      "age": 57,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "PA-C",
+      "signer": "D. Kowalski"
+    }
+  }
+}

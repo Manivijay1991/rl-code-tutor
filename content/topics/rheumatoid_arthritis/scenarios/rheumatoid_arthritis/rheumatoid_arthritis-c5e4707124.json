@@ -1,0 +1,108 @@
+{
+  "id": "rheumatoid_arthritis-c5e4707124",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "ra_unspecified",
+    "methotrexate": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for rheumatoid arthritis.\n\nHPI\nPt is an 80-year-old female presenting for routine follow-up of rheumatoid arthritis. She has been on a stable regimen of methotrexate and folic acid for several years. Pt reports that her symptoms are currently well-controlled. She denies any acute flares, significant morning stiffness, or new areas of discomfort. She reports good adherence to her medication schedule. She notes some mild fatigue but denies any systemic symptoms like fever or chills.\n\nMedication List\n- Methotrexate 15mg PO weekly\n- Folic acid 1mg PO daily\n- Multivitamin daily\n\nReview of Systems\nConstitutional: Denies fever, chills, weight change, or fatigue.\nMusculoskeletal: Denies new joint pain or swelling.\nSkin: No rashes or lesions.\nRespiratory: Denies SOB or cough.\nNeurological: No numbness or tingling.\nAll other systems reviewed and negative.\n\nSocial History\nPt lives at home with her daughter. Retired. No tobacco use. Occasional social drinking.\n\nFamily History\nMother: RA, age 75.\nFather: Hypertension, stroke.\n\nVitals\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 54 kg\n\nRecent Labs\nCBC: WBC 7.2, Hb 12.1, Plt 210\nCMP: Na 139, K 4.1, Cr 0.9, eGFR 75\nMethotrexate monitoring: Liver enzymes WNL.\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nSkin: No visible erythema or nodules.\nMusculoskeletal: No overt swelling or warmth noted.\nRespiratory: CTAB, lungs clear to auscultation.\nCardiovascular: RRR, no murmurs.\nNeurological: Alert and oriented, no focal deficits.\n\nAssessment\n1. Rheumatoid arthritis: Stable on current methotrexate.\n\nPlan\n1. Continue methotrexate weekly.\n2. Continue folic acid daily.\n3. Follow up in 3 months for lab work and clinical assessment.\n4. Pt to call if any new symptoms or adverse reactions occur.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "M06.9",
+    "Z79.631"
+  ],
+  "explanations": [
+    "Rheumatoid arthritis, nothing more specified: M06.9 (HCC 93).",
+    "Long-term methotrexate (an antimetabolite): Z79.631."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M05.70",
+        "Z79.631"
+      ],
+      "confusion": "assumed_rf_status",
+      "lean": "neutral",
+      "why": "Rheumatoid factor status is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M06.9"
+      ],
+      "confusion": "missed_drug_therapy",
+      "lean": "under",
+      "why": "Long-term methotrexate is documented: Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M06.9",
+        "Z79.899"
+      ],
+      "confusion": "nonspecific_drug_code",
+      "lean": "neutral",
+      "why": "Methotrexate has its own long-term use code, Z79.631.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0.617,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.617,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M069"
+        ],
+        "weight": 0.617
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:25+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

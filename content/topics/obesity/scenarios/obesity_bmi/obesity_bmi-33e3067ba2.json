@@ -1,0 +1,78 @@
+{
+  "id": "obesity_bmi-33e3067ba2",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "42"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension and type 2 diabetes.\n\nHPI: The patient is an 86-year-old male presenting for a routine follow-up of his chronic hypertension and type 2 diabetes mellitus. He reports feeling well today and denies any acute symptoms such as chest pain, shortness of breath, or dizziness. He states that his blood glucose levels have been stable at home, and his blood pressure remains within his target range most of the time. He reports good compliance with his current medication regimen and denies any side effects. He notes that his activity level remains consistent with his usual routine of walking short distances daily.\n\nReview of Systems: The patient denies any recent fevers, chills, or cough. He denies any chest pain or palpitations. He denies any polyuria, polydipsia, or blurred vision. He denies any lower extremity edema or numbness. He denies any recent falls or joint pain.\n\nSocial History: The patient lives at home with his wife. He is retired and spends most of his time gardening and reading. He denies tobacco use and reports social alcohol consumption only on holidays.\n\nFamily History: His father had a history of hypertension and a myocardial infarction at age 65. His mother had type 2 diabetes and lived to be 88 years old.\n\nMedication List: Lisinopril 20 mg daily, Metformin 500 mg twice daily, Atorvastatin 40 mg daily.\n\nVitals: Temperature: 98.2 F, Pulse: 72 bpm, Respirations: 18, Blood Pressure: 134/82 mmHg, BMI: 42.8.\n\nRecent Labs: HbA1c: 7.2%, eGFR: 62 mL/min/1.73m2, Serum Creatinine: 1.1 mg/dL, LDL: 88 mg/dL.\n\nExam: The patient is alert and oriented x3. He appears in no acute distress. Skin is warm and dry. Heart sounds are regular with no murmurs or gallops. Lungs are clear to auscultation bilaterally. Abdomen is soft and non-tender. Extremities show no edema and have brisk capillary refill.\n\nAssessment: 1. Hypertension: Well-controlled on current medication. 2. Type 2 diabetes mellitus: Stable and well-managed.\n\nPlan: Continue current medications as prescribed. Recheck HbA1c in three months. Patient instructed to continue regular walking and heart-healthy diet. Follow up in 4 months for routine monitoring.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.41"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.186,
+        "correct": 0,
+        "gap": 0.186,
+        "direction": "over",
+        "extra_hccs": [
+          "48"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:52:49+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

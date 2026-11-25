@@ -1,0 +1,151 @@
+{
+  "id": "diabetes_complications-62dd26fcdd",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "no",
+    "meds": "oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 2 diabetes.\n\nHPI: Patient is a 74-year-old female with a history of type 2 diabetes mellitus and CKD stage 4. She has been managed with an oral hypoglycemic agent for several years. Patient reports stable glucose levels and denies any recent acute episodes or significant changes in symptoms. \n\nReview of Systems:\nConstitutional: Negative\nEyes: Negative\nEars/Nose/Throat: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\nPsychiatric: Negative\n\nVitals: BP 135/82, HR 74, SpO2 98% on room air, Temp 98.6F, Weight 155 lbs.\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nSkin: Intact, no new lesions.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Type 2 diabetes mellitus: Stable on current oral medication.\n2. Chronic kidney disease stage 4: eGFR is currently 24 mL/min/1.73m2.\n\nPlan:\n1. Continue glipizide as prescribed.\n2. Monitor renal function and glucose levels every 3 months.\n3. Follow up in 4 months.\n\nElectronically signed, \nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "E11.22",
+    "N18.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "CKD is listed under 'with' for diabetes in the Index, so the link is presumed: use the combination code E11.22.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Long-term oral hypoglycemic use: add Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "The provider does not have to write 'due to'; 'with' presumes the link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.2",
+        "N18.4",
+        "Z79.84"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "E11.2 is a subcategory; a 5th character is required.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.68,
+        "gap": -0.166,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.22",
+        "N18.4"
+      ],
+      "confusion": "missed_med_status",
+      "lean": "under",
+      "why": "Z79.84 captures long-term oral hypoglycemic use.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1122"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:32:15+00:00",
+    "style": {
+      "age": 74,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

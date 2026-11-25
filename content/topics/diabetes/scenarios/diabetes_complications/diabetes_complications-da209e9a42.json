@@ -1,0 +1,118 @@
+{
+  "id": "diabetes_complications-da209e9a42",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for management of type 2 diabetes and recent hypoglycemic episode.\n\nHPI\nThe patient is a 55-year-old woman who presents today for a follow-up regarding her type 2 diabetes mellitus. She has been managed long-term with a combination of insulin and an oral hypoglycemic agent. She reports that over the last month, she has experienced one notable hypoglycemic episode. She describes feeling shaky and lightheaded for approximately thirty minutes before consuming a small snack. She denies any episodes of severe tremors or loss of consciousness. She reports that her daily activities remain stable and she is adherent to her current medication regimen. She is seeking a review of her current dosages to ensure she remains within her target range.\n\nMedication List\n- Insulin glargine\n- Metformin 500mg BID\n- Atorvastatin 20mg daily\n- Cholecalciferol 2000 IU daily\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, or chills. She denies blurred vision, numbness, or tingling in her extremities. She denies unintentional weight loss or polyuria. She reports no recent syncopal episodes.\n\nSocial History\nThe patient works as a part-time administrative assistant. She lives in a single-story home with her spouse. She reports a non-smoking status and social alcohol consumption.\n\nFamily History\nMother had type 2 diabetes and hyperlipidemia. Father had a history of coronary artery disease.\n\nVitals\nBP: 122/78 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 165 lbs\n\nRecent Labs\nHbA1c: 7.1%\neGFR: 82 mL/min/1.73m2\nLDL: 92 mg/dL\nVitamin D: 28 ng/mL\n\nExam\nThe patient is alert and oriented x3. She appears in no acute distress. Skin is warm and dry. No new lesions or rashes noted. Heart sounds are regular with no murmurs. Lungs are clear to auscultation. Extremities show no edema.\n\nAssessment\n1. Type 2 diabetes mellitus\n2. Hypoglycemia\n3. Hyperlipidemia\n4. Vitamin D deficiency\n\nPlan\n1. Type 2 diabetes: Continue current insulin and metformin dosages. Monitor for further symptoms of hypoglycemia.\n2. Hypoglycemia: Instructed patient on \"rule of 15\" for immediate treatment of low blood sugar.\n3. Hyperlipidemia: Continue atorvastatin as prescribed.\n4. Vitamin D deficiency: Continue daily cholecalciferol supplement.\n\nProblem List\n- Type 2 diabetes\n- Hypoglycemia\n- Hyperlipidemia\n- Vitamin D deficiency\n\nElectronically signed, L. Moreau, DO\nOctober 14, 2026",
+  "answer": [
+    "E11.649",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649",
+          "Z794"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:23:36+00:00",
+    "style": {
+      "age": 55,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "hyperlipidemia"
+      ],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

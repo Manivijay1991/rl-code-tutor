@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-9d430896e9",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint\nEvaluation of depression.\n\nHPI\nThe patient is a 79-year-old female presenting for a follow-up evaluation of her mental health. She reports a persistent low mood and a significant lack of interest in activities she previously enjoyed. She describes a profound sense of fatigue and a feeling of heaviness throughout the day. She reports that she has been experiencing a single episode of depression that has significantly impacted her ability to perform daily tasks. She notes that her sleep has been disrupted, characterized by early morning awakening and difficulty falling asleep. She denies any perceptual disturbances or a break from reality. The patient describes her current symptoms as severe, noting that she feels overwhelmed by her daily responsibilities and feels a sense of hopelessness regarding her future. She reports anhedonia and a decrease in appetite over the last month.\n\nReview of Systems\nConstitutional: Fatigue, poor appetite.\nPsychiatric: Depressed mood, anhedonia.\nNeurological: None.\nAll other systems reviewed and are negative.\n\nSocial History\nThe patient is retired and lives with her spouse in a single-family home. She enjoys gardening and knitting. She denies any tobacco or alcohol use.\n\nFamily History\nMother had hypertension. Father had a history of coronary artery disease. No known history of psychiatric conditions in immediate family.\n\nMedication List\nSertraline 50mg daily\nLisinopril 10mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nTSH: 2.1 mIU/L\nGlucose: 105 mg/dL\n\nExam\nThe patient appears neatly groomed but has a flat affect. She is cooperative and maintains good eye contact. Speech is normal in rate and volume. Cognition is intact, and she is oriented to person, place, and time. Mood is described as \"sad.\" Thought process is linear and goal-directed. No evidence of formal thought disorder.\n\nAssessment\nThe patient is presenting with major depressive disorder, single episode. The current presentation is severe without psychotic features.\n\nPlan\nContinue current dosage of Sertraline. The patient will continue to monitor symptoms and report any significant changes. Follow-up in four weeks to reassess the severity of her symptoms and medication efficacy.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "F32.2"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, severe without psychotic features (HCC 155): F32.2."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.3"
+      ],
+      "confusion": "unsupported_psychotic",
+      "lean": "over",
+      "why": "Psychotic features are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.484,
+        "correct": 0.299,
+        "gap": 0.185,
+        "direction": "over",
+        "extra_hccs": [
+          "152"
+        ],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.1"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents severe.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F322"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:37:02+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

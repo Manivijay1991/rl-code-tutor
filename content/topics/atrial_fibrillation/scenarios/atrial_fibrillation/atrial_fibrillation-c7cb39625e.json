@@ -1,0 +1,127 @@
+{
+  "id": "atrial_fibrillation-c7cb39625e",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "paroxysmal",
+    "status": "current",
+    "anticoagulant": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint\nFollow-up for heart rhythm management.\n\nHPI\nThe patient is a 73-year-old woman presenting for a routine follow-up of paroxysmal atrial fibrillation. She reports that her symptoms have been well-managed with her current regimen. She occasionally experiences palpitations but denies any syncope, chest pain, or significant shortness of breath. She remains compliant with her rate-control medications and her anticoagulant therapy.\n\nMedication List\nApixaban 5 mg twice daily\nMetoprolol 25 mg daily\n\nExam\nThe patient appears in no acute distress and is alert and oriented. Heart rate is 72 beats per minute, regular rhythm. Blood pressure is 128/82 mmHg. Lungs are clear to auscultation bilaterally. No peripheral edema noted.\n\nAssessment\n1. Paroxysmal atrial fibrillation: The patient is currently stable on rate control and continues to take apixaban for prevention of thromboembolic events.\n\nPlan\nContinue current medications as prescribed. The patient will continue to monitor for any new symptoms and follow up in three months.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "I48.0",
+    "Z79.01"
+  ],
+  "explanations": [
+    "Paroxysmal atrial fibrillation: I48.0 (HCC 238).",
+    "Long-term anticoagulant use: add Z79.01."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I48",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91",
+        "Z79.01"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paroxysmal) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.21",
+        "Z79.01"
+      ],
+      "confusion": "wrong_af_type",
+      "lean": "neutral",
+      "why": "The provider documents paroxysmal, not permanent.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.0"
+      ],
+      "confusion": "missed_anticoagulant",
+      "lean": "under",
+      "why": "Long-term anticoagulant therapy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I48.0",
+        "Z79.02"
+      ],
+      "confusion": "antiplatelet_vs_anticoagulant",
+      "lean": "neutral",
+      "why": "Apixaban, rivaroxaban, warfarin and similar drugs are anticoagulants (Z79.01).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.299,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "238",
+        "label": "Specified Heart Arrhythmias",
+        "from": [
+          "I480"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:54:50+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

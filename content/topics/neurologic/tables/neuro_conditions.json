@@ -1,0 +1,409 @@
+{
+  "id": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "epilepsy",
+        "epilepsy_intractable",
+        "seizure_disorder",
+        "single_seizure_history",
+        "parkinsons",
+        "ms_relapsing",
+        "ms_unspecified"
+      ],
+      "labels": {
+        "epilepsy": "Epilepsy, controlled",
+        "epilepsy_intractable": "Intractable epilepsy",
+        "seizure_disorder": "Seizure disorder",
+        "single_seizure_history": "One seizure years ago, none since",
+        "parkinsons": "Parkinson's disease",
+        "ms_relapsing": "Relapsing-remitting MS",
+        "ms_unspecified": "MS, type not stated"
+      },
+      "evidence": {
+        "epilepsy": [
+          "epilepsy"
+        ],
+        "epilepsy_intractable": [
+          [
+            "epilepsy"
+          ],
+          [
+            "intractable",
+            "drug-resistant",
+            "refractory"
+          ]
+        ],
+        "seizure_disorder": [
+          "seizure disorder"
+        ],
+        "single_seizure_history": [
+          "single seizure",
+          "one seizure",
+          "isolated seizure"
+        ],
+        "parkinsons": [
+          "Parkinson's disease",
+          "Parkinson disease"
+        ],
+        "ms_relapsing": [
+          "relapsing-remitting multiple sclerosis",
+          "relapsing-remitting MS"
+        ],
+        "ms_unspecified": [
+          "multiple sclerosis"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "epilepsy": "The provider documents epilepsy, well controlled on levetiracetam (not intractable).",
+        "epilepsy_intractable": "The provider documents intractable (drug-resistant) epilepsy with breakthrough seizures despite two medications; no status epilepticus.",
+        "seizure_disorder": "The provider documents a seizure disorder, controlled on levetiracetam; the word epilepsy is not used.",
+        "single_seizure_history": "The patient had one unprovoked seizure several years ago, none since, and takes no seizure medication.",
+        "parkinsons": "The provider documents Parkinson's disease on carbidopa-levodopa, without dyskinesia or motor fluctuations.",
+        "ms_relapsing": "The provider documents relapsing-remitting multiple sclerosis, stable on a disease-modifying therapy.",
+        "ms_unspecified": "The provider documents multiple sclerosis without naming its type."
+      }
+    }
+  },
+  "note_age": {
+    "min": 25
+  },
+  "note_forbid": [
+    "stroke",
+    "brain tumor",
+    "alcohol withdrawal",
+    "febrile",
+    "status epilepticus",
+    "dementia",
+    "head injury",
+    "syncope"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "epilepsy"
+      },
+      "forbid": [
+        "intractable",
+        "drug-resistant",
+        "refractory",
+        "poorly controlled",
+        "breakthrough",
+        "seizure disorder"
+      ]
+    },
+    {
+      "when": {
+        "condition": "seizure_disorder"
+      },
+      "forbid": [
+        "epilepsy",
+        "epileptic",
+        "intractable",
+        "refractory",
+        "drug-resistant"
+      ]
+    },
+    {
+      "when": {
+        "condition": "single_seizure_history"
+      },
+      "forbid": [
+        "epilepsy",
+        "epileptic",
+        "seizure disorder",
+        "levetiracetam",
+        "lamotrigine",
+        "valproate",
+        "antiepileptic",
+        "anticonvulsant"
+      ]
+    },
+    {
+      "when": {
+        "condition": "parkinsons"
+      },
+      "forbid": [
+        "dyskinesia",
+        "fluctuation",
+        "wearing off",
+        "on-off",
+        "parkinsonism",
+        "seizure",
+        "epilepsy"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ms_relapsing"
+      },
+      "forbid": [
+        "progressive",
+        "seizure",
+        "epilepsy",
+        "Parkinson"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ms_unspecified"
+      },
+      "forbid": [
+        "relapsing",
+        "remitting",
+        "progressive",
+        "clinically isolated",
+        "seizure",
+        "epilepsy",
+        "Parkinson"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "epilepsy",
+          "epilepsy_intractable",
+          "seizure_disorder",
+          "single_seizure_history"
+        ]
+      },
+      "forbid": [
+        "Parkinson",
+        "multiple sclerosis"
+      ]
+    }
+  ],
+  "confusions": {
+    "unsupported_intractable": {
+      "description": "Coded intractable epilepsy when it is not documented.",
+      "lean": "over"
+    },
+    "missed_intractable": {
+      "description": "Coded non-intractable epilepsy when intractable is documented.",
+      "lean": "under"
+    },
+    "symptom_for_diagnosis": {
+      "description": "Coded a seizure symptom (R56.9) instead of the documented diagnosis.",
+      "lean": "neutral"
+    },
+    "coded_resolved_seizure": {
+      "description": "Coded a current seizure condition for a single seizure years ago with no recurrence.",
+      "lean": "over"
+    },
+    "parkinsonism_vs_parkinsons": {
+      "description": "Used parkinsonism (G20.C) when Parkinson's disease is documented.",
+      "lean": "neutral"
+    },
+    "unsupported_fluctuations": {
+      "description": "Coded motor fluctuations that are not documented.",
+      "lean": "over"
+    },
+    "nonbillable_code": {
+      "description": "Reported G35, which needs more characters in FY2027.",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used MS, unspecified when the type is documented.",
+      "lean": "under"
+    },
+    "assumed_type": {
+      "description": "Coded an MS type the provider did not document.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "neuro",
+      "rules": [
+        {
+          "when": {
+            "condition": "epilepsy"
+          },
+          "codes": [
+            "G40.909"
+          ],
+          "explain": "Epilepsy, not intractable: G40.909 (HCC 201).",
+          "refs": [
+            "ICD-10-CM Tabular: G20-G40"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G40.919"
+              ],
+              "confusion": "unsupported_intractable",
+              "why": "Intractable is not documented."
+            },
+            {
+              "codes": [
+                "R56.9"
+              ],
+              "confusion": "symptom_for_diagnosis",
+              "why": "Epilepsy is documented; do not code the seizure symptom."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "epilepsy_intractable"
+          },
+          "codes": [
+            "G40.919"
+          ],
+          "explain": "Intractable epilepsy without status epilepticus: G40.919 (HCC 201).",
+          "refs": [
+            "ICD-10-CM Tabular: G20-G40"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G40.909"
+              ],
+              "confusion": "missed_intractable",
+              "why": "Intractable (drug-resistant) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "seizure_disorder"
+          },
+          "codes": [
+            "G40.909"
+          ],
+          "explain": "'Seizure disorder' indexes to epilepsy, unspecified: G40.909 (HCC 201).",
+          "refs": [
+            "ICD-10-CM Tabular: G20-G40"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "R56.9"
+              ],
+              "confusion": "symptom_for_diagnosis",
+              "why": "A seizure disorder is a diagnosis (G40.909), not the symptom R56.9."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "single_seizure_history"
+          },
+          "codes": [
+            "Z86.69"
+          ],
+          "explain": "One seizure years ago, none since and no treatment: personal history, Z86.69 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "R56.9"
+              ],
+              "confusion": "coded_resolved_seizure",
+              "why": "The seizure is not current: code the history."
+            },
+            {
+              "codes": [
+                "G40.909"
+              ],
+              "confusion": "coded_resolved_seizure",
+              "why": "Epilepsy is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "parkinsons"
+          },
+          "codes": [
+            "G20.A1"
+          ],
+          "explain": "Parkinson's disease without dyskinesia and without fluctuations: G20.A1 (HCC 199).",
+          "refs": [
+            "ICD-10-CM Tabular: G20-G40"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G20.C"
+              ],
+              "confusion": "parkinsonism_vs_parkinsons",
+              "why": "Parkinson's disease is documented, not parkinsonism."
+            },
+            {
+              "codes": [
+                "G20.A2"
+              ],
+              "confusion": "unsupported_fluctuations",
+              "why": "Motor fluctuations are not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ms_relapsing"
+          },
+          "codes": [
+            "G35.A"
+          ],
+          "explain": "Relapsing-remitting multiple sclerosis: G35.A (HCC 198). G35 itself is a header in FY2027.",
+          "refs": [
+            "ICD-10-CM Tabular: G20-G40"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G35"
+              ],
+              "confusion": "nonbillable_code",
+              "why": "G35 needs more characters in FY2027."
+            },
+            {
+              "codes": [
+                "G35.D"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (relapsing-remitting) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ms_unspecified"
+          },
+          "codes": [
+            "G35.D"
+          ],
+          "explain": "Multiple sclerosis without a documented type: G35.D (HCC 198). G35 itself is a header in FY2027.",
+          "refs": [
+            "ICD-10-CM Tabular: G20-G40"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G35"
+              ],
+              "confusion": "nonbillable_code",
+              "why": "G35 needs more characters in FY2027."
+            },
+            {
+              "codes": [
+                "G35.A"
+              ],
+              "confusion": "assumed_type",
+              "why": "The provider does not document relapsing-remitting MS."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

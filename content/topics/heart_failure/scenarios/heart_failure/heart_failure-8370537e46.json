@@ -1,0 +1,95 @@
+{
+  "id": "heart_failure-8370537e46",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "acute_on_chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Shortness of breath and increased swelling.\n\nHPI: (Copied Forward) Patient is a 51-year-old male with a known history of systolic heart failure. He was seen last month for routine management and reported being stable on his current medication regimen with minimal symptoms.\n\n(Update) The patient presents today complaining of a significant increase in shortness of breath over the past 48 hours. He describes the dyspnea as occurring both at rest and with minimal exertion. He also notes significant worsening of bilateral lower extremity edema, stating his shoes no longer fit. He denies chest pain, fever, or productive cough. He reports a weight gain of 6 pounds since his last clinic visit.\n\nVitals: BP 138/84, HR 82, SpO2 94% on room air, Temp 98.6 F, RR 20.\n\nRecent Labs: NT-proBNP: 4,500 pg/mL (Elevated). Serum Creatinine: 1.1 mg/dL. Potassium: 4.2 mEq/L.\n\nMedication List: \n- Lisinopril 20mg daily\n- Carvedilol 12.5mg twice daily\n- Spironolactone 25mg daily\n- Furosemide 40mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nCardiovascular: Positive for dyspnea and edema. Negative for chest pain.\nRespiratory: Positive for shortness of breath. Negative for cough or wheezing.\nGastrointestinal: Negative for nausea or diarrhea.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or syncope.\n\nSocial History: Patient works as a warehouse supervisor. He denies tobacco use and drinks alcohol socially (1-2 beers on weekends). Lives with his spouse and two children.\n\nFamily History: Father had a history of heart failure. Mother had a history of stroke.\n\nExam:\nGeneral: Patient appears in mild respiratory distress, sitting upright.\nCardiovascular: S1, S2 heard. No murmurs or gallops noted.\nPulmonary: Crackles heard in bilateral lower lobes.\nExtremities: 3+ pitting edema noted to the mid-calf bilaterally.\n\nAssessment: \n1. Acute on chronic exacerbation of systolic heart failure (HFrEF) with reduced ejection fraction.\n\nPlan:\n1. Increase Furosemide dose to 80mg daily to address fluid overload.\n2. Patient instructed to follow a low-sodium diet and monitor daily weights.\n3. Follow up in one week for a repeat weight check and reassessment of symptoms.\n4. Patient instructed to go to the emergency department if he experiences severe shortness of breath or chest pain.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "I50.23"
+  ],
+  "explanations": [
+    "Acute on chronic systolic heart failure: I50.23 (HCC 224)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "acuity_down",
+      "lean": "under",
+      "why": "An acute exacerbation of chronic heart failure is documented (HCC 224).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.21"
+      ],
+      "confusion": "acute_only",
+      "lean": "neutral",
+      "why": "It is acute on chronic, not a new acute heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "225"
+        ],
+        "missing_hccs": [
+          "224"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "224",
+        "label": "Acute on Chronic Heart Failure",
+        "from": [
+          "I5023"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:10+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

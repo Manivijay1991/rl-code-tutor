@@ -1,0 +1,8 @@
+{
+  "id": "acceptable_sources",
+  "title": "Acceptable sources",
+  "kind": "documentation",
+  "description": "Which documents can support a risk-adjustment code: a signed provider visit, not a radiology report, a nurse visit or an unsigned note.",
+  "order": 910,
+  "enabled": true
+}

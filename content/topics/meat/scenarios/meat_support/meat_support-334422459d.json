@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-334422459d",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: \"Left knee pain.\"\n\nHPI: Pt is a 78-year-old male presenting for evaluation of chronic left knee pain. Pt reports dull, aching pain in the left knee for the past 6 months. Pain is worse with prolonged walking and stairs. Pt denies any acute injury, falls, or sudden onset. Describes pain as \"stiff\" in the morning, improving slightly with movement. No reports of locking, buckling, or instability. Pt currently uses OTC ibuprofen for symptomatic relief but reports it only provides partial improvement. No numbness or tingling reported in the lower extremity.\n\nMedication List:\n- Ibuprofen 400mg PO BID PRN\n- Multivitamin daily\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'10\", 185 lbs\n\nRecent Labs:\nWBC: 7.2\nHgb: 14.1\nPlt: 210\neGFR: 88\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nMSK: Positive for left knee pain. Negative for joint swelling, redness, or warmth.\nNeuro: Negative for weakness or paresthesia.\nCV: Negative for chest pain or palpitations.\nResp: Negative for SOB or cough.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol consumption.\n\nFamily History: Father had hypertension. Mother had osteoarthritis.\n\nExam:\nGeneral: Well-appearing, in no acute distress, alert and oriented x3.\nMusculoskeletal: Left knee shows mild tenderness to palpation over the patellofemoral joint. Mild swelling noted. ROM is limited by discomfort but otherwise intact. No joint effusion. Gait is steady.\n\nAssessment:\n1. Left knee osteoarthritis.\n\nPlan:\n1. Continue use of Ibuprofen as needed for pain.\n2. Recommended physical therapy for strengthening of quadriceps and hamstrings.\n3. Apply ice packs 3x daily for 20 minutes.\n4. F/u in 4 weeks to assess progress.\n\nProblem List:\n- major depressive disorder, recurrent, moderate\n- status post cholecystectomy\n- status post appendectomy\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Depression appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:22:43+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

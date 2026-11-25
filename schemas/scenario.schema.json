@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coding Tutor scenario (content/scenarios/<table>/<id>.json)",
+  "description": "Written by coding_tutor.generator.scenarios. Only `slots` and `note` are read by the bundle export; everything else is recomputed from the rules engine.",
+  "type": "object",
+  "required": ["id", "table", "status", "slots", "note"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+-[0-9a-f]{10}$"},
+    "table": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "title": {"type": "string"},
+    "status": {"enum": ["draft", "reviewed"]},
+    "slots": {"type": "object", "additionalProperties": {"type": "string"}},
+    "question": {"type": "string"},
+    "note": {"type": "string", "minLength": 1},
+    "answer": {"type": "array", "items": {"type": "string"}},
+    "explanations": {"type": "array", "items": {"type": "string"}},
+    "refs": {"type": "array", "items": {"type": "string"}},
+    "distractors": {"type": "array", "items": {"type": "object"}},
+    "risk_score": {"type": ["object", "null"]},
+    "generator": {
+      "type": "object",
+      "required": ["model", "attempts", "created"],
+      "properties": {
+        "model": {"type": "string"},
+        "attempts": {"type": "integer", "minimum": 1},
+        "created": {"type": "string"},
+        "style": {
+          "type": "object",
+          "description": "how the note was asked to read (coding_tutor.generator.scenarios.pick_style); never changes the answer",
+          "required": ["age", "sex", "voice", "length", "background", "credential", "signer"],
+          "additionalProperties": false,
+          "properties": {
+            "age": {"type": "integer", "minimum": 18, "maximum": 110},
+            "sex": {"enum": ["woman", "man"]},
+            "voice": {"enum": ["narrative", "shorthand", "templated"]},
+            "length": {"enum": ["short", "long"]},
+            "background": {"type": "array", "items": {"type": "string"}},
+            "credential": {"enum": ["MD", "DO", "NP", "PA-C", "RN"]},
+            "signer": {"type": "string"},
+            "document": {"type": "string", "description": "writer instruction for a document other than a progress note (from note_rules)"},
+            "signed": {"type": "boolean", "description": "false = the case is an unsigned note (from note_rules); absent = signed"}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "id": "diabetes_complications-2bd6187b4b",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "polyneuropathy",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for type 1 diabetes and neuropathy.\n\nHPI: [Copied Forward] Patient is a 77-year-old female with a long-standing history of type 1 diabetes mellitus. She reports persistent sensations of tingling and numbness in both feet. She manages her glucose levels with long-term insulin therapy and does not take any oral diabetes medication. \n\n[Update] Today, the patient reports that the sensations in her feet remain constant but have not worsened since the last visit. She denies any new acute symptoms or significant changes in her daily activities.\n\nMedication List:\n- Insulin Glargine (Long-acting)\n- Insulin Lispro (Rapid-acting)\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Neurological: Positive for bilateral foot tingling\n- Musculoskeletal: Negative\n- Cardiovascular: Negative\n- Respiratory: Negative\n- Gastrointestinal: Negative\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nNeurological: Symmetrical muscle strength in lower extremities. Decreased sensation to light touch and vibration in bilateral toes, consistent with polyneuropathy.\nIntegumentary: Skin is intact; no ulcers or lesions noted on feet.\n\nAssessment:\n1. Type 1 diabetes mellitus, stable on current insulin regimen.\n2. Peripheral neuropathy, stable.\n\nPlan:\n1. Continue current insulin dosages as prescribed.\n2. Monitor for any changes in sensation or skin integrity.\n3. Return to clinic in 3 months for routine follow-up.\n\nElectronically signed, R. Mensah, PA-C, 05/12/2026",
+  "answer": [
+    "E10.42"
+  ],
+  "explanations": [
+    "Polyneuropathy is listed under 'with' for diabetes: E10.42.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9",
+        "G62.9"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "Coding separately misses the presumed link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "G62.9"
+      ],
+      "confusion": "redundant_manifestation",
+      "lean": "over",
+      "why": "E1x.42 already describes the polyneuropathy.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.42",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1042"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:57+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

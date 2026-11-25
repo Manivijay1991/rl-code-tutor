@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-be28a90a4d",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Pain in the back and right side.\n\nHPI: Patient is a 59-year-old male who presented for initial evaluation of a mass identified on imaging. He was diagnosed with cancer of the right lung. He has been undergoing chemotherapy for the primary malignancy. He reports mild shortness of breath and a persistent cough. He has been compliant with his current treatment regimen but notes increasing discomfort in his posterior thoracic region.\n\nVitals: BP 128/82, HR 76, SpO2 96% on room air, Temp 98.6 F, Weight 195 lbs.\n\nRecent Labs: WBC 7.2, Hgb 11.4, Plt 155, Creatinine 1.1, eGFR 82.\n\nMedication List:\n- Cisplatin (intermittent)\n- Prednisone\n- Acetaminophen 650mg every 6 hours as needed for pain\n- Ondansetron as needed for nausea\n\nReview of Systems:\nConstitutional: Positive for fatigue and weight loss. Negative for fever or chills.\nRespiratory: Positive for cough. Negative for wheezing or stridor.\nMusculoskeletal: Positive for back pain and right-sided rib pain.\nNeurological: Negative for numbness or tingling.\nGastrointestinal: Negative for nausea or diarrhea.\n\nSocial History: Retired construction worker. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension; Mother had diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Appears in mild distress due to pain.\nRespiratory: Decreased breath sounds noted in the right lung. No acute respiratory distress.\nMusculoskeletal: Palpable tenderness over the thoracic spine and right posterior ribs. No obvious deformity.\n\nAssessment:\n1. Cancer of the right lung, currently receiving chemotherapy.\n2. Bone metastases, presenting with localized pain.\n\nPlan:\n1. Continue current chemotherapy cycle as scheduled.\n2. Initiate scheduled radiation therapy to address bone metastasis and alleviate pain.\n3. Increase Acetaminophen dosage for breakthrough pain.\n4. Follow up in 4 weeks for reassessment of pain levels and tolerance of treatment.\n\nElectronically signed, L. Moreau, MD, 05/14/2026",
+  "answer": [
+    "C34.91",
+    "C79.51"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118",
+        "C79.51"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.90",
+        "C79.51"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 2.341,
+        "gap": -1.205,
+        "direction": "under",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.91",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "by": "18"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:30+00:00",
+    "style": {
+      "age": 59,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau"
+    }
+  }
+}

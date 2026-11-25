@@ -1,0 +1,111 @@
+{
+  "id": "copd_respiratory-f42094a322",
+  "table": "copd_respiratory",
+  "title": "COPD, respiratory failure and home oxygen",
+  "status": "draft",
+  "slots": {
+    "form": "emphysema",
+    "respiratory": "oxygen_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's chronic lung disease and any respiratory failure or oxygen dependence.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: Pt is a 78-year-old male presenting for f/u of chronic respiratory symptoms. Pt reports persistent dyspnea on exertion, which has remained stable over the last month. He notes mild increased cough but denies any change in sputum production or color. Pt continues to use home oxygen at night to manage symptoms. He denies chest pain, syncope, or significant weight loss. He states he is able to perform activities of daily living but tires easily.\n\nMedication List:\n- Lisinopril 10mg QD\n- Furosemide 20mg QD\n- Albuterol HFA 2 puffs q4h PRN\n- Home oxygen (nighttime use)\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 93% on RA\nRR: 18\n\nRecent Labs:\neGFR: 62\nHbA1c: 6.8%\nCBC: WNL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or night sweats.\nRespiratory: Positive for chronic cough and dyspnea. Denies wheezing.\nCardiovascular: Denies palpitations or edema.\nGI: Denies abdominal pain or changes in bowel habits.\nMSK: Denies joint pain or swelling.\n\nSocial History: Retired. Lives with wife. Former smoker (40 pack-year hx). No alcohol or illicit drug use.\n\nFamily History: Father had hypertension. Mother had emphysema.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nRespiratory: Barrel chest noted. Decreased breath sounds in bilateral lower lobes. No wheezing or rales.\nCardiovascular: RRR, S1, S2 heard. No murmurs.\nExtremities: No edema. Pulses 2+ and symmetric.\n\nAssessment:\n1. Emphysema - stable on current management.\n2. Hypertension - well-controlled.\n\nPlan:\n1. Continue home oxygen at night as prescribed.\n2. Continue current medications.\n3. Pt to f/u in 3 months for routine check.\n4. Encouraged smoking cessation maintenance.\n\nElectronically signed,\nT. Haddad, MD\nMay 14, 2026",
+  "answer": [
+    "J43.9",
+    "Z99.81"
+  ],
+  "explanations": [
+    "Emphysema: J43.9 (HCC 280), not J44.-.",
+    "Home oxygen without a diagnosis of respiratory failure: Z99.81 only. Respiratory failure must be diagnosed by the provider."
+  ],
+  "refs": [
+    "OCG I.C.10.a",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9",
+        "Z99.81"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Emphysema has its own code, J43.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9",
+        "J96.11",
+        "Z99.81"
+      ],
+      "confusion": "respiratory_failure_from_oxygen",
+      "lean": "over",
+      "why": "Oxygen use alone does not establish respiratory failure (HCC 213).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.689,
+        "correct": 0.319,
+        "gap": 0.37,
+        "direction": "over",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J43.9"
+      ],
+      "confusion": "missed_oxygen",
+      "lean": "under",
+      "why": "Dependence on supplemental oxygen is documented: Z99.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.319,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J439"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:19:49+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

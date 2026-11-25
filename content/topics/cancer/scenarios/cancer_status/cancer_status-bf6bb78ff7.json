@@ -1,0 +1,72 @@
+{
+  "id": "cancer_status-bf6bb78ff7",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for colon cancer.\n\nVitals: BP 128/74, HR 76, Temp 98.2 F, SpO2 96% on RA, Weight 168 lbs.\n\nRecent Labs: Hemoglobin 11.2 g/dL, White Blood Cell Count 4.5 x 10^9/uL, Platelets 145 x 10^3/uL, Creatinine 1.1 mg/dL, eGFR 72 mL/min/1.73m2.\n\nMedication List:\n- Ondansetron 8mg as needed for nausea\n- Dexamethasone 4mg daily\n- Lisinopril 10mg daily\n- Multivitamin daily\n\nHPI: [Copied Forward] Patient is a 90-year-old male with a known malignant neoplasm of the colon. He is currently receiving chemotherapy for the primary site. He reports stable energy levels and manageable side effects from his current treatment regimen. He denies significant abdominal pain or changes in bowel habits since the last visit.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or unintended weight loss.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for congestion or sore throat.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Denies nausea, vomiting, or diarrhea.\nMusculoskeletal: Denies joint pain or severe weakness.\nNeurological: Negative for dizziness or numbness.\n\nSocial History: Retired. Lives at home with his wife. No tobacco or alcohol use.\n\nFamily History: Father had hypertension. Mother had Type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished and in no acute distress.\nAbdomen: Soft, non-tender, non-distended. No masses palpable.\nMusculoskeletal: Steady gait, normal strength in upper and lower extremities.\n\nAssessment:\n1. Colon cancer: The patient is on active treatment for his primary malignancy. He is tolerating the current cycle well with minimal adverse effects. \n\nPlan:\n1. Continue current chemotherapy protocol as scheduled.\n2. Monitor CBC and metabolic panel every 3 weeks to track blood counts.\n3. Maintain current supportive medications for nausea.\n4. Follow up in 4 weeks for next cycle evaluation.\n\nElectronically signed,\nE. Castillo, DO\nMay 14, 2026",
+  "answer": [
+    "C18.9"
+  ],
+  "explanations": [
+    "Cancer of the colon under current treatment is a current malignancy: C18.9."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.038"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.363,
+        "gap": -0.363,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "22"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.363,
+    "hccs": [
+      {
+        "hcc": "22",
+        "label": "Bladder/Colorectal/and Other Cancers",
+        "from": [
+          "C189"
+        ],
+        "weight": 0.363
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:38:48+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "hiv_status-da7c9f6978",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "inconclusive"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint: Follow-up on laboratory results.\n\nHPI: [Copied Forward] Patient is an 89-year-old female presenting for routine follow-up. She reports feeling well overall with no new complaints of fatigue or systemic symptoms. She is here to review recent laboratory work. [Today's Update] Patient expresses concern regarding her recent laboratory results. She is here specifically to discuss the findings of her recent screening.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nSkin: No new rashes or lesions noted.\nLymphatic: No palpable cervical or axillary lymphadenopathy.\n\nAssessment:\n1. Indeterminate HIV screening result. The patient's recent laboratory screening was inconclusive. Confirmatory testing is currently pending. No diagnosis has been made at this time.\n\nPlan:\n1. Await results of confirmatory testing.\n2. Follow up in 2 weeks to review final laboratory findings.\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "R75"
+  ],
+  "explanations": [
+    "Inconclusive HIV test without a confirmed diagnosis: R75 (no HCC). Code only confirmed HIV."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z21"
+      ],
+      "confusion": "coded_unconfirmed_hiv",
+      "lean": "over",
+      "why": "HIV is not confirmed; Z21 would add HCC 1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0,
+        "gap": 0.301,
+        "direction": "over",
+        "extra_hccs": [
+          "1"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "B20"
+      ],
+      "confusion": "coded_unconfirmed_hiv",
+      "lean": "over",
+      "why": "HIV is not confirmed.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0,
+        "gap": 0.301,
+        "direction": "over",
+        "extra_hccs": [
+          "1"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:22+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

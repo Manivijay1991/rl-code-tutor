@@ -1,0 +1,131 @@
+{
+  "id": "diabetes_complications-180e4a1524",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type1",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "no",
+    "meds": "insulin"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for type 1 diabetes and CKD stage 4.\n\nHPI\nPt is an 80 y/o female presenting for routine follow-up of type 1 diabetes and chronic kidney disease stage 4. Pt reports feeling well today. She continues to self-administer insulin as prescribed. No acute concerns regarding glucose levels or renal function reported at this time. Pt denies any recent falls, vision changes, or significant fatigue. She notes occasional heartburn but manages with current regimen.\n\nMedication List\n- Insulin (long-term)\n- Omeprazole 20mg PO daily\n- Fluticasone nasal spray PRN\n\nReview of Systems\nConstitutional: Denies fever, chills, weight change.\nHEENT: Denies blurry vision, ear pain.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Reports mild reflux.\nMSK: Denies joint pain.\nNeuro: Denies weakness, numbness.\n\nSocial History\nLives at home with spouse. Retired. Non-smoker. Occasional alcohol.\n\nFamily History\nMother: Type 1 diabetes.\nFather: Heart disease.\n\nRecent Labs\neGFR: 22 mL/min/1.73m2\nHbA1c: 7.4%\nCreatinine: 3.1 mg/dL\nPotassium: 4.2 mEq/L\nSodium: 138 mEq/L\n\nVitals\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 145 lbs\n\nExam\nGeneral: Alert, pleasant, in no acute distress.\nCV: RRR, CTAB.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, non-distended.\nExtremities: WNL, no edema.\nNeuro: Alert and oriented x3.\n\nAssessment\n1. Type 1 diabetes mellitus: Stable on insulin.\n2. CKD stage 4: Stable renal function.\n3. Gastroesophageal reflux disease: Stable.\n4. Seasonal allergic rhinitis: Stable.\n\nPlan\n- Continue current insulin regimen.\n- Monitor renal function with f/u labs in 3 months.\n- Continue omeprazole for GERD.\n- Return to clinic as needed or for scheduled f/u.\n\nProblem List\n1. Type 1 diabetes\n2. CKD stage 4\n3. Gastroesophageal reflux disease\n4. Seasonal allergic rhinitis\n\nElectronically signed, D. Kowalski, NP, 05/12/2026",
+  "answer": [
+    "E10.22",
+    "N18.4"
+  ],
+  "explanations": [
+    "CKD is listed under 'with' for diabetes, so the link is presumed: use the combination code E10.22.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "Do not assign Z79.4 for type 1 diabetes; insulin use is inherent."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.4.a",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E10.9",
+        "N18.4"
+      ],
+      "confusion": "missed_with_link",
+      "lean": "under",
+      "why": "'With' presumes the link without 'due to' wording.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "37"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.22"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E10.22",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "z794_for_type1",
+      "lean": "over",
+      "why": "Z79.4 is not assigned for type 1 diabetes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E1022"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:29:04+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "seasonal allergic rhinitis",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

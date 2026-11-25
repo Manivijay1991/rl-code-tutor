@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-27577357a8",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "parkinsons"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for Parkinson's disease.\n\nHPI\nThe patient is an 89-year-old female presenting today for a routine follow-up regarding her Parkinson's disease. She reports that she is tolerating her current regimen well and continues to maintain her activities of daily living. She denies any new falls or significant changes in her mobility. She notes that her symptoms are well-controlled with her current medications.\n\nMedication List\n- Carbidopa-levodopa 25/100 mg\n\nExam\nThe patient appears well-nourished and is in no acute distress. She is alert and oriented to person, place, and time. Physical exam reveals a slight resting tremor in the right hand. Gait is steady with a rhythmic arm swing. Muscle tone is mildly increased in the lower extremities.\n\nAssessment\n1. Parkinson's disease: The patient's condition is stable. She is showing good clinical response to carbidopa-levodopa without any adverse movements or motor variations.\n\nPlan\n1. Continue current dose of carbidopa-levodopa.\n2. Monitor for any changes in mobility or balance.\n3. Follow up in three months for a repeat evaluation.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "G20.A1"
+  ],
+  "explanations": [
+    "Parkinson's disease without dyskinesia and without fluctuations: G20.A1 (HCC 199)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G20.C"
+      ],
+      "confusion": "parkinsonism_vs_parkinsons",
+      "lean": "neutral",
+      "why": "Parkinson's disease is documented, not parkinsonism.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.615,
+        "correct": 0.615,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G20.A2"
+      ],
+      "confusion": "unsupported_fluctuations",
+      "lean": "over",
+      "why": "Motor fluctuations are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.615,
+        "correct": 0.615,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.615,
+    "hccs": [
+      {
+        "hcc": "199",
+        "label": "Parkinson and Other Degenerative Disease of Basal Ganglia",
+        "from": [
+          "G20A1"
+        ],
+        "weight": 0.615
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:14:55+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

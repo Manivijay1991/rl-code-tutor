@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-a76ff97a53",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "uc"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for ulcerative colitis.\n\nHPI: Patient is a 51-year-old male who presented for management of ulcerative colitis. He reports that his symptoms have been well-controlled since his last evaluation. He notes consistent bowel movements and no significant abdominal discomfort. He remains on a maintenance regimen of mesalamine for the management of ulcerative colitis. He denies any recent flare-ups or changes in his condition.\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on room air, Weight 195 lbs.\n\nRecent Labs: Hemoglobin 14.2 g/dL, White Blood Cell Count 7.5 x 10^9/L, Platelet Count 210 x 10^9/L, eGFR 88 mL/min/1.73m2.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue, or weight change.\nGastrointestinal: Negative for nausea, vomiting, or abdominal pain.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for dizziness or numbness.\nRespiratory: Negative for cough or shortness of breath.\n\nSocial History: The patient is a non-smoker. He works as a software engineer and lives with his spouse and two children. He reports a balanced diet and regular exercise routine.\n\nFamily History: Father has hypertension. Mother has type 2 diabetes. No family history of inflammatory bowel disease.\n\nMedication List:\n- Mesalamine 2.5g daily\n- Multivitamin daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nAbdomen: Soft, non-tender, and non-distended. Normal bowel sounds present. No masses palpated.\nSkin: No rashes or lesions noted.\n\nAssessment:\n1. Ulcerative colitis: The patient is currently in remission. He is tolerating his current dose of mesalamine well without significant side effects.\n\nPlan:\n1. Continue current mesalamine dosage for ulcerative colitis.\n2. Continue routine monitoring of laboratory values.\n3. Follow up in 6 months for routine evaluation of ulcerative colitis.\n\nElectronically signed,\nJ. Lindqvist, NP\nMay 14, 2026",
+  "answer": [
+    "K51.90"
+  ],
+  "explanations": [
+    "Ulcerative colitis, extent not stated, no complications: K51.90 (HCC 81)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K51.00"
+      ],
+      "confusion": "assumed_site",
+      "lean": "neutral",
+      "why": "Pancolitis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.244,
+        "correct": 0.244,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.244,
+    "hccs": [
+      {
+        "hcc": "81",
+        "label": "Ulcerative Colitis",
+        "from": [
+          "K5190"
+        ],
+        "weight": 0.244
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:55+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

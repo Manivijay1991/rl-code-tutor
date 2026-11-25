@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-e2bc1c0e37",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "crohns_small"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for Crohn's disease.\n\nHPI: Pt is an 80 y.o. female presenting for a scheduled follow-up of Crohn's disease. She reports she has been feeling well since last visit. No acute abdominal pain, no fever, and no changes in bowel habits. She reports being compliant with her maintenance medications. She denies any recent flares or severe cramping. She notes she is maintaining a high-fiber diet as tolerated.\n\nMedication List:\n- Adalimumab 40mg subcutaneous every 2 weeks\n- Folic acid 1mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nGI: Denies nausea, vomiting, or significant diarrhea.\nMSK: No joint pain or stiffness.\nNeuro: No dizziness or confusion.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives with her daughter. No tobacco use. Occasional social drinking.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs:\nHb: 12.4 g/dL\nWBC: 7.2 K/uL\nPlatelets: 210 K/uL\neGFR: 72 mL/min\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nVitals: Stable.\nAbdomen: Soft, non-tender, non-distended. Normal bowel sounds. No guarding or rebound.\nSkin: No visible rashes or lesions.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\n\nAssessment:\n1. Crohn's disease of the terminal ileum. Pt is currently stable on maintenance therapy. No signs of active flare.\n\nPlan:\n1. Continue current maintenance medication regimen.\n2. Follow up in 6 months for routine monitoring or sooner if symptoms arise.\n3. Continue high-fiber diet and hydration.\n\nElectronically signed,\nT. Haddad, NP\nMay 14, 2026",
+  "answer": [
+    "K50.00"
+  ],
+  "explanations": [
+    "Crohn's disease of the small intestine (ileum), no complications: K50.00 (HCC 80)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K50.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The small intestine is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.55,
+        "correct": 0.55,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.55,
+    "hccs": [
+      {
+        "hcc": "80",
+        "label": "Crohns Disease (Regional Enteritis)",
+        "from": [
+          "K5000"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:17+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "id": "dementia_severity-1be8050c17",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "moderate",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive decline.\n\nHPI: [Copied Forward] Patient is a 72-year-old female presenting for ongoing management of dementia. She has been experiencing progressive memory loss and difficulties with executive functioning over the last several years. She is currently managed with pharmacological support and non-pharmacological interventions. She remains stable on her current regimen with no significant acute changes reported by the caregiver.\n\n[Current Visit Update] The patient presents today accompanied by her daughter. The daughter reports that the patient is generally stable at home. She notes that while the patient requires assistance with complex tasks and daily planning, she is very cooperative and easy to engage with. There are no reports of behavioral issues or mood disturbances. The patient is pleasant and cooperative during the evaluation.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nRecent Labs: HbA1c 6.2%, eGFR 72 mL/min, TSH 2.1 mIU/L.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nNeurological: Positive for memory loss. Negative for tremors or gait instability.\nPsychiatric: Negative for mood disturbances or sleep issues.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\n\nSocial History: Retired school teacher. Lives at home with her daughter. Non-smoker. Occasional social outings.\n\nFamily History: Mother had a history of dementia. Father had hypertension.\n\nMedication List: Donepezil 10mg daily, Memantine 20mg daily.\n\nExam: The patient is alert and oriented to person and place, but disoriented to time. She is calm and cooperative throughout the visit. Speech is clear and coherent. Gait is steady. No focal neurological deficits noted.\n\nAssessment: 72-year-old female with moderate dementia. She continues to show stable cognitive decline consistent with her current status. No behavioral or mood disturbances noted today.\n\nPlan: Continue current medications. Continue to monitor for changes in functional status. Follow up in 3 months.\n\nElectronically signed, \nA. Rivera, MD\nMay 14, 2026",
+  "answer": [
+    "F03.B0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), moderate, without behavioral disturbance: F03.B0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (moderate): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.A0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is moderate.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "127"
+        ],
+        "missing_hccs": [
+          "126"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "126",
+        "label": "Dementia/Moderate",
+        "from": [
+          "F03B0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:48:17+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

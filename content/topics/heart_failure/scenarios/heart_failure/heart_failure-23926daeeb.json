@@ -1,0 +1,132 @@
+{
+  "id": "heart_failure-23926daeeb",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "systolic",
+    "acuity": "chronic",
+    "hypertension": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint\nFollow-up for heart failure and blood pressure management.\n\nHPI\nThe patient is a 77-year-old female presenting for a routine follow-up of her chronic systolic heart failure and hypertension. She reports feeling stable today and denies any increased shortness of breath, persistent cough, or significant weight gain over the past month. She continues to manage her symptoms with her current medication regimen and denies any chest pain or palpitations. She states that her activity level remains consistent with her baseline. She is here to review her current status and ensure her medications are effective.\n\nMedication List\nLisinopril 20mg daily\nCarvedilol 25mg twice daily\nSpironolactone 25mg daily\nFurosemide 40mg daily as needed\nAtorvastatin 40mg daily\n\nVitals\nBP: 128/76 mmHg\nHR: 72 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 158 lbs (stable)\n\nRecent Labs\nBNP: 145 pg/mL\neGFR: 65 mL/min/1.73m2\nPotassium: 4.2 mEq/L\nHbA1c: 6.2%\nSodium: 138 mEq/mL\n\nReview of Systems\nConstitutional: Denies fever, chills, or fatigue.\nRespiratory: Denies dyspnea on exertion or orthopnea.\nCardiovascular: Denies chest pain or palpitations.\nGastrointestinal: Denies nausea or abdominal pain.\nMusculoskeletal: Denies joint pain or weakness.\n\nSocial History\nThe patient resides in a single-story home with her spouse. She enjoys gardening and walking in the neighborhood. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension and a history of heart failure. Father had a history of stroke.\n\nExam\nGeneral: Alert and oriented x3. Well-nourished and in no acute distress.\nCardiovascular: Regular rhythm, S1 and S2 heard. No murmurs, rubs, or gallops. No peripheral edema noted.\nRespiratory: Clear to auscultation bilaterally. No crackles or wheezes.\nExtremities: No cyanosis or clubbing.\n\nAssessment\n1. Chronic systolic heart failure: The patient is currently stable with no signs of worsening symptoms. Her ejection fraction remains at 30% as previously documented.\n2. Hypertension: Blood pressure is well-controlled on the current regimen.\n\nPlan\nContinue current medications for heart failure and hypertension. Patient instructed to monitor daily weights and report any gain of more than 3 pounds in a day. Follow up in 3 months for repeat labs and clinical evaluation.\n\nElectronically signed, E. Castillo, DO, 10/14/2026",
+  "answer": [
+    "I11.0",
+    "I50.22"
+  ],
+  "explanations": [
+    "Hypertension with heart failure is presumed linked: I11.0, hypertensive heart disease with heart failure, plus the I50 code.",
+    "Chronic systolic heart failure: I50.22 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I10",
+        "I50.22"
+      ],
+      "confusion": "missed_htn_hf_link",
+      "lean": "under",
+      "why": "The classification presumes a causal link between hypertension and heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.23"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I11.0",
+        "I50.32"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents systolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I110",
+          "I5022"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:05+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "id": "pad_atherosclerosis-26a89703d8",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "ulcer",
+    "side": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Non-healing ulcer on the left foot.\n\nHPI: The patient is a 73-year-old male who presents today for a follow-up evaluation of a chronic wound on the left foot. He reports that he first noticed the lesion several months ago and notes that it has failed to show significant signs of healing despite local wound care. He describes the site as being on the top of the foot. He denies any recent fevers, chills, or systemic symptoms of infection. He reports mild discomfort but no acute and severe pain. He is seeking a management plan to promote wound closure.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Aspirin 81mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nIntegumentary: Positive for a non-healing ulcer on the left foot. Denies rashes or hives.\nMusculoskeletal: Denies joint pain or swelling.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath or cough.\n\nSocial History: The patient is retired and lives with his wife. He enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History: Father had a history of coronary artery disease. Mother had hypertension.\n\nVitals:\nBP: 132/84\nHR: 72\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 195 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 74 mL/min\nWBC: 8.4 x 10^9/L\n\nExam: The patient is a well-appearing male in no acute distress. Physical exam reveals atherosclerosis of the native leg arteries on the left side. There is a visible ulceration located on the top of the left foot. The wound bed appears granulated with some surrounding erythema. Pulses are diminished in the left lower extremity compared to the right. No purulent drainage is noted at this time.\n\nAssessment: \n1. Atherosclerosis of the left leg arteries.\n2. Non-healing ulcer on the left foot.\n\nPlan:\n1. Wound Care: Continue daily dressing changes with saline and non-adherent dressings.\n2. Circulation: Continue current medications for lipid management and blood pressure.\n3. Follow-up: Return to the clinic in two weeks for a wound measurement and progress check.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "I70.245",
+    "L97.529"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the left leg with ulceration of the foot (HCC 263), plus the ulcer code: I70.245.",
+    "I70.24- says to use an additional code for the ulcer's site and severity: L97.529 (other part of left foot, severity not documented)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73",
+    "OCG I.A.13"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.235",
+        "L97.529"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.118,
+        "correct": 1.118,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.222",
+        "L97.529"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Ulceration is documented: it is the highest stage (HCC 263).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.101,
+        "correct": 1.118,
+        "gap": -0.017,
+        "direction": "under",
+        "extra_hccs": [
+          "264",
+          "383"
+        ],
+        "missing_hccs": [
+          "263"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I70.245"
+      ],
+      "confusion": "missed_ulcer_code",
+      "lean": "under",
+      "why": "Use an additional code (L97.-) to identify the ulcer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.118,
+        "correct": 1.118,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.118,
+    "hccs": [
+      {
+        "hcc": "263",
+        "label": "Atherosclerosis of Arteries of the Extremities with Ulceration or Gangrene",
+        "from": [
+          "I70245"
+        ],
+        "weight": 1.118
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "by": "263"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:13:12+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

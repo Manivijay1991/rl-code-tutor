@@ -1,0 +1,79 @@
+{
+  "id": "stroke_sequelae-4c6073036a",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "aphasia",
+    "handedness": "not_documented"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint: Follow-up for expressive aphasia.\n\nHPI: Pt is a 60-year-old female presenting for f/u regarding residual expressive aphasia following a past ischemic stroke. Pt reports difficulty with word-finding and sentence construction but reports stable status since last visit. Pt denies any new neurological symptoms. Pt currently participating in outpatient speech therapy. No complaints of pain or other systemic issues today.\n\nMedication List: \n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nHEENT: No vision changes, no hearing loss.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: No nausea, no diarrhea.\nMSK: No joint pain.\nNeuro: Positive for expressive aphasia. No other neuro complaints.\n\nSocial History: Pt lives with spouse. Works part-time as a bookkeeper. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension and stroke. Father had myocardial infarction at age 65.\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 165 lbs\n\nRecent Labs:\nHbA1c: 5.8%\nLDL: 88 mg/dL\neGFR: 82 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nExam:\nGeneral: Alert, cooperative, sitting in chair.\nCV: RRR, regular rhythm.\nLungs: CTAB.\nNeuro: Pt is alert and oriented to person and place. Significant expressive aphasia noted; pt struggles to formulate complex sentences but follows commands well. No motor deficits noted in extremities. Gait steady.\n\nAssessment:\n1. Expressive aphasia secondary to past ischemic stroke.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue outpatient speech therapy 3x weekly.\n3. F/u in 3 months for routine neuro check.\n4. Encourage continued engagement in social activities to support communication goals.\n\nElectronically signed, R. Mensah, DO, 05/14/2026",
+  "answer": [
+    "I69.320"
+  ],
+  "explanations": [
+    "Residual aphasia from a past ischemic stroke: I69.320, a sequela code (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.9.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "A residual deficit is documented: code the sequela (I69.-), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "coded_acute_stroke",
+      "lean": "over",
+      "why": "I63 codes are for the acute stroke episode only.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:26+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

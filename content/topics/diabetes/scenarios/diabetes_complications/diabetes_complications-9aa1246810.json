@@ -1,0 +1,106 @@
+{
+  "id": "diabetes_complications-9aa1246810",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "hypoglycemia",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint\nFollow-up for T2DM and hypoglycemia.\n\nHPI\nPt is a 76 y.o. male presenting for routine follow-up of type 2 diabetes. Pt reports stable status overall but notes a recent hypoglycemic episode. Pt states he manages his condition via diet and exercise only. Denies any recent falls or severe symptoms associated with the event. Reports adherence to current lifestyle modifications.\n\nMedication List\nMultivitamin daily. No prescription medications for glucose management.\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6F.\nCV: RRR, CTAB.\nResp: CTAB.\nExt: WNL.\nNeuro: NAD.\n\nAssessment\n1. T2DM, diet controlled.\n2. Hypoglycemia.\n\nPlan\n1. Continue current diet and exercise regimen.\n2. Educate on recognizing symptoms of hypoglycemia and emergency actions.\n3. F/u in 3 months for routine labs and monitoring.\n\nElectronically signed,\nE. Castillo, PA-C\n05/12/2026",
+  "answer": [
+    "E11.649"
+  ],
+  "explanations": [
+    "Diabetes with hypoglycemia and no coma documented: E11.649."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "hyper_vs_hypo",
+      "lean": "neutral",
+      "why": "E11.65 is hyperglycemia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9"
+      ],
+      "confusion": "missed_complication",
+      "lean": "under",
+      "why": "Hypoglycemia is a complication with its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.649",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E11649"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:27:07+00:00",
+    "style": {
+      "age": 76,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "E. Castillo"
+    }
+  }
+}

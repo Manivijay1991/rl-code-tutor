@@ -1,0 +1,61 @@
+{
+  "id": "liver_disease-8b752eb478",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "fatty_liver"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint\nFollow-up for fatty liver.\n\nHPI\nPt is a 61 y/o male presenting for f/u of hepatic steatosis. Pt reports being compliant with lifestyle modifications. Denies any abdominal pain, jaundice, or malaise. He reports steady weight loss over the last 3 months due to increased physical activity. No new concerns at this time.\n\nMedication List\nMultivitamin daily.\n\nExam\nPt appears well-nourished and in no acute distress. Alert and oriented x3. Speech clear. CTAB. RRR. Lungs clear to auscultation. Abdomen soft, non-tender, non-distended. No masses palpated. Extremities WNL.\n\nAssessment\n1. Fatty liver.\n\nPlan\n1. Hepatic steatosis: Continue with diet and exercise. Pt encouraged to maintain current weight loss trajectory. F/u in 6 months for monitoring.\n\nElectronically signed,\nK. Nguyen, DO\n10/14/2026",
+  "answer": [
+    "K76.0"
+  ],
+  "explanations": [
+    "Fatty liver: K76.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K74.60"
+      ],
+      "confusion": "coded_cirrhosis",
+      "lean": "over",
+      "why": "Cirrhosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0,
+        "gap": 0.447,
+        "direction": "over",
+        "extra_hccs": [
+          "64"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:56+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

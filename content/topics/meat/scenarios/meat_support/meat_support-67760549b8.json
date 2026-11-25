@@ -1,0 +1,87 @@
+{
+  "id": "meat_support-67760549b8",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "chf_chronic_systolic",
+    "documentation": "meat_supported"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint: Low back pain.\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F, Weight 155 lbs.\n\nReview of Systems:\nConstitutional: Negative.\nMusculoskeletal: Positive for low back pain.\nCardiovascular: Negative.\nRespiratory: Negative.\nNeurological: Negative.\n\nHPI: Patient is a 66-year-old female presenting for evaluation of low back pain. She reports a dull ache in the lumbar region that began two weeks ago. She notes that the pain is exacerbated by prolonged sitting and improved with rest. She denies any radiating pain to the lower extremities, numbness, or weakness.\n\nMedication List:\n- Furosemide 40mg daily\n- Lisinopril 10mg daily\n\nProblem List:\n- chronic systolic heart failure\n- status post appendectomy\n- status post cholecystectomy\n- history of tonsillectomy\n\nAssessment:\n1. Low back pain: Patient reports localized discomfort without neurological deficits.\n2. chronic systolic heart failure: Patient is currently stable.\n\nPlan:\n1. Low back pain: Recommended stretching exercises and heat therapy. Will monitor symptoms and follow up in four weeks.\n2. chronic systolic heart failure: Continue current medication regimen including Furosemide.\n\nElectronically signed, E. Castillo, DO, 05/12/2026",
+  "answer": [
+    "I50.22"
+  ],
+  "explanations": [
+    "The provider addressed chronic systolic heart failure at this visit, so it is supported: I50.22."
+  ],
+  "refs": [
+    "OCG IV.J",
+    "OCG IV.I"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_supported_condition",
+      "lean": "under",
+      "why": "Status plus a plan in the assessment supports the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.36,
+        "gap": -0.36,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Type (systolic) and acuity (chronic) are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5022"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:27:59+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

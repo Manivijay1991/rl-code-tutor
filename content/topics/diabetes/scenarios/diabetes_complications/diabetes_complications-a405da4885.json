@@ -1,0 +1,92 @@
+{
+  "id": "diabetes_complications-a405da4885",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "none",
+    "provider_says_unrelated": "no",
+    "meds": "diet_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for diabetes.\n\nHPI: Pt is a 60-year-old female presenting for routine follow-up of T2DM without complications. Pt reports she feels well overall. She is currently managing her blood glucose levels through diet and exercise. She denies any recent episodes of significant fluctuations or acute symptoms. She also notes stable symptoms of GERD and seasonal allergic rhinitis, which she manages as usual. No new concerns voiced today.\n\nMedication List: \n- Omeprazole 20mg daily\n- Loratadine 10mg PRN\n- Diet only for T2DM\n\nSocial History: Pt lives in a single-family home. Works part-time as a bookkeeper. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had T2DM and stroke. Father had GERD.\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nHEENT: Denies vision changes, no rhinorrhea.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: Occasional heartburn, no nausea.\nMSK: No joint pain.\nSkin: No rashes.\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 165 lbs\n\nRecent Labs:\nHbA1c: 6.8%\neGFR: 82\nGlucose: 118 mg/dL\n\nExam:\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB, no murmurs.\nLungs: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses.\nExtremities: WNL, no edema.\n\nAssessment:\n1. T2DM without complications, diet controlled.\n2. GERD, stable.\n3. Seasonal allergic rhinitis, stable.\n\nPlan:\n1. Continue current diet and exercise regimen for T2DM.\n2. Continue current medications for GERD and allergies.\n3. Follow up in 6 months for repeat labs and A1c.\n\nProblem List:\n- T2DM without complications, diet controlled\n- GERD\n- Seasonal allergic rhinitis\n\nElectronically signed, H. Tanaka, MD, 05/14/2026",
+  "answer": [
+    "E11.9"
+  ],
+  "explanations": [
+    "No complication is documented: type 2 diabetes without complications."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "coded_unsupported_complication",
+      "lean": "over",
+      "why": "Nothing in the note documents hyperglycemia or poor control.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4"
+      ],
+      "confusion": "coded_med_not_documented",
+      "lean": "over",
+      "why": "No insulin is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:22:10+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [
+        "gastroesophageal reflux disease",
+        "seasonal allergic rhinitis"
+      ],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

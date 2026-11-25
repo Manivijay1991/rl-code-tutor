@@ -1,0 +1,60 @@
+{
+  "id": "status_codes-67812aa7fb",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "colostomy",
+    "state": "reversed"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint: Follow-up for surgical history and abdominal health.\n\nHPI: [Copied Forward from previous visit]\nPatient is a 72-year-old female presenting for a scheduled follow-up. She has a significant surgical history involving a colostomy. She reports that the procedure was successfully reversed in the past. She currently denies any issues with bowel habits or abdominal discomfort. She reports she no longer has a stoma and is feeling well.\n\n[Update from today's visit]\nThe patient reports she continues to feel well and denies any new abdominal pain, bloating, or changes in stool consistency since the previous evaluation. She states she is satisfied with her current status following the surgical reversal.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals: BP 128/82, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F, BMI 26.4\n\nRecent Labs:\n- Hemoglobin: 13.2 g/dL\n- White Blood Cell Count: 7.2 x10^3/uL\n- Creatinine: 0.9 mg/dL\n- eGFR: 82 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nEyes: Negative for vision changes.\nEars/Nose/Throat: Negative for congestion or sore throat.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for numbness or tingling.\nSkin: Negative for rashes.\n\nSocial History: Retired; lives with husband; non-smoker; occasional social alcohol use.\n\nFamily History: Mother had hypertension; Father had a myocardial infarction at age 65.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nAbdomen: Soft, non-tender, non-distended. Bowel sounds present in all quadrants. No masses noted. No surgical scars visible from the previous colostomy site.\nSkin: Intact, no lesions.\n\nAssessment:\n1. Status post colostomy reversal.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Follow up in 6 months for routine monitoring.\n3. Patient instructed to call the office if any new abdominal symptoms arise.\n\nElectronically signed,\nA. Rivera, MD\nMay 14, 2026",
+  "answer": [],
+  "explanations": [
+    "The colostomy was reversed: the patient no longer has one, so there is no status to report."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.3"
+      ],
+      "confusion": "reversed_coded",
+      "lean": "over",
+      "why": "A reversed colostomy is no longer present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.673,
+        "correct": 0,
+        "gap": 0.673,
+        "direction": "over",
+        "extra_hccs": [
+          "463"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:53:31+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

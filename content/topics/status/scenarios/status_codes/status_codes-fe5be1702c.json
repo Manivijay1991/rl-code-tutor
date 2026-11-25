@@ -1,0 +1,103 @@
+{
+  "id": "status_codes-fe5be1702c",
+  "table": "status_codes",
+  "title": "Amputation and ostomy status",
+  "status": "draft",
+  "slots": {
+    "condition": "aka_left",
+    "state": "present"
+  },
+  "question": "Assign the ICD-10-CM status codes this note supports.",
+  "note": "Chief Complaint\nFollow-up for hypertension and routine evaluation.\n\nHPI\nThe patient is a 36-year-old woman presenting today for a routine follow-up of her hypertension. She reports that her blood pressure has been well-controlled at home with her current medication regimen. She denies any recent falls, dizziness, or syncopal episodes. She notes that she continues to use her prosthesis for mobility without any current issues. She has had a left above-knee amputation for several years and reports that she is satisfied with her current level of function.\n\nMedication List\nLisinopril 20mg daily\nAmlodipine 5mg daily\n\nExam\nThe patient is alert and oriented. She is in no acute distress. Skin is warm and dry. Vital signs are stable. Physical exam reveals a well-healed surgical site. The left above-knee amputation site is intact with no signs of irritation. She is able to bear weight and ambulate with her prosthesis.\n\nAssessment\n1. Hypertension: Well-controlled on current medications.\n2. Status post left above-knee amputation: Stable.\n\nPlan\nContinue current medications for hypertension. Follow up in three months for routine blood pressure check.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "Z89.612"
+  ],
+  "explanations": [
+    "Acquired absence of the left leg above the knee: Z89.612 (HCC 409)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "The amputation status is documented and still applies.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.598,
+        "gap": -0.598,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z89.512"
+      ],
+      "confusion": "wrong_level",
+      "lean": "neutral",
+      "why": "The amputation is above the knee.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z89.611"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89612"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:40:30+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

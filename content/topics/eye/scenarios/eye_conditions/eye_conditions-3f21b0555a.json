@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-3f21b0555a",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "wet_amd_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint: Vision loss in right eye.\n\nHPI: Pt is a 90 y.o. male presenting for scheduled ophthalmology follow-up. Pt reports progressive blurring and distortion of vision in the right eye over several months. Pt states vision is significantly impacted during daily activities. Pt has a known history of macular degeneration. Today's visit is for management of active choroidal neovascularization. Pt denies sudden flashes, floaters, or new-onset pain.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Aspirin 81mg QD\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nHEENT: Positive for blurred vision in right eye. Negative for ear pain or sinus congestion.\nCV: Negative for chest pain, palpitations, or SOB.\nMSK: Negative for joint pain or swelling.\nNeuro: Negative for numbness, tingling, or weakness.\n\nSocial History: Pt is retired. Lives with wife in a single-story home. No tobacco or alcohol use.\n\nFamily History: Father had hypertension and stroke. Mother had heart disease.\n\nFamily History: Pt's father had hypertension and stroke. Mother had heart disease.\n\nVitals:\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/WBC: WNL\n\nRecent Labs:\neGFR: 68 mL/min\nHbA1c: 6.2%\n\nExam:\nVisual Acuity (OD): 20/100\nPupils: PERRLA\nExtraocular Movements: Intact\nFundus Exam: Examination of right eye reveals exudative age-related macular degeneration. Notable active CNV present.\n\nAssessment:\n1. Exudative macular degeneration of the right eye.\n2. Active choroidal neovascularization of the right eye.\n\nPlan:\n1. Administered anti-VEGF injection to the right eye today to treat active CNV.\n2. Pt instructed on post-procedure care and signs of infection.\n3. F/u in 4-8 weeks for repeat imaging and visual acuity check.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "H35.3211"
+  ],
+  "explanations": [
+    "Exudative (wet) AMD, right eye, with active choroidal neovascularization: H35.3211 (HCC 300)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3111"
+      ],
+      "confusion": "wet_dry_confused",
+      "lean": "neutral",
+      "why": "Wet (exudative) AMD is documented; dry AMD has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.596,
+        "gap": -0.596,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "300"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "H35.3212"
+      ],
+      "confusion": "wrong_cnv_status",
+      "lean": "neutral",
+      "why": "The neovascularization is documented as active.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0.596,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.596,
+    "hccs": [
+      {
+        "hcc": "300",
+        "label": "Exudative Macular Degeneration",
+        "from": [
+          "H353211"
+        ],
+        "weight": 0.596
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:40+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

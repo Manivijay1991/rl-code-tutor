@@ -1,0 +1,110 @@
+{
+  "id": "ckd_staging-e7c0979b2c",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "esrd",
+    "hypertension": "no",
+    "dialysis": "yes"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for maintenance dialysis and ESRD.\n\nHPI: [Copied forward from previous visit] Patient is a 75-year-old male with a history of chronic kidney disease who reports stable renal function and adherence to his treatment plan. He reports no new episodes of fluid overload or severe electrolyte imbalances since the last encounter. He maintains his regular schedule for hemodialysis.\n\nVitals: BP 128/74, HR 76, SpO2 98% on room air, Weight 182 lbs.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nCardiovascular: Negative for chest pain, palpitations.\nRespiratory: Negative for shortness of breath.\nGastrointestinal: Negative for nausea, abdominal pain.\nGenitourinary: Negative for dysuria.\nNeurological: Negative for tremors, weakness.\n\nExam: General: Well-appearing, alert and oriented x3. Skin: Dry, intact. Lungs: Clear to auscultation bilaterally. Heart: Regular rate and rhythm. Extremities: No edema noted.\n\nAssessment: \n1. End stage renal disease on maintenance hemodialysis.\n2. Chronic kidney disease.\n\nPlan: \nContinue current hemodialysis regimen. Patient to monitor fluid intake. Laboratory workup shows eGFR of 12. Continue current management.\n\nElectronically signed, \nL. Moreau, NP\nMay 14, 2026",
+  "answer": [
+    "N18.6",
+    "Z99.2"
+  ],
+  "explanations": [
+    "ESRD: N18.6. If a stage and ESRD are both documented, assign N18.6 only.",
+    "Patient on dialysis: add Z99.2 dependence on renal dialysis."
+  ],
+  "refs": [
+    "OCG I.C.14.a.1",
+    "OCG I.C.21.c.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.5",
+        "N18.6",
+        "Z99.2"
+      ],
+      "confusion": "both_stage_and_esrd",
+      "lean": "over",
+      "why": "Assign N18.6 only when ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.5",
+        "Z99.2"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.6"
+      ],
+      "confusion": "missed_dialysis_status",
+      "lean": "under",
+      "why": "Dialysis status is reported with Z99.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N186"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:29+00:00",
+    "style": {
+      "age": 75,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "L. Moreau"
+    }
+  }
+}

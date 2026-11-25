@@ -1,0 +1,72 @@
+{
+  "id": "cancer_status-3b750baafb",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "prostate",
+    "status": "active",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Follow-up for prostate cancer.\n\nHPI: Pt is a 68 y.o. male presenting for follow-up regarding his diagnosis of prostate adenocarcinoma. Pt reports he is currently receiving chemotherapy for the malignancy. He states he has been tolerating the treatment well, though he notes some fatigue and mild nausea. He denies any new symptoms or significant side effects at this time. No reports of weight loss or changes in urinary flow. Pt is stable on current regimen.\n\nMedication List:\n- Chemotherapy agent (current)\n- Ondansetron 8mg PRN for nausea\n- Multivitamin daily\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 175 lbs\n\nRecent Labs:\nWBC: 6.2\nHgb: 13.4\nPlt: 180k\nCreatinine: 1.1\neGFR: >60\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue (reports mild fatigue from tx).\nGU: Denies dysuria, hematuria, or urgency.\nMSK: Denies joint pain or swelling.\nNeuro: No focal deficits.\n\nSocial History: Pt lives with wife. Retired. Non-smoker. Occasional alcohol.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nExam:\nGen: Well-appearing, alert, oriented x3.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nAbdomen: Soft, non-tender, no masses.\nGU: Normal external inspection.\nSkin: No new lesions.\n\nAssessment:\n1. Prostate adenocarcinoma. Pt is currently receiving chemotherapy. No evidence of distant spread.\n\nPlan:\n1. Continue current chemotherapy protocol as scheduled.\n2. Monitor for side effects including neutropenia and nausea.\n3. Follow up in 4 weeks for repeat labs and clinical assessment.\n\nElectronically signed, S. Patel, DO, 10/14/2026",
+  "answer": [
+    "C61"
+  ],
+  "explanations": [
+    "Cancer of the prostate under current treatment is a current malignancy: C61."
+  ],
+  "refs": [
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.46"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.186,
+        "gap": -0.186,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "23"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.186,
+    "hccs": [
+      {
+        "hcc": "23",
+        "label": "Prostate/Breast/and Other Cancers and Tumors",
+        "from": [
+          "C61"
+        ],
+        "weight": 0.186
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T04:44:18+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

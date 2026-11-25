@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-e865bbdadb",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain.\n\nHPI: Pt is a 75-year-old female presenting for f/u of known history of cancer of the right lung. Pt had primary tumor removed and completed treatment years ago. She reports she currently has no evidence of local recurrence at the original site. However, she is now complaining of aching pain in the lumbar spine and ribs. She describes the pain as a constant dull ache, rated 6/10, exacerbated by movement. She denies any new shortness of breath, productive cough, or fevers. She is seeking management for new skeletal involvement.\n\nMedication List:\n- Lisinopril 10mg daily\n- Alendronate 70mg weekly\n- Calcium 600mg daily\n- Vitamin D3 1000 IU daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight loss.\nRespiratory: Denies SOB, cough, wheezing.\nMusculoskeletal: Positive for chronic back pain and rib aching.\nNeuro: Denies numbness or weakness.\nSkin: No new lesions.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had myocardial infarction.\n\nVitals:\nBP: 132/82\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 135 lbs\n\nRecent Labs:\nHb: 12.4 g/dL\nWBC: 7.2 K/uL\nPlt: 210 K/uL\neGFR: 68 mL/min\nCalcium: 9.4 mg/dL\n\nExam:\nGen: Well-appearing, pleasant.\nResp: CTAB, no wheezes.\nMSK: Tenderness noted over lumbar spine and posterior ribs. No step-off noted.\nNeuro: Alert and oriented x3. NAD.\n\nAssessment:\n1. Bone metastasis from previous right lung carcinoma. No evidence of local recurrence at primary site.\n2. Chronic back pain secondary to skeletal involvement.\n\nPlan:\n1. Continue current medications.\n2. Prescribed scheduled analgesics for bone pain management.\n3. Order DXA scan and follow-up imaging of spine to monitor progression.\n4. F/u in 4 weeks.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "Z85.118",
+    "C79.51"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91",
+        "C79.51"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.118"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.341,
+        "gap": -2.341,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.118",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:21+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

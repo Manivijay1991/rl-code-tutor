@@ -1,0 +1,115 @@
+{
+  "id": "cancer_status-bd472061b6",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "colon",
+    "status": "history",
+    "mets": "bone"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Bone pain.\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 185 lbs.\n\nRecent Labs: Hemoglobin 13.2 g/dL, WBC 7.8 x 10^9/L, Platelets 210 x 10^9/L, Calcium 9.4 mg/dL, Creatinine 1.1 mg/dL.\n\nMedication List:\n- Alendronate 70mg daily\n- Vitamin D3 2000 IU daily\n- Lisinopril 10mg daily\n\nFamily History: Father had myocardial infarction at age 65. Mother had type 2 diabetes. No history of malignancy in immediate family.\n\nSocial History: Retired engineer. Lives with wife. Non-smoker. Occasional alcohol use.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nMusculoskeletal: Positive for aching pain in the lumbar spine and hips.\nNeurological: Negative for numbness or weakness.\nGastrointestinal: Negative for change in bowel habits or abdominal pain.\nGenitourinary: Negative for dysuria.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\n\nHPI: Patient is an 80-year-old male with a history of colon cancer. The primary malignancy was surgically removed and treated several years ago. He has completed all primary treatments for the original site. At the time of his last imaging, there was no evidence of local recurrence at the primary site. He has been stable on his current regimen.\n\nUpdate: The patient presents today complaining of increased dull, aching pain in his lower back and hips over the last month. He describes the pain as constant but manageable with over-the-counter acetaminophen. He denies any new systemic symptoms or changes in his appetite.\n\nExam: Patient is alert and oriented x3. He appears in no acute distress. Spine is stable with no midline tenderness. Movement of the hips is limited by discomfort but within functional limits. No new skin lesions or palpable masses noted.\n\nAssessment: \n1. Bone metastases secondary to history of colon cancer.\n2. Chronic bone pain.\n\nPlan: \n1. Continue current medications for bone health.\n2. Order follow-up imaging of the spine and pelvis to evaluate the extent of the bone metastasis.\n3. Discuss pain management strategies including non-opioid options.\n4. Follow up in 4 weeks to review imaging and adjust pain management as needed.\n\nElectronically signed, H. Tanaka, PA-C, 10/14/2026",
+  "answer": [
+    "Z85.038",
+    "C79.51"
+  ],
+  "explanations": [
+    "The colon cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.038 (no HCC). Any metastasis is still coded as a current secondary malignancy.",
+    "Bone metastases: C79.51, secondary malignant neoplasm of bone (HCC 18, which outranks the primary-site HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C18.9",
+        "C79.51"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 2.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.038"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.341,
+        "gap": -2.341,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z85.038",
+        "C78.7"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in bone, not the liver.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 2.341,
+        "gap": 1.868,
+        "direction": "over",
+        "extra_hccs": [
+          "17"
+        ],
+        "missing_hccs": [
+          "18"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.341,
+    "hccs": [
+      {
+        "hcc": "18",
+        "label": "Cancer Metastatic to Bone/Other and Unspecified Metastatic Cancer; Acute Leukemia Except Myeloid",
+        "from": [
+          "C7951"
+        ],
+        "weight": 2.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:45:27+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "H. Tanaka"
+    }
+  }
+}

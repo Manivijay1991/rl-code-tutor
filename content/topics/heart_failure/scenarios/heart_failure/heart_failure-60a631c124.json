@@ -1,0 +1,108 @@
+{
+  "id": "heart_failure-60a631c124",
+  "table": "heart_failure",
+  "title": "Heart failure: type, acuity and hypertension",
+  "status": "draft",
+  "slots": {
+    "hf_type": "diastolic",
+    "acuity": "chronic",
+    "hypertension": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any related hypertension.",
+  "note": "Chief Complaint: Follow-up for heart failure.\n\nHPI: 85-year-old female presents for routine follow-up of chronic HFpEF. Pt reports feeling stable and well today. Denies any increased shortness of breath, orthopnea, or paroxysmal nocturnal dyspnea. No reports of peripheral edema or increased weight gain. Pt states she is able to perform ADLs and maintain her usual level of activity. Denies chest pain or palpitations. Pt reports adherence to current medication regimen.\n\nMedication List:\n- Furosemide 40mg BID\n- Lisinopril 10mg daily\n- Spironolactone 25mg daily\n- Aspirin 81mg daily\n\nReview of Systems:\nGeneral: No fatigue, no fever.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nMSK: No joint pain.\nNeuro: No dizziness, no syncope.\n\nSocial History: Lives with daughter in a private residence. Retired teacher. Independent with most activities. No tobacco use. Occasional alcohol.\n\nFamily History: Mother had heart failure. Father had stroke at age 70.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWt: 155 lbs\n\nRecent Labs:\neGFR: 65\nNa: 138\nK: 4.8\nHbA1c: 6.2%\nBNP: 145\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, S1, S2, no murmurs, rubs, or gallops.\nLungs: CTAB, no wheezes or crackles.\nExt: No pedal edema, pulses 2+ bilaterally.\n\nAssessment:\n1. Chronic HFpEF: Stable. Pt is currently asymptomatic and maintaining weight. No signs of fluid overload.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue home monitoring of weight and BP.\n3. Follow up in 3 months for routine check.\n4. Patient instructed to call office if she experiences sudden weight gain or increased SOB.\n\nElectronically signed, \nD. Kowalski, DO\nMay 14, 2026",
+  "answer": [
+    "I50.32"
+  ],
+  "explanations": [
+    "Chronic diastolic heart failure: I50.32 (HCC 226)."
+  ],
+  "refs": [
+    "OCG I.C.9.a.1"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.33"
+      ],
+      "confusion": "acuity_up",
+      "lean": "over",
+      "why": "No acute exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "226"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "The type and acuity are documented: do not use I50.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "The provider documents diastolic heart failure.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "from": [
+          "I5032"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:16+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

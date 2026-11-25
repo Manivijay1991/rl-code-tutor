@@ -1,0 +1,63 @@
+{
+  "id": "atrial_fibrillation-cbdd11050e",
+  "table": "atrial_fibrillation",
+  "title": "Atrial fibrillation: type, history and anticoagulation",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "status": "resolved",
+    "anticoagulant": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's atrial fibrillation and related long-term drug therapy.",
+  "note": "Chief Complaint: Follow-up for heart rhythm.\n\nHPI: Pt is a 66-year-old female presenting for routine follow-up of atrial fibrillation. Pt has a history of atrial fibrillation and is status post ablation performed several years ago. Pt reports no recurrence since the procedure. She denies palpitations, syncope, or lightheadedness. She states she feels well and is currently asymptomatic. Pt is not currently on any rate-control, rhythm-control, or anticoagulant medications. Pt reports no current concerns regarding her heart rhythm.\n\nMedication List:\n- Multivitamin daily\n- Vitamin D3 1000 IU daily\n\nReview of Systems:\nGeneral: No fatigue, no weight change.\nCV: No chest pain, no palpitations, no shortness of breath.\nResp: No cough, no wheezing.\nNeuro: No dizziness, no numbness.\nMSK: No joint pain.\nGI: No abdominal pain, no diarrhea.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had myocardial infarction at age 70.\n\nRecent Labs:\n- HbA1c: 5.6%\n- eGFR: 82\n- K+: 4.1\n- Na+: 138\n\nVitals:\nBP: 122/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular rhythm, no murmurs, no rubs, no gallops.\nResp: CTAB, no accessory muscle use.\nExt: No edema, pulses 2+ throughout.\n\nAssessment:\n1. Atrial fibrillation, status post ablation. Pt is stable with no recurrence since procedure. Low risk for thromboembolic events; not on any anticoagulant medication.\n\nPlan:\n- Continue current surveillance.\n- Pt to continue monitoring for any new symptoms of palpitations.\n- Follow up in 12 months or as needed.\n\nElectronically signed,\nE. Castillo, MD\n05/14/2026",
+  "answer": [
+    "Z86.79"
+  ],
+  "explanations": [
+    "Atrial fibrillation cured by ablation, with no recurrence and no treatment: personal history, Z86.79 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I48.91"
+      ],
+      "confusion": "resolved_coded_current",
+      "lean": "over",
+      "why": "It no longer exists and is not treated: code the history, not current AF.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "238"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 4,
+    "created": "2026-11-25T04:58:19+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

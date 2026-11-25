@@ -1,0 +1,141 @@
+{
+  "id": "cancer_status-3c167102cf",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "active",
+    "mets": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint: Fatigue and abdominal discomfort.\n\nHPI: Pt is a 78-year-old female with a known malignant neoplasm of the right lung. She is currently receiving chemotherapy for the primary site. Pt presents today for follow-up regarding new onset of upper quadrant pain and increased lethargy. She reports that the pain is dull and persistent, worsening with movement. She states she has been experiencing decreased appetite and mild nausea over the past two weeks. She denies fever, chills, or shortness of breath. She reports compliance with current treatment regimen but notes increased fatigue during the last cycle.\n\nMedication List:\n- Chemotherapy agent (current cycle)\n- Ondansetron 8mg PRN for N/V\n- Acetaminophen 650mg BID for pain\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Positive for fatigue, negative for fever/chills.\nGI: Positive for abdominal discomfort and decreased appetite, negative for diarrhea/constipation.\nRespiratory: Negative for cough, SOB, or sputum production.\nMSK: Negative for joint pain or swelling.\nNeuro: Negative for confusion or dizziness.\n\nSocial History: Retired. Lives with her daughter. Non-smoker.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nRR: 18\nSpO2: 96% on RA\nHt/Wt: 135 lbs\n\nRecent Labs:\nWBC: 4.2\nHgb: 10.1\nPlt: 145k\nNa: 138\nK: 4.0\nCr: 1.1\neGFR: 65\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nLungs: CTAB, clear to auscultation.\nHeart: RRR, no murmurs.\nAbdomen: Soft, non-tender, mild RUQ tenderness noted. No rebound or guarding.\nExt: WNL, no edema.\n\nAssessment:\n1. Malignant neoplasm of the right lung, currently receiving chemotherapy.\n2. Liver metastases, new onset of RUQ pain and fatigue.\n\nPlan:\n- Continue current chemotherapy protocol as scheduled.\n- Order abdominal CT to further evaluate liver metastases.\n- Increase acetaminophen for pain management.\n- F/u in 2 weeks for symptom monitoring.\n\nElectronically signed, \nL. Moreau, PA-C\n05/14/2026",
+  "answer": [
+    "C34.91",
+    "C78.7"
+  ],
+  "explanations": [
+    "Cancer of the right lung under current treatment is a current malignancy: C34.91.",
+    "Liver metastases: C78.7, secondary malignant neoplasm of liver (HCC 17)."
+  ],
+  "refs": [
+    "OCG I.C.2.m",
+    "OCG I.C.2.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.118",
+        "C78.7"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Treatment is still directed at the cancer, so it is current, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.90",
+        "C78.7"
+      ],
+      "confusion": "unspecified_laterality",
+      "lean": "neutral",
+      "why": "The note documents the right lung: use the right-lung code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 4.209,
+        "correct": 4.209,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "missed_mets",
+      "lean": "under",
+      "why": "Metastasis is coded as a secondary malignancy, even when the primary is history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 4.209,
+        "gap": -3.073,
+        "direction": "under",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "C34.91",
+        "C79.51"
+      ],
+      "confusion": "wrong_met_site",
+      "lean": "neutral",
+      "why": "The metastases are in the liver, not bone.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.341,
+        "correct": 4.209,
+        "gap": -1.868,
+        "direction": "under",
+        "extra_hccs": [
+          "18"
+        ],
+        "missing_hccs": [
+          "17"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.209,
+    "hccs": [
+      {
+        "hcc": "17",
+        "label": "Cancer Metastatic to Lung/Liver/Brain/and Other Organs; Acute Myeloid Leukemia Except Promyelocytic",
+        "from": [
+          "C787"
+        ],
+        "weight": 4.209
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "20",
+        "label": "Lung and Other Severe Cancers",
+        "by": "17"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:44:51+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "rheumatoid_arthritis-1f7531172b",
+  "table": "rheumatoid_arthritis",
+  "title": "Rheumatoid arthritis, osteoarthritis and methotrexate",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "osteoarthritis",
+    "methotrexate": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's arthritis and related long-term drug therapy.",
+  "note": "Chief Complaint: Knee pain.\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on RA.\n\nRecent Labs:\n- Hemoglobin: 12.4 g/dL\n- White Blood Cell Count: 7.2 x 10^9/L\n- ESR: 18 mm/hr\n- CRP: 5.2 mg/L\n\nMedication List:\n- Acetaminophen 650mg every 6 hours as needed for pain.\n\nFamily History:\nMother had hypertension and osteoarthritis. Father had type 2 diabetes.\n\nSocial History:\nRetired teacher. Lives with her spouse. Non-smoker. Occasional gardener.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nMusculoskeletal: Positive for bilateral knee pain and stiffness. Negative for joint swelling in hands or wrists.\nNeurological: Negative for numbness or tingling.\nSkin: Negative for rashes or lesions.\nRespiratory: Negative for shortness of breath or cough.\n\nHPI:\n[Copied Forward]\nPatient is a 72-year-old female presenting for management of chronic joint pain. She reports persistent aching and stiffness in both knees, particularly in the mornings and after prolonged periods of standing. She notes that the symptoms are worse on the right side. She denies any systemic symptoms such as fever or malaise. She has been utilizing over-the-counter analgesics for symptom management.\n\n[Update]\nThe patient reports that her symptoms have remained stable over the last few months. She continues to experience discomfort in both knees during heavy exertion but notes that her current regimen provides adequate relief for daily activities. She denies any new swelling or acute episodes of severe pain.\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nMusculoskeletal: Physical exam reveals mild bony enlargement of the patellofemoral joints. Range of motion is slightly limited in both knees due to discomfort, but no active synovitis or warmth is noted. Crepitus is palpable on flexion.\n\nAssessment:\n1. Primary osteoarthritis of both knees.\n\nPlan:\n1. Continue current regimen of acetaminophen as needed for pain management.\n2. Continue current physical therapy program twice weekly to maintain range of motion and strengthen surrounding musculature.\n3. No disease-modifying drug is indicated at this time.\n4. Follow up in 3 months for routine evaluation of joint symptoms.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "M17.0"
+  ],
+  "explanations": [
+    "Bilateral primary osteoarthritis of the knees: M17.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M05-M06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M06.9"
+      ],
+      "confusion": "coded_ra_for_oa",
+      "lean": "over",
+      "why": "Osteoarthritis is not rheumatoid arthritis (HCC 93).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.617,
+        "correct": 0,
+        "gap": 0.617,
+        "direction": "over",
+        "extra_hccs": [
+          "93"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:21:36+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

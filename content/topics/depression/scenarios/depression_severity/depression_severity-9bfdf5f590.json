@@ -1,0 +1,90 @@
+{
+  "id": "depression_severity-9bfdf5f590",
+  "table": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "slots": {
+    "episode": "single",
+    "status": "moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "note": "Chief Complaint: Follow-up for depression.\n\nHPI: The patient is a 77-year-old female who presents for a scheduled follow-up regarding her diagnosis of major depressive disorder. She reports that her mood has been consistently low over the past three weeks. She describes a lack of interest in her usual hobbies, such as gardening and visiting her grandchildren. She reports experiencing significant fatigue and a diminished sense of energy throughout the day. While she acknowledges these symptoms, she states she is still able to perform basic activities of daily living, though she finds them more taxing than usual. She denies any significant changes in appetite or sleep patterns. She describes her current symptoms as a moderate presentation of her condition. She notes that she has not had any previous episodes of this nature, confirming this is a single episode of her illness.\n\nMedication List:\n- Sertraline 50mg daily\n- Lisinopril 10mg daily\n- Vitamin D3 1000 IU daily\n\nVitals:\nBP: 128/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs:\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^3/uL\nTSH: 2.1 mIU/L\neGFR: 72 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Reports fatigue. Denies weight changes.\nPsychiatric: Reports depressed mood and anhedonia. Denies sleep disturbances or appetite changes.\nNeurological: No headaches or dizziness reported.\n\nSocial History: The patient is retired and lives with her spouse. She enjoys gardening and spends time with her family. She denies tobacco use and reports moderate social engagement.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes. No known history of psychiatric conditions in immediate family.\n\nExam:\nGeneral: The patient is a well-groomed, alert, and cooperative 77-year-old female. She is pleasant but appears somewhat flat in affect.\nPsychiatric: Speech is normal in rate and volume. Thought process is linear and goal-oriented. Mood is described as \"down.\" Affect is congruent with her stated mood. Insight and judgment are intact.\n\nAssessment:\n1. Major depressive disorder, single episode. The patient currently presents with a moderate level of depressive symptoms.\n\nPlan:\n1. Continue current dosage of Sertraline.\n2. Monitor for any worsening of symptoms or side effects.\n3. Follow up in four weeks for a reassessment of mood and medication efficacy.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "F32.1"
+  ],
+  "explanations": [
+    "Major depressive disorder, single episode, moderate (HCC 155): F32.1."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F32-F33"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F32.0"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "The provider documents moderate (HCC 155); mild has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F32.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "Severity is documented: do not use the unspecified code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.299,
+        "gap": -0.299,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "155"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.299,
+    "hccs": [
+      {
+        "hcc": "155",
+        "label": "Major Depression/Moderate or Severe/without Psychosis",
+        "from": [
+          "F321"
+        ],
+        "weight": 0.299
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:42:45+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

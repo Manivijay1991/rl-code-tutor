@@ -1,0 +1,58 @@
+{
+  "id": "alcohol_use-9f17634e07",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "social_drinking",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension and osteoarthritis.\n\nHPI: Pt is a 90-year-old male presenting for a routine follow-up of chronic hypertension and bilateral knee osteoarthritis. Pt reports stable blood pressure control with current medications. He notes occasional stiffness in knees, especially in the morning, but states it is manageable with activity. He denies any chest pain, shortness of breath, or syncope. Pt mentions he drinks socially, typically enjoying a glass of wine on weekends. He reports he is currently drinking a small amount of wine during today's visit. Denies any acute distress.\n\nMedication List:\n- Lisinopril 10mg daily\n- Meloxicam 7.5mg daily\n- Atorvastatin 20mg daily\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 165 lbs\n\nRecent Labs:\nBMP: Na 140, K 4.2, Cl 102, HCO3 24, BUN 18, Cr 1.1, eGFR 72.\nHbA1c: 5.8%\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies abdominal pain, diarrhea.\nMSK: Reports mild joint stiffness.\nNeuro: Denies headache, dizziness.\n\nSocial History: Pt lives at home with wife. Retired. Social drinker (occasional alcohol on weekends). No tobacco use.\n\nFamily History: Father had HTN. Mother had T2DM.\n\nExam:\nGen: Well-appearing, alert and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nLungs: CTAB.\nMSK: Mild tenderness and decreased ROM in bilateral knees. No joint effusion.\nNeuro: NAD.\n\nAssessment:\n1. Hypertension: Stable on current regimen.\n2. Osteoarthritis: Chronic, stable.\n\nPlan:\n1. Continue Lisinopril 10mg daily.\n2. Continue Meloxicam 7.5mg daily.\n3. Continue Atorvastatin 20mg daily.\n4. Continue current activity level.\n5. F/u in 3-6 months for routine monitoring.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Social drinking without a provider diagnosis is not coded."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "coded_social_drinking",
+      "lean": "over",
+      "why": "The provider does not diagnose an alcohol use disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:35+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

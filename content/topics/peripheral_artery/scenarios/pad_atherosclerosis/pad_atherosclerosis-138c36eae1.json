@@ -1,0 +1,88 @@
+{
+  "id": "pad_atherosclerosis-138c36eae1",
+  "table": "pad_atherosclerosis",
+  "title": "Peripheral artery disease: stage, side and ulcer",
+  "status": "draft",
+  "slots": {
+    "severity": "rest_pain",
+    "side": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's peripheral artery disease and any related ulcer.",
+  "note": "Chief Complaint: Left foot pain.\n\nHPI: (Copied forward from previous visit) Patient is a 72-year-old female presenting for management of atherosclerotic changes. She reports persistent discomfort in the left foot. She describes the sensation as a dull ache that occurs even when she is stationary. She denies any acute trauma or sudden onset of symptoms. She has been compliant with her current medication regimen but notes that the discomfort persists despite rest.\n\nUpdate: Today, the patient reports that the discomfort in the left foot remains constant. She notes that the sensation is most prominent during periods of rest. She denies any new drainage, skin changes, or systemic symptoms such as fever or chills.\n\nMedication List:\n- Atorvastatin 40mg daily\n- Lisinopril 10mg daily\n- Aspirin 81mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nRecent Labs: \n- HbA1c: 5.8%\n- eGFR: 72 mL/min/1.73m2\n- LDL: 88 mg/dL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss.\nCardiovascular: Negative for chest pain, palpitations.\nRespiratory: Negative for shortness of breath, cough.\nMusculoskeletal: Positive for rest pain in the left foot.\nNeurological: Negative for numbness or tingling.\nIntegumentary: Negative for rashes or lesions.\n\nSocial History: Retired teacher. Lives with her spouse. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had hypertension. Father had a history of coronary artery disease.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCardiovascular: Regular rate and rhythm. No murmurs.\nExtremities: Left foot is intact with no skin breakdown. Pulses are diminished in the left leg. No signs of infection or drainage.\n\nAssessment:\n1. Atherosclerosis of the native leg arteries: The patient presents with stable atherosclerotic changes affecting the left leg. She is experiencing consistent rest pain in the left foot.\n\nPlan:\n1. Continue current antiplatelet and lipid-lowering medications.\n2. Monitor for any changes in skin integrity or increased pain.\n3. Follow up in 3 months for a repeat evaluation of the left leg.\n\nElectronically signed,\nA. Rivera, MD\nMay 14, 2026",
+  "answer": [
+    "I70.222"
+  ],
+  "explanations": [
+    "Atherosclerosis of native arteries of the left leg with rest pain (HCC 264): I70.222."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I70-I73"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I70.221"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left leg is affected.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.455,
+        "correct": 0.455,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I70.212"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Rest pain is documented: it is a higher stage (HCC 264).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.455,
+        "gap": -0.455,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "264"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.455,
+    "hccs": [
+      {
+        "hcc": "264",
+        "label": "Vascular Disease with Complications",
+        "from": [
+          "I70222"
+        ],
+        "weight": 0.455
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-25T14:19:15+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

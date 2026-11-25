@@ -1,0 +1,355 @@
+{
+  "id": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note_age": {
+    "min": 55
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "wet_amd_active",
+        "wet_amd_scar",
+        "dry_amd_early",
+        "pdr",
+        "npdr_mild"
+      ],
+      "labels": {
+        "wet_amd_active": "Wet AMD, right eye, active",
+        "wet_amd_scar": "Wet AMD, right eye, inactive scar",
+        "dry_amd_early": "Dry AMD, right eye, early",
+        "pdr": "Proliferative diabetic retinopathy, right eye",
+        "npdr_mild": "Mild nonproliferative diabetic retinopathy, right eye"
+      },
+      "evidence": {
+        "wet_amd_active": [
+          [
+            "exudative",
+            "wet"
+          ],
+          [
+            "active choroidal neovascularization",
+            "active CNV"
+          ]
+        ],
+        "wet_amd_scar": [
+          [
+            "exudative",
+            "wet"
+          ],
+          [
+            "scar",
+            "disciform"
+          ]
+        ],
+        "dry_amd_early": [
+          [
+            "nonexudative",
+            "dry"
+          ],
+          [
+            "early"
+          ]
+        ],
+        "pdr": [
+          [
+            "type 2 diabetes",
+            "T2DM"
+          ],
+          [
+            "proliferative diabetic retinopathy"
+          ]
+        ],
+        "npdr_mild": [
+          [
+            "type 2 diabetes",
+            "T2DM"
+          ],
+          [
+            "mild nonproliferative diabetic retinopathy",
+            "mild NPDR"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "wet_amd_active": "The ophthalmologist documents exudative (wet) age-related macular degeneration of the right eye with active choroidal neovascularization, treated with an anti-VEGF injection today.",
+        "wet_amd_scar": "The ophthalmologist documents exudative (wet) age-related macular degeneration of the right eye with an inactive scar; no injection needed.",
+        "dry_amd_early": "The ophthalmologist documents early dry (nonexudative) age-related macular degeneration of the right eye; vitamins advised.",
+        "pdr": "The ophthalmologist documents proliferative diabetic retinopathy of the right eye without macular edema in a patient with type 2 diabetes.",
+        "npdr_mild": "The ophthalmologist documents mild nonproliferative diabetic retinopathy of the right eye without macular edema in a patient with type 2 diabetes."
+      }
+    }
+  },
+  "note_forbid": [
+    "left eye",
+    "both eyes",
+    "bilateral",
+    "OU",
+    "OS",
+    "macular edema",
+    "glaucoma",
+    "cataract",
+    "retinal detachment",
+    "vitreous hemorrhage",
+    "traction",
+    "geographic atrophy",
+    "insulin",
+    "metformin",
+    "type 1"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "wet_amd_active",
+          "wet_amd_scar",
+          "dry_amd_early"
+        ]
+      },
+      "forbid": [
+        "diabetes",
+        "diabetic",
+        "retinopathy"
+      ]
+    },
+    {
+      "when": {
+        "condition": "wet_amd_active"
+      },
+      "forbid": [
+        "dry",
+        "nonexudative",
+        "scar",
+        "inactive"
+      ]
+    },
+    {
+      "when": {
+        "condition": "wet_amd_scar"
+      },
+      "forbid": [
+        "dry",
+        "nonexudative",
+        "active choroidal",
+        "anti-VEGF injection today"
+      ]
+    },
+    {
+      "when": {
+        "condition": "dry_amd_early"
+      },
+      "forbid": [
+        "wet",
+        "exudative",
+        "neovascular",
+        "intermediate",
+        "advanced"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "pdr",
+          "npdr_mild"
+        ]
+      },
+      "forbid": [
+        "macular degeneration",
+        "AMD"
+      ]
+    },
+    {
+      "when": {
+        "condition": "pdr"
+      },
+      "forbid": [
+        "nonproliferative",
+        "NPDR",
+        "stable proliferative"
+      ]
+    },
+    {
+      "when": {
+        "condition": "npdr_mild"
+      },
+      "forbid": [
+        "moderate",
+        "severe",
+        "proliferative diabetic retinopathy without"
+      ]
+    }
+  ],
+  "confusions": {
+    "wet_dry_confused": {
+      "description": "Confused wet (exudative) and dry (nonexudative) macular degeneration.",
+      "lean": "neutral"
+    },
+    "wrong_cnv_status": {
+      "description": "Coded the wrong stage of wet macular degeneration (active, inactive or scar).",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the type and eye are documented.",
+      "lean": "under"
+    },
+    "understated_retinopathy": {
+      "description": "Coded nonproliferative or unspecified retinopathy when proliferative is documented.",
+      "lean": "under"
+    },
+    "overstated_retinopathy": {
+      "description": "Coded proliferative retinopathy when mild nonproliferative is documented.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "eye",
+      "rules": [
+        {
+          "when": {
+            "condition": "wet_amd_active"
+          },
+          "codes": [
+            "H35.3211"
+          ],
+          "explain": "Exudative (wet) AMD, right eye, with active choroidal neovascularization: H35.3211 (HCC 300).",
+          "refs": [
+            "ICD-10-CM Tabular: H35, E11.3"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "H35.3111"
+              ],
+              "confusion": "wet_dry_confused",
+              "why": "Wet (exudative) AMD is documented; dry AMD has no HCC."
+            },
+            {
+              "codes": [
+                "H35.3212"
+              ],
+              "confusion": "wrong_cnv_status",
+              "why": "The neovascularization is documented as active."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "wet_amd_scar"
+          },
+          "codes": [
+            "H35.3213"
+          ],
+          "explain": "Exudative (wet) AMD, right eye, with inactive scar: H35.3213 (HCC 300).",
+          "refs": [
+            "ICD-10-CM Tabular: H35, E11.3"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "H35.3211"
+              ],
+              "confusion": "wrong_cnv_status",
+              "why": "The wet AMD has an inactive scar, not active neovascularization."
+            },
+            {
+              "codes": [
+                "H35.30"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type, eye and stage are documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "dry_amd_early"
+          },
+          "codes": [
+            "H35.3111"
+          ],
+          "explain": "Nonexudative (dry) AMD, right eye, early dry stage: H35.3111 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: H35, E11.3"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "H35.3211"
+              ],
+              "confusion": "wet_dry_confused",
+              "why": "Dry (nonexudative) AMD is documented, not wet."
+            },
+            {
+              "codes": [
+                "H35.30"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type, eye and stage are documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "pdr"
+          },
+          "codes": [
+            "E11.3591"
+          ],
+          "explain": "Type 2 diabetes with proliferative diabetic retinopathy without macular edema, right eye: E11.3591 (HCC 37 and 298).",
+          "refs": [
+            "OCG I.C.4.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.3291"
+              ],
+              "confusion": "understated_retinopathy",
+              "why": "Proliferative retinopathy is documented (HCC 298)."
+            },
+            {
+              "codes": [
+                "E11.319"
+              ],
+              "confusion": "understated_retinopathy",
+              "why": "The type of retinopathy is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "npdr_mild"
+          },
+          "codes": [
+            "E11.3291"
+          ],
+          "explain": "Type 2 diabetes with mild nonproliferative diabetic retinopathy without macular edema, right eye: E11.3291 (HCC 37 only).",
+          "refs": [
+            "OCG I.C.4.a"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.3591"
+              ],
+              "confusion": "overstated_retinopathy",
+              "why": "Proliferative retinopathy is not documented."
+            },
+            {
+              "codes": [
+                "E11.319"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type and severity of retinopathy are documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

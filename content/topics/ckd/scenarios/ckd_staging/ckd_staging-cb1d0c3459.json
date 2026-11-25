@@ -1,0 +1,91 @@
+{
+  "id": "ckd_staging-cb1d0c3459",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "5",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: Patient is an 81-year-old female who presents for a routine follow-up of chronic kidney disease. She reports feeling generally well today but notes some persistent fatigue and occasional swelling in her lower extremities. She denies any acute shortness of breath or chest pain.\n(Copied forward from previous visit: Patient is an 81-year-old female who presents for a routine follow-up of chronic kidney disease. She reports feeling generally well today but notes some persistent fatigue and occasional swelling in her lower extremities. She denies any acute shortness of breath or chest pain.)\n\nVitals: BP 138/82, HR 74, SpO2 96% on room air, Temp 98.6F.\n\nMedication List:\n- Lisinopril 10mg daily\n- Furosemide 40mg daily\n- Calcium carbonate 500mg daily\n\nReview of Systems:\nConstitutional: Positive for fatigue.\nCardiovascular: Negative for chest pain.\nRespiratory: Negative for shortness of breath.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: 1+ pitting edema noted in bilateral ankles.\n\nAssessment:\n1. Chronic kidney disease, stage 5. Recent lab work confirms an eGFR of 12 mL/min/1.73m2.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Monitor electrolytes and renal function with repeat labs in 3 months.\n3. Patient instructed to maintain low-sodium diet and report any increase in edema.\n\nElectronically signed, J. Lindqvist, MD, 05/14/2026",
+  "answer": [
+    "N18.5"
+  ],
+  "explanations": [
+    "CKD stage 5 (not documented as ESRD): N18.5."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.6"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "ESRD is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.815,
+        "correct": 0.815,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "N18.4"
+      ],
+      "confusion": "under_staged",
+      "lean": "under",
+      "why": "Stage 5 is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.514,
+        "correct": 0.815,
+        "gap": -0.301,
+        "direction": "under",
+        "extra_hccs": [
+          "327"
+        ],
+        "missing_hccs": [
+          "326"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.815,
+    "hccs": [
+      {
+        "hcc": "326",
+        "label": "Chronic Kidney Disease/Stage 5",
+        "from": [
+          "N185"
+        ],
+        "weight": 0.815
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:28:39+00:00",
+    "style": {
+      "age": 81,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

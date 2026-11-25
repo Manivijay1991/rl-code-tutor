@@ -1,0 +1,91 @@
+{
+  "id": "dementia_severity-1cc556bbb2",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "unspecified",
+    "behavior": "agitation"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint\nFollow-up for dementia and behavioral symptoms.\n\nHPI\nThe patient is a 77-year-old female who presents today for a follow-up evaluation of her dementia. Her daughter reports that the patient has been experiencing increased episodes of agitation, particularly during the evening hours. The daughter notes that these episodes involve restlessness and difficulty following simple instructions. The patient's cognitive status remains relatively stable during the day, but the nocturnal behavioral changes are becoming a concern for the caregivers. The patient is currently able to perform basic activities of daily living with assistance but requires supervision for complex tasks. There have been no recent falls or acute changes in her physical health.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, or fever. She denies any recent changes in urinary frequency or bowel habits. She denies any new-onset tremors or mobility issues.\n\nSocial History\nThe patient resides at home with her daughter and husband. She is retired and spends most of her time at home. She does not smoke and drinks alcohol only on rare occasions.\n\nFamily History\nMother had hypertension and dementia. Father had a history of heart disease.\n\nMedication List\nDonepezil 10 mg daily\nQuetiapine 12.5 mg at bedtime\nLisinopril 10 mg daily\n\nVitals\nBP: 132/78\nHR: 74\nTemp: 98.6 F\nRR: 16\nSpO2: 97% on room air\n\nRecent Labs\nHbA1c: 6.2%\neGFR: 68 mL/min\nTSH: 2.1 mIU/L\n\nExam\nThe patient is alert and oriented to person and place. She is able to engage in brief conversation but has some difficulty with sustained attention. She appears calm during the examination but shows some psychomotor restlessness. Her gait is steady with a steady balance. No acute physical distress is noted.\n\nAssessment\n1. Dementia: The patient continues to exhibit cognitive decline consistent with her previous diagnosis.\n2. Agitation: The patient is experiencing episodes of agitation in the evenings.\n\nPlan\n1. Continue current medications for cognitive support.\n2. Adjust the bedtime dose of Quetiapine to address the evening agitation.\n3. Discussed non-pharmacological strategies with the daughter, including a consistent evening routine and reduction of environmental stimuli.\n4. Follow up in four weeks to monitor the effectiveness of the medication adjustment.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "F03.911"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), unspecified severity, with agitation: F03.911."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.B11"
+      ],
+      "confusion": "assumed_severity",
+      "lean": "over",
+      "why": "The stage is not documented: use the unspecified-severity code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_behavior",
+      "lean": "under",
+      "why": "Agitation is documented: use the 'with agitation' code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03911"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:41:18+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

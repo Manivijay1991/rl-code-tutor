@@ -1,0 +1,64 @@
+{
+  "id": "cancer_status-48a8dffc0a",
+  "table": "cancer_status",
+  "title": "Cancer: current or history, and metastases",
+  "status": "draft",
+  "slots": {
+    "site": "lung_right",
+    "status": "history",
+    "mets": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cancer as documented at this visit.",
+  "note": "Chief Complaint\nFollow-up for history of right lung malignancy.\n\nHPI\nThe patient is a 57-year-old male presenting for a routine follow-up regarding a history of cancer in the right lung. The primary malignancy was surgically removed and treated several years ago. He reports feeling well and denies any new respiratory symptoms, chest pain, or persistent cough. He states he has had no issues since the completion of his previous treatment plan. He is here today primarily for surveillance and to confirm that there is no evidence of recurrence at the primary site. He reports no systemic symptoms such as unexplained weight loss or night sweats.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems\nThe patient reports no recent cough, shortness of breath, or chest pain. He denies fever, chills, or night sweats. He denies any recent weight loss or changes in appetite. He denies any new-onset localized pain or neurological changes.\n\nSocial History\nThe patient is a non-smoker and reports moderate alcohol consumption on weekends only. He works full-time in a construction management role and lives with his wife and two children.\n\nFamily History\nFather had a history of hypertension. Mother had a history of type 2 diabetes. No family history of malignancy is reported.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nPlatelet Count: 210 x 10^9/L\nCreatinine: 1.0 mg/dL\neGFR: 88 mL/min/1.73m2\n\nExam\nGeneral: The patient appears well-nourished and in no acute distress.\nRespiratory: Lungs are clear to auscultation bilaterally. No wheezing or rales noted.\nCardiovascular: Regular rate and rhythm. No murmurs or gallops.\nAbdomen: Soft, non-tender, and non-distended.\nMusculoskeletal: No localized edema or tenderness noted.\n\nAssessment\nThe patient is a 57-year-old male with a history of malignancy in the right lung. Clinical evaluation and history indicate that the primary tumor was successfully treated years ago. Currently, there is no evidence of recurrence at the primary site. The patient remains stable and asymptomatic.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue routine surveillance.\n3. Follow up in six months for a repeat physical examination and review of imaging.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z85.118"
+  ],
+  "explanations": [
+    "The right lung cancer was excised or eradicated, no treatment is directed to it and there is no evidence of it: personal history Z85.118 (no HCC). Any metastasis is still coded as a current secondary malignancy."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "OCG I.C.2.m"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C34.91"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment ended and there is no evidence of the primary: code personal history (Z85), not active cancer.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.136,
+        "correct": 0,
+        "gap": 1.136,
+        "direction": "over",
+        "extra_hccs": [
+          "20"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:51:17+00:00",
+    "style": {
+      "age": 57,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "id": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "sickle_cell_disease",
+        "sickle_cell_trait",
+        "itp",
+        "thrombocytopenia",
+        "cvid"
+      ],
+      "labels": {
+        "sickle_cell_disease": "Sickle cell disease, no crisis",
+        "sickle_cell_trait": "Sickle cell trait",
+        "itp": "Immune thrombocytopenia (ITP)",
+        "thrombocytopenia": "Thrombocytopenia, cause not stated",
+        "cvid": "Common variable immunodeficiency"
+      },
+      "evidence": {
+        "sickle_cell_disease": [
+          "sickle cell disease",
+          "sickle cell anemia"
+        ],
+        "sickle_cell_trait": [
+          "sickle cell trait"
+        ],
+        "itp": [
+          "immune thrombocytopenia",
+          "immune thrombocytopenic purpura",
+          "ITP"
+        ],
+        "thrombocytopenia": [
+          "thrombocytopenia"
+        ],
+        "cvid": [
+          "common variable immunodeficiency",
+          "CVID"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "sickle_cell_disease": "The provider documents sickle cell disease, stable on hydroxyurea, with no pain crisis now.",
+        "sickle_cell_trait": "The provider documents sickle cell trait (a carrier state), found on screening; no sickle cell disease.",
+        "itp": "The provider documents chronic immune thrombocytopenia (ITP), monitored with platelet counts.",
+        "thrombocytopenia": "The provider documents mild thrombocytopenia of unclear cause and plans to recheck the platelet count.",
+        "cvid": "The provider documents common variable immunodeficiency treated with monthly immunoglobulin infusions."
+      }
+    }
+  },
+  "note_age": {
+    "min": 25
+  },
+  "note_forbid": [
+    "crisis",
+    "vaso-occlusive",
+    "acute chest",
+    "splenic sequestration",
+    "leukemia",
+    "lymphoma",
+    "HIV",
+    "chemotherapy",
+    "heparin",
+    "liver disease",
+    "cirrhosis",
+    "thalassemia",
+    "aplastic"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "sickle_cell_disease"
+      },
+      "forbid": [
+        "trait",
+        "carrier",
+        "Hb-SC",
+        "HbSC",
+        "SC disease",
+        "ITP",
+        "thrombocytopenia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "sickle_cell_trait"
+      },
+      "forbid": [
+        "sickle cell disease",
+        "sickle cell anemia",
+        "hydroxyurea",
+        "Hb-SS",
+        "HbSS"
+      ]
+    },
+    {
+      "when": {
+        "condition": "itp"
+      },
+      "forbid": [
+        "sickle",
+        "immunodeficiency"
+      ]
+    },
+    {
+      "when": {
+        "condition": "thrombocytopenia"
+      },
+      "forbid": [
+        "ITP",
+        "immune thrombocytopen",
+        "autoimmune",
+        "sickle",
+        "immunodeficiency"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cvid"
+      },
+      "forbid": [
+        "sickle",
+        "thrombocytopenia",
+        "ITP"
+      ]
+    }
+  ],
+  "confusions": {
+    "trait_coded_as_disease": {
+      "description": "Coded sickle cell disease for sickle cell trait.",
+      "lean": "over"
+    },
+    "disease_coded_as_trait": {
+      "description": "Coded sickle cell trait when sickle cell disease is documented.",
+      "lean": "under"
+    },
+    "unspecified_when_specified": {
+      "description": "Used unspecified thrombocytopenia when ITP is documented.",
+      "lean": "under"
+    },
+    "assumed_cause": {
+      "description": "Coded ITP when the provider documents thrombocytopenia without a cause.",
+      "lean": "over"
+    },
+    "nonspecific_immunodeficiency": {
+      "description": "Used unspecified immunodeficiency when CVID is documented.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "sickle_cell_disease"
+          },
+          "codes": [
+            "D57.1"
+          ],
+          "explain": "Sickle cell disease without crisis: D57.1 (HCC 107).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D57.3"
+              ],
+              "confusion": "disease_coded_as_trait",
+              "why": "Sickle cell disease is documented, not the trait."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "sickle_cell_trait"
+          },
+          "codes": [
+            "D57.3"
+          ],
+          "explain": "Sickle cell trait (carrier): D57.3 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D57.1"
+              ],
+              "confusion": "trait_coded_as_disease",
+              "why": "A carrier trait is not sickle cell disease (HCC 107)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "itp"
+          },
+          "codes": [
+            "D69.3"
+          ],
+          "explain": "Immune thrombocytopenia: D69.3 (HCC 112).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D69.6"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "ITP is documented: D69.3."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "thrombocytopenia"
+          },
+          "codes": [
+            "D69.6"
+          ],
+          "explain": "Thrombocytopenia without a documented cause: D69.6 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D69.3"
+              ],
+              "confusion": "assumed_cause",
+              "why": "The provider does not document immune thrombocytopenia."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cvid"
+          },
+          "codes": [
+            "D83.9"
+          ],
+          "explain": "Common variable immunodeficiency: D83.9 (HCC 114).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D84.9"
+              ],
+              "confusion": "nonspecific_immunodeficiency",
+              "why": "CVID is documented: D83.9."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

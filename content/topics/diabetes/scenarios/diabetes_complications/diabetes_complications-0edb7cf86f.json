@@ -1,0 +1,137 @@
+{
+  "id": "diabetes_complications-0edb7cf86f",
+  "table": "diabetes_complications",
+  "title": "Diabetes mellitus: type, complications and medication status",
+  "status": "draft",
+  "slots": {
+    "dm_type": "type2",
+    "complication": "ckd_stage4",
+    "provider_says_unrelated": "yes",
+    "meds": "insulin_and_oral"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's diabetes, its complications and related long-term drug use.",
+  "note": "Chief Complaint: Follow-up for CKD and diabetes.\n\nVitals: BP 128/74, HR 76, SpO2 98% on RA, Temp 98.6 F, Weight 142 lbs.\n\nRecent Labs: eGFR 22 mL/min/1.73m2, HbA1c 7.4%, Potassium 4.2 mEq/L, Sodium 138 mEq/L.\n\nHistory:\nSocial History: Retired teacher, lives with her spouse in a single-story home. Independent with activities of daily living.\nFamily History: Mother had type 2 diabetes mellitus. Father had a history of heart disease.\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nHEENT: Negative for vision changes or hearing loss.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Positive for occasional heartburn.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or numbness.\n\nHPI: (Copied Forward) Patient is an 85-year-old female with a history of type 2 diabetes and chronic kidney disease stage 4. She reports stable symptoms and adherence to her current medication regimen. She denies any recent acute changes in her renal function or blood glucose levels.\n\nMedication List:\n- Linagliptin 5mg daily\n- Insulin glargine and Lispro as directed\n- Calcium carbonate 500mg daily\n- Vitamin D3 2000 IU daily\n\nExam:\nGeneral: Well-appearing, pleasant, and in no acute distress.\nRespiratory: Lungs clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm, S1 and S2 distinct.\nExtremities: No edema noted.\nSkin: Intact, no new lesions.\n\nAssessment:\n1. CKD stage 4: Stable renal function.\n2. T2DM: Well-managed with insulin and an oral hypoglycemic agent.\n3. GERD: Stable.\n4. Vitamin D deficiency: Ongoing management.\n\nPlan:\n1. Continue current insulin and linagliptin regimen.\n2. Monitor renal function and electrolytes every 3 months.\n3. Continue vitamin D supplementation.\n4. Patient reports mild abdominal discomfort; the provider notes this is not due to diabetes.\n\nProblem List:\n- CKD stage 4\n- T2DM\n- GERD\n- Vitamin D deficiency\n\nElectronically signed,\nD. Kowalski, DO\nMay 14, 2026",
+  "answer": [
+    "E11.9",
+    "N18.4",
+    "Z79.4",
+    "Z79.84"
+  ],
+  "explanations": [
+    "The provider states the CKD is not due to diabetes, so the presumed link does not apply: code diabetes without complications and CKD separately.",
+    "Code also the CKD stage (N18.4) as instructed at the diabetes CKD code or separately when unrelated.",
+    "When both insulin and oral hypoglycemics are used, assign both Z79.4 and Z79.84."
+  ],
+  "refs": [
+    "OCG I.A.15",
+    "OCG I.C.14.a",
+    "OCG I.C.4.a.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.22",
+        "N18.4",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "linked_despite_provider",
+      "lean": "over",
+      "why": "The 'with' presumption is overridden when the provider documents another cause or no link.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "37"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "Z79.4",
+        "Z79.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The stage of CKD must be reported with N18.-.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.68,
+        "gap": -0.514,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "327"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.9",
+        "N18.4",
+        "Z79.4"
+      ],
+      "confusion": "only_one_med_code",
+      "lean": "under",
+      "why": "Both Z codes are assigned when both drug types are used.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.68,
+        "correct": 0.68,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.68,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E119",
+          "Z794"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "327",
+        "label": "Chronic Kidney Disease/Severe (Stage 4)",
+        "from": [
+          "N184"
+        ],
+        "weight": 0.514
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-24T20:28:54+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [
+        "vitamin D deficiency",
+        "gastroesophageal reflux disease"
+      ],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

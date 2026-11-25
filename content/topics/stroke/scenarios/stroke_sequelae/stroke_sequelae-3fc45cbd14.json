@@ -1,0 +1,89 @@
+{
+  "id": "stroke_sequelae-3fc45cbd14",
+  "table": "stroke_sequelae",
+  "title": "Stroke: history or residual deficits",
+  "status": "draft",
+  "slots": {
+    "deficit": "hemiplegia_right",
+    "handedness": "left"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's past stroke and any residual deficits.",
+  "note": "Chief Complaint\nFollow-up for residual right-sided hemiparesis.\n\nHPI\nThe patient is a 79-year-old female presenting today for a follow-up evaluation of her physical status following a past ischemic stroke. She reports that her mobility remains consistent with her baseline, though she continues to experience right-sided hemiparesis. She notes that she is still able to perform most activities of daily living but requires assistance with heavy lifting and complex tasks involving her right side. She denies any recent falls or new onset of weakness. She remains left-handed and utilizes her left hand for all primary tasks. She expresses a desire to maintain her current level of independence and is seeking guidance on further rehabilitation.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n\nReview of Systems\nThe patient reports no recent chest pain, shortness of breath, or palpitations. She denies any changes in vision, hearing, or balance. She denies any recent headaches or dizziness. She denies any changes in appetite or weight.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She enjoys gardening and light walking. She is a former smoker (quit 20 years ago) and denies alcohol or illicit drug use.\n\nFamily History\nMother had hypertension and a history of a CVA. Father had a history of coronary artery disease.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 97% on room air\nWeight: 155 lbs\n\nRecent Labs\nHbA1c: 5.8%\neGFR: 68 mL/min\nTSH: 2.1 mIU/L\n\nExam\nThe patient is alert and oriented. She is left-hand dominant and demonstrates coordinated movements with her left side. There is visible right-sided hemiparesis, characterized by decreased motor strength in the right upper and lower extremities. Sensation is intact to light touch in all four extremities. Reflexes are 2+ throughout. No new skin breakdown or pressure sores noted.\n\nAssessment\n1. Residual right-sided hemiparesis following a past ischemic stroke.\n\nPlan\nThe patient will continue her current regimen of antihypertensives and statin therapy. She will be referred to physical therapy to focus on strengthening the right side and improving gait stability. We will continue to monitor her blood pressure and renal function. Follow-up in 3 months.\n\nElectronically signed, \nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "I69.353"
+  ],
+  "explanations": [
+    "Residual hemiparesis after an ischemic stroke, right non-dominant side: I69.353 (HCC 253)."
+  ],
+  "refs": [
+    "OCG I.C.9.d",
+    "OCG I.C.6.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I69.351"
+      ],
+      "confusion": "wrong_dominance",
+      "lean": "neutral",
+      "why": "Check the documented handedness; when it is not documented, the right side is dominant and the left side non-dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.387,
+        "correct": 0.387,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "history_with_deficit",
+      "lean": "under",
+      "why": "Residual hemiparesis is documented: code the sequela (I69.35-, HCC 253), not Z86.73.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.387,
+        "gap": -0.387,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "253"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.387,
+    "hccs": [
+      {
+        "hcc": "253",
+        "label": "Hemiplegia/Hemiparesis",
+        "from": [
+          "I69353"
+        ],
+        "weight": 0.387
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:39:11+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

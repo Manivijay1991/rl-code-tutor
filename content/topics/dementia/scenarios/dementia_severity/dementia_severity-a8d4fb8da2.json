@@ -1,0 +1,91 @@
+{
+  "id": "dementia_severity-a8d4fb8da2",
+  "table": "dementia_severity",
+  "title": "Dementia: type, stage and behavior",
+  "status": "draft",
+  "slots": {
+    "type": "unspecified",
+    "severity": "mild",
+    "behavior": "none"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's cognitive disorder.",
+  "note": "Chief Complaint: Follow-up for cognitive changes.\n\nHPI: The patient is a 79-year-old female who presents today for a scheduled evaluation of her cognitive status. She was brought to the clinic by her daughter, who reports that the patient has been increasingly forgetful over the last year. The daughter notes that the patient occasionally has difficulty remembering recent conversations and requires frequent prompting to complete daily tasks. However, she remains functional at home and is able to manage her own basic hygiene. During today's visit, the patient was calm and cooperative throughout the entire encounter. She was able to answer simple questions and engage in a polite conversation with the provider. There are no reports of significant behavioral disturbances or mood shifts at home.\n\nReview of Systems: The patient denies any recent falls, changes in vision, or difficulty with swallowing. She denies any chest pain, shortness of breath, or joint pain. She denies any changes in sleep patterns or appetite.\n\nSocial History: The patient lives at home with her daughter. She enjoys knitting and watching television. She denies any history of tobacco or alcohol use.\n\nFamily History: Her mother had a history of memory loss in her late 70s. Her father had hypertension.\n\nVitals:\nBP: 132/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 145 lbs\n\nRecent Labs:\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\neGFR: 68 mL/min/1.73m2\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nExam: The patient is a well-groomed 79-year-old female who appears in no acute distress. She is alert and oriented to person and place, but shows some disorientation to specific dates. Her speech is clear and coherent. Her gait is steady and she is able to walk without assistance. Neurological exam shows no focal deficits.\n\nAssessment: The patient presents with mild dementia. She currently demonstrates a mild stage of cognitive decline characterized by short-term memory impairment. She remains stable and cooperative.\n\nPlan: We will continue to monitor her cognitive status. I have advised the daughter on strategies to assist with memory cues at home. We will follow up in three months to assess for any progression of her dementia.\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "F03.A0"
+  ],
+  "explanations": [
+    "Dementia of unspecified type (F03.-), mild, without behavioral disturbance: F03.A0."
+  ],
+  "refs": [
+    "OCG I.C.5.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F03.90"
+      ],
+      "confusion": "missed_severity",
+      "lean": "under",
+      "why": "The provider documents the stage (mild): it decides the code and the HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F03.B0"
+      ],
+      "confusion": "wrong_severity",
+      "lean": "neutral",
+      "why": "The documented stage is mild.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.341,
+        "correct": 0.341,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "126"
+        ],
+        "missing_hccs": [
+          "127"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.341,
+    "hccs": [
+      {
+        "hcc": "127",
+        "label": "Dementia/Mild or Unspecified",
+        "from": [
+          "F03A0"
+        ],
+        "weight": 0.341
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:35:55+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

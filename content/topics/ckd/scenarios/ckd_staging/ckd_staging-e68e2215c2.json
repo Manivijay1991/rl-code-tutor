@@ -1,0 +1,96 @@
+{
+  "id": "ckd_staging-e68e2215c2",
+  "table": "ckd_staging",
+  "title": "Chronic kidney disease: stage, hypertension and dialysis status",
+  "status": "draft",
+  "slots": {
+    "stage": "3_unspecified",
+    "hypertension": "no",
+    "dialysis": "no"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's kidney disease and any related hypertension and dialysis status.",
+  "note": "Chief Complaint: Follow-up for chronic kidney disease.\n\nHPI: The patient is an 80-year-old male presenting for a routine follow-up of his known chronic kidney disease. He reports feeling generally well today and denies any acute shortness of breath, significant edema, or changes in urinary output. He notes that his joint pain from osteoarthritis remains manageable with his current regimen. He denies any new fatigue or systemic symptoms. He is here to monitor his laboratory trends and ensure his medications remain appropriate for his current renal function.\n\nMedication List:\n- Atorvastatin 40 mg daily\n- Naproxen 500 mg as needed for osteoarthritis\n- Lisinopril 10 mg daily\n\nVitals:\nBP: 132/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 185 lbs\n\nRecent Labs:\neGFR: 42 mL/min/1.73m2\nCreatinine: 1.8 mg/dL\nGlucose: 105 mg/dL\nSodium: 138 mEq/L\nPotassium: 4.6 mEq/L\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight loss.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies cough or wheezing.\nMusculoskeletal: Reports mild aching in both knees.\nGenitourinary: Denies dysuria or hematuria.\n\nSocial History: The patient is retired and lives at home with his wife. He enjoys gardening and walking for exercise. He denies tobacco or alcohol use.\n\nFamily History: Father had hyperlipidemia. Mother had osteoarthritis.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm; no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nMusculoskeletal: Mild tenderness and decreased range of motion in both knees.\nSkin: No rashes or lesions noted.\n\nAssessment:\n1. Chronic kidney disease, currently at stage 3.\n2. Hyperlipidemia.\n3. Osteoarthritis of both knees.\n\nPlan:\n1. Continue current medications for hyperlipidemia and osteoarthritis.\n2. Monitor renal function and electrolytes every 3 to 6 months.\n3. Maintain hydration and a balanced diet.\n4. Follow up in the clinic in 4 months for a repeat lab panel.\n\nProblem List:\n- Chronic kidney disease, stage 3\n- Hyperlipidemia\n- Osteoarthritis of both knees\n\nElectronically signed, E. Castillo, MD, 05/14/2026",
+  "answer": [
+    "N18.30"
+  ],
+  "explanations": [
+    "Stage 3 without a 3a/3b specification: N18.30."
+  ],
+  "refs": [
+    "OCG I.C.14.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "N18.3"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "N18.3 needs a 5th character.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.127,
+        "gap": -0.127,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "N18.32"
+      ],
+      "confusion": "wrong_ckd_stage",
+      "lean": "neutral",
+      "why": "3b is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.127,
+        "correct": 0.127,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "328"
+        ],
+        "missing_hccs": [
+          "329"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.127,
+    "hccs": [
+      {
+        "hcc": "329",
+        "label": "Chronic Kidney Disease/Moderate (Stage 3/Except 3B)",
+        "from": [
+          "N1830"
+        ],
+        "weight": 0.127
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T17:21:08+00:00",
+    "style": {
+      "age": 80,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [
+        "hyperlipidemia",
+        "osteoarthritis of both knees"
+      ],
+      "credential": "MD",
+      "signer": "E. Castillo"
+    }
+  }
+}

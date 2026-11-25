@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-4b386496a0",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "ms_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint\nFollow-up for multiple sclerosis.\n\nHPI\nThe patient is a 73-year-old male presenting today for a routine follow-up regarding his multiple sclerosis. He reports that his symptoms have remained relatively stable over the last three months. He describes occasional tingling in his lower extremities and some mild muscle weakness when walking long distances, but he denies any new neurological deficits or significant changes in his mobility. He reports that his fatigue is manageable and does not interfere with his daily activities. He is currently compliant with his prescribed medications and reports no adverse side effects. He expresses a desire to continue his current management plan while monitoring for any new symptoms.\n\nReview of Systems\nThe patient reports no recent changes in vision, hearing, or speech. He denies any new numbness, tingling, or muscle spasms. He denies any recent falls or episodes of dizziness. He denies any changes in bowel or bladder function. He denies any recent weight changes or significant fatigue.\n\nSocial History\nThe patient is retired and lives with his wife in a single-story home. He enjoys gardening and walking in the park. He denies tobacco or alcohol use.\n\nFamily History\nHis father had hypertension and his mother had type 2 diabetes. There is no family history of neurological disorders.\n\nVitals\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\neGFR: 74 mL/min/1.73m2\n\nMedication List\n1. Interferon beta-1a\n2. Gabapentin 300mg\n3. Atorvastatin 20mg\n4. Lisinopril 10mg\n\nExam\nThe patient is alert and oriented to person, place, and time. He is in no acute distress. Cranial nerves II-XII are intact. Strength is 5/5 in all major muscle groups. Sensation is intact to light touch and pinprick in all extremities. Gait is steady and coordinated. Reflexes are 2+ and symmetric.\n\nAssessment\n1. Multiple sclerosis: The patient is stable on his current medication regimen. He reports consistent symptoms without significant progression or new acute issues.\n\nPlan\n1. Continue current medications for multiple sclerosis as prescribed.\n2. Continue to monitor for any new neurological symptoms.\n3. Return to clinic in three months for a follow-up evaluation.\n\nElectronically signed, H. Tanaka, NP, 05/14/2026",
+  "answer": [
+    "G35.D"
+  ],
+  "explanations": [
+    "Multiple sclerosis without a documented type: G35.D (HCC 198). G35 itself is a header in FY2027."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G35"
+      ],
+      "confusion": "nonbillable_code",
+      "lean": "neutral",
+      "why": "G35 needs more characters in FY2027.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G35.A"
+      ],
+      "confusion": "assumed_type",
+      "lean": "over",
+      "why": "The provider does not document relapsing-remitting MS.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.647,
+        "correct": 0.647,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.647,
+    "hccs": [
+      {
+        "hcc": "198",
+        "label": "Multiple Sclerosis",
+        "from": [
+          "G35D"
+        ],
+        "weight": 0.647
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:15:02+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

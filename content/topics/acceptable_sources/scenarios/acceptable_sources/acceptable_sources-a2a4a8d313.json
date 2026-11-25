@@ -1,0 +1,69 @@
+{
+  "id": "acceptable_sources-a2a4a8d313",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "office_visit"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Chief Complaint\nCOPD follow-up.\n\nHPI\nPt is a 71-year-old female presenting for a face-to-face office visit to evaluate chronic obstructive pulmonary disease. Pt reports stable breathing over the last month. Denies increased sputum production, increased dyspnea, or productive cough. Reports good compliance with current inhaler regimen. No new concerns at this time.\n\nMedication List\n1. Tiotropium inhaler daily\n2. Lisinopril 10mg daily\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: Clear to auscultation bilaterally, no wheezes or rales.\nExt: No edema.\nVitals: BP 128/82, HR 74, RR 16, SpO2 96% on RA.\n\nAssessment\n1. COPD: Stable. Pt demonstrates good control with current medications.\n\nPlan\n1. Continue current inhaler as prescribed.\n2. Follow-up in 4 months for routine clinic visit.\n\nElectronically signed,\nD. Kowalski, MD\n05/12/2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "A signed face-to-face visit with an acceptable provider (MD, DO, NP or PA) that assesses COPD supports J44.9 (HCC 280)."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "rejected_acceptable_source",
+      "lean": "under",
+      "why": "The visit is face to face, signed with credentials and addresses COPD: it supports J44.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:47+00:00",
+    "style": {
+      "age": 71,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

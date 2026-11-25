@@ -1,0 +1,62 @@
+{
+  "id": "pressure_ulcer-dafae43a8a",
+  "table": "pressure_ulcer",
+  "title": "Pressure ulcers: site, stage and healing",
+  "status": "draft",
+  "slots": {
+    "site": "right_heel",
+    "stage": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's pressure ulcer, if any.",
+  "note": "Chief Complaint\nFollow-up for pressure ulcer.\n\nHPI\nThe patient is an 81-year-old man presenting for a scheduled evaluation of a pressure ulcer located on his right heel. He reports that the area remains uncomfortable but states he has been diligent with repositioning and keeping the site clean. He denies any new drainage or systemic symptoms.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAspirin 81mg daily\n\nExam\nThe patient is alert and oriented. Physical examination of the right heel reveals a pressure ulcer. The area shows some erythema but remains intact. No purulent drainage is noted. The surrounding skin is warm to the touch.\n\nAssessment\nPressure ulcer on the right heel.\n\nPlan\nThe patient will continue current wound care regimen as instructed. I will provide a dressing for the pressure ulcer on the right heel and advise on continued pressure relief. Follow up in two weeks for a reassessment of the wound.\n\nElectronically signed, J. Lindqvist, PA-C, 05/14/2026",
+  "answer": [
+    "L89.619"
+  ],
+  "explanations": [
+    "Pressure ulcer of the right heel, stage not documented: L89.619 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.12.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L89.612"
+      ],
+      "confusion": "assumed_stage",
+      "lean": "over",
+      "why": "No stage is documented: use the unspecified-stage code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.838,
+        "correct": 0,
+        "gap": 0.838,
+        "direction": "over",
+        "extra_hccs": [
+          "382"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:17:19+00:00",
+    "style": {
+      "age": 81,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

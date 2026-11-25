@@ -1,0 +1,684 @@
+{
+  "id": "depression_severity",
+  "title": "Major depression: episode, severity and remission",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's depressive disorder.",
+  "slots": {
+    "episode": {
+      "label": "Diagnosis documented",
+      "values": [
+        "single",
+        "recurrent",
+        "unspecified_depression"
+      ],
+      "labels": {
+        "single": "Major depression, single episode",
+        "recurrent": "Major depression, recurrent",
+        "unspecified_depression": "'Depression' only"
+      },
+      "evidence": {
+        "single": [
+          "single episode"
+        ],
+        "recurrent": [
+          "recurrent"
+        ],
+        "unspecified_depression": [
+          "depression"
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "single": "The provider documents major depressive disorder, single episode.",
+        "recurrent": "The provider documents major depressive disorder, recurrent.",
+        "unspecified_depression": "The provider documents only 'depression', without calling it major depressive disorder and without an episode or severity."
+      }
+    },
+    "status": {
+      "label": "Current severity or remission",
+      "values": [
+        "mild",
+        "moderate",
+        "severe",
+        "severe_psychotic",
+        "partial_remission",
+        "full_remission",
+        "unspecified"
+      ],
+      "labels": {
+        "mild": "Mild",
+        "moderate": "Moderate",
+        "severe": "Severe, no psychotic features",
+        "severe_psychotic": "Severe with psychotic features",
+        "partial_remission": "In partial remission",
+        "full_remission": "In full remission",
+        "unspecified": "Not documented"
+      },
+      "evidence": {
+        "mild": [
+          "mild"
+        ],
+        "moderate": [
+          "moderate"
+        ],
+        "severe": [
+          [
+            "severe"
+          ],
+          [
+            "without psychotic features"
+          ]
+        ],
+        "severe_psychotic": [
+          [
+            "severe"
+          ],
+          [
+            "with psychotic features"
+          ]
+        ],
+        "partial_remission": [
+          "partial remission"
+        ],
+        "full_remission": [
+          "full remission"
+        ],
+        "unspecified": []
+      },
+      "describe": {
+        "mild": "The current episode is documented as mild.",
+        "moderate": "The current episode is documented as moderate.",
+        "severe": "The current episode is documented as severe without psychotic features.",
+        "severe_psychotic": "The current episode is documented as severe with psychotic features (e.g. mood-congruent delusions), and the provider addresses them.",
+        "partial_remission": "The provider documents the depression as in partial remission.",
+        "full_remission": "The provider documents the depression as in full remission.",
+        "unspecified": "The provider does not state a severity or remission status."
+      }
+    }
+  },
+  "exclude": [
+    {
+      "episode": "unspecified_depression",
+      "status": [
+        "mild",
+        "moderate",
+        "severe",
+        "severe_psychotic",
+        "partial_remission",
+        "full_remission"
+      ]
+    }
+  ],
+  "note_forbid": [
+    "bipolar",
+    "manic",
+    "mania",
+    "hypomanic",
+    "schizophrenia",
+    "schizoaffective",
+    "dysthymia",
+    "dysthymic",
+    "postpartum",
+    "seasonal pattern",
+    "suicidal",
+    "anxiety disorder",
+    "PTSD",
+    "substance",
+    "alcohol use disorder"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "episode": "unspecified_depression"
+      },
+      "forbid": [
+        "major depressive",
+        "MDD",
+        "recurrent",
+        "single episode",
+        "episode"
+      ]
+    },
+    {
+      "when": {
+        "episode": [
+          "single",
+          "recurrent"
+        ]
+      },
+      "require": [
+        [
+          "major depressive disorder",
+          "MDD"
+        ]
+      ]
+    },
+    {
+      "when": {
+        "status": [
+          "mild",
+          "moderate",
+          "severe",
+          "severe_psychotic",
+          "unspecified"
+        ]
+      },
+      "forbid": [
+        "remission"
+      ]
+    },
+    {
+      "when": {
+        "status": [
+          "mild",
+          "moderate",
+          "partial_remission",
+          "full_remission",
+          "unspecified"
+        ]
+      },
+      "forbid": [
+        "psychotic",
+        "hallucination",
+        "hallucinations",
+        "delusion",
+        "delusions"
+      ]
+    },
+    {
+      "when": {
+        "status": "severe"
+      },
+      "forbid": [
+        "hallucination",
+        "hallucinations",
+        "delusion",
+        "delusions"
+      ]
+    }
+  ],
+  "confusions": {
+    "severity_up": {
+      "description": "Coded a higher severity than documented.",
+      "lean": "over"
+    },
+    "severity_down": {
+      "description": "Coded a lower severity than documented.",
+      "lean": "under"
+    },
+    "unspecified_when_specified": {
+      "description": "Used the unspecified code when the severity is documented.",
+      "lean": "under"
+    },
+    "assumed_severity": {
+      "description": "Coded a severity the provider did not document.",
+      "lean": "over"
+    },
+    "unsupported_psychotic": {
+      "description": "Coded psychotic features that are not documented.",
+      "lean": "over"
+    },
+    "missed_psychotic": {
+      "description": "Left out documented psychotic features.",
+      "lean": "under"
+    },
+    "remission_coded_active": {
+      "description": "Coded an active severity when the provider documented remission.",
+      "lean": "over"
+    },
+    "wrong_remission": {
+      "description": "Confused partial and full remission.",
+      "lean": "neutral"
+    },
+    "single_vs_recurrent": {
+      "description": "Confused a single episode with recurrent depression.",
+      "lean": "neutral"
+    },
+    "coded_mdd_without_documentation": {
+      "description": "Coded major depressive disorder when only 'depression' is documented.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "episode": "single",
+            "status": "mild"
+          },
+          "codes": [
+            "F32.0"
+          ],
+          "explain": "Major depressive disorder, single episode, mild (no HCC in V28): F32.0.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.1"
+              ],
+              "confusion": "severity_up",
+              "why": "The provider documents mild; moderate maps to an HCC that mild does not."
+            },
+            {
+              "codes": [
+                "F33.0"
+              ],
+              "confusion": "single_vs_recurrent",
+              "why": "The provider documents single episode."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "single",
+            "status": "moderate"
+          },
+          "codes": [
+            "F32.1"
+          ],
+          "explain": "Major depressive disorder, single episode, moderate (HCC 155): F32.1.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.0"
+              ],
+              "confusion": "severity_down",
+              "why": "The provider documents moderate (HCC 155); mild has no HCC."
+            },
+            {
+              "codes": [
+                "F32.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Severity is documented: do not use the unspecified code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "single",
+            "status": "severe"
+          },
+          "codes": [
+            "F32.2"
+          ],
+          "explain": "Major depressive disorder, single episode, severe without psychotic features (HCC 155): F32.2.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.3"
+              ],
+              "confusion": "unsupported_psychotic",
+              "why": "Psychotic features are not documented."
+            },
+            {
+              "codes": [
+                "F32.1"
+              ],
+              "confusion": "severity_down",
+              "why": "The provider documents severe."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "single",
+            "status": "severe_psychotic"
+          },
+          "codes": [
+            "F32.3"
+          ],
+          "explain": "Major depressive disorder, single episode, severe with psychotic features (HCC 152): F32.3.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.2"
+              ],
+              "confusion": "missed_psychotic",
+              "why": "Psychotic features are documented: they change the code and the HCC (152)."
+            },
+            {
+              "codes": [
+                "F33.3"
+              ],
+              "confusion": "single_vs_recurrent",
+              "why": "The provider documents single episode."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "single",
+            "status": "partial_remission"
+          },
+          "codes": [
+            "F32.4"
+          ],
+          "explain": "Major depressive disorder, single episode, in partial remission (no HCC): F32.4.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.1"
+              ],
+              "confusion": "remission_coded_active",
+              "why": "The provider documents partial remission: code the remission, not an active severity."
+            },
+            {
+              "codes": [
+                "F32.5"
+              ],
+              "confusion": "wrong_remission",
+              "why": "The remission is partial, not full."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "single",
+            "status": "full_remission"
+          },
+          "codes": [
+            "F32.5"
+          ],
+          "explain": "Major depressive disorder, single episode, in full remission (no HCC): F32.5.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.1"
+              ],
+              "confusion": "remission_coded_active",
+              "why": "The provider documents full remission: code the remission, not an active severity."
+            },
+            {
+              "codes": [
+                "F32.4"
+              ],
+              "confusion": "wrong_remission",
+              "why": "The remission is full, not partial."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "single",
+            "status": "unspecified"
+          },
+          "codes": [
+            "F32.9"
+          ],
+          "explain": "Major depressive disorder, single episode, severity not documented (no HCC): F32.9.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.1"
+              ],
+              "confusion": "assumed_severity",
+              "why": "No severity is documented: do not assume one."
+            },
+            {
+              "codes": [
+                "F33.9"
+              ],
+              "confusion": "single_vs_recurrent",
+              "why": "The provider documents single episode."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "recurrent",
+            "status": "mild"
+          },
+          "codes": [
+            "F33.0"
+          ],
+          "explain": "Major depressive disorder, recurrent, mild (no HCC in V28): F33.0.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.1"
+              ],
+              "confusion": "severity_up",
+              "why": "The provider documents mild; moderate maps to an HCC that mild does not."
+            },
+            {
+              "codes": [
+                "F32.0"
+              ],
+              "confusion": "single_vs_recurrent",
+              "why": "The provider documents recurrent."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "recurrent",
+            "status": "moderate"
+          },
+          "codes": [
+            "F33.1"
+          ],
+          "explain": "Major depressive disorder, recurrent, moderate (HCC 155): F33.1.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.0"
+              ],
+              "confusion": "severity_down",
+              "why": "The provider documents moderate (HCC 155); mild has no HCC."
+            },
+            {
+              "codes": [
+                "F33.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Severity is documented: do not use the unspecified code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "recurrent",
+            "status": "severe"
+          },
+          "codes": [
+            "F33.2"
+          ],
+          "explain": "Major depressive disorder, recurrent, severe without psychotic features (HCC 155): F33.2.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.3"
+              ],
+              "confusion": "unsupported_psychotic",
+              "why": "Psychotic features are not documented."
+            },
+            {
+              "codes": [
+                "F33.1"
+              ],
+              "confusion": "severity_down",
+              "why": "The provider documents severe."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "recurrent",
+            "status": "severe_psychotic"
+          },
+          "codes": [
+            "F33.3"
+          ],
+          "explain": "Major depressive disorder, recurrent, severe with psychotic features (HCC 152): F33.3.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.2"
+              ],
+              "confusion": "missed_psychotic",
+              "why": "Psychotic features are documented: they change the code and the HCC (152)."
+            },
+            {
+              "codes": [
+                "F32.3"
+              ],
+              "confusion": "single_vs_recurrent",
+              "why": "The provider documents recurrent."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "recurrent",
+            "status": "partial_remission"
+          },
+          "codes": [
+            "F33.41"
+          ],
+          "explain": "Major depressive disorder, recurrent, in partial remission (no HCC): F33.41.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.1"
+              ],
+              "confusion": "remission_coded_active",
+              "why": "The provider documents partial remission: code the remission, not an active severity."
+            },
+            {
+              "codes": [
+                "F33.42"
+              ],
+              "confusion": "wrong_remission",
+              "why": "The remission is partial, not full."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "recurrent",
+            "status": "full_remission"
+          },
+          "codes": [
+            "F33.42"
+          ],
+          "explain": "Major depressive disorder, recurrent, in full remission (no HCC): F33.42.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.1"
+              ],
+              "confusion": "remission_coded_active",
+              "why": "The provider documents full remission: code the remission, not an active severity."
+            },
+            {
+              "codes": [
+                "F33.41"
+              ],
+              "confusion": "wrong_remission",
+              "why": "The remission is full, not partial."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "recurrent",
+            "status": "unspecified"
+          },
+          "codes": [
+            "F33.9"
+          ],
+          "explain": "Major depressive disorder, recurrent, severity not documented (no HCC): F33.9.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.1"
+              ],
+              "confusion": "assumed_severity",
+              "why": "No severity is documented: do not assume one."
+            },
+            {
+              "codes": [
+                "F32.9"
+              ],
+              "confusion": "single_vs_recurrent",
+              "why": "The provider documents recurrent."
+            }
+          ]
+        },
+        {
+          "when": {
+            "episode": "unspecified_depression"
+          },
+          "codes": [
+            "F32.A"
+          ],
+          "explain": "'Depression' without 'major depressive disorder' is F32.A, depression unspecified (no HCC). Do not upgrade it to major depression.",
+          "refs": [
+            "ICD-10-CM Tabular: F32-F33"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F32.9"
+              ],
+              "confusion": "coded_mdd_without_documentation",
+              "why": "Major depressive disorder is not documented."
+            },
+            {
+              "codes": [
+                "F32.1"
+              ],
+              "confusion": "coded_mdd_without_documentation",
+              "why": "Neither major depression nor a severity is documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

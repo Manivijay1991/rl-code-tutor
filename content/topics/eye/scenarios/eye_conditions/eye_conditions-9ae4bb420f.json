@@ -1,0 +1,97 @@
+{
+  "id": "eye_conditions-9ae4bb420f",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "pdr"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint: Follow-up for vision concerns.\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nEyes: Positive (blurred vision)\nRespiratory: Negative\nCardiovascular: Negative\nNeurological: Negative\n\nHPI: Patient is a 77-year-old female with a history of type 2 diabetes. She presents for a follow-up evaluation of her vision. (Copied forward from prior visit). Update: The patient reports that her vision in her right eye has felt slightly different over the last month. She denies any sudden flashes of light or new floaters. She remains compliant with her current diabetes management regimen.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nExam:\nVisual Acuity: Right Eye 20/40.\nPupils: Equal, round, and reactive to light.\nFundus Exam: Examination of the right eye reveals evidence of proliferative diabetic retinopathy. No significant changes noted since the previous assessment.\n\nAssessment:\n1. Type 2 diabetes.\n2. Proliferative diabetic retinopathy of the right eye.\n\nPlan:\n1. Continue current antihypertensive and lipid-lowering medications.\n2. Maintain current blood glucose monitoring.\n3. Follow up with ophthalmology in 3 months for continued monitoring of the proliferative diabetic retinopathy.\n\nElectronically signed,\nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "E11.3591"
+  ],
+  "explanations": [
+    "Type 2 diabetes with proliferative diabetic retinopathy without macular edema, right eye: E11.3591 (HCC 37 and 298)."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.3291"
+      ],
+      "confusion": "understated_retinopathy",
+      "lean": "under",
+      "why": "Proliferative retinopathy is documented (HCC 298).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.502,
+        "gap": -0.336,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "298"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.319"
+      ],
+      "confusion": "understated_retinopathy",
+      "lean": "under",
+      "why": "The type of retinopathy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.502,
+        "gap": -0.336,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "298"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.502,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E113591"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "298",
+        "label": "Severe Diabetic Eye Disease/Retinal Vein Occlusion/and Vitreous Hemorrhage",
+        "from": [
+          "E113591"
+        ],
+        "weight": 0.336
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:32+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

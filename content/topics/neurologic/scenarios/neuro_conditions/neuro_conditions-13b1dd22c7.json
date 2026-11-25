@@ -1,0 +1,85 @@
+{
+  "id": "neuro_conditions-13b1dd22c7",
+  "table": "neuro_conditions",
+  "title": "Epilepsy, Parkinson's disease and multiple sclerosis",
+  "status": "draft",
+  "slots": {
+    "condition": "parkinsons"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition.",
+  "note": "Chief Complaint: Follow-up for Parkinson's disease.\n\nHPI: 85 y.o. female pt presents for routine f/u of Parkinson's disease. Pt reports stable condition overall. She denies any new falls, significant changes in mobility, or issues with activities of daily living. Pt reports she is managing well on her current regimen. No reports of tremors worsening or gait instability. Pt states she is tolerating medications well.\n\nMedication List:\n- Carbidopa-levodopa 25/100mg BID\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals:\nBP: 128/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 135 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 68 mL/min/1.73m2\nTSH: 2.1 mIU/L\nBMP: Na+ 138, K+ 4.2, Cr 1.1\n\nReview of Systems:\nConstitutional: Denies fatigue, weight changes, or chills.\nNeurological: Denies vision changes, numbness, or weakness.\nMSK: Denies acute joint pain.\nCV: Denies chest pain or palpitations.\nRespiratory: Denies SOB or cough.\n\nSocial History: Pt lives with her daughter. Retired teacher. Non-smoker. Occasional social gatherings.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nNeurological: Normal gait. Tremor noted in right hand but well-controlled. No involuntary movements noted. Normal strength throughout.\n\nAssessment:\n1. Parkinson's disease: Stable on current carbidopa-levodopa dose. No motor fluctuations noted at this time.\n\nPlan:\n- Continue current carbidopa-levodopa dosage.\n- Continue blood pressure and cholesterol management.\n- Continue monitoring renal function.\n- F/u in 3 months.\n\nElectronically signed, D. Kowalski, DO, 10/14/2026",
+  "answer": [
+    "G20.A1"
+  ],
+  "explanations": [
+    "Parkinson's disease without dyskinesia and without fluctuations: G20.A1 (HCC 199)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G20-G40"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G20.C"
+      ],
+      "confusion": "parkinsonism_vs_parkinsons",
+      "lean": "neutral",
+      "why": "Parkinson's disease is documented, not parkinsonism.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.615,
+        "correct": 0.615,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G20.A2"
+      ],
+      "confusion": "unsupported_fluctuations",
+      "lean": "over",
+      "why": "Motor fluctuations are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.615,
+        "correct": 0.615,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.615,
+    "hccs": [
+      {
+        "hcc": "199",
+        "label": "Parkinson and Other Degenerative Disease of Basal Ganglia",
+        "from": [
+          "G20A1"
+        ],
+        "weight": 0.615
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:18:10+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

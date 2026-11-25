@@ -1,0 +1,76 @@
+{
+  "id": "obesity_bmi-2f4cbb3c92",
+  "table": "obesity_bmi",
+  "title": "Obesity, morbid obesity and BMI",
+  "status": "draft",
+  "slots": {
+    "diagnosis": "none",
+    "bmi": "32"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's weight diagnosis and BMI, if reportable.",
+  "note": "Chief Complaint: Follow-up for hypertension and osteoarthritis.\n\nHPI: Pt is a 90 y.o. male presenting for routine follow-up of chronic HTN and bilateral knee OA. Pt reports stable control of blood pressure at home. Denies any recent chest pain, shortness of breath, or syncope. Reports mild, aching pain in bilateral knees, particularly with prolonged walking. No new joint swelling or redness. Pt currently manages pain with OTC acetaminophen. Denies any acute worsening of symptoms since last visit.\n\nMedication List:\n- Lisinopril 20mg daily\n- Hydrochlorothiazide 25mg daily\n- Acetaminophen 650mg every 6 hours PRN for joint pain\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nCV: No palpitations or chest pain.\nResp: No SOB or cough.\nMSK: Mild bilateral knee pain.\nNeuro: No headaches or dizziness.\nGI: No nausea or diarrhea.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had HTN and stroke. Mother had Osteoarthritis.\n\nVitals:\nBP: 134/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% RA\nHeight: 5'9\"\nWeight: 228 lbs\nBMI: 32.3\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 65 mL/min\nSodium: 138 mEq/L\nPotassium: 4.8 mEq/L\nCreatinine: 1.2 mg/dL\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, regular rhythm, no murmurs.\nResp: CTAB, no wheezes or crackles.\nMSK: Mild tenderness and decreased range of motion in bilateral knees. No erythema or warmth.\nNeuro: Alert and oriented, intact motor/sensory.\n\nAssessment:\n1. Hypertension: Stable on current regimen.\n2. Osteoarthritis: Chronic, managed with PRN analgesics.\n\nPlan:\n1. Continue current Lisinopril and HCTZ.\n2. Continue Acetaminophen PRN for knee pain.\n3. Encourage regular low-impact walking as tolerated.\n4. Follow up in 3 months for routine monitoring.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [],
+  "explanations": [
+    "No weight diagnosis by the provider: nothing to code.",
+    "A BMI without a weight diagnosis by the provider is not reported: Z68 codes need an associated reportable diagnosis."
+  ],
+  "refs": [
+    "OCG I.B.14"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E66.9"
+      ],
+      "confusion": "obesity_from_bmi",
+      "lean": "over",
+      "why": "Obesity must be diagnosed by the provider, not inferred from the BMI.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z68.32"
+      ],
+      "confusion": "bmi_without_dx",
+      "lean": "over",
+      "why": "BMI codes are reported only with a provider-documented weight diagnosis such as obesity.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:46:30+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "liver_disease-b45f6c4625",
+  "table": "liver_disease",
+  "title": "Liver disease: cirrhosis, hepatitis C, fatty liver",
+  "status": "draft",
+  "slots": {
+    "condition": "hep_c_chronic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's liver disease.",
+  "note": "Chief Complaint: Follow-up for chronic hepatitis C.\n\nHPI: [Copied Forward] Patient is an 89-year-old female who first presented for evaluation of chronic hepatitis C. She reports being asymptomatic at this time. She is currently undergoing monitoring of her viral load and liver function.\n[Today's Update] The patient returns today for a scheduled follow-up regarding her chronic hepatitis C. She reports feeling well overall, with no new complaints of fatigue or abdominal discomfort. She remains interested in monitoring her status and has not requested active treatment at this time.\n\nMedication List:\n- Atorvastatin 20mg daily\n- Lisinopril 10mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 24.2.\n\nReview of Systems:\nConstitutional: Negative\nEyes: Negative\nEars/Nose/Throat: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\nPsychiatric: Negative\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No noted jaundice or lesions.\nAbdomen: Soft, non-tender, no organomegaly.\nExtremities: No edema.\n\nAssessment:\n1. Chronic hepatitis C: Patient is stable and currently being monitored. No active treatment initiated.\n\nPlan:\n1. Continue current monitoring for chronic hepatitis C.\n2. Follow up in 6 months for repeat labs and viral load.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "B18.2"
+  ],
+  "explanations": [
+    "Chronic viral hepatitis C: B18.2 (HCC 65)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K70-K77"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B19.20"
+      ],
+      "confusion": "unspecified_hepatitis",
+      "lean": "under",
+      "why": "The hepatitis C is documented as chronic: B18.2 (HCC 65).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.185,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "65"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z86.19"
+      ],
+      "confusion": "current_coded_history",
+      "lean": "under",
+      "why": "The infection is still present.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.185,
+        "gap": -0.185,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "65"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.185,
+    "hccs": [
+      {
+        "hcc": "65",
+        "label": "Chronic Hepatitis",
+        "from": [
+          "B182"
+        ],
+        "weight": 0.185
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:20:50+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

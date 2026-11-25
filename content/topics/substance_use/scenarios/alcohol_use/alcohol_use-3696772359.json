@@ -1,0 +1,90 @@
+{
+  "id": "alcohol_use-3696772359",
+  "table": "alcohol_use",
+  "title": "Alcohol use disorder: severity and remission",
+  "status": "draft",
+  "slots": {
+    "documentation": "use_disorder_severe",
+    "remission": "no"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's alcohol use, if any is reportable.",
+  "note": "Chief Complaint\nAlcohol use and management.\n\nHPI\nThe patient is a 68-year-old male presenting for a follow-up evaluation of his alcohol consumption habits. He reports that he continues to consume alcohol on a daily basis. He describes his current intake as frequent and acknowledges that it has become difficult to limit his consumption. He expresses a desire to decrease his intake but notes that he currently struggles with cravings and maintaining consistency. He denies any recent acute injuries or other significant medical concerns during this interval.\n\nMedication List\nMultivitamin, daily.\n\nExam\nThe patient is alert and oriented to person, place, and time. He appears in no acute distress. His speech is clear and coherent. Vital signs are stable within normal limits. Physical examination reveals no acute abnormalities.\n\nAssessment\nAlcohol use disorder, severe. The patient's current consumption patterns indicate a need for continued intervention and monitoring.\n\nPlan\nDiscussed the risks associated with continued heavy consumption. Provided education on harm reduction strategies and established a goal for gradual reduction in daily intake. Scheduled a follow-up appointment in four weeks to monitor progress and provide ongoing support.\n\nElectronically signed,\nK. Nguyen, PA-C\nOctober 14, 2026",
+  "answer": [
+    "F10.20"
+  ],
+  "explanations": [
+    "Alcohol use disorder, moderate or severe, indexes to alcohol dependence: F10.20 (HCC 139)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.10"
+      ],
+      "confusion": "severity_down",
+      "lean": "under",
+      "why": "Moderate or severe use disorder is dependence (F10.2-); abuse has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.242,
+        "gap": -0.242,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "139"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F10.90"
+      ],
+      "confusion": "unspecified_use",
+      "lean": "under",
+      "why": "A use disorder with a severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.242,
+        "gap": -0.242,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "139"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.242,
+    "hccs": [
+      {
+        "hcc": "139",
+        "label": "Alcohol Use Disorder/Moderate/Severe/Alcohol Use with Specified Non-Psychotic Complications",
+        "from": [
+          "F1020"
+        ],
+        "weight": 0.242
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T04:47:52+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

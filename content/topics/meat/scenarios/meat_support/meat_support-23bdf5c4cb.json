@@ -1,0 +1,60 @@
+{
+  "id": "meat_support-23bdf5c4cb",
+  "table": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "slots": {
+    "condition": "mdd_recurrent_moderate",
+    "documentation": "problem_list_only"
+  },
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "Chief Complaint\nLow back pain.\n\nHPI\nPt is an 89 y.o. male presenting for evaluation of chronic low back pain. Reports dull, aching pain in lumbar region for several months. Pain is exacerbated by prolonged standing or walking. Denies radiation of pain to lower extremities, numbness, or weakness. No recent falls or acute trauma. Pt seeks management for symptom relief.\n\nMedication List\nMultivitamin, 1 tab daily.\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nMSK: Lumbar spine: Mild tenderness to palpation over paraspinal muscles. Range of motion limited by discomfort. No focal neurological deficits noted. Gait steady.\n\nAssessment\n1. Low back pain.\n\nPlan\n1. Conservative management. Recommended stretching and heat therapy.\n2. Follow up PRN if symptoms worsen.\n\nProblem List\n- status post appendectomy\n- status post cholecystectomy\n- major depressive disorder, recurrent, moderate\n\nElectronically signed, D. Kowalski, DO, 05/12/2026",
+  "answer": [],
+  "explanations": [
+    "Depression appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service."
+  ],
+  "refs": [
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "coded_without_meat",
+      "lean": "over",
+      "why": "A problem-list entry alone does not show the condition affected care at this visit.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0,
+        "gap": 0.299,
+        "direction": "over",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-24T20:26:40+00:00",
+    "style": {
+      "age": 89,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}
