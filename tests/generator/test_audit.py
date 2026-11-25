@@ -2,6 +2,7 @@ import json
 
 import pytest
 
+from coding_tutor import catalog
 from coding_tutor.generator import audit
 from coding_tutor.generator.audit import (
     Finding,
@@ -14,7 +15,6 @@ from coding_tutor.generator.audit import (
     patient_text,
     sections,
 )
-from coding_tutor.paths import SCENARIOS_DIR
 
 SIGN = "Electronically signed, A. Rivera, MD, 05/14/2026"
 STYLE = {"age": 70, "sex": "woman", "voice": "narrative", "length": "short", "background": [], "credential": "MD",
@@ -258,6 +258,6 @@ def test_main_exit_codes(tmp_path, capsys):
     assert audit.main(["--dir", str(tmp_path / "missing")]) == 2
 
 
-@pytest.mark.skipif(not any(SCENARIOS_DIR.glob("*/*.json")), reason="no scenarios generated")
+@pytest.mark.skipif(not catalog.load_scenarios(), reason="no scenarios generated")
 def test_every_real_scenario_passes_the_audit():
-    assert audit_records(load_records(SCENARIOS_DIR)) == {}
+    assert audit_records(load_records()) == {}

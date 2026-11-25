@@ -1,6 +1,6 @@
 """Rules engine: decision table + slot values -> correct codes, tagged distractors, explanation.
 
-Table model (see schemas/table.schema.json; files in content/tables/):
+Table model (see schemas/table.schema.json; files in content/topics/<topic>/tables/, found via coding_tutor.catalog):
   slots       name -> {values: [...], evidence: {value: [phrases]}}
   exclude     list of partial slot assignments that are not realistic (skipped everywhere)
   confusions  id -> {description, lean: over|under|neutral}
@@ -27,10 +27,10 @@ from collections.abc import Iterator
 from pathlib import Path
 from typing import Any, NamedTuple
 
+from coding_tutor import catalog
 from coding_tutor.engine import codes as codedb
 from coding_tutor.engine import hcc
 from coding_tutor.engine.codes import dotted, normalize
-from coding_tutor.paths import TABLES_DIR
 
 LEANS = {"over", "under", "neutral"}
 
@@ -290,16 +290,20 @@ def load_table(path: Path) -> Table:
     return make_table(_read_json(path), str(path))
 
 
-def load_tables(directory: Path = TABLES_DIR) -> dict[str, Table]:
-    """Load every decision table in a directory, keyed by id.
+def load_tables(directory: Path | None = None) -> dict[str, Table]:
+    """Load decision tables keyed by id: every table of the enabled topics, or every file in `directory`.
 
-    Files without `components` (schema.json) are skipped.
+    Files without `components` are skipped.
 
     Raises:
         TableError: A table is malformed or two tables share an id.
     """
+    if directory is None:
+        paths = [p for topic in catalog.load_topics() for p in catalog.table_paths(topic)]
+    else:
+        paths = sorted(Path(directory).glob("*.json"))
     tables: dict[str, Table] = {}
-    for p in sorted(Path(directory).glob("*.json")):
+    for p in paths:
         data = _read_json(p)
         if "components" not in data:
             continue

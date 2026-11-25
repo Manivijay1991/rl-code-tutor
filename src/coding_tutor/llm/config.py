@@ -3,7 +3,7 @@
 Build a config in code (`LLMConfig(...)`), or from the environment with `config_from_env()`:
 
     CODING_TUTOR_LLM_PROVIDER   ollama (default) | openai
-    CODING_TUTOR_LLM_MODEL      default: gemma4:e4b
+    CODING_TUTOR_LLM_MODEL      default: gemma4:12b
     CODING_TUTOR_LLM_URL        default: the provider's local URL
     CODING_TUTOR_LLM_API_KEY    optional; sent as a Bearer token
 
@@ -18,7 +18,7 @@ from dataclasses import dataclass, field, replace
 
 ENV_PREFIX = "CODING_TUTOR_LLM_"
 DEFAULT_PROVIDER = "ollama"
-DEFAULT_MODEL = "gemma4:e4b"
+DEFAULT_MODEL = "gemma4:12b"
 DEFAULT_URLS = {"ollama": "http://localhost:11434", "openai": "http://localhost:8000/v1"}
 
 

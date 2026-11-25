@@ -1,0 +1,8 @@
+{
+  "id": "ckd",
+  "title": "Chronic kidney disease",
+  "kind": "hcc",
+  "description": "CKD stages, hypertensive CKD and dialysis status.",
+  "order": 10,
+  "enabled": true
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Topic (content/topics/<id>/topic.json)",
+  "description": "One practice topic: a self-contained folder with tables/ and scenarios/. Add a topic by adding a folder; retire one with enabled: false (ids are never reused, because saved progress and the event log refer to them).",
+  "type": "object",
+  "required": ["id", "title", "kind", "description", "order", "enabled"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["hcc", "documentation"], "description": "hcc = a clinical condition group; documentation = a cross-cutting skill such as MEAT or acceptable sources"},
+    "description": {"type": "string"},
+    "order": {"type": "integer", "description": "sort key for menus; lower comes first"},
+    "enabled": {"type": "boolean"}
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "diabetes",
+  "title": "Diabetes",
+  "kind": "hcc",
+  "description": "Diabetes type, complications, the \"with\" convention and long-term drug use.",
+  "order": 20,
+  "enabled": true
+}

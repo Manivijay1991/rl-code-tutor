@@ -2,7 +2,7 @@
 
     from coding_tutor.llm import LLMConfig, config_from_env, make_llm
 
-    llm = make_llm(config_from_env(model="gemma4:e4b"))
+    llm = make_llm(config_from_env(model="gemma4:12b"))
     text = llm("system prompt", "user prompt", seed=1)
 
 The LLM only writes text (clinical notes). It never decides answers.

@@ -31,11 +31,11 @@ import sys
 from collections.abc import Mapping
 from pathlib import Path
 
+from coding_tutor import catalog
 from coding_tutor.engine import hcc
 from coding_tutor.engine.codes import default_db, dotted
 from coding_tutor.engine.rules import Distractor, Slots, Table, combos, load_tables, matches, resolve
 from coding_tutor.llm import LLM, PROVIDERS, LLMConfig, LLMError, config_from_env, make_llm
-from coding_tutor.paths import SCENARIOS_DIR
 
 MIN_WORDS, MAX_WORDS = 50, 550
 
@@ -346,9 +346,21 @@ def make_record(
     }
 
 
-def save(record: dict, out_dir: Path = SCENARIOS_DIR) -> Path:
-    """Write a scenario to `<out_dir>/<table>/<id>.json` and return the path."""
-    path = Path(out_dir) / record["table"] / f"{record['id']}.json"
+def scenario_folder(table_id: str, out_dir: Path | None = None) -> Path:
+    """Return where a table's scenarios are written: `<out_dir>/<table>/`, or the table's topic folder."""
+    if out_dir is not None:
+        return Path(out_dir) / table_id
+    return catalog.scenario_dir(catalog.topic_of(table_id, catalog.table_index(catalog.load_topics())), table_id)
+
+
+def save(record: dict, out_dir: Path | None = None) -> Path:
+    """Write a scenario file and return its path.
+
+    Args:
+        record: Scenario JSON (needs `table` and `id`).
+        out_dir: Folder holding `<table>/<id>.json`; default: the table's topic folder in the catalog.
+    """
+    path = scenario_folder(record["table"], out_dir) / f"{record['id']}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return path
@@ -385,16 +397,39 @@ def generate_one(
     return save(make_record(t, slots, note, args.model, log, con, style), args.out), log
 
 
+def choose_tables(
+    tables: dict[str, Table],
+    index: catalog.TableIndex,
+    table_ids: list[str] | None = None,
+    topic_ids: list[str] | None = None,
+) -> list[Table]:
+    """Return the tables to generate for: the named tables, the tables of the named topics, or all.
+
+    Raises:
+        SystemExit: An unknown table or topic id.
+    """
+    unknown = [t for t in table_ids or [] if t not in tables]
+    known_topics = {topic.id for topic, _ in index.values()}
+    unknown += [t for t in topic_ids or [] if t not in known_topics]
+    if unknown:
+        raise SystemExit(f"unknown table or topic: {', '.join(unknown)}")
+    chosen = [tables[t] for t in table_ids] if table_ids else list(tables.values())
+    if topic_ids:
+        chosen = [t for t in chosen if t["id"] in index and index[t["id"]][0].id in topic_ids]
+    return chosen
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     """Parse command-line arguments."""
     # allow_abbrev=False: otherwise `--api-key <secret>` would be accepted as `--api-key-env`
     # and the secret echoed back in the "variable is not set" error.
     ap = argparse.ArgumentParser(description="Generate practice scenarios with an LLM.", allow_abbrev=False)
+    ap.add_argument("--topic", action="append", help="topic id (repeatable): its tables only")
     ap.add_argument("--table", action="append", help="table id (repeatable); default: all tables")
     ap.add_argument("--n", type=int, default=2, help="scenarios per table")
     ap.add_argument("--all", action="store_true", help="every slot combination once (ignores --n)")
     ap.add_argument("--provider", choices=sorted(PROVIDERS), help="default: $CODING_TUTOR_LLM_PROVIDER or ollama")
-    ap.add_argument("--model", help="default: $CODING_TUTOR_LLM_MODEL or gemma4:e4b")
+    ap.add_argument("--model", help="default: $CODING_TUTOR_LLM_MODEL or gemma4:12b")
     ap.add_argument("--url", help="base URL; default: $CODING_TUTOR_LLM_URL or the provider's local URL")
     ap.add_argument(
         "--api-key-env",
@@ -404,7 +439,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--attempts", type=int, default=3)
-    ap.add_argument("--out", type=Path, default=SCENARIOS_DIR)
+    ap.add_argument("--out", type=Path, default=None, help="write here instead of the topic folders")
     ap.add_argument("--dry-run", action="store_true", help="print the prompts, do not call the LLM")
     return ap.parse_args(argv)
 
@@ -436,7 +471,7 @@ def main(argv: list[str] | None = None, llm: LLM | None = None, env: Mapping[str
     config = llm_config(args, env)
     args.model = config.model
     tables = load_tables()
-    chosen = [tables[i] for i in args.table] if args.table else list(tables.values())
+    chosen = choose_tables(tables, catalog.table_index(catalog.load_topics()), args.table, args.topic)
     rng = random.Random(args.seed)
     llm = llm or make_llm(config)
     con = default_db()

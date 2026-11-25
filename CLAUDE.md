@@ -15,23 +15,28 @@ A free, open-source practice tool for medical coding certification candidates, b
 ## Architecture
 Repository layout (one meaning per name):
 ```
-content/         CC BY-SA, reviewed by certified coders: tables/*.json, scenarios/<table>/<id>.json
-schemas/         JSON Schemas = the contract between Python and JS: table, scenario, bundle, event
-src/coding_tutor/  Apache-2.0 package (paths in paths.py; schema.py = stdlib validator for schemas/)
-web/             static app = the deploy root: index.html (home) + practice.html (assessment), css/, js/, fonts/ (Inter, OFL), config.json, data/bundle.json [built]
-tests/           ALL tests: Python mirrors src/coding_tutor/, tests/web/ mirrors web/js/
+content/         CC BY-SA, reviewed by certified coders: topics/<topic>/{topic.json, tables/, scenarios/<table>/}, hcc_groups.json, references.json
+schemas/         JSON Schemas = the contract between Python and JS: topic, table, scenario, hcc_groups, references, bundle (manifest + topic files), event
+src/coding_tutor/  Apache-2.0 package (paths in paths.py; catalog/ = the only code that knows the content layout; schema.py = stdlib validator)
+web/             static app = the deploy root: index.html (home) + practice.html (assessment), css/, js/{core,data,ui,pages}/, fonts/ (Inter, OFL), config.json, data/manifest.json + data/topics/<id>.<hash>.json [built]
+tests/           ALL tests: Python mirrors src/coding_tutor/, tests/web/<folder>/ mirrors web/js/<folder>/
 data/            local only (gitignored): CMS downloads, codes.sqlite, api.sqlite
 ```
 Pipeline inside `src/coding_tutor/`:
 0. `cms/` — `fetch.py`, `build_db.py`: download CMS files, build `data/codes.sqlite`.
-1. `content/tables/*.json` — rules as slots (deciding details) → correct codes, with confusions tagged per wrong answer; shape in `schemas/table.schema.json`. Slot `label`/`labels` are student-facing wording used by hints.
+1. `catalog/` — topics are self-contained folders (`content/topics/<topic>/topic.json` + `tables/` + `scenarios/<table>/`): add a topic by adding a folder, retire one with `enabled: false` (ids are never reused). `catalog.load_topics`, `table_index`, `load_scenarios` are the only layout-aware functions; everything else asks them. `catalog/coverage.py` (`coding-tutor-coverage`) maps every correct answer to its V28 HCCs and reports coverage of the 115 HCCs by the 22 body-system groups in `content/hcc_groups.json` (computed from answers, never declared).
+   Decision tables (`content/topics/<topic>/tables/*.json`) — rules as slots (deciding details) → correct codes, with confusions tagged per wrong answer; shape in `schemas/table.schema.json`. Slot `label`/`labels` are student-facing wording used by hints.
 2. `engine/` — `rules.py` resolves answers and checks every slot combination is covered; `codes.py` code lookups; `hcc.py` V28 hierarchy and weights (feedback only).
 3. `llm/` — LLM clients: `config.py` (LLMConfig: provider, model, URL, API key; `config_from_env`), `transport.py` (injectable HTTP), `providers.py` (`ollama`, `openai_compatible`, `make_llm`). An LLM is any `(system, user, seed) -> str` function. API keys only via parameters or env vars, never CLI values, logs or files.
-   `generator/scenarios.py` — picks slots, engine computes answer, the injected LLM (default: local Ollama) writes the note, a check confirms deciding details are present (and answer-changing phrases absent), output saved to `content/scenarios/<table>/<id>.json`. Note-writing hints live in the tables: `describe`, `exclusive`, `note_forbid`, `note_rules`, `note_background`, `question`. Each note gets a seeded style (patient age/sex, voice, length, background conditions, signer).
+   `generator/scenarios.py` — picks slots, engine computes answer, the injected LLM (default: local Ollama) writes the note, a check confirms deciding details are present (and answer-changing phrases absent), output saved to the table's topic folder (`content/topics/<topic>/scenarios/<table>/<id>.json`; `--topic`/`--table` select). Note-writing hints live in the tables: `describe`, `exclusive`, `note_forbid`, `note_rules`, `note_background`, `question`. Each note gets a seeded style (patient age/sex, voice, length, background conditions, signer).
    `generator/audit.py` (`coding-tutor-audit`) — reads every note like a CRC coder (by section, ignoring family history and negations), re-derives the deciding details and flags `answer` (note does not support the key), `meat`, `review` and `realism` findings. Heuristic; not a substitute for certified-coder review.
 4. `rl/` — simulator (`simulator.py`), policies (`policies.py`), experiment (`experiment.py`).
-5. `bundle/export.py` — rebuilds every scenario's answer, distractors (trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine into `web/data/bundle.json`; refuses to write if it does not match `schemas/bundle.schema.json`. Re-run after any table or scenario change.
-   `web/js/` — static ES modules, no build, no dependencies, no LLM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward, spaced-review gaps), `selector.js` (pending reward → due review → unseen → weakest; `queuePreview` lists the upcoming traps in that order), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `api.js` (live bandit client), `common.js` (prefs, theme, dates, shared by both pages), `home.js` (home page: hero, animated walkthrough, and a passive directional flow diagram of how the next case is chosen, with the pick-order strip), `app.js` (assessment page controller). Pages: `index.html` → `practice.html?topic=<id>` (`#progress` opens the progress drawer). Animations respect prefers-reduced-motion; layouts are checked from 320px to 1920px. Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
+5. `bundle/export.py` — rebuilds every scenario's answer, distractors (trap, lean, deciding slots, pivot, risk-score gap) and evidence spans from the engine, then writes `web/data/manifest.json` (small: topics, table metadata, HCC labels, references; always fetched fresh) and one immutable, content-hashed file per topic (`web/data/topics/<id>.<hash>.json`, cacheable forever). Refuses to write if anything does not match `schemas/bundle.schema.json` (`$defs/manifest`, `$defs/topic_file`). Re-run after any table or scenario change.
+   `web/js/` — static ES modules, no build, no dependencies, no LLM, layered like the Python package (a layer imports only the layers below it):
+   - `core/` pure logic, no DOM: `bandit.js` (Thompson), `progress.js` (pure updates, delayed reward, spaced-review gaps), `selector.js` (pending reward → due review → unseen → weakest; `queuePreview`), `hints.js` (ladders per action; `scrub` keeps correct codes out of hints), `note.js` (sentences/evidence), `random.js`, `format.js` (dates, trap names).
+   - `data/`: `catalog.js` (manifest + topic files on demand, `buildView` merges them into the shape core reads, `resolveTopic` maps old table ids), `api.js` (live bandit client), `store.js` (localStorage), `prefs.js`.
+   - `ui/`: `dom.js`, `theme.js`, `glossary.js` (`term()`), `nav.js`, `motion.js` (reduced motion, pause/play, reveal on scroll).
+   - `pages/home/` (`main.js`, `walkthrough.js`, `loop.js`) and `pages/practice/` (`main.js` boots and wires the `ui` registry; `state.js` holds shared state; feature modules `topics`, `question`, `note-view`, `workbench`, `hint-card`, `references`, `debrief`, `drawer`, `overlays`, `live` import only `state.js` and lower layers and call each other through `ui.<name>`, so there are no import cycles). Pages: `index.html` → `practice.html?topic=<id>` (`#progress` opens the progress drawer). Animations respect prefers-reduced-motion; layouts are checked from 320px to 1920px. Coach mode done; exam mode (sections, flag for review, countdown timer) TODO.
 6. `live/` — live bandit service (optional; `web/config.json` `api`: null = offline, "/api" = same origin, or a URL). Browser still chooses actions with Thompson sampling over its own counts + shared counts from `GET /v1/policy` (capped at `SHARED_CAP`=20 pseudo-trials). Settled rewards go to `POST /v1/events` as exactly `{confusion, miss_level, action, reward}` (`schemas/event.schema.json`; `policy.py` rejects any other field). `app.py` stdlib WSGI `make_app` (injected `Store`, confusions, CORS allowlist, rate limiter, clock; paths accept an `/api` prefix); `stores/` backends build a `Store` (record, arm_rows, total_events): `stores/sqlite.py` now (arm totals + append-only event log, no identifiers, day granularity), Redis for Vercel TODO. `server.py` = standalone API.
 7. `devserver/` — `coding-tutor-serve [--no-api]`: static files (`static.py`) plus, by default, the live API under `/api` on one origin, answering `/config.json` as `{"api": "/api"}`. `web/config.json` also defaults to `"/api"`; the page falls back to offline when the API is unreachable.
 
@@ -66,12 +71,12 @@ Pipeline inside `src/coding_tutor/`:
 - Everything usable by keyboard: answer choices are a radio group (roving tabindex, arrow keys); note sentences become focusable buttons while marking/finding; dialogs and the drawer trap focus and return it on close.
 - Single-key shortcuts can be switched off (Keyboard shortcuts dialog, `prefs.shortcuts`).
 - Anything that auto-advances has a visible Pause button and stops under prefers-reduced-motion.
-- Jargon gets a glossary tooltip via `term()` in `common.js`; hidden tooltips use `display: none` so they never widen the page.
+- Jargon gets a glossary tooltip via `term()` in `ui/glossary.js`; hidden tooltips use `display: none` so they never widen the page.
 - Check 320–1920px for horizontal overflow before shipping UI changes.
 
 ## Testing
 - All tests live in one root, `tests/`, mirroring the source layout for both languages:
-  `src/coding_tutor/engine/x.py` -> `tests/engine/test_x.py`; `web/js/x.js` -> `tests/web/x.test.mjs`.
+  `src/coding_tutor/engine/x.py` -> `tests/engine/test_x.py`; `web/js/core/x.js` -> `tests/web/core/x.test.mjs`.
   Never put tests inside `web/` (it is the deploy root).
 - Shared fixtures go in `tests/conftest.py`; use `parametrize` instead of copied test bodies.
 - `pyproject.toml` puts `src/` on the pytest import path (`import coding_tutor...`); don't add sys.path hacks.
@@ -81,8 +86,8 @@ Pipeline inside `src/coding_tutor/`:
 - Fixed random seeds in all RL and simulation tests; mark long runs `@pytest.mark.slow`.
 - Commands (PowerShell):
   - `.\.venv\Scripts\python.exe -m ruff check .` and `.\.venv\Scripts\python.exe -m ruff format --check .`
-  - `.\.venv\Scripts\python.exe -m pytest` (quick run: add `-m "not slow"`); this also runs the web JS tests via Node when installed (`tests/web/*.test.mjs`, Node's built-in runner, no npm packages). Direct JS run: `node --test "tests/web/*.test.mjs"`
-  - After changing tables or scenarios: `coding-tutor-audit` (must report 0 findings; regenerate flagged notes), then `coding-tutor-export-ui` to refresh `web/data/bundle.json`.
+  - `.\.venv\Scripts\python.exe -m pytest` (quick run: add `-m "not slow"`); this also runs the web JS tests via Node when installed (`tests/web/**/*.test.mjs`, Node's built-in runner, no npm packages). Direct JS run: `node --test "tests/web/**/*.test.mjs"`
+  - After changing tables or scenarios: `coding-tutor-audit` (must report 0 findings; regenerate flagged notes), then `coding-tutor-export-ui` to refresh `web/data/` (manifest + topic files); `coding-tutor-coverage` shows HCC coverage.
 - Before calling a task done: ruff clean and all tests passing; report both results.
 - Refactors must not change behavior: existing tests stay green without editing them,
   unless I approve a test change.

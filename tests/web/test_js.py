@@ -1,4 +1,4 @@
-"""Run the web UI's JavaScript tests (tests/web/*.test.mjs, Node's built-in runner) inside pytest."""
+"""Run the web UI's JavaScript tests (tests/web/**/*.test.mjs, Node's built-in runner) inside pytest."""
 
 import shutil
 import subprocess
@@ -9,7 +9,7 @@ import pytest
 from coding_tutor.paths import REPO_ROOT
 
 NODE = shutil.which("node")
-JS_TESTS = sorted(Path(__file__).parent.glob("*.test.mjs"))
+JS_TESTS = sorted(Path(__file__).parent.rglob("*.test.mjs"))
 
 
 @pytest.mark.skipif(NODE is None, reason="Node.js not installed")

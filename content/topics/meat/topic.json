@@ -1,0 +1,8 @@
+{
+  "id": "meat",
+  "title": "MEAT documentation",
+  "kind": "documentation",
+  "description": "Which chronic conditions the note supports: assessed and treated, or only listed.",
+  "order": 900,
+  "enabled": true
+}

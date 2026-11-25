@@ -1,37 +1,45 @@
-"""Export generated scenarios into one JSON bundle for the static web UI (web/data/bundle.json).
+"""Export generated scenarios for the static web UI: web/data/manifest.json plus one file per topic.
 
 Only the note text is taken from each scenario file. Answers, distractors, explanations and
 risk-score gaps are recomputed from the current decision tables, so the UI never shows an answer
 the rules engine would not give today. A note that no longer passes the generator's check (because
 a table changed) is skipped and reported.
 
-    python -m coding_tutor.bundle.export
+    python -m coding_tutor.bundle.export      # or: coding-tutor-export-ui
+
+The manifest is small and always fetched fresh; each topic file (web/data/topics/<id>.<hash>.json) is
+immutable, so browsers and CDNs can cache it forever. The shapes are in schemas/bundle.schema.json.
 """
 
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 import json
 import re
 import sqlite3
 import sys
 from pathlib import Path
 
-from coding_tutor import __version__
+from coding_tutor import __version__, catalog
 from coding_tutor.engine import codes as codedb
 from coding_tutor.engine import hcc
 from coding_tutor.engine.codes import dotted
 from coding_tutor.engine.rules import Answer, Slots, Table, TableError, load_tables, match_rule, matches, resolve
 from coding_tutor.generator.scenarios import check_note, flat_evidence, requirements
-from coding_tutor.paths import BUNDLE_PATH, REFERENCES_PATH, SCENARIOS_DIR
+from coding_tutor.paths import REFERENCES_PATH, WEB_DATA_DIR
 from coding_tutor.schema import load_schema, validate
 
 
 # ---- reading ----
-def load_scenario_files(directory: Path = SCENARIOS_DIR) -> list[dict]:
-    """Return every scenario JSON under `directory`, sorted by id."""
-    files = sorted(Path(directory).glob("*/*.json"))
-    return sorted((json.loads(p.read_text(encoding="utf-8")) for p in files), key=lambda r: r["id"])
+def load_scenario_files(directory: Path | None = None) -> list[dict]:
+    """Return every scenario sorted by id: the enabled topics' files, or a flat `<directory>/<table>/*.json` tree.
+
+    A missing `directory` gives an empty list.
+    """
+    if directory is not None and not Path(directory).is_dir():
+        return []
+    return catalog.load_scenarios(directory=directory)
 
 
 def load_references(path: Path = REFERENCES_PATH) -> dict[str, dict]:
@@ -249,34 +257,145 @@ def _hccs_in(entry: dict) -> set[str]:
     return found
 
 
-def write_bundle(bundle: dict, path: Path = BUNDLE_PATH) -> Path:
-    """Write the bundle as compact UTF-8 JSON and return the path."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(bundle, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    return path
+# ---- delivery: a small manifest plus one immutable, content-hashed file per topic ----
+TOPIC_FILES_DIR = "topics"
 
 
-def contract_problems(bundle: dict) -> list[str]:
-    """Return mismatches between the bundle and schemas/bundle.schema.json (the contract with web/js)."""
-    return validate(bundle, load_schema("bundle"))
+def _compact(data: dict) -> str:
+    """Serialize as compact UTF-8 JSON (the delivered form, also hashed for the file name)."""
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+
+
+def topic_files(bundle: dict, index: catalog.TableIndex) -> dict[str, dict]:
+    """Split the bundle's scenarios by topic: topic id -> {topic, codes, scenarios}.
+
+    Each file carries only the code descriptions its own scenarios use. Topics without scenarios are omitted.
+    """
+    by_topic: dict[str, list[dict]] = {}
+    for entry in bundle["scenarios"]:
+        by_topic.setdefault(catalog.topic_of(entry["table"], index).id, []).append(entry)
+    out = {}
+    for tid, entries in by_topic.items():
+        used = {c for e in entries for o in e["options"] for c in o["codes"]}
+        codes = {c: bundle["codes"][c] for c in sorted(used) if c in bundle["codes"]}
+        out[tid] = {"topic": tid, "codes": codes, "scenarios": entries}
+    return out
+
+
+def file_name(topic_id: str, content: dict) -> str:
+    """Return `topics/<id>.<hash>.json`; the hash changes whenever the content does (safe to cache forever)."""
+    digest = hashlib.sha256(_compact(content).encode("utf-8")).hexdigest()[:10]
+    return f"{TOPIC_FILES_DIR}/{topic_id}.{digest}.json"
+
+
+def build_manifest(
+    bundle: dict, topics: list[catalog.Topic], index: catalog.TableIndex, files: dict[str, dict]
+) -> dict:
+    """Return the manifest: topics in menu order (only those with scenarios), table metadata, HCC labels, references."""
+    entries = []
+    for topic in topics:
+        if topic.id not in files:
+            continue
+        scenarios = files[topic.id]["scenarios"]
+        entries.append(
+            {
+                "id": topic.id,
+                "title": topic.title,
+                "kind": topic.kind,
+                "description": topic.description,
+                "order": topic.order,
+                "file": file_name(topic.id, files[topic.id]),
+                "scenarios": len(scenarios),
+                "tables": sorted({e["table"] for e in scenarios}),
+            }
+        )
+    tables = {tid: {**meta, "topic": catalog.topic_of(tid, index).id} for tid, meta in bundle["tables"].items()}
+    return {
+        "version": bundle["version"],
+        "generated": bundle["generated"],
+        "code_set": bundle["code_set"],
+        "topics": entries,
+        "tables": tables,
+        "hccs": bundle["hccs"],
+        "references": bundle["references"],
+    }
+
+
+def contract_problems(manifest: dict, files: dict[str, dict] | None = None) -> list[str]:
+    """Return mismatches with schemas/bundle.schema.json (the contract with web/js): manifest and each topic file."""
+    schema = load_schema("bundle")
+    problems = validate(manifest, {"$ref": "#/$defs/manifest"}, schema)
+    for tid, content in (files or {}).items():
+        problems += [f"{tid}: {p}" for p in validate(content, {"$ref": "#/$defs/topic_file"}, schema)]
+    return problems
+
+
+def write_delivery(manifest: dict, files: dict[str, dict], out_dir: Path = WEB_DATA_DIR) -> list[Path]:
+    """Write the topic files, then the manifest; remove topic files (and the old single bundle) no longer listed.
+
+    Writing the manifest last means a reader never sees a manifest that points at a missing file.
+
+    Returns:
+        Every path written, the manifest last.
+    """
+    out_dir = Path(out_dir)
+    (out_dir / TOPIC_FILES_DIR).mkdir(parents=True, exist_ok=True)
+    written = []
+    for entry in manifest["topics"]:
+        path = out_dir / entry["file"]
+        if not path.exists():
+            path.write_text(_compact(files[entry["id"]]), encoding="utf-8")
+        written.append(path)
+    manifest_path = out_dir / "manifest.json"
+    tmp = manifest_path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    tmp.replace(manifest_path)
+    keep = {p.name for p in written}
+    for stale in (out_dir / TOPIC_FILES_DIR).glob("*.json"):
+        if stale.name not in keep:
+            stale.unlink()
+    (out_dir / "bundle.json").unlink(missing_ok=True)  # the pre-topics single file
+    return [*written, manifest_path]
+
+
+def export(
+    records: list[dict],
+    tables: dict[str, Table],
+    topics: list[catalog.Topic],
+    con: sqlite3.Connection | None,
+    references: dict[str, dict] | None = None,
+) -> tuple[dict, dict[str, dict], list]:
+    """Build everything the web app reads.
+
+    Returns:
+        (manifest, topic id -> topic file content, skipped scenarios as [(id, problems)]).
+    """
+    bundle, skipped = build_bundle(records, tables, con, references)
+    index = catalog.table_index(topics)
+    files = topic_files(bundle, index)
+    return build_manifest(bundle, topics, index, files), files, skipped
 
 
 def main() -> int:
-    """Export the bundle and print a summary; exit 1 if any scenario was skipped or the contract fails."""
+    """Export the manifest and topic files; exit 1 if a scenario was skipped or the contract fails."""
     con = codedb.default_db()
     references = load_references()
-    bundle, skipped = build_bundle(load_scenario_files(), load_tables(), con, references)
-    problems = contract_problems(bundle)
-    unlinked = sorted(cited_refs(bundle["scenarios"]) - set(references))
+    topics = catalog.load_topics()
+    manifest, files, skipped = export(load_scenario_files(), load_tables(), topics, con, references)
+    unlinked = sorted({r for f in files.values() for e in f["scenarios"] for r in e["refs"]} - set(references))
     if unlinked:
         print("note: references without a link in content/references.json:", ", ".join(unlinked))
+    problems = contract_problems(manifest, files)
     if problems:
-        print("bundle does not match schemas/bundle.schema.json; nothing written:", *problems[:10], sep="\n  ")
+        print("output does not match schemas/bundle.schema.json; nothing written:", *problems[:10], sep="\n  ")
         return 1
-    path = write_bundle(bundle)
+    paths = write_delivery(manifest, files)
     for sid, problems in skipped:
         print(f"[SKIP] {sid}: {problems[0]}")
-    print(f"exported {len(bundle['scenarios'])} scenarios, {len(bundle['codes'])} codes -> {path}")
+    for entry in manifest["topics"]:
+        print(f"  {entry['id']:12} {entry['scenarios']:4} scenarios -> {entry['file']}")
+    total = sum(t["scenarios"] for t in manifest["topics"])
+    print(f"exported {total} scenarios in {len(files)} topics -> {paths[-1]}")
     if con is None:
         print("note: codes.sqlite not built; code descriptions and risk-score gaps are empty")
     return 1 if skipped else 0

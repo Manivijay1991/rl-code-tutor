@@ -26,7 +26,8 @@ Each command is also available as a module, e.g. `python -m coding_tutor.engine.
 ## Practice (web UI, coach mode)
 
 ```powershell
-coding-tutor-export-ui    # scenarios + rules engine -> web\data\bundle.json
+coding-tutor-export-ui    # scenarios + rules engine -> web\data\manifest.json + one file per topic
+coding-tutor-coverage     # which of the 115 V28 HCCs / 22 body-system groups the content covers
 coding-tutor-serve        # opens http://127.0.0.1:8765
 ```
 
@@ -89,7 +90,7 @@ or run the API alone (`coding-tutor-api`, port 8780) with `{"api": "http://127.0
 - Server: standard-library WSGI (`coding_tutor.live.app.make_app`), CORS allowlist, 64 KB body limit,
   per-client rate limit. Storage is pluggable (`live/stores/`): SQLite now, a hosted store for deployment.
 
-JavaScript tests live in `tests/web/` (Node's built-in runner: `node --test "tests/web/*.test.mjs"`) and also run inside `pytest`.
+JavaScript tests live in `tests/web/` (Node's built-in runner: `node --test "tests/web/**/*.test.mjs"`) and also run inside `pytest`.
 
 Resolve a single case:
 
@@ -99,7 +100,7 @@ coding-tutor-check diabetes_complications dm_type=type2 complication=ckd_stage4 
 
 ## Generate practice scenarios
 
-Uses a local LLM through [Ollama](https://ollama.com) by default (model `gemma4:e4b`):
+Uses a local LLM through [Ollama](https://ollama.com) by default (model `gemma4:12b`):
 
 ```powershell
 coding-tutor-generate --n 2                          # 2 per table
@@ -115,7 +116,7 @@ The client lives in `coding_tutor.llm` (providers: `ollama`, and `openai` for an
 | Flag | Environment variable | Default |
 |---|---|---|
 | `--provider` | `CODING_TUTOR_LLM_PROVIDER` | `ollama` |
-| `--model` | `CODING_TUTOR_LLM_MODEL` | `gemma4:e4b` |
+| `--model` | `CODING_TUTOR_LLM_MODEL` | `gemma4:12b` |
 | `--url` | `CODING_TUTOR_LLM_URL` | provider's local URL |
 | `--api-key-env VAR` | `CODING_TUTOR_LLM_API_KEY` | none |
 
@@ -137,15 +138,19 @@ llm = make_llm(LLMConfig(provider="openai", model="m", base_url="http://gpu:8000
 
 The LLM only writes the note. The answer, distractors and explanations come from the rules engine.
 A note is kept only if it contains every deciding detail and none of the phrases that would change
-the answer; otherwise it is retried with the problems listed. Output: `content/scenarios/<table>/<id>.json` (draft).
+the answer; otherwise it is retried with the problems listed. Output: `content/topics/<topic>/scenarios/<table>/<id>.json` (draft).
 
 ## Project layout
 
 ```
 content/                CC BY-SA content reviewed by certified coders
-  tables/               decision tables: slots -> codes, tagged wrong answers (draft)
-  scenarios/<table>/    generated practice cases (draft)
-schemas/                JSON Schemas: the contract between Python and the web app (table, scenario, bundle, event)
+  topics/<topic>/       one folder per practice topic: add a folder to add a topic
+    topic.json          id, title, kind (hcc | documentation), order, enabled
+    tables/             decision tables: slots -> codes, tagged wrong answers (draft)
+    scenarios/<table>/  generated practice cases (draft)
+  hcc_groups.json       the 115 V28 HCCs in 22 body-system groups (coverage reports)
+  references.json       guideline references -> title and link
+schemas/                JSON Schemas: the contract between Python and the web app (topic, table, scenario, bundle, event, ...)
 src/coding_tutor/       Python package (Apache-2.0)
   paths.py  schema.py   file locations; stdlib validator for schemas/
   cms/                  fetch.py, build_db.py (CMS downloads -> data/codes.sqlite)
@@ -153,11 +158,12 @@ src/coding_tutor/       Python package (Apache-2.0)
   llm/                  config.py (provider, model, URL, API key), transport.py, providers.py (Ollama, OpenAI-compatible)
   generator/            scenarios.py (LLM writes the note; the engine decides the answer)
   rl/                   simulator.py, policies.py, experiment.py
-  bundle/               export.py: content + engine -> web/data/bundle.json (validated against schemas/)
+  catalog/              the only code that knows the content layout (topics, tables, scenarios); coverage.py
+  bundle/               export.py: content + engine -> web/data/manifest.json + topics/<id>.<hash>.json (validated)
   live/                 live bandit API: policy.py, app.py (WSGI), server.py, stores/ (sqlite.py)
   devserver/            serve.py, static.py: local UI, optionally with the API on one origin
-web/                    static app = deploy root: index.html (home), practice.html (assessment), css/, js/, fonts/, config.json, data/bundle.json
-tests/                  all tests: Python mirrors src/coding_tutor/, tests/web/ mirrors web/js/
+web/                    static app = deploy root: index.html (home), practice.html (assessment), css/, js/{core,data,ui,pages}/, fonts/, config.json, data/
+tests/                  all tests: Python mirrors src/coding_tutor/, tests/web/<folder>/ mirrors web/js/<folder>/
 docs/python-style.md    coding standards
 data/                   local only, not committed: CMS downloads, codes.sqlite, api.sqlite
 ```

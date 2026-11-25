@@ -1,12 +1,12 @@
 """File locations used across the package.
 
-Content (decision tables and scenarios, CC BY-SA) lives in `content/` at the repository root, and the
-JSON Schemas shared by Python and JavaScript in `schemas/`. Downloaded CMS files and local databases go
-in `data/` (not committed). Override with environment variables when running elsewhere:
+Content (CC BY-SA) lives in `content/` at the repository root: one folder per topic under `topics/`
+(see `coding_tutor.catalog`, the only module that knows that layout), plus `hcc_groups.json` and
+`references.json`. JSON Schemas shared by Python and JavaScript are in `schemas/`. Downloaded CMS files
+and local databases go in `data/` (not committed). Override with environment variables when running elsewhere:
 
-    CODING_TUTOR_CONTENT     folder holding tables/ and scenarios/
+    CODING_TUTOR_CONTENT     folder holding topics/, hcc_groups.json and references.json
     CODING_TUTOR_DATA        folder for CMS downloads and SQLite databases
-    CODING_TUTOR_SCENARIOS   where generated scenarios are written and read
 
 When the package is installed outside the repository (e.g. a serverless function), the content folder
 falls back to `./content` under the working directory.
@@ -30,8 +30,8 @@ def _content_dir() -> Path:
 
 
 CONTENT_DIR = _content_dir()
-TABLES_DIR = CONTENT_DIR / "tables"
-SCENARIOS_DIR = Path(os.environ.get("CODING_TUTOR_SCENARIOS", CONTENT_DIR / "scenarios"))
+TOPICS_DIR = CONTENT_DIR / "topics"
+HCC_GROUPS_PATH = CONTENT_DIR / "hcc_groups.json"
 REFERENCES_PATH = CONTENT_DIR / "references.json"
 SCHEMAS_DIR = REPO_ROOT / "schemas"
 
@@ -41,4 +41,5 @@ DB_PATH = DATA_DIR / "codes.sqlite"
 API_DB_PATH = DATA_DIR / "api.sqlite"
 
 WEB_DIR = REPO_ROOT / "web"
-BUNDLE_PATH = WEB_DIR / "data" / "bundle.json"
+WEB_DATA_DIR = WEB_DIR / "data"
+MANIFEST_PATH = WEB_DATA_DIR / "manifest.json"

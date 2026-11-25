@@ -2,9 +2,10 @@ import json
 
 import pytest
 
-from coding_tutor.bundle.export import build_bundle, contract_problems, load_scenario_files
+from coding_tutor import catalog
+from coding_tutor.bundle.export import contract_problems, export, load_scenario_files
 from coding_tutor.live.policy import MAX_BATCH, MAX_CLIENT_LEN, MISS_LEVELS
-from coding_tutor.paths import BUNDLE_PATH, SCENARIOS_DIR, TABLES_DIR
+from coding_tutor.paths import HCC_GROUPS_PATH, MANIFEST_PATH, WEB_DATA_DIR
 from coding_tutor.rl.simulator import ACTIONS
 from coding_tutor.schema import load_schema, validate
 
@@ -66,39 +67,56 @@ def test_load_schema_missing(tmp_path):
 
 
 # ---- the real contracts ----
+def test_every_topic_matches_its_schema():
+    topics = catalog.load_topics(include_disabled=True)
+    assert topics
+    for t in topics:
+        assert (
+            validate(json.loads((t.path / catalog.TOPIC_FILE).read_text(encoding="utf-8")), load_schema("topic")) == []
+        )
+
+
 def test_every_table_matches_its_schema():
-    schema = load_schema("table")
-    files = sorted(TABLES_DIR.glob("*.json"))
+    files = [p for t in catalog.load_topics(include_disabled=True) for p in catalog.table_paths(t)]
     assert files
     for p in files:
-        assert validate(json.loads(p.read_text(encoding="utf-8")), schema) == [], p.name
+        assert validate(json.loads(p.read_text(encoding="utf-8")), load_schema("table")) == [], p.name
 
 
 def test_every_scenario_matches_its_schema():
-    schema = load_schema("scenario")
-    files = sorted(SCENARIOS_DIR.glob("*/*.json"))
+    files = catalog.scenario_paths(catalog.load_topics(include_disabled=True))
     if not files:
         pytest.skip("no generated scenarios")
     for p in files:
-        assert validate(json.loads(p.read_text(encoding="utf-8")), schema) == [], p.name
+        assert validate(json.loads(p.read_text(encoding="utf-8")), load_schema("scenario")) == [], p.name
 
 
-def test_fresh_bundle_matches_contract(tables):
-    bundle, _ = build_bundle(load_scenario_files(), tables, None)
-    assert contract_problems(bundle) == []
+def test_hcc_groups_match_their_schema():
+    assert validate(json.loads(HCC_GROUPS_PATH.read_text(encoding="utf-8")), load_schema("hcc_groups")) == []
 
 
-def test_committed_bundle_matches_contract():
-    if not BUNDLE_PATH.exists():
-        pytest.skip("bundle not exported")
-    assert contract_problems(json.loads(BUNDLE_PATH.read_text(encoding="utf-8"))) == []
+def fresh_export(tables):
+    return export(load_scenario_files(), tables, catalog.load_topics(), None)
+
+
+def test_fresh_export_matches_contract(tables):
+    manifest, files, _ = fresh_export(tables)
+    assert contract_problems(manifest, files) == []
+
+
+def test_committed_export_matches_contract():
+    if not MANIFEST_PATH.exists():
+        pytest.skip("not exported")
+    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    files = {t["id"]: json.loads((WEB_DATA_DIR / t["file"]).read_text(encoding="utf-8")) for t in manifest["topics"]}
+    assert contract_problems(manifest, files) == []
 
 
 def test_contract_catches_a_renamed_field(tables):
-    bundle, _ = build_bundle(load_scenario_files(), tables, None)
-    s = bundle["scenarios"][0]
+    manifest, files, _ = fresh_export(tables)
+    s = next(iter(files.values()))["scenarios"][0]
     s["choices"] = s.pop("options")
-    problems = contract_problems(bundle)
+    problems = contract_problems(manifest, files)
     assert any("missing required 'options'" in p for p in problems)
     assert any("unexpected property 'choices'" in p for p in problems)
 

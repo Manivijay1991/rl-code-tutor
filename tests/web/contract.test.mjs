@@ -1,28 +1,42 @@
-// The JS side of the contracts in schemas/: what the app reads (bundle) and what it sends (events).
+// The JS side of the contracts in schemas/: what the app reads (manifest + topic files) and what it sends (events).
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 
-import { CLIENT, toEvents } from "../../web/js/api.js";
-import { ACTIONS } from "../../web/js/bandit.js";
+import { ACTIONS } from "../../web/js/core/bandit.js";
+import { CLIENT, toEvents } from "../../web/js/data/api.js";
+import { exported, readManifest, readTopicFiles } from "./content.mjs";
 import { validate } from "./schema.mjs";
 
 const read = (rel) => JSON.parse(readFileSync(new URL(rel, import.meta.url), "utf-8"));
-const BUNDLE = new URL("../../web/data/bundle.json", import.meta.url);
 const bundleSchema = read("../../schemas/bundle.schema.json");
 const eventSchema = read("../../schemas/event.schema.json");
+const asManifest = (v) => validate(v, { $ref: "#/$defs/manifest" }, bundleSchema);
+const asTopicFile = (v) => validate(v, { $ref: "#/$defs/topic_file" }, bundleSchema);
 
-test("the committed bundle matches the contract the app relies on", { skip: !existsSync(BUNDLE) && "bundle not exported" }, () => {
-  assert.deepEqual(validate(JSON.parse(readFileSync(BUNDLE, "utf-8")), bundleSchema), []);
+test("the exported manifest and topic files match the contract the app relies on", { skip: !exported && "not exported" }, () => {
+  const manifest = readManifest();
+  assert.deepEqual(asManifest(manifest), []);
+  for (const [id, file] of Object.entries(readTopicFiles(manifest))) assert.deepEqual(asTopicFile(file), [], id);
 });
 
-test("a renamed field breaks the contract", () => {
-  const bundle = JSON.parse(readFileSync(BUNDLE, "utf-8"));
-  const s = bundle.scenarios[0];
+test("every manifest table belongs to a listed topic and every topic file matches its entry", { skip: !exported && "not exported" }, () => {
+  const manifest = readManifest();
+  const topics = new Set(manifest.topics.map((t) => t.id));
+  for (const [tid, t] of Object.entries(manifest.tables)) assert.ok(topics.has(t.topic), tid);
+  const files = readTopicFiles(manifest);
+  for (const entry of manifest.topics) {
+    assert.equal(files[entry.id].topic, entry.id);
+    assert.equal(files[entry.id].scenarios.length, entry.scenarios);
+  }
+});
+
+test("a renamed field breaks the contract", { skip: !exported && "not exported" }, () => {
+  const file = Object.values(readTopicFiles())[0];
+  const s = file.scenarios[0];
   s.choices = s.options;
   delete s.options;
-  const problems = validate(bundle, bundleSchema);
-  assert.ok(problems.some((p) => p.includes("missing required 'options'")));
+  assert.ok(asTopicFile(file).some((p) => p.includes("missing required 'options'")));
 });
 
 test("events the app sends match the event schema", () => {

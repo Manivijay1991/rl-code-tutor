@@ -1,0 +1,106 @@
+{
+  "id": "meat_support",
+  "title": "Documentation support (MEAT) for chronic conditions",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Which chronic condition, if any, is supported for risk adjustment by this note? Choose 'no code' if none is supported.",
+  "note": "MEAT (Monitor, Evaluate, Assess/Address, Treat) is an industry mnemonic, not CMS wording. The underlying rule is coding conditions that coexist and affect care at the encounter.",
+  "slots": {
+    "condition": {
+      "label": "Chronic condition",
+      "labels": {"copd": "COPD", "chf_chronic_systolic": "Chronic systolic heart failure", "mdd_recurrent_moderate": "Major depression, recurrent, moderate"},
+      "values": ["copd", "chf_chronic_systolic", "mdd_recurrent_moderate"],
+      "evidence": {
+        "copd": ["COPD", "chronic obstructive pulmonary disease"],
+        "chf_chronic_systolic": ["chronic systolic heart failure", "HFrEF"],
+        "mdd_recurrent_moderate": ["major depressive disorder, recurrent, moderate", "recurrent major depression, moderate"]
+      }
+    },
+    "documentation": {
+      "label": "Where the condition appears",
+      "labels": {"meat_supported": "Addressed at this visit (MEAT)", "problem_list_only": "Problem list only", "med_list_only": "A medication on the list only"},
+      "values": ["meat_supported", "problem_list_only", "med_list_only"],
+      "evidence": {
+        "meat_supported": ["stable", "continue", "reviewed", "will monitor", "plan"],
+        "problem_list_only": ["problem list"],
+        "med_list_only": ["medication list"]
+      },
+      "exclusive": false,
+      "describe": {
+        "meat_supported": "The provider addresses the condition at this visit in the assessment and plan: at least one of monitor, evaluate, assess or treat (e.g. stable, symptoms reviewed, continue medication, will monitor). The Medication List includes at least one medication that treats the condition, and the plan refers to it. The condition is also listed in a 'Problem List' section, together with two or three past surgical history items (e.g. 'status post appendectomy', 'history of tonsillectomy', 'status post cholecystectomy').",
+        "problem_list_only": "The condition appears ONLY in a 'Problem List' section, among two or three past surgical history items (e.g. 'status post appendectomy', 'history of tonsillectomy', 'status post cholecystectomy'). It is not mentioned in the history, exam, assessment or plan; the visit is about something else.",
+        "med_list_only": "A medication for the condition appears ONLY in a 'Medication List' section. The condition itself is never named anywhere in the note; the visit is about something else. Include a 'Problem List' section with two or three past surgical history items only (e.g. 'status post appendectomy', 'history of tonsillectomy', 'status post cholecystectomy')."
+      }
+    }
+  },
+  "note_forbid": ["diabetes", "diabetic", "T2DM", "DM2", "CKD", "chronic kidney disease", "atrial fibrillation", "AFib",
+                  "cancer", "carcinoma", "malignant", "dementia", "morbid obesity", "rheumatoid", "cirrhosis", "stroke",
+                  "schizophrenia", "bipolar", "angina", "vascular disease", "amputation"],
+  "note_rules": [
+    {"when": {}, "require": [["problem list"]], "describe":"The reason for the visit, and anything else the provider addresses, must be a condition that does not affect risk adjustment (e.g. low back pain, knee osteoarthritis, seasonal allergies, or a routine wellness visit). Do not mention any other chronic disease, not even in family history."},
+    {"when": {"condition": "copd"}, "forbid": ["heart failure", "CHF", "depression", "depressive", "MDD"]},
+    {"when": {"condition": "chf_chronic_systolic"}, "forbid": ["COPD", "chronic obstructive", "emphysema", "depression", "depressive", "MDD", "hypertension", "HTN",
+                                                              "NSAID", "NSAIDs", "naproxen", "ibuprofen", "diclofenac", "meloxicam", "celecoxib"]},
+    {"when": {"condition": "mdd_recurrent_moderate"}, "forbid": ["COPD", "chronic obstructive", "emphysema", "heart failure", "CHF"]},
+    {"when": {"condition": "copd", "documentation": "med_list_only"}, "skip_evidence": ["condition"],
+     "require": [["tiotropium", "albuterol", "fluticasone-salmeterol", "budesonide-formoterol"]],
+     "forbid": ["COPD", "chronic obstructive", "emphysema", "chronic bronchitis", "lung disease"]},
+    {"when": {"condition": "chf_chronic_systolic", "documentation": "med_list_only"}, "skip_evidence": ["condition"],
+     "require": [["sacubitril-valsartan", "carvedilol", "metoprolol succinate", "furosemide", "spironolactone"]],
+     "forbid": ["heart failure", "HFrEF", "CHF", "cardiomyopathy", "ejection fraction"]},
+    {"when": {"condition": "mdd_recurrent_moderate", "documentation": "med_list_only"}, "skip_evidence": ["condition"],
+     "require": [["sertraline", "escitalopram", "fluoxetine", "bupropion", "venlafaxine"]],
+     "forbid": ["depression", "depressive", "MDD", "PHQ"]}
+  ],
+  "confusions": {
+    "missed_supported_condition": {"description": "Did not code a chronic condition the provider monitored, evaluated, assessed or treated.", "lean": "under"},
+    "coded_without_meat": {"description": "Coded a condition that only appears in a problem list or history without being addressed.", "lean": "over"},
+    "coded_from_med_list": {"description": "Inferred and coded a diagnosis from a medication list.", "lean": "over"},
+    "unspecified_when_specified": {"description": "Used an unspecified code when severity/type was documented.", "lean": "under"}
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {"when": {"condition": "copd", "documentation": "meat_supported"}, "codes": ["J44.9"],
+         "explain": "The provider addressed COPD at this visit (status and plan documented), so it is supported and coded.",
+         "refs": ["OCG IV.J", "OCG IV.I"],
+         "wrong": [{"codes": [], "confusion": "missed_supported_condition", "why": "Status plus a plan in the assessment supports the diagnosis."}]},
+        {"when": {"condition": "chf_chronic_systolic", "documentation": "meat_supported"}, "codes": ["I50.22"],
+         "explain": "The provider addressed chronic systolic heart failure at this visit, so it is supported: I50.22.",
+         "refs": ["OCG IV.J", "OCG IV.I"],
+         "wrong": [{"codes": [], "confusion": "missed_supported_condition", "why": "Status plus a plan in the assessment supports the diagnosis."},
+                   {"codes": ["I50.9"], "confusion": "unspecified_when_specified", "why": "Type (systolic) and acuity (chronic) are documented."}]},
+        {"when": {"condition": "mdd_recurrent_moderate", "documentation": "meat_supported"}, "codes": ["F33.1"],
+         "explain": "The provider addressed recurrent moderate major depression: F33.1. Severity matters; unspecified recurrent MDD (F33.9) does not map to a V28 HCC.",
+         "refs": ["OCG IV.J"],
+         "wrong": [{"codes": [], "confusion": "missed_supported_condition", "why": "The condition was addressed at the visit."},
+                   {"codes": ["F33.9"], "confusion": "unspecified_when_specified", "why": "Severity (moderate) is documented."}]},
+        {"when": {"condition": "copd", "documentation": "problem_list_only"}, "codes": [],
+         "explain": "COPD appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service.",
+         "refs": ["OCG IV.J"],
+         "wrong": [{"codes": ["J44.9"], "confusion": "coded_without_meat", "why": "A problem-list entry alone does not show the condition affected care at this visit."}]},
+        {"when": {"condition": "chf_chronic_systolic", "documentation": "problem_list_only"}, "codes": [],
+         "explain": "Heart failure appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service.",
+         "refs": ["OCG IV.J"],
+         "wrong": [{"codes": ["I50.22"], "confusion": "coded_without_meat", "why": "A problem-list entry alone does not show the condition affected care at this visit."}]},
+        {"when": {"condition": "mdd_recurrent_moderate", "documentation": "problem_list_only"}, "codes": [],
+         "explain": "Depression appears only in a problem list and is not addressed in this encounter, so it is not supported for this date of service.",
+         "refs": ["OCG IV.J"],
+         "wrong": [{"codes": ["F33.1"], "confusion": "coded_without_meat", "why": "A problem-list entry alone does not show the condition affected care at this visit."}]},
+        {"when": {"condition": "copd", "documentation": "med_list_only"}, "codes": [],
+         "explain": "An inhaler on the medication list does not establish COPD; coders do not infer diagnoses from medications.",
+         "refs": ["OCG IV.J"],
+         "wrong": [{"codes": ["J44.9"], "confusion": "coded_from_med_list", "why": "Only the provider can document a diagnosis."}]},
+        {"when": {"condition": "chf_chronic_systolic", "documentation": "med_list_only"}, "codes": [],
+         "explain": "Heart-failure medications on the list do not establish the diagnosis; coders do not infer diagnoses from medications.",
+         "refs": ["OCG IV.J"],
+         "wrong": [{"codes": ["I50.22"], "confusion": "coded_from_med_list", "why": "Only the provider can document a diagnosis."}]},
+        {"when": {"condition": "mdd_recurrent_moderate", "documentation": "med_list_only"}, "codes": [],
+         "explain": "An antidepressant on the list does not establish major depression; coders do not infer diagnoses from medications.",
+         "refs": ["OCG IV.J"],
+         "wrong": [{"codes": ["F33.1"], "confusion": "coded_from_med_list", "why": "Only the provider can document a diagnosis."}]}
+      ]
+    }
+  ]
+}

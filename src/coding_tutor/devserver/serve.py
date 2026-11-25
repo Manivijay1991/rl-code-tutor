@@ -6,7 +6,7 @@
 
 By default the UI and the API share one origin, exactly as on Vercel: the API answers under /api/v1/...,
 and /config.json is answered with {"api": "/api"}. `--with-api` is still accepted (it is the default).
-Run `python -m coding_tutor.bundle.export` first so web/data/bundle.json exists.
+Run `coding-tutor-export-ui` first so web/data/manifest.json exists.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from coding_tutor.live.app import PREFIX, make_app
 from coding_tutor.live.policy import known_confusions
 from coding_tutor.live.server import QuietHandler
 from coding_tutor.live.stores import sqlite as storage
-from coding_tutor.paths import API_DB_PATH, BUNDLE_PATH, WEB_DIR
+from coding_tutor.paths import API_DB_PATH, MANIFEST_PATH, WEB_DIR
 
 HOST = "127.0.0.1"
 
@@ -84,8 +84,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     """Serve web/ (and optionally the API) until interrupted."""
     args = parse_args(argv)
-    if not BUNDLE_PATH.exists():
-        print(f"{BUNDLE_PATH} is missing; run: python -m coding_tutor.bundle.export", file=sys.stderr)
+    if not MANIFEST_PATH.exists():
+        print(f"{MANIFEST_PATH} is missing; run: coding-tutor-export-ui", file=sys.stderr)
         return 1
     server = make_dev_server(WEB_DIR, args.port, args.db) if args.with_api else make_server(WEB_DIR, args.port)
     url = f"http://{HOST}:{args.port}/"

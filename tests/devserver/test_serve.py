@@ -22,10 +22,10 @@ def test_serves_files_on_localhost_only(tmp_path):
         server.server_close()
 
 
-def test_main_requires_bundle(monkeypatch, tmp_path, capsys):
-    monkeypatch.setattr(serve, "BUNDLE_PATH", tmp_path / "missing.json")
+def test_main_requires_the_exported_manifest(monkeypatch, tmp_path, capsys):
+    monkeypatch.setattr(serve, "MANIFEST_PATH", tmp_path / "missing.json")
     assert serve.main(["--no-browser"]) == 1
-    assert "coding_tutor.bundle.export" in capsys.readouterr().err
+    assert "coding-tutor-export-ui" in capsys.readouterr().err
 
 
 def test_dev_server_serves_ui_config_and_api(tmp_path):

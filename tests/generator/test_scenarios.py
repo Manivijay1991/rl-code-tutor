@@ -4,6 +4,7 @@ import random
 
 import pytest
 
+from coding_tutor import catalog
 from coding_tutor.engine.rules import combos, make_table
 from coding_tutor.generator import scenarios
 from coding_tutor.generator.scenarios import (
@@ -290,9 +291,11 @@ def test_main_dry_run_prints_prompts(capsys):
     assert out.startswith("--- meat_support") and "Facts the note must make clear" in out
 
 
-def test_main_unknown_table():
-    with pytest.raises(KeyError):
+def test_main_unknown_table_or_topic():
+    with pytest.raises(SystemExit, match="unknown table or topic: nope"):
         scenarios.main(["--table", "nope", "--dry-run"])
+    with pytest.raises(SystemExit, match="unknown table or topic: nada"):
+        scenarios.main(["--topic", "nada", "--dry-run"])
 
 
 # ---- LLM settings and injection ----
@@ -326,7 +329,7 @@ def test_main_with_injected_llm(tmp_path, capsys):
     assert scenarios.main(argv, llm=fake_llm([good]), env={}) == 0
     assert "1 saved, 0 failed" in capsys.readouterr().out
     rec = json.loads(next(tmp_path.rglob("*.json")).read_text(encoding="utf-8"))
-    assert rec["generator"]["model"] == "gemma4:e4b"
+    assert rec["generator"]["model"] == "gemma4:12b"
 
 
 def test_main_reports_llm_errors(capsys):
@@ -335,3 +338,20 @@ def test_main_reports_llm_errors(capsys):
 
     assert scenarios.main(["--table", "ckd_staging", "--n", "1"], llm=broken, env={}) == 2
     assert "not reachable" in capsys.readouterr().err
+
+
+def test_choose_tables_by_table_topic_or_all(tables):
+    index = catalog.table_index(catalog.load_topics())
+    assert [t["id"] for t in scenarios.choose_tables(tables, index)] == list(tables)
+    assert [t["id"] for t in scenarios.choose_tables(tables, index, ["ckd_staging"])] == ["ckd_staging"]
+    assert [t["id"] for t in scenarios.choose_tables(tables, index, None, ["meat"])] == ["meat_support"]
+    assert scenarios.choose_tables(tables, index, ["ckd_staging"], ["meat"]) == []
+
+
+def test_save_defaults_to_the_topic_folder(dm, tmp_path, monkeypatch):
+    rec = make_record(dm, dm_slots(), "note", "fake", [])
+    assert scenarios.scenario_folder("diabetes_complications", tmp_path) == tmp_path / "diabetes_complications"
+    expected = catalog.scenario_dir(
+        catalog.topic_of("diabetes_complications", catalog.table_index(catalog.load_topics())), "diabetes_complications"
+    )
+    assert scenarios.scenario_folder(rec["table"]) == expected

@@ -5,7 +5,7 @@ from coding_tutor.llm.config import LLMConfig, auth_headers, config_from_env, re
 
 def test_defaults():
     cfg = config_from_env({})
-    assert (cfg.provider, cfg.model, cfg.base_url, cfg.api_key) == ("ollama", "gemma4:e4b", None, None)
+    assert (cfg.provider, cfg.model, cfg.base_url, cfg.api_key) == ("ollama", "gemma4:12b", None, None)
 
 
 def test_reads_environment():

@@ -2,8 +2,9 @@ import json
 
 import pytest
 
+from coding_tutor import catalog
 from coding_tutor.bundle import export
-from coding_tutor.engine.rules import TableError, make_table, resolve
+from coding_tutor.engine.rules import make_table, resolve
 
 FILLER = " The patient is seen for routine follow-up today and reports feeling generally well." * 5
 DM_SLOTS = {"dm_type": "type2", "complication": "ckd_stage4", "provider_says_unrelated": "no", "meds": "insulin"}
@@ -119,14 +120,12 @@ def test_build_bundle_with_db(tables, db):
     assert bundle["hccs"]["37"] == "Diabetes with Chronic Complications"
 
 
-def test_load_and_write(tmp_path):
+def test_load_scenario_files(tmp_path):
     (tmp_path / "t").mkdir()
     for sid in ("b", "a"):
         (tmp_path / "t" / f"{sid}.json").write_text(json.dumps({"id": sid}), encoding="utf-8")
     assert [r["id"] for r in export.load_scenario_files(tmp_path)] == ["a", "b"]
     assert export.load_scenario_files(tmp_path / "missing") == []
-    path = export.write_bundle({"x": "é"}, tmp_path / "out" / "bundle.json")
-    assert json.loads(path.read_text(encoding="utf-8")) == {"x": "é"}
 
 
 def test_build_bundle_links_only_cited_references(tables):
@@ -136,21 +135,62 @@ def test_build_bundle_links_only_cited_references(tables):
     cited = export.cited_refs(bundle["scenarios"])
     assert "OCG I.A.15" in cited
     assert set(bundle["references"]) == cited & set(refs)
-    assert export.contract_problems(bundle) == []
     assert export.build_bundle([record()], tables, None)[0]["references"] == {}
 
 
-def test_load_references_validates(tmp_path):
-    good = tmp_path / "refs.json"
-    good.write_text(
-        json.dumps({"OCG I.A.15": {"title": "With", "url": "https://x.org/a.pdf#page=11"}}), encoding="utf-8"
-    )
-    assert export.load_references(good)["OCG I.A.15"]["title"] == "With"
-    assert export.load_references(tmp_path / "missing.json") == {}
-    bad = tmp_path / "bad.json"
-    bad.write_text(json.dumps({"OCG I.A.15": {"title": "With", "url": "http://insecure"}}), encoding="utf-8")
-    with pytest.raises(TableError, match="bad.json"):
-        export.load_references(bad)
+# ---- delivery: manifest + one file per topic ----
+@pytest.fixture
+def topics():
+    return catalog.load_topics()
+
+
+def test_topic_files_split_scenarios_and_codes(tables, topics):
+    bundle, _ = export.build_bundle([record()], tables, None)
+    bundle["codes"] = {"E11.22": {"desc": "x", "billable": True}, "J44.9": {"desc": "y", "billable": True}}
+    files = export.topic_files(bundle, catalog.table_index(topics))
+    assert list(files) == ["diabetes"]
+    assert files["diabetes"]["topic"] == "diabetes" and len(files["diabetes"]["scenarios"]) == 1
+    assert list(files["diabetes"]["codes"]) == ["E11.22"]  # only codes this topic uses
+    assert export.topic_files({**bundle, "scenarios": []}, catalog.table_index(topics)) == {}
+
+
+def test_file_name_is_content_addressed():
+    a = export.file_name("ckd", {"x": 1})
+    assert a.startswith("topics/ckd.") and a.endswith(".json")
+    assert a == export.file_name("ckd", {"x": 1})
+    assert a != export.file_name("ckd", {"x": 2})
+
+
+def test_build_manifest_lists_topics_with_scenarios_in_order(tables, topics):
+    manifest, files, skipped = export.export([record()], tables, topics, None)
+    assert skipped == []
+    assert [t["id"] for t in manifest["topics"]] == ["diabetes"]  # topics without scenarios are not served
+    entry = manifest["topics"][0]
+    assert entry["file"] == export.file_name("diabetes", files["diabetes"])
+    assert entry["scenarios"] == 1 and entry["tables"] == ["diabetes_complications"]
+    assert manifest["tables"]["diabetes_complications"]["topic"] == "diabetes"
+    assert export.contract_problems(manifest, files) == []
+
+
+def test_write_delivery_writes_manifest_last_and_removes_stale_files(tables, topics, tmp_path):
+    manifest, files, _ = export.export([record()], tables, topics, None)
+    (tmp_path / "topics").mkdir()
+    (tmp_path / "topics" / "old.0000000000.json").write_text("{}", encoding="utf-8")
+    (tmp_path / "bundle.json").write_text("{}", encoding="utf-8")
+    paths = export.write_delivery(manifest, files, tmp_path)
+    assert paths[-1] == tmp_path / "manifest.json"
+    assert json.loads(paths[-1].read_text(encoding="utf-8")) == manifest
+    topic_file = tmp_path / manifest["topics"][0]["file"]
+    assert json.loads(topic_file.read_text(encoding="utf-8")) == files["diabetes"]
+    assert sorted(p.name for p in (tmp_path / "topics").iterdir()) == [topic_file.name]
+    assert not (tmp_path / "bundle.json").exists()
+    assert export.write_delivery(manifest, files, tmp_path) == paths  # idempotent
+
+
+def test_contract_names_the_broken_topic_file(tables, topics):
+    manifest, files, _ = export.export([record()], tables, topics, None)
+    del files["diabetes"]["codes"]
+    assert any(p.startswith("diabetes: ") for p in export.contract_problems(manifest, files))
 
 
 def test_every_cited_reference_has_a_link(tables):

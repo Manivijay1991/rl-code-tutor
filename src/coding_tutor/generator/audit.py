@@ -5,7 +5,8 @@ This audit reads the note by section, ignores family history and negated mention
 from the text and compares them with the stored slots (from which the rules engine computes the answer). It also
 checks MEAT placement and clinical realism.
 
-    coding-tutor-audit                        # every scenario under content/scenarios
+    coding-tutor-audit                        # every scenario of every enabled topic
+    coding-tutor-audit --topic ckd            # one topic
     coding-tutor-audit --table meat_support   # one table
 
 Finding kinds:
@@ -21,14 +22,13 @@ finding is reported.
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import sys
 from collections.abc import Callable
 from pathlib import Path
 from typing import NamedTuple
 
-from coding_tutor.paths import SCENARIOS_DIR
+from coding_tutor import catalog
 
 
 class Finding(NamedTuple):
@@ -377,18 +377,15 @@ def audit_records(records: list[dict]) -> dict[str, list[Finding]]:
 
 
 # ---- I/O and CLI ----
-def load_records(directory: Path, tables: list[str] | None = None) -> list[dict]:
-    """Read scenario JSON files from `<directory>/<table>/*.json`.
+def load_records(
+    directory: Path | None = None, tables: list[str] | None = None, topics: list[str] | None = None
+) -> list[dict]:
+    """Return the scenarios to audit: the catalog's topics, or a flat `<directory>/<table>/*.json` tree.
 
     Raises:
-        FileNotFoundError: `directory` does not exist.
+        FileNotFoundError: `directory` is given but does not exist.
     """
-    directory = Path(directory)
-    if not directory.is_dir():
-        raise FileNotFoundError(f"scenario directory not found: {directory}")
-    files = sorted(directory.glob("*/*.json"))
-    records = [json.loads(f.read_text(encoding="utf-8")) for f in files]
-    return [r for r in records if not tables or r["table"] in tables]
+    return catalog.load_scenarios(topic_ids=topics or None, table_ids=tables or None, directory=directory)
 
 
 def format_report(n: int, results: dict[str, list[Finding]]) -> str:
@@ -407,8 +404,9 @@ def format_report(n: int, results: dict[str, list[Finding]]) -> str:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     """Parse command-line arguments."""
     ap = argparse.ArgumentParser(description="Audit generated scenarios the way a CRC coder reads them.")
+    ap.add_argument("--topic", action="append", help="topic id (repeatable); default: every enabled topic")
     ap.add_argument("--table", action="append", help="table id (repeatable); default: all tables")
-    ap.add_argument("--dir", type=Path, default=SCENARIOS_DIR, help="scenario directory")
+    ap.add_argument("--dir", type=Path, default=None, help="audit a flat <dir>/<table>/*.json tree instead")
     return ap.parse_args(argv)
 
 
@@ -416,7 +414,7 @@ def main(argv: list[str] | None = None) -> int:
     """Audit the scenarios, print the report and return 1 when anything was found."""
     args = parse_args(argv)
     try:
-        records = load_records(args.dir, args.table)
+        records = load_records(args.dir, args.table, args.topic)
     except FileNotFoundError as e:
         print(e, file=sys.stderr)
         return 2
