@@ -27,6 +27,20 @@ DEFAULT_ORIGINS = ("http://127.0.0.1:8765", "http://localhost:8765")
 QuietHandler = type("QuietHandler", (wsgiref.simple_server.WSGIRequestHandler,), {"log_message": lambda *_: None})
 
 
+def print_request(handler: wsgiref.simple_server.WSGIRequestHandler, fmt: str, *args: object) -> None:
+    """Print one request line (time, request, status, size) to stdout, never the client's address."""
+    print(f"[{handler.log_date_time_string()}] {fmt % args}", flush=True)
+
+
+# Opt-in request log (`--log`) for local debugging; no IP address, nothing written to disk.
+LoggingHandler = type("LoggingHandler", (wsgiref.simple_server.WSGIRequestHandler,), {"log_message": print_request})
+
+
+def request_handler(log: bool) -> type[wsgiref.simple_server.WSGIRequestHandler]:
+    """Return the handler class: LoggingHandler when `log` is set, else QuietHandler."""
+    return LoggingHandler if log else QuietHandler
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     """Parse command-line arguments."""
     ap = argparse.ArgumentParser(description="Run the Coding Tutor live bandit API.", allow_abbrev=False)
@@ -35,6 +49,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     ap.add_argument(
         "--allow-origin", action="append", help="browser origin allowed by CORS (repeatable; default: local UI)"
     )
+    ap.add_argument("--log", action="store_true", help="print each request (time, path, status; never the IP)")
     return ap.parse_args(argv)
 
 
@@ -43,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     con = storage.connect(args.db)
     app = make_app(con, known_confusions(load_tables()), args.allow_origin or DEFAULT_ORIGINS)
-    server = wsgiref.simple_server.make_server(HOST, args.port, app, handler_class=QuietHandler)
+    server = wsgiref.simple_server.make_server(HOST, args.port, app, handler_class=request_handler(args.log))
     print(f"Live bandit API at http://{HOST}:{args.port}/v1/policy  (db: {args.db}; Ctrl+C to stop)")
     try:
         server.serve_forever()

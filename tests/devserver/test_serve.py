@@ -62,7 +62,28 @@ def test_dev_server_serves_ui_config_and_api(tmp_path):
     assert json.loads((web / "config.json").read_text(encoding="utf-8")) == {"api": None}
 
 
+@pytest.mark.parametrize("log", [False, True])
+def test_dev_server_logs_requests_only_when_asked(tmp_path, capsys, log):
+    web = tmp_path / "web"
+    web.mkdir()
+    server = serve.make_dev_server(web, port=0, db=tmp_path / "api.sqlite", log=log)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        with urllib.request.urlopen(f"http://127.0.0.1:{server.server_address[1]}/api/v1/health", timeout=5):
+            pass
+    finally:
+        server.shutdown()
+        server.server_close()
+    out = capsys.readouterr().out
+    if log:
+        assert '"GET /api/v1/health HTTP/1.1" 200' in out and "127.0.0.1" not in out
+    else:
+        assert out == ""
+
+
 def test_parse_args():
+    assert serve.parse_args([]).log is False and serve.parse_args(["--log"]).log is True
     args = serve.parse_args(["--port", "9000", "--no-browser"])
     assert (args.port, args.no_browser, args.with_api) == (9000, True, True)  # the API is on by default
     assert serve.parse_args(["--with-api"]).with_api is True

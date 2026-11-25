@@ -26,7 +26,7 @@ from coding_tutor.devserver.static import Environ, StartResponse, WSGIApp, stati
 from coding_tutor.engine.rules import load_tables
 from coding_tutor.live.app import PREFIX, make_app
 from coding_tutor.live.policy import known_confusions
-from coding_tutor.live.server import QuietHandler
+from coding_tutor.live.server import request_handler
 from coding_tutor.live.stores import sqlite as storage
 from coding_tutor.paths import API_DB_PATH, MANIFEST_PATH, WEB_DIR
 
@@ -61,12 +61,19 @@ def dev_app(web_dir: Path, api: WSGIApp) -> WSGIApp:
 
 
 def make_dev_server(
-    directory: Path = WEB_DIR, port: int = 8765, db: Path = API_DB_PATH
+    directory: Path = WEB_DIR, port: int = 8765, db: Path = API_DB_PATH, log: bool = False
 ) -> wsgiref.simple_server.WSGIServer:
-    """Return a localhost server for the UI plus the live bandit API on SQLite at `db`."""
+    """Return a localhost server for the UI plus the live bandit API on SQLite at `db`.
+
+    Args:
+        directory: Folder served as the UI.
+        port: Port on 127.0.0.1 (0 = any free port).
+        db: SQLite file for the API.
+        log: Print each request (time, path, status; never the client's address).
+    """
     api = make_app(storage.connect(db), known_confusions(load_tables()), allowed_origins=())
     return wsgiref.simple_server.make_server(
-        HOST, port, dev_app(directory, api), server_class=ThreadingWSGIServer, handler_class=QuietHandler
+        HOST, port, dev_app(directory, api), server_class=ThreadingWSGIServer, handler_class=request_handler(log)
     )
 
 
@@ -78,6 +85,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     ap.add_argument("--no-api", dest="with_api", action="store_false", help="static UI only, without the live API")
     ap.add_argument("--with-api", dest="with_api", action="store_true", help="run the live API at /api (the default)")
     ap.add_argument("--db", type=Path, default=API_DB_PATH, help="SQLite file for the API")
+    ap.add_argument("--log", action="store_true", help="print each request (time, path, status; never the IP)")
     return ap.parse_args(argv)
 
 
@@ -87,7 +95,9 @@ def main(argv: list[str] | None = None) -> int:
     if not MANIFEST_PATH.exists():
         print(f"{MANIFEST_PATH} is missing; run: coding-tutor-export-ui", file=sys.stderr)
         return 1
-    server = make_dev_server(WEB_DIR, args.port, args.db) if args.with_api else make_server(WEB_DIR, args.port)
+    server = (
+        make_dev_server(WEB_DIR, args.port, args.db, args.log) if args.with_api else make_server(WEB_DIR, args.port)
+    )
     url = f"http://{HOST}:{args.port}/"
     extra = f"; live bandit API at {url}api/v1/policy (db: {args.db})" if args.with_api else ""
     print(f"Coding Tutor at {url}{extra}  (Ctrl+C to stop)")
