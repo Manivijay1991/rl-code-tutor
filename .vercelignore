@@ -1,8 +1,9 @@
 # Not needed on the host: local data, tests, docs and tooling.
-.venv/
-.claude/
-data/
-tests/
-docs/
+# Root-anchored (leading /): an unanchored "data/" would also drop web/data/, the question bundle.
+/.venv/
+/.claude/
+/data/
+/tests/
+/docs/
 **/__pycache__/
 *.egg-info/
