@@ -1,0 +1,78 @@
+{
+  "id": "eye_conditions-193d25bc04",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "dry_amd_early"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint: Follow-up for vision concerns.\n\nHPI: Patient is a 55-year-old male who presents today for a follow-up evaluation of his vision. He reports a history of progressive changes in his central vision over the past several months. He notes that his vision has become less sharp, particularly when reading small print or recognizing faces at a distance. He denies any sudden flashes of light, floaters, or a sudden curtain-like loss of vision. He has been monitored by his primary care provider and was recently referred to an ophthalmologist for a formal evaluation of his macular health.\n\nUpdate from today’s visit: The patient reports that he has been following the recommendations provided by his specialist. He notes that his vision remains stable but continues to be aware of the diminished clarity. He expresses a desire to manage his condition through lifestyle and nutritional adjustments.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 195 lbs.\n\nRecent Labs: Hemoglobin A1c: 5.8%, LDL: 105 mg/dL, HDL: 45 mg/dL, Triglycerides: 140 mg/dL.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nSocial History: Patient works as a project manager. He is a non-smoker and consumes alcohol socially (1-2 beers on weekends). He exercises 3 times per week and maintains a balanced diet.\n\nFamily History: Father had hypertension and a history of macular degeneration. Mother had hyperlipidemia.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nEyes: Positive for blurred central vision. Negative for pain or discharge.\nNeurological: Negative for dizziness or numbness.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for cough or shortness of breath.\nMusculoskeletal: Negative for joint pain.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nOcular: Visual acuity remains stable. The ophthalmologist has documented early dry age-related macular degeneration of the right eye. No signs of acute inflammation or infection noted during the review of specialist records.\n\nAssessment:\n1. Early dry age-related macular degeneration of the right eye.\n\nPlan:\n1. Continue current maintenance medications for blood pressure and cholesterol.\n2. Follow ophthalmologist's recommendations regarding nutrition and supplements.\n3. Patient advised to take daily vitamins as recommended by his specialist.\n4. Follow up in 6 months for a routine check of vision and blood pressure.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "H35.3111"
+  ],
+  "explanations": [
+    "Nonexudative (dry) AMD, right eye, early dry stage: H35.3111 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3211"
+      ],
+      "confusion": "wet_dry_confused",
+      "lean": "neutral",
+      "why": "Dry (nonexudative) AMD is documented, not wet.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0,
+        "gap": 0.596,
+        "direction": "over",
+        "extra_hccs": [
+          "300"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "H35.30"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type, eye and stage are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:51+00:00",
+    "style": {
+      "age": 55,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

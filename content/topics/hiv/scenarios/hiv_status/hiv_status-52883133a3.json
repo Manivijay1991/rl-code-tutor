@@ -1,0 +1,68 @@
+{
+  "id": "hiv_status-52883133a3",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "asymptomatic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint: Follow-up for HIV management.\n\nHPI: Pt is a 90-year-old male presenting for routine follow-up of chronic HIV infection. He reports feeling well today. Denies any acute concerns, fevers, chills, or weight loss. Pt notes he has been stable on current regimen for several years. He denies any new symptoms or side effects from medications. He reports good adherence to all prescribed meds.\n\nMedication List:\n- Antiretroviral therapy (ART) - daily\n- Multivitamin - daily\n- Lisinopril 10mg - daily\n\nReview of Systems:\nConstitutional: No fever, chills, night sweats, or fatigue.\nHEENT: No sore throat, rhinorrhea, or vision changes.\nRespiratory: No cough, shortness of breath, or wheezing.\nCV: No chest pain, palpitations, or edema.\nGI: No nausea, vomiting, diarrhea, or abdominal pain.\nMSK: No joint pain or stiffness.\nNeuro: No headaches, dizziness, or confusion.\n\nSocial History: Retired. Lives at home with spouse. No tobacco or alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wt: 5'8\", 165 lbs\n\nRecent Labs:\nCD4 count: 650 cells/mm3\nViral load: Undetectable\neGFR: 65 ml/min\nHbA1c: 6.4%\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished. In no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nAbdomen: Soft, non-tender, no organomegaly.\nSkin: No rashes or lesions noted.\n\nAssessment:\n1. HIV positive: Pt is currently asymptomatic. No HIV-related illness noted at this visit. Clinical status is stable with undetectable viral load.\n\nPlan:\n1. Continue current ART regimen as prescribed.\n2. Continue monitoring CD4 and viral load every 6 months.\n3. Follow up in 6 months for routine labs and clinical evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "Z21"
+  ],
+  "explanations": [
+    "HIV positive with no symptoms and no HIV-related illness ever: Z21 (HCC 1)."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B20"
+      ],
+      "confusion": "overstated_hiv",
+      "lean": "over",
+      "why": "B20 is for AIDS or any HIV-related illness, current or past.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0.301,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.301,
+    "hccs": [
+      {
+        "hcc": "1",
+        "label": "HIV/AIDS",
+        "from": [
+          "Z21"
+        ],
+        "weight": 0.301
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:59:59+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

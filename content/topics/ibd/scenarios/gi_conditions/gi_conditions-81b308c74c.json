@@ -1,0 +1,61 @@
+{
+  "id": "gi_conditions-81b308c74c",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_pancreatitis_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for history of pancreatitis.\n\nHPI: Pt is a 68-year-old female presenting for a routine follow-up. She reports a history of an episode of acute pancreatitis that occurred several years ago. She states that the episode fully resolved and she has had no recurrence or related symptoms since that time. She currently denies any abdominal pain, dyspepsia, or gastrointestinal distress. She is here for baseline monitoring and to ensure no further issues.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Multivitamin QD\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue, or weight change.\nGI: Denies nausea, vomiting, diarrhea, or abdominal pain.\nCV: Denies chest pain or palpitations.\nResp: Denies shortness of breath or cough.\nMSK: Denies joint pain or swelling.\nNeuro: Denies headache or dizziness.\n\nSocial History: Retired; lives with husband. Non-smoker. Occasional social alcohol use. No illicit drug use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 12.5\nWt: 155 lbs\n\nRecent Labs:\neGFR: 72\nHbA1c: 5.8%\nLipid Panel: LDL 88, HDL 45, Trig 120\nLFTs: Within normal limits.\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or rales.\nAbdomen: Soft, non-tender, non-distended. No guarding or rebound.\nMSK: No joint swelling or erythema.\n\nAssessment:\n1. History of acute pancreatitis (resolved years ago). Pt is currently asymptomatic and stable.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Routine follow-up in 6 months.\n3. Maintain healthy diet and exercise.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "Z87.19"
+  ],
+  "explanations": [
+    "A past acute pancreatitis that resolved: personal history, Z87.19 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K86.1"
+      ],
+      "confusion": "history_coded_chronic",
+      "lean": "over",
+      "why": "There is no current or chronic pancreatitis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.357,
+        "correct": 0,
+        "gap": 0.357,
+        "direction": "over",
+        "extra_hccs": [
+          "79"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:11+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

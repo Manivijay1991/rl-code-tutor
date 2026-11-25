@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-d77517083a",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "npdr_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision and diabetes.\n\nHPI\nPt is an 85 y/o female presenting for a scheduled ophthalmology and endocrine follow-up. Pt has a long-standing hx of type 2 diabetes. She reports stable vision but notes occasional blurring. She denies any sudden vision loss, floaters, or flashes. She reports compliance with current oral medications and diet. She is here today for a formal evaluation of her retinal status.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Glipizide 5mg BID\n- Amlodipine 5mg daily\n\nReview of Systems\nConstitutional: Negative for fever, chills, or fatigue.\nHEENT: Denies vision changes, ear pain, or sore throat.\nRespiratory: Denies SOB or cough.\nMSK: Denies joint pain or swelling.\nNeuro: Denies numbness or weakness.\n\nSocial History\nPt lives at home with her daughter. Retired. No tobacco or alcohol use.\n\nFamily History\nMother: Type 2 diabetes, deceased.\nFather: Hypertension, deceased.\n\nVitals\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wbc: WNL\n\nRecent Labs\nHbA1c: 7.4%\neGFR: 62\nCreatinine: 1.1\nUrinalysis: Negative for glucose/protein.\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nEyes: Right eye: Mild nonproliferative diabetic retinopathy. No findings in the right eye noted beyond the retinopathy.\nCardiovascular: RRR, regular rhythm, no murmurs.\nLungs: CTAB.\nExtremities: No edema.\n\nAssessment\n1. Type 2 diabetes: HbA1c remains slightly above goal but stable.\n2. Mild NPDR: Right eye shows mild nonproliferative diabetic retinopathy.\n\nPlan\n1. Continue current medications for T2DM.\n2. Diet and exercise counseling provided.\n3. Follow up with ophthalmology in 6 months for retinal screening.\n4. Repeat HbA1c in 3 months.\n\nElectronically signed,\nD. Kowalski, DO\n10/14/2026",
+  "answer": [
+    "E11.3291"
+  ],
+  "explanations": [
+    "Type 2 diabetes with mild nonproliferative diabetic retinopathy without macular edema, right eye: E11.3291 (HCC 37 only)."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.3591"
+      ],
+      "confusion": "overstated_retinopathy",
+      "lean": "over",
+      "why": "Proliferative retinopathy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.502,
+        "correct": 0.166,
+        "gap": 0.336,
+        "direction": "over",
+        "extra_hccs": [
+          "298"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.319"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type and severity of retinopathy are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E113291"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T15:03:32+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

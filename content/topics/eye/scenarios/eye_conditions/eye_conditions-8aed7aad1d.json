@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-8aed7aad1d",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "npdr_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint: Follow-up for diabetes and vision.\n\nHPI: [Copied Forward]\nThe patient is a 72-year-old female with a long-standing history of type 2 diabetes. She reports consistent adherence to her oral medication regimen and a stable diet. She denies any acute vision loss, floaters, or sudden changes in peripheral vision. She reports regular monitoring of her blood glucose levels at home.\n\n[Update]\nToday, the patient presents for a routine follow-up of her type 2 diabetes. She reports feeling well overall and denies any new symptoms of hyperglycemia, such as increased thirst or frequent urination. She notes that her vision feels stable. She was recently seen by her ophthalmologist, who documented mild nonproliferative diabetic retinopathy of the right eye. She expresses understanding of the findings and is here to manage her systemic glucose levels.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Glipizide 5mg daily\n- Amlodipine 5mg daily\n\nVitals:\nBP: 134/82, HR: 74, Temp: 98.6 F, SpO2: 98% on room air, Weight: 165 lbs.\n\nRecent Labs:\nHbA1c: 7.4%\neGFR: 68 mL/min/1.73m2\nSerum Creatinine: 1.2 mg/dL\nLDL: 88 mg/dL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight change.\nEyes: Positive for mild NPDR of the right eye. Negative for discharge or itching.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for numbness or tingling.\n\nSocial History:\nThe patient is a retired school teacher. She lives with her husband. She enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History:\nMother had type 2 diabetes and hypertension. Father had a myocardial infarction at age 65.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No new lesions or rashes.\nCardiovascular: Regular rate and rhythm. No murmurs.\nLungs: Clear to auscultation bilaterally.\nNeurological: No focal deficits noted.\n\nAssessment:\n1. Type 2 diabetes: Currently stable on oral medications. HbA1c is near target.\n2. Mild nonproliferative diabetic retinopathy of the right eye: As documented by ophthalmology; requires continued monitoring of systemic glucose control.\n\nPlan:\n1. Continue current medication regimen for T2DM.\n2. Reinforce importance of healthy diet and regular exercise.\n3. Patient to continue follow-up with ophthalmology as scheduled.\n4. Return to clinic in 3 months for repeat HbA1c and laboratory work.\n\nElectronically signed,\nA. Rivera, MD\nOctober 14, 2026",
+  "answer": [
+    "E11.3291"
+  ],
+  "explanations": [
+    "Type 2 diabetes with mild nonproliferative diabetic retinopathy without macular edema, right eye: E11.3291 (HCC 37 only)."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.3591"
+      ],
+      "confusion": "overstated_retinopathy",
+      "lean": "over",
+      "why": "Proliferative retinopathy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.502,
+        "correct": 0.166,
+        "gap": 0.336,
+        "direction": "over",
+        "extra_hccs": [
+          "298"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.319"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type and severity of retinopathy are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E113291"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:05+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -233,6 +233,43 @@ EXPECTED = [
     ("rheumatoid_arthritis", {"diagnosis": "ra_unspecified", "methotrexate": "no"}, ["M06.9"]),
     ("rheumatoid_arthritis", {"diagnosis": "ra_seropositive", "methotrexate": "yes"}, ["M05.79", "Z79.631"]),
     ("rheumatoid_arthritis", {"diagnosis": "osteoarthritis", "methotrexate": "no"}, ["M17.0"]),
+    # hiv
+    ("hiv_status", {"status": "asymptomatic"}, ["Z21"]),
+    ("hiv_status", {"status": "aids"}, ["B20"]),
+    ("hiv_status", {"status": "prior_hiv_illness"}, ["B20"]),
+    ("hiv_status", {"status": "inconclusive"}, ["R75"]),
+    # ibd
+    ("gi_conditions", {"condition": "crohns"}, ["K50.90"]),
+    ("gi_conditions", {"condition": "crohns_small"}, ["K50.00"]),
+    ("gi_conditions", {"condition": "uc"}, ["K51.90"]),
+    ("gi_conditions", {"condition": "uc_pancolitis"}, ["K51.00"]),
+    ("gi_conditions", {"condition": "ibs"}, ["K58.9"]),
+    ("gi_conditions", {"condition": "chronic_pancreatitis"}, ["K86.1"]),
+    ("gi_conditions", {"condition": "acute_pancreatitis_history"}, ["Z87.19"]),
+    # blood_immune
+    ("blood_immune", {"condition": "sickle_cell_disease"}, ["D57.1"]),
+    ("blood_immune", {"condition": "sickle_cell_trait"}, ["D57.3"]),
+    ("blood_immune", {"condition": "itp"}, ["D69.3"]),
+    ("blood_immune", {"condition": "thrombocytopenia"}, ["D69.6"]),
+    ("blood_immune", {"condition": "cvid"}, ["D83.9"]),
+    # eye
+    ("eye_conditions", {"condition": "wet_amd_active"}, ["H35.3211"]),
+    ("eye_conditions", {"condition": "wet_amd_scar"}, ["H35.3213"]),
+    ("eye_conditions", {"condition": "dry_amd_early"}, ["H35.3111"]),
+    ("eye_conditions", {"condition": "pdr"}, ["E11.3591"]),
+    ("eye_conditions", {"condition": "npdr_mild"}, ["E11.3291"]),
+    # hip_fracture
+    ("hip_fracture", {"side": "right", "encounter": "initial"}, ["S72.001A"]),
+    ("hip_fracture", {"side": "left", "encounter": "initial"}, ["S72.002A"]),
+    ("hip_fracture", {"side": "right", "encounter": "healing"}, ["S72.001D"]),
+    ("hip_fracture", {"side": "left", "encounter": "healing"}, ["S72.002D"]),
+    ("hip_fracture", {"side": "right", "encounter": "healed"}, ["Z87.81"]),
+    ("hip_fracture", {"side": "left", "encounter": "healed"}, ["Z87.81"]),
+    # acceptable_sources
+    ("acceptable_sources", {"source": "office_visit"}, ["J44.9"]),
+    ("acceptable_sources", {"source": "radiology_report"}, []),
+    ("acceptable_sources", {"source": "nurse_visit"}, []),
+    ("acceptable_sources", {"source": "unsigned_note"}, []),
 ]  # fmt: skip
 
 

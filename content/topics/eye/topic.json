@@ -1,0 +1,8 @@
+{
+  "id": "eye",
+  "title": "Eye: AMD and retinopathy",
+  "kind": "hcc",
+  "description": "Wet versus dry macular degeneration, proliferative versus nonproliferative diabetic retinopathy.",
+  "order": 99,
+  "enabled": true
+}

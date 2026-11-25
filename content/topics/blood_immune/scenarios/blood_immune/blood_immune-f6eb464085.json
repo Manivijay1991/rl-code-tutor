@@ -1,0 +1,61 @@
+{
+  "id": "blood_immune-f6eb464085",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "sickle_cell_trait"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint\nRoutine follow-up and review of laboratory results.\n\nHPI\nThe patient is a 36-year-old woman who presents today for a scheduled follow-up. She reports feeling well and denies any current symptoms or concerns. She is here primarily to discuss the results of her recent screening labs. During the initial screening, the laboratory workup identified that she has sickle cell trait. She was informed that this is a carrier state and does not represent a primary pathology. She expresses understanding that her condition is a genetic trait and does not require active management or specific treatment at this time.\n\nMedication List\nNone.\n\nExam\nThe patient is a 36-year-old female who appears well-nourished and in no acute distress. She is alert and oriented x3. Vital signs are stable and within normal limits. Skin is warm and dry with no visible lesions. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally.\n\nAssessment\n1. Sickle cell trait: The patient is a carrier of the trait as identified on her screening. This is a known carrier state.\n\nPlan\n1. Sickle cell trait: We discussed that this is a carrier state and she is not currently symptomatic. No further intervention is required.\n2. Continue to monitor health as needed.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "D57.3"
+  ],
+  "explanations": [
+    "Sickle cell trait (carrier): D57.3 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.1"
+      ],
+      "confusion": "trait_coded_as_disease",
+      "lean": "over",
+      "why": "A carrier trait is not sickle cell disease (HCC 107).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.457,
+        "correct": 0,
+        "gap": 0.457,
+        "direction": "over",
+        "extra_hccs": [
+          "107"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:36+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

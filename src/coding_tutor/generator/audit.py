@@ -345,13 +345,20 @@ AUDITS: dict[str, Auditor] = {
 
 
 def audit_common(record: dict, note: str) -> list[Finding]:
-    """Checks for every table: signature, credential, patient age and sex, visit year."""
+    """Checks for every table: signature, credential, patient age and sex, visit year.
+
+    A note generated as unsigned (`style.signed` false) must have no signature instead.
+    """
     out = []
-    if not re.search(r"electronically signed", note, re.I):
-        out.append(Finding("realism", "no signature"))
     style = record.get("generator", {}).get("style")
+    unsigned = bool(style) and style.get("signed", True) is False
+    has_signature = re.search(r"electronically signed", note, re.I) is not None
+    if unsigned and has_signature:
+        out.append(Finding("answer", "an unsigned case has a signature"))
+    elif not unsigned and not has_signature:
+        out.append(Finding("realism", "no signature"))
     if style:
-        if not re.search(rf"\b{re.escape(style['credential'])}\b", note):
+        if not unsigned and not re.search(rf"\b{re.escape(style['credential'])}\b", note):
             out.append(Finding("realism", f"credential {style['credential']} missing"))
         m = re.search(r"\b(\d{2})[- ]?(?:year[- ]old|y/?o\b|y\.o\.)", note, re.I)
         if m and int(m.group(1)) != style["age"]:

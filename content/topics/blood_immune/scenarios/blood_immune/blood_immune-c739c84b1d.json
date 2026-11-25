@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-c739c84b1d",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "cvid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint\nFollow-up for common variable immunodeficiency.\n\nHPI\nThe patient is an 89-year-old female who presents for a scheduled evaluation of her common variable immunodeficiency. She reports that she has been tolerating her monthly immunoglobulin infusions well without significant adverse reactions. She denies any new fevers, persistent infections, or respiratory symptoms since her last visit. She remains stable on her current maintenance regimen.\n\nMedication List\n- Immunoglobulin, monthly infusion\n- Multivitamin\n\nExam\nThe patient is alert and oriented to person, place, and time. She appears well-nourished and in no acute distress. Skin is warm and dry. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs.\n\nAssessment\n1. Common variable immunodeficiency. The patient is stable and continuing to respond well to her monthly immunoglobulin infusions.\n\nPlan\n1. Continue monthly immunoglobulin infusions as scheduled.\n2. Continue current multivitamin.\n3. Follow up in the clinic in three months for routine monitoring.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "D83.9"
+  ],
+  "explanations": [
+    "Common variable immunodeficiency: D83.9 (HCC 114)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D84.9"
+      ],
+      "confusion": "nonspecific_immunodeficiency",
+      "lean": "under",
+      "why": "CVID is documented: D83.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.262,
+        "gap": -2.262,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "114"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.262,
+    "hccs": [
+      {
+        "hcc": "114",
+        "label": "Common Variable and Combined Immunodeficiencies",
+        "from": [
+          "D839"
+        ],
+        "weight": 2.262
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:45+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

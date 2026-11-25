@@ -1,0 +1,61 @@
+{
+  "id": "gi_conditions-d3d519a220",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "ibs"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint\nAbdominal discomfort and bloating.\n\nHPI\nThe patient is an 89-year-old female presenting for a follow-up regarding chronic abdominal symptoms. She reports intermittent cramping and bloating that has persisted for several months. She notes that her symptoms are frequently associated with stress and certain dietary changes. She underwent a recent colonoscopy, which was reported as normal. Based on the clinical presentation and the negative findings from the procedure, she was diagnosed with irritable bowel syndrome. She denies any acute changes in her bowel habits or systemic symptoms like fever or weight loss.\n\nMedication List\n- Linaclotide 180 mcg daily\n- Simethicone 250 mg as needed\n\nExam\nThe patient is alert and oriented. Her abdomen is soft and non-tender to palpation. There is no rebound tenderness or guarding. Bowel sounds are present and normal in all four quadrants. She appears in no acute distress.\n\nAssessment\n1. Irritable bowel syndrome: The patient's symptoms are consistent with IBS. Her recent colonoscopy was normal, confirming the absence of structural disease.\n\nPlan\n1. Continue current medication regimen for irritable bowel syndrome.\n2. Maintain a low-FODMAP diet as tolerated.\n3. Follow up in three months to monitor symptom management.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "K58.9"
+  ],
+  "explanations": [
+    "Irritable bowel syndrome: K58.9 (no HCC). It is not inflammatory bowel disease."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K51.90"
+      ],
+      "confusion": "ibs_coded_as_ibd",
+      "lean": "over",
+      "why": "IBS is not ulcerative colitis or Crohn's disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.244,
+        "correct": 0,
+        "gap": 0.244,
+        "direction": "over",
+        "extra_hccs": [
+          "81"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:36+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

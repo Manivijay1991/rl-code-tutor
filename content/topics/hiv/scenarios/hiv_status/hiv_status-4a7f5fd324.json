@@ -1,0 +1,68 @@
+{
+  "id": "hiv_status-4a7f5fd324",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "prior_hiv_illness"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint: Follow-up on HIV management.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nRecent Labs: CD4 count: 650 cells/mm3; HIV viral load: Undetectable; eGFR: 88 mL/min/1.73m2.\n\nMedication List:\n- Biktarvy (dolutegravir/tenofovir alafamivir/emtricitabine)\n- Multivitamin\n\nSocial History: The patient is a 51-year-old male who works as a software engineer. He lives with his spouse and a dog. He reports occasional social drinking and does not smoke.\n\nFamily History: Father had hypertension; Mother had Type 2 diabetes. No known family history of malignancy.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or night sweats.\nRespiratory: Negative for cough, shortness of breath, or wheezing.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nGenitourinary: Negative for dysuria or discharge.\nNeurological: Negative for headaches or dizziness.\nMusculoskeletal: Negative for joint pain or swelling.\n\nHPI: Patient is a 51-year-old male with a known history of HIV. He was treated for Pneumocystis pneumonia several years ago. He is currently on a stable antiretroviral regimen. He reports feeling well overall and denies any acute respiratory symptoms or opportunistic infections.\n\nExam: General: Well-appearing, alert, and oriented x3. Constitutional: No acute distress. Skin: No rashes or lesions noted. HEENT: Normocephalic, atraumatic. Respiratory: Lungs clear to auscultation bilaterally. Cardiovascular: Regular rate and rhythm, no murmurs. Extremities: No edema.\n\nAssessment: \n1. HIV: Stable on current antiretroviral therapy with undetectable viral load and healthy CD4 count.\n2. History of Pneumocystis pneumonia: Resolved and stable.\n\nPlan:\n1. Continue current antiretroviral therapy as prescribed.\n2. Continue routine monitoring of CD4 count and viral load every 6 months.\n3. Patient instructed to report any new respiratory symptoms or fever immediately.\n4. Return to clinic in 6 months for routine follow-up.\n\nElectronically signed, \nJ. Lindqvist, NP\nMay 14, 2026",
+  "answer": [
+    "B20"
+  ],
+  "explanations": [
+    "Once a patient has had an HIV-related illness, B20 is used at every later encounter, even when well with an undetectable viral load."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z21"
+      ],
+      "confusion": "understated_hiv",
+      "lean": "under",
+      "why": "A prior HIV-related illness means B20 from then on.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0.301,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.301,
+    "hccs": [
+      {
+        "hcc": "1",
+        "label": "HIV/AIDS",
+        "from": [
+          "B20"
+        ],
+        "weight": 0.301
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:07+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

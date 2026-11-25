@@ -1,0 +1,251 @@
+{
+  "id": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Based on CMS RADV medical record reviewer guidance and the Medicare Managed Care Manual, chapter 7: a face-to-face visit with an acceptable provider type, signed with credentials. Diagnostic radiology and documents from non-acceptable provider types are not acceptable sources.",
+  "note_age": {
+    "min": 66
+  },
+  "slots": {
+    "source": {
+      "label": "Kind of document",
+      "values": [
+        "office_visit",
+        "radiology_report",
+        "nurse_visit",
+        "unsigned_note"
+      ],
+      "labels": {
+        "office_visit": "Signed office visit with a physician, NP or PA",
+        "radiology_report": "Diagnostic radiology report only",
+        "nurse_visit": "Nurse (RN) visit only",
+        "unsigned_note": "Office visit note, unsigned"
+      },
+      "evidence": {
+        "office_visit": [
+          [
+            "office visit",
+            "follow-up visit",
+            "clinic visit"
+          ]
+        ],
+        "radiology_report": [
+          [
+            "chest x-ray",
+            "chest radiograph",
+            "chest CT",
+            "CT of the chest"
+          ],
+          [
+            "radiologist",
+            "Radiologist"
+          ]
+        ],
+        "nurse_visit": [
+          [
+            "nurse visit",
+            "nursing visit"
+          ]
+        ],
+        "unsigned_note": [
+          [
+            "unsigned"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "office_visit": "A face-to-face office visit for COPD follow-up; the provider examines the patient, assesses COPD as stable and continues the inhaler.",
+        "radiology_report": "The only document for this date is a diagnostic chest x-ray report by a radiologist; the Impression says hyperinflation and findings consistent with COPD.",
+        "nurse_visit": "A nurse visit for inhaler teaching with a registered nurse (RN), who is the only clinician seeing the patient today. The nurse notes the patient's known COPD.",
+        "unsigned_note": "A face-to-face office visit for COPD follow-up; COPD is assessed as stable and the inhaler continued, but the note was never signed. Include the line 'Note status: unsigned'."
+      }
+    }
+  },
+  "note_forbid": [
+    "emphysema",
+    "chronic bronchitis",
+    "exacerbation",
+    "respiratory failure",
+    "oxygen",
+    "asthma",
+    "pneumonia",
+    "lung cancer",
+    "nodule",
+    "mass",
+    "telehealth",
+    "video",
+    "telephone"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "require": [
+        [
+          "COPD",
+          "chronic obstructive pulmonary disease"
+        ]
+      ]
+    },
+    {
+      "when": {
+        "source": "office_visit"
+      },
+      "forbid": [
+        "unsigned",
+        "nurse visit",
+        "radiologist",
+        "x-ray today"
+      ]
+    },
+    {
+      "when": {
+        "source": "radiology_report"
+      },
+      "credential": "MD",
+      "document": "Write a diagnostic radiology report for a two-view chest x-ray, dictated and signed by a radiologist, with sections: Exam, Indication, Comparison, Technique, Findings, Impression, and a final line 'Interpreting radiologist:' with the signature. It is not an office visit note: no HPI, medication list, assessment or plan.",
+      "forbid": [
+        "office visit",
+        "nurse visit",
+        "unsigned",
+        "Assessment",
+        "inhaler"
+      ]
+    },
+    {
+      "when": {
+        "source": "nurse_visit"
+      },
+      "credential": "RN",
+      "document": "Write a nurse visit note by a registered nurse (RN), with sections: Reason for Visit, Vitals, Nursing Assessment, Patient Education, Plan. The nurse is the only clinician who sees the patient today.",
+      "forbid": [
+        "nurse practitioner",
+        "physician assistant",
+        "PA-C",
+        "unsigned",
+        "radiologist",
+        "office visit",
+        "seen by Dr"
+      ]
+    },
+    {
+      "when": {
+        "source": "unsigned_note"
+      },
+      "signed": false,
+      "forbid": [
+        "Electronically signed",
+        "signed by",
+        "signature",
+        "nurse visit",
+        "radiologist"
+      ]
+    }
+  ],
+  "confusions": {
+    "coded_radiology_report": {
+      "description": "Coded from a diagnostic radiology report, which is not an acceptable risk-adjustment source.",
+      "lean": "over"
+    },
+    "coded_non_acceptable_provider": {
+      "description": "Coded from a visit with a provider type that is not acceptable (e.g. a nurse visit).",
+      "lean": "over"
+    },
+    "coded_unsigned_note": {
+      "description": "Coded from a note without a provider signature and credentials.",
+      "lean": "over"
+    },
+    "rejected_acceptable_source": {
+      "description": "Assigned no code although a signed face-to-face visit with an acceptable provider supports it.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "source",
+      "rules": [
+        {
+          "when": {
+            "source": "office_visit"
+          },
+          "codes": [
+            "J44.9"
+          ],
+          "explain": "A signed face-to-face visit with an acceptable provider (MD, DO, NP or PA) that assesses COPD supports J44.9 (HCC 280).",
+          "refs": [
+            "CMS RADV reviewer guidance",
+            "OCG IV.J"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "rejected_acceptable_source",
+              "why": "The visit is face to face, signed with credentials and addresses COPD: it supports J44.9."
+            }
+          ]
+        },
+        {
+          "when": {
+            "source": "radiology_report"
+          },
+          "codes": [],
+          "explain": "Diagnostic radiology is not an acceptable risk-adjustment source: radiologists do not document confirmed diagnoses for the patient's care. No code.",
+          "refs": [
+            "CMS RADV reviewer guidance",
+            "CMS Managed Care Manual ch. 7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J44.9"
+              ],
+              "confusion": "coded_radiology_report",
+              "why": "'Consistent with COPD' on an x-ray report is not a provider's diagnosis for risk adjustment."
+            }
+          ]
+        },
+        {
+          "when": {
+            "source": "nurse_visit"
+          },
+          "codes": [],
+          "explain": "A registered nurse is not an acceptable provider type for risk adjustment; the visit needs a physician or other acceptable clinician. No code.",
+          "refs": [
+            "CMS RADV reviewer guidance",
+            "CMS Managed Care Manual ch. 7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J44.9"
+              ],
+              "confusion": "coded_non_acceptable_provider",
+              "why": "A nurse visit alone cannot support the diagnosis."
+            }
+          ]
+        },
+        {
+          "when": {
+            "source": "unsigned_note"
+          },
+          "codes": [],
+          "explain": "A note must be signed with the provider's credentials to be used. Unsigned: no code (ask the provider to sign it).",
+          "refs": [
+            "CMS RADV reviewer guidance"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J44.9"
+              ],
+              "confusion": "coded_unsigned_note",
+              "why": "Without a signature and credentials the note cannot support a code."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

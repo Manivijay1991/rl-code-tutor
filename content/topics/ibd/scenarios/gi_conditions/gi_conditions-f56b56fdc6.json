@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-f56b56fdc6",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "crohns"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for Crohn's disease.\n\nHPI: Pt is a 75-year-old female presenting for routine management of Crohn's disease. She reports feeling well and states she has been asymptomatic for several months. She is currently on maintenance therapy and reports good tolerance to current medications. No recent flares or systemic symptoms reported.\n\nMedication List:\n- Adalimumab 40mg SQ every 2 weeks\n- Prednisone 5mg daily\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6 F, SpO2 98% on RA.\nAbd: Soft, non-tender, non-distended. Normal bowel sounds. No guarding or rebound.\nCV: RRR, CTAB.\nResp: CTAB, lungs clear to auscultation.\n\nAssessment:\n1. Crohn's disease: Currently in remission on maintenance therapy. Pt is stable.\n\nPlan:\n- Continue current maintenance medications.\n- Continue to monitor for any symptoms of flare.\n- F/u in 6 months for routine evaluation.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "K50.90"
+  ],
+  "explanations": [
+    "Crohn's disease, site not stated, no complications: K50.90 (HCC 80)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K50.00"
+      ],
+      "confusion": "assumed_site",
+      "lean": "neutral",
+      "why": "The site is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.55,
+        "correct": 0.55,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.55,
+    "hccs": [
+      {
+        "hcc": "80",
+        "label": "Crohns Disease (Regional Enteritis)",
+        "from": [
+          "K5090"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:13+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

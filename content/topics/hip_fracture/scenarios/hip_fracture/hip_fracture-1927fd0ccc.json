@@ -1,0 +1,79 @@
+{
+  "id": "hip_fracture-1927fd0ccc",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "left",
+    "encounter": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint\nLeft hip pain.\n\nHPI\nPt is a 71 y.o. male presenting for evaluation of chronic left hip pain. Pt reports dull ache in the left hip, exacerbated by weight-bearing activities. He notes that his previous left femoral neck fracture is completely healed and requires no further treatment or follow-up. Current complaints are unrelated to that prior injury. Pt denies any recent falls or new trauma. Pain is managed with OTC meds but remains persistent.\n\nMedication List\nAcetaminophen 650mg BID PRN.\n\nExam\nGen: Well-appearing, in no acute distress.\nMSK: Left hip shows mild tenderness to palpation. ROM limited by discomfort but stable. Gait steady. No erythema or warmth noted.\nNeuro: 5/5 strength in all extremities. Sensation intact.\nVitals: BP 132/82, HR 74, RR 16, Temp 98.6F.\n\nAssessment\n1. Left hip pain.\n2. History of left femoral neck fracture, completely healed.\n\nPlan\n1. Continue current pain management.\n2. Order imaging of left hip to evaluate for degenerative changes.\n3. F/u in 4 weeks to review results.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "Z87.81"
+  ],
+  "explanations": [
+    "A hip fracture that has completely healed, with treatment finished: personal history, Z87.81 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.002D"
+      ],
+      "confusion": "healed_coded_as_fracture",
+      "lean": "over",
+      "why": "The fracture has healed and needs no more care: Z87.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "S72.002A"
+      ],
+      "confusion": "healed_coded_as_fracture",
+      "lean": "over",
+      "why": "The fracture has healed; an initial-encounter code would add HCC 402.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:38+00:00",
+    "style": {
+      "age": 71,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

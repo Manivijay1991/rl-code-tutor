@@ -1,0 +1,68 @@
+{
+  "id": "hiv_status-6bc0f35227",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "prior_hiv_illness"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint: Follow-up for HIV management.\n\nHPI:\nThe patient is an 86-year-old male presenting today for a routine follow-up regarding his chronic HIV. He reports feeling well overall and denies any current respiratory distress, cough, or fever. He notes that he had a history of Pneumocystis pneumonia several years ago while he was not as well-controlled on his medication. However, he has been adherent to his current antiretroviral therapy for a significant period. He reports that his viral load has remained undetectable for many years. He currently denies any new symptoms or concerns regarding his immune status.\n\nReview of Systems:\nThe patient denies fever, chills, night sweats, or unintentional weight loss. He denies shortness of breath, chest pain, or productive cough. He denies any new skin lesions, joint pain, or neurological changes. He reports normal sleep and appetite.\n\nSocial History:\nThe patient lives at home with his spouse. He is a retired professional and enjoys gardening and reading. He denies current tobacco or alcohol use.\n\nFamily History:\nHis father had hypertension and his mother had type 2 diabetes. There is no known family history of similar immune deficiencies.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'10\"\nWeight: 175 lbs\n\nRecent Labs:\nCD4 count: 650 cells/mm3\nViral Load: Undetectable\neGFR: 72 mL/min/1.73m2\nHbA1c: 5.8%\n\nMedication List:\n- Tenofovir / Emtricitabine / Dolutegravir (daily)\n- Multivitamin (daily)\n\nExam:\nThe patient appears well-nourished and in no acute distress. He is alert and oriented to person, place, and time. Skin is intact without rashes or lesions. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. Abdomen is soft, non-tender, and non-distended.\n\nAssessment:\nThe patient is an 86-year-old male with a history of HIV. He successfully recovered from a previous episode of Pneumocystis pneumonia and is currently maintaining an undetectable viral load on his current regimen. He remains clinically stable and shows no signs of opportunistic infections.\n\nPlan:\n1. Continue current antiretroviral therapy as prescribed.\n2. Maintain current surveillance schedule.\n3. Patient instructed to report any new respiratory symptoms or fever immediately.\n4. Follow up in 6 months for repeat labs and clinical evaluation.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "B20"
+  ],
+  "explanations": [
+    "Once a patient has had an HIV-related illness, B20 is used at every later encounter, even when well with an undetectable viral load."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z21"
+      ],
+      "confusion": "understated_hiv",
+      "lean": "under",
+      "why": "A prior HIV-related illness means B20 from then on.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0.301,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.301,
+    "hccs": [
+      {
+        "hcc": "1",
+        "label": "HIV/AIDS",
+        "from": [
+          "B20"
+        ],
+        "weight": 0.301
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:20+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

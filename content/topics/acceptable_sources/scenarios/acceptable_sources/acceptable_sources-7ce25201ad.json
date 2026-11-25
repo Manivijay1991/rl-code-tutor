@@ -1,0 +1,60 @@
+{
+  "id": "acceptable_sources-7ce25201ad",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "unsigned_note"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Visit Date: 05/14/2026\n\nChief Complaint\nCOPD follow-up.\n\nHPI\nPt is an 83 y.o. female presenting for scheduled f/u of chronic obstructive pulmonary disease. Pt reports she has been feeling well since last visit. Denies increased SOB, productive cough, or chest pain. She reports consistent use of maintenance inhaler and states she is able to perform ADLs without significant fatigue. No recent URI symptoms.\n\nMedication List\n1. Tiotropium inhaler daily\n2. Lisinopril 10mg daily\n\nExam\nGen: Alert and oriented x3. Appears comfortable.\nRespiratory: CTAB. Breath sounds clear bilaterally. No wheezes or rales.\nCV: RRR, regular rhythm.\nMusculoskeletal: Steady gait, no acute distress.\n\nAssessment\n1. COPD: Stable. Pt shows good control on current regimen.\n\nPlan\n1. Continue current inhaler as prescribed.\n2. F/u in 3 months for routine monitoring.\n\nNote status: unsigned",
+  "answer": [],
+  "explanations": [
+    "A note must be signed with the provider's credentials to be used. Unsigned: no code (ask the provider to sign it)."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_unsigned_note",
+      "lean": "over",
+      "why": "Without a signature and credentials the note cannot support a code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:03:55+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien",
+      "signed": false
+    }
+  }
+}

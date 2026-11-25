@@ -1,0 +1,69 @@
+{
+  "id": "acceptable_sources-9c92e57237",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "office_visit"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Chief Complaint: COPD follow-up.\n\nVitals: BP 128/82, HR 76, SpO2 95% on room air, Temp 98.6 F, RR 18.\n\nRecent Labs:\n- Hemoglobin: 13.8 g/dL\n- White Blood Cell Count: 7.2 x 10^9/L\n- Platelets: 210 x 10^9/L\n- eGFR: 65 mL/min/1.73m2\n\nMedication List:\n- Tiotropium (inhaler)\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nSocial History:\nPatient is a retired construction worker. He lives at home with his wife. He reports social smoking history but currently denies any tobacco use. He enjoys gardening and walking in his neighborhood.\n\nFamily History:\nFather had hypertension and a history of chronic obstructive pulmonary disease. Mother had type 2 diabetes.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nRespiratory: Positive for occasional shortness of breath on exertion; negative for cough or wheezing.\nCardiovascular: Negative for chest pain or palpitations.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness or numbness.\n\nHPI:\n[Copied Forward from prior visit]: Patient is a 79-year-old male presenting for a follow-up visit regarding his chronic obstructive pulmonary disease. He reports consistent use of his maintenance inhaler. He notes that his breathing is manageable during daily activities but experiences some mild shortness of breath when walking long distances. He denies any recent changes in his symptoms or increased sputum production. He is compliant with his current medication regimen and reports no side effects.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nRespiratory: Lungs clear to auscultation bilaterally. No wheezes or rales noted. Symmetrical chest expansion.\nCardiovascular: Regular rate and rhythm. No murmurs heard.\nExtremities: No edema noted.\n\nAssessment:\n1. Chronic obstructive pulmonary disease: Stable. The patient's symptoms are well-controlled on his current inhaler therapy.\n\nPlan:\n1. Continue current office visit follow-up schedule.\n2. Continue current inhaler as prescribed.\n3. Patient instructed to monitor for increased shortness of breath and to contact the clinic if symptoms worsen.\n\nElectronically signed,\nT. Haddad, PA-C\nMay 14, 2026",
+  "answer": [
+    "J44.9"
+  ],
+  "explanations": [
+    "A signed face-to-face visit with an acceptable provider (MD, DO, NP or PA) that assesses COPD supports J44.9 (HCC 280)."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "OCG IV.J"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "rejected_acceptable_source",
+      "lean": "under",
+      "why": "The visit is face to face, signed with credentials and addresses COPD: it supports J44.9.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.319,
+        "gap": -0.319,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J449"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:26+00:00",
+    "style": {
+      "age": 79,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "T. Haddad"
+    }
+  }
+}

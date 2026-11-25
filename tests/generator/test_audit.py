@@ -216,6 +216,17 @@ def test_common_checks(change, expected):
     assert any(expected in m for m in messages), messages
 
 
+def test_unsigned_case_must_have_no_signature():
+    unsigned = {**STYLE, "signed": False}
+    clean_note = CKD_NOTE.replace(SIGN, "Visit date 05/14/2026. Note status: unsigned.")
+    rec = record("ckd_staging", {"stage": "3a", "hypertension": "yes", "dialysis": "no"}, clean_note, unsigned)
+    assert audit_record(rec) == []  # no "no signature" and no "credential missing"
+    signed_rec = {**rec, "note": CKD_NOTE}
+    assert Finding("answer", "an unsigned case has a signature") in audit_record(signed_rec)
+    explicit = record("ckd_staging", rec["slots"], CKD_NOTE, {**STYLE, "signed": True})
+    assert audit_record(explicit) == []
+
+
 # ---- generic audit (tables without a specific one) ----
 GEN = {
     "id": "gen",

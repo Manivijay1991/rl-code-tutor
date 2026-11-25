@@ -1,0 +1,89 @@
+{
+  "id": "gi_conditions-6076b0e30b",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_pancreatitis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint\nFollow-up for chronic pancreatitis.\n\nHPI\nPt is a 61-year-old male presenting for routine follow-up of chronic pancreatitis. Pt reports stable symptoms since last visit. Denies acute abdominal pain or significant dyspepsia. Reports consistent compliance with pancreatic enzyme replacement therapy with good tolerance. No new concerns noted today.\n\nMedication List\nPancreatic enzyme replacement therapy (PERT)\n\nExam\nGen: Well-appearing, in no acute distress.\nAbdomen: Soft, non-tender, non-distended. Normal bowel sounds. No guarding or rebound.\nCV: RRR, regular rate and rhythm.\nResp: CTAB.\nVitals: Stable and WNL.\n\nAssessment\n1. Chronic pancreatitis: Stable. Managed with PERT. Cause not stated.\n\nPlan\n1. Continue current PERT regimen.\n2. Continue routine monitoring of symptoms.\n3. Return to clinic in 6 months for f/u.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "K86.1"
+  ],
+  "explanations": [
+    "Chronic pancreatitis: K86.1 (HCC 79)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z87.19"
+      ],
+      "confusion": "chronic_coded_acute",
+      "lean": "under",
+      "why": "The pancreatitis is chronic and current.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.357,
+        "gap": -0.357,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "79"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "K85.90"
+      ],
+      "confusion": "chronic_coded_acute",
+      "lean": "under",
+      "why": "Chronic pancreatitis is K86.1, not acute pancreatitis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.357,
+        "gap": -0.357,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "79"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.357,
+    "hccs": [
+      {
+        "hcc": "79",
+        "label": "Chronic Pancreatitis",
+        "from": [
+          "K861"
+        ],
+        "weight": 0.357
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:29+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

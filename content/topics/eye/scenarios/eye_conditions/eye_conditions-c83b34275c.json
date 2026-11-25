@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-c83b34275c",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "wet_amd_scar"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision changes in the right eye.\n\nHPI\nThe patient is a 78-year-old woman presenting for a follow-up evaluation of her vision. She reports stable visual acuity in her right eye since the last visit. She denies any new floaters, flashes, or sudden worsening of her central vision. She is aware of her diagnosis and reports compliance with her current management plan.\n\nMedication List\nMultivitamin daily.\n\nExam\nVisual acuity is stable. Funduscopic examination of the right eye reveals exudative age-related macular degeneration. There is a visible disciform scar present in the macula. The retina appears stable with no evidence of new fluid or hemorrhage.\n\nAssessment\n1. Exudative age-related macular degeneration, right eye. The patient has a stable disciform scar and currently shows no signs of progression.\n\nPlan\nThe patient will continue with current observation. No injection is needed at this time. She will return in six months for a repeat funduscopic exam and visual acuity testing.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "H35.3213"
+  ],
+  "explanations": [
+    "Exudative (wet) AMD, right eye, with inactive scar: H35.3213 (HCC 300)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3211"
+      ],
+      "confusion": "wrong_cnv_status",
+      "lean": "neutral",
+      "why": "The wet AMD has an inactive scar, not active neovascularization.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0.596,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "H35.30"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type, eye and stage are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.596,
+        "gap": -0.596,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "300"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.596,
+    "hccs": [
+      {
+        "hcc": "300",
+        "label": "Exudative Macular Degeneration",
+        "from": [
+          "H353213"
+        ],
+        "weight": 0.596
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:25+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

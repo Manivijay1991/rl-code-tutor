@@ -1,0 +1,68 @@
+{
+  "id": "hiv_status-ccc71992dc",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "prior_hiv_illness"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint: Routine follow-up for chronic HIV management.\n\nHPI: The patient is a 79-year-old female presenting for a scheduled clinic visit to monitor her chronic HIV and overall health status. She reports feeling well today and denies any acute concerns or new symptoms. She notes that she has been stable on her current antiretroviral therapy for several years. Years ago, she experienced a severe episode of Pneumocystis pneumonia, but she has remained healthy and stable since that time. She reports consistent adherence to her medication regimen and denies any opportunistic infections or respiratory distress.\n\nMedication List:\n- Tenofovir / Emtricitabine / Tenofovir Alafenamide\n- Atazanavir\n- Ritonavir\n- Hydroxychloroquine\n\nReview of Systems:\nGeneral: No fever, chills, or fatigue.\nRespiratory: No cough, shortness of breath, or chest pain.\nCardiovascular: No palpitations or edema.\nGastrointestinal: No nausea, vomiting, or diarrhea.\nNeurological: No dizziness or numbness.\n\nSocial History: The patient lives at home with her spouse. She enjoys gardening and walking. She retired five years ago. She denies tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs:\nCD4+ count: 650 cells/mm3\nViral Load: Undetectable\neGFR: 74 mL/min/1.73m2\nHbA1c: 5.8%\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished, in no acute distress.\nSkin: No visible rashes or lesions.\nLungs: Clear to auscultation bilaterally.\nHeart: Regular rate and rhythm, no murmurs.\nAbdomen: Soft, non-tender, no masses.\n\nAssessment:\n1. Chronic HIV: Stable and well-controlled on current antiretroviral therapy with undetectable viral load.\n2. History of Pneumocystis pneumonia: Resolved and stable.\n\nPlan:\n1. Continue current antiretroviral therapy as prescribed.\n2. Reinforce medication adherence and importance of regular monitoring.\n3. Follow up in 6 months for repeat lab work and clinical evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "B20"
+  ],
+  "explanations": [
+    "Once a patient has had an HIV-related illness, B20 is used at every later encounter, even when well with an undetectable viral load."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z21"
+      ],
+      "confusion": "understated_hiv",
+      "lean": "under",
+      "why": "A prior HIV-related illness means B20 from then on.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0.301,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.301,
+    "hccs": [
+      {
+        "hcc": "1",
+        "label": "HIV/AIDS",
+        "from": [
+          "B20"
+        ],
+        "weight": 0.301
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:59:52+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

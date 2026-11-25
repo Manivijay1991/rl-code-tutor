@@ -231,7 +231,13 @@ One table per topic folder (`content/topics/<topic>/tables/`); `coding-tutor-che
 | Liver disease | `liver_disease` | 6 | cirrhosis types, chronic vs cured hepatitis C, fatty liver | draft |
 | Epilepsy, Parkinson's and MS | `neuro_conditions` | 7 | seizure disorder = epilepsy, past single seizure, G35 is a header in FY2027 | draft |
 | Rheumatoid arthritis | `rheumatoid_arthritis` | 5 | RA vs osteoarthritis, rheumatoid factor, methotrexate Z79.631 | draft |
+| HIV | `hiv_status` | 4 | Z21 vs B20, prior HIV-related illness stays B20, inconclusive test R75 | draft |
+| IBD and pancreatitis | `gi_conditions` | 7 | Crohn's/UC site, IBS is not IBD, chronic vs past acute pancreatitis | draft |
+| Blood and immune | `blood_immune` | 5 | sickle cell disease vs trait, ITP vs thrombocytopenia, CVID | draft |
+| Eye: AMD and retinopathy | `eye_conditions` | 5 | wet vs dry AMD, active vs scar, proliferative vs mild NPDR | draft |
+| Hip fracture encounters | `hip_fracture` | 6 | 7th character A vs D, healed = Z87.81, side | draft |
 | MEAT documentation | `meat_support` | 9 | problem list or medication list only | draft |
+| Acceptable sources | `acceptable_sources` | 4 | radiology report, nurse visit or unsigned note cannot support a code | draft |
 
 V28 hierarchies, labels and weights come from the CMS model software (see `engine/hcc.py`).
 Weights are shown in coach feedback only (`hcc.score_gap`: risk-score error, over or under);

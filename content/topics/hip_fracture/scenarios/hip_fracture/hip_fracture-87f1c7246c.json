@@ -1,0 +1,80 @@
+{
+  "id": "hip_fracture-87f1c7246c",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "left",
+    "encounter": "healing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint\nRoutine follow-up of the left hip.\n\nHPI\nThe patient is an 89-year-old female presenting for a routine postoperative evaluation six weeks following surgical repair of a closed femoral neck fracture. She is currently participating in physical therapy to regain mobility and strength. She reports that her progress is steady and she is managing well with her current rehabilitation program. She denies any significant new pain or concerns regarding the surgical site.\n\nMedication List\nAcetaminophen 650mg every 6 hours as needed for pain.\n\nExam\nThe patient is alert and oriented. She is currently ambulating with a walker. Examination of the left hip reveals stable surgical site with no signs of drainage or excessive erythema. Range of motion is improving. Neurovascular status of the left femur is intact.\n\nAssessment\nStatus post surgical repair of a left femoral neck fracture. The patient is progressing well during the healing phase.\n\nPlan\nContinue current physical therapy regimen. Follow up in four weeks for continued monitoring of the left hip.\n\nElectronically signed, P. O'Brien, MD, 10/14/2026",
+  "answer": [
+    "S72.002D"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the left femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.002D."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.002A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z87.81"
+      ],
+      "confusion": "healing_coded_as_history",
+      "lean": "under",
+      "why": "The fracture is still healing; history is for a healed fracture.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:32+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

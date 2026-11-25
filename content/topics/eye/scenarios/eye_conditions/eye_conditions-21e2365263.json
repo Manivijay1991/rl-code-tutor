@@ -1,0 +1,78 @@
+{
+  "id": "eye_conditions-21e2365263",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "dry_amd_early"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision changes.\n\nHPI\nThe patient is an 86-year-old male who presents today for a follow-up evaluation regarding visual changes. He was recently seen by an ophthalmologist who performed a comprehensive eye exam. The ophthalmologist documented early dry age-related macular degeneration of the right eye. The patient reports that his vision in the right eye has become slightly less sharp over the last several months, but he denies any sudden loss of vision, floaters, or flashes of light. He states he is currently managing his symptoms and is seeking guidance on nutritional support and lifestyle modifications. He denies any history of eye trauma or recent infections.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, chills, or unintentional weight loss. He denies any recent falls or joint pain. He denies any neurological symptoms such as numbness or tingling.\n\nSocial History\nThe patient is a retired engineer who lives at home with his wife. He is a former smoker (quit 20 years ago) and reports no current alcohol or illicit drug use. He enjoys gardening and walking daily.\n\nFamily History\nHis father had hypertension and a history of heart disease. His mother had a history of stroke.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 97% on room air\nHeight: 5'10\"\nWeight: 175 lbs\n\nRecent Labs\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nPlatelet Count: 210 x 10^9/L\neGFR: 68 mL/min/1.73m2\nGlucose: 105 mg/dL\n\nMedication List\nLisinopril 10 mg daily\nAtorvastatin 20 mg daily\nMultivitamin daily\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nVitals: Stable.\nPsychiatric: Calm and cooperative.\nMusculoskeletal: No acute distress or gait instability noted.\n\nAssessment\nThe patient is an 86-year-old male with a confirmed diagnosis of early dry age-related macular degeneration of the right eye. He currently presents without acute visual distress or complications.\n\nPlan\n1. Discussed the ophthalmologist's findings of nonexudative macular degeneration.\n2. Advised the patient on the importance of a diet rich in leafy greens and antioxidants.\n3. Recommended specific vitamins as advised by the specialist to support ocular health.\n4. Patient will continue current blood pressure and cholesterol medications.\n5. Follow up in 6 months for a routine check.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "H35.3111"
+  ],
+  "explanations": [
+    "Nonexudative (dry) AMD, right eye, early dry stage: H35.3111 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3211"
+      ],
+      "confusion": "wet_dry_confused",
+      "lean": "neutral",
+      "why": "Dry (nonexudative) AMD is documented, not wet.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0,
+        "gap": 0.596,
+        "direction": "over",
+        "extra_hccs": [
+          "300"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "H35.30"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type, eye and stage are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:03:53+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

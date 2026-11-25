@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-625b658f9c",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "uc_pancolitis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Follow-up for ulcerative pancolitis.\n\nHPI: [Copied Forward] Patient is a 77-year-old female with a history of ulcerative pancolitis. She reports regular bowel movements and no significant abdominal distress. She has been managed on mesalamine for several years.\n\n[Current Update] The patient states she feels well today and notes that her symptoms remain stable. She denies any new flares or changes in bowel habits since the last evaluation.\n\nMedication List:\n- Mesalamine 2.5g daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nReview of Systems:\nConstitutional: Negative\nGI: Negative\nMusculoskeletal: Negative\nNeurological: Negative\nSkin: Negative\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nAbdomen: Soft, non-tender, non-distended. Normal bowel sounds. No guarding or rebound tenderness.\n\nAssessment:\n1. Ulcerative pancolitis, currently in remission.\n\nPlan:\n1. Continue current dose of mesalamine.\n2. Patient will continue to monitor for any changes in symptoms.\n3. Follow up in 6 months for routine monitoring.\n\nElectronically signed,\nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "K51.00"
+  ],
+  "explanations": [
+    "Ulcerative pancolitis, no complications: K51.00 (HCC 81)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K51.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The extent (pancolitis) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.244,
+        "correct": 0.244,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.244,
+    "hccs": [
+      {
+        "hcc": "81",
+        "label": "Ulcerative Colitis",
+        "from": [
+          "K5100"
+        ],
+        "weight": 0.244
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:33+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

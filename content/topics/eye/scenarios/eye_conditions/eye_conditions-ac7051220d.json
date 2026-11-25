@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-ac7051220d",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "npdr_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision screening.\n\nHPI\nThe patient is an 89-year-old woman who presents for a routine ophthalmology evaluation. She has a known history of type 2 diabetes. She reports no acute changes in her vision or new ocular symptoms since her last visit. She is here today for a baseline screening of her retinal health.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAmlodipine 5mg daily\n\nExam\nVisual acuity is stable. Funduscopic examination of the right eye reveals mild nonproliferative diabetic retinopathy. There is no evidence of significant complications or surrounding changes in the retinal architecture.\n\nAssessment\n1. Type 2 diabetes\n2. Mild NPDR of the right eye\n\nPlan\nThe patient will continue her current medications for blood pressure and cholesterol management. We will monitor her glucose levels closely. A follow-up appointment will be scheduled in 12 months for a repeat retinal exam.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "E11.3291"
+  ],
+  "explanations": [
+    "Type 2 diabetes with mild nonproliferative diabetic retinopathy without macular edema, right eye: E11.3291 (HCC 37 only)."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.3591"
+      ],
+      "confusion": "overstated_retinopathy",
+      "lean": "over",
+      "why": "Proliferative retinopathy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.502,
+        "correct": 0.166,
+        "gap": 0.336,
+        "direction": "over",
+        "extra_hccs": [
+          "298"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E11.319"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type and severity of retinopathy are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E113291"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-25T15:02:36+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

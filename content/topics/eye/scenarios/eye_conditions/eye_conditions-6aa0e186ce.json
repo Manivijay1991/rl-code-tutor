@@ -1,0 +1,78 @@
+{
+  "id": "eye_conditions-6aa0e186ce",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "dry_amd_early"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for vision changes and ophthalmology results.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a follow-up visit to discuss recent ophthalmology findings. She reports a gradual decrease in clarity of vision in her right eye over the past several months. She notes that she has been experiencing some difficulty with fine-detail tasks. She denies any sudden loss of vision, new floaters, or flashes of light. She has been instructed by her ophthalmologist regarding the diagnosis of early dry age-related macular degeneration of the right eye. She expresses understanding of the diagnosis and is seeking guidance on management and supplemental support.\n\nReview of Systems\nThe patient denies any recent chest pain, shortness of breath, or palpitations. She denies fevers, chills, or unintended weight changes. She denies any recent falls or changes in gait. She denies any new-onset headaches or dizziness.\n\nSocial History\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and reading. She denies tobacco use and reports social alcohol consumption.\n\nFamily History\nHer mother had hypertension and a history of macular degeneration. Her father had a history of coronary artery disease.\n\nMedication List\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\neGFR: 68 mL/min/1.73m2\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\n\nExam\nGeneral: Alert and oriented x3. Well-nourished and in no acute distress.\nPsychiatric: Normal affect, appropriate mood.\nOphthalmology Note: Documentation confirms early dry (nonexudative) age-related macular degeneration of the right eye.\n\nAssessment\n1. Early dry (nonexudative) age-related macular degeneration of the right eye.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan\n1. Discussed the ophthalmology report. The patient was advised on the importance of vitamin supplementation as recommended by her specialist.\n2. Continue current medications for hypertension and hyperlipidemia.\n3. Follow up in 6 months for a routine check of blood pressure and lipids.\n4. Patient to continue monitoring vision and report any significant changes promptly.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "H35.3111"
+  ],
+  "explanations": [
+    "Nonexudative (dry) AMD, right eye, early dry stage: H35.3111 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3211"
+      ],
+      "confusion": "wet_dry_confused",
+      "lean": "neutral",
+      "why": "Dry (nonexudative) AMD is documented, not wet.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0,
+        "gap": 0.596,
+        "direction": "over",
+        "extra_hccs": [
+          "300"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "H35.30"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type, eye and stage are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:30+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

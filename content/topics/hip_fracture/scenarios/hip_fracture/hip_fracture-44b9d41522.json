@@ -1,0 +1,79 @@
+{
+  "id": "hip_fracture-44b9d41522",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "right",
+    "encounter": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint: Pain in the right hip.\n\nHPI: The patient is an 86-year-old male presenting for evaluation of persistent discomfort in his right hip. He reports that the pain is most noticeable when transitioning from a seated to a standing position and when walking short distances. He describes the sensation as a dull ache. The patient notes that while he has a history of a hip fracture, that specific injury occurred several years ago and the right femoral neck is completely healed. He states that the current issue is distinct from that previous injury and is not related to the old fracture site. He denies any recent falls or new trauma.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nVitals:\nBP: 132/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 97% on room air\n\nRecent Labs:\nHbA1c: 6.4%\neGFR: 62 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nMusculoskeletal: Reports right hip pain; denies back pain or other joint pain.\nNeurological: No numbness or tingling in lower extremities.\nSkin: No rashes or lesions noted.\n\nSocial History: The patient is retired and lives at home with his wife. He enjoys gardening and watching television. He does not smoke and drinks alcohol occasionally.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nExam: The patient is alert and oriented x3. He appears in no acute distress. Physical examination of the right hip reveals mild tenderness to palpation over the joint line. Range of motion is slightly limited by discomfort but is not severely restricted. Strength is 5/5 in the right lower extremity. The skin is intact without erythema or warmth.\n\nAssessment: 1. Right hip pain, likely degenerative. 2. History of right femoral neck fracture, which is fully healed and requires no further treatment.\n\nPlan: The patient will begin a course of Naproxen 500mg twice daily as needed for pain. He was advised to use a heating pad for 15 minutes in the evening. We will follow up in four weeks to assess the effectiveness of the medication and the progression of symptoms.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z87.81"
+  ],
+  "explanations": [
+    "A hip fracture that has completely healed, with treatment finished: personal history, Z87.81 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.001D"
+      ],
+      "confusion": "healed_coded_as_fracture",
+      "lean": "over",
+      "why": "The fracture has healed and needs no more care: Z87.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "S72.001A"
+      ],
+      "confusion": "healed_coded_as_fracture",
+      "lean": "over",
+      "why": "The fracture has healed; an initial-encounter code would add HCC 402.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:29+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

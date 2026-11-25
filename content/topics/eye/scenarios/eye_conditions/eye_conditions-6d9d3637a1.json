@@ -1,0 +1,87 @@
+{
+  "id": "eye_conditions-6d9d3637a1",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "wet_amd_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint\nFollow-up for macular degeneration.\n\nHPI\nPt is a 75-year-old female presenting for scheduled treatment of right eye macular degeneration. Pt reports stable vision but reports some blurring of central vision. Ophthalmology notes exudative changes in the right eye. Exam confirms active choroidal neovascularization.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\n\nExam\nVisual Acuity: 20/60 OD. Pupils equal, round, and reactive to light. Extraocular movements intact. Fundus exam shows exudative wet age-related macular degeneration of the right eye. Active CNV noted on imaging.\n\nAssessment\n1. Exudative age-related macular degeneration, right eye.\n2. Active choroidal neovascularization.\n\nPlan\nAdministered anti-VEGF injection to the right eye today. Pt tolerated procedure well without complications. F/u in 4-8 weeks for repeat imaging and vision check.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "H35.3211"
+  ],
+  "explanations": [
+    "Exudative (wet) AMD, right eye, with active choroidal neovascularization: H35.3211 (HCC 300)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: H35, E11.3"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "H35.3111"
+      ],
+      "confusion": "wet_dry_confused",
+      "lean": "neutral",
+      "why": "Wet (exudative) AMD is documented; dry AMD has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.596,
+        "gap": -0.596,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "300"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "H35.3212"
+      ],
+      "confusion": "wrong_cnv_status",
+      "lean": "neutral",
+      "why": "The neovascularization is documented as active.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.596,
+        "correct": 0.596,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.596,
+    "hccs": [
+      {
+        "hcc": "300",
+        "label": "Exudative Macular Degeneration",
+        "from": [
+          "H353211"
+        ],
+        "weight": 0.596
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:03:37+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

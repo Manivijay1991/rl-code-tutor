@@ -388,3 +388,39 @@ def test_style_for_rejects_conflicting_sexes():
     t = constrained(note_rules=[{"when": {}, "sex": "woman"}, {"when": {"a": "x"}, "sex": "man"}])
     with pytest.raises(TableError, match="conflicting sexes"):
         scenarios.style_for(t, {"a": "x"}, random.Random(1))
+
+
+DOC = "Write a chest x-ray report with sections: Indication, Findings, Impression."
+
+
+def test_style_for_applies_document_credential_and_signed():
+    t = constrained(note_rules=[{"when": {"a": "x"}, "document": DOC, "credential": "RN", "signed": False}])
+    style = scenarios.style_for(t, {"a": "x"}, random.Random(2))
+    assert style["document"] == DOC and style["credential"] == "RN" and style["signed"] is False
+    other = scenarios.style_for(t, {"a": "y"}, random.Random(2))
+    assert "document" not in other and "signed" not in other and other["credential"] != "RN"
+
+
+@pytest.mark.parametrize(
+    ("key", "a", "b"), [("credential", "RN", "MD"), ("document", "A.", "B."), ("signed", True, False)]
+)
+def test_style_for_rejects_conflicting_overrides(key, a, b):
+    t = constrained(note_rules=[{"when": {}, key: a}, {"when": {"a": "x"}, key: b}])
+    with pytest.raises(TableError, match="conflicting"):
+        scenarios.style_for(t, {"a": "x"}, random.Random(1))
+    same = constrained(note_rules=[{"when": {}, key: a}, {"when": {"a": "x"}, key: a}])
+    assert scenarios.style_for(same, {"a": "x"}, random.Random(1))[key] == a
+
+
+def test_document_and_unsigned_styles_change_the_prompt(dm):
+    style = {**pick_style(dm, random.Random(3)), "document": DOC, "signed": False}
+    text = build_prompt(requirements(dm, dm_slots()), style=style)
+    assert text.startswith(DOC) and "progress note" not in text
+    assert "no signature" in text and "'Electronically signed'" not in text
+
+
+def test_signed_leaves_unsigned_notes_alone(dm):
+    note = "Type 2 diabetes with CKD stage 4, on insulin." + FILLER
+    style = {**pick_style(dm, random.Random(3)), "signed": False}
+    assert signed(note, style) == note
+    assert scenarios.is_signed({**style, "signed": True}) and not scenarios.is_signed(None)

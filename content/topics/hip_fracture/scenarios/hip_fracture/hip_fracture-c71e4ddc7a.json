@@ -1,0 +1,89 @@
+{
+  "id": "hip_fracture-c71e4ddc7a",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "right",
+    "encounter": "initial"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint: Right hip pain.\n\nHPI: Pt is a 90 y.o. male presenting to the clinic today for evaluation of right hip pain. Pt reports a fall 2 days ago. He states he fell and landed on his side. Since the fall, he has experienced significant pain and inability to bear weight on the right side. He denies any numbness or tingling in the lower extremities.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Aspirin 81mg QD\n\nVitals:\nBP: 138/82\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nHt/Wt: 165 lbs\n\nRecent Labs:\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 8.0 x 10^9/L\nPlatelets: 210 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight loss.\nMSK: Positive for acute right hip pain. Denies back pain or joint swelling elsewhere.\nNeuro: Denies weakness or paresthesia.\nCV: Denies chest pain or SOB.\n\nSocial History: Lives at home with spouse. Retired. No tobacco or alcohol use.\n\nFamily History: Father had hypertension. Mother had Type 2 diabetes.\n\nExam:\nGeneral: Pt appears in acute distress due to pain. Alert and oriented x3.\nMusculoskeletal: Significant tenderness and edema over the right hip. Limited range of motion. Pt unable to bear weight.\nNeuro: Strength 5/5 in upper extremities. Sensation intact to light touch in lower extremities.\n\nAssessment:\n1. Closed fracture of the right femoral neck.\n\nPlan:\nX-ray today confirms a closed fracture of the right femoral neck. Started aggressive pain management with oral analgesics. Pt is being referred for urgent orthopedic surgery to address the hip fracture. Pt instructed to remain non-weight bearing. Follow up as directed by surgical team.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "S72.001A"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the right femur, newly diagnosed, active treatment: 7th character A (HCC 402): S72.001A."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.001D"
+      ],
+      "confusion": "subsequent_for_initial",
+      "lean": "under",
+      "why": "The fracture is newly diagnosed and under active treatment: 7th character A.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.467,
+        "gap": -0.467,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "402"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "S72.002A"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The right hip is fractured.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0.467,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.467,
+    "hccs": [
+      {
+        "hcc": "402",
+        "label": "Hip Fracture/Dislocation",
+        "from": [
+          "S72001A"
+        ],
+        "weight": 0.467
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:46+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

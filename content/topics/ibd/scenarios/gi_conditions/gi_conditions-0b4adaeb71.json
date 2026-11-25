@@ -1,0 +1,61 @@
+{
+  "id": "gi_conditions-0b4adaeb71",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "ibs"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint: Abdominal discomfort and bloating.\n\nHPI: Patient is a 72-year-old female who first presented with chronic abdominal cramping and changes in bowel habits. She reports intermittent bloating and discomfort that is often relieved by bowel movements. She denies any weight loss or nocturnal symptoms. A previous evaluation included a colonoscopy which was found to be normal. She was diagnosed with irritable bowel syndrome. She continues to experience occasional flares of discomfort but notes that symptoms are manageable with dietary modifications.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue, or weight change.\nGI: Positive for bloating and abdominal cramping. Negative for nausea, vomiting, or changes in stool consistency.\nMSK: Negative for joint pain or stiffness.\nNeuro: Negative for headaches or dizziness.\nCV: Negative for palpitations or chest pain.\nRespiratory: Negative for cough or shortness of breath.\n\nSocial History: Retired school teacher. Lives with her husband. Non-smoker. Occasional social drinking.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4.\n\nRecent Labs: HbA1c: 5.8%, TSH: 2.1 mIU/L, eGFR: 82 mL/min/1.73m2.\n\nMedication List:\n- Linaclotide 180 mcg daily\n- Amlodipine 5 mg daily\n- Atorvastatin 20 mg daily\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nAbdomen: Soft, non-tender, non-distended. Bowel sounds are present in all four quadrants. No masses noted.\nMusculoskeletal: No joint swelling or erythema.\nNeurological: Alert and oriented x3.\n\nAssessment:\n1. Irritable bowel syndrome: The patient's symptoms are consistent with her established diagnosis of IBS. Her recent colonoscopy was normal, confirming the absence of organic pathology.\n\nPlan:\n1. Continue current medication regimen for IBS management.\n2. Maintain low-FODMAP diet as previously discussed.\n3. Follow up in 4 months to monitor symptom control.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "K58.9"
+  ],
+  "explanations": [
+    "Irritable bowel syndrome: K58.9 (no HCC). It is not inflammatory bowel disease."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K51.90"
+      ],
+      "confusion": "ibs_coded_as_ibd",
+      "lean": "over",
+      "why": "IBS is not ulcerative colitis or Crohn's disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.244,
+        "correct": 0,
+        "gap": 0.244,
+        "direction": "over",
+        "extra_hccs": [
+          "81"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:27+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "hip_fracture-c9681ba065",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "left",
+    "encounter": "initial"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint: Left hip pain following a fall.\n\nHPI: (Copied Forward) Patient is a 77-year-old female presenting with progressive discomfort in the left hip. She reports a dull ache and stiffness, particularly when weight-bearing. She denies any acute trauma to date.\n\nUpdate: Patient presents today with acute, severe pain in the left hip following a fall two days ago. She reports she was unable to bear weight on the limb immediately after the incident.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Alendronic acid 70mg weekly\n\nVitals: BP 138/84, HR 76, SpO2 98% on RA, Temp 98.6F\n\nReview of Systems:\nConstitutional: Negative\nMusculoskeletal: Positive (Left hip pain)\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\n\nExam: Patient is alert and oriented. Significant tenderness to palpation over the left femur. Limited range of motion of the left hip due to pain. No gross deformity noted. Neurovascularly intact distally.\n\nAssessment:\n1. Closed fracture of the left femoral neck.\n\nPlan: X-ray today confirms a closed fracture of the left femoral neck. Started on pain management for acute discomfort. Referral placed for urgent orthopedic surgery.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "S72.002A"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the left femur, newly diagnosed, active treatment: 7th character A (HCC 402): S72.002A."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.002D"
+      ],
+      "confusion": "subsequent_for_initial",
+      "lean": "under",
+      "why": "The fracture is newly diagnosed and under active treatment: 7th character A.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.467,
+        "gap": -0.467,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "402"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "S72.001A"
+      ],
+      "confusion": "wrong_side",
+      "lean": "neutral",
+      "why": "The left hip is fractured.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0.467,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.467,
+    "hccs": [
+      {
+        "hcc": "402",
+        "label": "Hip Fracture/Dislocation",
+        "from": [
+          "S72002A"
+        ],
+        "weight": 0.467
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:29+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

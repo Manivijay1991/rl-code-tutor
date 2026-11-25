@@ -1,0 +1,68 @@
+{
+  "id": "gi_conditions-89b3da3ccb",
+  "table": "gi_conditions",
+  "title": "Crohn's, ulcerative colitis, IBS and pancreatitis",
+  "status": "draft",
+  "slots": {
+    "condition": "uc_pancolitis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's digestive condition.",
+  "note": "Chief Complaint\nFollow-up for ulcerative pancolitis.\n\nHPI\nPt is an 83yF presenting for routine f/u of ulcerative pancolitis. She reports feeling well overall and states her symptoms have been well-controlled since starting mesalamine. She denies any acute flares or recent changes in bowel habits. She is currently in remission.\n\nMedication List\nMesalamine 2.5g daily.\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 128/78, HR 72 (RRR), Temp 98.6 F, SpO2 97% on RA.\nAbd: Soft, non-tender, non-distended. Normal bowel sounds.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nExt: WNL.\n\nAssessment\n1. Ulcerative pancolitis, in remission.\n\nPlan\nContinue current mesalamine regimen. Pt to continue monitoring for any return of symptoms. F/u in 6 months for routine evaluation.\n\nElectronically signed\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "K51.00"
+  ],
+  "explanations": [
+    "Ulcerative pancolitis, no complications: K51.00 (HCC 81)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K50-K86"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K51.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The extent (pancolitis) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.244,
+        "correct": 0.244,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.244,
+    "hccs": [
+      {
+        "hcc": "81",
+        "label": "Ulcerative Colitis",
+        "from": [
+          "K5100"
+        ],
+        "weight": 0.244
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:57+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

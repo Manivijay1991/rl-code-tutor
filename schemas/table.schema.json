@@ -46,7 +46,10 @@
           "require": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}, "description": "groups; one phrase from each"},
           "forbid": {"type": "array", "items": {"type": "string"}},
           "describe": {"type": "string"},
-          "sex": {"enum": ["woman", "man"], "description": "the patient's sex when the case requires it (e.g. prostate or female-breast codes)"}
+          "sex": {"enum": ["woman", "man"], "description": "the patient's sex when the case requires it (e.g. prostate or female-breast codes)"},
+          "credential": {"enum": ["MD", "DO", "NP", "PA-C", "RN"], "description": "the signer's credential when the case requires it (e.g. a nurse visit)"},
+          "document": {"type": "string", "description": "writer instruction replacing the progress-note one (e.g. a radiology report with its own sections)"},
+          "signed": {"type": "boolean", "description": "false = write an unsigned note (no signature line is added)"}
         }
       }
     },

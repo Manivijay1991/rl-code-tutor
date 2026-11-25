@@ -1,0 +1,61 @@
+{
+  "id": "blood_immune-6119990942",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "thrombocytopenia"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint: Follow-up for laboratory results.\n\nHPI: [Copied Forward] Patient is an 89-year-old female presenting for routine monitoring of laboratory values. She reports feeling well today with no new complaints of bruising or bleeding. She denies any recent trauma or fever.\n\nVitals: BP 130/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nGeneral: Negative\nSkin: Negative\nHEENT: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Vitamin D3 1000 IU daily\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nSkin: No active petechiae or ecchymoses noted.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\n\nAssessment:\n1. Mild thrombocytopenia of unclear cause.\n\nPlan:\n1. Order repeat CBC to monitor platelet count and evaluate for changes in thrombocytopenia.\n2. Patient to return to clinic in 4 weeks for follow-up on results.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "D69.6"
+  ],
+  "explanations": [
+    "Thrombocytopenia without a documented cause: D69.6 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D69.3"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "over",
+      "why": "The provider does not document immune thrombocytopenia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.45,
+        "correct": 0,
+        "gap": 0.45,
+        "direction": "over",
+        "extra_hccs": [
+          "112"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:18+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

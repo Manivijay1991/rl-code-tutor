@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-56e879614f",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "sickle_cell_disease"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint: Follow-up for sickle cell disease.\n\nHPI: Pt is a 75-year-old female presenting for scheduled follow-up of sickle cell disease. She reports she feels well today. Denies any current pain or distress. She states she is adherent to her hydroxyurea regimen and notes no recent complications. She is currently stable and seeking routine monitoring.\n\nMedication List:\n- Hydroxyurea 1000mg daily\n- Folic acid 1mg daily\n\nExam:\nGen: Well-appearing, in no acute distress.\nVitals: BP 130/82, HR 74, RR 16, Temp 98.6F, SpO2 98% on RA.\nCV: RRR, CTAB.\nResp: CTAB, lungs clear.\nMSK: No joint swelling or erythema.\nSkin: No new lesions or pallor noted.\n\nAssessment:\n1. Sickle cell disease: Stable on hydroxyurea. Pt currently asymptomatic.\n\nPlan:\n- Continue hydroxyurea as prescribed.\n- Continue folic acid.\n- F/u in 6 months for routine labs and clinical monitoring.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "D57.1"
+  ],
+  "explanations": [
+    "Sickle cell disease without crisis: D57.1 (HCC 107)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.3"
+      ],
+      "confusion": "disease_coded_as_trait",
+      "lean": "under",
+      "why": "Sickle cell disease is documented, not the trait.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.457,
+        "gap": -0.457,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "107"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.457,
+    "hccs": [
+      {
+        "hcc": "107",
+        "label": "Sickle Cell Anemia (Hb-SS) and Thalassemia Beta Zero",
+        "from": [
+          "D571"
+        ],
+        "weight": 0.457
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:07+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

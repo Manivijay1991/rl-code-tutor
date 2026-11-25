@@ -1,0 +1,61 @@
+{
+  "id": "blood_immune-edae9e605c",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "thrombocytopenia"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint\nFollow-up for lab results.\n\nHPI\nPt is an 83 y.o. female presenting for f/u of recent blood work. Pt reports feeling well overall and denies any easy bruising, petechiae, or unusual bleeding episodes. She denies fever or chills. She is here to discuss findings from her most recent CBC.\n\nMedication List\n1. Lisinopril 10mg QD\n2. Atorvastatin 20mg QD\n3. Multivitamin QD\n\nExam\nGen: Well-appearing, alert, and oriented x3. \nCV: RRR, CTAB, no murmurs. \nResp: CTAB, no wheezes/rales. \nSkin: No visible petechiae or ecchymosis. \nExt: No edema.\n\nAssessment\n1. Mild thrombocytopenia of unclear cause.\n\nPlan\n1. Recheck the platelet count in 4 weeks to monitor trend. \n2. Continue current medications. \n3. Pt to notify office if any significant bleeding or bruising occurs. \n4. F/u in 1 month.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "D69.6"
+  ],
+  "explanations": [
+    "Thrombocytopenia without a documented cause: D69.6 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D69.3"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "over",
+      "why": "The provider does not document immune thrombocytopenia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.45,
+        "correct": 0,
+        "gap": 0.45,
+        "direction": "over",
+        "extra_hccs": [
+          "112"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:02:00+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

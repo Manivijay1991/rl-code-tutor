@@ -1,0 +1,61 @@
+{
+  "id": "acceptable_sources-55e3a4ea53",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "radiology_report"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Exam: Chest x-ray (2 views)\n\nIndication: Chronic cough, shortness of breath.\n\nComparison: None available.\n\nTechnique: Two views of the chest were obtained.\n\nFindings: The lungs are clear of any acute infiltrates or pleural effusions. The heart size is within normal limits. The mediastinal contours are stable. There is evidence of increased lucency and flattened diaphragms. The hila are unremarkable. The bony structures are intact.\n\nImpression: Hyperinflation and findings consistent with COPD.\n\nInterpreting radiologist: [Signature]\n\n*\n\nVitals: BP 128/82, HR 74, SpO2 98%\n\nReview of Systems:\n[X] Cough\n[X] Dyspnea\n[ ] Fever\n[ ] Chest pain\n[ ] Chills\n[ ] Productive sputum\n\nHPI: Copied forward from prior visit: Patient is a 66-year-old woman presenting with a persistent cough and progressive shortness of breath over the last six months. She reports increased difficulty with exertion. She denies any recent fevers or acute chest pain. The Radiologist will evaluate the imaging for underlying chronic obstructive pulmonary disease.\n\nElectronically signed, E. Castillo, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Diagnostic radiology is not an acceptable risk-adjustment source: radiologists do not document confirmed diagnoses for the patient's care. No code."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "CMS Managed Care Manual ch. 7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_radiology_report",
+      "lean": "over",
+      "why": "'Consistent with COPD' on an x-ray report is not a provider's diagnosis for risk adjustment.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:06:07+00:00",
+    "style": {
+      "age": 66,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a diagnostic radiology report for a two-view chest x-ray, dictated and signed by a radiologist, with sections: Exam, Indication, Comparison, Technique, Findings, Impression, and a final line 'Interpreting radiologist:' with the signature. It is not an office visit note: no HPI, medication list, assessment or plan."
+    }
+  }
+}

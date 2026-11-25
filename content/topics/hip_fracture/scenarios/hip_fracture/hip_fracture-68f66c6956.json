@@ -1,0 +1,79 @@
+{
+  "id": "hip_fracture-68f66c6956",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "right",
+    "encounter": "healed"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint: Right hip pain\n\nVitals: BP 138/84, HR 74, SpO2 98% on room air, Temp 98.6°F, HR 74, Weight 175 lbs.\n\nRecent Labs: HbA1c: 6.8, eGFR: 62, Sodium: 139, Potassium: 4.1.\n\nMedication List:\n- Lisinopril 10mg daily\n- Metformin 500mg BID\n- Atorvastatin 20mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nEyes: No vision changes.\nEars: No hearing loss.\nNose/Throat: No congestion or sore throat.\nCardiovascular: No chest pain or palpitations.\nRespiratory: No shortness of breath or cough.\nGastrointestinal: No abdominal pain or diarrhea.\nGenitourinary: No dysuria.\nMusculoskeletal: Positive for right hip pain.\nNeurological: No numbness or tingling.\nPsychiatric: No anxiety or depression.\n\nSocial History: Retired engineer. Lives with his wife in a single-story home. No tobacco or alcohol use.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nHPI: (Copied forward from previous visit) Patient is an 84-year-old male presenting for evaluation of chronic discomfort in the right hip. He reports a history of a right femoral neck fracture that occurred several years ago. He states that the fracture is completely healed and he has not required any follow-up for that specific injury since the initial recovery. He is now seeking evaluation for new onset of stiffness and localized aching in the right hip area.\n\nExam:\nGeneral: Well-appearing, pleasant male in no acute distress.\nMusculoskeletal: Examination of the right hip reveals mild tenderness to palpation over the joint. Range of motion is slightly limited by discomfort. There is no evidence of instability. The site of the old right femoral neck fracture shows no signs of hardware prominence or structural issues; the area is fully healed. No erythema or warmth noted.\n\nAssessment:\n1. Right hip pain, chronic.\n2. Status post right femoral neck fracture, completely healed.\n\nPlan:\n1. Continue current medications for hypertension and diabetes.\n2. For right hip pain, initiate scheduled use of acetaminophen 650mg every 6 hours as needed for discomfort.\n3. Patient instructed to avoid heavy lifting or high-impact activities.\n4. Follow up in 4 weeks to monitor symptoms.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "Z87.81"
+  ],
+  "explanations": [
+    "A hip fracture that has completely healed, with treatment finished: personal history, Z87.81 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.001D"
+      ],
+      "confusion": "healed_coded_as_fracture",
+      "lean": "over",
+      "why": "The fracture has healed and needs no more care: Z87.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "S72.001A"
+      ],
+      "confusion": "healed_coded_as_fracture",
+      "lean": "over",
+      "why": "The fracture has healed; an initial-encounter code would add HCC 402.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:03+00:00",
+    "style": {
+      "age": 84,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -36,8 +36,10 @@
             "voice": {"enum": ["narrative", "shorthand", "templated"]},
             "length": {"enum": ["short", "long"]},
             "background": {"type": "array", "items": {"type": "string"}},
-            "credential": {"enum": ["MD", "DO", "NP", "PA-C"]},
-            "signer": {"type": "string"}
+            "credential": {"enum": ["MD", "DO", "NP", "PA-C", "RN"]},
+            "signer": {"type": "string"},
+            "document": {"type": "string", "description": "writer instruction for a document other than a progress note (from note_rules)"},
+            "signed": {"type": "boolean", "description": "false = the case is an unsigned note (from note_rules); absent = signed"}
           }
         }
       }

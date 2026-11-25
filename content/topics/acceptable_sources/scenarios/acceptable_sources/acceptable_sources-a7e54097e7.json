@@ -1,0 +1,61 @@
+{
+  "id": "acceptable_sources-a7e54097e7",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "nurse_visit"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Reason for Visit\nThe patient is an 86-year-old male presenting for a scheduled nurse visit focused on inhaler technique and education regarding his chronic obstructive pulmonary disease. He is seeking to improve his self-management of symptoms.\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 18 breaths/min\nSpO2: 95% on room air\nTemperature: 98.6 F\nWeight: 175 lbs\n\nRecent Labs\nHbA1c: 6.2%\neGFR: 68 mL/min/1.73m2\nTSH: 2.4 mIU/L\n\nReview of Systems\nThe patient reports no chest pain, no acute shortness of breath, and no productive cough today. He denies fever, chills, or night sweats. He reports stable energy levels and no recent falls. He denies any changes in appetite or sleep patterns.\n\nSocial History\nThe patient lives in a single-story home with his wife. He is a retired carpenter. He reports that he quit smoking 20 years ago. He enjoys gardening and watching television.\n\nFamily History\nFather died of heart disease at age 75. Mother had hypertension and lived to be 90. Siblings include one brother with hypertension.\n\nNursing Assessment\nThe patient appears well-groomed and in no acute distress. He is alert and oriented to person, place, and time. He demonstrates a stable gait but moves slowly. Upon assessment of his chronic obstructive pulmonary disease, he admits to occasional difficulty with his current inhaler technique. He was able to demonstrate the use of his metered-dose inhaler but required correction on the timing of his breaths and the coordination of the trigger. His lungs are clear to auscultation bilaterally.\n\nPatient Education\nThe nurse provided education on proper inhaler technique, emphasizing the importance of exhaling fully before inhalation and holding the breath for 10 seconds. The nurse instructed the patient on the importance of rinsing his mouth after use. He was also educated on recognizing signs of worsening symptoms and when to seek medical attention.\n\nPlan\nThe patient will continue his current medication regimen. He will practice his inhaler technique twice daily at home. A follow-up nurse visit will be scheduled in four weeks to reassess his technique and symptom management.\n\nElectronically signed, P. O'Brien, RN, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "A registered nurse is not an acceptable provider type for risk adjustment; the visit needs a physician or other acceptable clinician. No code."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "CMS Managed Care Manual ch. 7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_non_acceptable_provider",
+      "lean": "over",
+      "why": "A nurse visit alone cannot support the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:04:13+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "RN",
+      "signer": "P. O'Brien",
+      "document": "Write a nurse visit note by a registered nurse (RN), with sections: Reason for Visit, Vitals, Nursing Assessment, Patient Education, Plan. The patient is not seen by a physician, nurse practitioner or physician assistant today."
+    }
+  }
+}

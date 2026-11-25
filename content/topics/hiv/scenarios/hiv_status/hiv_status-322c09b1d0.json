@@ -1,0 +1,68 @@
+{
+  "id": "hiv_status-322c09b1d0",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "asymptomatic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint\nFollow-up for HIV status.\n\nHPI\nPt is a 56 y/o female presenting for routine follow-up. Pt reports feeling well today. She denies any acute symptoms, fevers, or weight loss. She remains on current antiretroviral regimen with good adherence. Pt states she has no HIV-related illness to date.\n\nMedication List\n- Tenofovir / Emtricitabine / Dolutegravir (daily)\n- Multivitamin (daily)\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 122/78, HR 72, Temp 98.6F, RR 16, SpO2 98% on RA.\nHEENT: Normocephalic, no scleral icterus, no pharyngeal erythema.\nCV: RRR, no murmurs.\nLungs: CTAB.\nSkin: No rashes or lesions noted.\nNeuro: NAD.\n\nAssessment\n1. HIV positive. Pt is currently asymptomatic. CD4 count and viral load remain stable.\n\nPlan\n1. Continue current ART regimen.\n2. Lab work ordered for routine monitoring of viral load and CD4 count.\n3. F/u in 3 months.\n\nElectronically signed, D. Kowalski, MD, 10/14/2026",
+  "answer": [
+    "Z21"
+  ],
+  "explanations": [
+    "HIV positive with no symptoms and no HIV-related illness ever: Z21 (HCC 1)."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B20"
+      ],
+      "confusion": "overstated_hiv",
+      "lean": "over",
+      "why": "B20 is for AIDS or any HIV-related illness, current or past.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0.301,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.301,
+    "hccs": [
+      {
+        "hcc": "1",
+        "label": "HIV/AIDS",
+        "from": [
+          "Z21"
+        ],
+        "weight": 0.301
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T14:59:47+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "hip_fracture-2309d559e0",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "left",
+    "encounter": "healing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint: Follow-up for left hip.\n\nHPI: Pt is an 85-year-old female presenting for a routine follow-up 6 weeks status post surgical repair of a closed femoral neck fracture. Pt reports she is doing well with recovery. She notes some lingering discomfort in the left hip but states it is improving daily. She is currently participating in physical therapy (PT) as scheduled. No new complaints of significant pain, drainage, or mobility issues. Pt is compliant with weight-bearing precautions.\n\nMedication List:\n- Acetaminophen 650mg BID PRN for pain\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 34%\nWBC: 7.2\nHbA1c: 6.8%\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nMusculoskeletal: Reports mild aching in left hip. No redness or warmth noted.\nNeuro: No numbness or tingling in lower extremities.\nOther systems: All negative.\n\nSocial History: Lives at home with her daughter. Retired. No tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nMusculoskeletal: Left hip shows stable surgical site. No signs of erythema or fluctuance. Range of motion (ROM) within expected postoperative limits. Strength is improving.\nNeuro: Sensation intact to lower extremities. Gait is steady with assistive device.\n\nAssessment:\n1. Left femoral neck fracture, status post surgical repair. Pt is 6 weeks postoperative and healing well.\n\nPlan:\n1. Continue current PT regimen.\n2. Continue medications as prescribed.\n3. Follow up in 4 weeks for next routine check.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "S72.002D"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the left femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.002D."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.002A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z87.81"
+      ],
+      "confusion": "healing_coded_as_history",
+      "lean": "under",
+      "why": "The fracture is still healing; history is for a healed fracture.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:17+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "acceptable_sources-473526129e",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "radiology_report"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Exam: Chest x-ray, two views\n\nIndication: Chronic cough and shortness of breath.\n\nComparison: None.\n\nTechnique: Two views of the chest were obtained using standard portable equipment.\n\nFindings: The lungs are clear of any acute infiltrates or consolidations. The heart size is within normal limits for the patient's age. The mediastinal contours are stable. The diaphragm is slightly flattened. There is increased radiolucency of the peripheral lung fields with a flattened appearance of the hemidiaphragms. The bony structures and soft tissues of the chest wall are unremarkable.\n\nImpression:\n1. Hyperinflation of the lungs.\n2. Findings consistent with COPD.\n\nInterpreting radiologist: D. Kowalski, MD\n\n*\n\nVitals: BP 128/82, HR 74, SpO2 96% on room air, Temp 98.6 F\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: Positive for chronic cough and exertional dyspnea. Negative for wheezing.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea or abdominal pain.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or syncope.\n\nSocial History: Retired. Former smoker (30 pack-year history). Lives in a single-story home with her daughter.\n\nFamily History: Mother had hypertension. Father had a history of tobacco use.\n\nRecent Labs: Hemoglobin 13.4 g/dL, White Blood Cell Count 7.2 x 10^9/L, Platelets 210 x 10^9/L, eGFR 68 mL/min/1.73m2.\n\nHPI: (Copied Forward) Patient is an 85-year-old woman who presents for evaluation of a persistent cough and increased shortness of breath over the last three months. She reports that the symptoms are most noticeable during physical activity. She denies any recent travel or exposure to known pathogens.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "Diagnostic radiology is not an acceptable risk-adjustment source: radiologists do not document confirmed diagnoses for the patient's care. No code."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "CMS Managed Care Manual ch. 7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_radiology_report",
+      "lean": "over",
+      "why": "'Consistent with COPD' on an x-ray report is not a provider's diagnosis for risk adjustment.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:06:02+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a diagnostic radiology report for a two-view chest x-ray, dictated and signed by a radiologist, with sections: Exam, Indication, Comparison, Technique, Findings, Impression, and a final line 'Interpreting radiologist:' with the signature. It is not an office visit note: no HPI, medication list, assessment or plan."
+    }
+  }
+}

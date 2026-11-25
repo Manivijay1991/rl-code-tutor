@@ -1,0 +1,97 @@
+{
+  "id": "eye_conditions-0db62de51a",
+  "table": "eye_conditions",
+  "title": "Macular degeneration and diabetic retinopathy",
+  "status": "draft",
+  "slots": {
+    "condition": "pdr"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's eye condition.",
+  "note": "Chief Complaint: Follow-up for vision and diabetes.\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nHPI: [Copied Forward] Patient is an 89-year-old female with a history of type 2 diabetes. She reports stable vision but seeks evaluation for ongoing management of her condition. She denies any sudden vision loss or new floaters.\n\nUpdate: The patient presents today for a scheduled follow-up. She reports that her vision remains consistent with her baseline. She denies any new ocular discomfort or changes in visual acuity.\n\nReview of Systems:\nConstitutional: Negative\nEyes: Positive (Reported vision changes)\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nOcular: External exam of the right eye shows no signs of acute inflammation. Funduscopic exam of the right eye reveals proliferative diabetic retinopathy.\n\nAssessment:\n1. Type 2 diabetes.\n2. Proliferative diabetic retinopathy of the right eye.\n\nPlan:\n1. Continue current antihypertensive and lipid-lowering medications.\n2. Continue monitoring for progression of proliferative diabetic retinopathy.\n3. Return to clinic in 3 months for routine follow-up.\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "E11.3591"
+  ],
+  "explanations": [
+    "Type 2 diabetes with proliferative diabetic retinopathy without macular edema, right eye: E11.3591 (HCC 37 and 298)."
+  ],
+  "refs": [
+    "OCG I.C.4.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.3291"
+      ],
+      "confusion": "understated_retinopathy",
+      "lean": "under",
+      "why": "Proliferative retinopathy is documented (HCC 298).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.502,
+        "gap": -0.336,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "298"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "E11.319"
+      ],
+      "confusion": "understated_retinopathy",
+      "lean": "under",
+      "why": "The type of retinopathy is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.502,
+        "gap": -0.336,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "298"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.502,
+    "hccs": [
+      {
+        "hcc": "37",
+        "label": "Diabetes with Chronic Complications",
+        "from": [
+          "E113591"
+        ],
+        "weight": 0.166
+      },
+      {
+        "hcc": "298",
+        "label": "Severe Diabetic Eye Disease/Retinal Vein Occlusion/and Vitreous Hemorrhage",
+        "from": [
+          "E113591"
+        ],
+        "weight": 0.336
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:03:58+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

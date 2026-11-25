@@ -1,0 +1,70 @@
+{
+  "id": "blood_immune-fa437f5526",
+  "table": "blood_immune",
+  "title": "Sickle cell, ITP and immunodeficiency",
+  "status": "draft",
+  "slots": {
+    "condition": "sickle_cell_disease"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood or immune disorder.",
+  "note": "Chief Complaint: Follow-up for sickle cell disease.\n\nHPI: Pt is a 90-year-old male presenting for scheduled follow-up of sickle cell disease. Pt reports feeling well today. Denies any new episodes of pain or systemic symptoms. He states he has been adherent to his hydroxyurea regimen. No recent hospitalizations or ER visits for sickle cell anemia. Pt reports stable energy levels and no recent fatigue. He denies any shortness of breath or chest pain.\n\nMedication List:\n- Hydroxyurea 500mg BID\n- Folic acid 1mg daily\n- Multivitamin daily\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 165 lbs\n\nRecent Labs:\nHb: 9.2 g/dL\nHct: 28%\nWBC: 11.4 K/uL\nPlt: 145 K/uL\neGFR: 58 mL/min\n\nReview of Systems:\nGeneral: No fever, chills, or weight changes.\nCV: No palpitations or syncope.\nResp: No cough or SOB.\nMSK: No joint pain or swelling.\nGI: No nausea, vomiting, or diarrhea.\nGU: No dysuria.\nNeuro: No dizziness or confusion.\n\nSocial History: Pt lives at home with his spouse. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nExam:\nGen: 90yo male, well-appearing, alert and oriented x3.\nCV: RRR, regular S1, S2. No murmurs.\nResp: CTAB, no wheezes or rales.\nMSK: No joint erythema or edema.\nSkin: No new lesions.\nNeuro: Normal gait, steady balance.\n\nAssessment:\n1. Sickle cell disease: Pt is currently stable on hydroxyurea. No reports of pain episodes.\n\nPlan:\n1. Continue hydroxyurea as prescribed.\n2. Continue folic acid.\n3. F/u in 6 months for routine labs and monitoring.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "D57.1"
+  ],
+  "explanations": [
+    "Sickle cell disease without crisis: D57.1 (HCC 107)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.3"
+      ],
+      "confusion": "disease_coded_as_trait",
+      "lean": "under",
+      "why": "Sickle cell disease is documented, not the trait.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.457,
+        "gap": -0.457,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "107"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.457,
+    "hccs": [
+      {
+        "hcc": "107",
+        "label": "Sickle Cell Anemia (Hb-SS) and Thalassemia Beta Zero",
+        "from": [
+          "D571"
+        ],
+        "weight": 0.457
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:01:49+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

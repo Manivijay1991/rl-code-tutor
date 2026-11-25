@@ -45,7 +45,8 @@ CODE_LIKE = re.compile(r"(?<![\w.])[A-TV-Z]\d{2}\.?[0-9A-Z]{1,4}(?!\w|\.\w)")
 CODING_WORDS = ["ICD", "ICD-10", "HCC", "CPT", "billing code", "diagnosis code"]
 
 Requirements = dict  # {"require": [[phrase, ...], ...], "forbid": [phrase, ...], "facts": [str, ...]}
-Style = dict  # {"age", "sex", "voice", "length", "background": [str], "credential", "signer"}
+# {"age", "sex", "voice", "length", "background": [str], "credential", "signer"}, optional "document", "signed"
+Style = dict
 
 SYSTEM = (
     "You write realistic outpatient clinic notes for medical-coding practice. "
@@ -177,30 +178,47 @@ def pick_style(t: Table, rng: random.Random) -> Style:
     }
 
 
+def is_signed(style: Style | None) -> bool:
+    """Return True unless the style asks for an unsigned note (`signed: false`)."""
+    return bool(style) and style.get("signed", True)
+
+
 def signed(note: str, style: Style | None) -> str:
-    """Return the note with the style's signature line appended when the writer left it out."""
-    if not style or has_phrase(note, "Electronically signed"):
+    """Return the note with the style's signature line appended when the writer left it out.
+
+    Unsigned styles (`signed: false`) are returned unchanged: the missing signature is the point of the case.
+    """
+    if not is_signed(style) or has_phrase(note, "Electronically signed"):
         return note
     return f"{note}\n\nElectronically signed, {style['signer']}, {style['credential']}"
+
+
+# Style fields a matching `note_rules` entry may fix, with the plural used in conflict errors.
+STYLE_OVERRIDES = {"sex": "sexes", "credential": "credentials", "document": "documents", "signed": "signature settings"}
 
 
 def style_for(t: Table, slots: Slots, rng: random.Random) -> Style:
     """Pick a style, then apply the case's constraints.
 
     The table's `note_age` keeps the patient's age realistic for the topic (an age outside it is redrawn
-    inside it), and a matching `note_rules` entry may fix the patient's sex.
+    inside it), and matching `note_rules` entries may fix the patient's sex, the signer's credential,
+    the kind of document (`document`, replacing the progress-note instruction) and whether it is signed.
 
     Raises:
-        TableError: Matching note_rules ask for different sexes.
+        TableError: Matching note_rules give different values for the same field.
     """
     style = pick_style(t, rng)
     lo, hi = t.get("note_age", {}).get("min", 18), t.get("note_age", {}).get("max", 110)
     if not lo <= style["age"] <= hi:
         style = {**style, "age": rng.randint(lo, min(hi, max(lo, 90)))}
-    sexes = {r["sex"] for r in t.get("note_rules", []) if "sex" in r and matches(r["when"], slots)}
-    if len(sexes) > 1:
-        raise TableError(f"{t['id']}: note_rules give conflicting sexes {sorted(sexes)} for {slots}")
-    return {**style, "sex": sexes.pop()} if sexes else style
+    rules = [r for r in t.get("note_rules", []) if matches(r["when"], slots)]
+    for key, plural in STYLE_OVERRIDES.items():
+        values = list(dict.fromkeys(r[key] for r in rules if key in r))
+        if len(values) > 1:
+            raise TableError(f"{t['id']}: note_rules give conflicting {plural} {values} for {slots}")
+        if values:
+            style = {**style, key: values[0]}
+    return style
 
 
 def style_lines(style: Style) -> list[str]:
@@ -215,10 +233,16 @@ def style_lines(style: Style) -> list[str]:
             "Also mention these stable background conditions in the history and problem list, and no other "
             "chronic conditions: " + ", ".join(style["background"]) + "."
         )
-    lines.append(
-        f"End with a signature line: 'Electronically signed', {style['signer']}, {style['credential']}, "
-        "and a visit date in 2026."
-    )
+    if is_signed(style):
+        lines.append(
+            f"End with a signature line: 'Electronically signed', {style['signer']}, {style['credential']}, "
+            "and a visit date in 2026."
+        )
+    else:
+        lines.append(
+            "Include a visit date in 2026, but no signature, no signer's name and no credentials: "
+            "the note is an unsigned draft."
+        )
     return lines
 
 
@@ -259,8 +283,11 @@ def build_prompt(req: Requirements, problems: list[str] | None = None, style: St
         if style and style["background"]
         else "add a Problem List section only if a fact below asks for one"
     )
+    document = (style or {}).get("document")
     lines = [
-        f"Write an outpatient progress note of {length}, with these sections: "
+        f"{document} Length: {length}."
+        if document
+        else f"Write an outpatient progress note of {length}, with these sections: "
         f"Chief Complaint, HPI, Medication List, Exam, Assessment, Plan ({problem_list}).",
         *(style_lines(style) if style else []),
         "",

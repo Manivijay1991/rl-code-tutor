@@ -1,0 +1,61 @@
+{
+  "id": "acceptable_sources-910c416cc1",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "nurse_visit"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Reason for Visit\nPatient presents for a nurse visit to receive education on proper inhaler technique for management of known COPD. Patient is aware of diagnosis but reports difficulty coordinating hand-breath synchronization with the device.\n\nVitals\nBP: 132/78 mmHg\nHR: 74 bpm (RRR)\nTemp: 98.6 F\nSpO2: 94% on RA\nRR: 18\nHt/Wt: 145 lbs\n\nRecent Labs\nHbA1c: 6.2% (Date: 01/15/2026)\neGFR: 65 mL/min/1.73m2\nWBC: 7.2 x 10^9/L\n\nReview of Systems\nGeneral: Denies fever, chills, or fatigue.\nRespiratory: Reports occasional shortness of breath on exertion. Denies productive cough or wheezing.\nCV: Denies chest pain or palpitations.\nMusculoskeletal: Denies joint pain or swelling.\nNeuro: Denies dizziness or confusion.\n\nSocial History\nLives at home with spouse. Retired. Non-smoker. Independent with ADLs.\n\nFamily History\nFather: Hypertension, Stroke.\nMother: Type 2 Diabetes.\n\nNursing Assessment\nPt is a 90-year-old male who appears well-nourished and in no acute distress. Skin is warm and dry. Lung sounds are diminished in bases but clear. Pt demonstrates poor technique with MDI, specifically failing to coordinate the puff with inhalation. Pt is able to follow multi-step instructions but requires frequent repetition due to age. No signs of acute distress noted during teaching.\n\nPatient Education\nProvided 1:1 education on MDI and spacer use. Demonstrated correct \"shake, prime, and puff\" technique. Instructed pt to inhale slowly and deeply while depressing canister. Pt practiced technique 5 times with successful completion each time. Educated on importance of rinsing mouth after use. Encouraged to perform deep breathing exercises twice daily.\n\nPlan\nPt to continue current medication regimen. Pt will practice inhaler technique twice daily at home. Follow up with nursing department in 4 weeks to reassess technique and symptom management. No provider seen today.\n\nElectronically signed, S. Patel, RN, 03/12/2026",
+  "answer": [],
+  "explanations": [
+    "A registered nurse is not an acceptable provider type for risk adjustment; the visit needs a physician or other acceptable clinician. No code."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "CMS Managed Care Manual ch. 7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_non_acceptable_provider",
+      "lean": "over",
+      "why": "A nurse visit alone cannot support the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 5,
+    "created": "2026-11-25T15:05:07+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "RN",
+      "signer": "S. Patel",
+      "document": "Write a nurse visit note by a registered nurse (RN), with sections: Reason for Visit, Vitals, Nursing Assessment, Patient Education, Plan. The patient is not seen by a physician, nurse practitioner or physician assistant today."
+    }
+  }
+}

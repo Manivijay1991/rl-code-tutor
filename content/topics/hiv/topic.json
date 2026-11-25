@@ -1,0 +1,8 @@
+{
+  "id": "hiv",
+  "title": "HIV",
+  "kind": "hcc",
+  "description": "Asymptomatic HIV, HIV disease, a prior HIV-related illness, and inconclusive tests.",
+  "order": 96,
+  "enabled": true
+}

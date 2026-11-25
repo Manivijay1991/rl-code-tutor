@@ -1,0 +1,8 @@
+{
+  "id": "blood_immune",
+  "title": "Blood and immune disorders",
+  "kind": "hcc",
+  "description": "Sickle cell disease versus trait, ITP versus thrombocytopenia, common variable immunodeficiency.",
+  "order": 98,
+  "enabled": true
+}

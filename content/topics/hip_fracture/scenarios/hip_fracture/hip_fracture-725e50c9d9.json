@@ -1,0 +1,80 @@
+{
+  "id": "hip_fracture-725e50c9d9",
+  "table": "hip_fracture",
+  "title": "Hip fracture: initial, subsequent or history",
+  "status": "draft",
+  "slots": {
+    "side": "left",
+    "encounter": "healing"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's hip fracture at this visit.",
+  "note": "Chief Complaint: Follow-up for left hip pain.\n\nVitals: BP 128/76, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F, BMI 27.4.\n\nRecent Labs: Hemoglobin 13.2 g/dL, White Blood Cell Count 7.4 x 10^9/L, Platelets 210 x 10^9/L, eGFR 82 mL/min/1.73m2.\n\nSocial History: Retired school teacher. Lives with her spouse in a single-story home. Non-smoker. Occasional social alcohol consumption.\n\nFamily History: Mother had hypertension; father had type 2 diabetes. No family history of malignancy.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nMusculoskeletal: Positive for aching pain in the left hip; negative for joint swelling or redness.\nNeurological: Negative for numbness or tingling in lower extremities.\nGastrointestinal: Negative for nausea or abdominal pain.\nGenitourinary: Negative for dysuria.\nRespiratory: Negative for shortness of breath or cough.\n\nHPI: Patient is a 72-year-old female who is status post surgical repair of a closed hip fracture. She reports that the initial injury occurred several weeks ago, and she underwent a surgical procedure to stabilize the left femoral neck. She currently presents for a routine postoperative checkup. She describes the pain as a dull ache in the left hip, which is manageable with her current regimen. She is participating in her prescribed physical therapy and reports being able to perform basic activities of daily living with a walker.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nMusculoskeletal: Surgical site on the left hip is clean, dry, and intact without signs of drainage or erythema. Mild tenderness noted upon palpation of the left femur. Range of motion in the left hip is limited but improving compared to the previous visit. Strength is 4/5 in the left lower extremity.\n\nAssessment:\n1. Status post repair of left femoral neck fracture.\n2. Progressing well, currently in the healing phase following her postoperative period.\n\nPlan:\n1. Continue current physical therapy schedule twice weekly.\n2. Continue current pain management and medications.\n3. Follow up in 4 weeks for further evaluation of the healing progress.\n\nMedication List:\n- Acetaminophen 650mg every 6 hours as needed for pain.\n- Multivitamin daily.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "S72.002D"
+  ],
+  "explanations": [
+    "Closed fracture of the neck of the left femur, routine follow-up after surgery while it heals: 7th character D (no HCC): S72.002D."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S72.002A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine follow-up while it heals: 7th character D (no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.467,
+        "correct": 0,
+        "gap": 0.467,
+        "direction": "over",
+        "extra_hccs": [
+          "402"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z87.81"
+      ],
+      "confusion": "healing_coded_as_history",
+      "lean": "under",
+      "why": "The fracture is still healing; history is for a healed fracture.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:05:35+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "hiv_status-dc6a81be3e",
+  "table": "hiv_status",
+  "title": "HIV: Z21, B20 or R75",
+  "status": "draft",
+  "slots": {
+    "status": "asymptomatic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's HIV status (only that code).",
+  "note": "Chief Complaint: Routine follow-up for HIV.\n\nHPI: Pt is a 75-year-old female presenting for scheduled follow-up of her chronic condition. Pt reports feeling well and denies any acute concerns. She remains stable on current regimen. Pt denies fever, chills, or unintended weight loss. She notes no new symptoms and reports adherence to medications. Pt has no HIV-related illness to date.\n\nMedication List:\n- Tenofovir / Emtricitabine / Dolutegravir daily\n\nExam:\nVitals: BP 128/82, HR 74, RR 16, Temp 98.6F.\nGen: Well-appearing, no acute distress.\nHEENT: Normocephalic, pupils equal and reactive.\nNeck: No lymphadenopathy.\nResp: CTAB, no wheezes or rales.\nCV: RRR, no murmurs.\nSkin: No rashes or lesions.\nNeuro: Alert and oriented x3.\n\nAssessment:\n1. HIV infection. Pt is currently asymptomatic.\n2. Stable on current antiretroviral therapy.\n\nPlan:\n1. Continue current medications.\n2. Order routine labs including CD4 count and viral load.\n3. F/u in 3 months.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "Z21"
+  ],
+  "explanations": [
+    "HIV positive with no symptoms and no HIV-related illness ever: Z21 (HCC 1)."
+  ],
+  "refs": [
+    "OCG I.C.1.a"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B20"
+      ],
+      "confusion": "overstated_hiv",
+      "lean": "over",
+      "why": "B20 is for AIDS or any HIV-related illness, current or past.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.301,
+        "correct": 0.301,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.301,
+    "hccs": [
+      {
+        "hcc": "1",
+        "label": "HIV/AIDS",
+        "from": [
+          "Z21"
+        ],
+        "weight": 0.301
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:00:12+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

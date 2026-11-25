@@ -1,0 +1,61 @@
+{
+  "id": "acceptable_sources-d21a935ead",
+  "table": "acceptable_sources",
+  "title": "Acceptable sources for risk adjustment",
+  "status": "draft",
+  "slots": {
+    "source": "nurse_visit"
+  },
+  "question": "Can this document support a diagnosis code for risk adjustment? Assign the code it supports, or 'no code' if it cannot be used.",
+  "note": "Reason for Visit:\nThe patient is an 85-year-old male presenting for a nursing visit to receive education on the correct use of his maintenance inhaler for chronic obstructive pulmonary disease (COPD). No provider visit is scheduled today; this is a dedicated nurse visit for medication technique.\n\nVitals:\nBP: 128/82 mmHg\nHR: 74 bpm\nSpO2: 94% on room air\nTemp: 98.2 F\nRR: 18 breaths/min\nWeight: 172 lbs\n\nReview of Systems:\nGeneral: No fever, chills, or fatigue.\nRespiratory: Positive for chronic cough and shortness of breath on exertion. Denies wheezing or chest pain.\nCardiovascular: No palpitations or edema.\nGastrointestinal: No nausea, vomiting, or diarrhea.\nMusculoskeletal: Denies joint pain or stiffness.\nNeurological: No dizziness or tremors.\n\nSocial History:\nRetired construction worker. Lives with his wife. Former smoker (quit 10 years ago). No alcohol use.\n\nFamily History:\nFather had hypertension and heart disease. Mother had type 2 diabetes.\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 62 mL/min\nCBC: Within normal limits.\n\nHPI (Copied Forward):\nPatient is an 85-year-old male with a history of COPD and hypertension. He reports stable symptoms over the last month with occasional shortness of breath during heavy physical activity. He is currently adherent to his daily medications but expresses some confusion regarding the coordination of his different inhaler types.\n\nNursing Assessment:\nThe patient appears well-nourished and in no acute distress. He demonstrates a steady gait and is alert and oriented to person, place, and time. Lung sounds are diminished in the lower lobes but are consistent with his known COPD. He is able to follow multi-step instructions but requires some repetition. He successfully demonstrated the \"shake, breathe out, press, and inhale\" technique during the session.\n\nPatient Education:\nProvided education on the proper use of the metered-dose inhaler. Instructed the patient on the importance of exhaling fully before each puff and holding his breath for 10 seconds. Discussed the importance of rinsing the mouth after use and cleaning the device cap daily. Provided a printed demonstration sheet for home reference.\n\nPlan:\n1. Patient will continue current COPD medication regimen.\n2. Patient to practice inhaler technique twice daily.\n3. Patient to contact the clinic if he experiences increased shortness of breath or changes in sputum production.\n4. Follow up as scheduled.\n\nElectronically signed, J. Lindqvist, RN, 05/14/2026",
+  "answer": [],
+  "explanations": [
+    "A registered nurse is not an acceptable provider type for risk adjustment; the visit needs a physician or other acceptable clinician. No code."
+  ],
+  "refs": [
+    "CMS RADV reviewer guidance",
+    "CMS Managed Care Manual ch. 7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J44.9"
+      ],
+      "confusion": "coded_non_acceptable_provider",
+      "lean": "over",
+      "why": "A nurse visit alone cannot support the diagnosis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0,
+        "gap": 0.319,
+        "direction": "over",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-25T15:03:48+00:00",
+    "style": {
+      "age": 85,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "RN",
+      "signer": "J. Lindqvist",
+      "document": "Write a nurse visit note by a registered nurse (RN), with sections: Reason for Visit, Vitals, Nursing Assessment, Patient Education, Plan. The patient is not seen by a physician, nurse practitioner or physician assistant today."
+    }
+  }
+}
