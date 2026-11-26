@@ -1,0 +1,61 @@
+{
+  "id": "blood_disorders-4461158b35",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "pancytopenia_chemo"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint: Fatigue and reports of feeling unwell during chemotherapy.\n\nHPI: The patient is a 57-year-old male presenting for a follow-up evaluation regarding his ongoing treatment for breast cancer. He reports significant fatigue and generalized malaise since starting the most recent cycle of chemotherapy. He denies any acute shortness of breath or chest pain. He notes that he has been feeling weaker than usual over the past week, which prompted his visit today. He is currently undergoing systemic treatment, and his primary concern is the impact of the medication on his overall energy levels and blood counts.\n\nMedication List:\n- Capecitabine\n- Ondansetron (as needed)\n- Multivitamin\n\nReview of Systems:\nConstitutional: Reports fatigue and malaise. Denies chills or night sweats.\nRespiratory: Denies cough or shortness of breath.\nCardiovascular: Denies palpitations or chest pain.\nGastrointestinal: Denies nausea or diarrhea.\nMusculoskeletal: Denies joint pain.\nNeurological: Denies headaches or dizziness.\n\nSocial History: The patient lives with his spouse and two children. He works as a consultant and exercises three times a week. He denies tobacco or alcohol use.\n\nFamily History: Father had hypertension; mother had type 2 diabetes. No family history of malignancy.\n\nVitals:\nBP: 128/82 mmHg\nHR: 76 bpm\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 195 lbs\n\nRecent Labs:\nWBC: 2.1 x 10^9/L\nHemoglobin: 9.2 g/dL\nPlatelets: 85 x 10^9/L\n\nExam: The patient is alert and oriented x3. He appears mildly fatigued but is in no acute distress. Skin is clear without new lesions. Heart sounds are regular with no murmurs. Lungs are clear to auscultation. Abdomen is soft and non-tender.\n\nAssessment: The patient is experiencing pancytopenia as a side effect of his current chemotherapy regimen. His laboratory results confirm low white blood cell, hemoglobin, and platelet counts.\n\nPlan: Due to the severity of the pancytopenia, the next cycle of chemotherapy will be delayed until his counts improve. The patient will be monitored closely and instructed to contact the office immediately if he develops any new symptoms. We will repeat a complete blood count in one week.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "D61.810"
+  ],
+  "explanations": [
+    "Antineoplastic chemotherapy-induced pancytopenia: D61.810 (no HCC in V28)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D61.818"
+      ],
+      "confusion": "drug_cause_missed",
+      "lean": "over",
+      "why": "The chemotherapy cause is documented; D61.810 has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.144,
+        "correct": 0,
+        "gap": 1.144,
+        "direction": "over",
+        "extra_hccs": [
+          "109"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:00+00:00",
+    "style": {
+      "age": 57,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

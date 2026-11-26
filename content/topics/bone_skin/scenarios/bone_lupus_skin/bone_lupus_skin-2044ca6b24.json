@@ -1,0 +1,68 @@
+{
+  "id": "bone_lupus_skin-2044ca6b24",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "sle_nephritis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for systemic lupus erythematosus and renal involvement.\n\nHPI\nThe patient is a 67-year-old male presenting today for a scheduled follow-up regarding his systemic lupus erythematosus. He is currently managed on mycophenolate mofetil for the treatment of his lupus nephritis. He reports that he has been feeling generally stable over the last month. He denies any new-onset joint pain, significant fatigue, or new rashes. He notes that he has been adherent to his medication regimen and has not experienced any significant gastrointestinal side effects or acute infections. He reports that his urine output has remained consistent and he denies any visible hematuria or foamy urine.\n\nReview of Systems\nThe patient denies fever, chills, weight loss, or night sweats. He denies chest pain or shortness of breath. He denies any new joint swelling or morning stiffness. He denies any neurological symptoms such as numbness or tingling. He denies any changes in vision or hearing.\n\nSocial History\nThe patient is a retired professional who lives with his spouse. He reports no tobacco or alcohol use. He enjoys walking and gardening as his primary forms of exercise.\n\nFamily History\nHis father had hypertension and his mother had a history of autoimmune disease.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 195 lbs\n\nRecent Labs\nSerum Creatinine: 1.4 mg/dL\neGFR: 52 mL/min/1.73m2\nUrinalysis: Trace protein, no RBCs.\nComplete Blood Count (CBC): Within normal limits.\n\nMedication List\nMycophenolate mofetil 1000mg twice daily\nHydrochlorothiazide 12.5mg daily\nCalcium carbonate 500mg daily\n\nExam\nThe patient appears well-nourished and in no acute distress. Skin is clear without new lesions or rashes. No joint swelling or erythema noted upon palpation of the hands or knees. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs.\n\nAssessment\n1. Systemic lupus erythematosus (SLE)\n2. Lupus nephritis (glomerular disease)\n\nPlan\n1. Continue mycophenolate mofetil 1000mg twice daily.\n2. Continue current blood pressure medications.\n3. Monitor renal function and urinalysis every 3 months.\n4. Patient instructed to report any new symptoms of fatigue or changes in urine output immediately.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "M32.14"
+  ],
+  "explanations": [
+    "Glomerular disease in systemic lupus erythematosus: M32.14 (HCC 94)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M32.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The kidney involvement is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.268,
+        "correct": 0.268,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.268,
+    "hccs": [
+      {
+        "hcc": "94",
+        "label": "Systemic Lupus Erythematosus and Other Specified Systemic Connective Tissue Disorders",
+        "from": [
+          "M3214"
+        ],
+        "weight": 0.268
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:04+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

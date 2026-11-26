@@ -1,0 +1,87 @@
+{
+  "id": "bipolar_schizophrenia-acf6da5f3e",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for bipolar disorder.\n\nHPI\nPt is a 61-year-old male presenting for routine follow-up of bipolar disorder. Pt reports stable mood and consistent sleep patterns. Denies any acute distressing symptoms or concerns with current regimen. Adherent to medications. No concerns reported at this time.\n\nMedication List\nLithium 600mg BID\n\nExam\nGen: Well-appearing, pleasant.\nPsych: Cooperative, good eye contact. Speech is normal rate and volume. Thought process linear and goal-oriented. Mood is stable. Affect is congruent. Insight and judgment intact.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6F.\n\nAssessment\n1. Bipolar disorder. Pt is stable on current lithium dosage.\n\nPlan\n1. Continue lithium 600mg BID.\n2. Pt to continue current routine.\n3. F/u in 3 months for routine management of bipolar disorder.\n\nElectronically signed, K. Nguyen, DO, 10/14/2026",
+  "answer": [
+    "F31.9"
+  ],
+  "explanations": [
+    "Bipolar disorder without the episode or remission status: F31.9 (HCC 154)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F31.32"
+      ],
+      "confusion": "assumed_episode",
+      "lean": "neutral",
+      "why": "No current episode is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.351,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.76"
+      ],
+      "confusion": "assumed_episode",
+      "lean": "neutral",
+      "why": "Remission is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.351,
+        "gap": -0.351,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "154"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.351,
+    "hccs": [
+      {
+        "hcc": "154",
+        "label": "Bipolar Disorders without Psychosis",
+        "from": [
+          "F319"
+        ],
+        "weight": 0.351
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:16+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "nerve_muscle-0a7f664ae4",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "als"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for limb weakness.\n\nHPI\nPt is a 68 y.o. female with a known hx of amyotrophic lateral sclerosis. She presents today for a routine neurology f/u. Pt reports progressive limb weakness, which is ongoing. She notes that her functional status remains stable regarding nutrition; she is still eating by mouth without difficulty. No acute changes in respiratory status or severe dysphagia reported since last visit.\n\nMedication List\nRiluzole 50 mg BID\n\nExam\nGen: alert, coherent, in no acute distress.\nNeuro: RRR. Strength: decreased in bilateral upper and lower extremities. Gait is steady but slow. Speech is clear. Swallowing appears intact.\nVitals: BP 128/82, HR 74, Temp 98.6F, SpO2 98% on RA.\n\nAssessment\n1. Amyotrophic lateral sclerosis - progressive limb weakness.\n\nPlan\n1. Continue current Riluzole dosage.\n2. Monitor for progression of limb weakness.\n3. F/u in 3 months or PRN for acute changes.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "G12.21"
+  ],
+  "explanations": [
+    "Amyotrophic lateral sclerosis: G12.21 (HCC 190)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G12.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "ALS is documented, not an unspecified motor neuron disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.175,
+        "correct": 1.175,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.175,
+    "hccs": [
+      {
+        "hcc": "190",
+        "label": "Amyotrophic Lateral Sclerosis and Other Motor Neuron Disease/Spinal Muscular Atrophy",
+        "from": [
+          "G1221"
+        ],
+        "weight": 1.175
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:19+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

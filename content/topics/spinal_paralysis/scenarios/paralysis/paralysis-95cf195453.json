@@ -1,0 +1,85 @@
+{
+  "id": "paralysis-95cf195453",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "para_complete"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for chronic spinal cord injury.\n\nHPI\nPt is an 80 y/o female presenting for routine f/u of stable condition. Pt has a long-standing history of complete paraplegia resulting from a spinal cord injury sustained many years ago. Pt utilizes a manual wheelchair for all mobility. She reports being independent with all transfers and daily activities. Denies new onset of pain, skin breakdown, or changes in functional status. Reports stable bowel and bladder management. No new complaints today.\n\nMedication List\n1. Lisinopril 10mg QD\n2. Metformin 500mg BID\n3. Atorvastatin 20mg QD\n4. Oxycodone 5mg BID PRN for breakthrough pain\n\nVitals\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 145 lbs\n\nRecent Labs\nHbA1c: 6.8%\neGFR: 62\nTSH: 2.1\nBMP: WNL\n\nReview of Systems\nConstitutional: Denies fever, chills, fatigue.\nSkin: Denies redness or breakdown.\nMSK: Denies new joint pain.\nNeuro: Denies new sensory changes.\nAll other systems reviewed and negative.\n\nSocial History\nLives in a single-story home with her daughter. Retired teacher. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: Hypertension, Type 2 Diabetes.\nFather: MI at age 70.\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nSkin: Intact, dry, no signs of irritation.\nMusculoskeletal: Complete paraplegia noted. Pt demonstrates independent transfers to/from manual wheelchair.\nNeuro: Sensation absent in lower extremities. Reflexes diminished in lower extremities.\nRespiratory: CTAB, no wheezes.\n\nAssessment\n1. Chronic spinal cord injury with complete paraplegia. Stable.\n2. Type 2 Diabetes Mellitus, well-controlled.\n3. Hypertension, stable.\n\nPlan\n1. Continue current medication regimen.\n2. Continue use of manual wheelchair and independent transfers.\n3. F/u in 6 months for routine labs and skin check.\n\nElectronically signed, T. Haddad, NP, 05/12/2026",
+  "answer": [
+    "G82.21"
+  ],
+  "explanations": [
+    "Paraplegia, complete: G82.21 (HCC 181)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G82.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Complete is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G82.22"
+      ],
+      "confusion": "wrong_completeness",
+      "lean": "neutral",
+      "why": "It is documented as complete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.942,
+    "hccs": [
+      {
+        "hcc": "181",
+        "label": "Paraplegia",
+        "from": [
+          "G8221"
+        ],
+        "weight": 0.942
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:26+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

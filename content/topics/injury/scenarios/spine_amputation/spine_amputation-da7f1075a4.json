@@ -1,0 +1,72 @@
+{
+  "id": "spine_amputation-da7f1075a4",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "amputation_status"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint\nRoutine follow-up for prosthetic fitting and stump health.\n\nHPI\nThe patient is a 59-year-old woman who presents for a scheduled follow-up regarding her status following a right below-knee amputation performed several years ago. She reports that she is currently utilizing a prosthesis for mobility and expresses satisfaction with her current level of function. She denies any new concerns regarding her stump site or the fit of her prosthetic device. She notes that her daily activities remain consistent and she experiences no significant discomfort.\n\nMedication List\nMultivitamin, daily.\n\nExam\nThe patient is alert and in no acute distress. Physical examination of the residual limb reveals a healthy right stump with no signs of irritation or breakdown. Skin integrity is intact, and there is no evidence of pressure sores or significant scarring issues. The patient demonstrates steady gait while using her prosthesis.\n\nAssessment\n1. Status post right below-knee amputation. The stump is healthy and the prosthesis is well-tolerated.\n\nPlan\n1. Continue current prosthesis use.\n2. Routine skin checks of the right stump.\n3. Follow up in 6 months.\n\nElectronically signed, P. O'Brien, MD, 05/12/2026",
+  "answer": [
+    "Z89.511"
+  ],
+  "explanations": [
+    "Acquired absence of the right leg below the knee: Z89.511 (HCC 409)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S88.111A"
+      ],
+      "confusion": "acute_status_confused",
+      "lean": "neutral",
+      "why": "The amputation was years ago: use the status code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "405"
+        ],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89511"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:15+00:00",
+    "style": {
+      "age": 59,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

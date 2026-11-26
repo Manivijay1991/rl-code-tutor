@@ -1,0 +1,70 @@
+{
+  "id": "mi_angina-378926d6c1",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "nstemi_recent"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Chest pain follow-up.\n\nHPI: 75 y/o female pt presents for follow-up regarding NSTEMI diagnosed 2 weeks ago. Pt reports she was treated medically for the event. She states she feels generally better but notes occasional mild shortness of breath on exertion. Denies any recurrent chest pain or syncope. Adherent to all new medications.\n\nMedication List:\n- Aspirin 81mg daily\n- Clopidogrel 75mg daily\n- Atorvastatin 40mg daily\n- Metoprolol succinate 25mg daily\n\nExam:\nGen: Well-appearing, in no acute distress.\nCV: RRR, regular rhythm, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or crackles.\nExt: No edema.\n\nAssessment:\n1. NSTEMI, status post medical management 2 weeks ago.\n\nPlan:\n1. Continue current antiplatelet and statin regimen.\n2. Continue beta-blocker as prescribed.\n3. F/u in 2 weeks for repeat labs and clinical evaluation.\n4. Instructed to seek immediate ER care for any worsening chest pain or severe SOB.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "I21.4"
+  ],
+  "explanations": [
+    "An MI is coded as acute (I21) for 4 weeks (28 days) from onset, including follow-up visits: NSTEMI, I21.4 (HCC 228)."
+  ],
+  "refs": [
+    "OCG I.C.9.e"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.2"
+      ],
+      "confusion": "acute_mi_coded_old",
+      "lean": "under",
+      "why": "It is within 4 weeks: still I21.4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.252,
+        "gap": -0.252,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "228"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.252,
+    "hccs": [
+      {
+        "hcc": "228",
+        "label": "Acute Myocardial Infarction",
+        "from": [
+          "I214"
+        ],
+        "weight": 0.252
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:07:16+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

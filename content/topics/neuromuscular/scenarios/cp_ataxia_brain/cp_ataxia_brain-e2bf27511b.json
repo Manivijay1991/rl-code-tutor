@@ -1,0 +1,70 @@
+{
+  "id": "cp_ataxia_brain-e2bf27511b",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "huntington"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint: Follow-up for Huntington's disease.\n\nVitals: BP 118/74, HR 76, SpO2 99% on RA, Temp 98.6 F, BMI 22.4.\n\nReview of Systems:\nConstitutional: Negative.\nNeurological: Positive for chorea.\nMusculoskeletal: Negative.\nPsychiatric: Negative.\n\nHPI: Patient is a 23-year-old female with a history of Huntington's disease. She presents today for a routine neurological evaluation of her chorea. \n[Copied Forward]: Patient has been managed on tetrabenazine for chorea associated with Huntington's disease. She reports stable symptoms and consistent medication adherence. She denies any significant escalation in involuntary movements or severe side effects.\n\nMedication List:\n- Tetrabenazine 25mg PO BID\n\nExam:\nGeneral: Well-appearing, cooperative, and in no acute distress.\nNeurological: Notable chorea present in upper extremities and facial muscles. Gait is steady. Strength is 5/5 throughout. Reflexes are 2+ and symmetrical.\n\nAssessment:\n1. Huntington's disease with chorea.\n\nPlan:\n1. Continue current dose of tetrabenazine.\n2. Monitor for any increase in chorea severity or adverse effects.\n3. Follow up in 3 months.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "G10"
+  ],
+  "explanations": [
+    "Huntington's disease: G10 (HCC 200). Chorea is part of the disease, not coded separately."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G25.5"
+      ],
+      "confusion": "symptom_for_disease",
+      "lean": "under",
+      "why": "The disease is documented: code Huntington's, not the chorea.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.279,
+        "gap": -0.279,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "200"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.279,
+    "hccs": [
+      {
+        "hcc": "200",
+        "label": "Friedreich and Other Hereditary Ataxias; Huntington Disease",
+        "from": [
+          "G10"
+        ],
+        "weight": 0.279
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:19+00:00",
+    "style": {
+      "age": 23,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

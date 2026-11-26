@@ -1,0 +1,91 @@
+{
+  "id": "blood_disorders-020cc8735c",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "hemophilia_a"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for hemophilia A.\n\nHPI: (Copied Forward)\nThe patient is a 56-year-old male with a known history of hemophilia A (hereditary factor VIII deficiency). He is currently managed on a prophylactic factor infusion regimen. He reports consistent adherence to the infusion schedule and denies any significant complications related to his condition. He is stable on his current treatment plan.\n\n(Update)\nToday the patient presents for a scheduled follow-up. He reports that he has been feeling well since the last visit. He maintains his routine of prophylactic infusions as directed. He denies any new symptoms or concerns regarding his factor VIII deficiency. He continues to engage in light physical activity without issues.\n\nVitals: BP 128/82, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F, Weight 195 lbs.\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.1 x 10^9/L\nPlatelet Count: 210 x 10^9/L\nFactor VIII Level: 15% (pre-infusion)\n\nMedication List:\n- Factor VIII concentrate (prophylactic infusions)\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Negative for weight loss, fatigue, or chills.\nSkin: Negative for rashes or bruising.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for headaches or dizziness.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\n\nSocial History:\nThe patient is a non-smoker. He works full-time in a sedentary office environment. He lives with his spouse and two children. He reports regular exercise and a balanced diet.\n\nFamily History:\nFather: History of hemophilia A.\nMother: Healthy.\nSiblings: One brother with known factor VIII deficiency.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nSkin: No active lesions or bruising noted.\nMusculoskeletal: Full range of motion in all major joints. No swelling or tenderness noted in the knees or elbows.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs.\nRespiratory: Clear to auscultation bilaterally.\n\nAssessment:\n1. Hemophilia A: Patient is stable on his current prophylactic factor infusion schedule.\n\nPlan:\n1. Continue current prophylactic factor VIII infusions as prescribed.\n2. Maintain current monitoring schedule.\n3. Return to clinic in 6 months for routine follow-up.\n\nElectronically signed,\nA. Rivera, MD\nOctober 14, 2026",
+  "answer": [
+    "D66"
+  ],
+  "explanations": [
+    "Hemophilia A, hereditary factor VIII deficiency: D66 (HCC 111, the 'male' hemophilia HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D68.2"
+      ],
+      "confusion": "hemophilia_coded_other_factor",
+      "lean": "neutral",
+      "why": "Factor VIII deficiency is hemophilia A: D66.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.45,
+        "correct": 4.639,
+        "gap": -4.189,
+        "direction": "under",
+        "extra_hccs": [
+          "112"
+        ],
+        "missing_hccs": [
+          "111"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "D68.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The factor is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.639,
+        "gap": -4.639,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "111"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.639,
+    "hccs": [
+      {
+        "hcc": "111",
+        "label": "Hemophilia/Male",
+        "from": [
+          "D66"
+        ],
+        "weight": 4.639
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:11+00:00",
+    "style": {
+      "age": 56,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

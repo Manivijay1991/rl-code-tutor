@@ -1,0 +1,63 @@
+{
+  "id": "head_injury-a69ae3bab5",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "concussion_loc"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/13/2026\nReason for Admission: Fall with concussion\n\nHospital Course:\n83 y/o female pt admitted for overnight observation following a fall. Pt c/o head strike and was unconscious for approximately 5 minutes. Neuro exam stable. CT and MRI of the brain were both normal. Pt remained stable throughout stay. No acute distress. Vital signs WNL. Pt cleared for discharge to home.\n\nDischarge Diagnoses:\nConcussion\n\nDischarge Medications:\nAcetaminophen 500mg BID PRN for pain.\n\nFollow-up:\nF/u with PCP in 1 week for routine evaluation.\n\nElectronically signed\nP. O'Brien, MD\n05/13/2026",
+  "answer": [
+    "S06.0X1A"
+  ],
+  "explanations": [
+    "Concussion with loss of consciousness of 30 minutes or less, initial encounter: S06.0X1A (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "concussion_coded_tbi",
+      "lean": "over",
+      "why": "A concussion is documented with normal imaging, not a diffuse injury.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0,
+        "gap": 0.199,
+        "direction": "over",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:43+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

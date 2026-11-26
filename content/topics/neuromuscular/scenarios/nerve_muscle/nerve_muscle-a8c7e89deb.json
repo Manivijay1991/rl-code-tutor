@@ -1,0 +1,61 @@
+{
+  "id": "nerve_muscle-a8c7e89deb",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "polyneuropathy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nNumbness in both feet.\n\nHPI\nThe patient is a 68-year-old male who presents today for evaluation of persistent numbness in both feet. He reports that the sensation has been gradually worsening over the last several months. He describes the feeling as a constant dull sensation rather than sharp pain. He denies any associated weakness, falls, or changes in his gait. He is seeking a diagnostic workup to determine the underlying etiology of his symptoms.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is alert and oriented x3. He appears in no acute distress. Neurological examination reveals diminished sensation to light touch and pinprick in the bilateral feet. Motor strength is 5/5 in the lower extremities. Deep tendon reflexes are 2+ throughout. No visible skin breakdown or ulcers are noted on the feet.\n\nAssessment\n1. Polyneuropathy: The patient presents with symptoms consistent with peripheral neuropathy. The specific cause is currently undetermined as the diagnostic workup is incomplete.\n\nPlan\n1. Laboratory testing: Ordered comprehensive metabolic panel and vitamin levels.\n2. Follow-up: Patient will return in two weeks to review lab results and determine the next steps in management.\n\nElectronically signed, K. Nguyen, PA-C, 05/12/2026",
+  "answer": [
+    "G62.9"
+  ],
+  "explanations": [
+    "Polyneuropathy without a documented cause or type: G62.9 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G61.81"
+      ],
+      "confusion": "polyneuropathy_coded_cidp",
+      "lean": "over",
+      "why": "CIDP is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.692,
+        "correct": 0,
+        "gap": 1.692,
+        "direction": "over",
+        "extra_hccs": [
+          "193"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:16+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

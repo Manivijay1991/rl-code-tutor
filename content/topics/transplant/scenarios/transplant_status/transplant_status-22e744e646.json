@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-22e744e646",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "liver_rejection"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up for liver transplant.\n\nHPI: Pt is a 78-year-old male presenting for follow-up status post liver transplant. Pt reports increased fatigue and mild abdominal discomfort over the past week. Denies fever, chills, or significant weight loss. He reports adherence to his current immunosuppression regimen. No new symptoms since last visit.\n\nMedication List:\n- Tacrolimus 2mg BID\n- Mycophenolate mofetil 500mg BID\n- Prednisone 40mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for fever, chills, night sweats.\nGI: Positive for mild abdominal discomfort. Negative for jaundice, nausea, vomiting, diarrhea.\nMSK: Negative for joint pain or stiffness.\nNeuro: Negative for confusion or tremors.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 185 lbs\n\nRecent Labs:\nWBC: 6.2\nHgb: 12.1\nPlt: 145k\nALT: 110\nAST: 95\nCreatinine: 1.1\neGFR: 68\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nAbdomen: Soft, non-distended. Mild tenderness in RUQ. No rebound or guarding.\nSkin: No new rashes.\nLungs: CTAB.\nHeart: RRR, no murmurs.\n\nAssessment:\n1. Acute rejection of the transplanted liver. Confirmed via recent biopsy.\n2. Fatigue.\n\nPlan:\n1. Continue current steroid taper for management of rejection.\n2. Monitor tacrolimus levels weekly.\n3. Follow up in 1 week for repeat labs and clinical assessment.\n4. Pt instructed to call immediately if he develops high fever or severe abdominal pain.\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [
+    "T86.41"
+  ],
+  "explanations": [
+    "Rejection of a transplanted liver: liver transplant rejection, T86.41 (HCC 62); the complication code replaces the status code."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.4"
+      ],
+      "confusion": "status_for_complication",
+      "lean": "neutral",
+      "why": "A complication (rejection) is documented: use T86.41.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.376,
+        "correct": 0.376,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.376,
+    "hccs": [
+      {
+        "hcc": "62",
+        "label": "Liver Transplant Status/Complications",
+        "from": [
+          "T8641"
+        ],
+        "weight": 0.376
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:18+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

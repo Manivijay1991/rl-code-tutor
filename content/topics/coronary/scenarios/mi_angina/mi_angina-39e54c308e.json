@@ -1,0 +1,61 @@
+{
+  "id": "mi_angina-39e54c308e",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "old_mi"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Follow-up for history of myocardial infarction.\n\nHPI: Pt is an 80 y.o. female presenting for routine follow-up. She experienced a myocardial infarction eight months ago. Pt reports that the event has healed and she currently feels well. She denies any current symptoms, shortness of breath, or palpitations. She is not currently receiving active treatment or ongoing specialty care for the previous event. She reports good functional status and ability to perform ADLs independently.\n\nMedication List:\n- Aspirin 81mg daily\n- Atorvastatin 40mg daily\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 72\nTSH: 2.1\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight changes.\nCV: Denies palpitations, syncope.\nResp: Denies cough, SOB.\nGI: Denies nausea, diarrhea.\nMSK: Denies joint pain.\nNeuro: Denies headache, dizziness.\n\nSocial History: Pt lives at home with spouse. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had coronary artery disease. Father had stroke at age 75.\n\nExam:\nGen: Well-appearing, alert and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or rales.\nExt: No edema, pulses 2+ bilaterally.\n\nAssessment:\n1. History of myocardial infarction. Pt is stable and asymptomatic 8 months ago since the initial event.\n\nPlan:\n1. Continue current medications.\n2. Routine follow-up in 6 months.\n3. Encouraged continued heart-healthy diet and regular exercise.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "I25.2"
+  ],
+  "explanations": [
+    "An MI more than 4 weeks ago that needs no further care: old myocardial infarction, I25.2 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.9.e"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I21.4"
+      ],
+      "confusion": "old_mi_coded_acute",
+      "lean": "over",
+      "why": "After 4 weeks with no ongoing care, the MI is old: I25.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.252,
+        "correct": 0,
+        "gap": 0.252,
+        "direction": "over",
+        "extra_hccs": [
+          "228"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 4,
+    "created": "2026-11-26T15:07:30+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

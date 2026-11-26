@@ -1,0 +1,63 @@
+{
+  "id": "ulcer_burn-9228933a20",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "burn_minor"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Scald burns.\n\nVitals:\nT: 98.4 F, BP: 132/78, HR: 76 (RRR), RR: 16, SpO2: 97% on RA.\n\nRecent Labs:\nWBC: 8.2, Hgb: 12.4, Hct: 38, Na: 138, K: 4.1, Cl: 102, BUN: 18, Cr: 0.9, eGFR: >90.\n\nReview of Systems:\nConstitutional: Denies fever or chills.\nIntegumentary: Pain and erythema to burned areas.\nMSK: No joint pain or swelling.\nNeuro: Alert and oriented x3.\nOther systems: NAD.\n\nSocial History:\nLives at home with daughter. Retired. Non-smoker.\n\nFamily History:\nMother: Hypertension.\nFather: Heart disease.\n\nHospital Course:\nPt is an 85-year-old female admitted for management of scald burns. Initial assessment showed burns covering 15% of the body surface area. Of these areas, 5% were identified as third degree, requiring specialized wound care. Pt was managed in the acute care unit. Treatment focused on wound debridement, irrigation, and application of antimicrobial dressings. Pain managed with scheduled analgesics. Wound status improved over the course of stay. Pt tolerated diet well and remained hemodynamically stable. Dressing care was demonstrated to pt and daughter prior to discharge.\n\nDischarge Diagnoses:\n- Scald burns of body surface (15% BSA)\n- Third degree burns (5% BSA)\n\nDischarge Medications:\n- Acetaminophen 650mg BID PRN pain\n- Bacitracin ointment to burns BID\n- Cephalexin 500mg BID x7 days\n\nFollow-up:\nF/u with wound clinic in 7 days for dressing change and evaluation.\n\nElectronically signed\nD. Kowalski, MD\n05/18/2026",
+  "answer": [
+    "T31.10"
+  ],
+  "explanations": [
+    "Burns of 10-19% of the body with under 10% third degree: T31.10 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.d",
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "T31.11"
+      ],
+      "confusion": "wrong_burn_extent",
+      "lean": "neutral",
+      "why": "Third degree is under 10%: T31.10.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.291,
+        "correct": 0,
+        "gap": 1.291,
+        "direction": "over",
+        "extra_hccs": [
+          "385"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:43+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

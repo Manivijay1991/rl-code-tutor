@@ -1,0 +1,69 @@
+{
+  "id": "bowel_obstruction-2a3b9091d1",
+  "table": "bowel_obstruction",
+  "title": "Bowel obstruction and ileus in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "adhesions_complete"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the bowel obstruction or ileus (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Acute abdominal pain and vomiting.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 82 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\n\nRecent Labs:\nWBC: 11.4 x 10^9/L\nHemoglobin: 12.2 g/dL\nHematocrit: 37%\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nElectrolytes: Sodium 138 mEq/L, Potassium 4.0 mEq/L\n\nReview of Systems:\nThe patient reports significant abdominal pain, nausea, and vomiting. She denies fever, chills, chest pain, or shortness of breath. She reports no changes in bowel habits prior to admission.\n\nSocial History:\nThe patient is a retired school teacher who lives with her spouse. She does not smoke and drinks alcohol occasionally.\n\nFamily History:\nMother had hypertension. Father had a history of coronary artery disease.\n\nHospital Course:\nThe patient is a 77-year-old female who presented to the emergency department with severe abdominal distension and inability to pass gas. Physical examination and imaging confirmed a complete small bowel obstruction. The underlying etiology was determined to be adhesions resulting from a previous abdominal surgery. The patient was stabilized with intravenous fluids and nasogastric tube decompression. Due to the severity of the symptoms, she underwent a surgical release of adhesions. The procedure was successful, and the bowel was decompressed. Postoperatively, she remained stable, with improving abdominal pain and tolerance of oral liquids. She was transitioned to a regular diet and was discharged in stable condition.\n\nDischarge Diagnoses:\nComplete small bowel obstruction due to adhesions.\n\nDischarge Medications:\n1. Acetaminophen 650mg every 6 hours as needed for pain.\n2. Ondansetron 4mg as needed for nausea.\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a routine check-up and to monitor her recovery from the surgery.\n\nElectronically signed, E. Castillo, MD, 05/18/2026",
+  "answer": [
+    "K56.52"
+  ],
+  "explanations": [
+    "Intestinal adhesions with complete obstruction: K56.52 (HCC 78)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K56"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K56.51"
+      ],
+      "confusion": "wrong_extent",
+      "lean": "neutral",
+      "why": "The obstruction is complete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.326,
+    "hccs": [
+      {
+        "hcc": "78",
+        "label": "Intestinal Obstruction/Perforation",
+        "from": [
+          "K5652"
+        ],
+        "weight": 0.326
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:21+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

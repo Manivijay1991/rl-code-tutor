@@ -1,0 +1,8 @@
+{
+  "id": "endocrine",
+  "title": "Rare metabolic and endocrine disorders",
+  "kind": "hcc",
+  "description": "Lysosomal storage disorders, amyloidosis types, Addison's vs unspecified adrenal insufficiency, Cushing's and acromegaly.",
+  "order": 57,
+  "enabled": true
+}

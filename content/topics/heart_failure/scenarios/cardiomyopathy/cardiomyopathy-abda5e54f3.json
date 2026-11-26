@@ -1,0 +1,68 @@
+{
+  "id": "cardiomyopathy-abda5e54f3",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "hcm_nonobstructive"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint\nFollow-up for cardiac monitoring.\n\nHPI\nThe patient is a 77-year-old female who presents today for a scheduled follow-up regarding her cardiac status. She reports feeling well overall and denies any acute chest pain, shortness of breath on exertion, or lightheadedness. She has been stable on her current regimen and expresses no concerns regarding palpitations or syncope. She reports good adherence to her medications and regular activity levels. She notes that she has been monitoring her symptoms as advised by her specialist.\n\nMedication List\n- Lisinopril 10 mg daily\n- Atorvastatin 20 mg daily\n- Aspirin 81 mg daily\n\nReview of Systems\nThe patient reports no recent chest pain, palpitations, or shortness of breath. She denies any peripheral edema, dizziness, or syncope. She denies any recent fever, chills, or joint pain. Neurological status is intact with no reported headaches or vision changes.\n\nSocial History\nThe patient is retired and lives at home with her spouse. She enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had a history of coronary artery disease. Father passed away due to a stroke. Siblings are healthy.\n\nVitals\nBlood Pressure: 122/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nTemperature: 98.6 F\nWeight: 155 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nGlucose: 105 mg/dL\neGFR: 68 mL/min/1.73m2\n\nExam\nThe patient is a well-appearing, alert, and oriented 77-year-old female. She is in no acute distress. Heart and lung sounds are clear to auscultation. Regular rhythm and rate. No murmurs, rubs, or gallops noted. Extremities are warm and without edema.\n\nAssessment\n1. Nonobstructive hypertrophic cardiomyopathy. The patient is currently stable and asymptomatic.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue to monitor nonobstructive hypertrophic cardiomyopathy status with annual echocardiogram as ordered by her cardiologist.\n3. Follow up in the clinic in 6 months for routine evaluation.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "I42.2"
+  ],
+  "explanations": [
+    "Nonobstructive hypertrophic cardiomyopathy: I42.2, other hypertrophic cardiomyopathy (HCC 227)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.1"
+      ],
+      "confusion": "missed_obstruction",
+      "lean": "neutral",
+      "why": "It is documented as nonobstructive.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.189,
+    "hccs": [
+      {
+        "hcc": "227",
+        "label": "Cardiomyopathy/Myocarditis",
+        "from": [
+          "I422"
+        ],
+        "weight": 0.189
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:05:53+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

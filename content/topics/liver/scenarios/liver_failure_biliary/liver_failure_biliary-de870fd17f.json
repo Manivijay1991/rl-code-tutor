@@ -1,0 +1,68 @@
+{
+  "id": "liver_failure_biliary-de870fd17f",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pbc"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint\nFollow-up for primary biliary cholangitis.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a scheduled follow-up regarding her primary biliary cholangitis. She has been under the care of a hepatologist and is currently managed on ursodiol. She reports feeling generally well today and denies any significant fatigue, pruritus, or joint pain. She notes that she has been adherent to her medication regimen. She reports that her energy levels have been stable over the last month. She denies any new symptoms or concerns related to her liver health.\n\nReview of Systems\nThe patient denies fever, chills, weight loss, or night sweats. She denies any new onset of itching or jaundice. She reports no shortness of breath or chest pain. She denies any recent changes in bowel habits or urinary frequency.\n\nSocial History\nShe lives at home with her spouse and reports being retired. She enjoys gardening and walking in her neighborhood. She denies tobacco use and reports a balanced diet.\n\nFamily History\nHer mother had hypertension and her father had type 2 diabetes. No family history of significant liver disease is reported.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs\nALT: 45 U/L\nAST: 38 U/L\nALP: 180 U/L\nTotal Bilirubin: 0.9 mg/dL\neGFR: 62 mL/min/1.73m2\n\nMedication List\nUrsodiol 300 mg daily\n\nExam\nThe patient is alert and oriented to person, place, and time. She appears in no acute distress. Her skin is clear without jaundice or significant itching. Her mucous membranes are moist. Abdominal exam reveals a soft, non-tender abdomen with no palpable masses or organomegaly. Lungs are clear to auscultation.\n\nAssessment\nThe patient is a 79-year-old woman with primary biliary cholangitis. She is currently stable on ursodiol. Recent laboratory results indicate improving liver tests, specifically showing a downward trend in alkaline phosphatase and transaminase levels.\n\nPlan\nContinue current dose of ursodiol. Follow up with the hepatologist in three months for repeat laboratory monitoring. Encourage continued monitoring of energy levels and any new symptoms.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "K74.3"
+  ],
+  "explanations": [
+    "Primary biliary cholangitis (formerly primary biliary cirrhosis): K74.3 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K83.01"
+      ],
+      "confusion": "wrong_cholangitis",
+      "lean": "neutral",
+      "why": "Primary biliary, not primary sclerosing.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.388,
+        "correct": 0.388,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K743"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:28+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

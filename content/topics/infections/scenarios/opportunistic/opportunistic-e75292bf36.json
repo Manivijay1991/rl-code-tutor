@@ -1,0 +1,70 @@
+{
+  "id": "opportunistic-e75292bf36",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "cmv"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint: Follow-up for CMV disease.\n\nHPI: [Copied Forward] Patient is an 89-year-old female presenting with persistent fever and elevated liver enzymes. Laboratory workup was significant for cytomegalovirus infection. Patient was started on valganciclovir and instructed to monitor for symptomatic changes. \n[Update] Patient returns today for follow-up while continuing current treatment. She reports that her fever has decreased in frequency but she continues to experience mild fatigue. She denies new rashes or significant abdominal pain.\n\nVitals: BP 128/74, HR 76, SpO2 98% on room air, Temp 98.4F.\n\nReview of Systems:\nConstitutional: Positive for mild fatigue. Negative for chills, night sweats.\nHEENT: Negative for sore throat, rhinorrhea.\nRespiratory: Negative for cough, shortness of breath.\nGastrointestinal: Negative for nausea, vomiting, diarrhea.\nSkin: Negative for new rashes.\n\nExam:\nGeneral: Alert and oriented x3. Appears comfortable.\nSkin: No visible rashes or lesions.\nAbdomen: Soft, non-tender, no organomegaly.\n\nAssessment:\n1. Cytomegalovirus disease: Patient is currently undergoing treatment with valganciclovir. Liver tests remain stable.\n\nPlan:\n1. Continue valganciclovir as prescribed.\n2. Monitor liver function tests and CBC.\n3. Follow up in 2 weeks.\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "B25.9"
+  ],
+  "explanations": [
+    "Cytomegalovirus disease, site not specified: B25.9 (HCC 6)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B34.9"
+      ],
+      "confusion": "missed_specific_infection",
+      "lean": "under",
+      "why": "The virus (CMV) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.381,
+        "gap": -0.381,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "6"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.381,
+    "hccs": [
+      {
+        "hcc": "6",
+        "label": "Opportunistic Infections",
+        "from": [
+          "B259"
+        ],
+        "weight": 0.381
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:08+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

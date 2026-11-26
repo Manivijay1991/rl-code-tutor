@@ -1,0 +1,92 @@
+{
+  "id": "blood_disorders-6ef65c8e09",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "hb_sc"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for sickle cell-hemoglobin C disease.\n\nHPI: Pt is a 32 y.o. male presenting for routine hematology follow-up. He has a known diagnosis of sickle cell-hemoglobin C disease. Pt reports feeling well today. No acute symptoms. Denies joint pain, chest pain, or any recent episodes of intense discomfort. He reports adherence to hydration and prophylactic regimen. Stable status throughout.\n\nMedication List:\n- Hydroxyurea 500mg BID\n- Folic acid 1mg daily\n- Fluconazole 200mg weekly\n\nReview of Systems:\nConstitutional: No fatigue, no weight changes.\nRespiratory: No SOB, no cough.\nMSK: No joint pain.\nCV: No palpitations, no chest pain.\nAll other systems reviewed and negative.\n\nSocial History: Works as a software engineer. Non-smoker. Occasional alcohol use. Lives with spouse and two children.\n\nFamily History: Father has hypertension. Mother has Type 2 DM. Sibling has Hb SC.\n\nRecent Labs:\nHb: 9.2 g/dL\nHct: 28%\nWBC: 8.5 x 10^9/L\nPlt: 145 x 10^3/uL\nReticulocyte count: 2.1%\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 185 lbs\n\nExam:\nGen: Well-appearing, alert, oriented x3.\nCV: RRR, normal S1/S2, no murmurs.\nResp: CTAB, no wheezes/crackles.\nMSK: No erythema or swelling in joints.\nSkin: No visible lesions.\nNeuro: NAD.\n\nAssessment:\n1. Sickle cell-hemoglobin C disease: Stable. Pt is asymptomatic and tolerating current regimen well. No recent complications.\n\nPlan:\n1. Continue current medications.\n2. Continue folic acid supplementation.\n3. Routine labs to be drawn in 3 months.\n4. Follow up in 3 months for routine monitoring.\n\nElectronically signed, \nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "D57.20"
+  ],
+  "explanations": [
+    "Sickle cell-hemoglobin C disease without crisis: D57.20 (HCC 108)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84",
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.1"
+      ],
+      "confusion": "wrong_sickle_type",
+      "lean": "neutral",
+      "why": "Hb SC is a separate sickle cell disorder (HCC 108), not Hb-SS.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.457,
+        "correct": 0.146,
+        "gap": 0.311,
+        "direction": "over",
+        "extra_hccs": [
+          "107"
+        ],
+        "missing_hccs": [
+          "108"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "D57.3"
+      ],
+      "confusion": "wrong_sickle_type",
+      "lean": "neutral",
+      "why": "It is a disease, not the trait.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.146,
+        "gap": -0.146,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "108"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.146,
+    "hccs": [
+      {
+        "hcc": "108",
+        "label": "Sickle Cell Disorders/Except Sickle Cell Anemia (Hb-SS) and Thalassemia Beta Zero; Beta Thalassemia Major",
+        "from": [
+          "D5720"
+        ],
+        "weight": 0.146
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:23:15+00:00",
+    "style": {
+      "age": 32,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

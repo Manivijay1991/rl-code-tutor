@@ -1,0 +1,361 @@
+{
+  "id": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note_age": {
+    "min": 55
+  },
+  "slots": {
+    "condition": {
+      "label": "Diagnosis documented",
+      "values": [
+        "sepsis",
+        "severe_sepsis",
+        "septic_shock",
+        "mssa_sepsis",
+        "urosepsis",
+        "bacteremia"
+      ],
+      "labels": {
+        "sepsis": "Sepsis, organism not identified, no organ dysfunction",
+        "severe_sepsis": "Severe sepsis with kidney injury, no shock",
+        "septic_shock": "Septic shock",
+        "mssa_sepsis": "Sepsis due to MSSA",
+        "urosepsis": "'Urosepsis' only",
+        "bacteremia": "Bacteremia without sepsis"
+      },
+      "evidence": {
+        "sepsis": [
+          [
+            "sepsis"
+          ]
+        ],
+        "severe_sepsis": [
+          [
+            "severe sepsis"
+          ],
+          [
+            "acute kidney injury",
+            "AKI"
+          ]
+        ],
+        "septic_shock": [
+          [
+            "septic shock"
+          ]
+        ],
+        "mssa_sepsis": [
+          [
+            "sepsis"
+          ],
+          [
+            "MSSA",
+            "methicillin-susceptible",
+            "methicillin-sensitive"
+          ]
+        ],
+        "urosepsis": [
+          [
+            "urosepsis"
+          ]
+        ],
+        "bacteremia": [
+          [
+            "bacteremia"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "sepsis": "Admitted with sepsis due to pneumonia; blood cultures grew no organism. No acute organ dysfunction occurred; treated with IV antibiotics.",
+        "severe_sepsis": "Admitted with severe sepsis due to pneumonia with acute kidney injury caused by the sepsis; no organism grew and there was no shock. Kidney function recovered.",
+        "septic_shock": "Admitted with sepsis due to pneumonia that progressed to septic shock needing vasopressors; no organism grew. Recovered.",
+        "mssa_sepsis": "Admitted with sepsis due to methicillin-susceptible Staphylococcus aureus (MSSA) from a skin infection; no acute organ dysfunction; treated with cefazolin.",
+        "urosepsis": "The physician documents 'urosepsis' for a patient admitted with fever and a urinary infection; the words sepsis or septic are not used anywhere else, and no organism is named.",
+        "bacteremia": "A blood culture drawn for a fever came back positive (bacteremia); the physician documents that the patient does not have sepsis. Treated with oral antibiotics."
+      }
+    }
+  },
+  "note_forbid": [
+    "COVID",
+    "influenza",
+    "HIV",
+    "cancer",
+    "chemotherapy",
+    "neutropen",
+    "endocarditis",
+    "meningitis",
+    "MRSA",
+    "methicillin-resistant",
+    "SIRS",
+    "postprocedural",
+    "surgical site",
+    "device",
+    "catheter-related",
+    "pregnan",
+    "respiratory failure",
+    "ventilator",
+    "intubat"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD"
+    },
+    {
+      "when": {
+        "condition": "sepsis"
+      },
+      "forbid": [
+        "severe sepsis",
+        "septic shock",
+        "shock",
+        "acute kidney",
+        "AKI",
+        "vasopressor",
+        "lactate",
+        "urosepsis",
+        "bacteremia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "severe_sepsis"
+      },
+      "forbid": [
+        "septic shock",
+        "shock",
+        "vasopressor",
+        "urosepsis",
+        "bacteremia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "septic_shock"
+      },
+      "forbid": [
+        "urosepsis",
+        "bacteremia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "mssa_sepsis"
+      },
+      "forbid": [
+        "severe sepsis",
+        "septic shock",
+        "shock",
+        "acute kidney",
+        "AKI",
+        "vasopressor",
+        "urosepsis",
+        "bacteremia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "urosepsis"
+      },
+      "forbid": [
+        "sepsis due",
+        "septic",
+        "severe sepsis",
+        "shock",
+        "bacteremia",
+        "blood culture",
+        "Escherichia",
+        "E. coli"
+      ]
+    },
+    {
+      "when": {
+        "condition": "bacteremia"
+      },
+      "forbid": [
+        "urosepsis",
+        "septic",
+        "severe sepsis",
+        "shock",
+        "organ dysfunction",
+        "pneumonia"
+      ]
+    }
+  ],
+  "confusions": {
+    "overstated_severe": {
+      "description": "Added severe sepsis or septic shock without a documented associated organ dysfunction or shock.",
+      "lean": "over"
+    },
+    "missed_severe": {
+      "description": "Left out severe sepsis (R65.20) when an organ dysfunction caused by the sepsis is documented.",
+      "lean": "under"
+    },
+    "missed_shock": {
+      "description": "Coded severe sepsis without shock when septic shock is documented.",
+      "lean": "under"
+    },
+    "unspecified_organism": {
+      "description": "Used sepsis, unspecified organism when the organism is documented.",
+      "lean": "neutral"
+    },
+    "urosepsis_coded_sepsis": {
+      "description": "Coded sepsis for 'urosepsis' (a nonspecific term with no code: query the provider).",
+      "lean": "over"
+    },
+    "bacteremia_coded_sepsis": {
+      "description": "Coded sepsis for bacteremia that the provider says is not sepsis.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "sepsis",
+      "rules": [
+        {
+          "when": {
+            "condition": "sepsis"
+          },
+          "codes": [
+            "A41.9"
+          ],
+          "explain": "Sepsis with no organism identified and no organ dysfunction: A41.9 only (HCC 2).",
+          "refs": [
+            "OCG I.C.1.d",
+            "ICD-10-CM Tabular: A41, R65, R78"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "A41.9",
+                "R65.20"
+              ],
+              "confusion": "overstated_severe",
+              "why": "No acute organ dysfunction is documented: no R65.2- code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "severe_sepsis"
+          },
+          "codes": [
+            "A41.9",
+            "R65.20"
+          ],
+          "explain": "Severe sepsis: the sepsis code A41.9, plus R65.20 because an acute organ dysfunction (kidney injury) is caused by the sepsis; no shock.",
+          "refs": [
+            "OCG I.C.1.d",
+            "ICD-10-CM Tabular: A41, R65, R78"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "A41.9"
+              ],
+              "confusion": "missed_severe",
+              "why": "The sepsis caused an acute organ dysfunction: add R65.20."
+            },
+            {
+              "codes": [
+                "A41.9",
+                "R65.21"
+              ],
+              "confusion": "overstated_severe",
+              "why": "There was no shock."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "septic_shock"
+          },
+          "codes": [
+            "A41.9",
+            "R65.21"
+          ],
+          "explain": "Septic shock is severe sepsis with circulatory failure: A41.9 plus R65.21.",
+          "refs": [
+            "OCG I.C.1.d",
+            "ICD-10-CM Tabular: A41, R65, R78"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "A41.9",
+                "R65.20"
+              ],
+              "confusion": "missed_shock",
+              "why": "Septic shock is documented: R65.21, not R65.20."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "mssa_sepsis"
+          },
+          "codes": [
+            "A41.01"
+          ],
+          "explain": "Sepsis due to methicillin-susceptible Staphylococcus aureus: A41.01 (HCC 2).",
+          "refs": [
+            "OCG I.C.1.d",
+            "ICD-10-CM Tabular: A41, R65, R78"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "A41.9"
+              ],
+              "confusion": "unspecified_organism",
+              "why": "The organism (MSSA) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "urosepsis"
+          },
+          "codes": [],
+          "explain": "'Urosepsis' is a nonspecific term with no default code and is not the same as sepsis: query the provider. No sepsis code.",
+          "refs": [
+            "OCG I.C.1.d"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "A41.9"
+              ],
+              "confusion": "urosepsis_coded_sepsis",
+              "why": "Urosepsis is not sepsis; it needs a provider query."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "bacteremia"
+          },
+          "codes": [],
+          "explain": "Bacteremia without sepsis is coded R78.81 (no HCC), which is not a sepsis code: no sepsis code applies.",
+          "refs": [
+            "OCG I.C.1.d",
+            "ICD-10-CM Tabular: A41, R65, R78"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "A41.9"
+              ],
+              "confusion": "bacteremia_coded_sepsis",
+              "why": "The provider documents bacteremia without sepsis."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

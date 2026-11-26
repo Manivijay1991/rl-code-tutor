@@ -1,0 +1,69 @@
+{
+  "id": "drug_use-c34b0c5258",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for maintenance of opioid use disorder treatment.\n\nHPI\nThe patient is a 79-year-old woman presenting today for a scheduled follow-up regarding her opioid use disorder. She is currently managed on buprenorphine maintenance. She reports that she has been in remission for 5 months and has not used illicit substances during this time. She denies any cravings or difficulties maintaining her current stability. She expresses a desire to continue her current treatment plan to ensure long-term recovery. She reports no new physical complaints or side effects from her maintenance medication.\n\nMedication List\n- Buprenorphine: As prescribed.\n- Multivitamin: One daily.\n\nVitals\nBlood Pressure: 138/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 154 lbs\n\nRecent Labs\neGFR: 68 mL/min/1.73m2\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\n\nReview of Systems\nThe patient denies any chest pain, shortness of breath, or palpitations. She denies headaches, dizziness, or visual changes. She denies any joint pain or muscle weakness. She denies any changes in appetite or sleep patterns.\n\nSocial History\nThe patient lives at home with her daughter. She enjoys gardening and walking in the park. She reports she does not use any recreational substances.\n\nFamily History\nHer mother had hypertension and her father had type 2 diabetes.\n\nExam\nGeneral: The patient appears well-groomed and in no acute distress. She is alert and oriented to person, place, and time.\nPsychiatric: Mood is stable; affect is congruent. Speech is clear and coherent.\nPhysical: Heart and lungs are clear to auscultation. Extremities are intact without edema.\n\nAssessment\nThe patient is a 79-year-old woman with a history of severe opioid use disorder. She is currently in remission and has remained stable on buprenorphine maintenance for 5 months. She demonstrates good insight and commitment to her treatment goals.\n\nPlan\n1. Continue current buprenorphine maintenance dose.\n2. Continue to monitor for stability in remission.\n3. Follow up in 3 months for routine evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "F11.21"
+  ],
+  "explanations": [
+    "Severe opioid use disorder in early remission: opioid dependence, in remission, F11.21 (HCC 137)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.20"
+      ],
+      "confusion": "missed_remission",
+      "lean": "neutral",
+      "why": "The provider documents remission.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.424,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "137",
+        "label": "Drug Use Disorder/Moderate/Severe/Drug Use with Non-Psychotic Complications",
+        "from": [
+          "F1121"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:48+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

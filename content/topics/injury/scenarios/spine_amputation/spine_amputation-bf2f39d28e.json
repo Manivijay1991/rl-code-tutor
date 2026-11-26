@@ -1,0 +1,72 @@
+{
+  "id": "spine_amputation-bf2f39d28e",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_initial"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint\nBack pain following a fall.\n\nHPI\nPt is a 75 y.o. female presenting for evaluation of acute back pain. Pt reports fall from a ladder 2 days ago. Imaging confirms a closed wedge compression fracture of the first lumbar vertebra (L1). Pt denies any numbness or weakness. Bone density is noted as normal. Pt reports localized pain and stiffness.\n\nMedication List\nMultivitamin daily.\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB.\nMSK: Tenderness noted over the L1 region. No step-off. Strength 5/5 in all extremities. Sensation intact. Gait steady.\n\nAssessment\n1. Compression fracture of L1.\n\nPlan\n- Initiate active treatment with a back brace starting today.\n- Pt to wear brace as instructed for stability.\n- Activity restrictions provided.\n- PRN analgesics for pain management.\n- F/u as needed.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "S32.010A"
+  ],
+  "explanations": [
+    "Wedge compression fracture of L1, initial encounter for closed fracture: S32.010A (HCC 401)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010D"
+      ],
+      "confusion": "subsequent_for_initial",
+      "lean": "under",
+      "why": "New fracture under active treatment: 7th character A.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.522,
+        "gap": -0.522,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "401"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.522,
+    "hccs": [
+      {
+        "hcc": "401",
+        "label": "Vertebral Fractures without Spinal Cord Injury",
+        "from": [
+          "S32010A"
+        ],
+        "weight": 0.522
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:35+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

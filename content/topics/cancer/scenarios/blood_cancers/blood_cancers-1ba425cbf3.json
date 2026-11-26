@@ -1,0 +1,88 @@
+{
+  "id": "blood_cancers-1ba425cbf3",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "myeloma_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint\nFollow-up for multiple myeloma.\n\nHPI\nPt is a 56 y/o female presenting for follow-up of multiple myeloma. Pt reports continuing with active chemotherapy regimen. She notes persistent fatigue but denies acute shortness of breath or severe bone pain at this time. She reports adherence to current medication schedule and states she is managing daily symptoms well. No new concerns voiced during today's visit.\n\nMedication List\nCyclophosphamide, Dexamethasone, Prednisone.\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: Clear to auscultation, no wheezes.\nMSK: No new focal areas of bone pain noted.\nSkin: No new lesions.\nNeuro: Alert and oriented x3.\n\nAssessment\n1. Multiple myeloma. Patient is currently on active chemotherapy.\n\nPlan\n1. Continue current chemotherapy protocol as prescribed.\n2. Monitor labs and CBC regularly.\n3. Follow up in clinic in 4 weeks for further evaluation.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "C90.00"
+  ],
+  "explanations": [
+    "Multiple myeloma not having achieved remission: C90.00 (HCC 19)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C90.01"
+      ],
+      "confusion": "assumed_remission",
+      "lean": "neutral",
+      "why": "Remission is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.798,
+        "correct": 1.798,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.79"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "The myeloma is under active treatment.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.798,
+        "gap": -1.798,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "19"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.798,
+    "hccs": [
+      {
+        "hcc": "19",
+        "label": "Myelodysplastic Syndromes/Multiple Myeloma/and Other Cancers",
+        "from": [
+          "C9000"
+        ],
+        "weight": 1.798
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 4,
+    "created": "2026-11-26T15:20:45+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

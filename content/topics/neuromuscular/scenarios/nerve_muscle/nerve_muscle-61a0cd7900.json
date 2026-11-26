@@ -1,0 +1,72 @@
+{
+  "id": "nerve_muscle-61a0cd7900",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "mg_exacerbation"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for myasthenia gravis.\n\nHPI\nPt is a 68-year-old female with a known history of myasthenia gravis who presents for evaluation of recent symptoms. Pt reports a significant exacerbation over the past week. Specifically, she notes worsening ptosis and increased difficulty with swallowing. Symptoms are most prominent in the evening and after physical exertion. Pt states she has been compliant with her current regimen but feels the current dosage is insufficient to manage the increased severity of symptoms. No reports of new respiratory distress or changes in vision.\n\nMedication List\nPrednisone 40mg daily\nPyridostigmine 60mg TID\nMultivitamin daily\n\nVitals\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/WBC: WNL\n\nRecent Labs\nPrednisone monitoring: Glucose 104, K+ 4.0, Na+ 138.\n\nReview of Systems\nConstitutional: Negative for fever, chills, weight change.\nEyes: Positive for ptosis.\nHEENT: Positive for dysphagia.\nRespiratory: Negative for dyspnea or cough.\nNeuromuscular: Positive for generalized weakness.\nOther: Negative.\n\nSocial History\nRetired. Lives with husband. Non-smoker.\n\nFamily History\nMother: Hypertension.\nFather: Myasthenia gravis.\n\nExam\nGeneral: Alert, cooperative, in no acute distress.\nEyes: Bilateral ptosis noted, worse on right side. Pupils equal, round, and reactive to light.\nNeck: Supple, no lymphadenopathy.\nMouth: Oral mucosa moist. Mild difficulty with rapid speech but intelligible.\nStrength: 4/5 proximal upper extremity strength.\nReflexes: 2+ throughout.\nCoordination: Intact.\nGait: Steady.\n\nAssessment\n1. Myasthenia gravis with acute exacerbation. Pt is demonstrating increased severity of ptosis and dysphagia over the last 7 days.\n\nPlan\n1. Increase Prednisone to 60mg daily to address current exacerbation.\n2. Continue Pyridostigmine 60mg TID.\n3. Pt to monitor for further worsening of swallowing.\n4. F/u in 2 weeks for reassessment of symptoms and medication efficacy.\n\nElectronically signed,\nT. Haddad, NP\n05/14/2026",
+  "answer": [
+    "G70.01"
+  ],
+  "explanations": [
+    "Myasthenia gravis with (acute) exacerbation: G70.01 (HCC 195, weight about 2.9)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G70.00"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "under",
+      "why": "An acute exacerbation is documented (HCC 195, not 196).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.516,
+        "correct": 2.909,
+        "gap": -2.393,
+        "direction": "under",
+        "extra_hccs": [
+          "196"
+        ],
+        "missing_hccs": [
+          "195"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.909,
+    "hccs": [
+      {
+        "hcc": "195",
+        "label": "Myasthenia Gravis with (Acute) Exacerbation",
+        "from": [
+          "G7001"
+        ],
+        "weight": 2.909
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:23+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

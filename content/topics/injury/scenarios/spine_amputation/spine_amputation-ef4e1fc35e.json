@@ -1,0 +1,72 @@
+{
+  "id": "spine_amputation-ef4e1fc35e",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_initial"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint: Back pain after fall.\n\nHPI: Pt is a 62 y/o male presenting for evaluation of acute back pain. Pt reports falling from a ladder 2 days ago. Pt states he landed on his posterior aspect. Since the fall, he has experienced significant localized pain in the lower back. He denies any numbness or tingling in extremities. Imaging performed following the fall reveals a closed wedge compression fracture of the first lumbar vertebra (L1). Pt notes he has normal bone density based on recent screening. He is seeking guidance on management and bracing.\n\nMedication List:\n- Multivitamin, daily\n- Naproxen 500mg BID PRN for pain\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nMusculoskeletal: Positive for localized back pain. Negative for joint swelling or redness.\nNeurological: Negative for weakness, numbness, or paresthesia.\nRespiratory: No shortness of breath, no cough.\nCV: No chest pain, no palpitations.\n\nSocial History: Pt is a retired construction worker. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had osteoarthritis.\n\nFamily History: Father: HTN. Mother: OA.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Hgb: 14.2/4.1\nWBC: 7.2\nPlt: 250k\n\nExam:\nGen: Pt in mild distress due to pain.\nBack: Tenderness to palpation over the L1 region. No step-off noted. No midline and spinal tenderness.\nNeuro: Motor strength 5/5 throughout. Sensation intact to light touch. Reflexes 2+ and symmetric.\nMSK: Range of motion limited by pain.\n\nAssessment:\n1. Closed wedge compression fracture of the first lumbar vertebra (L1).\n2. Acute back pain secondary to fall.\n\nPlan:\n1. Initiate active treatment with a back brace today to stabilize the L1 site.\n2. Continue Naproxen as needed for pain management.\n3. Activity restrictions: No heavy lifting or twisting.\n4. Pt to monitor for any new neurological deficits.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "S32.010A"
+  ],
+  "explanations": [
+    "Wedge compression fracture of L1, initial encounter for closed fracture: S32.010A (HCC 401)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010D"
+      ],
+      "confusion": "subsequent_for_initial",
+      "lean": "under",
+      "why": "New fracture under active treatment: 7th character A.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.522,
+        "gap": -0.522,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "401"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.522,
+    "hccs": [
+      {
+        "hcc": "401",
+        "label": "Vertebral Fractures without Spinal Cord Injury",
+        "from": [
+          "S32010A"
+        ],
+        "weight": 0.522
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:19+00:00",
+    "style": {
+      "age": 62,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

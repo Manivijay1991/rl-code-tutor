@@ -1,0 +1,81 @@
+{
+  "id": "fibrosis_airway-6396f58969",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "ssc_lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint: Follow-up for scleroderma and lung symptoms.\n\nHPI: Patient is a 51-year-old male with a known history of systemic sclerosis. He was seen previously for initial management of systemic sclerosis with associated lung involvement. He reports stable symptoms since the last visit, with no significant exacerbations of his interstitial lung disease. He denies new onset of shortness of breath, significant cough, or chest pain. He continues to take mycophenolate as prescribed and reports good adherence. He notes some mild fatigue but denies any systemic fevers or weight loss.\n\nMedication List:\n- Mycophenolate mofetil 500mg twice daily\n- Prednisone 5mg daily\n\nVitals: BP 128/82, HR 68, SpO2 96% on room air, Temp 98.6 F, RR 16.\n\nRecent Labs:\n- CBC: WBC 7.2, Hb 13.4, Plt 210\n- CMP: Na 140, K 4.1, Cr 0.9, eGFR 88\n- Pulmonary Function Tests: FVC 78% of predicted, DLCO 65% of predicted.\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight loss.\n- Respiratory: Positive for mild shortness of breath on exertion; negative for cough or sputum production.\n- Musculoskeletal: Negative for joint pain or new swelling.\n- Integumentary: Negative for new skin changes or ulcers.\n- Neurological: Negative for numbness or tingling.\n\nSocial History: The patient works as a software engineer. He lives with his wife and two children. He denies tobacco or alcohol use.\n\nFamily History: Father had hypertension; mother had type 2 diabetes.\n\nExam: Patient is a well-appearing male in no acute distress. Skin is intact with mild thickening noted on the fingers. Lungs are clear to auscultation bilaterally with no adventitious sounds. No peripheral edema noted.\n\nAssessment: \n1. Systemic sclerosis with interstitial lung disease.\n\nPlan:\n- Continue current dose of mycophenolate mofetil.\n- Continue low-dose prednisone.\n- Monitor pulmonary function tests every 6 months.\n- Patient instructed to report any increased dyspnea immediately.\n- Follow up in 4 months for routine monitoring.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "M34.81"
+  ],
+  "explanations": [
+    "Systemic sclerosis with lung involvement has a combination code: M34.81, which maps to two HCCs (93 and 278)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M34.9",
+        "J84.10"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code M34.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.936,
+        "correct": 1.435,
+        "gap": -0.499,
+        "direction": "under",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": [
+          "278"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.435,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M3481"
+        ],
+        "weight": 0.617
+      },
+      {
+        "hcc": "278",
+        "label": "Idiopathic Pulmonary Fibrosis and Lung Involvement in Systemic Sclerosis",
+        "from": [
+          "M3481"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:21+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

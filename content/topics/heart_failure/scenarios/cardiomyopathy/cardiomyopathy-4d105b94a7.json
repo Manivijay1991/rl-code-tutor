@@ -1,0 +1,85 @@
+{
+  "id": "cardiomyopathy-4d105b94a7",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "hcm_obstructive"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint\nFollow-up for heart condition.\n\nHPI\nPt is a 56 y/o female presenting for f/u of obstructive hypertrophic cardiomyopathy. Pt reports she has been feeling well since last visit. Denies any episodes of syncope, palpitations, or significant exertional dyspnea. She reports good adherence to her current medication regimen. No new concerns reported today.\n\nMedication List\nMetoprolol 50mg BID\n\nExam\nGeneral: Pt alert and oriented x3, in no acute distress.\nVitals: BP 118/76, HR 64, RR 16, Temp 98.6F, SpO2 98% on RA.\nCV: RRR, regular rhythm. S1, S2 heard. No murmurs, rubs, or gallops.\nLungs: CTAB.\nExt: No edema noted.\n\nAssessment\n1. Obstructive hypertrophic cardiomyopathy (HOCM). Stable on current beta blocker.\n\nPlan\n1. Continue metoprolol 50mg BID.\n2. Continue monitoring symptoms.\n3. F/u in 6 months or PRN for increased symptoms.\n\nElectronically signed,\nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "I42.1"
+  ],
+  "explanations": [
+    "Obstructive hypertrophic cardiomyopathy: I42.1 (HCC 227)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.2"
+      ],
+      "confusion": "missed_obstruction",
+      "lean": "neutral",
+      "why": "The cardiomyopathy is documented as obstructive.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I42.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.189,
+    "hccs": [
+      {
+        "hcc": "227",
+        "label": "Cardiomyopathy/Myocarditis",
+        "from": [
+          "I421"
+        ],
+        "weight": 0.189
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:05:35+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

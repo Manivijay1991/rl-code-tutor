@@ -1,0 +1,68 @@
+{
+  "id": "paralysis-c0f7ff356b",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "para_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint: Follow-up for paraplegia and mobility concerns.\n\nHPI: Patient is a 51-year-old male with a history of paraplegia resulting from a spinal cord injury sustained many years ago. Patient reports stable mobility status and no new neurological deficits. He utilizes a wheelchair for primary locomotion. He reports consistent management of secondary symptoms related to his spinal cord injury.\n\nUpdate: Patient presents today for a routine follow-up. He reports that his condition remains stable since the last visit. He denies any new onset of chronic pain or significant changes in sensation below the level of the injury. He remains active within his community and reports that his current equipment is functioning well. He notes no issues with skin integrity or respiratory function.\n\nMedication List:\n- Gabapentin 300mg TID\n- Baclofen 10mg TID\n- Oxycodone 5mg PRN for breakthrough pain\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 28.4.\n\nRecent Labs:\n- HbA1c: 5.8%\n- eGFR: 88 mL/min/1.73m2\n- Sodium: 140 mEq/L\n- Potassium: 4.2 mEq/L\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nRespiratory: Negative for cough, shortness of breath.\nCardiovascular: Negative for chest pain, palpitations.\nGastrointestinal: Negative for abdominal pain, diarrhea, constipation.\nGenitourinary: Negative for dysuria, incontinence.\nMusculoskeletal: Positive for paraplegia; negative for new joint pain.\nNeurological: Negative for new numbness, weakness, or spasms.\nSkin: Negative for rashes or irritation.\n\nSocial History: Lives in a single-story home with his spouse. Works part-time as a consultant from home. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished.\nNeurological: Patient demonstrates paraplegia. Sensation is diminished below the level of injury. Muscle strength is absent in lower extremities. Reflexes are diminished in lower extremities.\nSkin: Intact, no signs of breakdown.\n\nAssessment:\n1. Paraplegia status post spinal cord injury.\n\nPlan:\n1. Continue current medication regimen for symptom management.\n2. Maintain current physical therapy routine.\n3. Continue to monitor skin integrity and respiratory status.\n4. Return to clinic in 6 months for follow-up.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "G82.20"
+  ],
+  "explanations": [
+    "Paraplegia without completeness: G82.20 (HCC 181)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G82.21"
+      ],
+      "confusion": "assumed_completeness",
+      "lean": "neutral",
+      "why": "Completeness is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.942,
+    "hccs": [
+      {
+        "hcc": "181",
+        "label": "Paraplegia",
+        "from": [
+          "G8220"
+        ],
+        "weight": 0.942
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:12+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

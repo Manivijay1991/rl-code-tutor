@@ -1,0 +1,70 @@
+{
+  "id": "blood_cancers-4f2ce705d8",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "mds"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint\nFollow-up for myelodysplastic syndrome.\n\nHPI\nThe patient is an 86-year-old male who presents today for a scheduled follow-up with the hematology clinic. He is currently being managed for myelodysplastic syndrome, which is characterized by low blood counts. He reports that he has been feeling generally well since his last visit. He denies any significant fatigue, dizziness, or shortness of breath. He notes that he has been receiving periodic transfusions as scheduled to maintain his hemoglobin levels. He reports that his energy levels have remained stable and he is able to perform most activities of daily living independently. He denies any new bruising or unusual bleeding.\n\nMedication List\n- Erythropoiesis-stimulating agent (weekly)\n- Aspirin (daily)\n- Multivitamin (daily)\n\nReview of Systems\nThe patient denies any chest pain, palpitations, or shortness of breath. He denies any recent weight changes, night sweats, or generalized weakness. He denies any joint pain or muscle aches. He denies any changes in bowel habits or urinary symptoms.\n\nSocial History\nThe patient resides in a private home with his wife. He is retired and spends most of his time gardening and reading. He does not smoke and drinks alcohol only occasionally.\n\nFamily History\nHis father had hypertension and a history of heart disease. His mother had type 2 diabetes.\n\nVitals\nBlood Pressure: 132/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.4 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs\nHemoglobin: 9.2 g/dL\nWhite Blood Cell Count: 3.1 x 10^9/L\nPlatelet Count: 110 x 10^9/L\neGFR: 62 mL/min/1.73m2\n\nExam\nThe patient appears in no acute distress. He is alert and oriented to person, place, and time. Skin is warm and dry with no visible signs of bruising or pallor. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended. Extremities are intact with no edema.\n\nAssessment\nThe patient is an 86-year-old male with a known history of myelodysplastic syndrome. His current labs demonstrate low blood counts, which are being managed appropriately through periodic transfusions. He is currently stable and tolerating his treatment plan well.\n\nPlan\n1. Continue periodic transfusions as indicated by hemoglobin levels.\n2. Continue current medications as prescribed.\n3. Follow up in the clinic in three months for a repeat CBC and physical examination.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "D46.9"
+  ],
+  "explanations": [
+    "Myelodysplastic syndrome, unspecified: D46.9 (HCC 19)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D64.9"
+      ],
+      "confusion": "symptom_for_disease",
+      "lean": "under",
+      "why": "The cause of the low counts (MDS) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.798,
+        "gap": -1.798,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "19"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.798,
+    "hccs": [
+      {
+        "hcc": "19",
+        "label": "Myelodysplastic Syndromes/Multiple Myeloma/and Other Cancers",
+        "from": [
+          "D469"
+        ],
+        "weight": 1.798
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:12+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

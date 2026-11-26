@@ -1,0 +1,61 @@
+{
+  "id": "nerve_muscle-07ac11d698",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "polyneuropathy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint: Numbness in both feet.\n\nHPI: Copied Forward: Patient is a 67-year-old male presenting with progressive sensory changes in his lower extremities. He reports a persistent sensation of numbness in both feet, which began several months ago. He denies any acute trauma or sudden onset of weakness. He notes that the sensation is constant but does not interfere with his ability to walk.\n\nUpdate: The patient returns today for a follow-up regarding his symptoms. He reports that the numbness remains stable in intensity but persists daily. He denies any new associated symptoms such as muscle wasting or severe pain.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Neurological: Positive (numbness in feet)\n- Musculoskeletal: Negative\n- Cardiovascular: Negative\n- Respiratory: Negative\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nNeurological: Sensation is diminished in the bilateral feet. Motor strength is 5/5 in lower extremities. Reflexes are intact.\n\nAssessment:\n1. Polyneuropathy: The patient presents with numbness in both feet. The underlying etiology is currently undetermined.\n\nPlan:\n1. Laboratory work has been ordered to further investigate the cause of the peripheral neuropathy. \n2. Patient to return for review of results in two weeks.\n\nElectronically signed,\nR. Mensah, NP\nOctober 14, 2026",
+  "answer": [
+    "G62.9"
+  ],
+  "explanations": [
+    "Polyneuropathy without a documented cause or type: G62.9 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G61.81"
+      ],
+      "confusion": "polyneuropathy_coded_cidp",
+      "lean": "over",
+      "why": "CIDP is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.692,
+        "correct": 0,
+        "gap": 1.692,
+        "direction": "over",
+        "extra_hccs": [
+          "193"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:55+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

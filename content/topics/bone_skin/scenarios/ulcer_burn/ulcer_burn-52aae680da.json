@@ -1,0 +1,72 @@
+{
+  "id": "ulcer_burn-52aae680da",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_bone"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint\nFollow-up of a chronic wound on the right heel.\n\nHPI\nThe patient is a 77-year-old woman who presents today for a scheduled evaluation of a chronic ulcer located on her right heel. She reports that the wound has persisted for several months and she has noticed increasing pain and a change in the appearance of the site. She denies any recent trauma to the area or acute fevers. She notes that she has been managing the wound with home dressings, but the area has not shown significant improvement in size or healing. She reports some difficulty with mobility due to discomfort.\n\nMedication List\n- Lisinopril 10 mg daily\n- Atorvastatin 20 mg daily\n- Amlodipine 5 mg daily\n\nVitals\nBlood Pressure: 138/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 154 lbs\n\nRecent Labs\nWBC: 8.2 x 10^9/L\nHemoglobin: 12.4 g/dL\neGFR: 68 mL/min/1.73m2\nGlucose: 118 mg/dL\n\nReview of Systems\nThe patient reports no recent fevers, chills, or night sweats. She denies any new shortness of breath or chest pain. She reports localized pain at the site of the wound but denies systemic symptoms. No reports of vision changes or urinary symptoms.\n\nSocial History\nThe patient resides in a single-story home with her spouse. She is a retired school teacher. She denies current tobacco or alcohol use.\n\nFamily History\nMother had hypertension. Father had a history of hyperlipidemia.\n\nExam\nGeneral: The patient is a well-appearing, alert, and oriented 77-year-old female in no acute distress.\nSkin/Musculoskeletal: On examination of the right heel, there is a chronic ulcer measuring approximately 3 cm in diameter. The wound bed shows significant necrotic tissue. Deep palpation and visualization reveal evidence of necrosis of bone underlying the wound. The surrounding skin is erythematous and indurated. No drainage is noted at this time.\n\nAssessment\n1. Chronic ulcer of the right heel with necrosis of bone.\n\nPlan\nThe patient will be scheduled for a surgical debridement of the right heel to remove the necrotic tissue and address the involvement of the bone. She was instructed to keep the area clean and dry until the procedure. She will be monitored for signs of worsening infection.\n\nElectronically signed,\nE. Castillo, DO\nMay 14, 2026",
+  "answer": [
+    "L97.414"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot with necrosis of bone: L97.414 (HCC 380)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.412"
+      ],
+      "confusion": "understated_depth",
+      "lean": "under",
+      "why": "Necrosis of bone is documented (HCC 380).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.646,
+        "correct": 1.078,
+        "gap": -0.432,
+        "direction": "under",
+        "extra_hccs": [
+          "383"
+        ],
+        "missing_hccs": [
+          "380"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.078,
+    "hccs": [
+      {
+        "hcc": "380",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Through to Bone or Muscle",
+        "from": [
+          "L97414"
+        ],
+        "weight": 1.078
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:33+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

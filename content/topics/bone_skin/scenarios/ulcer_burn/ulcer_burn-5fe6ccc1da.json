@@ -1,0 +1,72 @@
+{
+  "id": "ulcer_burn-5fe6ccc1da",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "burn_major"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/24/2026\nReason for Admission: Extensive thermal burns\n\nVitals: BP 118/74, HR 88, SpO2 98% on room air\n\nReview of Systems:\nConstitutional: Positive (Fatigue)\nIntegumentary: Positive (Burn)\nNeurological: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGenitourinary: Negative\n\nHPI: (Copied Forward) Patient is a 77-year-old female who presented to the emergency department following a kitchen fire. She sustained extensive flame burns.\n\nHospital Course:\nThe patient was admitted for management of extensive thermal injuries. Physical examination revealed flame burns covering 35% of the body surface area. Of these injuries, 25% are classified as third degree (full thickness). The patient was stabilized with aggressive fluid resuscitation. Surgical intervention was performed to debride non-viable tissue. Given the extent of the full thickness injuries, grafting is planned and was initiated during the inpatient stay. The patient tolerated the procedures well and remained stable throughout the hospitalization.\n\nDischarge Diagnoses:\n- Extensive flame burns\n- Third degree burns\n\nDischarge Medications:\n- Morphine IR (as needed for pain)\n- Cephalexin 500mg BID\n- Acetaminophen 650mg every 6 hours\n\nFollow-up: Follow up with Burn Unit clinic in 7 days for dressing change.\n\nElectronically signed, R. Mensah, MD, 05/24/2026",
+  "answer": [
+    "T31.32"
+  ],
+  "explanations": [
+    "Burns of 30-39% of the body with 20-29% third degree: T31.32 (HCC 385)."
+  ],
+  "refs": [
+    "OCG I.C.19.d",
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "T31.30"
+      ],
+      "confusion": "wrong_burn_extent",
+      "lean": "neutral",
+      "why": "20-29% third degree is documented: the second character after the extent is 2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.291,
+        "gap": -1.291,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "385"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.291,
+    "hccs": [
+      {
+        "hcc": "385",
+        "label": "Severe Skin Burn",
+        "from": [
+          "T3132"
+        ],
+        "weight": 1.291
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:23+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "R. Mensah",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

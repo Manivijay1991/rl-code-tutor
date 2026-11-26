@@ -1,0 +1,88 @@
+{
+  "id": "spine_amputation-1e2a0f75f6",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_osteoporotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint\nAcute back pain following a lifting incident.\n\nHPI\nThe patient is an 86-year-old male who presents to the clinic today for evaluation of acute mid-back pain. He reports that the pain began suddenly yesterday after he attempted to lift a laundry basket. He notes that he had to bend over significantly to reach the basket, resulting in a sharp, localized pain in his thoracic spine. He describes the pain as a constant ache that worsens with movement or when he attempts to sit upright. He denies any radiating pain, numbness, or weakness in his extremities. He has a known history of osteoporosis. He states that while he has experienced minor muscle strains in the past, this current episode feels significantly more severe. Imaging performed today confirms a new vertebral compression fracture at the T12 level.\n\nMedication List\n- Alendronate 70mg once weekly\n- Vitamin D3 2000 IU daily\n- Calcium carbonate 500mg daily\n\nReview of Systems\nConstitutional: No fever, chills, or weight loss.\nMusculoskeletal: Positive for localized thoracic back pain. Negative for joint swelling or redness.\nNeurological: Negative for numbness, tingling, or weakness.\nRespiratory: Negative for shortness of breath or cough.\n\nSocial History\nThe patient lives at home with his wife. He is a retired engineer. He is a former smoker (quit 20 years ago) and drinks alcohol occasionally.\n\nFamily History\nFather had hypertension and osteoarthritis. Mother had a history of osteoporosis.\n\nVitals\nBlood Pressure: 138/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\n\nRecent Labs\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.4 K/uL\neGFR: 68 mL/min/1.73m2\nCalcium: 9.4 mg/dL\n\nExam\nThe patient appears in mild distress due to pain. He is alert and oriented. Physical exam reveals localized tenderness and midline point tenderness over the T12 vertebra. There is no palpable step-off or deformity noted on palpation. Range of motion of the spine is significantly limited by pain. Lower extremity strength is 5/5 in all muscle groups. Deep tendon reflexes are 2+ and symmetric.\n\nAssessment\n1. New vertebral compression fracture at T12.\n2. Age-related osteoporosis.\n\nPlan\nThe patient will begin conservative management for his vertebral fracture today. We will start a regimen of acetaminophen for pain control. He was instructed to use a lumbar support brace and to avoid heavy lifting or twisting motions. We will schedule a follow-up in two weeks to monitor pain levels and mobility. He was also advised on proper body mechanics to prevent further injury.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "M80.08XA"
+  ],
+  "explanations": [
+    "Known osteoporosis + fracture from a minor strain = osteoporosis with current pathological fracture, vertebra, initial encounter: M80.08XA (HCC 401)."
+  ],
+  "refs": [
+    "OCG I.C.13.d.2",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010A"
+      ],
+      "confusion": "osteoporotic_coded_traumatic",
+      "lean": "neutral",
+      "why": "A minor strain in known osteoporosis: M80, not an injury code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.522,
+        "correct": 0.522,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M81.0"
+      ],
+      "confusion": "missed_fracture",
+      "lean": "under",
+      "why": "There is a current fracture: M80, not M81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.522,
+        "gap": -0.522,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "401"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.522,
+    "hccs": [
+      {
+        "hcc": "401",
+        "label": "Vertebral Fractures without Spinal Cord Injury",
+        "from": [
+          "M8008XA"
+        ],
+        "weight": 0.522
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:44+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

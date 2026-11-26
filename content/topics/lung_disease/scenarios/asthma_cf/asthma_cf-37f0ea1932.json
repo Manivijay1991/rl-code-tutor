@@ -1,0 +1,68 @@
+{
+  "id": "asthma_cf-37f0ea1932",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cf_pulmonary"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint: Follow-up for cystic fibrosis.\n\nHPI: [Copied Forward] Patient is a 21-year-old female with a known history of cystic fibrosis. She presents for routine management of her pulmonary manifestations, specifically chronic cough and bronchiectasis. She is currently adherent to her prescribed airway clearance techniques and CFTR modulator therapy. She reports stable symptoms with no acute exacerbations since the last visit.\n\nVitals: BP 118/74, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nRespiratory: Positive (chronic cough)\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nRespiratory: Clear to auscultation bilaterally. No wheezing or crackles.\nCardiovascular: Regular rate and rhythm.\nSkin: No visible signs of infection.\n\nAssessment:\n1. Cystic fibrosis with pulmonary manifestations including bronchiectasis.\n\nPlan:\n1. Continue current CFTR modulator medication.\n2. Maintain daily airway clearance schedule.\n3. Follow up in 3 months for routine monitoring.\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "E84.0"
+  ],
+  "explanations": [
+    "Cystic fibrosis with pulmonary manifestations: E84.0 (HCC 277)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E84.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The pulmonary manifestations are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.998,
+        "correct": 0.998,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.998,
+    "hccs": [
+      {
+        "hcc": "277",
+        "label": "Cystic Fibrosis",
+        "from": [
+          "E840"
+        ],
+        "weight": 0.998
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:28+00:00",
+    "style": {
+      "age": 21,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

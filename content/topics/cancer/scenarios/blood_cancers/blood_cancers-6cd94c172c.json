@@ -1,0 +1,87 @@
+{
+  "id": "blood_cancers-6cd94c172c",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "myeloma_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Follow-up for multiple myeloma.\n\nHPI: Pt is an 80 y.o. female presenting for routine follow-up of multiple myeloma. Pt is currently in remission following completion of primary treatment. She is currently on maintenance lenalidomide. Pt reports feeling well overall. Denies any new bone pain, fatigue, or neurological changes. Denies any significant weight loss or night sweats. She reports good compliance with her current medication regimen.\n\nMedication List:\n- Lenalidomide 10mg daily\n- Calcium carbonate 500mg BID\n- Vitamin D3 1000 IU daily\n\nReview of Systems:\nConstitutional: Denies chills, fatigue, weight changes.\nMSK: Denies new bone pain or fractures.\nNeuro: Denies numbness, tingling, or weakness.\nCV: Denies chest pain or palpitations.\nResp: Denies SOB or cough.\nGI: Denies nausea, diarrhea, or constipation.\n\nSocial History: Pt lives at home with her spouse. Retired. Non-smoker. Occasional alcohol.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 5'4\"\nWt: 135 lbs\n\nRecent Labs:\nCBC: WBC 5.2, Hb 11.8, Plt 145k\nCMP: Na 138, K 4.1, Cr 0.9, Glu 105\nCa: 9.4 mg/dL\nAlbumin: 4.0 g/dL\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs.\nLungs: CTAB, no crackles or wheezes.\nMSK: No new spinal tenderness. No palpable masses.\nNeuro: Alert and coherent. No focal deficits.\n\nAssessment:\n1. Multiple myeloma, in remission. Pt is stable on lenalidomide maintenance.\n\nPlan:\n1. Continue lenalidomide as prescribed.\n2. Continue monitoring labs and calcium levels.\n3. Follow up in 3 months for routine surveillance.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "C90.01"
+  ],
+  "explanations": [
+    "Multiple myeloma in remission: C90.01 (HCC 19). It is not a history code."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C90.00"
+      ],
+      "confusion": "missed_remission",
+      "lean": "neutral",
+      "why": "Remission is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.798,
+        "correct": 1.798,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.79"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "Myeloma in remission is coded with the remission code, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.798,
+        "gap": -1.798,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "19"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.798,
+    "hccs": [
+      {
+        "hcc": "19",
+        "label": "Myelodysplastic Syndromes/Multiple Myeloma/and Other Cancers",
+        "from": [
+          "C9001"
+        ],
+        "weight": 1.798
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:22:05+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

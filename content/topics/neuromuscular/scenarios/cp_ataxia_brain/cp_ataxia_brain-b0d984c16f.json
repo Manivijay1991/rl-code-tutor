@@ -1,0 +1,72 @@
+{
+  "id": "cp_ataxia_brain-b0d984c16f",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "cp_diplegic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for cerebral palsy.\n\nHPI\nThe patient is a 23-year-old female presenting today for a routine follow-up regarding her spastic diplegic cerebral palsy, which has been present since birth. She reports that her mobility remains stable, and she continues to use forearm crutches to assist with ambulation. She notes occasional muscle tightness in her lower extremities, which she manages with regular stretching. She denies any recent falls, new onset of acute pain, or significant changes in her functional status. She reports that her current management plan is effective for her daily needs.\n\nReview of Systems\nThe patient denies any chest pain, shortness of breath, fever, chills, or recent weight changes. She denies any changes in bowel or bladder function. She reports no new joint pain or skin integrity issues.\n\nSocial History\nThe patient is a college student. She lives in an apartment with roommates. She reports being independent in her activities of daily living. She does not smoke and drinks alcohol socially.\n\nFamily History\nMother has hypertension. Father has type 2 diabetes. No family history of neurological disorders.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 118/76 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 130 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 K/uL\nPlatelets: 210 K/uL\nGlucose: 95 mg/dL\neGFR: >90 mL/min/1.73m²\n\nMedication List\nBaclofen 10 mg orally twice daily.\n\nExam\nThe patient is alert and oriented x3. She is in no acute distress. She is able to ambulate into the exam room using forearm crutches. Physical exam reveals bilateral lower extremity hypertonicity consistent with her spastic diplegia. Muscle strength is 4/5 in the lower extremities. Skin is intact without breakdown. Reflexes are brisk in the lower extremities.\n\nAssessment\n1. Spastic diplegic cerebral palsy. The patient is currently stable and maintaining functional mobility with the use of forearm crutches.\n\nPlan\n1. Continue current medication regimen.\n2. Continue physical therapy twice weekly to address muscle tightness and maintain mobility.\n3. Follow up in 6 months for routine evaluation.\n\nElectronically signed, E. Castillo, DO, 10/14/2026",
+  "answer": [
+    "G80.1"
+  ],
+  "explanations": [
+    "Spastic diplegic cerebral palsy: G80.1 (HCC 192)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G80.0"
+      ],
+      "confusion": "cp_type_confused",
+      "lean": "neutral",
+      "why": "Diplegic, not quadriplegic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.855,
+        "correct": 0.314,
+        "gap": 0.541,
+        "direction": "over",
+        "extra_hccs": [
+          "191"
+        ],
+        "missing_hccs": [
+          "192"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.314,
+    "hccs": [
+      {
+        "hcc": "192",
+        "label": "Cerebral Palsy/Except Quadriplegic",
+        "from": [
+          "G801"
+        ],
+        "weight": 0.314
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:56+00:00",
+    "style": {
+      "age": 23,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

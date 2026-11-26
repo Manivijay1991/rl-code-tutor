@@ -1,0 +1,71 @@
+{
+  "id": "sepsis_inpatient-98e0a20f60",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "sepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/17/2026\nReason for Admission: Pneumonia with sepsis\n\nVitals: BP 128/82, HR 88, Temp 99.1 F, SpO2 96% on RA, RR 18.\nRecent Labs: WBC 14.2, Hgb 12.1, Plt 210, Creatinine 0.9, eGFR 78, BUN 18.\n\nHPI (Copied Forward): Patient is a 77-year-old female who presented to the emergency department with a 3-day history of productive cough, shortness of breath, and rigors. She reports dull chest pain and significant fatigue. She has a history of hypertension and osteoarthritis.\n\nReview of Systems:\nConstitutional: Positive for fever, chills, and malaise.\nRespiratory: Positive for cough and shortness of breath.\nCardiovascular: Negative for chest pain, palpitations, or edema.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nGenitourinary: Negative for dysuria or frequency.\nMusculoskeletal: Positive for joint pain.\nNeurological: Negative for dizziness or confusion.\n\nSocial History: Lives at home with her spouse. Retired school teacher. Non-smoker. Occasional social alcohol use.\nFamily History: Mother had hypertension; Father had type 2 diabetes.\nHospital Course: The patient was admitted for management of pneumonia and associated sepsis. Initial workup included chest X-ray and blood cultures. Blood cultures were collected and subsequently grew no organism. The patient remained hemodynamically stable throughout the stay. No acute organ dysfunction occurred during the hospitalization. She was treated with a course of IV antibiotics. She tolerated the treatment well, with a gradual improvement in respiratory effort and resolution of fever. She was transitioned to oral medications prior to discharge.\n\nDischarge Diagnoses:\n1. Pneumonia\n2. Sepsis\n\nDischarge Medications:\n1. Amoxicillin 500mg PO TID for 7 days\n2. Lisinopril 10mg PO daily\n3. Naproxen 220mg PO every 8 hours as needed for joint pain\n\nFollow-up: Follow up with primary care physician in 10 days for a repeat chest X-ray and wound check.\n\nElectronically signed, L. Moreau, MD, 05/17/2026",
+  "answer": [
+    "A41.9"
+  ],
+  "explanations": [
+    "Sepsis with no organism identified and no organ dysfunction: A41.9 only (HCC 2)."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9",
+        "R65.20"
+      ],
+      "confusion": "overstated_severe",
+      "lean": "over",
+      "why": "No acute organ dysfunction is documented: no R65.2- code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.5,
+    "hccs": [
+      {
+        "hcc": "2",
+        "label": "Septicemia/Sepsis/Systemic Inflammatory Response Syndrome/Shock",
+        "from": [
+          "A419"
+        ],
+        "weight": 0.5
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:45+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

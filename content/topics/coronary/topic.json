@@ -1,0 +1,8 @@
+{
+  "id": "coronary",
+  "title": "Heart attack and angina",
+  "kind": "hcc",
+  "description": "Recent vs old myocardial infarction (the 4-week rule), and coronary disease with unstable vs unspecified angina.",
+  "order": 72,
+  "enabled": true
+}

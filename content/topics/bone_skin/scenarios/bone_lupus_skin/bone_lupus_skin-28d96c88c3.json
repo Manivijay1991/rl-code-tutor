@@ -1,0 +1,85 @@
+{
+  "id": "bone_lupus_skin-28d96c88c3",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "osteo_chronic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: Pain in right foot.\n\nHPI: Pt is a 75-year-old female presenting for f/u of chronic osteomyelitis of the right foot. Pt reports persistent aching and discomfort in the calcaneus. Hx of old puncture wound to the same area. Pt has been on long-term antibiotics for this condition. Denies fever, chills, or new drainage. Reports compliance with current med regimen.\n\nMedication List:\n- Amoxicillin-clavulanate 875/125mg BID\n- Acetaminophen 650mg PRN\n\nExam:\nGen: Well-appearing, alert, oriented x3.\nVitals: BP 132/78, HR 74, RR 16, Temp 98.6F, SpO2 98% RA.\nRight Foot: Localized tenderness over calcaneus. No erythema, warmth, or drainage noted. Skin intact.\nNeuro: Sensation intact to light touch.\n\nAssessment:\n1. Chronic osteomyelitis of the right foot. Stable on current long-term antibiotics.\n\nPlan:\n- Continue current antibiotic regimen.\n- F/u in 4 weeks for reassessment of right foot.\n- Advised to notify office if increased pain or signs of systemic illness occur.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "M86.671"
+  ],
+  "explanations": [
+    "Other chronic osteomyelitis, right ankle and foot: M86.671 (HCC 92)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M86.171"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "It is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M86.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type and site are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.479,
+    "hccs": [
+      {
+        "hcc": "92",
+        "label": "Bone/Joint/Muscle/Severe Soft Tissue Infections/Necrosis",
+        "from": [
+          "M86671"
+        ],
+        "weight": 0.479
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:56+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

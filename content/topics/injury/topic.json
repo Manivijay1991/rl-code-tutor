@@ -1,0 +1,8 @@
+{
+  "id": "injury",
+  "title": "Head injury, vertebral fracture and amputation",
+  "kind": "hcc",
+  "description": "Brain injury by loss of consciousness vs concussion, vertebral fracture encounter and osteoporosis, traumatic amputation vs amputation status.",
+  "order": 101,
+  "enabled": true
+}

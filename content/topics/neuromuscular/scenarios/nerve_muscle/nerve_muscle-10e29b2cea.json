@@ -1,0 +1,68 @@
+{
+  "id": "nerve_muscle-10e29b2cea",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "als"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for ALS.\n\nHPI\nPt is a 56 y.o. female with a known diagnosis of amyotrophic lateral sclerosis. Pt presents for routine neurology f/u. She reports progressive limb weakness over the last month, noting increased difficulty with fine motor tasks. However, she reports she is still eating by mouth without difficulty. No new respiratory issues or sudden changes in speech noted today.\n\nMedication List\nRiluzole 50 mg BID\n\nExam\nGeneral: Alert, oriented x3. CTAB.\nNeurological: Weakness noted in upper and lower extremities. Reflexes diminished. Strength 4/5 in bilateral upper extremities. Speech is clear. Swallow intact.\n\nAssessment\n1. Amyotrophic lateral sclerosis: Pt is showing expected progression of limb weakness but remains stable regarding oral intake.\n\nPlan\n1. Continue Riluzole 50 mg BID.\n2. Monitor strength and swallow function.\n3. F/u in 3 months or sooner if symptoms worsen.\n\nElectronically signed,\nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "G12.21"
+  ],
+  "explanations": [
+    "Amyotrophic lateral sclerosis: G12.21 (HCC 190)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G12.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "ALS is documented, not an unspecified motor neuron disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.175,
+        "correct": 1.175,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.175,
+    "hccs": [
+      {
+        "hcc": "190",
+        "label": "Amyotrophic Lateral Sclerosis and Other Motor Neuron Disease/Spinal Muscular Atrophy",
+        "from": [
+          "G1221"
+        ],
+        "weight": 1.175
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:41+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

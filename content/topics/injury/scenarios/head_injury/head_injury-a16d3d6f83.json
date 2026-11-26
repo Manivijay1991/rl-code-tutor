@@ -1,0 +1,74 @@
+{
+  "id": "head_injury-a16d3d6f83",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "tbi_no_loc"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Fall from a ladder resulting in a head injury.\n\nReview of Systems:\nThe patient reports headache and mild dizziness. He denies any focal weakness, numbness, vision changes, or difficulty speaking. He denies any changes in gait or balance. He reports no nausea or vomiting.\n\nSocial History:\nThe patient is a retired carpenter who lives at home with his wife. He is a former smoker but quit twenty years ago. He reports no history of illicit substance use.\n\nFamily History:\nFather had hypertension. Mother had type 2 diabetes. Siblings are all living and healthy.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 8.5 x 10^9/L\nPlatelets: 210 x 10^9/L\nSodium: 139 mEq/L\nPotassium: 4.1 mEq/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nHospital Course:\nThe patient is an 86-year-old male admitted following a fall from a ladder. He presented to the emergency department with complaints of a headache. He did not lose consciousness at any time during the incident. Initial imaging and neurological examinations were performed. An MRI of the head revealed a diffuse brain injury. The patient was admitted for observation and management of his symptoms. During his stay, he remained stable and showed no signs of neurological decline. He was monitored for cognitive changes and motor function. He participated in physical therapy to address balance and safety. He was cleared for discharge once his symptoms were stable and he demonstrated safe mobility.\n\nDischarge Diagnoses:\n1. Diffuse brain injury\n2. Fall from ladder\n\nDischarge Medications:\n1. Acetaminophen 650mg every 6 hours as needed for pain.\n2. Meloxicam 7.5mg daily.\n\nFollow-up:\nThe patient will follow up with his primary care physician in one week for a routine checkup and to discuss his rehabilitation plan. He was instructed to seek immediate medical attention if he experiences worsening headaches or confusion.\n\nElectronically signed,\nP. O'Brien, MD\n05/18/2026",
+  "answer": [
+    "S06.2X0A"
+  ],
+  "explanations": [
+    "Diffuse traumatic brain injury without loss of consciousness, initial encounter: S06.2X0A (HCC 399)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "wrong_loc_duration",
+      "lean": "neutral",
+      "why": "No loss of consciousness is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": [
+          "399"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.199,
+    "hccs": [
+      {
+        "hcc": "399",
+        "label": "Major Head Injury without Loss of Consciousness",
+        "from": [
+          "S062X0A"
+        ],
+        "weight": 0.199
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:52+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "personality_eating-201d350ca2",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "anorexia_restricting_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint: Follow-up for weight loss and eating habits.\n\nVitals: BP 118/76, HR 74, Temp 98.6 F, SpO2 98% on room air, Height 5'10\", Weight 135 lbs.\n\nRecent Labs: BMI: 19.5. Electrolytes: Sodium 139, Potassium 4.0, Chloride 102, CO2 24. BUN 12, Creatinine 0.8. Glucose 92.\n\nSocial History: Patient is a 51-year-old male employed full-time. He lives with his spouse and two children. He reports no tobacco use and denies recreational drug use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes. No family history of similar eating disorders.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nNeurological: Negative for dizziness, syncope.\nCardiovascular: Negative for palpitations, chest pain.\nRespiratory: Negative for shortness of breath.\nGastrointestinal: Negative for nausea, constipation.\nMusculoskeletal: Negative for joint pain.\nPsychiatric: Negative for hallucinations.\n\nHPI: (Copied Forward) Patient is a 51-year-old male presenting for management of anorexia nervosa. He reports a significant decrease in caloric intake over the last six months, primarily driven by an intense fear of weight gain. He describes a strict regimen of calorie counting and avoidance of fats. He has been struggling to maintain a healthy weight and reports feelings of anxiety regarding his body image. He is currently working with a support team to address these behaviors.\n\nExam: Patient appears well-nourished but thin. Alert and oriented x3. Speech is clear. No tremors noted. Heart rate is regular. Lungs are clear to auscultation. Abdomen is soft, non-tender. No significant muscle wasting noted.\n\nAssessment: \n1. Anorexia nervosa, restricting type, moderate severity.\n\nPlan:\n1. Continue current treatment plan for anorexia nervosa.\n2. Patient will continue to attend weekly sessions with a registered dietitian to establish a structured meal plan.\n3. Patient will continue weekly sessions with a therapist to address the psychological components of his restricting type behavior.\n4. Monitor weight at each follow-up visit.\n5. Return to clinic in four weeks for progress evaluation.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "F50.011"
+  ],
+  "explanations": [
+    "Anorexia nervosa, restricting type, moderate: F50.011 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F50.00"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type and severity are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F50.021"
+      ],
+      "confusion": "wrong_eating_type",
+      "lean": "neutral",
+      "why": "The restricting type is documented, not binge-purge.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F50011"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:59+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

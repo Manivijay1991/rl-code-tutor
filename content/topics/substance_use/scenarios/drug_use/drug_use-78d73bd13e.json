@@ -1,0 +1,62 @@
+{
+  "id": "drug_use-78d73bd13e",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cannabis_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Cannabis use.\n\nHPI: (Copied Forward) Patient is a 77-year-old female presenting for follow-up of cannabis use disorder. She reports regular use of cannabis for pain management. She expresses a desire to reduce her intake. \n\n(Today's Update) The patient reports that she has been making active efforts to cut down on her daily cannabis consumption. She notes that while she still uses it for discomfort, she is successfully decreasing the frequency of use. She denies any recent complications related to her use.\n\nMedication List:\n- Cannabis (as needed)\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Respiratory: Negative\n- Cardiovascular: Negative\n- Gastrointestinal: Negative\n- Neurological: Negative\n- Psychiatric: Negative\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished and in no acute distress.\nPsychiatric: Calm, cooperative, and goal-oriented. Speech is clear.\nPhysical: No acute distress noted.\n\nAssessment:\n1. Cannabis use disorder, mild. Patient is currently cutting down.\n\nPlan:\n1. Continue current plan of reducing cannabis use. \n2. Follow up in one month to monitor progress.\n\nElectronically signed, \nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "F12.10"
+  ],
+  "explanations": [
+    "Mild cannabis use disorder = cannabis abuse, uncomplicated: F12.10 (no HCC; V28 excludes cannabis abuse)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F12.20"
+      ],
+      "confusion": "cannabis_hcc_assumed",
+      "lean": "over",
+      "why": "Mild = abuse (F12.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0,
+        "gap": 0.424,
+        "direction": "over",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:50+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

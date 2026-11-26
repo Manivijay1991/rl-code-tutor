@@ -1,0 +1,86 @@
+{
+  "id": "bowel_obstruction-809a0701f1",
+  "table": "bowel_obstruction",
+  "title": "Bowel obstruction and ileus in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "adhesions_partial"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the bowel obstruction or ileus (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Abdominal pain, nausea, and vomiting.\n\nHospital Course:\nPt is a 75 y.o. female with a hx of abdominal surgery. Presented with acute onset abdominal pain and distension. Imaging confirmed a partial small bowel obstruction secondary to adhesions. Pt was managed conservatively with NPO status, IV fluids, and NG tube placement for decompression. Serial abdominal exams showed gradual improvement in bowel sounds and decreased distension. Pt tolerated a gradual progression of a clear liquid diet without further nausea or vomiting. Pain controlled with non-opioid meds. Bowel sounds returned to normal.\n\nDischarge Diagnoses:\nPartial small bowel obstruction due to adhesions.\n\nDischarge Medications:\n- Famotidine 20mg BID\n- Ondansetron 4mg PRN for nausea\n\nFollow-up:\nF/u with PCP in 1 week. Return to ED for worsening pain or inability to tolerate oral intake.\n\nElectronically signed,\nE. Castillo, MD\n05/15/2026",
+  "answer": [
+    "K56.51"
+  ],
+  "explanations": [
+    "Intestinal adhesions with partial obstruction: K56.51 (HCC 78)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K56"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K56.600"
+      ],
+      "confusion": "missed_cause",
+      "lean": "neutral",
+      "why": "The cause (adhesions) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K56.52"
+      ],
+      "confusion": "wrong_extent",
+      "lean": "neutral",
+      "why": "The obstruction is partial.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.326,
+    "hccs": [
+      {
+        "hcc": "78",
+        "label": "Intestinal Obstruction/Perforation",
+        "from": [
+          "K5651"
+        ],
+        "weight": 0.326
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:43+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

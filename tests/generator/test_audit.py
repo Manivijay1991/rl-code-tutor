@@ -75,6 +75,27 @@ def test_sections_splits_and_joins_assessment_and_plan():
     assert sec["pre"] == ""
 
 
+def test_discharge_summary_sections_are_not_swallowed_by_family_history():
+    note = (
+        "Family History: Mother had T2DM.\n"
+        "Hospital Course: Partial small bowel obstruction from adhesions; resolved.\n"
+        "Discharge Diagnoses: Partial small bowel obstruction, adhesions.\n"
+        "Discharge Medications: None.\n"
+        "Follow-up: PCP in 1 week."
+    )
+    sec = sections(note)
+    assert "adhesions" not in sec["fh"]
+    assert "adhesions" in sec["hpi"] and "adhesions" in sec["ap"] and "None" in sec["meds"]
+    assert "adhesions" in patient_text(sec)
+
+
+def test_report_and_nurse_note_sections():
+    note = "Indication: cough.\nFindings: hyperinflation.\nNursing Assessment: alert.\nPatient Education: inhaler."
+    sec = sections(note)
+    assert sec["cc"].strip() == "cough." and "hyperinflation" in sec["exam"] and "alert" in sec["exam"]
+    assert "inhaler" in sec["ap"]
+
+
 def test_sections_without_headings_and_empty():
     assert sections("just text") == {"pre": "just text"}
     assert sections("") == {"pre": ""}

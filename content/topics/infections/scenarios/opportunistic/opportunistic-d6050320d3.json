@@ -1,0 +1,70 @@
+{
+  "id": "opportunistic-d6050320d3",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "candida_esophagitis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint\nPainful swallowing.\n\nHPI\nThe patient is an 86-year-old woman presenting for a follow-up regarding her recent diagnosis of Candida esophagitis. She reports that her symptoms of odynophagia have persisted since the initial diagnosis. She was recently evaluated via endoscopy, which confirmed the presence of candidal infection within the esophagus. She has been instructed to continue her current pharmacological regimen and is being monitored for clinical improvement while she remains on the prescribed treatment.\n\nMedication List\nFluconazole 200 mg daily.\n\nExam\nThe patient is alert and oriented. She appears in no acute distress but notes discomfort when swallowing. Heart rate is 72 bpm, blood pressure is 130/82 mmHg, and oxygen saturation is 98% on room air. Abdomen is soft and non-tender.\n\nAssessment\nCandida esophagitis.\n\nPlan\nThe patient will continue the current course of fluconazole. She was instructed to monitor for any worsening of symptoms or fever. A follow-up appointment will be scheduled to reassess her symptoms and progress as she completes her treatment.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "B37.81"
+  ],
+  "explanations": [
+    "Candida esophagitis: B37.81 (HCC 6)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B37.0"
+      ],
+      "confusion": "esophagitis_coded_thrush",
+      "lean": "under",
+      "why": "Esophagitis, not only the mouth, is documented (HCC 6).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.381,
+        "gap": -0.381,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "6"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.381,
+    "hccs": [
+      {
+        "hcc": "6",
+        "label": "Opportunistic Infections",
+        "from": [
+          "B3781"
+        ],
+        "weight": 0.381
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:05+00:00",
+    "style": {
+      "age": 86,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

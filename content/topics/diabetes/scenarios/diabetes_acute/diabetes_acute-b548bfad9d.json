@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-b548bfad9d",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_hyperglycemia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Hyperglycemia\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F\nRecent Labs: Glucose 412 mg/dL (Admission), Glucose 155 mg/dL (Discharge), HbA1c 8.4%, Creatinine 1.1 mg/dL, eGFR 82 mL/min/1.73m2.\n\nHPI: Patient is a 72-year-old woman with a history of type 2 diabetes who presented to the emergency department with increased thirst and blurred vision. She reports that her home glucose monitoring showed readings consistently over 300 mg/dL over the last 48 hours. She denies any acute abdominal pain or shortness of breath.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nEyes: Positive for blurred vision.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for cough or dyspnea.\nGastrointestinal: Negative for nausea or vomiting.\nGenitourinary: Positive for increased thirst.\nNeurological: Negative for dizziness or weakness.\nMusculoskeletal: Negative for joint pain.\n\nSocial History: Retired teacher, lives with her spouse. Non-smoker. Occasional social use of wine.\nFamily History: Mother had type 2 diabetes and hypertension. Father had myocardial infarction at age 65.\nHospital Course: The patient was admitted for management of severe hyperglycemia. She was initially stabilized with a sliding scale insulin regimen. Laboratory monitoring confirmed a steady decline in blood glucose levels over the 72-hour stay. No complications were noted during the hospitalization. Her T2DM was addressed by optimizing her long-acting insulin and adjusting her oral medications. She tolerated the inpatient diet well and was able to demonstrate correct insulin injection techniques before discharge.\n\nDischarge Diagnoses:\nHyperglycemia\nType 2 diabetes\n\nDischarge Medications:\nMetformin 500mg BID\nGlipizide 5mg QD\nInsulin Glargine 20 units at bedtime\nInsulin Lispro as needed for sliding scale\n\nFollow-up: Patient to follow up with her primary care physician in 7 days for a repeat blood glucose check and medication reconciliation.\n\nElectronically signed,\nA. Rivera, MD\n05/15/2026",
+  "answer": [
+    "E11.65"
+  ],
+  "explanations": [
+    "Type 2 diabetes with hyperglycemia only: E11.65 (HCC 38)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.10"
+      ],
+      "confusion": "hyperglycemia_coded_dka",
+      "lean": "over",
+      "why": "Ketoacidosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "36"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:05+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

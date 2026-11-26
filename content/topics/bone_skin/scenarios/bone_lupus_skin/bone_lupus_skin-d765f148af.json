@@ -1,0 +1,61 @@
+{
+  "id": "bone_lupus_skin-d765f148af",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "discoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for discoid lupus.\n\nHPI\nPt is an 83 y/o female presenting for f/u of discoid lupus erythematosus. She reports that the skin lesions have remained stable with current regimen. No new lesions noted since last visit. Pt denies systemic symptoms, joint pain, or malaise. She continues to use topical steroids as directed.\n\nMedication List\n- Topical corticosteroid (as directed)\n\nExam\nGeneral: Well-appearing, alert, and oriented.\nSkin: Multiple well-demarcated, erythematous, scaly plaques consistent with discoid lupus. No signs of infection or acute inflammation. No systemic involvement noted.\nVitals: Stable.\n\nAssessment\n1. Discoid lupus erythematosus limited to the skin. No evidence of systemic involvement.\n\nPlan\n- Continue current topical steroids for discoid lupus.\n- Pt to monitor for any new lesions or changes in severity.\n- Return to clinic in 3 months for routine f/u.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "L93.0"
+  ],
+  "explanations": [
+    "Discoid lupus erythematosus of the skin only: L93.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M32.9"
+      ],
+      "confusion": "discoid_coded_sle",
+      "lean": "over",
+      "why": "Systemic lupus is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.268,
+        "correct": 0,
+        "gap": 0.268,
+        "direction": "over",
+        "extra_hccs": [
+          "94"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:48+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

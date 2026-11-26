@@ -1,0 +1,62 @@
+{
+  "id": "vte_status-409e1f6f15",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "dvt_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint\nFollow-up for history of deep vein thrombosis.\n\nHPI\nThe patient is a 79-year-old female presenting today for a routine follow-up regarding a prior deep vein thrombosis of the right leg. She originally experienced this condition two years ago. She reports that the course of treatment was completed and she has since had the condition resolved. She currently reports no pain, swelling, or discomfort in the right leg. She denies any shortness of breath, chest pain, or calf tenderness. She states she feels well and is seeking a baseline evaluation.\n\nMedication List\n1. Multivitamin daily\n2. Vitamin D3 supplement daily\n\nReview of Systems\nThe patient denies fever, chills, weight loss, or night sweats. She reports no shortness of breath or cough. She denies any recent swelling or redness in her lower extremities. She denies joint pain or muscle weakness.\n\nSocial History\nThe patient is retired and lives at home with her spouse. She enjoys gardening and walking for exercise. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension and stroke. Father had type 2 diabetes.\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nOxygen Saturation: 98% on room air\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^9/L\nPlatelet Count: 210 x 10^9/L\neGFR: 72 mL/min/1.73m2\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm. No murmurs.\nPulmonary: Clear to auscultation bilaterally.\nMusculoskeletal: Right lower extremity shows no signs of edema, erythema, or warmth. Full range of motion is intact.\n\nAssessment\n1. History of deep vein thrombosis of the right leg. The condition is resolved and stable.\n\nPlan\n1. Continue to monitor for any symptoms of recurrence.\n2. Patient advised to seek immediate medical attention if she develops sudden swelling or localized pain in the lower extremity.\n3. Follow up in 6 months for a routine check.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "Z86.718"
+  ],
+  "explanations": [
+    "A DVT that resolved after completed treatment: personal history, Z86.718 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4",
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I82.401"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "There is no current clot: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0,
+        "gap": 0.294,
+        "direction": "over",
+        "extra_hccs": [
+          "267"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:07:54+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

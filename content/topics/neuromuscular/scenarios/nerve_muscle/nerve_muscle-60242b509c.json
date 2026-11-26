@@ -1,0 +1,70 @@
+{
+  "id": "nerve_muscle-60242b509c",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "cidp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint: Follow-up for CIDP.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nRecent Labs: IgG levels: 2400 mg/dL; CBC: WBC 7.2, Hb 13.4, Plt 210.\n\nSocial History: Retired teacher; lives with her spouse; non-smoker; occasional social drinking.\n\nFamily History: Mother had hypertension; Father had coronary artery disease.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nNeurological: Positive for tingling in feet, positive for muscle weakness in legs. Negative for vision changes or severe headaches.\nMusculoskeletal: Positive for joint stiffness. Negative for acute trauma.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\n\nHPI: (Copied Forward) Patient is a 61-year-old female with a history of chronic inflammatory demyelinating polyneuropathy (CIDP). She initially presented with progressive ascending weakness and sensory changes in the lower extremities. She has been receiving monthly immunoglobulin infusions for maintenance. She reports stable symptoms with occasional flares of fatigue.\n\n(Today's Update): The patient presents today for a routine neurology follow-up regarding her CIDP. She reports that her symptoms have remained relatively stable over the last month. She notes some persistent tingling in her toes but denies any new episodes of acute weakness or significant loss of mobility. She continues to tolerate her monthly immunoglobulin infusions well without adverse reactions.\n\nMedication List:\n- Intravenous Immunoglobulin (IVIG) - Monthly infusion\n- Gabapentin 300mg TID\n- Atorvastatin 20mg daily\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nNeurological: Symmetrical muscle strength in lower extremities 4/5. Symmetrical muscle strength in upper extremities 5/5. Diminished deep tendon reflexes in bilateral ankles. Sensation to light touch is slightly diminished in the distal feet. Gait is steady but slightly slow.\n\nAssessment:\n1. Chronic inflammatory demyelinating polyneuropathy (CIDP) - Stable.\n\nPlan:\n1. Continue current management of CIDP with monthly immunoglobulin infusions.\n2. Continue Gabapentin for neuropathic pain management.\n3. Follow up in 3 months for routine evaluation.\n\nElectronically signed,\nA. Rivera, MD\nMay 14, 2026",
+  "answer": [
+    "G61.81"
+  ],
+  "explanations": [
+    "Chronic inflammatory demyelinating polyneuritis: G61.81 (HCC 193)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G62.9"
+      ],
+      "confusion": "cidp_coded_unspecified",
+      "lean": "under",
+      "why": "CIDP has its own code (HCC 193).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.692,
+        "gap": -1.692,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "193"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.692,
+    "hccs": [
+      {
+        "hcc": "193",
+        "label": "Chronic Inflammatory Demyelinating Polyneuritis and Multifocal Motor Neuropathy",
+        "from": [
+          "G6181"
+        ],
+        "weight": 1.692
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:33+00:00",
+    "style": {
+      "age": 61,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "drug_use-6fd308c8df",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Follow up for substance use management.\n\nHPI: Pt is an 80-year-old female presenting for evaluation of substance use. Pt admits to chronic use of opioids over several years. Pt reports ongoing difficulty managing cravings and desires pharmacological support to maintain stability. She denies any acute physical distress or recent complications. She expresses a desire to adhere to a structured treatment plan.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Multivitamin daily\n\nReview of Systems:\nGeneral: No fatigue, no weight change.\nNeuro: No tremors, no dizziness.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: No nausea, no constipation.\nMSK: No joint pain.\n\nSocial History: Lives with daughter. Retired. No history of illicit substance use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'4\", 145 lbs\n\nRecent Labs:\neGFR: 72\nHbA1c: 5.8%\nTSH: 2.1\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nLungs: CTAB.\nNeuro: No acute focal deficits.\nPsych: Cooperative, steady affect.\nSkin: No rashes or lesions.\n\nAssessment:\n1. Opioid use disorder, moderate.\n\nPlan:\n1. Initiate buprenorphine for management of opioid use disorder. \n2. Educated pt on medication expectations and side effects.\n3. Pt to f/u in 2 weeks for initial dose titration and monitoring.\n4. Encouraged continued adherence to current antihypertensive and lipid-lowering medications.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "F11.20"
+  ],
+  "explanations": [
+    "A moderate or severe use disorder is coded as dependence: F11.20 (HCC 137)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.10"
+      ],
+      "confusion": "moderate_coded_abuse",
+      "lean": "under",
+      "why": "Moderate = dependence (F11.2-).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.423,
+        "correct": 0.424,
+        "gap": -0.001,
+        "direction": "under",
+        "extra_hccs": [
+          "138"
+        ],
+        "missing_hccs": [
+          "137"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "137",
+        "label": "Drug Use Disorder/Moderate/Severe/Drug Use with Non-Psychotic Complications",
+        "from": [
+          "F1120"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:21+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "mental_health",
+  "title": "Schizophrenia, bipolar and eating disorders",
+  "kind": "hcc",
+  "description": "Schizophrenia vs schizoaffective, bipolar episode and remission, personality and eating disorders.",
+  "order": 41,
+  "enabled": true
+}

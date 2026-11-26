@@ -1,0 +1,73 @@
+{
+  "id": "drug_use-7fb938eb6b",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for management of substance use.\n\nHPI\nPt is a 75 y.o. female presenting for follow-up. Pt admits to ongoing use of prescription analgesics. Pt meets 2-3 criteria for opioid use disorder, mild. She reports no significant complications at this time. Pt expresses desire for support and is seeking behavioral intervention.\n\nMedication List\nLisinopril 10mg QD\nAtorvastatin 20mg QD\nMultivitamin daily\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6.\nCV: RRR, CTAB.\nLungs: Clear to auscultation.\nNeuro: NAD.\n\nAssessment\n1. Opioid use disorder, mild. Pt is stable but requires ongoing monitoring and support.\n\nPlan\n1. Counseling arranged for behavioral support and coping strategies.\n2. F/u in 4 weeks to monitor progress.\n3. Pt to continue current medications as prescribed.\n\nElectronically signed, E. Castillo, DO, 10/14/2026",
+  "answer": [
+    "F11.10"
+  ],
+  "explanations": [
+    "A mild use disorder is coded as abuse: opioid abuse, uncomplicated, F11.10 (HCC 138)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.20"
+      ],
+      "confusion": "mild_coded_dependence",
+      "lean": "over",
+      "why": "Mild = abuse (F11.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.423,
+        "gap": 0.001,
+        "direction": "over",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": [
+          "138"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.423,
+    "hccs": [
+      {
+        "hcc": "138",
+        "label": "Drug Use Disorder/Mild/Uncomplicated/Except Cannabis",
+        "from": [
+          "F1110"
+        ],
+        "weight": 0.423
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:17+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

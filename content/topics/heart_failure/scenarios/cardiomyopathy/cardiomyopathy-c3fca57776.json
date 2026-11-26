@@ -1,0 +1,85 @@
+{
+  "id": "cardiomyopathy-c3fca57776",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "hcm_obstructive"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint: Chest tightness.\n\nHPI: 75 y.o. female pt presents for f/u of cardiac status. Pt reports intermittent episodes of chest tightness over the last month. Denies syncope, palpitations, or severe dyspnea on exertion. Pt reports adherence to current med regimen. Denies any new medications or recent illnesses.\n\nMedication List: Metoprolol 50mg BID.\n\nExam: Pt appears in no acute distress. Alert and oriented x3. RRR, regular rhythm. CTAB. No murmurs, rubs, or gallops. Lungs clear to auscultation. Extremities WNL without edema.\n\nAssessment: 1. Obstructive hypertrophic cardiomyopathy (HOCM). Pt is currently stable on beta blocker therapy.\n\nPlan: Continue current dose of metoprolol. Pt to monitor for increased symptoms. Follow up in 3 months.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "I42.1"
+  ],
+  "explanations": [
+    "Obstructive hypertrophic cardiomyopathy: I42.1 (HCC 227)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.2"
+      ],
+      "confusion": "missed_obstruction",
+      "lean": "neutral",
+      "why": "The cardiomyopathy is documented as obstructive.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I42.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.189,
+    "hccs": [
+      {
+        "hcc": "227",
+        "label": "Cardiomyopathy/Myocarditis",
+        "from": [
+          "I421"
+        ],
+        "weight": 0.189
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:06:01+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

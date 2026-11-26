@@ -1,0 +1,71 @@
+{
+  "id": "pneumonia_inpatient-56c022b5bf",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "empyema"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Shortness of breath, productive cough, and fever.\n\nVitals:\nBP: 118/74\nHR: 82 (RRR)\nRR: 18\nTemp: 99.1 F\nSpO2: 95% on RA\n\nRecent Labs:\nWBC: 14.5 (Elevated)\nHgb: 11.2\nHct: 33.8\nCr: 1.1\neGFR: 62\nLactic Acid: 1.2\n\nReview of Systems:\nConstitutional: Positive for fever, malaise.\nRespiratory: Positive for cough, dyspnea. Denies wheezing.\nCV: Denies chest pain.\nGI: Denies nausea, vomiting, or diarrhea.\nMSK: Denies joint pain.\n\nSocial History:\nRetired. Lives in assisted living facility. Non-smoker.\n\nFamily History:\nMother: Hypertension.\nFather: Type 2 Diabetes.\n\nHospital Course:\nPt is an 85-year-old female admitted with worsening respiratory symptoms. CXR and bedside ultrasound confirmed a large empyema in the right pleural space. Pt underwent bedside placement of a chest tube for drainage of the empyema. Drainage was purulent. Pt was started on IV antibiotics. Progress was made over 6 days; drainage volume decreased and inflammatory markers improved. Chest tube was removed on 05/17/2026 as drainage was minimal and pt remained afebrile. Pt is stable for discharge to assisted living.\n\nDischarge Diagnoses:\nRight-sided empyema.\n\nDischarge Medications:\nAmoxicillin-clavulanate 875/125mg BID (Finish 7-day course).\nAcetaminophen 650mg PRN for pain/fever.\n\nFollow-up:\nF/u with PCP in 1 week for wound check and reassessment of respiratory status.\n\nElectronically signed,\nD. Kowalski, MD\n05/18/2026",
+  "answer": [
+    "J86.9"
+  ],
+  "explanations": [
+    "Empyema without fistula (pyothorax): J86.9 (HCC 283)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J90"
+      ],
+      "confusion": "wrong_lung_condition",
+      "lean": "neutral",
+      "why": "Pus in the pleural space is empyema, not a plain effusion.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.204,
+        "gap": -0.204,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "283"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.204,
+    "hccs": [
+      {
+        "hcc": "283",
+        "label": "Empyema/Lung Abscess",
+        "from": [
+          "J869"
+        ],
+        "weight": 0.204
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:06+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

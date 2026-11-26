@@ -1,0 +1,91 @@
+{
+  "id": "head_injury-55824fbe37",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "tbi_loc_short"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Fall from ladder, head trauma.\n\nVitals:\nT: 98.4 F, HR: 72, RR: 16, BP: 128/78, SpO2: 97% on RA.\n\nRecent Labs:\nWBC: 8.2, Hgb: 13.1, Plt: 210, Na: 138, K: 4.0, Cr: 1.1, eGFR: 65.\n\nReview of Systems:\nNeuro: Pt c/o mild confusion and headache. No focal deficits.\nCV: No chest pain, no SOB.\nResp: No cough.\nGI: No N/V.\nMSK: Mild neck pain.\n\nSocial History: Retired, lives with daughter. Non-smoker.\n\nFamily History: Hypertension, Type 2 DM.\n\nHospital Course:\n80 y/o female pt admitted after fall from a ladder. Pt was unconscious for about 10 minutes at the scene. Initial neuro exam showed mild disorientation. MRI of the head revealed a diffuse brain injury. Pt was monitored closely for neurological changes. Managed with IV fluids and neuro checks q2h. Pt remained stable throughout admission. No acute changes in mentation. Transitioned to oral intake on 05/15. Pt mobile with assist.\n\nDischarge Diagnoses:\nDiffuse traumatic brain injury.\n\nDischarge Medications:\nAcetaminophen 650mg BID PRN for pain.\nMultivitamin daily.\n\nFollow-up:\nF/u with Neurology in 1 week. F/u with PCP in 2 weeks.\n\nElectronically signed, T. Haddad, MD, 05/18/2026",
+  "answer": [
+    "S06.2X1A"
+  ],
+  "explanations": [
+    "Diffuse traumatic brain injury with loss of consciousness of 30 minutes or less, initial encounter: S06.2X1A (HCC 398)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X0A"
+      ],
+      "confusion": "wrong_loc_duration",
+      "lean": "neutral",
+      "why": "There was a brief loss of consciousness.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "399"
+        ],
+        "missing_hccs": [
+          "398"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "S06.2X9A"
+      ],
+      "confusion": "unspecified_loc",
+      "lean": "neutral",
+      "why": "The duration is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.199,
+    "hccs": [
+      {
+        "hcc": "398",
+        "label": "Major Head Injury with Loss of Consciousness < 1 Hour or Unspecified",
+        "from": [
+          "S062X1A"
+        ],
+        "weight": 0.199
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:48+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

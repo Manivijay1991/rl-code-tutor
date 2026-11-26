@@ -1,0 +1,72 @@
+{
+  "id": "fibrosis_airway-2c7c6a9d01",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "ipf"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint: Follow-up for idiopathic pulmonary fibrosis.\n\nHPI: Pt is a 62-year-old male presenting for routine follow-up of idiopathic pulmonary fibrosis (IPF). Pt reports feeling stable overall. No new onset of severe dyspnea or increased cough. Pt reports adherence to current antifibrotic medication. Denies any new fevers, chills, or significant weight loss. Reports mild fatigue but it is baseline for him. Reports consistent activity level.\n\nMedication List:\n- Nintedanib 150mg BID\n- Multivitamin daily\n- Guaifenesin PRN\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight loss.\nRespiratory: Denies acute SOB, hemoptysis, or chest pain.\nMusculoskeletal: Denies new joint pain.\nNeurological: Denies weakness or numbness.\nAll other systems reviewed and negative.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/84\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 94% on RA\nHt/Wt: 185 lbs, 5'10\"\n\nRecent Labs/Tests:\nPFTs: FEV1, FVC, and DLCO stable compared to previous study.\nCBC: WNL.\nCMP: WNL.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nRespiratory: CTAB. Lungs clear to auscultation bilaterally. No wheezing or crackles.\nCardiovascular: RRR, no murmurs.\nMusculoskeletal: No joint swelling.\nSkin: No new lesions.\n\nAssessment:\n1. Idiopathic pulmonary fibrosis. Stable on current antifibrotic regimen. Pulmonary function tests remain consistent with previous baseline.\n\nPlan:\n1. Continue current antifibrotic medication as prescribed.\n2. Continue monitoring for any increase in respiratory symptoms.\n3. F/u in 6 months for repeat PFTs and clinical evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "J84.112"
+  ],
+  "explanations": [
+    "Idiopathic pulmonary fibrosis: J84.112 (HCC 278)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J84.10"
+      ],
+      "confusion": "understated_fibrosis",
+      "lean": "under",
+      "why": "IPF is documented (HCC 278, not 280).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.818,
+        "gap": -0.499,
+        "direction": "under",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": [
+          "278"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "278",
+        "label": "Idiopathic Pulmonary Fibrosis and Lung Involvement in Systemic Sclerosis",
+        "from": [
+          "J84112"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:06+00:00",
+    "style": {
+      "age": 62,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "personality_eating-69ba37fdda",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "anorexia_restricting_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nFollow-up for weight loss and nutritional concerns.\n\nHPI\nThe patient is a 26-year-old female presenting for a follow-up visit regarding her diagnosis of anorexia nervosa. She reports that she has been struggling to maintain a consistent caloric intake and continues to prioritize weight loss over nutritional needs. She describes her behavior as a restricting type, characterized by a self-imposed limit on the amount of food consumed daily. She notes that while she has been attending sessions with a dietitian and a therapist, she finds it difficult to adhere to the suggested meal plans due to persistent anxiety regarding her body image. She reports feeling physically fatigued and occasionally dizzy when standing quickly. She denies any recent hospitalizations or changes in her primary treatment goals.\n\nMedication List\nMultivitamin daily\nFluoxetine 20mg daily\n\nReview of Systems\nThe patient reports some fatigue and occasional lightheadedness. She denies any chest pain, palpitations, shortness of breath, or joint pain. She denies any changes in bowel habits or urinary frequency. She denies any recent fevers or chills.\n\nSocial History\nShe is currently employed full-time in an administrative role. She lives with her partner and reports a stable home environment. She enjoys hiking and reading in her spare time.\n\nFamily History\nMother has a history of hypertension. Father has a history of type 2 diabetes. No family history of eating disorders is reported.\n\nVitals\nBlood Pressure: 108/74 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nWeight: 102 lbs\nHeight: 5'6\"\n\nRecent Labs\nHbA1c: 5.4%\nTSH: 2.1 mIU/L\nElectrolytes: Sodium 138 mEq/L, Potassium 3.9 mEq/L, Chloride 101 mEq/L, CO2 24 mEq/L.\neGFR: >90 mL/min/1.73m2\n\nExam\nThe patient appears thin and well-groomed. She is alert and cooperative. Skin is dry but intact. Heart sounds are regular with no murmurs. Lungs are clear to auscultation. Abdomen is soft, non-tender, and non-distended. Neurological exam is unremarkable.\n\nAssessment\n1. Anorexia nervosa, restricting type, moderate severity.\n\nPlan\nThe patient will continue her current regimen of therapy and nutritional counseling. She will continue to meet with her dietitian twice weekly to develop a structured meal plan. She will continue with her therapist for cognitive behavioral strategies regarding body image. We will monitor her weight and nutritional intake at each follow-up visit.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "F50.011"
+  ],
+  "explanations": [
+    "Anorexia nervosa, restricting type, moderate: F50.011 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F50.00"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type and severity are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F50.021"
+      ],
+      "confusion": "wrong_eating_type",
+      "lean": "neutral",
+      "why": "The restricting type is documented, not binge-purge.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F50011"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:24+00:00",
+    "style": {
+      "age": 26,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

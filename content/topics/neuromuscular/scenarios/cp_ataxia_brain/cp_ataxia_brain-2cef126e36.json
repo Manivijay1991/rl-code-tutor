@@ -1,0 +1,68 @@
+{
+  "id": "cp_ataxia_brain-2cef126e36",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "friedreich"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint: Follow-up for gait instability.\n\nHPI: [Copied Forward] Patient is a 51-year-old male with a known diagnosis of Friedreich ataxia. He presents with progressive gait ataxia that has necessitated the use of a walker for mobility. He reports increasing difficulty with balance and coordination during daily activities. He denies any acute changes in sensory perception or sudden onset of muscle weakness. He continues to utilize the walker for safety and stability.\n\nMedication List:\n- Gabapentin 300mg TID\n- Baclofen 10mg TID\n- Zolpidem 5mg QHS\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F, BMI 26.4.\n\nRecent Labs:\n- Hemoglobin: 13.2 g/dL\n- White Blood Cell Count: 6.4 x 10^9/L\n- Platelet Count: 210 x 10^9/L\n- Creatinine: 1.1 mg/dL\n- eGFR: 88 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nNeurological: Positive for gait ataxia, positive for decreased proprioception. Negative for tremors, seizures, or vision changes.\nMusculoskeletal: Positive for muscle stiffness. Negative for joint pain.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or diarrhea.\nGenitourinary: Negative for dysuria.\n\nSocial History: Patient lives with his spouse and two children. He works part-time as a consultant. He denies tobacco or illicit drug use. He drinks alcohol socially on weekends.\n\nFamily History: Father has hypertension; Mother has type 2 diabetes. No family history of neurological disorders.\n\nExam: Patient is alert and oriented x3. Gait is markedly unsteady, requiring the use of a walker for all ambulation. Coordination is impaired; finger-to-nose testing shows intention tremor and dysmetria. Muscle tone is increased in the lower extremities. Deep tendon reflexes are diminished. No focal neurological deficits noted other than expected manifestations of Friedreich's ataxia.\n\nAssessment:\n1. Friedreich ataxia with progressive gait ataxia.\n\nPlan:\n1. Continue current medication regimen for symptom management.\n2. Maintain use of walker for all mobility to ensure safety.\n3. Follow up in 3 months for neurological reassessment.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "G11.11"
+  ],
+  "explanations": [
+    "Friedreich ataxia: G11.11 (HCC 200)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G11.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type of hereditary ataxia is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.279,
+        "correct": 0.279,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.279,
+    "hccs": [
+      {
+        "hcc": "200",
+        "label": "Friedreich and Other Hereditary Ataxias; Huntington Disease",
+        "from": [
+          "G1111"
+        ],
+        "weight": 0.279
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:00+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

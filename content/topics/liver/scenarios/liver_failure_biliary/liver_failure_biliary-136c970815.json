@@ -1,0 +1,85 @@
+{
+  "id": "liver_failure_biliary-136c970815",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "psc"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Follow-up for primary sclerosing cholangitis.\n\nHPI: [Copied Forward] Patient is a 77-year-old female with a known history of primary sclerosing cholangitis. She presents for a scheduled hepatology follow-up. She reports feeling well today with no new concerns. She denies any new fatigue, pruritus, or changes in skin color. She continues to manage her condition as directed.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss.\nSkin: Negative for jaundice, pruritus.\nGastrointestinal: Negative for abdominal pain, nausea.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for confusion, tremors.\n\nMedication List:\n- Ursodeoxycholic acid 350mg TID\n- Vitamin D3 1000 IU daily\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nAbdomen: Soft, non-tender, no guarding. No palpable masses.\nSkin: No visible jaundice or scleral icterus.\n\nAssessment:\n1. Primary sclerosing cholangitis: Stable at this time.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue monitoring of PSC.\n3. Order annual imaging to monitor biliary tree.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "K83.01"
+  ],
+  "explanations": [
+    "Primary sclerosing cholangitis: K83.01 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K83.09"
+      ],
+      "confusion": "wrong_cholangitis",
+      "lean": "neutral",
+      "why": "Primary sclerosing cholangitis has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.388,
+        "correct": 0.388,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K74.3"
+      ],
+      "confusion": "wrong_cholangitis",
+      "lean": "neutral",
+      "why": "Primary sclerosing, not primary biliary.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.388,
+        "correct": 0.388,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K8301"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:34+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

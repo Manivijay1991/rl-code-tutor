@@ -1,0 +1,61 @@
+{
+  "id": "mi_angina-17e9edd3a5",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "old_mi"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint\nFollow-up for history of myocardial infarction.\n\nHPI\nThe patient is a 77-year-old female presenting for a routine follow-up. She experienced a myocardial infarction eight months ago. Since the initial event, the patient reports that the area has healed completely. She currently denies any shortness of breath, palpitations, or discomfort in her chest. She states that she has not required any ongoing specialized care for the event since the initial recovery period. She reports feeling well and maintains her usual activity level.\n\nReview of Systems\nThe patient denies any recent weight changes, fever, chills, or cough. She denies any syncope or dizziness. She reports no joint pain or localized swelling. She denies any changes in bowel habits or urinary frequency.\n\nSocial History\nThe patient resides in a single-story home with her spouse. She enjoys gardening and walking in her neighborhood. She reports a non-smoking status and drinks caffeine occasionally.\n\nFamily History\nHer father had a history of coronary artery disease. Her mother had a history of stroke.\n\nMedication List\n- Aspirin 81 mg daily\n- Atorvastatin 40 mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 122/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\nHbA1c: 5.8%\nLDL: 74 mg/dL\nGlucose: 95 mg/dL\neGFR: 82 mL/min/1.73m2\n\nExam\nThe patient is alert and oriented to person, place, and time. She appears in no acute distress. Her skin is warm and dry. Heart sounds are regular with no murmurs or gallops. Lungs are clear to auscultation bilaterally. Extremities show no edema. Capillary refill is less than 2 seconds.\n\nAssessment\nThe patient is a 77-year-old female who experienced a myocardial infarction 8 months ago. The condition is currently stable and well-healed. She is asymptomatic at this time.\n\nPlan\nContinue current medications as prescribed. Patient will continue her current activity levels. Follow up in six months for a routine check.\n\nElectronically signed, \nP. O'Brien, NP\nMay 14, 2026",
+  "answer": [
+    "I25.2"
+  ],
+  "explanations": [
+    "An MI more than 4 weeks ago that needs no further care: old myocardial infarction, I25.2 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.9.e"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I21.4"
+      ],
+      "confusion": "old_mi_coded_acute",
+      "lean": "over",
+      "why": "After 4 weeks with no ongoing care, the MI is old: I25.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.252,
+        "correct": 0,
+        "gap": 0.252,
+        "direction": "over",
+        "extra_hccs": [
+          "228"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:08+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "P. O'Brien"
+    }
+  }
+}

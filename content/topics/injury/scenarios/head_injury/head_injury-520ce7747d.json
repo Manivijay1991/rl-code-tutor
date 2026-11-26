@@ -1,0 +1,63 @@
+{
+  "id": "head_injury-520ce7747d",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "concussion_loc"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/13/2026\nReason for Admission: Evaluation of head injury following a fall.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\nRecent Labs: WBC 8.2, Hgb 13.4, Plt 210, Na 138, K 4.0, Creatinine 0.9.\n\nHPI: Patient is a 77-year-old female who presented to the emergency department after experiencing a fall at home. She was reportedly unconscious for about 5 minutes following the incident. She is currently complaining of a mild headache and some dizziness.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nNeurological: Positive for headache and dizziness; negative for focal weakness or numbness.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or abdominal pain.\n\nSocial History: Lives in a single-story home with her spouse. Retired teacher. Non-smoker.\nFamily History: Mother had hypertension; Father had type 2 diabetes.\nHospital Course: The patient was admitted overnight for observation following a concussion. Due to the brief period of being unconscious for about 5 minutes, neuroimaging was ordered to rule out acute complications. A CT scan of the head was performed and showed no acute findings. A follow-up MRI of the brain was also completed, which was normal. The patient remained stable throughout the observation period, showing no signs of worsening neurological status. She was able to tolerate oral intake and was discharged in stable condition.\n\nDischarge Diagnoses:\n- Concussion\n- Fall resulting in head injury\n\nDischarge Medications:\n- Acetaminophen 650mg every 6 hours as needed for pain.\n- Multivitamin daily.\n\nFollow-up: Patient instructed to follow up with her primary care physician in one week for a routine check of neurological status. She was advised to seek immediate care if she experiences worsening headaches or confusion.\n\nElectronically signed,\nL. Moreau, MD\n05/13/2026",
+  "answer": [
+    "S06.0X1A"
+  ],
+  "explanations": [
+    "Concussion with loss of consciousness of 30 minutes or less, initial encounter: S06.0X1A (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "concussion_coded_tbi",
+      "lean": "over",
+      "why": "A concussion is documented with normal imaging, not a diffuse injury.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0,
+        "gap": 0.199,
+        "direction": "over",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:33:21+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

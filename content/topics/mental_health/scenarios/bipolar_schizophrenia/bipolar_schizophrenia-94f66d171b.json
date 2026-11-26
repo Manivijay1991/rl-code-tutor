@@ -1,0 +1,81 @@
+{
+  "id": "bipolar_schizophrenia-94f66d171b",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_full_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint: Follow-up for mood stability.\n\nHPI: Patient is a 72-year-old female who was originally diagnosed with bipolar disorder. She reports she has been stable on her current regimen. The most recent episode depressed was managed effectively, and she has remained stable since. She reports no significant mood swings or periods of elevated energy over the past year. She continues to take lithium as prescribed and reports good adherence. She denies any new stressors or changes in sleep patterns.\n\nMedication List:\n- Lithium Carbonate 600mg BID\n- Lorazepam 0.5mg as needed for sleep\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nRecent Labs:\n- Lithium Level: 0.8 mEq/L\n- TSH: 2.1 uIU/mL\n- BMP: Sodium 140, Potassium 4.2, Creatinine 0.9, eGFR 75\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, fatigue.\n- Neurological: Negative for tremors, dizziness, or coordination issues.\n- Psychiatric: Negative for racing thoughts or insomnia.\n- Gastrointestinal: Negative for nausea or diarrhea.\n- Genitourinary: Negative for dysuria.\n\nSocial History: Retired teacher. Lives with her spouse in a single-story home. Non-smoker. Occasional social outings.\n\nFamily History: Mother had hypertension; Father had a history of cardiac disease.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nPsychiatric: Calm demeanor, normal speech, congruent affect. Thought process is linear and goal-oriented. Insight and judgment are intact.\nNeurological: No tremors noted; gait is steady.\n\nAssessment:\n1. Bipolar disorder in full remission. The patient has remained stable for over a year on her current lithium dosage.\n\nPlan:\n- Continue current lithium regimen.\n- Continue current PRN lorazepam for sleep.\n- Follow up in 3 months for routine monitoring of mood and lithium levels.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "F31.76"
+  ],
+  "explanations": [
+    "Bipolar disorder in full remission, most recent episode depressed: F31.76 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F31.75"
+      ],
+      "confusion": "full_partial_confused",
+      "lean": "neutral",
+      "why": "Full remission is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0,
+        "gap": 0.351,
+        "direction": "over",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.32"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents full remission, not an active episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0,
+        "gap": 0.351,
+        "direction": "over",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:14+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bone_lupus_skin-402f8c495e",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pemphigus"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: Follow-up for pemphigus vulgaris.\n\nVitals: BP 124/76, HR 74, SpO2 98% on room air, Temp 98.6 F, HR 74, BMI 26.4.\n\nRecent Labs: CBC: WBC 6.2, Hb 12.4, Plt 210. CMP: Na 140, K 4.1, Glu 95, Cr 0.9.\n\nSocial History: Retired; lives with her spouse. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had hypertension. Father had a history of heart disease.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nIntegumentary: Positive for previous blistering, currently stable.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for numbness or tingling.\nAll other systems reviewed and are negative.\n\nHPI: [Copied Forward] Patient is a 72-year-old female with a known history of pemphigus vulgaris. She initially presented with extensive blistering and erosions on the trunk and extremities. She was started on rituximab and a systemic corticosteroid taper. She has been compliant with the medication regimen and has shown significant clinical improvement.\n\n[Current Update] Patient returns today for a scheduled follow-up regarding her pemphigus vulgaris. She reports that her skin has remained stable since the last visit. She denies any new blisters, itching, or areas of erosion. She reports that she is feeling well and is tolerating the current tapering schedule of her medications without significant side effects. She notes that her energy levels are stable and she is able to perform her daily activities without interference from skin symptoms.\n\nMedication List:\n- Rituximab\n- Prednisone (tapering)\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished and in no acute distress.\nSkin: Examination of the trunk and extremities shows well-healed areas of previous blistering. No active bullae, erosions, or crusting noted today. Skin integrity is intact. No signs of secondary infection.\n\nAssessment:\n1. Pemphigus vulgaris: The patient's condition is currently well-controlled on the current regimen of rituximab and a steroid taper.\n\nPlan:\n1. Continue current dose of rituximab as scheduled.\n2. Continue gradual steroid taper as previously directed.\n3. Follow up in 3 months for skin evaluation.\n4. Patient instructed to call the office immediately if new blisters or signs of infection develop.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "L10.0"
+  ],
+  "explanations": [
+    "Pemphigus vulgaris: L10.0 (HCC 387)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L12.0"
+      ],
+      "confusion": "pemphigus_pemphigoid_confused",
+      "lean": "neutral",
+      "why": "Pemphigus, not pemphigoid.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.406,
+        "correct": 0.406,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "L13.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The disease is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.406,
+        "gap": -0.406,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "387"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.406,
+    "hccs": [
+      {
+        "hcc": "387",
+        "label": "Pemphigus/Pemphigoid/and Other Specified Autoimmune Skin Disorders",
+        "from": [
+          "L100"
+        ],
+        "weight": 0.406
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:11+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

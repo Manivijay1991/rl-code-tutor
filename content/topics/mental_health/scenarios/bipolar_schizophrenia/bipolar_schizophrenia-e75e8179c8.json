@@ -1,0 +1,89 @@
+{
+  "id": "bipolar_schizophrenia-e75e8179c8",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_depressed_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint: Follow-up for mood management.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 195 lbs.\n\nRecent Labs:\nTSH: 2.1 mIU/L\nHbA1c: 5.7%\nCMP: Within normal limits\n\nMedication List:\n- Lamotrigine 100 mg PO daily\n- Quetiapine 50 mg PO at bedtime\n\nSocial History:\nThe patient is a 51-year-old male who works as a project manager. He lives with his spouse and two children. He reports no tobacco use and no history of recreational drug use.\n\nFamily History:\nMother has a history of hypertension. Father has a history of hypertension and early-onset heart disease. No known family history of psychiatric conditions.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nNeurological: Negative for tremors, seizures, or headaches.\nPsychiatric: Positive for low energy and sleep disturbance.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or diarrhea.\nMusculoskeletal: Negative for joint pain or stiffness.\n\nHPI:\n[Copied Forward]\nThe patient is a 51-year-old male presenting for management of bipolar disorder. He reports a period of feeling low and lethargic over the past month. He describes his mood as consistently depressed, noting a lack of interest in his usual hobbies. He denies any thoughts of self-harm. He reports adequate sleep but feels unrefreshed upon waking. He reports some weight gain since starting his current regimen. He denies any significant irritability or pressured speech.\n\n[Current Update]\nThe patient returns today for a follow-up. He states that while he feels better than last month, he still feels moderately down most of the time. He reports that his energy levels remain low. He denies any acute distress. He notes that the current dose of his medication has not fully stabilized his mood.\n\nExam:\nGeneral: Alert and oriented x3. Appears well-groomed.\nPsychiatric: Mood is described as depressed. Affect is flat but congruent. Speech is normal in rate and volume. Thought process is linear and goal-directed. Insight and judgment are intact.\n\nAssessment:\n1. Bipolar disorder, current episode depressed, moderate.\n\nPlan:\n1. Increase lamotrigine dose to 150 mg PO daily to improve mood stability.\n2. Continue quetiapine 50 mg at bedtime for sleep and mood regulation.\n3. Patient instructed to monitor for any new side effects.\n4. Follow up in 4 weeks for medication tolerance and efficacy check.\n\nElectronically signed, J. Lindqvist, NP, 10/14/2026",
+  "answer": [
+    "F31.32"
+  ],
+  "explanations": [
+    "Bipolar disorder, current episode depressed, moderate: F31.32 (HCC 154)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "bipolar_coded_as_depression",
+      "lean": "neutral",
+      "why": "A depressed episode of bipolar disorder is coded in F31, not as major depression.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.351,
+        "gap": -0.052,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "154"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F31.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The episode and severity are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.351,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.351,
+    "hccs": [
+      {
+        "hcc": "154",
+        "label": "Bipolar Disorders without Psychosis",
+        "from": [
+          "F3132"
+        ],
+        "weight": 0.351
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:46+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

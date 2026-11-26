@@ -1,0 +1,79 @@
+{
+  "id": "mi_angina-a980e51112",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "cad_angina"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Chest pain on exertion.\n\nHPI: Copied forward from previous visit: Patient is a 77-year-old female presenting for management of coronary artery disease. She reports experiencing angina when performing heavy physical activity. She denies any pain at rest or radiation to the jaw. She reports compliance with her current medications. \n\nUpdate: The patient reports that her symptoms remain consistent with her previous visits. She continues to experience angina during strenuous exercise but notes that the use of her prescribed medication provides adequate relief. She denies any new symptoms or worsening of her coronary artery disease.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nGeneral: Negative\nCardiovascular: Positive (angina)\nRespiratory: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\nNitroglycerin 0.4mg SL as needed for angina.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nCardiovascular: Regular rhythm, S1 and S2 heard, no murmurs.\nPulmonary: Clear to auscultation bilaterally.\n\nAssessment:\nCoronary artery disease of the native arteries with angina.\n\nPlan:\n1. Renew nitroglycerin prescription for use during episodes of angina.\n2. Continue current management plan.\n3. Follow up in 6 months.\n\nElectronically signed, \nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "I25.119"
+  ],
+  "explanations": [
+    "Coronary artery disease with angina of unstated type: combination code I25.119 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.9.b"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.110"
+      ],
+      "confusion": "overstated_angina",
+      "lean": "over",
+      "why": "Unstable angina is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.24,
+        "correct": 0,
+        "gap": 0.24,
+        "direction": "over",
+        "extra_hccs": [
+          "229"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.10",
+        "I20.9"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code I25.119, not two codes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:06:35+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

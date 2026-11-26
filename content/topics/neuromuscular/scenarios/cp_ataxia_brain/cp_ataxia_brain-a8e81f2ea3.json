@@ -1,0 +1,70 @@
+{
+  "id": "cp_ataxia_brain-a8e81f2ea3",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "anoxic_brain"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint: Follow-up for cognitive status and management of neurocognitive deficits.\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on room air, BMI 27.4.\n\nRecent Labs: HbA1c: 5.8%, eGFR: 88 mL/min/1.73m², TSH: 2.1 mIU/L.\n\nSocial History: Lives with family members who provide daily support and supervision. No tobacco use. Occasional alcohol consumption.\n\nFamily History: Mother has hypertension. Father has type 2 diabetes.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nNeurological: Positive for memory lapses and difficulty with sustained attention. Negative for tremors or weakness.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nMusculoskeletal: Negative for joint pain or stiffness.\n\nHPI: [Copied Forward] Patient is a 56-year-old female who underwent cardiac arrest two years ago. She sustained anoxic brain damage as a result of the event. Since the incident, she has experienced persistent deficits in short-term memory and sustained attention. She requires significant assistance with complex tasks and relies on her family for daily activities and safety monitoring. She reports occasional frustration with memory recall but remains stable on her current regimen.\n\nMedication List:\n- Donepezil 10mg daily\n- Lisinopril 10mg daily\n\nExam:\nGeneral: Well-appearing, pleasant, and cooperative.\nNeurological: Alert and oriented to person and place; slightly delayed in orientation to time. Speech is clear but slow. Memory and attention are significantly impaired, consistent with her history of anoxic brain injury. Motor strength 5/5 throughout. Gait is steady with a normal wide base.\n\nAssessment:\n1. Anoxic brain damage: Patient continues to demonstrate stable but significant cognitive impairment. Memory and attention deficits remain the primary focus of her care.\n2. Management of neurocognitive deficits: Currently stable on medication.\n\nPlan:\n1. Continue current medication regimen.\n2. Continue with family support for ADLs and safety.\n3. Follow up in 3 months for continued monitoring of cognitive status.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "G93.1"
+  ],
+  "explanations": [
+    "Anoxic brain damage: G93.1 (HCC 202)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.74"
+      ],
+      "confusion": "history_for_current",
+      "lean": "under",
+      "why": "The lasting brain damage is a current condition: G93.1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.543,
+        "gap": -0.543,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "202"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.543,
+    "hccs": [
+      {
+        "hcc": "202",
+        "label": "Coma/Brain Compression/Anoxic Damage",
+        "from": [
+          "G931"
+        ],
+        "weight": 0.543
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:23+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

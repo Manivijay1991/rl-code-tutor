@@ -1,0 +1,61 @@
+{
+  "id": "cardiomyopathy-71a31dfcc0",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "ischemic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint: Follow-up for ischemic cardiomyopathy.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F, BMI 29.4.\n\nRecent Labs: HbA1c: 6.2%, LDL: 88 mg/dL, HDL: 45 mg/dL, Triglycerides: 140 mg/dL, eGFR: 82 mL/min/1.73m2.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue, or weight change.\nCardiovascular: Negative for chest pain, palpitations, or syncope.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea, vomiting, or diarrhea.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness or numbness.\n\nSocial History: The patient is a 51-year-old male who works as a project manager. He reports being a non-smoker and drinks caffeine occasionally. He exercises three times a week by walking.\n\nFamily History: Father had a history of coronary artery disease and passed away at age 68. Mother is living and healthy.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Metoprolol Succinate 25mg daily\n- Aspirin 81mg daily\n\nHPI: (Copied Forward) Patient is a 51-year-old male presenting for evaluation of ischemic cardiomyopathy secondary to known coronary disease. He reports that his symptoms have been stable over the last three months. He denies any new onset of exertional dyspnea or angina. He reports good compliance with his current medication regimen. He notes that his energy levels are consistent with his baseline.\n\nExam:\nGeneral: Well-appearing, alert, and in no acute distress.\nCardiovascular: Regular rate and rhythm. S1 and S2 are distinct. No murmurs, rubs, or gallops noted. Capillary refill is <2 seconds.\nRespiratory: Clear to auscultation bilaterally. No wheezes or crackles.\nExtremities: No edema noted in lower extremities.\n\nAssessment: \n1. Ischemic cardiomyopathy: The patient's condition is stable on medical therapy. He denies any acute worsening of symptoms and his laboratory values remain within target goals.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Maintain current exercise regimen.\n3. Follow up in 3 months for routine monitoring and laboratory work.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "I25.5"
+  ],
+  "explanations": [
+    "Ischemic cardiomyopathy: I25.5 (no HCC in V28). Category I42 excludes it, so I42.9 would be wrong and would add HCC 227."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.9"
+      ],
+      "confusion": "ischemic_coded_as_i42",
+      "lean": "over",
+      "why": "I42 excludes ischemic cardiomyopathy: use I25.5.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0,
+        "gap": 0.189,
+        "direction": "over",
+        "extra_hccs": [
+          "227"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:05:57+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

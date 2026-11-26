@@ -1,0 +1,79 @@
+{
+  "id": "transplant_status-d403a81885",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "heart_lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for heart-lung transplant maintenance.\n\nHPI\nThe patient is a 67-year-old male who presents today for a routine follow-up regarding his status following a heart-lung transplant performed several years ago. He reports that he has been feeling well and maintains a stable functional status. He denies any shortness of breath, chest pain, or significant fatigue. He states that he is adhering to his current immunosuppression regimen and has not experienced any adverse side effects from his medications. He reports no signs of transplant complications and feels his current quality of life is excellent.\n\nMedication List\n- Tacrolimus\n- Mycophenolate mofetil\n- Prednisone\n- Azathioprine\n\nReview of Systems\nThe patient reports no constitutional symptoms such as fever or chills. He denies any respiratory distress, cough, or wheezing. He reports no episodes of palpitations or syncope. He denies any joint pain, rashes, or unusual bruising. He denies any gastrointestinal distress or changes in bowel habits.\n\nSocial History\nThe patient is retired and lives with his spouse. He enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History\nFather had a history of hypertension. Mother had type 2 diabetes.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs\nTacrolimus level: 8.5 ng/mL\nWhite blood cell count: 6.2 x 10^9/L\nHemoglobin: 13.4 g/dL\nPlatelet count: 155 x 10^3/uL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nExam\nThe patient is alert and oriented x3. He is in no acute distress. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally. Extremities are without edema. Skin is intact with no signs of new rashes or lesions.\n\nAssessment\nThe patient is a 67-year-old male who is stable following his previous heart-lung transplant. He is currently tolerating his immunosuppressive medications well with no evidence of transplant issues.\n\nPlan\n1. Continue current immunosuppressive regimen as prescribed.\n2. Routine monitoring of tacrolimus levels and renal function.\n3. Follow up in 3 months for routine laboratory work and clinic visit.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z94.3"
+  ],
+  "explanations": [
+    "Heart and lungs transplant status: one code, Z94.3, which maps to two HCCs (221 and 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.1"
+      ],
+      "confusion": "missed_second_organ",
+      "lean": "under",
+      "why": "Both heart and lungs were transplanted: Z94.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.053,
+        "correct": 3.584,
+        "gap": -2.531,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "276"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 3.584,
+    "hccs": [
+      {
+        "hcc": "221",
+        "label": "Heart Transplant Status/Complications",
+        "from": [
+          "Z943"
+        ],
+        "weight": 1.053
+      },
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "Z943"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:49+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

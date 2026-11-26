@@ -1,0 +1,71 @@
+{
+  "id": "blood_cancers-da812f7410",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "nhl_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Follow-up for chemotherapy side effects.\n\nVitals: BP 128/82, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for chills, fatigue.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Positive for mild nausea.\nMusculoskeletal: Positive for generalized weakness.\nNeurological: Negative for dizziness or numbness.\n\nHPI: [Copied Forward] Patient is a 77-year-old female currently undergoing active chemotherapy for non-Hodgkin lymphoma. She reports consistent adherence to the prescribed regimen. She denies significant pain or acute respiratory distress. She notes manageable fatigue but reports occasional nausea following treatment administration.\n\nMedication List:\n- Cyclophosphamide\n- Vincristine\n- Prednisone\n- Ondansetron (as needed for nausea)\n\nExam:\nGeneral: Alert and oriented x3. Appears mildly fatigued but in no acute distress.\nSkin: No new rashes or lesions noted.\nLungs: Clear to auscultation bilaterally.\nHeart: Regular rate and rhythm.\n\nAssessment:\n1. non-Hodgkin lymphoma: Patient is currently undergoing active chemotherapy. She is tolerating the treatment but reports mild nausea.\n\nPlan:\n1. Continue current chemotherapy protocol for non-Hodgkin lymphoma.\n2. Increase Ondansetron frequency for nausea as needed.\n3. Follow up in two weeks to monitor tolerance.\n\nElectronically signed, R. Mensah, PA-C, 05/14/2026",
+  "answer": [
+    "C85.90"
+  ],
+  "explanations": [
+    "Non-Hodgkin lymphoma under treatment, type and site not stated: C85.90 (HCC 21)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.72"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "The lymphoma is under active treatment.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.671,
+        "gap": -0.671,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "21"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.671,
+    "hccs": [
+      {
+        "hcc": "21",
+        "label": "Lymphoma and Other Cancers",
+        "from": [
+          "C8590"
+        ],
+        "weight": 0.671
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:03+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

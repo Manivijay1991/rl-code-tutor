@@ -1,0 +1,73 @@
+{
+  "id": "drug_use-7a69c8c9ad",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow up for substance use management.\n\nHPI\nPt is a 56 y/o female presenting for follow up of opioid use disorder. Pt reports consistent use of prescribed analgesics for chronic pain management. She admits to occasional use exceeding prescribed limits but denies any other substances. Pt reports stable mood and no recent incidents of misuse. She is seeking support to manage her dependency and desires behavioral interventions. Counseling has been arranged for this week.\n\nMedication List\nOxycodone 10mg BID PRN for pain.\n\nExam\nPt alert and oriented x3. Appears relaxed. Speech is clear and coherent. Mood is stable, affect is congruent. Vital signs are WNL. No acute distress noted.\n\nAssessment\n1. Opioid use disorder, mild. Pt meets 2-3 criteria for this diagnosis. No complications noted at this time.\n\nPlan\n1. Continue current pain management regimen.\n2. Counseling session scheduled for next week to address behavioral patterns.\n3. Pt to f/u in 4 weeks for progress check.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "F11.10"
+  ],
+  "explanations": [
+    "A mild use disorder is coded as abuse: opioid abuse, uncomplicated, F11.10 (HCC 138)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.20"
+      ],
+      "confusion": "mild_coded_dependence",
+      "lean": "over",
+      "why": "Mild = abuse (F11.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.423,
+        "gap": 0.001,
+        "direction": "over",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": [
+          "138"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.423,
+    "hccs": [
+      {
+        "hcc": "138",
+        "label": "Drug Use Disorder/Mild/Uncomplicated/Except Cannabis",
+        "from": [
+          "F1110"
+        ],
+        "weight": 0.423
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:42+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

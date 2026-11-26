@@ -1,0 +1,379 @@
+{
+  "id": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note_age": {
+    "min": 25
+  },
+  "slots": {
+    "condition": {
+      "label": "Substance use documented",
+      "values": [
+        "opioid_mild",
+        "opioid_moderate",
+        "opioid_remission",
+        "cannabis_mild",
+        "cocaine_psychotic",
+        "alcohol_psychotic"
+      ],
+      "labels": {
+        "opioid_mild": "Opioid use disorder, mild",
+        "opioid_moderate": "Opioid use disorder, moderate",
+        "opioid_remission": "Opioid use disorder, severe, in early remission",
+        "cannabis_mild": "Cannabis use disorder, mild",
+        "cocaine_psychotic": "Severe cocaine use disorder with cocaine-induced psychotic disorder, hallucinations",
+        "alcohol_psychotic": "Severe alcohol use disorder with alcohol-induced psychotic disorder, hallucinations"
+      },
+      "evidence": {
+        "opioid_mild": [
+          [
+            "opioid use disorder"
+          ],
+          [
+            "mild"
+          ]
+        ],
+        "opioid_moderate": [
+          [
+            "opioid use disorder"
+          ],
+          [
+            "moderate"
+          ]
+        ],
+        "opioid_remission": [
+          [
+            "opioid use disorder"
+          ],
+          [
+            "severe"
+          ],
+          [
+            "remission"
+          ]
+        ],
+        "cannabis_mild": [
+          [
+            "cannabis use disorder"
+          ],
+          [
+            "mild"
+          ]
+        ],
+        "cocaine_psychotic": [
+          [
+            "cocaine use disorder"
+          ],
+          [
+            "severe"
+          ],
+          [
+            "cocaine-induced psychotic disorder"
+          ],
+          [
+            "hallucinations"
+          ]
+        ],
+        "alcohol_psychotic": [
+          [
+            "alcohol use disorder"
+          ],
+          [
+            "severe"
+          ],
+          [
+            "alcohol-induced psychotic disorder"
+          ],
+          [
+            "hallucinations"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "opioid_mild": "The provider documents opioid use disorder, mild (meets 2-3 criteria), with no complications; counseling is arranged.",
+        "opioid_moderate": "The provider documents opioid use disorder, moderate, with no complications; buprenorphine is started.",
+        "opioid_remission": "The provider documents opioid use disorder, severe, in early remission on buprenorphine maintenance; no use for 5 months.",
+        "cannabis_mild": "The provider documents cannabis use disorder, mild, with no complications; the patient is cutting down.",
+        "cocaine_psychotic": "The psychiatrist documents severe cocaine use disorder with cocaine-induced psychotic disorder with hallucinations, now improving.",
+        "alcohol_psychotic": "The psychiatrist documents severe alcohol use disorder with alcohol-induced psychotic disorder with hallucinations, now improving with abstinence."
+      }
+    }
+  },
+  "note_forbid": [
+    "tobacco",
+    "nicotine",
+    "smok",
+    "vap",
+    "cigarette",
+    "withdrawal",
+    "delirium",
+    "overdose",
+    "intoxication",
+    "methamphetamine",
+    "amphetamine",
+    "benzodiazepine",
+    "heroin injection",
+    "hepatitis",
+    "HIV",
+    "schizophrenia",
+    "bipolar",
+    "delusion",
+    "liver disease",
+    "cirrhosis"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "opioid_mild",
+          "opioid_moderate",
+          "opioid_remission"
+        ]
+      },
+      "forbid": [
+        "cocaine",
+        "cannabis",
+        "marijuana",
+        "alcohol use disorder",
+        "psychotic",
+        "hallucinat"
+      ]
+    },
+    {
+      "when": {
+        "condition": "opioid_mild"
+      },
+      "forbid": [
+        "moderate",
+        "severe",
+        "remission",
+        "buprenorphine",
+        "methadone"
+      ]
+    },
+    {
+      "when": {
+        "condition": "opioid_moderate"
+      },
+      "forbid": [
+        "mild",
+        "severe",
+        "remission"
+      ]
+    },
+    {
+      "when": {
+        "condition": "opioid_remission"
+      },
+      "forbid": [
+        "mild",
+        "moderate"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cannabis_mild"
+      },
+      "forbid": [
+        "opioid",
+        "cocaine",
+        "alcohol use disorder",
+        "moderate",
+        "severe",
+        "remission",
+        "psychotic",
+        "hallucinat"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cocaine_psychotic"
+      },
+      "forbid": [
+        "opioid",
+        "cannabis",
+        "marijuana",
+        "alcohol use disorder",
+        "mild",
+        "moderate",
+        "remission"
+      ]
+    },
+    {
+      "when": {
+        "condition": "alcohol_psychotic"
+      },
+      "forbid": [
+        "opioid",
+        "cocaine",
+        "cannabis",
+        "marijuana",
+        "mild",
+        "moderate",
+        "remission"
+      ]
+    }
+  ],
+  "confusions": {
+    "mild_coded_dependence": {
+      "description": "Coded dependence for a mild use disorder (mild = abuse in ICD-10-CM).",
+      "lean": "over"
+    },
+    "moderate_coded_abuse": {
+      "description": "Coded abuse for a moderate or severe use disorder (= dependence).",
+      "lean": "under"
+    },
+    "missed_remission": {
+      "description": "Left out the remission the provider documents.",
+      "lean": "neutral"
+    },
+    "cannabis_hcc_assumed": {
+      "description": "Coded cannabis dependence for mild cannabis use disorder (cannabis abuse has no HCC).",
+      "lean": "over"
+    },
+    "missed_psychotic": {
+      "description": "Coded the use disorder alone and missed the substance-induced psychotic disorder.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "sud",
+      "rules": [
+        {
+          "when": {
+            "condition": "opioid_mild"
+          },
+          "codes": [
+            "F11.10"
+          ],
+          "explain": "A mild use disorder is coded as abuse: opioid abuse, uncomplicated, F11.10 (HCC 138).",
+          "refs": [
+            "OCG I.C.5.b.2",
+            "ICD-10-CM Tabular: F10-F19"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F11.20"
+              ],
+              "confusion": "mild_coded_dependence",
+              "why": "Mild = abuse (F11.1-), not dependence."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "opioid_moderate"
+          },
+          "codes": [
+            "F11.20"
+          ],
+          "explain": "A moderate or severe use disorder is coded as dependence: F11.20 (HCC 137).",
+          "refs": [
+            "OCG I.C.5.b.2",
+            "ICD-10-CM Tabular: F10-F19"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F11.10"
+              ],
+              "confusion": "moderate_coded_abuse",
+              "why": "Moderate = dependence (F11.2-)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "opioid_remission"
+          },
+          "codes": [
+            "F11.21"
+          ],
+          "explain": "Severe opioid use disorder in early remission: opioid dependence, in remission, F11.21 (HCC 137).",
+          "refs": [
+            "OCG I.C.5.b.1",
+            "ICD-10-CM Tabular: F10-F19"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F11.20"
+              ],
+              "confusion": "missed_remission",
+              "why": "The provider documents remission."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cannabis_mild"
+          },
+          "codes": [
+            "F12.10"
+          ],
+          "explain": "Mild cannabis use disorder = cannabis abuse, uncomplicated: F12.10 (no HCC; V28 excludes cannabis abuse).",
+          "refs": [
+            "OCG I.C.5.b.2",
+            "ICD-10-CM Tabular: F10-F19"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F12.20"
+              ],
+              "confusion": "cannabis_hcc_assumed",
+              "why": "Mild = abuse (F12.1-), not dependence."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cocaine_psychotic"
+          },
+          "codes": [
+            "F14.251"
+          ],
+          "explain": "Severe cocaine use disorder with cocaine-induced psychotic disorder with hallucinations: combination code F14.251 (HCC 135).",
+          "refs": [
+            "ICD-10-CM Tabular: F10-F19"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F14.20"
+              ],
+              "confusion": "missed_psychotic",
+              "why": "The psychotic disorder is part of the combination code (HCC 135)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "alcohol_psychotic"
+          },
+          "codes": [
+            "F10.251"
+          ],
+          "explain": "Severe alcohol use disorder with alcohol-induced psychotic disorder with hallucinations: combination code F10.251 (HCC 136).",
+          "refs": [
+            "ICD-10-CM Tabular: F10-F19"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F10.20"
+              ],
+              "confusion": "missed_psychotic",
+              "why": "The psychotic disorder is part of the combination code (HCC 136)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

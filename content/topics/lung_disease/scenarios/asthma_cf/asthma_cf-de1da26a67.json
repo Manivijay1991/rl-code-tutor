@@ -1,0 +1,68 @@
+{
+  "id": "asthma_cf-de1da26a67",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "severe_persistent_exac"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint: Shortness of breath and wheezing.\n\nHPI: Pt is a 41-year-old female with a history of severe persistent asthma who presents for evaluation of increased respiratory distress over the last 3 days. Pt reports significant worsening of symptoms characterized by increased cough, mucus production, and audible wheezing. She notes that her usual rescue inhaler (albuterol) has provided only minimal, transient relief. Pt states she is struggling to perform activities of daily living due to dyspnea. She reports a recent viral upper respiratory infection preceding the current exacerbation. No fever, chills, or chest pain reported.\n\nMedication List:\n- Albuterol HFA 90mcg (PRN)\n- Fluticasone/Salmeterol inhaler (BID)\n- Montelukast 10mg (Daily)\n\nReview of Systems:\nConstitutional: Positive for fatigue.\nRespiratory: Positive for dyspnea, wheezing, and productive cough.\nCardiovascular: Negative for palpitations or chest pain.\nAll other systems reviewed and negative.\n\nSocial History: Pt works full-time in an office setting. Non-smoker. Lives with spouse and two children.\n\nFamily History: Mother has asthma. Father has hypertension.\n\nVitals:\nBP: 128/82\nHR: 88 (RRR)\nRR: 22\nTemp: 98.6 F\nSpO2: 93% on RA\n\nRecent Labs:\nCBC: WBC 9.5, Hb 13.2, Plt 210\nChem7: Na 139, K 4.1, Cl 101, CO2 24, BUN 15, Cr 0.8, Glu 95\neGFR: >90\n\nExam:\nGen: Pt appears in mild respiratory distress, speaking in short sentences.\nLungs: Diffuse expiratory wheezes noted in all lobes. Decreased breath sounds at bases. No rales.\nHeart: RRR, no murmurs.\nAbdomen: Soft, non-tender.\nExtremities: No edema.\n\nAssessment:\n1. Severe persistent asthma with acute exacerbation.\n\nPlan:\n1. Start oral prednisone 40mg daily for 5 days (prednisone burst).\n2. Increase Albuterol use as needed for wheezing.\n3. Pt instructed to use spacer with inhalers.\n4. F/u in 1 week if symptoms do not improve or if worsening.\n5. Instructed on emergency action plan and when to go to the ED.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "J45.51"
+  ],
+  "explanations": [
+    "Severe persistent asthma with (acute) exacerbation: J45.51 (HCC 279)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.50"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "neutral",
+      "why": "The exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0.818,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "279",
+        "label": "Severe Persistent Asthma",
+        "from": [
+          "J4551"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:18:13+00:00",
+    "style": {
+      "age": 41,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

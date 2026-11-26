@@ -1,0 +1,92 @@
+{
+  "id": "blood_disorders-3513e2efe2",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "hb_sc"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for hemoglobin SC disease.\n\nHPI\nPt is a 63 y/o female presenting for routine follow-up of sickle cell-hemoglobin C disease. She reports feeling well today. Denies any acute pain or recent episodes of illness. She states she has been managing symptoms well at home. No new concerns reported since last visit.\n\nMedication List\nHydroxyurea 500mg BID\nFolic acid 1mg daily\nHydration fluids PRN\n\nExam\nGen: Well-appearing, alert, in no acute distress.\nCV: RRR, regular rate and rhythm.\nResp: CTAB, no wheezes.\nSkin: No new lesions noted.\nNeuro: Alert and oriented x3.\nVitals: BP 128/82, HR 74, RR 16, Temp 98.6F, SpO2 98% on RA.\n\nAssessment\n1. Sickle cell-hemoglobin C disease. Pt is currently stable. No signs of acute distress or recent complications.\n\nPlan\n1. Continue current medication regimen as prescribed.\n2. Continue routine monitoring of CBC and reticulocyte count.\n3. F/u in 6 months.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "D57.20"
+  ],
+  "explanations": [
+    "Sickle cell-hemoglobin C disease without crisis: D57.20 (HCC 108)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84",
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.1"
+      ],
+      "confusion": "wrong_sickle_type",
+      "lean": "neutral",
+      "why": "Hb SC is a separate sickle cell disorder (HCC 108), not Hb-SS.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.457,
+        "correct": 0.146,
+        "gap": 0.311,
+        "direction": "over",
+        "extra_hccs": [
+          "107"
+        ],
+        "missing_hccs": [
+          "108"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "D57.3"
+      ],
+      "confusion": "wrong_sickle_type",
+      "lean": "neutral",
+      "why": "It is a disease, not the trait.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.146,
+        "gap": -0.146,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "108"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.146,
+    "hccs": [
+      {
+        "hcc": "108",
+        "label": "Sickle Cell Disorders/Except Sickle Cell Anemia (Hb-SS) and Thalassemia Beta Zero; Beta Thalassemia Major",
+        "from": [
+          "D5720"
+        ],
+        "weight": 0.146
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:47+00:00",
+    "style": {
+      "age": 63,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

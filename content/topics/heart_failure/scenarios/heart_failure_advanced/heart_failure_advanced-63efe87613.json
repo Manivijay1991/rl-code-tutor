@@ -1,0 +1,72 @@
+{
+  "id": "heart_failure_advanced-63efe87613",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "end_stage"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Follow-up for heart failure.\n\nVitals: BP 118/74, HR 78, SpO2 94% on room air, Temp 98.6 F, Weight 145 lbs.\n\nHPI: [Copied Forward] Patient is an 80-year-old female with a history of end-stage heart failure currently managed under a palliative care protocol. She reports stable symptoms with no recent significant changes in dyspnea or edema.\n\nUpdate: The patient reports she has been feeling well over the last two weeks. She denies any increase in shortness of breath or significant weight gain. She notes that her fatigue remains consistent with her baseline.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or unintended weight change.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for increased shortness of breath or cough.\nMusculoskeletal: Negative for new weakness.\n\nMedication List:\n- Furosemide 40mg daily\n- Carvedilol 25mg twice daily\n- Lisinopril 10mg daily\n- Morphine 2.5mg PRN for pain\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nCardiovascular: Regular rhythm, S1 and S2 heard, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: Trace edema in bilateral lower extremities.\n\nAssessment:\n1. End-stage heart failure managed with palliative care.\n\nPlan:\n1. Continue current palliative medications as prescribed.\n2. Monitor for any signs of fluid overload.\n3. Follow up in 4 weeks or as needed.\n\nElectronically signed, L. Moreau, PA-C, 10/14/2026",
+  "answer": [
+    "I50.84"
+  ],
+  "explanations": [
+    "End-stage heart failure: I50.84 (HCC 222). The type is not documented, so there is no second code."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "End-stage heart failure has its own code (HCC 222).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "222"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "222",
+        "label": "End-Stage Heart Failure",
+        "from": [
+          "I5084"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:27+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

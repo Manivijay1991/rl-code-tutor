@@ -1,0 +1,63 @@
+{
+  "id": "ulcer_burn-dd1ac8d5cc",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "burn_minor"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Scald burns\n\nHospital Course:\nThe patient is a 79-year-old woman admitted following a kitchen accident resulting in scald burns. Physical examination revealed burns covering 15% of her total body surface area. Of these areas, 5% were identified as third degree, requiring intensive wound management. She was treated with bedside debridement and daily dressing care. She tolerated the initial treatments well and showed significant progress in wound healing during her stay. Pain was managed with intravenous and later oral analgesics. She remained stable throughout the hospitalization and met criteria for discharge once the wounds were clean and the dressings were stable.\n\nDischarge Diagnoses:\n- Scald burns covering 15% of body surface area\n- Third degree burns\n\nDischarge Medications:\n- Ibuprofen 400mg every 6 hours as needed for pain\n- Bacitracin ointment applied to burns twice daily\n\nFollow-up:\nThe patient will follow up with the burn clinic in one week for continued dressing changes and wound assessment.\n\nElectronically signed, P. O'Brien, MD, 05/18/2026",
+  "answer": [
+    "T31.10"
+  ],
+  "explanations": [
+    "Burns of 10-19% of the body with under 10% third degree: T31.10 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.d",
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "T31.11"
+      ],
+      "confusion": "wrong_burn_extent",
+      "lean": "neutral",
+      "why": "Third degree is under 10%: T31.10.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.291,
+        "correct": 0,
+        "gap": 1.291,
+        "direction": "over",
+        "extra_hccs": [
+          "385"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:25+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

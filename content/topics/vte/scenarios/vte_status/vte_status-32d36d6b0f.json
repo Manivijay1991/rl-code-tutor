@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-32d36d6b0f",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_pe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for chronic pulmonary embolism.\n\nVitals: BP 134/82, HR 76, Temp 98.6 F, SpO2 96% on room air, Weight 158 lbs.\n\nRecent Labs: Hemoglobin 12.4 g/dL, White Blood Cell Count 7.2 x 10^9/L, INR 2.4, Creatinine 0.9 mg/dL, eGFR 82 mL/min/1.73m2.\n\nSocial History: Retired educator. Lives with husband. Non-smoker. Occasional alcohol consumption.\n\nFamily History: Mother had hypertension. Father had stroke at age 75.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nRespiratory: Negative for shortness of breath, cough, wheezing.\nCardiovascular: Negative for chest pain, palpitations.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness, numbness, or weakness.\nGastrointestinal: Negative for abdominal pain, nausea, or diarrhea.\n\nHPI: (Copied Forward) Patient is a 72-year-old female presenting for management of chronic pulmonary embolism. She reports stable symptoms and denies any sudden onset of chest pain or increased dyspnea over the last month. She remains on a consistent regimen of anticoagulation.\n\nUpdate: Today, the patient reports she feels well and has no concerns regarding her breathing or activity tolerance. She denies any bleeding complications or signs of bruising. She is compliant with her daily medication and expresses a desire to continue current management.\n\nMedication List:\n- Apixaban 5 mg twice daily\n- Lisinopril 10 mg daily\n- Multivitamin daily\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nRespiratory: Clear to auscultation bilaterally. No wheezes or rales.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs.\nSkin: No signs of active bleeding or bruising.\n\nAssessment:\n1. Chronic pulmonary embolism with persistent clot on imaging.\n\nPlan:\n1. Continue long-term anticoagulation with Apixaban as prescribed.\n2. Patient instructed to monitor for any signs of bleeding or unusual shortness of breath.\n3. Follow up in 6 months for routine monitoring.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "I27.82"
+  ],
+  "explanations": [
+    "Chronic pulmonary embolism: I27.82 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I26.99"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The embolism is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.711"
+      ],
+      "confusion": "chronic_coded_history",
+      "lean": "under",
+      "why": "Chronic embolism is a current condition, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I2782"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-26T15:09:53+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

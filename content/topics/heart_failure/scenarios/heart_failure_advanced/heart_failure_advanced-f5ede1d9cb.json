@@ -1,0 +1,89 @@
+{
+  "id": "heart_failure_advanced-f5ede1d9cb",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_systolic"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Shortness of breath\n\nHPI: Copied Forward: Patient is an 89-year-old female who presented with worsening exertional dyspnea and orthopnea over the past week. She reports a productive cough and increased fatigue. She denies chest pain or palpitations.\nUpdate: The patient reports that since beginning her new regimen, she has noticed a decrease in her shortness of breath while resting. She notes a slight decrease in peripheral edema in her lower extremities.\n\nVitals: BP 128/74, HR 76, SpO2 96% on room air, Temp 98.2 F, RR 18\n\nMedication List:\n- Furosemide 40mg daily\n- Lisinopril 10mg daily\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight loss.\n- Respiratory: Positive for mild shortness of breath; negative for wheezing.\n- Cardiovascular: Positive for peripheral edema; negative for chest pain.\n- Gastrointestinal: Negative for nausea or abdominal pain.\n- Neurological: Negative for dizziness or syncope.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: Lungs clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs.\nExtremities: 1+ pitting edema noted in bilateral ankles.\n\nAssessment:\n1. Acute systolic heart failure (new diagnosis).\n\nPlan:\n1. Continue Furosemide as prescribed.\n2. Monitor weight daily and report any gain of more than 2 pounds in 24 hours.\n3. Follow up in two weeks for reassessment of symptoms and fluid status.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "I50.21"
+  ],
+  "explanations": [
+    "A first, acute episode of systolic heart failure: I50.21 (HCC 225)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.23"
+      ],
+      "confusion": "acute_coded_chronic",
+      "lean": "neutral",
+      "why": "There is no chronic heart failure: this is the first episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "225"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.31"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "Systolic heart failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "225",
+        "label": "Acute Heart Failure (Excludes Acute on Chronic)",
+        "from": [
+          "I5021"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:05:28+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

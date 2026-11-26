@@ -1,0 +1,71 @@
+{
+  "id": "pneumonia_inpatient-45f35a4efb",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "empyema"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Right-sided empyema\n\nVitals: BP 128/82, HR 76, SpO2 96% on room air, Temp 98.6 F.\nRecent Labs: WBC 14.2 x 10^9/L, Hemoglobin 12.4 g/dL, Platelets 210 x 10^9/L, Creatinine 0.9 mg/dL, eGFR 88 mL/min/1.73m2.\n\nReview of Systems:\nConstitutional: Positive for fever, chills, and fatigue.\nRespiratory: Positive for productive cough and shortness of breath.\nCardiovascular: Negative for palpitations or chest pain.\nGastrointestinal: Negative for nausea or diarrhea.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or confusion.\n\nSocial History: Retired teacher, lives with husband. Non-smoker. Occasional alcohol use.\nFamily History: Mother had hypertension. Father had type 2 diabetes.\nHPI: Patient is a 72-year-old woman who presented to the emergency department with a three-day history of worsening shortness of breath and productive cough. She reports significant pleuritic chest pain on the right side. She initially attempted to manage symptoms with over-the-counter medications but noted increased fevers and productive cough with yellow-green sputum.\n\nHospital Course:\nThe patient was admitted for management of a right-sided empyema. Upon presentation, a chest tube was inserted to facilitate the drainage of pus from the pleural space. The patient remained stable throughout the procedure. She was started on a broad-spectrum intravenous antibiotic regimen. During her stay, the chest tube output gradually decreased in volume and became clearer. The patient showed significant clinical improvement, with a reduction in fever and improved oxygenation. The chest tube was successfully removed on day five of admission. She tolerated a transition to oral antibiotics and was deemed stable for discharge.\n\nDischarge Diagnoses:\n1. Right-sided empyema\n2. Bacterial pneumonia\n\nDischarge Medications:\n1. Levofloxacin 750mg orally once daily for 7 days.\n2. Acetaminophen 650mg every 6 hours as needed for pain.\n\nFollow-up:\nFollow-up with primary care physician in 10 days for wound check and review of progress.\n\nElectronically signed,\nA. Rivera, MD\n05/18/2026",
+  "answer": [
+    "J86.9"
+  ],
+  "explanations": [
+    "Empyema without fistula (pyothorax): J86.9 (HCC 283)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J90"
+      ],
+      "confusion": "wrong_lung_condition",
+      "lean": "neutral",
+      "why": "Pus in the pleural space is empyema, not a plain effusion.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.204,
+        "gap": -0.204,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "283"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.204,
+    "hccs": [
+      {
+        "hcc": "283",
+        "label": "Empyema/Lung Abscess",
+        "from": [
+          "J869"
+        ],
+        "weight": 0.204
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:43+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

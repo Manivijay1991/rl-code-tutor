@@ -1,0 +1,72 @@
+{
+  "id": "fibrosis_airway-1b61c961f8",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "pf_unspecified"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint\nShortness of breath.\n\nHPI\nThe patient is a 73-year-old woman presenting for a follow-up regarding persistent shortness of breath and a dry cough. She reports that the symptoms have gradually worsened over the past several months, particularly during physical exertion. She denies any recent fevers, chills, or productive cough. A recent chest CT scan was performed, which revealed evidence of pulmonary fibrosis. The underlying cause of the pulmonary fibrosis is currently not determined.\n\nMedication List\nMultivitamin, Lisinopril 10mg daily.\n\nExam\nThe patient appears in no acute distress. Vital signs are stable. Breath sounds are diminished in the lower lobes with some crackles noted. Oxygen saturation is 95% on room air. No cyanosis or peripheral edema noted.\n\nAssessment\nThe patient has pulmonary fibrosis. The etiology of the pulmonary fibrosis remains unknown at this time.\n\nPlan\nA referral to pulmonology was placed today to further evaluate the extent of the pulmonary fibrosis and to discuss management options. The patient will be instructed to monitor her symptoms and follow up with the specialist.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "J84.10"
+  ],
+  "explanations": [
+    "Pulmonary fibrosis without a documented cause: J84.10 (HCC 280)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J84.112"
+      ],
+      "confusion": "assumed_idiopathic",
+      "lean": "over",
+      "why": "Idiopathic is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0.319,
+        "gap": 0.499,
+        "direction": "over",
+        "extra_hccs": [
+          "278"
+        ],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J8410"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:39+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

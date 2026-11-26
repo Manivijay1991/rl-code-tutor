@@ -1,0 +1,61 @@
+{
+  "id": "blood_disorders-7559ffd1d5",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "pancytopenia_chemo"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for chemotherapy side effects.\n\nHPI: (Copied Forward) Patient is a 51-year-old male who presented for treatment of breast cancer. He has undergone multiple cycles of systemic chemotherapy. He reports some fatigue and mild nausea but has tolerated the treatment regimen well thus far. He denies significant shortness of breath or acute pain.\n\nUpdate: The patient returns today for a scheduled evaluation. He reports increased profound fatigue and a general sense of malaise over the last week. He notes that he feels \"weaker\" than usual but denies any acute respiratory distress. He has been compliant with his current medications but expresses concern regarding his low energy levels.\n\nMedication List:\n- Cyclophosphamide/Doxorubicin (Current cycle)\n- Ondansetron 8mg as needed for nausea\n- Multivitamin daily\n\nVitals: BP 128/82, HR 76, Temp 98.6 F, SpO2 98% on room air, Weight 195 lbs.\n\nRecent Labs:\n- WBC: 1.8 x 10^9/L\n- Hemoglobin: 8.4 g/dL\n- Platelets: 45 x 10^9/L\n- Creatinine: 1.1 mg/dL\n- eGFR: 82 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for chills.\nRespiratory: Negative for cough or dyspnea.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for vomiting or diarrhea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or syncope.\n\nSocial History: Patient is a non-smoker. He works as a software engineer and lives with his spouse. He exercises 3 times per week.\n\nFamily History: Father had hypertension. Mother had a history of breast cancer.\n\nExam: Patient is alert and oriented x3. He appears mildly fatigued but in no acute distress. Skin is clear without rashes. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally. Abdomen is soft, non-tender, and non-distended.\n\nAssessment:\n1. Breast cancer undergoing systemic chemotherapy.\n2. Pancytopenia secondary to chemotherapy.\n\nPlan:\n1. The patient's lab work confirms significant pancytopenia.\n2. Due to the current white blood cell and platelet counts, the next cycle of chemotherapy is delayed until counts improve.\n3. Patient instructed to monitor for signs of infection and will be re-evaluated in one week.\n4. Continue supportive medications for nausea.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "D61.810"
+  ],
+  "explanations": [
+    "Antineoplastic chemotherapy-induced pancytopenia: D61.810 (no HCC in V28)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D61.818"
+      ],
+      "confusion": "drug_cause_missed",
+      "lean": "over",
+      "why": "The chemotherapy cause is documented; D61.810 has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.144,
+        "correct": 0,
+        "gap": 1.144,
+        "direction": "over",
+        "extra_hccs": [
+          "109"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:30+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

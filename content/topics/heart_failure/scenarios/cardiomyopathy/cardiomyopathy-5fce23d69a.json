@@ -1,0 +1,85 @@
+{
+  "id": "cardiomyopathy-5fce23d69a",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "hcm_obstructive"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint: Chest tightness and shortness of breath.\n\nHPI: 90-year-old male pt presents for f/u of cardiac symptoms. Pt reports intermittent episodes of chest tightness and dyspnea on exertion over the last 3 weeks. Denies syncope, palpitations, or radiating pain. Pt states symptoms are manageable but more noticeable during prolonged walking. He reports adherence to current medications. No acute changes in lifestyle or diet.\n\nMedication List:\n- Metoprolol 25mg PO daily\n- Lisinopril 10mg PO daily\n- Atorvastatin 20mg PO daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change. \nCV: Positive for occasional chest tightness. Denies palpitations.\nResp: Positive for exertional dyspnea. Denies cough or wheezing.\nMSK: No joint pain or swelling.\nNeuro: No dizziness or focal weakness.\nGI: No nausea or abdominal pain.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional social drinking.\n\nFamily History: Father had coronary artery disease. Mother had stroke.\n\nFamily History: Father had coronary artery disease. Mother had stroke.\n\nVitals:\nBP: 128/78\nHR: 68 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nHeight: 5'10\"\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 6.4%\neGFR: 62 mL/min\nTSH: 2.1 mIU/L\nLipid panel: LDL 88, HDL 45, Trig 120\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nCV: Regular rate and rhythm. S1, S2 heard. No murmurs noted. Capillary refill <2 sec.\nResp: CTAB. No wheezes or crackles.\nExt: No edema noted in lower extremities.\n\nAssessment: \n1. Obstructive hypertrophic cardiomyopathy. Cardiology records confirm HOCM via echocardiogram. Pt is currently stable on beta blocker therapy.\n2. Exertional dyspnea, likely related to underlying HOCM.\n\nPlan:\n1. Continue Metoprolol for management of HOCM.\n2. Continue Lisinopril and Atorvastatin.\n3. Pt to monitor symptoms and call office if chest tightness worsens or occurs at rest.\n4. Follow up in 3 months for routine cardiac check.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "I42.1"
+  ],
+  "explanations": [
+    "Obstructive hypertrophic cardiomyopathy: I42.1 (HCC 227)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.2"
+      ],
+      "confusion": "missed_obstruction",
+      "lean": "neutral",
+      "why": "The cardiomyopathy is documented as obstructive.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I42.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.189,
+    "hccs": [
+      {
+        "hcc": "227",
+        "label": "Cardiomyopathy/Myocarditis",
+        "from": [
+          "I421"
+        ],
+        "weight": 0.189
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:05:49+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

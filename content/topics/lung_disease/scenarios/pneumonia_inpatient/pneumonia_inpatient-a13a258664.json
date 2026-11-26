@@ -1,0 +1,88 @@
+{
+  "id": "pneumonia_inpatient-a13a258664",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "mrsa"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Community-acquired pneumonia\n\nVitals:\nTemperature: 101.2 F (on admission)\nBlood Pressure: 128/82 mmHg\nHeart Rate: 88 bpm\nRespiratory Rate: 20 breaths/min\nOxygen Saturation: 94% on room air\n\nRecent Labs:\nWBC count: 14,500 cells/mcL\nHemoglobin: 12.4 g/dL\nPlatelets: 210,000/mcL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nSputum Culture: Positive for methicillin-resistant Staphylococcus aureus (MRSA)\n\nReview of Systems:\nThe patient reports productive cough with yellow sputum, shortness of breath, and generalized malaise. She denies chest pain, night sweats, or unintentional weight loss. She denies any recent travel or known exposure to contagious illnesses.\n\nSocial History:\nThe patient is a retired teacher who lives at home with her spouse. She denies current tobacco or alcohol use.\n\nFamily History:\nMother had hypertension and diabetes. Father had a history of stroke.\n\nHospital Course:\nThe patient is a 77-year-old woman who presented to the emergency department with a three-day history of productive cough and fever. Upon examination, she was febrile with crackles noted in the right lower lobe. She was admitted for the management of pneumonia. A sputum culture was obtained, which identified a methicillin-resistant organism. Based on these results, she was started on intravenous vancomycin. She remained stable on the floor, showing clinical improvement in oxygenation and a decreasing temperature over five days. She tolerated the treatment well and was transitioned to oral medications prior to discharge.\n\nDischarge Diagnoses:\nPneumonia\nMRSA infection\n\nDischarge Medications:\nAmoxicillin-clavulanate 875mg every 8 hours\nAcetaminophen 650mg every 6 hours as needed for fever\nGuaifenesin 600mg every 4 hours as needed for cough\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a repeat physical examination and a review of her progress.\n\nElectronically signed,\nE. Castillo, MD\n05/18/2026",
+  "answer": [
+    "J15.212"
+  ],
+  "explanations": [
+    "Pneumonia due to MRSA: J15.212 (HCC 282)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J15.9"
+      ],
+      "confusion": "missed_specific_pneumonia",
+      "lean": "under",
+      "why": "The organism (MRSA) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.44,
+        "gap": -0.44,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "282"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J15.211"
+      ],
+      "confusion": "wrong_staph",
+      "lean": "neutral",
+      "why": "Methicillin-resistant, not susceptible.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.44,
+        "correct": 0.44,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.44,
+    "hccs": [
+      {
+        "hcc": "282",
+        "label": "Aspiration and Specified Bacterial Pneumonias",
+        "from": [
+          "J15212"
+        ],
+        "weight": 0.44
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:49+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

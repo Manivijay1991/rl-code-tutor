@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-d57e0e4d55",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "gaucher"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for Gaucher disease.\n\nHPI\nPt is a 56 y.o. female presenting for scheduled geneticist follow-up regarding Gaucher disease. Pt reports she has been consistent with her enzyme replacement therapy (ERT) every two weeks. She denies any new systemic symptoms, significant fatigue, or worsening of skeletal pain. Reports stable energy levels and manageable mobility. No concerns regarding recent injections.\n\nMedication List\nEnzyme replacement therapy every 2 weeks.\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nResp: CTAB, no wheezing or rales.\nMSK: No new joint swelling or visible deformities.\nSkin: No new lesions or bruising.\nNeuro: Alert, coherent, no focal deficits.\n\nAssessment\n1. Gaucher disease: Stable on current ERT regimen.\n\nPlan\n1. Continue enzyme replacement therapy every 2 weeks as prescribed.\n2. Monitor for any new systemic symptoms or changes in mobility.\n3. F/u in clinic as scheduled.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "E75.22"
+  ],
+  "explanations": [
+    "Gaucher disease: E75.22 (HCC 49, one of the highest V28 weights)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E88.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The specific storage disorder is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 9.256,
+        "gap": -9.256,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "49"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 9.256,
+    "hccs": [
+      {
+        "hcc": "49",
+        "label": "Specified Lysosomal Storage Disorders",
+        "from": [
+          "E7522"
+        ],
+        "weight": 9.256
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:14+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

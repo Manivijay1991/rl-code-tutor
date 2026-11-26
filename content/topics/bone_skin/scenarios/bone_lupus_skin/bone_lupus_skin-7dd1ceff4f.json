@@ -1,0 +1,87 @@
+{
+  "id": "bone_lupus_skin-7dd1ceff4f",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pemphigus"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for pemphigus vulgaris.\n\nHPI\nThe patient is a 79-year-old female presenting today for a scheduled dermatology follow-up regarding her pemphigus vulgaris. She reports that her skin lesions have remained stable since her last appointment. She has been adherent to her current regimen of rituximab and a gradual steroid taper. She denies any new blistering, itching, or systemic symptoms. She notes that her skin integrity is currently maintained and she feels the condition is well-controlled at this time.\n\nMedication List\nRituximab, Prednisone (tapering)\n\nExam\nThe patient is a well-appearing 79-year-old female in no acute distress. Skin examination reveals minimal active blistering and no new areas of involvement. The areas of previous involvement show significant healing. No signs of secondary infection are noted.\n\nAssessment\nPemphigus vulgaris, currently stable and well-controlled on rituximab and a steroid taper.\n\nPlan\nContinue current treatment plan including rituximab and the ongoing steroid taper. The patient will return to the clinic in three months for a follow-up evaluation of her pemphigus vulgaris.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "L10.0"
+  ],
+  "explanations": [
+    "Pemphigus vulgaris: L10.0 (HCC 387)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L12.0"
+      ],
+      "confusion": "pemphigus_pemphigoid_confused",
+      "lean": "neutral",
+      "why": "Pemphigus, not pemphigoid.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.406,
+        "correct": 0.406,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "L13.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The disease is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.406,
+        "gap": -0.406,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "387"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.406,
+    "hccs": [
+      {
+        "hcc": "387",
+        "label": "Pemphigus/Pemphigoid/and Other Specified Autoimmune Skin Disorders",
+        "from": [
+          "L100"
+        ],
+        "weight": 0.406
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:31+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

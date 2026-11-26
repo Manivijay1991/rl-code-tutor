@@ -1,0 +1,72 @@
+{
+  "id": "drug_use-3085128aaa",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cocaine_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Follow-up for psychiatric symptoms.\n\nHPI: Pt is an 85-year-old female presenting for follow-up regarding severe cocaine use disorder. Pt initially presented with cocaine-induced psychotic disorder characterized by vivid hallucinations. Pt reports that since initiating treatment and behavioral interventions, the hallucinations have significantly decreased in frequency and intensity. Pt reports feeling more grounded and stable. No new acute episodes reported since last visit. Pt admits to continued use but reports a decrease in frequency.\n\nMedication List:\n- Quetiapine 50mg PO BID\n- Hydroxyzzine 25mg PO PRN anxiety\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nNeuro: Denies headaches, seizures. Reports fewer hallucinations.\nPsych: Denies suicidal ideation.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB.\nGI: Denies nausea, diarrhea.\nMSK: Denies joint pain.\n\nSocial History: Lives at home with daughter. Retired. No reports of current substance use other than cocaine.\n\nFamily History: Mother had hypertension. Father had diabetes.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs:\nHbA1c: 6.2%\nBMP: Na 140, K 4.1, Cr 0.9, eGFR 82\nCBC: WNL\n\nExam:\nGen: Alert and oriented x3. Appears well-groomed.\nPsych: Cooperative, good eye contact. Speech clear and coherent. Mood is euthymic. Affect is congruent. No active hallucinations noted during exam.\nNeuro: Cranial nerves II-XII intact. Strength 5/5 throughout. Gait steady.\nCV: RRR, regular S1, S2. No murmurs.\nLungs: CTAB.\n\nAssessment:\n1. Severe cocaine use disorder.\n2. Cocaine-induced psychotic disorder.\n\nPlan:\n- Continue current medication regimen.\n- Continue outpatient psychiatric monitoring.\n- Pt to continue behavioral therapy.\n- F/u in 4 weeks.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "F14.251"
+  ],
+  "explanations": [
+    "Severe cocaine use disorder with cocaine-induced psychotic disorder with hallucinations: combination code F14.251 (HCC 135)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F14.20"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "The psychotic disorder is part of the combination code (HCC 135).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.424,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": [
+          "135"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "135",
+        "label": "Drug Use with Psychotic Complications",
+        "from": [
+          "F14251"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:13+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

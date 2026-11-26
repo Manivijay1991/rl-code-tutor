@@ -1,0 +1,70 @@
+{
+  "id": "opportunistic-cb517250f1",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "pcp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint: Follow-up for lung infection.\n\nHPI: 90-year-old male pt presents for f/u of Pneumocystis jirovecii pneumonia. Pt has been on long-term high-dose steroids for a chronic lung condition. Currently undergoing treatment with trimethoprim-sulfamethoxazole. Pt reports feeling \"much better\" since starting meds. Denies increased shortness of breath, productive cough, or chest pain. Reports improved exercise tolerance. No fevers or chills.\n\nMedication List:\n- Trimethoprim-sulfamethoxazole (high dose)\n- Prednisone (high dose)\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nRespiratory: Denies cough or dyspnea.\nCardiovascular: No chest pain or palpitations.\nGI: No nausea or diarrhea.\nMSK: No joint pain.\n\nSocial History: Retired. Lives at home with spouse. No tobacco use. Occasional alcohol use.\n\nFamily History: Father had hypertension. Mother had arthritis.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 95% on RA\nHt/Wt: 5'9\", 165 lbs\n\nRecent Labs:\nWBC: 7.2\nHgb: 13.8\nPlt: 210\nCreatinine: 1.1 (eGFR 65)\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished and in no acute distress.\nRespiratory: CTAB. Breath sounds clear to auscultation bilaterally. No wheezes, rales, or rhonchi.\nCardiovascular: RRR, S1, S2 regular. No murmurs.\nExtremities: No edema.\n\nAssessment:\n1. Pneumocystis jirovecii pneumonia - pt responding well to trimethoprim-sulfamethoxazole.\n2. Chronic lung condition - stable on high-dose steroids.\n\nPlan:\n- Continue trimethoprim-sulfamethoxazole as prescribed.\n- Continue high-dose steroids for lung condition.\n- Monitor for any return of respiratory symptoms.\n- F/u in 4 weeks for repeat labs and clinical evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "B59"
+  ],
+  "explanations": [
+    "Pneumocystis pneumonia: pneumocystosis, B59 (HCC 6)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J18.9"
+      ],
+      "confusion": "missed_specific_infection",
+      "lean": "under",
+      "why": "The organism (Pneumocystis) is documented and has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.381,
+        "gap": -0.381,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "6"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.381,
+    "hccs": [
+      {
+        "hcc": "6",
+        "label": "Opportunistic Infections",
+        "from": [
+          "B59"
+        ],
+        "weight": 0.381
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:24+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

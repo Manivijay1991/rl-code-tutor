@@ -1,0 +1,69 @@
+{
+  "id": "drug_use-209d70d15e",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Follow-up for maintenance therapy.\n\nHPI: The patient is an 86-year-old male presenting for a scheduled follow-up regarding his treatment for opioid use disorder. He is currently managed on a buprenorphine maintenance regimen. He reports that he is in early remission and has maintained sobriety for 5 months. He reports stable mood and denies any cravings or difficulties with adherence to his current medication. He states he feels well and is satisfied with his current progress.\n\nMedication List:\n- Buprenorphine: 16mg daily\n- Multivitamin: 1 daily\n\nVitals:\nBP: 132/84\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 68 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nReview of Systems:\nGeneral: Denies fever, chills, or fatigue.\nHEENT: Denies vision changes or headaches.\nRespiratory: Denies shortness of breath or cough.\nCardiovascular: Denies chest pain or palpitations.\nGastrointestinal: Denies abdominal pain or nausea.\nMusculoskeletal: Denies joint pain or stiffness.\nNeurological: Denies tremors or dizziness.\nPsychiatric: Denies anxiety or sleep disturbances.\n\nSocial History: The patient lives in a private residence with his spouse. He enjoys gardening and watching television. He does not currently work.\n\nFamily History: Father had hypertension; mother had type 2 diabetes.\n\nExam:\nGeneral: Alert and oriented x3. Well-groomed and in no acute distress.\nPsychiatric: Cooperative and pleasant. Speech is clear and coherent. Affect is congruent with mood.\nNeurological: Normal gait and steady balance. No tremors noted.\nSkin: Intact, no rashes or lesions.\n\nAssessment:\n1. Opioid use disorder, severe. The patient is currently in early remission. He has successfully avoided any illicit use for 5 months while on buprenorphine.\n\nPlan:\n1. Continue buprenorphine maintenance at the current dose.\n2. Continue to monitor for stability and adherence.\n3. Follow up in 3 months for continued evaluation of remission status.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "F11.21"
+  ],
+  "explanations": [
+    "Severe opioid use disorder in early remission: opioid dependence, in remission, F11.21 (HCC 137)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.20"
+      ],
+      "confusion": "missed_remission",
+      "lean": "neutral",
+      "why": "The provider documents remission.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.424,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "137",
+        "label": "Drug Use Disorder/Moderate/Severe/Drug Use with Non-Psychotic Complications",
+        "from": [
+          "F1121"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:24+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

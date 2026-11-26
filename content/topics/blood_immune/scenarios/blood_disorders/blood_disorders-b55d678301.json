@@ -1,0 +1,68 @@
+{
+  "id": "blood_disorders-b55d678301",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "aiha_warm"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for warm autoimmune hemolytic anemia.\n\nHPI\nThe patient is a 23-year-old female who presents today for a scheduled follow-up regarding her diagnosis of warm autoimmune hemolytic anemia. She reports feeling significantly better since her last appointment. She denies any increased fatigue, shortness of breath, or yellowing of the skin or eyes. She reports that her energy levels have improved while she remains on her current medication regimen. She states that she is adhering to her prescribed prednisone taper and has not experienced any significant side effects such as weight gain or mood changes. She reports no episodes of dizziness or palpitations.\n\nReview of Systems\nThe patient reports no recent fatigue, no shortness of breath, and no night sweats. She denies any joint pain or rashes. She denies any changes in vision or hearing. She denies any recent infections or changes in appetite.\n\nSocial History\nThe patient is a non-smoker and does not consume alcohol. She works full-time in an office setting and lives with her parents.\n\nFamily History\nThe patient’s mother has hypertension. Her father has type 2 diabetes. There is no family history of autoimmune disorders or blood disorders.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 118/76 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'6\"\nWeight: 130 lbs\n\nRecent Labs\nHemoglobin: 11.2 g/dL\nHematocrit: 34%\nReticulocyte Count: 4.5%\nIndirect Bilirubin: 1.1 mg/dL\nLDH: 240 U/L\n\nMedication List\nPrednisone 10 mg daily (tapering)\n\nExam\nThe patient is a well-appearing, alert, and oriented 23-year-old female in no acute distress. Her skin is clear and without jaundice. Mucous membranes are moist. Lungs are clear to auscultation bilaterally. Heart sounds are regular with no murmurs. Abdomen is soft, non-tender, and non-distended.\n\nAssessment\nThe patient is a 23-year-old female with a stable presentation of warm autoimmune hemolytic anemia. Her laboratory values show mild anemia but are currently stable. She is tolerating the prednisone taper well without significant adverse effects.\n\nPlan\n1. Continue the current prednisone taper as scheduled.\n2. Follow up in 4 weeks for repeat CBC and LDH.\n3. Patient instructed to report any sudden increase in fatigue or yellowing of the skin immediately.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "D59.11"
+  ],
+  "explanations": [
+    "Warm autoimmune hemolytic anemia: D59.11 (HCC 109)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D59.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (warm autoimmune) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.144,
+        "correct": 1.144,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.144,
+    "hccs": [
+      {
+        "hcc": "109",
+        "label": "Acquired Hemolytic/Aplastic/and Sideroblastic Anemias",
+        "from": [
+          "D5911"
+        ],
+        "weight": 1.144
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:22+00:00",
+    "style": {
+      "age": 23,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

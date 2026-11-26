@@ -1,0 +1,68 @@
+{
+  "id": "blood_cancers-fb6d2b2d91",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "hodgkin_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Follow-up for chemotherapy management.\n\nHPI: Copied forward from prior visit: Patient is a 78-year-old male currently undergoing treatment for Hodgkin lymphoma. He reports stable energy levels and manageable side effects from his current regimen.\n\nUpdate: Today, the patient reports feeling well overall. He notes that the Hodgkin lymphoma treatment is continuing as scheduled. He denies any new concerns or acute symptoms since the last appointment.\n\nMedication List:\n- Cyclophosphamide \n- Doxorubicin\n- Prednisone \n- Ondansetron PRN\n\nVitals: BP 128/82, HR 76, Temp 98.6F, SpO2 98% on room air.\n\nReview of Systems:\n- Constitutional: Negative\n- HEENT: Negative\n- Respiratory: Negative\n- Cardiovascular: Negative\n- Gastrointestinal: Negative\n- Musculoskeletal: Negative\n- Neurological: Negative\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nSkin: No new lesions noted.\nLymphatic: No palpable lymphadenopathy noted in the neck or axilla.\nCardiovascular: Regular rate and rhythm.\nRespiratory: Clear to auscultation bilaterally.\n\nAssessment:\n1. Hodgkin lymphoma undergoing active chemotherapy.\n\nPlan:\n1. Continue current chemotherapy protocol for Hodgkin lymphoma.\n2. Monitor for treatment-related side effects.\n3. Follow up in 4 weeks.\n\nElectronically signed,\nR. Mensah, NP\nOctober 14, 2026",
+  "answer": [
+    "C81.90"
+  ],
+  "explanations": [
+    "Hodgkin lymphoma under treatment, type and site not stated: C81.90 (HCC 21)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C85.90"
+      ],
+      "confusion": "wrong_lymphoma_type",
+      "lean": "neutral",
+      "why": "Hodgkin lymphoma is documented, not non-Hodgkin.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.671,
+        "correct": 0.671,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.671,
+    "hccs": [
+      {
+        "hcc": "21",
+        "label": "Lymphoma and Other Cancers",
+        "from": [
+          "C8190"
+        ],
+        "weight": 0.671
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:12+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

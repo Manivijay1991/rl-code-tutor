@@ -1,0 +1,61 @@
+{
+  "id": "cardiomyopathy-85589c31d1",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "ischemic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint\nFollow-up for ischemic cardiomyopathy and medication management.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a routine follow-up of her ischemic cardiomyopathy. She reports that she has been feeling well over the past month and denies any episodes of chest pain, shortness of breath, or palpitations. She states that she is able to perform her daily activities without significant fatigue. She is currently compliant with all prescribed medications and reports no side effects. She notes that her exercise tolerance remains consistent with her previous baseline.\n\nMedication List\nLisinopril 10 mg daily\nMetoprolol Succinate 25 mg daily\nCarvedilol 12.5 mg twice daily\nAspirin 81 mg daily\nAtorvastatin 40 mg daily\n\nVitals\nBlood Pressure: 118/74 mmHg\nHeart Rate: 68 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nTemperature: 98.6 F\nWeight: 145 lbs\n\nRecent Labs\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nHbA1c: 6.4%\nLDL: 78 mg/dL\n\nReview of Systems\nThe patient denies chest pain, syncope, or dizziness. She denies any recent fevers, chills, or cough. She denies any lower extremity edema or swelling. She reports no recent weight changes or changes in appetite. She denies any neurological deficits or visual changes.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She is a retired teacher. She denies any tobacco or alcohol use. She engages in light walking for exercise three times a week.\n\nFamily History\nMother had a history of coronary artery disease. Father had a history of stroke. Siblings are healthy.\n\nExam\nThe patient is a well-appearing, alert, and oriented 79-year-old woman in no acute distress. Her skin is warm and dry. Heart sounds are regular with an S1 and S2, and no murmurs are audible. Lung sounds are clear to auscultation bilaterally. Abdomen is soft and non-tender. Extremities are symmetric with no edema.\n\nAssessment\n1. Ischemic cardiomyopathy: The patient is currently stable on her current medical therapy as documented by her cardiologist. She shows no signs of acute decompensation and remains stable.\n\nPlan\n1. Continue current medication regimen for ischemic cardiomyopathy.\n2. Continue monitoring of blood pressure and heart rate.\n3. Follow up in three months for a repeat lab workup and clinical evaluation.\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "I25.5"
+  ],
+  "explanations": [
+    "Ischemic cardiomyopathy: I25.5 (no HCC in V28). Category I42 excludes it, so I42.9 would be wrong and would add HCC 227."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.9"
+      ],
+      "confusion": "ischemic_coded_as_i42",
+      "lean": "over",
+      "why": "I42 excludes ischemic cardiomyopathy: use I25.5.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0,
+        "gap": 0.189,
+        "direction": "over",
+        "extra_hccs": [
+          "227"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:05:42+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

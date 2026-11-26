@@ -1,0 +1,68 @@
+{
+  "id": "bone_lupus_skin-70485de23f",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "osteo_acute"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for right foot pain.\n\nHPI\nPt is an 80-year-old female presenting for follow-up of right foot pain. She was diagnosed with acute osteomyelitis of the calcaneus via MRI performed last week. Pt reports moderate pain, currently managed with oral medications. She denies fevers or chills. She reports improved mobility since starting treatment but notes lingering throbbing sensation in the heel. She is currently completing a course of IV antibiotics as ordered by the hospital.\n\nMedication List\n1. Ceftriaxone 1g IV BID\n2. Oxycodone 5mg PO PRN for pain\n3. Naproxen 500mg PO BID (held due to recent labs)\n4. Lisinopril 10mg PO daily\n\nReview of Systems\nConstitutional: Negative for fever, chills, fatigue.\nMusculoskeletal: Positive for right foot pain. Negative for joint swelling or stiffness elsewhere.\nSkin: Negative for rashes or drainage.\nNeuro: Negative for numbness or tingling.\n\nSocial History\nLives at home with her daughter. Retired. Non-smoker. No alcohol use.\n\nFamily History\nMother: Hypertension.\nFather: Heart disease.\n\nVitals\nBP: 132/84\nHR: 76 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs\nWBC: 11.2 (High)\nHbA1c: 6.8%\neGFR: 62\nCreatinine: 1.1\nCRP: 45 (Elevated)\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nMusculoskeletal: Right foot shows localized edema and erythema over the calcaneus. Tenderness to palpation over the heel. No fluctuance. Gait is steady but guarded.\n\nAssessment\n1. Acute osteomyelitis of the calcaneus.\n\nPlan\n1. Continue current IV antibiotic regimen. \n2. Monitor inflammatory markers and follow-up imaging in 4 weeks.\n3. Maintain current pain management.\n4. Pt to return to clinic for reassessment of right foot in 2 weeks.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "M86.171"
+  ],
+  "explanations": [
+    "Other acute osteomyelitis, right ankle and foot: M86.171 (HCC 92)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M86.671"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "It is documented as acute.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.479,
+    "hccs": [
+      {
+        "hcc": "92",
+        "label": "Bone/Joint/Muscle/Severe Soft Tissue Infections/Necrosis",
+        "from": [
+          "M86171"
+        ],
+        "weight": 0.479
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:00+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

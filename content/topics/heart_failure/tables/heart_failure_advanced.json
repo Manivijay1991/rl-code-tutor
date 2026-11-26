@@ -1,0 +1,341 @@
+{
+  "id": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note_age": {
+    "min": 55
+  },
+  "slots": {
+    "condition": {
+      "label": "Heart failure documented",
+      "values": [
+        "end_stage",
+        "end_stage_systolic",
+        "lvad",
+        "acute_systolic",
+        "acute_diastolic"
+      ],
+      "labels": {
+        "end_stage": "End-stage heart failure, type not stated",
+        "end_stage_systolic": "End-stage heart failure, chronic systolic",
+        "lvad": "Chronic systolic heart failure with an LVAD",
+        "acute_systolic": "New acute systolic heart failure",
+        "acute_diastolic": "New acute diastolic heart failure"
+      },
+      "evidence": {
+        "end_stage": [
+          [
+            "end-stage heart failure",
+            "end stage heart failure"
+          ]
+        ],
+        "end_stage_systolic": [
+          [
+            "end-stage heart failure",
+            "end stage heart failure"
+          ],
+          [
+            "chronic systolic",
+            "HFrEF"
+          ]
+        ],
+        "lvad": [
+          [
+            "chronic systolic",
+            "HFrEF"
+          ],
+          [
+            "LVAD",
+            "left ventricular assist device"
+          ]
+        ],
+        "acute_systolic": [
+          [
+            "acute systolic"
+          ]
+        ],
+        "acute_diastolic": [
+          [
+            "acute diastolic"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "end_stage": "The cardiologist documents end-stage heart failure managed with palliative care; the type (systolic or diastolic) is not stated.",
+        "end_stage_systolic": "The cardiologist documents end-stage heart failure due to chronic systolic heart failure (HFrEF), managed with palliative care.",
+        "lvad": "The patient has chronic systolic heart failure (HFrEF) and lives with a left ventricular assist device (LVAD); device checks are stable.",
+        "acute_systolic": "Newly diagnosed acute systolic heart failure (first episode, no prior heart failure); started on diuretics, seen in follow-up this week.",
+        "acute_diastolic": "Newly diagnosed acute diastolic heart failure (first episode, no prior heart failure); started on diuretics, seen in follow-up this week."
+      }
+    }
+  },
+  "note_forbid": [
+    "hypertension",
+    "HTN",
+    "hypertensive",
+    "CKD",
+    "chronic kidney",
+    "kidney disease",
+    "renal failure",
+    "dialysis",
+    "atrial fibrillation",
+    "AFib",
+    "NSAID",
+    "ibuprofen",
+    "naproxen",
+    "cardiomyopathy",
+    "transplant",
+    "heart transplant",
+    "pulmonary hypertension",
+    "rheumatic"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "end_stage"
+      },
+      "forbid": [
+        "systolic",
+        "diastolic",
+        "HFrEF",
+        "HFpEF",
+        "LVAD",
+        "assist device",
+        "acute heart failure",
+        "acute on chronic",
+        "acute systolic",
+        "acute diastolic",
+        "acute exacerbation",
+        "acute decompensat"
+      ]
+    },
+    {
+      "when": {
+        "condition": "end_stage_systolic"
+      },
+      "forbid": [
+        "diastolic",
+        "HFpEF",
+        "LVAD",
+        "assist device",
+        "acute heart failure",
+        "acute on chronic",
+        "acute systolic",
+        "acute diastolic",
+        "acute exacerbation",
+        "acute decompensat"
+      ]
+    },
+    {
+      "when": {
+        "condition": "lvad"
+      },
+      "forbid": [
+        "end-stage",
+        "end stage",
+        "diastolic",
+        "HFpEF",
+        "acute heart failure",
+        "acute on chronic",
+        "acute systolic",
+        "acute diastolic",
+        "acute exacerbation",
+        "acute decompensat",
+        "exacerbation",
+        "decompensated"
+      ]
+    },
+    {
+      "when": {
+        "condition": "acute_systolic"
+      },
+      "forbid": [
+        "chronic",
+        "acute on chronic",
+        "end-stage",
+        "end stage",
+        "LVAD",
+        "diastolic",
+        "HFpEF"
+      ]
+    },
+    {
+      "when": {
+        "condition": "acute_diastolic"
+      },
+      "forbid": [
+        "chronic",
+        "acute on chronic",
+        "end-stage",
+        "end stage",
+        "LVAD",
+        "systolic",
+        "HFrEF"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_hf": {
+      "description": "Used unspecified heart failure when end-stage heart failure is documented.",
+      "lean": "under"
+    },
+    "missed_code_also": {
+      "description": "Left out the type of heart failure that I50.84 says to code also.",
+      "lean": "under"
+    },
+    "understated_end_stage": {
+      "description": "Coded only the type of heart failure and missed that it is end-stage.",
+      "lean": "under"
+    },
+    "missed_device_status": {
+      "description": "Left out the presence of a heart assist device (LVAD).",
+      "lean": "under"
+    },
+    "acute_coded_chronic": {
+      "description": "Coded chronic or acute on chronic heart failure for a first, acute episode.",
+      "lean": "neutral"
+    },
+    "wrong_hf_type": {
+      "description": "Coded the wrong type of heart failure (systolic vs diastolic).",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "hf",
+      "rules": [
+        {
+          "when": {
+            "condition": "end_stage"
+          },
+          "codes": [
+            "I50.84"
+          ],
+          "explain": "End-stage heart failure: I50.84 (HCC 222). The type is not documented, so there is no second code.",
+          "refs": [
+            "ICD-10-CM Tabular: I50"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.9"
+              ],
+              "confusion": "unspecified_hf",
+              "why": "End-stage heart failure has its own code (HCC 222)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "end_stage_systolic"
+          },
+          "codes": [
+            "I50.84",
+            "I50.22"
+          ],
+          "explain": "End-stage heart failure: I50.84 (HCC 222), plus the type, because I50.84 says to code also the type when known: chronic systolic, I50.22.",
+          "refs": [
+            "ICD-10-CM Tabular: I50"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.84"
+              ],
+              "confusion": "missed_code_also",
+              "why": "The type (chronic systolic) is documented: code it as well."
+            },
+            {
+              "codes": [
+                "I50.22"
+              ],
+              "confusion": "understated_end_stage",
+              "why": "End-stage heart failure is documented: I50.84 is needed (HCC 222)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "lvad"
+          },
+          "codes": [
+            "I50.22",
+            "Z95.811"
+          ],
+          "explain": "Chronic systolic heart failure, I50.22, plus presence of a heart assist device, Z95.811 (HCC 223, which outranks HCC 226).",
+          "refs": [
+            "ICD-10-CM Tabular: I50"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.22"
+              ],
+              "confusion": "missed_device_status",
+              "why": "The LVAD is documented: add Z95.811 (HCC 223)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "acute_systolic"
+          },
+          "codes": [
+            "I50.21"
+          ],
+          "explain": "A first, acute episode of systolic heart failure: I50.21 (HCC 225).",
+          "refs": [
+            "ICD-10-CM Tabular: I50"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.23"
+              ],
+              "confusion": "acute_coded_chronic",
+              "why": "There is no chronic heart failure: this is the first episode."
+            },
+            {
+              "codes": [
+                "I50.31"
+              ],
+              "confusion": "wrong_hf_type",
+              "why": "Systolic heart failure is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "acute_diastolic"
+          },
+          "codes": [
+            "I50.31"
+          ],
+          "explain": "A first, acute episode of diastolic heart failure: I50.31 (HCC 225).",
+          "refs": [
+            "ICD-10-CM Tabular: I50"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I50.33"
+              ],
+              "confusion": "acute_coded_chronic",
+              "why": "There is no chronic heart failure: this is the first episode."
+            },
+            {
+              "codes": [
+                "I50.21"
+              ],
+              "confusion": "wrong_hf_type",
+              "why": "Diastolic heart failure is documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

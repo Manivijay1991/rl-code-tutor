@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-b232574469",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "gaucher"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for Gaucher disease.\n\nHPI: Pt is a 37 y/o male presenting for scheduled f/u with genetics. Pt has a known diagnosis of Gaucher disease. He reports overall stability on current management. Denies any acute fevers, chills, or new onset of significant bone pain. Reports mild fatigue at times but notes it is manageable. No new neurological symptoms or visual disturbances reported. Pt currently receives enzyme replacement therapy (ERT) every two weeks. Compliant with current regimen.\n\nMedication List:\n- Enzyme replacement therapy (ERT) every 2 weeks.\n- Multivitamin daily.\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 42%\nWt: 195 lbs\n\nRecent Labs:\nCBC: WNL.\nCMP: WNL.\nLiver enzymes: WNL.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight changes.\nMSK: Mild reports of joint stiffness, no acute fractures.\nNeuro: No tremors, no gait changes.\nGI: No abdominal distention or severe pain.\nAll other systems reviewed and negative.\n\nSocial History: Pt works full-time in an office setting. Non-smoker. Occasional alcohol use. Lives with spouse and two children.\n\nFamily History: Father has Gaucher disease. Mother healthy. Siblings unaffected.\n\nExam:\nGen: Well-developed, well-nourished male in no acute distress.\nCV: RRR, regular rhythm. No murmurs.\nResp: CTAB.\nAbd: Soft, non-tender, no organomegaly noted on palpation.\nMSK: No joint swelling or erythema.\nNeuro: Alert and oriented x3. Normal gait.\n\nAssessment:\n1. Gaucher disease. Stable on current ERT every two weeks.\n\nPlan:\n1. Continue current ERT every 2 weeks.\n2. Continue monitoring for any new hematologic or skeletal symptoms.\n3. Follow up in 3 months for routine labs and clinical review.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "E75.22"
+  ],
+  "explanations": [
+    "Gaucher disease: E75.22 (HCC 49, one of the highest V28 weights)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E88.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The specific storage disorder is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 9.256,
+        "gap": -9.256,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "49"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 9.256,
+    "hccs": [
+      {
+        "hcc": "49",
+        "label": "Specified Lysosomal Storage Disorders",
+        "from": [
+          "E7522"
+        ],
+        "weight": 9.256
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:01+00:00",
+    "style": {
+      "age": 37,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

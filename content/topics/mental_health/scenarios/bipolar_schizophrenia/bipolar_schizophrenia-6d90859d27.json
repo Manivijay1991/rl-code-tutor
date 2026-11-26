@@ -1,0 +1,85 @@
+{
+  "id": "bipolar_schizophrenia-6d90859d27",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "schizophrenia_paranoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for mental health.\n\nHPI\nPt is a 75-year-old female presenting for routine psychiatric follow-up. Pt currently has a diagnosis of paranoid schizophrenia. She reports feeling stable and has been compliant with her long-acting injectable (LAI) medication. No reports of acute distress or behavioral changes since last visit.\n\nMedication List\n- Long-acting injectable antipsychotic (LAI) - every 4 weeks\n- Multivitamin - daily\n\nExam\nGen: Well-appearing, alert and oriented x3.\nPsych: Speech is coherent and goal-directed. Mood is stable; affect is congruent. Thought process is linear. No acute distress noted.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6F.\n\nAssessment\n1. Paranoid schizophrenia: Pt remains stable on current LAI regimen. No acute decompensation noted today.\n\nPlan\n- Continue current LAI medication.\n- Maintain current treatment plan.\n- Follow up in 3 months.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "F20.0"
+  ],
+  "explanations": [
+    "Paranoid schizophrenia: F20.0 (HCC 151)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F20.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paranoid) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F25.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "Schizophrenia is documented, not schizoaffective disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.511,
+    "hccs": [
+      {
+        "hcc": "151",
+        "label": "Schizophrenia",
+        "from": [
+          "F200"
+        ],
+        "weight": 0.511
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:56+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

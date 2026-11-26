@@ -1,0 +1,85 @@
+{
+  "id": "personality_eating-cc44d70187",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "anorexia_restricting_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nFollow-up for weight management and eating habits.\n\nHPI\nThe patient is a 55-year-old man presenting for a follow-up evaluation of his eating disorder. He was previously diagnosed with anorexia nervosa, specifically the restricting type. He reports that he continues to struggle with consistent caloric intake and expresses ongoing concerns regarding his weight fluctuations. He notes that while he is attending his scheduled appointments, he finds it difficult to adhere to the suggested meal plans consistently. He describes his current status as moderate in terms of his difficulty maintaining a balanced nutritional intake. He denies any recent physical injuries or acute medical concerns.\n\nReview of Systems\nThe patient reports no chest pain, shortness of breath, or palpitations. He denies fever, chills, or night sweats. He reports no recent changes in bowel habits or urinary frequency. He denies any significant joint pain or muscle weakness.\n\nSocial History\nThe patient is currently employed full-time and lives with his spouse. He enjoys hiking and watching films in his spare time. He denies any tobacco use.\n\nFamily History\nHis father has hypertension. His mother has type 2 diabetes. There is a family history of cardiovascular disease.\n\nMedication List\nMultivitamin (daily)\nVitamin D3 2000 IU (daily)\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nWeight: 142 lbs\nHeight: 5'10\"\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 6.5 x 10^9/L\nGlucose: 98 mg/dL\neGFR: 88 mL/min/1.73m2\n\nExam\nThe patient appears well-nourished but thin. He is alert and oriented to person, place, and time. Skin is dry but intact. Heart sounds are regular with no murmurs. Lungs are clear to auscultation. Abdomen is soft, non-tender, and non-distended.\n\nAssessment\nThe patient presents with anorexia nervosa, restricting type. His current symptoms and behaviors are consistent with moderate severity. He remains engaged in his treatment plan but requires continued monitoring of nutritional status.\n\nPlan\n1. Continue with current dietitian consultations to address caloric intake.\n2. Continue with therapy sessions to address underlying behavioral patterns.\n3. Follow up in four weeks to monitor weight and progress.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "F50.011"
+  ],
+  "explanations": [
+    "Anorexia nervosa, restricting type, moderate: F50.011 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F50.00"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type and severity are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F50.021"
+      ],
+      "confusion": "wrong_eating_type",
+      "lean": "neutral",
+      "why": "The restricting type is documented, not binge-purge.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F50011"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:32+00:00",
+    "style": {
+      "age": 55,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

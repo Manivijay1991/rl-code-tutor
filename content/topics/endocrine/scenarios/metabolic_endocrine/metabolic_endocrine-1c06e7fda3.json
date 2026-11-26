@@ -1,0 +1,61 @@
+{
+  "id": "metabolic_endocrine-1c06e7fda3",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "cushing_drug"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Weight gain and facial rounding.\n\nHPI: Pt is a 60-year-old female presenting for f/u of weight gain and physical changes. Pt has a long-standing lung condition requiring long-term prednisone. She reports gradual weight gain over the last year, along with increased facial fullness. She denies any acute shortness of breath or change in lung function. She notes some fatigue but denies muscle weakness or significant mood changes. Pt aware of the risks associated with chronic steroid use.\n\nMedication List:\n- Prednisone 20mg daily\n- Albuterol inhaler PRN\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, or night sweats.\nRespiratory: Denies cough or wheezing.\nMusculoskeletal: Denies joint pain.\nSkin: Denies easy bruising.\nNeuro: Denies headaches or vision changes.\n\nSocial History: Pt lives with spouse. Non-smoker. Occasional alcohol use. Works part-time as a librarian.\n\nFamily History: Mother had hypertension. Father had osteoarthritis. No known history of endocrine disorders.\n\nVitals:\nBP: 138/88\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 5'4\"\nWt: 185 lbs\n\nRecent Labs:\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\nGlucose: 104 mg/dL\neGFR: 88 mL/min/1.73m2\n\nExam:\nGeneral: Well-appearing, pleasant.\nRespiratory: CTAB, no wheezes.\nNeck: No thyromegaly.\nSkin: Noticeable truncal obesity and facial rounding.\nMSK: No significant muscle wasting.\nNeuro: Alert and oriented x3.\n\nAssessment:\n1. Cushing's syndrome. Pt exhibits classic signs of steroid-induced Cushing's syndrome secondary to long-term prednisone for her pulmonary condition.\n\nPlan:\n1. Discussed risks/benefits of tapering.\n2. Plan for a slow taper of prednisone over the next 3 months to mitigate Cushing's symptoms while maintaining lung stability.\n3. F/u in 4 weeks to monitor weight and symptoms.\n4. Continue current lung management.\n\nElectronically signed,\nR. Mensah, DO\n10/14/2026",
+  "answer": [
+    "E24.2"
+  ],
+  "explanations": [
+    "Drug-induced Cushing's syndrome: E24.2 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E24.0"
+      ],
+      "confusion": "drug_cushing_coded_disease",
+      "lean": "over",
+      "why": "It is caused by steroid medication, not the pituitary.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.51,
+        "correct": 0,
+        "gap": 0.51,
+        "direction": "over",
+        "extra_hccs": [
+          "51"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:54+00:00",
+    "style": {
+      "age": 60,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

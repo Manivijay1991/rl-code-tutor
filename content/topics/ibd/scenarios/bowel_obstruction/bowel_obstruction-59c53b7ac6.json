@@ -1,0 +1,69 @@
+{
+  "id": "bowel_obstruction-59c53b7ac6",
+  "table": "bowel_obstruction",
+  "title": "Bowel obstruction and ileus in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "adhesions_complete"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the bowel obstruction or ileus (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Acute abdominal pain, suspected bowel obstruction.\n\nVitals:\nT: 98.6 F, HR: 88, BP: 130/82, RR: 18, SpO2: 96% on RA.\n\nRecent Labs:\nWBC: 12.4 (elevated)\nHgb: 11.8\nHct: 35.2%\nNa: 138\nK: 4.1\nCr: 1.1\neGFR: 65\nLactic Acid: 1.8\n\nReview of Systems:\nConstitutional: Fatigue, mild nausea.\nGI: Severe abdominal pain, distension, no emesis.\nMSK: No joint pain.\nNeuro: Alert and oriented x3.\nSkin: NAD.\n\nSocial History: Retired, lives with daughter. Non-smoker. Occasional alcohol.\nFamily History: Mother had hypertension. Father had stroke.\nHospital Course:\nPt is an 80-year-old female admitted with acute onset severe abdominal pain and distension. Imaging confirmed a complete small bowel obstruction. Clinical evaluation and history revealed the etiology was due to adhesions from a prior abdominal surgery. Pt was managed with NPO status, IV fluids, and NG tube decompression initially. Due to lack of improvement, pt underwent emergency surgical release of adhesions. Procedure was successful with resolution of the obstruction. Postop course was uncomplicated; pt tolerated diet progression well. Pain managed with scheduled and PRN medications. Pt stable for discharge.\n\nDischarge Diagnoses:\nComplete small bowel obstruction\nAdhesions\n\nDischarge Medications:\n1. Acetaminophen 650mg BID PRN for pain.\n2. Multivitamin daily.\n3. Stool softener daily.\n\nFollow-up:\nF/u with General Surgery in 2 weeks for wound check and progress.\n\nElectronically signed,\nT. Haddad, MD\n05/18/2026",
+  "answer": [
+    "K56.52"
+  ],
+  "explanations": [
+    "Intestinal adhesions with complete obstruction: K56.52 (HCC 78)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K56"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K56.51"
+      ],
+      "confusion": "wrong_extent",
+      "lean": "neutral",
+      "why": "The obstruction is complete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.326,
+    "hccs": [
+      {
+        "hcc": "78",
+        "label": "Intestinal Obstruction/Perforation",
+        "from": [
+          "K5652"
+        ],
+        "weight": 0.326
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:49+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

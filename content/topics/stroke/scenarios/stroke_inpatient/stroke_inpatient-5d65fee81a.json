@@ -1,0 +1,73 @@
+{
+  "id": "stroke_inpatient-5d65fee81a",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "hemorrhage"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\n\nReason for Admission:\nThe patient is a 77-year-old woman who presented to the emergency department with acute onset of neurological deficits. Imaging confirmed a spontaneous intracerebral hemorrhage.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 138/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 97% on room air\n\nRecent Labs:\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 8.2 x 10^3/uL\nPlatelets: 210 x 10^3/uL\nSodium: 138 mEq/L\nPotassium: 4.1 mEq/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nReview of Systems:\nThe patient reports no chest pain, shortness of breath, or fever. She denies any recent falls or physical injuries. She notes a brief period of altered sensation which has since improved.\n\nSocial History:\nThe patient resides in a private residence with her spouse. She is a retired school teacher and enjoys gardening. She denies current tobacco or alcohol use.\n\nFamily History:\nHer mother had hypertension and her father had a history of hypertension. No known family history of neurological disorders was reported.\n\nHospital Course:\nThe patient was admitted for management of a nontraumatic intracerebral hemorrhage. She was monitored closely in the neuro-intensive care unit for hemodynamic stability and neurological status. Management was primarily medical, focusing on blood pressure regulation and observation. Over the course of her stay, her neurological deficits showed significant improvement. By the time of discharge, all neurological deficits had resolved. She tolerated a regular diet and was able to ambulate independently without assistance.\n\nDischarge Diagnoses:\nSpontaneous intracerebral hemorrhage.\n\nDischarge Medications:\nLisinopril 10mg daily.\nAtorvastatin 20mg daily.\nAspirin 81mg daily.\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a routine check-up and to monitor blood pressure. She was instructed to seek immediate medical attention if she experiences a recurrence of neurological symptoms.\n\nElectronically signed,\nE. Castillo, MD\n05/18/2026",
+  "answer": [
+    "I61.9"
+  ],
+  "explanations": [
+    "Nontraumatic intracerebral hemorrhage, location not named: I61.9 (HCC 248)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "wrong_stroke_type",
+      "lean": "neutral",
+      "why": "It is a hemorrhage, not an infarction.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0.239,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": [
+          "248"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.239,
+    "hccs": [
+      {
+        "hcc": "248",
+        "label": "Intracranial Hemorrhage",
+        "from": [
+          "I619"
+        ],
+        "weight": 0.239
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:14:03+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

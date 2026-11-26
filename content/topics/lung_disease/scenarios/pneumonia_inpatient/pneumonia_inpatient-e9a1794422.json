@@ -1,0 +1,71 @@
+{
+  "id": "pneumonia_inpatient-e9a1794422",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "empyema"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Right-sided empyema\n\nHospital Course:\nThe patient is an 89-year-old woman who presented with acute shortness of breath and fever. Imaging and clinical evaluation confirmed a significant empyema in the right pleural space. She was admitted for stabilization and management of the infection. A chest tube was inserted to drain the empyema and provide adequate drainage of the pleural space. The patient received intravenous antibiotics throughout her stay. Her clinical status improved significantly as the drainage was maintained and the infection was controlled. She remained stable for the final 48 hours of her stay and was cleared for discharge.\n\nDischarge Diagnoses:\nRight-sided empyema\n\nDischarge Medications:\nAmoxicillin-clavulanate 875mg twice daily; Acetaminophen 650mg as needed for pain.\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a wound check and to review her progress.\n\nElectronically signed, P. O'Brien, MD, 05/18/2026",
+  "answer": [
+    "J86.9"
+  ],
+  "explanations": [
+    "Empyema without fistula (pyothorax): J86.9 (HCC 283)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J90"
+      ],
+      "confusion": "wrong_lung_condition",
+      "lean": "neutral",
+      "why": "Pus in the pleural space is empyema, not a plain effusion.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.204,
+        "gap": -0.204,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "283"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.204,
+    "hccs": [
+      {
+        "hcc": "283",
+        "label": "Empyema/Lung Abscess",
+        "from": [
+          "J869"
+        ],
+        "weight": 0.204
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:33+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

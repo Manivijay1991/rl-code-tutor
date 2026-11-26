@@ -1,0 +1,79 @@
+{
+  "id": "mi_angina-8ec2d124c3",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "cad_angina"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint\nChest pain on exertion.\n\nHPI\nPt is an 83y/o female presenting for f/u of coronary artery disease. Pt reports occasional chest discomfort characterized as angina on exertion. Symptoms are currently manageable. Denies any episodes of sudden onset chest pain or shortness of breath at rest. Pt reports compliance with current meds. No new concerns voiced.\n\nMedication List\nNitroglycerin sublingual PRN, Atorvastatin 40mg daily, Lisinopril 10mg daily.\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular rhythm, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or rales.\nExt: No edema noted.\n\nAssessment\n1. Coronary artery disease with angina on exertion.\n\nPlan\n1. Renewed prescription for nitroglycerin for use as needed for angina symptoms.\n2. Continue current lipid and blood pressure medications.\n3. Pt to f/u in 6 months or sooner if symptoms worsen.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "I25.119"
+  ],
+  "explanations": [
+    "Coronary artery disease with angina of unstated type: combination code I25.119 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.9.b"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.110"
+      ],
+      "confusion": "overstated_angina",
+      "lean": "over",
+      "why": "Unstable angina is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.24,
+        "correct": 0,
+        "gap": 0.24,
+        "direction": "over",
+        "extra_hccs": [
+          "229"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.10",
+        "I20.9"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code I25.119, not two codes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:07:12+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

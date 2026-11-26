@@ -1,0 +1,87 @@
+{
+  "id": "liver_failure_biliary-f811def3e8",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_liver_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Follow-up for liver transplant evaluation.\n\nHPI: Pt is a 75-year-old female presenting for scheduled follow-up. She is currently listed for transplant evaluation. Pt reports she feels generally stable today but experiences some persistent fatigue. No new acute symptoms reported. Patient is aware of her status on the list.\n\nMedication List:\n- Spironolactone 25mg daily\n- Lactulose 15g BID\n- Furosemide 20mg daily\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nCV: RRR, CTAB.\nResp: Clear to auscultation bilaterally.\nAbdomen: Soft, non-tender, no masses palpable.\nNeuro: Alert and oriented, no focal deficits.\n\nAssessment:\n1. Chronic hepatic failure. Pt remains stable for transplant evaluation.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Monitor labs and continue follow-up with hepatology.\n3. Proceed with scheduled transplant evaluation steps.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "K72.10"
+  ],
+  "explanations": [
+    "Chronic hepatic failure without coma: K72.10 (HCC 63)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K72.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Chronic is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.962,
+        "correct": 0.962,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K76.9"
+      ],
+      "confusion": "understated_liver",
+      "lean": "under",
+      "why": "Chronic liver failure is documented (HCC 63).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.962,
+        "gap": -0.962,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "63"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.962,
+    "hccs": [
+      {
+        "hcc": "63",
+        "label": "Chronic Liver Failure/End-Stage Liver Disorders",
+        "from": [
+          "K7210"
+        ],
+        "weight": 0.962
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:25:20+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

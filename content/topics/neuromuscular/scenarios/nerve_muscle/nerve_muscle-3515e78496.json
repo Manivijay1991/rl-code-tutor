@@ -1,0 +1,70 @@
+{
+  "id": "nerve_muscle-3515e78496",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "cidp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for CIDP.\n\nHPI\nThe patient is a 70-year-old woman presenting today for a routine follow-up of her chronic inflammatory demyelinating polyneuropathy. She reports that her symptoms have remained relatively stable since her last visit. She continues to experience some persistent weakness in her lower extremities, but she denies any acute worsening of motor function or new episodes of sensory loss. She tolerates her monthly immunoglobulin infusions well, reporting minimal side effects during the administration process.\n\nMedication List\n- Intravenous immunoglobulin (monthly)\n- Gabapentin 300mg twice daily\n\nExam\nThe patient is alert and oriented. Physical examination reveals diminished deep tendon reflexes in the bilateral lower extremities. Strength is 4/5 in the quadriceps and hamstrings. Sensation to light touch is intact throughout the lower limbs. No new focal neurological deficits are noted.\n\nAssessment\n1. Chronic inflammatory demyelinating polyneuropathy (CIDP). The patient is currently stable on her maintenance regimen of monthly immunoglobulin infusions.\n\nPlan\nContinue current treatment of monthly immunoglobulin infusions. The patient will continue her current oral medication for nerve pain. Follow up in three months for a repeat neurological evaluation.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "G61.81"
+  ],
+  "explanations": [
+    "Chronic inflammatory demyelinating polyneuritis: G61.81 (HCC 193)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G62.9"
+      ],
+      "confusion": "cidp_coded_unspecified",
+      "lean": "under",
+      "why": "CIDP has its own code (HCC 193).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.692,
+        "gap": -1.692,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "193"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.692,
+    "hccs": [
+      {
+        "hcc": "193",
+        "label": "Chronic Inflammatory Demyelinating Polyneuritis and Multifocal Motor Neuropathy",
+        "from": [
+          "G6181"
+        ],
+        "weight": 1.692
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:52+00:00",
+    "style": {
+      "age": 70,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

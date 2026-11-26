@@ -1,0 +1,346 @@
+{
+  "id": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note_age": {
+    "min": 30,
+    "max": 85
+  },
+  "slots": {
+    "condition": {
+      "label": "Diagnosis documented",
+      "values": [
+        "osteo_chronic",
+        "osteo_acute",
+        "sle_nephritis",
+        "discoid",
+        "pemphigus",
+        "pemphigoid"
+      ],
+      "labels": {
+        "osteo_chronic": "Chronic osteomyelitis, right foot",
+        "osteo_acute": "Acute osteomyelitis, right foot",
+        "sle_nephritis": "Lupus with kidney (glomerular) involvement",
+        "discoid": "Discoid lupus of the skin only",
+        "pemphigus": "Pemphigus vulgaris",
+        "pemphigoid": "Bullous pemphigoid"
+      },
+      "evidence": {
+        "osteo_chronic": [
+          [
+            "chronic osteomyelitis"
+          ],
+          [
+            "right foot"
+          ]
+        ],
+        "osteo_acute": [
+          [
+            "acute osteomyelitis"
+          ],
+          [
+            "right foot"
+          ]
+        ],
+        "sle_nephritis": [
+          [
+            "systemic lupus erythematosus",
+            "SLE"
+          ],
+          [
+            "nephritis",
+            "glomerul"
+          ]
+        ],
+        "discoid": [
+          [
+            "discoid lupus"
+          ]
+        ],
+        "pemphigus": [
+          [
+            "pemphigus vulgaris"
+          ]
+        ],
+        "pemphigoid": [
+          [
+            "bullous pemphigoid"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "osteo_chronic": "The provider documents chronic osteomyelitis of the right foot (calcaneus) on long-term antibiotics; the cause is an old puncture wound.",
+        "osteo_acute": "The provider documents acute osteomyelitis of the right foot (calcaneus) diagnosed on MRI last week; IV antibiotics continue.",
+        "sle_nephritis": "The rheumatologist documents systemic lupus erythematosus with lupus nephritis (glomerular disease), on mycophenolate.",
+        "discoid": "The dermatologist documents discoid lupus erythematosus limited to the skin; no systemic lupus. Topical steroids continue.",
+        "pemphigus": "The dermatologist documents pemphigus vulgaris, controlled on rituximab and a steroid taper.",
+        "pemphigoid": "The dermatologist documents bullous pemphigoid with tense blisters, on doxycycline and topical steroids."
+      }
+    }
+  },
+  "note_forbid": [
+    "diabetes",
+    "diabetic",
+    "ulcer",
+    "pressure injury",
+    "fracture",
+    "prosthe",
+    "hardware",
+    "sepsis",
+    "left foot",
+    "rheumatoid",
+    "CKD",
+    "chronic kidney disease",
+    "dialysis",
+    "psoriasis",
+    "cancer"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "osteo_chronic",
+          "osteo_acute"
+        ]
+      },
+      "forbid": [
+        "lupus",
+        "pemphig"
+      ]
+    },
+    {
+      "when": {
+        "condition": "osteo_chronic"
+      },
+      "forbid": [
+        "acute osteomyelitis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "osteo_acute"
+      },
+      "forbid": [
+        "chronic osteomyelitis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "sle_nephritis"
+      },
+      "forbid": [
+        "discoid",
+        "pemphig",
+        "osteomyelitis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "discoid"
+      },
+      "forbid": [
+        "systemic lupus erythematosus,",
+        "SLE",
+        "nephritis",
+        "pemphig",
+        "osteomyelitis",
+        "hydroxychloroquine for systemic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "pemphigus"
+      },
+      "forbid": [
+        "pemphigoid",
+        "lupus",
+        "osteomyelitis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "pemphigoid"
+      },
+      "forbid": [
+        "pemphigus",
+        "lupus",
+        "osteomyelitis"
+      ]
+    }
+  ],
+  "confusions": {
+    "acute_chronic_confused": {
+      "description": "Confused acute and chronic osteomyelitis.",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the organ involvement or type is documented.",
+      "lean": "neutral"
+    },
+    "discoid_coded_sle": {
+      "description": "Coded systemic lupus (HCC 94) for discoid lupus limited to the skin (no HCC).",
+      "lean": "over"
+    },
+    "pemphigus_pemphigoid_confused": {
+      "description": "Confused pemphigus and pemphigoid.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "osteo_chronic"
+          },
+          "codes": [
+            "M86.671"
+          ],
+          "explain": "Other chronic osteomyelitis, right ankle and foot: M86.671 (HCC 92).",
+          "refs": [
+            "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "M86.171"
+              ],
+              "confusion": "acute_chronic_confused",
+              "why": "It is documented as chronic."
+            },
+            {
+              "codes": [
+                "M86.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type and site are documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "osteo_acute"
+          },
+          "codes": [
+            "M86.171"
+          ],
+          "explain": "Other acute osteomyelitis, right ankle and foot: M86.171 (HCC 92).",
+          "refs": [
+            "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "M86.671"
+              ],
+              "confusion": "acute_chronic_confused",
+              "why": "It is documented as acute."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "sle_nephritis"
+          },
+          "codes": [
+            "M32.14"
+          ],
+          "explain": "Glomerular disease in systemic lupus erythematosus: M32.14 (HCC 94).",
+          "refs": [
+            "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "M32.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The kidney involvement is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "discoid"
+          },
+          "codes": [
+            "L93.0"
+          ],
+          "explain": "Discoid lupus erythematosus of the skin only: L93.0 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "M32.9"
+              ],
+              "confusion": "discoid_coded_sle",
+              "why": "Systemic lupus is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "pemphigus"
+          },
+          "codes": [
+            "L10.0"
+          ],
+          "explain": "Pemphigus vulgaris: L10.0 (HCC 387).",
+          "refs": [
+            "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L12.0"
+              ],
+              "confusion": "pemphigus_pemphigoid_confused",
+              "why": "Pemphigus, not pemphigoid."
+            },
+            {
+              "codes": [
+                "L13.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The disease is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "pemphigoid"
+          },
+          "codes": [
+            "L12.0"
+          ],
+          "explain": "Bullous pemphigoid: L12.0 (HCC 387).",
+          "refs": [
+            "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L10.0"
+              ],
+              "confusion": "pemphigus_pemphigoid_confused",
+              "why": "Pemphigoid, not pemphigus."
+            },
+            {
+              "codes": [
+                "L12.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (bullous) is documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

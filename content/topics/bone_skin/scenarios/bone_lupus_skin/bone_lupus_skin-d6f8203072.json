@@ -1,0 +1,85 @@
+{
+  "id": "bone_lupus_skin-d6f8203072",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "osteo_chronic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: Pain and drainage of right foot.\n\nHPI: Pt is a 42-year-old male presenting for f/u of chronic osteomyelitis of the right foot (calcaneus). Pt reports persistent dull aching pain in the heel area. He notes occasional drainage from the site. History began with an old puncture wound to the heel. Pt reports compliance with current antibiotic regimen but notes that symptoms are persistent. Denies fevers, chills, or systemic malaise. No new trauma reported since last visit.\n\nMedication List:\n- Amoxicillin-clavulanate 875/125mg BID\n- Ibuprofen 600mg PRN for pain\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nMusculoskeletal: Positive for chronic pain in right foot.\nIntegumentary: Positive for drainage at calcaneus.\nAll other systems reviewed and negative.\n\nSocial History: Pt works full-time as a warehouse worker. Non-smoker. Occasional alcohol use.\n\nFamily History: Father has hypertension. Mother has hyperlipidemia. No known history of autoimmune disease in family.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 195 lbs\n\nRecent Labs:\nWBC: 8.2 x 10^9/L\nHbA1c: 5.6%\neGFR: 88 mL/min/1.73m2\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nExtremities: Right foot shows localized swelling and erythema over the calcaneus. Chronic drainage noted at site. Stable wound margins. No signs of systemic infection. Pulses 2+ bilaterally. Capillary refill <2 seconds.\n\nAssessment:\n1. Chronic osteomyelitis of the right foot.\n\nPlan:\n- Continue current long-term antibiotic regimen for chronic osteomyelitis.\n- Wound care: Keep site clean and dry. Apply topical dressing as needed.\n- Pt to f/u in 4 weeks for re-evaluation of drainage and pain levels.\n- Instructed to call office immediately if systemic symptoms develop.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "M86.671"
+  ],
+  "explanations": [
+    "Other chronic osteomyelitis, right ankle and foot: M86.671 (HCC 92)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M86.171"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "It is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M86.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type and site are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.479,
+    "hccs": [
+      {
+        "hcc": "92",
+        "label": "Bone/Joint/Muscle/Severe Soft Tissue Infections/Necrosis",
+        "from": [
+          "M86671"
+        ],
+        "weight": 0.479
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:38+00:00",
+    "style": {
+      "age": 42,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

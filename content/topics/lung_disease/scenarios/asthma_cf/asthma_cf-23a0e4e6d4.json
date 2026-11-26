@@ -1,0 +1,61 @@
+{
+  "id": "asthma_cf-23a0e4e6d4",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "moderate_persistent"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint\nFollow-up for asthma management.\n\nHPI\nThe patient is a 24-year-old woman who presents today for a routine follow-up regarding her moderate persistent asthma. She reports that her symptoms have been well-managed since her last visit. She denies any recent episodes of wheezing, shortness of breath, or chest tightness. She notes that her daily maintenance medication is effective in keeping her symptoms under control throughout the day. She denies any nocturnal awakenings due to respiratory issues and reports that she can perform her normal activities without limitation. She has not required the use of her rescue inhaler in the past month.\n\nReview of Systems\nThe patient reports no cough, fever, chills, or sore throat. She denies chest pain or palpitations. She denies any recent weight changes or fatigue. Her appetite is normal, and she denies any gastrointestinal distress. No joint pain or rashes are reported.\n\nSocial History\nThe patient is a non-smoker and does not use tobacco or nicotine products. She works full-time in an office environment and lives with her partner. She reports a healthy diet and engages in regular aerobic exercise three times a week.\n\nFamily History\nMother has a history of hypertension. Father has a history of seasonal allergies. No family history of asthma is reported.\n\nMedication List\n- Fluticasone/Salmeterol inhaler, daily\n- Albuterol HFA inhaler, as needed\n\nExam\nThe patient is alert and oriented. She appears in no acute distress. Respiratory effort is even and unlabored. Lung sounds are clear to auscultation bilaterally. No wheezing, rhonchi, or crackles are noted. Heart sounds are regular with no murmurs. Oxygen saturation is 98% on room air.\n\nVitals\nBP: 118/76 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 14 breaths/min\nSpO2: 98% on RA\n\nRecent Labs\nComplete Blood Count (CBC): Within normal limits.\nComprehensive Metabolic Panel (CMP): Within normal limits.\nPulmonary Function Test (PFT): FEV1/FVC ratio remains stable.\n\nAssessment\nThe patient is a 24-year-old woman with moderate persistent asthma. Her condition is currently stable and well-controlled on her current inhaled steroid-LABA regimen.\n\nPlan\nContinue current daily inhaled steroid-LABA. Patient instructed to continue using the rescue inhaler as needed for acute symptoms. Follow up in 6 months or sooner if symptoms worsen.\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "J45.40"
+  ],
+  "explanations": [
+    "Moderate persistent asthma, uncomplicated: J45.40 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.50"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Severe persistent asthma is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0,
+        "gap": 0.818,
+        "direction": "over",
+        "extra_hccs": [
+          "279"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:31+00:00",
+    "style": {
+      "age": 24,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

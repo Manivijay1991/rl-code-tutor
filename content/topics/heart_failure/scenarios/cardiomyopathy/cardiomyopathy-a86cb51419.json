@@ -1,0 +1,61 @@
+{
+  "id": "cardiomyopathy-a86cb51419",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "ischemic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint: Follow-up for heart condition.\n\nHPI: The patient is an 86-year-old male presenting for a scheduled follow-up regarding his cardiovascular health. He reports feeling well today and denies any recent episodes of chest pain, shortness of breath, or palpitations. He states that he has been consistent with his prescribed medications and has experienced no significant side effects. He notes that his activity level has remained stable and he is able to perform his daily tasks without excessive fatigue. He denies any recent syncope or dizziness.\n\nMedication List:\n- Lisinopril 10mg daily\n- Carvedilol 6.25mg twice daily\n>\nVitals:\nBP: 122/74 mmHg\nHR: 68 bpm\nRR: 16 breaths/min\nSpO2: 97% on room air\nTemp: 98.4 F\nWeight: 175 lbs\n\nRecent Labs:\neGFR: 72 mL/min/1.73m2\nHbA1c: 6.4%\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\n\nReview of Systems:\nConstitutional: Denies fever, chills, or weight changes.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies cough or shortness of breath.\nGastrointestinal: Denies nausea or abdominal pain.\nMusculoskeletal: Denies joint pain or weakness.\n\nSocial History: The patient lives with his wife in a single-story home. He retired five years ago and enjoys gardening and watching television. He denies tobacco use and reports social drinking on weekends.\n\nFamily History: Father died of a stroke at age 75. Mother had a history of coronary artery disease.\n\nExam: The patient is an alert and oriented 86-year-old male in no acute distress. He appears well-nourished and in no apparent pain. Chest is clear to auscultation with regular rate and rhythm. No peripheral edema noted in lower extremities. Capillary refill is less than two seconds.\n\nAssessment: The patient has a history of ischemic cardiomyopathy secondary to coronary disease. He is currently stable on his current medical therapy.\n\nPlan: Continue current medication regimen. Schedule a follow-up appointment in three months to monitor stability. Patient instructed to call the office immediately if he experiences worsening shortness of breath or chest discomfort.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "I25.5"
+  ],
+  "explanations": [
+    "Ischemic cardiomyopathy: I25.5 (no HCC in V28). Category I42 excludes it, so I42.9 would be wrong and would add HCC 227."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.9"
+      ],
+      "confusion": "ischemic_coded_as_i42",
+      "lean": "over",
+      "why": "I42 excludes ischemic cardiomyopathy: use I25.5.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0,
+        "gap": 0.189,
+        "direction": "over",
+        "extra_hccs": [
+          "227"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:06:09+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

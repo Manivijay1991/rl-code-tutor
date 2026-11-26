@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-c6edbef91c",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "acromegaly"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for acromegaly.\n\nHPI: Pt is a 68-year-old female presenting for routine follow-up of acromegaly secondary to a known pituitary adenoma. Pt reports she has been stable on current octreotide regimen. Denies any new episodes of headaches, visual changes, or significant joint pain. Reports adherence to medication. She notes minimal peripheral edema but denies any shortness of breath or chest pain. Reports consistent energy levels and stable weight.\n\nMedication List:\n- Octreotide, subcutaneous injection\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nHEENT: No vision changes or headaches.\nMSK: Mild joint stiffness in AM, no acute pain.\nCV: No palpitations or chest pain.\nResp: No SOB or cough.\nGI: No nausea or diarrhea.\nNeuro: No numbness or tingling.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had a history of stroke.\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 165 lbs\n\nRecent Labs:\neGFR: 82 mL/min/1.73m2\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\nGlucose: 104 mg/dL\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular rhythm. No murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No cyanosis, no edema.\nNeuro: Alert, no focal deficits.\n\nAssessment:\n1. Acromegaly secondary to pituitary adenoma. Pt is stable on octreotide.\n\nPlan:\n1. Continue current octreotide dosing as prescribed.\n2. Continue Lisinopril and Atorvastatin for hypertension and lipid management.\n3. Follow up in 6 months for repeat labs and clinical evaluation.\n4. Instructed to call if any new visual disturbances or severe headaches occur.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "E22.0"
+  ],
+  "explanations": [
+    "Acromegaly: E22.0 (HCC 51)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E23.7"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Acromegaly has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.51,
+        "gap": -0.51,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "51"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.51,
+    "hccs": [
+      {
+        "hcc": "51",
+        "label": "Addisons and Cushings Diseases/Acromegaly/and Other Specified Endocrine Disorders",
+        "from": [
+          "E220"
+        ],
+        "weight": 0.51
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:25+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

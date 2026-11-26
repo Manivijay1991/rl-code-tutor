@@ -1,0 +1,73 @@
+{
+  "id": "pneumonia_inpatient-7c5e070ee3",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "resp_arrest"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/16/2026\nReason for Admission: Acute choking and transient respiratory arrest.\n\nVitals: BP 138/82, HR 84, SpO2 96% on RA, Temp 98.6F.\nRecent Labs: WBC 8.2, Hgb 12.4, Plt 210k, Cr 1.1, eGFR 65.\n\nHPI (Copied Forward): Patient is an 85-year-old female who presented to the emergency department after a choking episode during dinner. She experienced a brief respiratory arrest while attempting to consume a piece of meat. Emergency personnel performed a manual airway clearance, and the patient was stabilized.\n\nSocial History: Retired teacher. Lives with her daughter. Non-smoker.\nFamily History: Mother had hypertension; Father had type 2 diabetes.\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: Positive for brief choking episode; negative for cough or wheezing.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea or abdominal pain.\nNeurological: Negative for weakness or dizziness.\n\nHospital Course:\nThe patient was admitted for observation following a choking incident. During the initial assessment, the patient experienced a brief respiratory arrest. The medical team successfully cleared the airway and initiated bag-mask breathing to restore oxygenation. The patient showed a full recovery from the event and remained stable throughout the remainder of the stay. No further complications were noted. She tolerated a regular diet as tolerated and was able to ambulate in the halls without distress. She was discharged in stable condition.\n\nDischarge Diagnoses:\n- Choking episode\n- Transient respiratory arrest\n\nDischarge Medications:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nFollow-up:\nFollow-up with primary care physician in 7 days for a routine check-up and review of the choking incident.\n\nElectronically signed, D. Kowalski, MD, 05/16/2026",
+  "answer": [
+    "R09.2"
+  ],
+  "explanations": [
+    "Respiratory arrest: R09.2 (HCC 212)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J96.01"
+      ],
+      "confusion": "arrest_coded_failure",
+      "lean": "neutral",
+      "why": "Respiratory failure is not documented; the arrest is.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.37,
+        "correct": 0.37,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": [
+          "212"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.37,
+    "hccs": [
+      {
+        "hcc": "212",
+        "label": "Respiratory Arrest",
+        "from": [
+          "R092"
+        ],
+        "weight": 0.37
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:29:18+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

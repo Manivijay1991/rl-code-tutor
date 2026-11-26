@@ -1,0 +1,79 @@
+{
+  "id": "liver_failure_biliary-7bbb7ec0f3",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "cirrhosis_portal_htn"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Follow-up for liver disease.\n\nHPI: Pt is an 80-year-old female presenting for routine follow-up of known cirrhosis and portal hypertension. Pt reports feeling stable overall. Denies any acute distress or recent changes in symptoms. Reports adherence to current medication regimen. No new concerns voiced at this visit.\n\nMedication List:\n- Propranolol 40mg BID\n- Lisinopril 10mg daily\n- Multivitamin daily\n\nReview of Systems:\nGeneral: No fever, chills, or weight changes.\nHEENT: No vision changes, sore throat.\nResp: No SOB or cough.\nCV: No chest pain, palpitations.\nGI: No nausea, vomiting, or abdominal pain.\nMSK: No joint pain or stiffness.\nNeuro: No dizziness or confusion.\n\nSocial History: Pt lives at home with spouse. Retired. No tobacco use. Occasional social drinking.\n\nFamily History: Mother had hypertension. Father had stroke at age 75.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 145 lbs\n\nRecent Labs:\neGFR: 65\nALT: 42\nAST: 38\nAlbumin: 3.4\nINR: 1.2\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nRespiratory: CTAB, no wheezes, no rales.\nCardiovascular: RRR, S1, S2, no murmurs.\nAbdomen: Soft, non-tender, no guarding. No palpable masses.\nExtremities: No edema, pulses intact.\nNeurological: Alert, coherent, no focal deficits.\n\nAssessment:\n1. Cirrhosis.\n2. Portal hypertension.\n\nPlan:\n1. Continue current nonselective beta blocker for management of portal hypertension.\n2. Continue Lisinopril for blood pressure control.\n3. Follow up in 6 months for lab work and clinical evaluation.\n4. Encourage balanced diet and adequate hydration.\n\nElectronically signed,\nT. Haddad, NP\n05/14/2026",
+  "answer": [
+    "K74.60",
+    "K76.6"
+  ],
+  "explanations": [
+    "Cirrhosis, K74.60 (HCC 64), plus portal hypertension, K76.6 (HCC 63, which outranks 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K74.60"
+      ],
+      "confusion": "missed_portal_htn",
+      "lean": "under",
+      "why": "Portal hypertension is documented and coded separately.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.962,
+        "gap": -0.515,
+        "direction": "under",
+        "extra_hccs": [
+          "64"
+        ],
+        "missing_hccs": [
+          "63"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.962,
+    "hccs": [
+      {
+        "hcc": "63",
+        "label": "Chronic Liver Failure/End-Stage Liver Disorders",
+        "from": [
+          "K766"
+        ],
+        "weight": 0.962
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "by": "63"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:27+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

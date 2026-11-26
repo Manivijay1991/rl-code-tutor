@@ -1,0 +1,87 @@
+{
+  "id": "bipolar_schizophrenia-4cb2568ee9",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint: Follow-up for bipolar disorder.\n\nHPI: Copied Forward: Patient is a 78-year-old man who presents for ongoing management of bipolar disorder. He reports consistent mood and sleep patterns since the last encounter. He denies any significant distress or behavioral changes.\n\nUpdate: The patient reports feeling stable today. He continues to manage his bipolar disorder with his current regimen and reports no side effects from his medication. He denies any concerns regarding his mood or daily functioning.\n\nVitals: BP 134/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nNeurological: Negative\nPsychiatric: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\n\nMedication List:\nLithium 300 mg orally twice daily.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nPsychiatric: Cooperative, normal speech, stable affect.\nPhysical: No acute distress noted.\n\nAssessment:\n1. Bipolar disorder.\n\nPlan:\n1. Continue current lithium dosage for bipolar disorder.\n2. Follow up in 3 months for routine monitoring.\n\nElectronically signed, R. Mensah, NP, 10/14/2026",
+  "answer": [
+    "F31.9"
+  ],
+  "explanations": [
+    "Bipolar disorder without the episode or remission status: F31.9 (HCC 154)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F31.32"
+      ],
+      "confusion": "assumed_episode",
+      "lean": "neutral",
+      "why": "No current episode is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.351,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.76"
+      ],
+      "confusion": "assumed_episode",
+      "lean": "neutral",
+      "why": "Remission is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.351,
+        "gap": -0.351,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "154"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.351,
+    "hccs": [
+      {
+        "hcc": "154",
+        "label": "Bipolar Disorders without Psychosis",
+        "from": [
+          "F319"
+        ],
+        "weight": 0.351
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:34+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

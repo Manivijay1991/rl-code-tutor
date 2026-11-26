@@ -1,0 +1,70 @@
+{
+  "id": "cp_ataxia_brain-efd949937e",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "huntington"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for Huntington's disease.\n\nHPI\nPt is a 65-year-old female presenting for scheduled neurology follow-up. Pt reports stable status regarding Huntington's disease. Denies acute worsening of chorea or significant motor fluctuations since last visit. Reports compliance with current medication regimen. No new concerns regarding coordination or gait.\n\nMedication List\nTetrabenazine 25mg BID\n\nExam\nGen: Well-appearing, alert, oriented x3.\nNeuro: Gait steady. Significant chorea noted in upper extremities, consistent with Huntington's disease. Strength 5/5 throughout. Reflexes 2+ symmetric. Coordination intact. Cranial nerves II-XII intact.\n\nAssessment\n1. Huntington's disease with chorea. Chorea is currently managed with tetrabenazine. Pt is stable on current dose.\n\nPlan\n1. Continue tetrabenazine 25mg BID.\n2. Continue current monitoring of chorea severity.\n3. Follow up in 3 months.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "G10"
+  ],
+  "explanations": [
+    "Huntington's disease: G10 (HCC 200). Chorea is part of the disease, not coded separately."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G25.5"
+      ],
+      "confusion": "symptom_for_disease",
+      "lean": "under",
+      "why": "The disease is documented: code Huntington's, not the chorea.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.279,
+        "gap": -0.279,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "200"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.279,
+    "hccs": [
+      {
+        "hcc": "200",
+        "label": "Friedreich and Other Hereditary Ataxias; Huntington Disease",
+        "from": [
+          "G10"
+        ],
+        "weight": 0.279
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:02+00:00",
+    "style": {
+      "age": 65,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

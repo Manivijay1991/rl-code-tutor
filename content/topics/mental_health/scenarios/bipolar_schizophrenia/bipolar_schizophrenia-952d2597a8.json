@@ -1,0 +1,85 @@
+{
+  "id": "bipolar_schizophrenia-952d2597a8",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "schizophrenia_paranoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for paranoid schizophrenia.\n\nHPI\nPt is a 56 y/o female presenting for scheduled follow-up of paranoid schizophrenia. Pt reports feeling stable and has had no significant issues with behavior or mood since last visit. Compliance with current medication regimen is reported as excellent. No acute stressors noted at this time.\n\nMedication List\nLong-acting injectable (LAI) antipsychotic (monthly dose).\n\nExam\nPt is alert and oriented x3. Cooperative with exam. Affect is flat but stable. Speech is coherent and at normal rate/volume. Thought process is linear. Insight and judgment are fair. Vitals are stable.\n\nAssessment\n1. Paranoid schizophrenia: Pt remains stable on current long-acting injectable antipsychotic. No acute exacerbation of symptoms noted during today's encounter.\n\nPlan\n1. Continue current LAI antipsychotic.\n2. Pt to return in 1 month for routine follow-up.\n3. Encourage continued adherence to medication schedule.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "F20.0"
+  ],
+  "explanations": [
+    "Paranoid schizophrenia: F20.0 (HCC 151)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F20.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paranoid) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F25.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "Schizophrenia is documented, not schizoaffective disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.511,
+    "hccs": [
+      {
+        "hcc": "151",
+        "label": "Schizophrenia",
+        "from": [
+          "F200"
+        ],
+        "weight": 0.511
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:22+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

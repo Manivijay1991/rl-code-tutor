@@ -1,0 +1,68 @@
+{
+  "id": "ulcer_burn-fbd91f755d",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_depth_unknown"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint: Follow-up for a chronic wound on the right heel.\n\nHPI: The patient is a 67-year-old male presenting for a scheduled follow-up regarding a chronic ulcer located on the right heel. He reports that the area has remained stable over the past few weeks with no new drainage or signs of increasing pain. He admits to occasional discomfort when walking but denies any fever, chills, or systemic malaise. He has been diligent with his home care but notes that the wound is slow to heal. He denies any new symptoms or changes in the appearance of the site since his last visit.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Amlodipine 5mg daily\n\nReview of Systems:\nThe patient denies fever, chills, cough, or shortness of breath. He denies chest pain, palpitations, or syncope. He denies polyuria, polydipsia, or blurred vision. He denies joint pain or recent changes in mobility. He denies any new numbness or tingling in his extremities.\n\nSocial History: The patient is a retired construction worker. He lives with his wife and reports being a non-smoker. He enjoys walking for exercise and gardening.\n\nFamily History: His father had a history of hypertension and his mother had a history of hyperlipidemia.\n\nVitals:\nBP: 132/82 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\n\nRecent Labs:\nHbA1c: 6.8%\neGFR: 72 mL/min/1.73m2\nWBC: 8.2 x 10^9/L\n\nExam:\nThe patient is a well-appearing male in no acute distress. Physical exam reveals a non-pressure chronic ulcer of the right heel. The wound bed is primarily granulating with minimal surrounding erythema. There is no purulent drainage noted at this time. Peripheral pulses are palpable and symmetric. Capillary refill is less than 3 seconds.\n\nAssessment:\n1. Chronic ulcer of the right heel.\n\nPlan:\nThe patient will continue with the current wound care regimen. I will provide instructions for dressing changes and signs of infection to monitor at home. We will proceed with a plan for continued wound care and will reassess the site in two weeks.\n\nElectronically signed, \nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "L97.419"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot, severity not stated: L97.419 (HCC 383)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.412"
+      ],
+      "confusion": "assumed_depth",
+      "lean": "neutral",
+      "why": "The depth is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.646,
+        "correct": 0.646,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.646,
+    "hccs": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "from": [
+          "L97419"
+        ],
+        "weight": 0.646
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:53+00:00",
+    "style": {
+      "age": 67,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

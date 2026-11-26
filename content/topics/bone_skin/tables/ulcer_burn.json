@@ -1,0 +1,298 @@
+{
+  "id": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note_age": {
+    "min": 30,
+    "max": 85
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "ulcer_fat",
+        "ulcer_bone",
+        "ulcer_depth_unknown",
+        "burn_major",
+        "burn_minor"
+      ],
+      "labels": {
+        "ulcer_fat": "Chronic ulcer of right heel, fat layer exposed",
+        "ulcer_bone": "Chronic ulcer of right heel down to bone",
+        "ulcer_depth_unknown": "Chronic ulcer of right heel, depth not stated",
+        "burn_major": "Burns over 30-39% of the body, 20-29% third degree",
+        "burn_minor": "Burns over 10-19% of the body, under 10% third degree"
+      },
+      "evidence": {
+        "ulcer_fat": [
+          [
+            "ulcer"
+          ],
+          [
+            "right heel"
+          ],
+          [
+            "fat layer"
+          ]
+        ],
+        "ulcer_bone": [
+          [
+            "ulcer"
+          ],
+          [
+            "right heel"
+          ],
+          [
+            "bone"
+          ]
+        ],
+        "ulcer_depth_unknown": [
+          [
+            "ulcer"
+          ],
+          [
+            "right heel"
+          ]
+        ],
+        "burn_major": [
+          [
+            "30-39%",
+            "35%"
+          ],
+          [
+            "third degree",
+            "third-degree",
+            "full thickness"
+          ]
+        ],
+        "burn_minor": [
+          [
+            "10-19%",
+            "15%"
+          ],
+          [
+            "third degree",
+            "third-degree",
+            "full thickness"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "ulcer_fat": "The wound care nurse and the provider document a non-pressure chronic ulcer of the right heel with the fat layer exposed; no bone or muscle involvement.",
+        "ulcer_bone": "The provider documents a non-pressure chronic ulcer of the right heel with necrosis of bone; surgical debridement is planned.",
+        "ulcer_depth_unknown": "The provider documents a non-pressure chronic ulcer of the right heel; its depth is not described and wound care is arranged.",
+        "burn_major": "Admitted with flame burns covering 35% of the body surface, of which 25% are third degree (full thickness); grafting is planned.",
+        "burn_minor": "Admitted with scald burns covering 15% of the body surface, of which 5% are third degree (full thickness); dressing care."
+      }
+    }
+  },
+  "note_forbid": [
+    "diabetes",
+    "diabetic",
+    "venous",
+    "arterial",
+    "peripheral artery",
+    "atherosclerosis",
+    "pressure ulcer",
+    "pressure injury",
+    "osteomyelitis",
+    "left heel",
+    "sepsis",
+    "inhalation injury",
+    "smoke inhalation",
+    "electrical",
+    "chemical"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "burn_major",
+          "burn_minor"
+        ]
+      },
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD",
+      "forbid": [
+        "ulcer"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "ulcer_fat",
+          "ulcer_bone",
+          "ulcer_depth_unknown"
+        ]
+      },
+      "forbid": [
+        "burn"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ulcer_fat"
+      },
+      "forbid": [
+        "necrosis of bone",
+        "bone exposed",
+        "muscle",
+        "tendon"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ulcer_bone"
+      },
+      "forbid": [
+        "fat layer",
+        "skin breakdown only"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ulcer_depth_unknown"
+      },
+      "forbid": [
+        "fat layer",
+        "bone",
+        "muscle",
+        "tendon",
+        "skin breakdown",
+        "depth of"
+      ]
+    }
+  ],
+  "confusions": {
+    "understated_depth": {
+      "description": "Coded a shallower ulcer depth than documented (bone necrosis is HCC 380).",
+      "lean": "under"
+    },
+    "assumed_depth": {
+      "description": "Coded an ulcer depth the provider did not document.",
+      "lean": "neutral"
+    },
+    "wrong_burn_extent": {
+      "description": "Used the wrong T31 extent: the code depends on total body surface and the third-degree percentage.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "ulcer_fat"
+          },
+          "codes": [
+            "L97.412"
+          ],
+          "explain": "Non-pressure chronic ulcer of right heel and midfoot with fat layer exposed: L97.412 (HCC 383).",
+          "refs": [
+            "OCG I.B.14",
+            "ICD-10-CM Tabular: L97, T31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L97.414"
+              ],
+              "confusion": "assumed_depth",
+              "why": "Bone necrosis is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ulcer_bone"
+          },
+          "codes": [
+            "L97.414"
+          ],
+          "explain": "Non-pressure chronic ulcer of right heel and midfoot with necrosis of bone: L97.414 (HCC 380).",
+          "refs": [
+            "ICD-10-CM Tabular: L97, T31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L97.412"
+              ],
+              "confusion": "understated_depth",
+              "why": "Necrosis of bone is documented (HCC 380)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ulcer_depth_unknown"
+          },
+          "codes": [
+            "L97.419"
+          ],
+          "explain": "Non-pressure chronic ulcer of right heel and midfoot, severity not stated: L97.419 (HCC 383).",
+          "refs": [
+            "ICD-10-CM Tabular: L97, T31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "L97.412"
+              ],
+              "confusion": "assumed_depth",
+              "why": "The depth is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "burn_major"
+          },
+          "codes": [
+            "T31.32"
+          ],
+          "explain": "Burns of 30-39% of the body with 20-29% third degree: T31.32 (HCC 385).",
+          "refs": [
+            "OCG I.C.19.d",
+            "ICD-10-CM Tabular: L97, T31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "T31.30"
+              ],
+              "confusion": "wrong_burn_extent",
+              "why": "20-29% third degree is documented: the second character after the extent is 2."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "burn_minor"
+          },
+          "codes": [
+            "T31.10"
+          ],
+          "explain": "Burns of 10-19% of the body with under 10% third degree: T31.10 (no HCC).",
+          "refs": [
+            "OCG I.C.19.d",
+            "ICD-10-CM Tabular: L97, T31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "T31.11"
+              ],
+              "confusion": "wrong_burn_extent",
+              "why": "Third degree is under 10%: T31.10."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

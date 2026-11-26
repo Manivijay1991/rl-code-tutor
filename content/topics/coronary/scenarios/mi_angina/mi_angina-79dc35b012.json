@@ -1,0 +1,88 @@
+{
+  "id": "mi_angina-79dc35b012",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "cad_unstable"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Chest pain.\n\nHPI: The patient is an 86-year-old male presenting for evaluation of worsening chest discomfort. He reports that over the last week, he has experienced new rest pain in his chest. He describes the sensation as a heavy pressure that occurs even while he is sedentary. He denies any associated shortness of breath, dizziness, or syncope. He notes that the discomfort is constant but varies in intensity. He is seeking immediate evaluation due to the change in his symptoms from his baseline.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Aspirin 81mg daily\n\nVitals:\nBP: 138/84\nHR: 72 bpm\nTemp: 98.6 F\nSpO2: 96% on room air\nWeight: 175 lbs\n\nRecent Labs:\neGFR: 65 mL/min\nHbA1c: 6.8%\nLDL: 88 mg/dL\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nCardiovascular: Positive for chest pain at rest. Denies palpitations.\nRespiratory: Denies cough or wheezing.\nGastrointestinal: Denies nausea or abdominal pain.\nMusculoskeletal: Denies joint pain.\nNeurological: Denies weakness or numbness.\n\nSocial History: The patient is retired and lives at home with his wife. He enjoys gardening and walking. He denies tobacco and alcohol use.\n\nFamily History: Father had a history of coronary artery disease. Mother had a history of stroke.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress but appears anxious.\nCardiovascular: Regular rate and rhythm. S1 and S2 are present. No murmurs, rubs, or gallops noted.\nPulmonary: Clear to auscultation bilaterally.\nMusculoskeletal: No edema noted in lower extremities.\n\nAssessment:\nThe patient has coronary artery disease of the native arteries. He is currently experiencing unstable angina characterized by new onset of rest pain this week.\n\nPlan:\nGiven the presentation of unstable angina, an urgent cardiology review has been arranged for today. The patient was instructed to go to the nearest emergency department immediately if he experiences severe chest pain or worsening symptoms before his scheduled appointment. He will continue his current medications.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "I25.110"
+  ],
+  "explanations": [
+    "Coronary artery disease with unstable angina has a combination code: I25.110 (HCC 229). Angina is not coded separately."
+  ],
+  "refs": [
+    "OCG I.C.9.b"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.10",
+        "I20.0"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code I25.110, not two codes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.24,
+        "correct": 0.24,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.119"
+      ],
+      "confusion": "understated_angina",
+      "lean": "under",
+      "why": "Unstable angina is documented (HCC 229).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.24,
+        "gap": -0.24,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "229"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.24,
+    "hccs": [
+      {
+        "hcc": "229",
+        "label": "Unstable Angina and Other Acute Ischemic Heart Disease",
+        "from": [
+          "I25110"
+        ],
+        "weight": 0.24
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:07:34+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

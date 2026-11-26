@@ -1,0 +1,68 @@
+{
+  "id": "paralysis-00d30052e7",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "cauda_equina"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint: Follow-up for chronic cauda equina syndrome.\n\nVitals: BP 134/82, HR 76, SpO2 98% on RA, Temp 98.6 F, BMI 28.4.\n\nRecent Labs: HbA1c: 6.4%, eGFR: 78 mL/min/1.73m2, Serum Creatinine: 1.1 mg/dL.\n\nMedication List:\n- Gabapentin 300mg TID\n- Oxycodone 5mg BID PRN\n- Baclofen 10mg TID\n- Donepezil 5mg daily\n\nSocial History: Retired school teacher, lives with husband, non-smoker, occasional alcohol use.\n\nFamily History: Mother had hypertension; Father had type 2 diabetes.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nNeurological: Positive for saddle numbness and lower extremity weakness. Negative for tremors or seizures.\nGenitourinary: Positive for bladder retention. Negative for dysuria or hematuria.\nMusculoskeletal: Positive for chronic lower back pain. Negative for joint swelling.\nRespiratory: Negative for shortness of breath or cough.\n\nHPI: (Copied Forward) Patient is a 72-year-old female with a known history of chronic cauda equina syndrome. She reports persistent lower back pain and progressive neurological deficits. She experiences significant saddle numbness and chronic bladder retention. Due to the severity of the bladder retention, she requires regular catheterization for drainage. She reports stable mobility but notes occasional flares of neuropathic pain. She denies any recent changes in bowel control or acute changes in sensation.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nNeurological: Symmetrical muscle strength in lower extremities. Sensation diminished in the S1-S4 distribution. Reflexes 1+ bilaterally.\nGenitourinary: Bladder retention confirmed via clinical history; catheterization performed today without complications.\n\nAssessment:\n1. Chronic cauda equina syndrome.\n2. Bladder retention.\n3. Saddle numbness.\n\nPlan:\n1. Continue current gabapentin and baclofen regimen for neuropathic pain management.\n2. Continue scheduled catheterization for bladder retention.\n3. Monitor for any new acute neurological deficits.\n4. Return to clinic in 3 months for routine evaluation.\n\nElectronically signed, A. Rivera, MD, 10/14/2026",
+  "answer": [
+    "G83.4"
+  ],
+  "explanations": [
+    "Cauda equina syndrome: G83.4 (HCC 182)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G95.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Cauda equina syndrome has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.478,
+        "correct": 0.478,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.478,
+    "hccs": [
+      {
+        "hcc": "182",
+        "label": "Spinal Cord Disorders/Injuries",
+        "from": [
+          "G834"
+        ],
+        "weight": 0.478
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:37+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

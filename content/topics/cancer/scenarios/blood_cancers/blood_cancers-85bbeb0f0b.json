@@ -1,0 +1,71 @@
+{
+  "id": "blood_cancers-85bbeb0f0b",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "nhl_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint\nFollow-up for non-Hodgkin lymphoma.\n\nHPI\nPt is an 83y female seen for routine oncology f/u. Pt currently undergoing active chemotherapy for non-Hodgkin lymphoma. Pt reports mild fatigue but denies significant pain or acute distress. Tolerating treatment well at this time. No new concerns voiced by pt.\n\nMedication List\n- Chemotherapy (current regimen)\n- Multivitamin\n- Acetaminophen 500mg BID PRN for discomfort\n\nExam\nGen: Appears stated age, well-groomed.\nVitals: BP 128/78, HR 74 (RRR), Temp 98.6, SpO2 97% on RA.\nCV: RRR, CTAB.\nResp: CTAB, no wheezing/rales.\nAbd: Soft, non-tender, +BS.\nExt: No edema, WNL.\n\nAssessment\n1. Non-Hodgkin lymphoma: Pt continues to follow treatment protocol.\n\nPlan\n- Continue current chemotherapy cycle as directed by oncology team.\n- Monitor for any acute side effects.\n- F/u as scheduled.\n\nElectronically signed\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "C85.90"
+  ],
+  "explanations": [
+    "Non-Hodgkin lymphoma under treatment, type and site not stated: C85.90 (HCC 21)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.72"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "The lymphoma is under active treatment.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.671,
+        "gap": -0.671,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "21"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.671,
+    "hccs": [
+      {
+        "hcc": "21",
+        "label": "Lymphoma and Other Cancers",
+        "from": [
+          "C8590"
+        ],
+        "weight": 0.671
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:39+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

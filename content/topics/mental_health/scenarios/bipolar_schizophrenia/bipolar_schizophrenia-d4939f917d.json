@@ -1,0 +1,89 @@
+{
+  "id": "bipolar_schizophrenia-d4939f917d",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "schizoaffective_bipolar"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for mood stabilization and psychiatric management.\n\nHPI\nThe patient is a 36-year-old woman who presents today for a scheduled follow-up regarding her schizoaffective disorder, bipolar type. She reports that she has been feeling stable over the past month. She denies any significant mood swings, sleep disturbances, or distressing symptoms. She notes that she is adhering well to her current medication regimen and reports no adverse side effects at this time. She continues to function well in her daily activities and reports consistent engagement with her social supports.\n\nMedication List\nQuetiapine 300mg daily\nLithium Carbonate 900mg daily\n\nExam\nThe patient is a 36-year-old female who appears well-groomed and is in no acute distress. Her mood is stable and her affect is congruent. Speech is normal in rate, volume, and tone. Thought process is linear and goal-directed. Insight and judgment are fair.\n\nAssessment\nThe patient has schizoaffective disorder, bipolar type. She is currently stable on her prescribed antipsychotic and mood stabilizer.\n\nPlan\nContinue current medications. Follow up in four weeks for a routine psychiatric evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "F25.0"
+  ],
+  "explanations": [
+    "Schizoaffective disorder, bipolar type: F25.0 (HCC 151)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F20.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "Schizoaffective disorder is a separate category (F25).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "'Bipolar type' describes the schizoaffective disorder; it is not bipolar disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.511,
+        "gap": -0.16,
+        "direction": "under",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": [
+          "151"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.511,
+    "hccs": [
+      {
+        "hcc": "151",
+        "label": "Schizophrenia",
+        "from": [
+          "F250"
+        ],
+        "weight": 0.511
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:24+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

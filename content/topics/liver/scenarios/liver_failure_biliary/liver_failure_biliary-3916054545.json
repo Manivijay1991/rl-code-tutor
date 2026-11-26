@@ -1,0 +1,85 @@
+{
+  "id": "liver_failure_biliary-3916054545",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "psc"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Follow-up for primary sclerosing cholangitis.\n\nHPI: [Copied Forward] Patient is a 43-year-old female with a known history of primary sclerosing cholangitis. She presents for routine hepatology surveillance. She reports feeling well overall with no acute abdominal pain or jaundice. She remains compliant with her current regimen.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 24.2.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nGastrointestinal: Negative for abdominal pain, nausea, vomiting.\nSkin: Negative for pruritus or jaundice.\nOther: Negative.\n\nExam: Patient is alert and oriented x3. Appearance is healthy. Abdomen is soft, non-tender, and non-distended. No hepatosplenomegaly noted. Skin is clear without jaundice or scleral icterus.\n\nMedication List:\n- Ursodeoxycholic acid 300mg TID\n\nAssessment:\n1. Primary sclerosing cholangitis (PSC). Patient is currently stable.\n\nPlan:\n1. Continue current medication.\n2. Order yearly imaging to monitor the progression of PSC.\n3. Return to clinic in 12 months for follow-up.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "K83.01"
+  ],
+  "explanations": [
+    "Primary sclerosing cholangitis: K83.01 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K83.09"
+      ],
+      "confusion": "wrong_cholangitis",
+      "lean": "neutral",
+      "why": "Primary sclerosing cholangitis has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.388,
+        "correct": 0.388,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K74.3"
+      ],
+      "confusion": "wrong_cholangitis",
+      "lean": "neutral",
+      "why": "Primary sclerosing, not primary biliary.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.388,
+        "correct": 0.388,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K8301"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:42+00:00",
+    "style": {
+      "age": 43,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

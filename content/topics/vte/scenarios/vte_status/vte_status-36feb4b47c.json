@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-36feb4b47c",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_pe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for chronic pulmonary embolism.\n\nHPI: 85-year-old female presents for scheduled follow-up of chronic pulmonary embolism. Pt reports feeling stable at this time. Denies any recent shortness of breath, chest pain, or syncope. Reports good adherence to long-term anticoagulation. She notes some mild fatigue but denies any significant changes in functional status. Imaging previously showed a persistent clot.\n\nMedication List:\n- Apixaban 5mg BID\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nRespiratory: No cough or SOB.\nCardiovascular: No palpitations or chest pain.\nMusculoskeletal: No joint pain.\nNeurological: No dizziness or weakness.\n\nSocial History: Retired. Lives with her daughter. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had stroke.\n\nRecent Labs:\nHb: 12.4 g/dL\nHct: 37.2%\nWBC: 7.2 K/uL\nPlt: 185 K/uL\nINR: 0.8 (on DOAC)\neGFR: 62 mL/min/1.73m2\n\nVitals:\nBP: 132/78\nHR: 74 RRR\nRR: 16\nTemp: 98.6 F\nSpO2: 96% on RA\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished.\nRespiratory: CTAB. No wheezing or rales.\nCardiovascular: RRR. S1, S2 noted. No murmurs.\nExtremities: No edema. Pulse 2+ throughout.\nSkin: No rashes or lesions.\n\nAssessment:\n1. Chronic pulmonary embolism with persistent clot on imaging. Pt is currently stable on long-term anticoagulation.\n\nPlan:\n1. Continue current dose of Apixaban for management of chronic pulmonary embolism.\n2. Continue Lisinopril and Atorvastatin as prescribed.\n3. Follow up in 6 months for routine monitoring or as needed for symptoms.\n4. Patient instructed to seek immediate care for any signs of bleeding or sudden respiratory distress.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "I27.82"
+  ],
+  "explanations": [
+    "Chronic pulmonary embolism: I27.82 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I26.99"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The embolism is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.711"
+      ],
+      "confusion": "chronic_coded_history",
+      "lean": "under",
+      "why": "Chronic embolism is a current condition, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I2782"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 4,
+    "created": "2026-11-26T15:09:10+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

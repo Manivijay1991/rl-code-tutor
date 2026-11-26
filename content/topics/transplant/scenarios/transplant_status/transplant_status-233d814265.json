@@ -1,0 +1,79 @@
+{
+  "id": "transplant_status-233d814265",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "heart_lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nRoutine follow-up for status post heart-lung transplant.\n\nHPI\nThe patient is a 38-year-old woman who presents for a routine follow-up clinic visit. She underwent a heart-lung transplant several years ago. She reports feeling well today and denies any new symptoms, shortness of breath, or chest pain. She states that she feels stable on her current immunosuppressive regimen and has not experienced any issues since her surgery. She continues to manage her daily activities without significant limitations and reports good exercise tolerance. She denies any fever, chills, or malaise.\n\nReview of Systems\nThe patient reports no constitutional symptoms, no respiratory distress, and no cardiac complaints. She denies any neurological deficits, musculoskeletal pain, or gastrointestinal upset.\n\nSocial History\nThe patient works full-time as an administrative assistant and lives with her spouse and a dog. She reports a non-smoking status and drinks alcohol socially on weekends.\n\nFamily History\nMother has hypertension. Father has type 2 diabetes. Siblings are healthy.\n\nMedication List\nTacrolimus 2mg twice daily\nMycophenolate mofetil 500mg twice daily\nPrednisone 5mg daily\nLisinopril 10mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 118/76 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\nTacrolimus trough level: 8.5 ng/mL\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 6.4 x 10^9/L\nPlatelet Count: 210 x 10^3/uL\nCreatinine: 1.0 mg/dL\neGFR: 85 mL/min/1.73m2\n\nExam\nGeneral: The patient is alert and oriented x3. She appears well-nourished and in no acute distress.\nCardiovascular: Regular rate and rhythm. S1 and S2 are normal. No murmurs, rubs, or gallops noted.\nRespiratory: Lungs are clear to auscultation bilaterally. No wheezes, rales, or rhonchi.\nIntegumentary: Skin is warm and dry with no signs of rashes or lesions.\n\nAssessment\nThe patient is a 38-year-old woman who remains stable following her heart-lung transplant. She is currently asymptomatic and demonstrates excellent tolerance of her medication regimen. Lab work remains within expected parameters for a post-transplant patient.\n\nPlan\n1. Continue current immunosuppressive medications as prescribed.\n2. Monitor tacrolimus trough levels every 3-6 months.\n3. Routine lab work to be repeated in 3 months.\n4. Patient instructed to contact the clinic immediately if she develops a fever or any new respiratory symptoms.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "Z94.3"
+  ],
+  "explanations": [
+    "Heart and lungs transplant status: one code, Z94.3, which maps to two HCCs (221 and 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.1"
+      ],
+      "confusion": "missed_second_organ",
+      "lean": "under",
+      "why": "Both heart and lungs were transplanted: Z94.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.053,
+        "correct": 3.584,
+        "gap": -2.531,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "276"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 3.584,
+    "hccs": [
+      {
+        "hcc": "221",
+        "label": "Heart Transplant Status/Complications",
+        "from": [
+          "Z943"
+        ],
+        "weight": 1.053
+      },
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "Z943"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:54+00:00",
+    "style": {
+      "age": 38,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

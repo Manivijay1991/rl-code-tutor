@@ -1,0 +1,85 @@
+{
+  "id": "paralysis-cbd71e0d3c",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "para_complete"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for management of chronic spinal cord injury.\n\nHPI\nThe patient is a 77-year-old female who presents today for a routine follow-up of her long-standing spinal cord injury. She has had a complete status of paraplegia for several years. She currently uses a manual wheelchair for all mobility and remains independent with all functional transfers. She reports that she is doing well and denies any new concerns regarding her mobility, skin integrity, or secondary complications. She notes that her primary goals remain maintaining her current level of independence and managing minor joint discomfort.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, or chills. She denies any new neurological deficits, changes in bowel or bladder function, or significant changes in mood. She denies any recent falls or new areas of skin breakdown.\n\nSocial History\nThe patient lives at home with her daughter. She is retired and enjoys spending time gardening and reading. She denies tobacco or alcohol use.\n\nFamily History\nMother: Hypertension, Type 2 Diabetes.\nFather: Myocardial Infarction.\nSiblings: One brother with hypertension.\n\nVitals\nTemperature: 98.4 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nHeight: 5'4\"\nWeight: 155 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^9/L\nGlucose: 105 mg/dL\neGFR: 72 mL/min/1.73m2\n\nMedication List\nLisinopril 10 mg daily\nAtorvastatin 20 mg daily\nCalcium Carbonate 500 mg daily\n\nExam\nGeneral: The patient is alert and oriented x3. She is sitting upright in her manual wheelchair. She appears in no acute distress.\nMusculoskeletal: Significant for complete paraplegia. No new areas of skin breakdown noted. Muscle bulk is diminished in the lower extremities.\nNeurological: Sensation is absent in the lower extremities. Motor function is absent in the lower extremities. Reflexes are absent in the lower extremities.\n\nAssessment\n1. Chronic spinal cord injury resulting in complete paraplegia.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan\n1. Continue current medications for hypertension and hyperlipidemia.\n2. Continue current activity level and manual wheelchair use.\n3. Patient will return to the clinic in six months for a routine follow-up.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "G82.21"
+  ],
+  "explanations": [
+    "Paraplegia, complete: G82.21 (HCC 181)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G82.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Complete is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G82.22"
+      ],
+      "confusion": "wrong_completeness",
+      "lean": "neutral",
+      "why": "It is documented as complete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.942,
+    "hccs": [
+      {
+        "hcc": "181",
+        "label": "Paraplegia",
+        "from": [
+          "G8221"
+        ],
+        "weight": 0.942
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:07+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

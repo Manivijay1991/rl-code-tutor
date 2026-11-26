@@ -1,0 +1,79 @@
+{
+  "id": "heart_failure_advanced-427b12d04f",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "lvad"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Follow-up for heart failure and LVAD management.\n\nVitals: BP 128/74, HR 68, SpO2 96% on room air, Temp 98.6 F, Weight 165 lbs.\n\nRecent Labs: Sodium 138 mEq/L, Potassium 4.2 mEq/L, Creatinine 1.1 mg/dL, BUN 18 mg/dL, BNP 240 pg/mL, Hemoglobin 12.4 g/dL.\n\nHPI: [Copied Forward from 03/15/2026] Patient is a 71-year-old female with a history of chronic systolic heart failure (HFrEF) status post left ventricular assist device (LVAD) implantation. She reports stable symptoms and denies any recent shortness of breath, increased swelling, or weight gain. She maintains a consistent activity level and reports adherence to her medication regimen.\n\nUpdate: Today, the patient reports she has been feeling well over the last month. She denies any new concerns regarding her LVAD functionality or any clicking or unusual sensations. She reports she has not experienced any significant fatigue.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight change.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or abdominal pain.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for dizziness or syncope.\n\nSocial History: Retired; lives with her spouse. Non-smoker. Occasional social alcohol use.\n\nFamily History: Mother had a history of heart failure; father had a history of coronary artery disease.\n\nMedication List:\n- Lisinopril 10mg daily\n- Carvedilol 25mg twice daily\n- Spironolactone 25mg daily\n- Furosemide 40mg daily as needed\n- Aspirin 81mg daily\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nCardiovascular: S1, S2 heard. Regular rhythm. No murmurs. LVAD site is clean, dry, and intact with no signs of infection or drainage.\nRespiratory: Lungs clear to auscultation bilaterally. No wheezing or rales.\nExtremities: No peripheral edema noted. Capillary refill <2 seconds.\n\nAssessment:\n1. Chronic systolic heart failure (HFrEF)\n2. Status post left ventricular assist device (LVAD)\n\nPlan:\n1. Continue current medication regimen for heart failure.\n2. Monitor LVAD site for any signs of irritation or infection.\n3. Patient instructed to call the clinic if she experiences sudden weight gain or increased shortness of breath.\n4. Follow up in 3 months for routine check.\n\nElectronically signed, S. Patel, PA-C, 05/20/2026",
+  "answer": [
+    "I50.22",
+    "Z95.811"
+  ],
+  "explanations": [
+    "Chronic systolic heart failure, I50.22, plus presence of a heart assist device, Z95.811 (HCC 223, which outranks HCC 226)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "missed_device_status",
+      "lean": "under",
+      "why": "The LVAD is documented: add Z95.811 (HCC 223).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "223"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "223",
+        "label": "Heart Failure with Heart Assist Device/Artificial Heart",
+        "from": [
+          "Z95811"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "223"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:48+00:00",
+    "style": {
+      "age": 71,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "S. Patel"
+    }
+  }
+}

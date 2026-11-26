@@ -1,0 +1,68 @@
+{
+  "id": "blood_disorders-19cf41bc8c",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "aiha_warm"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for warm autoimmune hemolytic anemia.\n\nHPI\nPt is a 63-year-old female presenting for a scheduled follow-up of warm autoimmune hemolytic anemia. Pt reports feeling stable over the past month. She denies any acute fatigue, shortness of breath, or yellowing of the eyes/skin. Pt reports adherence to her current prednisone taper. No new symptoms since the last visit.\n\nMedication List\nPrednisone 10mg daily (tapering)\nMultivitamin daily\n\nReview of Systems\nConstitutional: Denies fatigue, weight change.\nSkin: Denies pruritus, rashes.\nRespiratory: Denies SOB, cough.\nCV: Denies chest pain, palpitations.\nAll other systems reviewed and negative.\n\nSocial History\nPt lives in a single-family home with her spouse. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: Hypertension, stroke.\nFather: Type 2 Diabetes.\nSiblings: One brother, healthy.\n\nRecent Labs\nHb: 10.2 g/dL\nHct: 31%\nReticulocyte count: 120,000/uL\nBilirubin: 1.1 mg/dL\nLDH: 310 U/L\nhaptoglobin: 45 mg/dL\neGFR: 78 mL/min\n\nVitals\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nRR: 16\nSpO2: 98% on RA\nWt: 155 lbs\n\nExam\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nSkin: No jaundice noted. No pallor.\nNeck: No lymphadenopathy.\nHeart: RRR, regular S1/S2, no murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no organomegaly.\nExtremities: No edema.\n\nAssessment\n1. Warm autoimmune hemolytic anemia. Pt is currently stable and asymptomatic. Hematologic parameters show mild anemia, but currently controlled on the prednisone taper.\n\nPlan\n1. Continue prednisone 10mg daily.\n2. Continue current tapering schedule as discussed.\n3. Follow up in 4 weeks for repeat CBC and reticulocyte count.\n4. Instructed to call office immediately if she experiences severe fatigue or increased yellowing of skin/eyes.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "D59.11"
+  ],
+  "explanations": [
+    "Warm autoimmune hemolytic anemia: D59.11 (HCC 109)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D59.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (warm autoimmune) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.144,
+        "correct": 1.144,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.144,
+    "hccs": [
+      {
+        "hcc": "109",
+        "label": "Acquired Hemolytic/Aplastic/and Sideroblastic Anemias",
+        "from": [
+          "D5911"
+        ],
+        "weight": 1.144
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:53+00:00",
+    "style": {
+      "age": 63,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

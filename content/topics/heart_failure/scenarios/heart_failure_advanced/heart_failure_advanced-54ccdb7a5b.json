@@ -1,0 +1,79 @@
+{
+  "id": "heart_failure_advanced-54ccdb7a5b",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "lvad"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Routine follow-up for LVAD and heart failure.\n\nHPI: Patient is a 58-year-old female with a history of chronic systolic heart failure (HFrEF) who has been managed with a left ventricular assist device (LVAD). Patient reports she has been feeling stable and denies any shortness of breath at rest or increased fatigue. She reports good compliance with her prescribed regimen and denies any issues with the hardware. \n\nUpdate: Patient states she has had no new symptoms since the last visit. She reports her activity level remains consistent and she is managing her symptoms well at home.\n\nMedication List: \n- Lisinopril 10mg daily\n- Carvedilol 12.5mg twice daily\n- Spironolactone 25mg daily\n- Furosemide 40mg as needed\n\nVitals: BP 118/74, HR 72, SpO2 98% on room air, Weight: 165 lbs.\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight changes.\n- Cardiovascular: Negative for palpitations or chest pain.\n- Respiratory: Negative for cough or wheezing.\n- Gastrointestinal: Negative for nausea or abdominal pain.\n- Neurological: Negative for dizziness or syncope.\n\nExam: Patient is alert and oriented x3. Skin is warm and dry. Heart sounds are regular with a soft S3. Lungs are clear to auscultation bilaterally. LVAD site is intact with no signs of infection or drainage. Extremities are without edema.\n\nAssessment: \n1. Chronic systolic heart failure (HFrEF) - Stable.\n2. Left ventricular assist device (LVAD) - Stable.\n\nPlan: \n1. Continue current medications as prescribed.\n2. Monitor LVAD function and site integrity.\n3. Follow up in 3 months.\n\nElectronically signed, K. Nguyen, MD, 10/14/2026",
+  "answer": [
+    "I50.22",
+    "Z95.811"
+  ],
+  "explanations": [
+    "Chronic systolic heart failure, I50.22, plus presence of a heart assist device, Z95.811 (HCC 223, which outranks HCC 226)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "missed_device_status",
+      "lean": "under",
+      "why": "The LVAD is documented: add Z95.811 (HCC 223).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "223"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "223",
+        "label": "Heart Failure with Heart Assist Device/Artificial Heart",
+        "from": [
+          "Z95811"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "223"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:55+00:00",
+    "style": {
+      "age": 58,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "K. Nguyen"
+    }
+  }
+}

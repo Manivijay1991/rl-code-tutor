@@ -1,0 +1,71 @@
+{
+  "id": "blood_cancers-2f1b747b4e",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "nhl_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Follow-up for non-Hodgkin lymphoma.\n\nHPI: [Copied Forward] Patient is a 53-year-old female currently undergoing active chemotherapy for non-Hodgkin lymphoma. She reports overall fatigue but denies acute respiratory distress or significant new localized pain. She is monitoring for treatment-related side effects and reports adherence to the current regimen.\n\nMedication List:\n- Cyclophosphamide\n- Doxorubicin\n- Ondansetron (as needed)\n\nVitals: BP 128/82, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Positive for fatigue. Negative for chills.\n- HEENT: Negative for vision changes.\n- Respiratory: Negative for shortness of breath.\n- Cardiovascular: Negative for palpitations.\n- Gastrointestinal: Negative for nausea.\n- Musculoskeletal: Negative for joint pain.\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished.\nSkin: No new lesions noted.\nLymphatics: Palpable and firm.\n\nAssessment:\n1. Non-Hodgkin lymphoma: Patient is currently undergoing active chemotherapy.\n\nPlan:\n1. Continue current chemotherapy protocol for non-Hodgkin lymphoma.\n2. Monitor CBC and metabolic panels weekly.\n3. Follow up in two weeks for further evaluation.\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "C85.90"
+  ],
+  "explanations": [
+    "Non-Hodgkin lymphoma under treatment, type and site not stated: C85.90 (HCC 21)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z85.72"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "The lymphoma is under active treatment.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.671,
+        "gap": -0.671,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "21"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.671,
+    "hccs": [
+      {
+        "hcc": "21",
+        "label": "Lymphoma and Other Cancers",
+        "from": [
+          "C8590"
+        ],
+        "weight": 0.671
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:16+00:00",
+    "style": {
+      "age": 53,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

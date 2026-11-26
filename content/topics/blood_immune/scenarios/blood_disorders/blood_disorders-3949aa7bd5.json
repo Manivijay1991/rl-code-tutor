@@ -1,0 +1,70 @@
+{
+  "id": "blood_disorders-3949aa7bd5",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "pancytopenia_other"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint: Fatigue and shortness of breath.\n\nHPI: [Copied Forward] Patient is a 49-year-old female presenting with progressive fatigue and mild shortness of breath over the last three months. Initial laboratory workup revealed a significant decrease in red blood cell, white blood cell, and platelet counts.\n\n[Current Update] Patient returns today for follow-up regarding her hematologic status. She reports continued low energy levels but denies any acute distress. She notes that she has been following the recommended rest periods. She denies any new symptoms since the last evaluation.\n\nMedication List:\n- Multivitamin daily\n- Iron supplement 325mg daily\n\nVitals: BP 124/82, HR 76, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\n- Constitutional: Positive for fatigue. Negative for weight loss.\n- HEENT: Negative for vision changes.\n- Respiratory: Positive for mild shortness of breath.\n- Cardiovascular: Negative for palpitations.\n- Musculoskeletal: Negative for joint pain.\n- Integumentary: Negative for rashes.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No pallor or jaundice noted.\nHeart: Regular rate and rhythm, no murmurs.\nLungs: Clear to auscultation bilaterally.\n\nAssessment:\nPancytopenia of unclear cause.\n\nPlan:\n1. Schedule bone marrow biopsy to further evaluate the etiology of the pancytopenia.\n2. Monitor CBC and hemoglobin levels.\n3. Follow up in 2 weeks to coordinate biopsy scheduling.\n\nElectronically signed,\nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "D61.818"
+  ],
+  "explanations": [
+    "Pancytopenia not caused by chemotherapy: other pancytopenia, D61.818 (HCC 109)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D61.810"
+      ],
+      "confusion": "assumed_drug_cause",
+      "lean": "under",
+      "why": "No chemotherapy cause is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.144,
+        "gap": -1.144,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "109"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.144,
+    "hccs": [
+      {
+        "hcc": "109",
+        "label": "Acquired Hemolytic/Aplastic/and Sideroblastic Anemias",
+        "from": [
+          "D61818"
+        ],
+        "weight": 1.144
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:50+00:00",
+    "style": {
+      "age": 49,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

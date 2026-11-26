@@ -1,0 +1,91 @@
+{
+  "id": "diabetes_acute-9ee46549c1",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t1_dka"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Diabetic ketoacidosis\n\nVitals:\nTemperature: 98.6 F\nHeart Rate: 88 bpm\nBlood Pressure: 128/78 mmHg\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\n\nRecent Labs:\nGlucose: 450 mg/dL (at admission)\nBUN: 18 mg/dL\nCreatinine: 0.9 mg/dL\nPotassium: 4.2 mEq/L\nSodium: 135 mEq/L\nBicarbonate: 12 mEq/L\nAnion Gap: 18\nKetones: Positive (blood and urine)\n\nReview of Systems:\nThe patient reports polyuria and polydipsia over the last 48 hours. She reports generalized fatigue and mild abdominal discomfort. She denies chest pain, shortness of breath, or neurological deficits.\n\nSocial History:\nThe patient resides in a private residence with her daughter. She is a retired teacher and enjoys gardening. She denies tobacco or recreational substance use.\n\nFamily History:\nMother had type 1 diabetes and passed away at age 82. Father had hypertension and a history of myocardial infarction.\n\nHospital Course:\nThe patient is a 77-year-old woman with a history of type 1 diabetes who presented to the emergency department with symptoms of significant dehydration and malaise. Laboratory findings confirmed a state of ketoacidosis. The patient reported missing several doses of her prescribed insulin prior to admission. She was admitted to the inpatient unit for stabilization. Management included aggressive fluid resuscitation with isotonic saline and the initiation of a continuous insulin drip. During the hospital stay, her electrolytes were monitored and maintained within normal limits. The bicarbonate levels improved steadily, and her anion gap narrowed. She tolerated the treatment well and was able to transition from the insulin drip to subcutaneous injections by the third day of admission. She was educated on the importance of consistent insulin administration and recognizing early symptoms of metabolic derangement.\n\nDischarge Diagnoses:\n1. Diabetic ketoacidosis\n2. Type 1 diabetes\n\nDischarge Medications:\n1. Insulin Lispro every 3 hours as needed for sliding scale\n2. Insulin Glargine daily at bedtime\n3. Metformin 500mg twice daily\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a routine check. She was instructed to contact the clinic immediately if she experiences persistent nausea or severe dehydration.\n\nElectronically signed, E. Castillo, MD, 05/15/2026",
+  "answer": [
+    "E10.10"
+  ],
+  "explanations": [
+    "Type 1 diabetes with ketoacidosis without coma: E10.10 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.10"
+      ],
+      "confusion": "wrong_dm_type",
+      "lean": "neutral",
+      "why": "Type 1 diabetes is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.65"
+      ],
+      "confusion": "dka_coded_hyperglycemia",
+      "lean": "under",
+      "why": "Ketoacidosis is documented (HCC 36).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E1010"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:05+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

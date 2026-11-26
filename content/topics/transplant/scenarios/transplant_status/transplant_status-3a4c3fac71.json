@@ -1,0 +1,73 @@
+{
+  "id": "transplant_status-3a4c3fac71",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "kidney_pancreas"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nRoutine follow-up for transplant status.\n\nHPI\nThe patient is a 75-year-old woman who presents today for a scheduled follow-up regarding her status following a combined kidney and pancreas transplant performed several years ago for type 1 diabetes. She reports feeling excellent and denies any new symptoms or concerns. She notes that she has not required any insulin since the procedure. She denies any pain or functional limitations related to her organs.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is a well-appearing, alert, and oriented female in no acute distress. Her blood pressure is 128/78 mmHg and her heart rate is 72 bpm. Physical exam is unremarkable. The abdominal exam reveals no tenderness or masses. No signs of transplant site complications.\n\nAssessment\n1. Status post combined kidney and pancreas transplant. The patient is doing well with stable organ function and no evidence of rejection.\n\nPlan\n1. Continue current observation.\n2. Follow up in six months for routine monitoring.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "Z94.0",
+    "Z94.83"
+  ],
+  "explanations": [
+    "A combined kidney-pancreas transplant: kidney transplant status Z94.0 (no HCC in V28) plus pancreas transplant status Z94.83 (HCC 35)."
+  ],
+  "refs": [
+    "OCG I.C.14.a.2",
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.0"
+      ],
+      "confusion": "missed_second_organ",
+      "lean": "under",
+      "why": "The pancreas transplant is documented too (HCC 35).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.949,
+        "gap": -0.949,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "35"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.949,
+    "hccs": [
+      {
+        "hcc": "35",
+        "label": "Pancreas Transplant Status",
+        "from": [
+          "Z9483"
+        ],
+        "weight": 0.949
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:02+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

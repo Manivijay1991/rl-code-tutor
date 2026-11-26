@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-7d6fc2ec81",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "liver_rejection"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for liver transplant.\n\nHPI\nPt is a 75 y.o. female presenting for follow-up status post liver transplant. Pt reports mild abdominal discomfort and low-grade fever over the last 48 hours. Denies significant jaundice or severe pain. Labs and imaging were reviewed, showing elevated liver enzymes. Recent biopsy performed to evaluate suspected rejection. Biopsy results confirmed acute rejection.\n\nMedication List\n1. Prednisone 60mg daily\n2. Tacrolimus 2mg BID\n3. Mycophenolate mofetil 500mg BID\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nVitals: BP 128/82, HR 78, RR 16, Temp 99.1 F, SpO2 98% RA.\nAbdomen: Soft, non-tender, no guarding.\nLungs: CTAB.\nHeart: RRR.\n\nAssessment\n1. Acute rejection of the transplanted liver.\n\nPlan\n1. Increase steroid dose for acute rejection management.\n2. Continue current immunosuppressive regimen.\n3. Monitor LFTs and renal function.\n4. F/u in 1 week for clinical re-evaluation.\n\nElectronically signed, R. Mensah, DO, 05/12/2026",
+  "answer": [
+    "T86.41"
+  ],
+  "explanations": [
+    "Rejection of a transplanted liver: liver transplant rejection, T86.41 (HCC 62); the complication code replaces the status code."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.4"
+      ],
+      "confusion": "status_for_complication",
+      "lean": "neutral",
+      "why": "A complication (rejection) is documented: use T86.41.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.376,
+        "correct": 0.376,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.376,
+    "hccs": [
+      {
+        "hcc": "62",
+        "label": "Liver Transplant Status/Complications",
+        "from": [
+          "T8641"
+        ],
+        "weight": 0.376
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:23+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

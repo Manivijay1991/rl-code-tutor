@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-ccbc22b6b2",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "lung_rejection"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for lung transplant status.\n\nHPI\nThe patient is a 75-year-old male who presents today for a follow-up evaluation of his lung transplant. He reports a gradual increase in shortness of breath over the last three weeks, noting that he is becoming more fatigued during activities of daily living. He denies any acute fever or chills. He reports a persistent non-productive cough. He has been compliant with his current regimen of immunosuppressive medications but notes that his exercise tolerance has significantly declined since his last visit. He reports stable weight and no new symptoms of chest pain.\n\nReview of Systems\nNegative for fever, chills, night sweats, or productive cough. Negative for joint pain or rashes. Negative for changes in appetite or bowel habits. Positive for increased dyspnea on exertion and persistent dry cough.\n\nSocial History\nThe patient resides in a private home with his spouse. He retired three years ago and enjoys gardening and walking. He denies tobacco and alcohol use.\n\nFamily History\nFather had hypertension and stroke. Mother had diabetes mellitus. Siblings are healthy.\n\nVitals and Recent Labs\nBP: 132/84 mmHg, HR: 76 bpm, RR: 18 breaths/min, SpO2: 93% on room air, Temp: 98.6 F, Weight: 185 lbs.\nRecent Labs: WBC: 6.4, Hemoglobin: 13.8, Platelets: 155, Creatinine: 1.1, eGFR: 72.\n\nMedication List\nMycophenolate mofetil 1000mg BID\nTacrolimus 1mg TID\nPrednisone 40mg daily\n\nExam\nGeneral: The patient appears in no acute distress but appears mildly fatigued.\nRespiratory: Decreased breath sounds in the bilateral lower lobes. Auscultation reveals mild crackles.\nCardiovascular: Regular rate and rhythm. S1 and S2 are distinct. No murmurs heard.\nIntegumentary: No rashes or signs of skin breakdown.\n\nAssessment\nThe patient is presenting with worsening respiratory symptoms following his lung transplant. Based on the clinical presentation and recent imaging, the patient is exhibiting signs of chronic lung allograft dysfunction. There is evidence of rejection.\n\nPlan\n1. Adjust immunosuppressive medications to address the rejection.\n2. Increase Mycophenolate mofetil dosage.\n3. Monitor tacrolimus trough levels weekly.\n4. Follow up in two weeks for repeat imaging and laboratory work.\n\nElectronically signed, H. Tanaka, MD, 05/14/2026",
+  "answer": [
+    "T86.810"
+  ],
+  "explanations": [
+    "Rejection of transplanted lungs: lung transplant rejection, T86.810 (HCC 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.2"
+      ],
+      "confusion": "status_for_complication",
+      "lean": "neutral",
+      "why": "A complication (rejection) is documented: use T86.810.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.531,
+        "correct": 2.531,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.531,
+    "hccs": [
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "T86810"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:32+00:00",
+    "style": {
+      "age": 75,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "H. Tanaka"
+    }
+  }
+}

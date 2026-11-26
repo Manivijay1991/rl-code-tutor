@@ -1,0 +1,70 @@
+{
+  "id": "nerve_muscle-32b65eb5d3",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "cidp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint: Follow-up for CIDP.\n\nHPI: Pt is a 35-year-old female presenting for scheduled neurology follow-up. She has a known diagnosis of chronic inflammatory demyelinating polyneuropathy (CIDP). Pt reports stable symptoms over the last month. She continues to experience bilateral lower extremity weakness and paresthesia, which is consistent with her baseline. She denies any acute flares, new motor deficits, or significant changes in sensory perception. She reports that her current regimen of monthly immunoglobulin infusions is effective in maintaining her functional status. She is able to perform activities of daily living but requires some assistance with heavy lifting.\n\nMedication List:\n- IVIg 10% (monthly infusion)\n- Gabapentin 300mg TID\n- Prednisone 10mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight changes.\nNeurological: Positive for chronic numbness and tingling in feet. Negative for acute weakness or tremors.\nMSK: Mild bilateral foot drop noted.\nOther: Negative.\n\nSocial History: Pt works as a remote administrative assistant. Non-smoker. Denies illicit drug use. Lives with husband and two children.\n\nFamily History: Mother has hypertension. Father has hyperlipidemia. No known family history of neurological disorders.\n\nVitals:\nBP: 118/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 122%\n\nRecent Labs:\nHb: 13.2 g/dL\nWBC: 7.4 x10^3/uL\nPlatelets: 210 x10^3/uL\neGFR: 88 mL/min/1.73m2\n\nExam:\nGen: Alert, cooperative, in no acute distress.\nNeuro: CTAB. Cranial nerves intact. Strength 4/5 in bilateral lower extremities; 5/5 in upper extremities. Sensation diminished to light touch in bilateral feet. Reflexes 1+ at ankles, 2+ at knees. Gait steady with wide base.\n\nAssessment:\n1. Chronic inflammatory demyelinating polyneuropathy (CIDP). Stable on current monthly immunoglobulin therapy.\n\nPlan:\n1. Continue monthly IVIg infusions.\n2. Continue Gabapentin for neuropathic pain.\n3. Pt to f/u in 3 months for routine neurology check.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "G61.81"
+  ],
+  "explanations": [
+    "Chronic inflammatory demyelinating polyneuritis: G61.81 (HCC 193)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G62.9"
+      ],
+      "confusion": "cidp_coded_unspecified",
+      "lean": "under",
+      "why": "CIDP has its own code (HCC 193).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.692,
+        "gap": -1.692,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "193"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.692,
+    "hccs": [
+      {
+        "hcc": "193",
+        "label": "Chronic Inflammatory Demyelinating Polyneuritis and Multifocal Motor Neuropathy",
+        "from": [
+          "G6181"
+        ],
+        "weight": 1.692
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:14+00:00",
+    "style": {
+      "age": 35,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "spine_amputation-88f837b130",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "amputation_acute"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/20/2026\nReason for Admission: Traumatic amputation of right lower leg.\n\nHospital Course: \nPt is an 83 y/o F admitted following a farm machinery accident resulting in a complete traumatic amputation of the right lower leg between the knee and ankle. Pt arrived in status post-emergency stabilization. Surgical team performed revision of the stump and soft tissue debridement. Post-op course was stable. Pt maintained RRR, CTAB, and WNL vitals. Pain managed with oral analgesics and PRN meds. Wound site shows good healing. Pt tolerated diet and mobilized with assistance.\n\nDischarge Diagnoses:\n- Traumatic amputation of the right lower leg between the knee and ankle\n\nDischarge Medications:\n- Acetaminophen 650mg BID PRN for pain\n- Gabapentin 300mg HS\n\nFollow-up:\nF/u with vascular surgery in 1 week for wound check. F/u with physical therapy for mobility training.\n\nElectronically signed, P. O'Brien, MD, 05/20/2026",
+  "answer": [
+    "S88.111A"
+  ],
+  "explanations": [
+    "Complete traumatic amputation of the right lower leg between knee and ankle, initial encounter: S88.111A (HCC 405)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z89.511"
+      ],
+      "confusion": "acute_status_confused",
+      "lean": "neutral",
+      "why": "This is the new injury, not status after an old amputation.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "409"
+        ],
+        "missing_hccs": [
+          "405"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "405",
+        "label": "Traumatic Amputations and Complications",
+        "from": [
+          "S88111A"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:30+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

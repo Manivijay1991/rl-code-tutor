@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-b20abf8b85",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "acromegaly"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for acromegaly.\n\nHPI: [Copied Forward] Patient is a 57-year-old female with a history of acromegaly secondary to a pituitary adenoma. She was started on octreotide to manage growth hormone levels. Patient reports stable symptoms with no new headaches or visual changes. She continues to monitor her labs regularly.\n[Update] Today, the patient reports feeling well on her current dose of octreotide. She denies any new symptoms of acromegaly or significant side effects from her medication.\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F, BMI 27.4.\n\nReview of Systems:\nConstitutional: Negative\nNeurological: Negative\nEndocrine: Positive (acromegaly)\nMusculoskeletal: Negative\nSkin: Negative\n\nMedication List:\n- Octreotide 30mg subcutaneous daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nNeck: No palpable masses or lymphadenopathy.\nEndocrine: Notable for mild facial coarsening consistent with acromegaly.\nNeurological: Cranial nerves II-XII intact. No focal deficits.\n\nAssessment:\n1. Acromegaly from pituitary adenoma. Patient is currently stable on octreotide.\n\nPlan:\n- Continue current dose of octreotide.\n- Order repeat IGF-1 and growth hormone levels in 3 months.\n- Follow up in 3 months.\n\nElectronically signed,\nS. Patel, NP\n05/14/2026",
+  "answer": [
+    "E22.0"
+  ],
+  "explanations": [
+    "Acromegaly: E22.0 (HCC 51)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E23.7"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Acromegaly has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.51,
+        "gap": -0.51,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "51"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.51,
+    "hccs": [
+      {
+        "hcc": "51",
+        "label": "Addisons and Cushings Diseases/Acromegaly/and Other Specified Endocrine Disorders",
+        "from": [
+          "E220"
+        ],
+        "weight": 0.51
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:07+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

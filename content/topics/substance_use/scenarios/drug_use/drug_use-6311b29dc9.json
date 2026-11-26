@@ -1,0 +1,73 @@
+{
+  "id": "drug_use-6311b29dc9",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for substance use management.\n\nHPI\nThe patient is a 77-year-old female who presents today for a scheduled evaluation regarding her history of opioid use disorder. She reports that she has been struggling to maintain stability and feels she needs a more structured approach to her treatment. She reports that her symptoms are moderate and she is seeking a more effective pharmacological intervention to assist with her management. She denies any recent emergency room visits or hospitalizations related to her condition. She is motivated to remain compliant with a long-term treatment plan.\n\nMedication List\nMultivitamin daily\nLisinopril 10mg daily\n\nReview of Systems\nThe patient denies any chest pain, shortness of breath, or palpitations. She denies recent fevers, chills, or night sweats. She denies any new-onset neurological deficits or changes in vision. She reports no recent falls or changes in mobility. She denies any changes in appetite or weight.\n\nSocial History\nThe patient lives at home with her daughter. She enjoys gardening and attending local community events. She does not currently work.\n\nFamily History\nMother had hypertension and type 2 diabetes. Father had a history of heart disease.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 158 lbs\n\nRecent Labs\neGFR: 74 mL/min\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\n\nExam\nThe patient is a well-groomed, well-nourished 77-year-old female who appears in no acute distress. She is alert and oriented to person, place, and time. Her speech is clear and coherent. Her mood is stable and her affect is congruent. Physical examination reveals a regular heart rate and rhythm. Lungs are clear to auscultation bilaterally. No edema noted in lower extremities.\n\nAssessment\nThe patient has a diagnosis of opioid use disorder, moderate. She is currently seeking stabilization and is a good candidate for medication-assisted treatment.\n\nPlan\nI have initiated buprenorphine for the management of her opioid use disorder. We will monitor her response to the medication, including efficacy and any side effects. The patient was instructed to follow up in two weeks for a check-in on the new regimen.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "F11.20"
+  ],
+  "explanations": [
+    "A moderate or severe use disorder is coded as dependence: F11.20 (HCC 137)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.10"
+      ],
+      "confusion": "moderate_coded_abuse",
+      "lean": "under",
+      "why": "Moderate = dependence (F11.2-).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.423,
+        "correct": 0.424,
+        "gap": -0.001,
+        "direction": "under",
+        "extra_hccs": [
+          "138"
+        ],
+        "missing_hccs": [
+          "137"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "137",
+        "label": "Drug Use Disorder/Moderate/Severe/Drug Use with Non-Psychotic Complications",
+        "from": [
+          "F1120"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:03+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

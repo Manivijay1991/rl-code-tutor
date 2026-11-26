@@ -1,0 +1,85 @@
+{
+  "id": "paralysis-122d362f67",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "quad_c5c7_incomplete"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for management of chronic spinal cord injury.\n\nHPI\nPt is a 75-year-old female presenting for routine f/u. Hx of spinal cord injury many years ago resulting in incomplete quadriplegia at the C5-C7 level. Pt utilizes a power wheelchair for all mobility. She reports stable baseline status today, denying any new onset of spasms or significant changes in skin integrity. No complaints of respiratory distress or autonomic dysfunction.\n\nMedication List\n1. Baclofen 10mg TID\n2. Gabapentin 300mg BID\n3. Oxycodone 5mg PRN\n\nExam\nPt seated in power wheelchair. Alert, oriented x3. Speech clear. Respiratory effort even, no distress. Skin intact. Muscle strength limited by baseline injury. Vital signs stable.\n\nAssessment\n1. Incomplete quadriplegia (C5-C7 level). Stable.\n\nPlan\nContinue current medication regimen. Monitor for any changes in mobility or spasms. Pt to f/u in 6 months for routine evaluation.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "G82.54"
+  ],
+  "explanations": [
+    "Quadriplegia, C5-C7, incomplete: G82.54 (HCC 180)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G82.50"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The level and completeness are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.125,
+        "correct": 1.125,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G82.53"
+      ],
+      "confusion": "wrong_completeness",
+      "lean": "neutral",
+      "why": "It is documented as incomplete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.125,
+        "correct": 1.125,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.125,
+    "hccs": [
+      {
+        "hcc": "180",
+        "label": "Quadriplegia",
+        "from": [
+          "G8254"
+        ],
+        "weight": 1.125
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:22+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

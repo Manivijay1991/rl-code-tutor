@@ -1,0 +1,62 @@
+{
+  "id": "stroke_inpatient-f7fde4c409",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "tia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/14/2026\nReason for Admission: Transient ischemic attack\n\nVitals: BP 138/84, HR 76, SpO2 98% on RA, Temp 98.6F\n\nReview of Systems:\nNeurological: Positive for temporary numbness/weakness.\nCardiovascular: Negative for chest pain.\nRespiratory: Negative for shortness of breath.\nOther: Negative.\n\nHPI: Patient is an 80-year-old woman who presented to the emergency department following a sudden episode of focal neurological deficits. Symptoms were noted to be fleeting, with a transient ischemic attack resolving completely within one hour of onset. She denied any loss of consciousness or severe headache.\n\nHospital Course: The patient was admitted for observation and workup of a suspected transient ischemic attack. A non-contrast MRI of the brain was performed, which showed no evidence of a completed event. Neurological examinations remained stable throughout the stay. She was started on aspirin and advised on lifestyle modifications.\n\nDischarge Diagnoses:\n- Transient ischemic attack\n\nDischarge Medications:\n- Aspirin 81mg daily\n\nFollow-up: Follow up with neurology in 2 weeks.\n\nElectronically signed, L. Moreau, MD, 05/14/2026",
+  "answer": [
+    "G45.9"
+  ],
+  "explanations": [
+    "Transient ischemic attack: G45.9 (no HCC). There is no infarction, so it is not a stroke."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "tia_coded_stroke",
+      "lean": "over",
+      "why": "Symptoms resolved and MRI shows no infarction: TIA, not stroke.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:28:32+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

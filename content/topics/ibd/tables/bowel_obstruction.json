@@ -1,0 +1,252 @@
+{
+  "id": "bowel_obstruction",
+  "title": "Bowel obstruction and ileus in the hospital",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the bowel obstruction or ileus (only that code).",
+  "note_age": {
+    "min": 45
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "adhesions_partial",
+        "adhesions_complete",
+        "obstruction_unknown",
+        "ileus"
+      ],
+      "labels": {
+        "adhesions_partial": "Partial obstruction from adhesions",
+        "adhesions_complete": "Complete obstruction from adhesions",
+        "obstruction_unknown": "Partial obstruction, cause not found",
+        "ileus": "Ileus, no mechanical obstruction"
+      },
+      "evidence": {
+        "adhesions_partial": [
+          [
+            "adhesions"
+          ],
+          [
+            "partial"
+          ],
+          [
+            "obstruction"
+          ]
+        ],
+        "adhesions_complete": [
+          [
+            "adhesions"
+          ],
+          [
+            "complete"
+          ],
+          [
+            "obstruction"
+          ]
+        ],
+        "obstruction_unknown": [
+          [
+            "partial"
+          ],
+          [
+            "obstruction"
+          ]
+        ],
+        "ileus": [
+          [
+            "ileus"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "adhesions_partial": "Admitted with a partial small bowel obstruction caused by adhesions from an old surgery; resolved with bowel rest and a nasogastric tube.",
+        "adhesions_complete": "Admitted with a complete small bowel obstruction caused by adhesions from an old surgery; treated with surgical release of adhesions.",
+        "obstruction_unknown": "Admitted with a partial small bowel obstruction; the cause was not identified and it resolved with bowel rest.",
+        "ileus": "Admitted with an ileus (slowed bowel movement) without mechanical obstruction, after a medication change; resolved with supportive care."
+      }
+    }
+  },
+  "note_forbid": [
+    "hernia",
+    "volvulus",
+    "intussusception",
+    "cancer",
+    "tumor",
+    "Crohn",
+    "colitis",
+    "diverticul",
+    "perforation",
+    "strangulat",
+    "ischemi",
+    "gallstone ileus",
+    "fecal impaction",
+    "constipation",
+    "postoperative ileus",
+    "opioid-induced",
+    "pseudo-obstruction"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD"
+    },
+    {
+      "when": {
+        "condition": "adhesions_partial"
+      },
+      "forbid": [
+        "complete obstruction",
+        "ileus"
+      ]
+    },
+    {
+      "when": {
+        "condition": "adhesions_complete"
+      },
+      "forbid": [
+        "partial",
+        "ileus"
+      ]
+    },
+    {
+      "when": {
+        "condition": "obstruction_unknown"
+      },
+      "forbid": [
+        "adhesion",
+        "complete obstruction",
+        "ileus"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ileus"
+      },
+      "forbid": [
+        "adhesion",
+        "mechanical obstruction was found",
+        "partial obstruction",
+        "complete obstruction"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_cause": {
+      "description": "Used unspecified obstruction when adhesions are documented as the cause.",
+      "lean": "neutral"
+    },
+    "wrong_extent": {
+      "description": "Confused partial and complete obstruction.",
+      "lean": "neutral"
+    },
+    "assumed_cause": {
+      "description": "Coded adhesions as the cause when no cause is documented.",
+      "lean": "neutral"
+    },
+    "ileus_obstruction_confused": {
+      "description": "Confused ileus with mechanical obstruction.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "bowel",
+      "rules": [
+        {
+          "when": {
+            "condition": "adhesions_partial"
+          },
+          "codes": [
+            "K56.51"
+          ],
+          "explain": "Intestinal adhesions with partial obstruction: K56.51 (HCC 78).",
+          "refs": [
+            "ICD-10-CM Tabular: K56"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K56.600"
+              ],
+              "confusion": "missed_cause",
+              "why": "The cause (adhesions) is documented."
+            },
+            {
+              "codes": [
+                "K56.52"
+              ],
+              "confusion": "wrong_extent",
+              "why": "The obstruction is partial."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "adhesions_complete"
+          },
+          "codes": [
+            "K56.52"
+          ],
+          "explain": "Intestinal adhesions with complete obstruction: K56.52 (HCC 78).",
+          "refs": [
+            "ICD-10-CM Tabular: K56"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K56.51"
+              ],
+              "confusion": "wrong_extent",
+              "why": "The obstruction is complete."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "obstruction_unknown"
+          },
+          "codes": [
+            "K56.600"
+          ],
+          "explain": "Partial intestinal obstruction, cause not stated: K56.600 (HCC 78).",
+          "refs": [
+            "ICD-10-CM Tabular: K56"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K56.51"
+              ],
+              "confusion": "assumed_cause",
+              "why": "Adhesions are not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ileus"
+          },
+          "codes": [
+            "K56.7"
+          ],
+          "explain": "Ileus without mechanical obstruction: K56.7 (HCC 78).",
+          "refs": [
+            "ICD-10-CM Tabular: K56"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K56.609"
+              ],
+              "confusion": "ileus_obstruction_confused",
+              "why": "It is an ileus, not a mechanical obstruction."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

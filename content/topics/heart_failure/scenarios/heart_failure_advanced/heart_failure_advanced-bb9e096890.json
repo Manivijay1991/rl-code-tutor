@@ -1,0 +1,72 @@
+{
+  "id": "heart_failure_advanced-bb9e096890",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "end_stage"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint\nShortness of breath and fatigue.\n\nHPI\nPt is a 75 y.o. female presenting for f/u of chronic cardiac condition. Pt reports persistent dyspnea on exertion and increased fatigue over the last week. Denies chest pain or syncope. Current management is focused on comfort and symptom control as she has end-stage heart failure. Pt reports adherence to current regimen but notes occasional orthopnea.\n\nMedication List\nFurosemide 40mg BID, Carvedilol 12.5mg BID, Lisinopril 5mg QD, Spironolactone 25mg QD.\n\nExam\nPt appears in mild distress but is alert and oriented x3. Skin cool and slightly cyanotic. Lung sounds reveal bilateral crackles at bases. Heart sounds are regular, RRR, with S3. CTAB. Edema noted in bilateral lower extremities.\n\nAssessment\n1. End-stage heart failure managed with palliative care.\n\nPlan\n1. Continue current diuretic and beta-blocker regimen.\n2. Palliative care goals of care remain stable.\n3. Monitor for worsening respiratory status.\n4. F/u as needed for symptom exacerbation.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "I50.84"
+  ],
+  "explanations": [
+    "End-stage heart failure: I50.84 (HCC 222). The type is not documented, so there is no second code."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "End-stage heart failure has its own code (HCC 222).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "222"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "222",
+        "label": "End-Stage Heart Failure",
+        "from": [
+          "I5084"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-26T15:04:56+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

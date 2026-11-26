@@ -1,0 +1,323 @@
+{
+  "id": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note_age": {
+    "min": 30
+  },
+  "slots": {
+    "condition": {
+      "label": "Diabetes documented",
+      "values": [
+        "t2_dka",
+        "t1_dka",
+        "t2_hhs",
+        "t2_hypo_coma",
+        "t2_hyperglycemia"
+      ],
+      "labels": {
+        "t2_dka": "Type 2 diabetes with ketoacidosis, no coma",
+        "t1_dka": "Type 1 diabetes with ketoacidosis, no coma",
+        "t2_hhs": "Type 2 diabetes with hyperosmolar state, no coma",
+        "t2_hypo_coma": "Type 2 diabetes with hypoglycemia and coma",
+        "t2_hyperglycemia": "Type 2 diabetes with hyperglycemia only"
+      },
+      "evidence": {
+        "t2_dka": [
+          [
+            "type 2 diabetes",
+            "T2DM"
+          ],
+          [
+            "ketoacidosis",
+            "DKA"
+          ]
+        ],
+        "t1_dka": [
+          [
+            "type 1 diabetes",
+            "T1DM"
+          ],
+          [
+            "ketoacidosis",
+            "DKA"
+          ]
+        ],
+        "t2_hhs": [
+          [
+            "type 2 diabetes",
+            "T2DM"
+          ],
+          [
+            "hyperosmolar"
+          ]
+        ],
+        "t2_hypo_coma": [
+          [
+            "type 2 diabetes",
+            "T2DM"
+          ],
+          [
+            "hypoglycemi"
+          ],
+          [
+            "coma"
+          ]
+        ],
+        "t2_hyperglycemia": [
+          [
+            "type 2 diabetes",
+            "T2DM"
+          ],
+          [
+            "hyperglycemia"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "t2_dka": "Admitted with diabetic ketoacidosis (DKA) in type 2 diabetes, without coma; treated with an insulin drip and fluids.",
+        "t1_dka": "Admitted with diabetic ketoacidosis (DKA) in type 1 diabetes, without coma, after missed insulin doses; treated with an insulin drip and fluids.",
+        "t2_hhs": "Admitted with hyperglycemic hyperosmolar state in type 2 diabetes, without coma; treated with fluids and insulin.",
+        "t2_hypo_coma": "Admitted unresponsive in a hypoglycemic coma from a sulfonylurea in type 2 diabetes; recovered with IV dextrose.",
+        "t2_hyperglycemia": "Admitted with hyperglycemia (blood glucose over 400) in type 2 diabetes; no ketoacidosis and no hyperosmolar state; insulin adjusted."
+      }
+    }
+  },
+  "note_forbid": [
+    "kidney",
+    "CKD",
+    "nephropathy",
+    "neuropathy",
+    "retinopathy",
+    "gastroparesis",
+    "foot ulcer",
+    "infection",
+    "sepsis",
+    "pneumonia",
+    "pancreatitis",
+    "pregnan",
+    "steroid-induced",
+    "secondary diabetes",
+    "alcohol"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD"
+    },
+    {
+      "when": {
+        "condition": [
+          "t2_dka",
+          "t2_hhs",
+          "t2_hypo_coma",
+          "t2_hyperglycemia"
+        ]
+      },
+      "forbid": [
+        "type 1"
+      ]
+    },
+    {
+      "when": {
+        "condition": "t1_dka"
+      },
+      "forbid": [
+        "type 2"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "t2_dka",
+          "t1_dka"
+        ]
+      },
+      "forbid": [
+        "coma",
+        "hyperosmolar",
+        "hypoglycemi"
+      ]
+    },
+    {
+      "when": {
+        "condition": "t2_hhs"
+      },
+      "forbid": [
+        "coma",
+        "ketoacidosis",
+        "DKA",
+        "hypoglycemi"
+      ]
+    },
+    {
+      "when": {
+        "condition": "t2_hypo_coma"
+      },
+      "forbid": [
+        "ketoacidosis",
+        "DKA",
+        "hyperosmolar",
+        "hyperglycemia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "t2_hyperglycemia"
+      },
+      "forbid": [
+        "coma",
+        "hypoglycemi",
+        "ketoacidosis was",
+        "DKA",
+        "hyperosmolar state"
+      ]
+    }
+  ],
+  "confusions": {
+    "dka_coded_hyperglycemia": {
+      "description": "Coded diabetes with hyperglycemia for ketoacidosis or a hyperosmolar state (HCC 38 instead of 36).",
+      "lean": "under"
+    },
+    "hyperglycemia_coded_dka": {
+      "description": "Coded ketoacidosis or a hyperosmolar state when only hyperglycemia is documented.",
+      "lean": "over"
+    },
+    "wrong_dm_type": {
+      "description": "Coded the wrong type of diabetes.",
+      "lean": "neutral"
+    },
+    "missed_coma": {
+      "description": "Coded hypoglycemia without coma when a coma is documented (HCC 38 instead of 36).",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "dm",
+      "rules": [
+        {
+          "when": {
+            "condition": "t2_dka"
+          },
+          "codes": [
+            "E11.10"
+          ],
+          "explain": "Type 2 diabetes with ketoacidosis without coma: E11.10 (HCC 36).",
+          "refs": [
+            "OCG I.C.4.a",
+            "ICD-10-CM Tabular: E10-E11 (acute complications)"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.65"
+              ],
+              "confusion": "dka_coded_hyperglycemia",
+              "why": "Ketoacidosis is a severe acute complication (HCC 36)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "t1_dka"
+          },
+          "codes": [
+            "E10.10"
+          ],
+          "explain": "Type 1 diabetes with ketoacidosis without coma: E10.10 (HCC 36).",
+          "refs": [
+            "OCG I.C.4.a",
+            "ICD-10-CM Tabular: E10-E11 (acute complications)"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.10"
+              ],
+              "confusion": "wrong_dm_type",
+              "why": "Type 1 diabetes is documented."
+            },
+            {
+              "codes": [
+                "E10.65"
+              ],
+              "confusion": "dka_coded_hyperglycemia",
+              "why": "Ketoacidosis is documented (HCC 36)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "t2_hhs"
+          },
+          "codes": [
+            "E11.00"
+          ],
+          "explain": "Type 2 diabetes with hyperosmolarity without coma: E11.00 (HCC 36).",
+          "refs": [
+            "OCG I.C.4.a",
+            "ICD-10-CM Tabular: E10-E11 (acute complications)"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.65"
+              ],
+              "confusion": "dka_coded_hyperglycemia",
+              "why": "A hyperosmolar state is a severe acute complication (HCC 36)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "t2_hypo_coma"
+          },
+          "codes": [
+            "E11.641"
+          ],
+          "explain": "Type 2 diabetes with hypoglycemia with coma: E11.641 (HCC 36).",
+          "refs": [
+            "OCG I.C.4.a",
+            "ICD-10-CM Tabular: E10-E11 (acute complications)"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.649"
+              ],
+              "confusion": "missed_coma",
+              "why": "The coma is documented (HCC 36, not 38)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "t2_hyperglycemia"
+          },
+          "codes": [
+            "E11.65"
+          ],
+          "explain": "Type 2 diabetes with hyperglycemia only: E11.65 (HCC 38).",
+          "refs": [
+            "OCG I.C.4.a",
+            "ICD-10-CM Tabular: E10-E11 (acute complications)"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E11.10"
+              ],
+              "confusion": "hyperglycemia_coded_dka",
+              "why": "Ketoacidosis is not documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

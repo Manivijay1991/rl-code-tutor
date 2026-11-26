@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-f64d222e3c",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "intestine"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for status post small bowel transplant.\n\nHPI\n61 y.o. male presents for routine follow-up. Pt had a small bowel transplant several years ago. He reports feeling well today. No abdominal pain, diarrhea, or weight loss. Denies any signs of organ rejection. Nutrition is excellent; pt reports good appetite and stable weight.\n\nMedication List\nTacrolimus 2mg BID\nMycophenolate mofetil 500mg BID\nPrednisone 5mg daily\n\nExam\nGeneral: Well-appearing, in no acute distress.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6 F.\nAbdomen: Soft, non-tender, non-distended. Bowel sounds present.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\n\nAssessment\n1. Status post small bowel transplant. Stable on current immunosuppressive regimen. Nutrition is adequate. No evidence of rejection at this time.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue monitoring labs.\n3. Follow up in 6 months for routine check.\n\nElectronically signed, K. Nguyen, DO, 05/12/2026",
+  "answer": [
+    "Z94.82"
+  ],
+  "explanations": [
+    "Intestine transplant status: Z94.82 (HCC 77)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Intestine transplant status carries HCC 77.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.172,
+        "gap": -1.172,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "77"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.172,
+    "hccs": [
+      {
+        "hcc": "77",
+        "label": "Intestine Transplant Status/Complications",
+        "from": [
+          "Z9482"
+        ],
+        "weight": 1.172
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:09+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

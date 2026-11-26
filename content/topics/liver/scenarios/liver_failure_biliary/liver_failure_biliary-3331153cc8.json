@@ -1,0 +1,70 @@
+{
+  "id": "liver_failure_biliary-3331153cc8",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "bile_obstruction"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint\nBiliary obstruction and jaundice.\n\nHPI\nThe patient is an 85-year-old woman who presents for a follow-up regarding persistent jaundice and abdominal discomfort. She reports a gradual increase in yellowing of the skin and sclera over the past several weeks. Previous imaging has been reviewed, which confirms an obstruction of the common bile duct. The imaging clearly demonstrates a benign stricture at the site of the blockage. Notably, the imaging studies show no evidence of any stones within the biliary tree.\n\nMedication List\n- Atorvastatin 20mg daily\n- Lisinopril 10mg daily\n- Calcium carbonate 500mg daily\n\nExam\nThe patient is alert and oriented. She appears mildly jaundiced. Abdomen is soft and non-tender to palpation. No hepatomegaly is noted. Vital signs are stable.\n\nAssessment\nThe patient has a confirmed obstruction of the common bile duct caused by a benign stricture.\n\nPlan\nThe patient will be scheduled for a procedure to perform a stent exchange to alleviate the biliary obstruction. She will be monitored for any worsening of symptoms prior to the intervention.\n\nElectronically signed, P. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "K83.1"
+  ],
+  "explanations": [
+    "Obstruction of bile duct without gallstones: K83.1 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K80.51"
+      ],
+      "confusion": "assumed_stones",
+      "lean": "under",
+      "why": "No gallstones: K83.1, not a calculus code (which has no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.388,
+        "gap": -0.388,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "68"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K831"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:40+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

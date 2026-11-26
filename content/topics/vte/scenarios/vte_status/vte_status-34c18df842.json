@@ -1,0 +1,62 @@
+{
+  "id": "vte_status-34c18df842",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "dvt_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for history of DVT.\n\nHPI: [Copied Forward] Patient is a 51-year-old male who presented two years ago with a deep vein thrombosis of the right leg. He was managed with a course of medication which has since been completed. He reports that the initial clot has resolved. He denies any current pain, swelling, or redness in the right lower extremity. He reports no shortness of breath or chest pain.\n\n[Today's Update] Patient returns today for a routine follow-up. He reports that he feels well and has had no recurrence of symptoms in his right leg since the initial treatment. He remains asymptomatic.\n\nMedication List:\n- Multivitamin, daily\n- Lisinopril 10mg, daily\n\nVitals:\nBP: 128/82\nHR: 74\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 195 lbs\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nPlatelets: 250 x 10^9/L\neGFR: 88 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nRespiratory: Negative for cough, shortness of breath.\nCardiovascular: Negative for palpitations, chest pain.\nMusculoskeletal: Negative for joint pain, swelling.\nNeurological: Negative for numbness, tingling.\nGastrointestinal: Negative for abdominal pain, diarrhea.\nGenitourinary: Negative for dysuria.\n\nSocial History: Patient is a non-smoker. He works as a project manager and enjoys hiking on weekends. He drinks alcohol occasionally (1-2 beers on weekends).\n\nFamily History: Father had hypertension and a history of stroke. Mother had type 2 diabetes.\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nRight Lower Extremity: No erythema, warmth, or edema noted. No tenderness to palpation. Distal pulses are palpable and strong. Capillary refill is <2 seconds.\n\nAssessment:\n1. History of deep vein thrombosis of the right leg. The previous treatment course was completed and the clot is resolved.\n\nPlan:\n1. Continue to monitor for any new symptoms of swelling or pain in the right leg.\n2. Routine follow-up in 6 months.\n3. Patient advised to seek immediate care if he develops sudden shortness of breath or severe calf pain.\n\nElectronically signed,\nJ. Lindqvist, NP\nMay 14, 2026",
+  "answer": [
+    "Z86.718"
+  ],
+  "explanations": [
+    "A DVT that resolved after completed treatment: personal history, Z86.718 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4",
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I82.401"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "There is no current clot: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0,
+        "gap": 0.294,
+        "direction": "over",
+        "extra_hccs": [
+          "267"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 4,
+    "created": "2026-11-26T15:08:52+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

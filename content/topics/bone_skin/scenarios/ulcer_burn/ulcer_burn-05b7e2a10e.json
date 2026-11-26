@@ -1,0 +1,73 @@
+{
+  "id": "ulcer_burn-05b7e2a10e",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_fat"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint: Chronic wound on right heel.\n\nHPI: Pt is a 42 y/o male presenting for f/u of a chronic ulcer on the right heel. Pt reports the wound has been present for several months. He states it is not currently draining excessively and reports mild discomfort. He is compliant with current dressing changes but notes occasional itching. No systemic symptoms such as fever or chills reported.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Multivitamin daily\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 185 lbs, 5'10\"\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 88\nWBC: 7.2\nHgb: 14.1\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nIntegumentary: Positive for ulcer on right heel. Denies rashes or new lesions.\nMSK: Negative for joint pain or swelling.\nNeuro: Negative for numbness or tingling.\nAll other systems reviewed and negative.\n\nSocial History: Pt works as a construction foreman. Non-smoker. Occasional alcohol use. Lives with wife and two children.\n\nFamily History: Father has hypertension. Mother has hyperlipidemia. No known family history of malignancy.\n\nExam:\nGeneral: Pt in no acute distress. Alert and oriented x3.\nSkin: Examination of the right heel reveals a chronic ulcer. The wound bed shows the fat layer exposed. No signs of purulent drainage or foul odor. Periwound area is intact without significant erythema. No signs of deep tissue involvement.\n\nAssessment:\n1. Chronic ulcer of the right heel. Fat layer is currently visible.\n\nPlan:\n1. Wound care: Continue current dressing protocol. Cleanse with normal saline and apply antimicrobial dressing.\n2. F/u: See wound care nurse next week for dressing change.\n3. Education: Instructed pt on signs of infection (increased redness, warmth, fever).\n\nElectronically signed,\nL. Moreau, DO\n10/14/2026",
+  "answer": [
+    "L97.412"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot with fat layer exposed: L97.412 (HCC 383)."
+  ],
+  "refs": [
+    "OCG I.B.14",
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.414"
+      ],
+      "confusion": "assumed_depth",
+      "lean": "neutral",
+      "why": "Bone necrosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.078,
+        "correct": 0.646,
+        "gap": 0.432,
+        "direction": "over",
+        "extra_hccs": [
+          "380"
+        ],
+        "missing_hccs": [
+          "383"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.646,
+    "hccs": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "from": [
+          "L97412"
+        ],
+        "weight": 0.646
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:29+00:00",
+    "style": {
+      "age": 42,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

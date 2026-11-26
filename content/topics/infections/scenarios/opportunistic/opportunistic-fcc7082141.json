@@ -1,0 +1,61 @@
+{
+  "id": "opportunistic-fcc7082141",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "oral_thrush"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint\n\"White patches on my tongue and mouth.\"\n\nHPI\nThe patient is a 79-year-old woman who presents today for evaluation of oral white plaques. She reports that she first noticed the white coating on her tongue approximately one week ago. She mentions that she has been using an inhaled corticosteroid for her respiratory symptoms. She denies any difficulty with chewing or speaking. She reports that her swallowing is normal and she does not experience any discomfort when eating or drinking. She notes that the white plaques appear to be somewhat adherent but are not causing significant distress. She denies any fever, chills, or localized pain in the oral cavity.\n\nMedication List\n- Fluticasone inhaler\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 97% on room air\nWeight: 155 lbs\n\nRecent Labs\neGFR: 75 mL/min/1.73m2\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\n\nReview of Systems\nConstitutional: Denies fever, chills, or fatigue.\nHEENT: Positive for white plaques on the tongue and inner cheeks. Denies sore throat or nasal congestion.\nRespiratory: Positive for chronic cough; denies shortness of breath.\nGastrointestinal: Denies nausea, vomiting, or diarrhea.\nMusculoskeletal: Denies joint pain or stiffness.\n\nSocial History\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and walking. She does not smoke and drinks alcohol socially on weekends.\n\nFamily History\nMother: Hypertension, stroke.\nFather: Heart disease.\nSiblings: One brother with hypertension.\n\nExam\nGeneral: The patient is a well-appearing, alert, and oriented 79-year-old woman in no acute distress.\nOral Cavity: Examination of the oral mucosa reveals prominent white plaques on the tongue and buccal mucosa. These are consistent with oral candidiasis. The patient is able to demonstrate normal swallowing. No signs of systemic infection are noted.\n\nAssessment\n1. Oral thrush secondary to inhaled steroid use.\n\nPlan\n1. Prescribed Nystatin oral rinse to be used four times daily for 7 to 10 days.\n2. Instructed the patient to rinse her mouth thoroughly after each use of the inhaler to reduce the risk of further candidiasis.\n3. Patient instructed to return if symptoms worsen or if she develops a fever.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "B37.0"
+  ],
+  "explanations": [
+    "Oral thrush: candidal stomatitis, B37.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B37.81"
+      ],
+      "confusion": "thrush_coded_esophagitis",
+      "lean": "over",
+      "why": "Only the mouth is involved.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.381,
+        "correct": 0,
+        "gap": 0.381,
+        "direction": "over",
+        "extra_hccs": [
+          "6"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:13+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

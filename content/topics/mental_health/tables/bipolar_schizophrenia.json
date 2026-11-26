@@ -1,0 +1,418 @@
+{
+  "id": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note_age": {
+    "min": 25
+  },
+  "slots": {
+    "condition": {
+      "label": "Diagnosis documented",
+      "values": [
+        "schizophrenia_paranoid",
+        "schizoaffective_bipolar",
+        "bipolar_depressed_moderate",
+        "bipolar_partial_remission",
+        "bipolar_full_remission",
+        "bipolar_unspecified"
+      ],
+      "labels": {
+        "schizophrenia_paranoid": "Paranoid schizophrenia",
+        "schizoaffective_bipolar": "Schizoaffective disorder, bipolar type",
+        "bipolar_depressed_moderate": "Bipolar disorder, current episode depressed, moderate",
+        "bipolar_partial_remission": "Bipolar disorder in partial remission, last episode depressed",
+        "bipolar_full_remission": "Bipolar disorder in full remission, last episode depressed",
+        "bipolar_unspecified": "Bipolar disorder, episode not stated"
+      },
+      "evidence": {
+        "schizophrenia_paranoid": [
+          [
+            "paranoid schizophrenia"
+          ]
+        ],
+        "schizoaffective_bipolar": [
+          [
+            "schizoaffective disorder"
+          ],
+          [
+            "bipolar type"
+          ]
+        ],
+        "bipolar_depressed_moderate": [
+          [
+            "bipolar"
+          ],
+          [
+            "depressed"
+          ],
+          [
+            "moderate"
+          ]
+        ],
+        "bipolar_partial_remission": [
+          [
+            "bipolar"
+          ],
+          [
+            "partial remission"
+          ],
+          [
+            "depressed"
+          ]
+        ],
+        "bipolar_full_remission": [
+          [
+            "bipolar"
+          ],
+          [
+            "full remission"
+          ],
+          [
+            "depressed"
+          ]
+        ],
+        "bipolar_unspecified": [
+          [
+            "bipolar disorder"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "schizophrenia_paranoid": "The psychiatrist documents paranoid schizophrenia, stable on a long-acting injectable antipsychotic.",
+        "schizoaffective_bipolar": "The psychiatrist documents schizoaffective disorder, bipolar type, stable on an antipsychotic and a mood stabilizer.",
+        "bipolar_depressed_moderate": "The psychiatrist documents bipolar disorder, current episode depressed, moderate, without psychotic features; lamotrigine is increased.",
+        "bipolar_partial_remission": "The psychiatrist documents bipolar disorder in partial remission, most recent episode depressed; some residual low mood, continue lithium.",
+        "bipolar_full_remission": "The psychiatrist documents bipolar disorder in full remission, most recent episode depressed; no symptoms for over a year on lithium.",
+        "bipolar_unspecified": "The provider documents bipolar disorder, stable on lithium; the current episode and remission status are not stated."
+      }
+    }
+  },
+  "note_forbid": [
+    "alcohol use disorder",
+    "alcohol abuse",
+    "alcohol dependence",
+    "opioid",
+    "cocaine",
+    "cannabis",
+    "marijuana",
+    "methamphetamine",
+    "heroin",
+    "substance use",
+    "psychotic features",
+    "with psychosis",
+    "hallucinat",
+    "delusion",
+    "suicid",
+    "dementia",
+    "PTSD",
+    "anxiety disorder",
+    "personality disorder",
+    "anorexia",
+    "bulimia",
+    "major depressive disorder",
+    "MDD"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "schizophrenia_paranoid",
+          "schizoaffective_bipolar"
+        ]
+      },
+      "forbid": [
+        "remission"
+      ]
+    },
+    {
+      "when": {
+        "condition": "schizophrenia_paranoid"
+      },
+      "forbid": [
+        "schizoaffective",
+        "bipolar"
+      ]
+    },
+    {
+      "when": {
+        "condition": "schizoaffective_bipolar"
+      },
+      "forbid": [
+        "paranoid",
+        "bipolar disorder,",
+        "depressive type"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "bipolar_depressed_moderate",
+          "bipolar_partial_remission",
+          "bipolar_full_remission",
+          "bipolar_unspecified"
+        ]
+      },
+      "forbid": [
+        "schizophrenia",
+        "schizoaffective"
+      ]
+    },
+    {
+      "when": {
+        "condition": "bipolar_depressed_moderate"
+      },
+      "forbid": [
+        "remission",
+        "mild",
+        "severe",
+        "manic episode",
+        "hypomanic",
+        "mixed"
+      ]
+    },
+    {
+      "when": {
+        "condition": "bipolar_partial_remission"
+      },
+      "forbid": [
+        "full remission",
+        "current episode",
+        "manic episode",
+        "hypomanic",
+        "mixed"
+      ]
+    },
+    {
+      "when": {
+        "condition": "bipolar_full_remission"
+      },
+      "forbid": [
+        "partial remission",
+        "current episode",
+        "residual",
+        "manic episode",
+        "hypomanic",
+        "mixed"
+      ]
+    },
+    {
+      "when": {
+        "condition": "bipolar_unspecified"
+      },
+      "forbid": [
+        "remission",
+        "current episode",
+        "depressed",
+        "manic",
+        "hypomanic",
+        "mixed"
+      ]
+    }
+  ],
+  "confusions": {
+    "schizo_vs_schizoaffective": {
+      "description": "Confused schizophrenia and schizoaffective disorder.",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the type or episode is documented.",
+      "lean": "neutral"
+    },
+    "bipolar_coded_as_depression": {
+      "description": "Coded major depression for the depressed episode of bipolar disorder.",
+      "lean": "neutral"
+    },
+    "remission_coded_active": {
+      "description": "Coded an active episode when the provider documents remission.",
+      "lean": "over"
+    },
+    "full_partial_confused": {
+      "description": "Confused full and partial remission (full remission has no HCC; partial does).",
+      "lean": "neutral"
+    },
+    "assumed_episode": {
+      "description": "Coded an episode or remission status the provider did not document.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "schizophrenia_paranoid"
+          },
+          "codes": [
+            "F20.0"
+          ],
+          "explain": "Paranoid schizophrenia: F20.0 (HCC 151).",
+          "refs": [
+            "ICD-10-CM Tabular: F20-F31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F20.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (paranoid) is documented."
+            },
+            {
+              "codes": [
+                "F25.9"
+              ],
+              "confusion": "schizo_vs_schizoaffective",
+              "why": "Schizophrenia is documented, not schizoaffective disorder."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "schizoaffective_bipolar"
+          },
+          "codes": [
+            "F25.0"
+          ],
+          "explain": "Schizoaffective disorder, bipolar type: F25.0 (HCC 151).",
+          "refs": [
+            "ICD-10-CM Tabular: F20-F31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F20.9"
+              ],
+              "confusion": "schizo_vs_schizoaffective",
+              "why": "Schizoaffective disorder is a separate category (F25)."
+            },
+            {
+              "codes": [
+                "F31.9"
+              ],
+              "confusion": "schizo_vs_schizoaffective",
+              "why": "'Bipolar type' describes the schizoaffective disorder; it is not bipolar disorder."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "bipolar_depressed_moderate"
+          },
+          "codes": [
+            "F31.32"
+          ],
+          "explain": "Bipolar disorder, current episode depressed, moderate: F31.32 (HCC 154).",
+          "refs": [
+            "ICD-10-CM Tabular: F20-F31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F33.1"
+              ],
+              "confusion": "bipolar_coded_as_depression",
+              "why": "A depressed episode of bipolar disorder is coded in F31, not as major depression."
+            },
+            {
+              "codes": [
+                "F31.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The episode and severity are documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "bipolar_partial_remission"
+          },
+          "codes": [
+            "F31.75"
+          ],
+          "explain": "Bipolar disorder in partial remission, most recent episode depressed: F31.75 (HCC 154).",
+          "refs": [
+            "OCG I.C.5.b.1",
+            "ICD-10-CM Tabular: F20-F31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F31.76"
+              ],
+              "confusion": "full_partial_confused",
+              "why": "Partial remission is documented (it keeps HCC 154)."
+            },
+            {
+              "codes": [
+                "F31.32"
+              ],
+              "confusion": "remission_coded_active",
+              "why": "The provider documents remission, not an active episode."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "bipolar_full_remission"
+          },
+          "codes": [
+            "F31.76"
+          ],
+          "explain": "Bipolar disorder in full remission, most recent episode depressed: F31.76 (no HCC in V28).",
+          "refs": [
+            "OCG I.C.5.b.1",
+            "ICD-10-CM Tabular: F20-F31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F31.75"
+              ],
+              "confusion": "full_partial_confused",
+              "why": "Full remission is documented."
+            },
+            {
+              "codes": [
+                "F31.32"
+              ],
+              "confusion": "remission_coded_active",
+              "why": "The provider documents full remission, not an active episode."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "bipolar_unspecified"
+          },
+          "codes": [
+            "F31.9"
+          ],
+          "explain": "Bipolar disorder without the episode or remission status: F31.9 (HCC 154).",
+          "refs": [
+            "ICD-10-CM Tabular: F20-F31"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F31.32"
+              ],
+              "confusion": "assumed_episode",
+              "why": "No current episode is documented."
+            },
+            {
+              "codes": [
+                "F31.76"
+              ],
+              "confusion": "assumed_episode",
+              "why": "Remission is not documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

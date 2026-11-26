@@ -1,0 +1,72 @@
+{
+  "id": "nerve_muscle-b64b9020e6",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "mg_stable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint: Follow-up for myasthenia gravis.\n\nHPI: The patient is a 62-year-old male who presents today for a scheduled follow-up regarding his myasthenia gravis. He reports that his symptoms have been consistent over the past several months. He currently takes pyridostigmine as prescribed and states that his muscle weakness is well controlled. He denies any new onset of double vision, difficulty swallowing, or significant drooping of the eyelids. He notes that his energy levels are consistent and he is able to perform his daily activities without significant limitations. He reports no issues with his current dosage and expresses satisfaction with his progress.\n\nMedication List:\n- Pyridostigmine 60mg twice daily\n\nReview of Systems:\nThe patient reports no recent changes in vision, speech, or swallowing. He denies any new muscle weakness, tremors, or coordination issues. He denies any shortness of breath, chest pain, or palpitations. He reports no fevers, chills, or recent weight changes.\n\nSocial History: The patient is retired and lives with his spouse. He enjoys gardening and walking. He denies tobacco or illicit substance use.\n\nFamily History: Father had hypertension. Mother had a history of arthritis.\n\nVitals:\nBP: 128/82 mmHg\nHR: 74 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs:\nHbA1c: 5.4%\nTSH: 2.1 mIU/L\nCMP: Within normal limits.\n\nExam:\nThe patient is alert and oriented x3. He is in no acute distress. Extraocular movements are full and symmetric. Facial symmetry is maintained with no ptosis noted. Strength is 5/5 in all major muscle groups. Speech is clear and articulate with no evidence of dysarthria. Bulbar function is intact.\n\nAssessment:\nThe patient has myasthenia gravis, which remains stable at this time. He is responding well to his current pharmacological regimen.\n\nPlan:\nContinue current dose of pyridostigmine. The patient will continue to monitor for any changes in muscle strength or ocular symptoms. Follow up in 6 months for routine evaluation.\n\nElectronically signed,\nP. O'Brien, PA-C\nOctober 14, 2026",
+  "answer": [
+    "G70.00"
+  ],
+  "explanations": [
+    "Myasthenia gravis without (acute) exacerbation: G70.00 (HCC 196)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G70.01"
+      ],
+      "confusion": "assumed_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.909,
+        "correct": 0.516,
+        "gap": 2.393,
+        "direction": "over",
+        "extra_hccs": [
+          "195"
+        ],
+        "missing_hccs": [
+          "196"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.516,
+    "hccs": [
+      {
+        "hcc": "196",
+        "label": "Myasthenia Gravis without (Acute) Exacerbation and Other Myoneural Disorders",
+        "from": [
+          "G7000"
+        ],
+        "weight": 0.516
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:26+00:00",
+    "style": {
+      "age": 62,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "pneumonia_inpatient-d4e2c7c70a",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "mrsa"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Shortness of breath and productive cough.\n\nReview of Systems:\nROS: Positive for cough, productive sputum, and fever. Denies chest pain, syncope, or lower extremity edema. Negative for sore throat, rhinorrhea, or abdominal pain.\n\nSocial History:\nLives in a private residence with her daughter. Retired. Non-smoker.\n\nFamily History:\nMother had hypertension. Father had type 2 diabetes.\n\nVitals (on admission):\nT: 101.4 F, HR: 98, BP: 132/84, RR: 22, SpO2: 92% on RA.\n\nRecent Labs:\nWBC: 14.5K, Hgb: 11.8, Plt: 210K, BUN: 22, Cr: 1.1, Na: 138, K: 4.0.\n\nHospital Course:\nPt is an 80-year-old female admitted with pneumonia. Initial presentation showed tachypnea and fever. Sputum culture was notable for MRSA. Started on IV vancomycin for infection. Pt responded well to antibiotics; fever resolved by day 3. Oxygen requirements decreased significantly. Transitioned to oral medications and cleared for discharge once stable and afebrile for 48 hours.\n\nDischarge Diagnoses:\n- Pneumonia\n- methicillin-resistant Staphylococcus aureus infection\n\nDischarge Medications:\n- Vancomycin (completed)\n- Amoxicillin 500mg BID x 7 days\n- Acetaminophen 650mg PRN for fever/pain\n\nFollow-up:\nF/u with PCP in 1 week for wound check and respiratory status.\n\nElectronically signed, T. Haddad, MD, 05/18/2026",
+  "answer": [
+    "J15.212"
+  ],
+  "explanations": [
+    "Pneumonia due to MRSA: J15.212 (HCC 282)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J15.9"
+      ],
+      "confusion": "missed_specific_pneumonia",
+      "lean": "under",
+      "why": "The organism (MRSA) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.44,
+        "gap": -0.44,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "282"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J15.211"
+      ],
+      "confusion": "wrong_staph",
+      "lean": "neutral",
+      "why": "Methicillin-resistant, not susceptible.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.44,
+        "correct": 0.44,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.44,
+    "hccs": [
+      {
+        "hcc": "282",
+        "label": "Aspiration and Specified Bacterial Pneumonias",
+        "from": [
+          "J15212"
+        ],
+        "weight": 0.44
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:22+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

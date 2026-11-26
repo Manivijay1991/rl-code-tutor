@@ -1,0 +1,347 @@
+{
+  "id": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note_age": {
+    "min": 50,
+    "max": 88
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "vert_initial",
+        "vert_followup",
+        "vert_osteoporotic",
+        "amputation_acute",
+        "amputation_status"
+      ],
+      "labels": {
+        "vert_initial": "Traumatic L1 fracture, new, active treatment",
+        "vert_followup": "Traumatic L1 fracture, routine follow-up while healing",
+        "vert_osteoporotic": "Osteoporosis with new vertebral fracture from a minor fall",
+        "amputation_acute": "Traumatic amputation of right lower leg, new",
+        "amputation_status": "Right below-knee amputation years ago"
+      },
+      "evidence": {
+        "vert_initial": [
+          [
+            "L1",
+            "first lumbar"
+          ],
+          [
+            "compression fracture"
+          ]
+        ],
+        "vert_followup": [
+          [
+            "L1",
+            "first lumbar"
+          ],
+          [
+            "compression fracture"
+          ],
+          [
+            "healing"
+          ]
+        ],
+        "vert_osteoporotic": [
+          [
+            "osteoporosis"
+          ],
+          [
+            "vertebral fracture",
+            "compression fracture"
+          ]
+        ],
+        "amputation_acute": [
+          [
+            "traumatic amputation"
+          ],
+          [
+            "right"
+          ],
+          [
+            "below the knee",
+            "between the knee and ankle",
+            "lower leg"
+          ]
+        ],
+        "amputation_status": [
+          [
+            "below-knee amputation",
+            "below knee amputation",
+            "BKA"
+          ],
+          [
+            "right"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "vert_initial": "After a fall from a ladder two days ago, imaging shows a closed wedge compression fracture of the first lumbar vertebra (L1); active treatment with a brace starts today. The patient has normal bone density.",
+        "vert_followup": "Routine follow-up eight weeks after a traumatic closed wedge compression fracture of L1 from a ladder fall; it is healing as expected (routine healing). The patient has normal bone density.",
+        "vert_osteoporotic": "A patient with known age-related osteoporosis has a new vertebral compression fracture after bending over to lift a laundry basket (minor strain that would not break a healthy bone); treatment starts today.",
+        "amputation_acute": "Admitted after a farm machinery accident with a complete traumatic amputation of the right lower leg between the knee and ankle; surgical revision done.",
+        "amputation_status": "The patient had a right below-knee amputation years ago and walks with a prosthesis; the stump is healthy."
+      }
+    }
+  },
+  "note_forbid": [
+    "spinal cord injury",
+    "paraplegia",
+    "quadriplegia",
+    "cancer",
+    "metasta",
+    "myeloma",
+    "diabetes",
+    "diabetic",
+    "peripheral artery",
+    "infection",
+    "osteomyelitis",
+    "left leg",
+    "left lower",
+    "phantom",
+    "nonunion",
+    "malunion",
+    "delayed healing"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "amputation_acute"
+      },
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD"
+    },
+    {
+      "when": {
+        "condition": [
+          "vert_initial",
+          "vert_followup",
+          "vert_osteoporotic"
+        ]
+      },
+      "forbid": [
+        "amputation"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "vert_initial",
+          "vert_followup"
+        ]
+      },
+      "forbid": [
+        "osteoporosis",
+        "osteopenia",
+        "pathological",
+        "pathologic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "vert_initial"
+      },
+      "forbid": [
+        "healing",
+        "weeks ago",
+        "follow-up visit"
+      ]
+    },
+    {
+      "when": {
+        "condition": "vert_followup"
+      },
+      "forbid": [
+        "new fracture",
+        "acute fracture",
+        "two days ago"
+      ]
+    },
+    {
+      "when": {
+        "condition": "vert_osteoporotic"
+      },
+      "forbid": [
+        "ladder",
+        "car crash",
+        "motor vehicle",
+        "healing",
+        "weeks ago"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "amputation_acute",
+          "amputation_status"
+        ]
+      },
+      "forbid": [
+        "fracture",
+        "osteoporosis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "amputation_status"
+      },
+      "forbid": [
+        "traumatic amputation",
+        "accident",
+        "revision"
+      ]
+    }
+  ],
+  "confusions": {
+    "initial_for_subsequent": {
+      "description": "Used the initial-encounter 7th character (A) at a routine follow-up while the fracture heals.",
+      "lean": "over"
+    },
+    "subsequent_for_initial": {
+      "description": "Used the subsequent-encounter 7th character (D) for a new fracture under active treatment.",
+      "lean": "under"
+    },
+    "osteoporotic_coded_traumatic": {
+      "description": "Coded a traumatic fracture for a fracture from a minor fall in known osteoporosis (use M80).",
+      "lean": "neutral"
+    },
+    "missed_fracture": {
+      "description": "Coded osteoporosis without the current fracture.",
+      "lean": "under"
+    },
+    "acute_status_confused": {
+      "description": "Confused a new traumatic amputation with amputation status from the past.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "vert_initial"
+          },
+          "codes": [
+            "S32.010A"
+          ],
+          "explain": "Wedge compression fracture of L1, initial encounter for closed fracture: S32.010A (HCC 401).",
+          "refs": [
+            "OCG I.C.19.a",
+            "OCG I.C.19.c",
+            "ICD-10-CM Tabular: S32, M80, S88, Z89"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S32.010D"
+              ],
+              "confusion": "subsequent_for_initial",
+              "why": "New fracture under active treatment: 7th character A."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "vert_followup"
+          },
+          "codes": [
+            "S32.010D"
+          ],
+          "explain": "Routine follow-up while the L1 fracture heals: 7th character D, S32.010D (no HCC).",
+          "refs": [
+            "OCG I.C.19.a",
+            "ICD-10-CM Tabular: S32, M80, S88, Z89"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S32.010A"
+              ],
+              "confusion": "initial_for_subsequent",
+              "why": "Active treatment is complete; this is routine healing follow-up."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "vert_osteoporotic"
+          },
+          "codes": [
+            "M80.08XA"
+          ],
+          "explain": "Known osteoporosis + fracture from a minor strain = osteoporosis with current pathological fracture, vertebra, initial encounter: M80.08XA (HCC 401).",
+          "refs": [
+            "OCG I.C.13.d.2",
+            "ICD-10-CM Tabular: S32, M80, S88, Z89"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S32.010A"
+              ],
+              "confusion": "osteoporotic_coded_traumatic",
+              "why": "A minor strain in known osteoporosis: M80, not an injury code."
+            },
+            {
+              "codes": [
+                "M81.0"
+              ],
+              "confusion": "missed_fracture",
+              "why": "There is a current fracture: M80, not M81."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "amputation_acute"
+          },
+          "codes": [
+            "S88.111A"
+          ],
+          "explain": "Complete traumatic amputation of the right lower leg between knee and ankle, initial encounter: S88.111A (HCC 405).",
+          "refs": [
+            "OCG I.C.19.a",
+            "ICD-10-CM Tabular: S32, M80, S88, Z89"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z89.511"
+              ],
+              "confusion": "acute_status_confused",
+              "why": "This is the new injury, not status after an old amputation."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "amputation_status"
+          },
+          "codes": [
+            "Z89.511"
+          ],
+          "explain": "Acquired absence of the right leg below the knee: Z89.511 (HCC 409).",
+          "refs": [
+            "ICD-10-CM Tabular: S32, M80, S88, Z89"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S88.111A"
+              ],
+              "confusion": "acute_status_confused",
+              "why": "The amputation was years ago: use the status code."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

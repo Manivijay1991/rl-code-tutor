@@ -1,0 +1,70 @@
+{
+  "id": "cp_ataxia_brain-09199bae94",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "anoxic_brain"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for cognitive status and memory.\n\nHPI\nPt is a 30-year-old female presenting for a scheduled follow-up. Pt has a significant history of anoxic brain damage resulting from a cardiac arrest approximately 2 years ago. She continues to experience persistent memory and attention deficits. She reports that she is able to perform some ADLs but requires significant assistance with complex tasks. She lives with family members who provide 24/7 support and supervision. She reports no new acute concerns today.\n\nMedication List\n- Donepezil 10mg daily\n- Lorazepam 0.5mg PRN for anxiety\n- Multivitamin daily\n\nReview of Systems\nConstitutional: No fever, chills, or weight change.\nNeurological: Positive for memory lapses and distractibility. Denies headaches or vision changes.\nPsychiatric: Denies suicidal ideation.\nMSK: No joint pain.\nRespiratory: No SOB.\n\nSocial History\nLives with family for support. Non-smoker. Occasional caffeine intake.\n\nFamily History\nMother: Hypertension.\nFather: Type 2 Diabetes.\nSiblings: No known medical issues.\n\nVitals\nBP: 118/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/WBC: WNL\n\nRecent Labs\neGFR: 92\nHbA1c: 5.4%\nTSH: 2.1\n\nExam\nGeneral: Alert, cooperative, sitting in chair.\nNeuro: Oriented to person, somewhat disoriented to time. Notable memory and attention deficits. Speech clear but slow. Gait steady with support.\nSkin: No rashes or lesions.\nHEENT: Pupils equal, round, reactive to light.\n\nAssessment\n1. Anoxic brain damage following cardiac arrest. Pt shows stable but persistent cognitive deficits.\n2. Memory and attention deficits.\n\nPlan\n1. Continue current medications.\n2. Continue family support and supervision.\n3. F/u in 3 months for cognitive review.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "G93.1"
+  ],
+  "explanations": [
+    "Anoxic brain damage: G93.1 (HCC 202)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.74"
+      ],
+      "confusion": "history_for_current",
+      "lean": "under",
+      "why": "The lasting brain damage is a current condition: G93.1.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.543,
+        "gap": -0.543,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "202"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.543,
+    "hccs": [
+      {
+        "hcc": "202",
+        "label": "Coma/Brain Compression/Anoxic Damage",
+        "from": [
+          "G931"
+        ],
+        "weight": 0.543
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:06+00:00",
+    "style": {
+      "age": 30,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

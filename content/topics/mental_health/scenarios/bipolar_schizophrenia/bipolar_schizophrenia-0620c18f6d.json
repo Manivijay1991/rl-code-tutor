@@ -1,0 +1,88 @@
+{
+  "id": "bipolar_schizophrenia-0620c18f6d",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint: Follow-up for mood stability.\n\nHPI: Patient is a 77-year-old female with a history of bipolar disorder. She has been managed on lithium for several years. Previous records indicate she has achieved partial remission with stable mood and consistent adherence to her medication regimen.\n\nUpdate: The patient reports feeling moderately depressed over the last two weeks, noting a persistent sense of fatigue and a lack of interest in her usual hobbies. She describes some residual low mood that persists throughout the day. She denies any significant changes in sleep patterns or appetite. She reports that her mood remains stable enough to perform activities of daily living, though she feels less energetic than usual.\n\nMedication List:\n- Lithium Carbonate 600mg BID\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Positive for fatigue.\n- Neuro: Negative.\n- Psychiatric: Positive for low mood.\n- Sleep: Negative.\n\nExam: Alert and oriented x3. Cooperative and engaged in the interview. Affect is somewhat flat but congruent with reported mood. Speech is normal in rate and volume. No acute distress noted.\n\nAssessment:\n1. Bipolar disorder, partial remission.\n2. Patient currently feels depressed with some residual low mood.\n\nPlan:\n1. Continue current lithium dosage.\n2. Monitor for worsening of depressive symptoms.\n3. Follow up in four weeks.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "F31.75"
+  ],
+  "explanations": [
+    "Bipolar disorder in partial remission, most recent episode depressed: F31.75 (HCC 154)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F31.76"
+      ],
+      "confusion": "full_partial_confused",
+      "lean": "neutral",
+      "why": "Partial remission is documented (it keeps HCC 154).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.351,
+        "gap": -0.351,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "154"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F31.32"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents remission, not an active episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.351,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.351,
+    "hccs": [
+      {
+        "hcc": "154",
+        "label": "Bipolar Disorders without Psychosis",
+        "from": [
+          "F3175"
+        ],
+        "weight": 0.351
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:30+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

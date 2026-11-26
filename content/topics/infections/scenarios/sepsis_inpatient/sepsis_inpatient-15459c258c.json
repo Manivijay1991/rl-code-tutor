@@ -1,0 +1,73 @@
+{
+  "id": "sepsis_inpatient-15459c258c",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "septic_shock"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/20/2026\nReason for Admission: Severe pneumonia and septic shock.\n\nVitals:\nBP: 110/70 mmHg\nHR: 88 bpm\nTemp: 98.6 F\nSpO2: 95% on room air\nWeight: 175 lbs\n\nRecent Labs:\nWBC: 14.2 x 10^9/L\nLactate: 4.2 mmol/L (on admission)\nCreatinine: 1.1 mg/dL\nHemoglobin: 13.2 g/dL\n\nReview of Systems:\nThe patient reports cough and shortness of breath. He denies chest pain, abdominal pain, or neurological deficits. He denies recent travel or known exposure to sick contacts.\n\nSocial History:\nThe patient resides in a private home with his wife. He retired ten years ago. He denies tobacco or alcohol use.\n\nFamily History:\nFather had hypertension. Mother had type 2 diabetes. No history of sudden cardiac death in the immediate family.\n\nHospital Course:\nThe patient is an 86-year-old male who presented to the emergency department with productive cough, fever, and altered mental status. Initial evaluation revealed signs of severe pneumonia. The patient quickly progressed to septic shock, requiring the initiation of vasopressor support to maintain adequate mean arterial pressure. Broad-spectrum antibiotics were administered promptly. Cultures were obtained, but no specific organism grew in the blood or sputum samples. The patient remained on vasopressors for several days. With aggressive fluid resuscitation and antibiotic therapy, his hemodynamic status stabilized, and he was successfully weaned off all vasopressors. His oxygen requirements decreased, and his mental status improved significantly over the course of the stay. He remained stable for the final 48 hours of admission and is now ready for transition to home care.\n\nDischarge Diagnoses:\nSepsis due to pneumonia\nSeptic shock\n\nDischarge Medications:\nAmoxicillin 500mg TID\nAcetaminophen 650mg every 6 hours as needed for fever\nMultivitamin daily\n\nFollow-up:\nThe patient will follow up with his primary care physician in one week for a routine check-up and to monitor his recovery from the septic shock.\n\nElectronically signed, \nP. O'Brien, MD\n05/20/2026",
+  "answer": [
+    "A41.9",
+    "R65.21"
+  ],
+  "explanations": [
+    "Septic shock is severe sepsis with circulatory failure: A41.9 plus R65.21."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9",
+        "R65.20"
+      ],
+      "confusion": "missed_shock",
+      "lean": "under",
+      "why": "Septic shock is documented: R65.21, not R65.20.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.5,
+    "hccs": [
+      {
+        "hcc": "2",
+        "label": "Septicemia/Sepsis/Systemic Inflammatory Response Syndrome/Shock",
+        "from": [
+          "A419",
+          "R6521"
+        ],
+        "weight": 0.5
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:38+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

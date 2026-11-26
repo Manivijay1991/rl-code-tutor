@@ -1,0 +1,87 @@
+{
+  "id": "liver_failure_biliary-05d0ad3459",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_liver_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint\nFollow-up for liver disease.\n\nHPI\nPt is a 56 y/o female presenting for scheduled hepatology follow-up. Pt reports feeling stable today. She is currently on the transplant list for evaluation. Denies any new acute symptoms. No change in baseline status reported.\n\nMedication List\nLactulose 15g BID\nSpironolactone 25mg daily\nRifaximin 550mg BID\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB.\nAbdomen: Soft, non-tender, no masses noted.\nNeuro: Alert and oriented x3, no focal deficits.\nSkin: No new jaundice noted.\n\nAssessment\n1. Chronic hepatic failure. Pt is currently being evaluated for transplant.\n\nPlan\n1. Continue current medications as prescribed.\n2. Monitor labs and clinical status.\n3. Continue transplant evaluation protocol.\n4. F/u in clinic as scheduled.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "K72.10"
+  ],
+  "explanations": [
+    "Chronic hepatic failure without coma: K72.10 (HCC 63)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K72.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Chronic is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.962,
+        "correct": 0.962,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K76.9"
+      ],
+      "confusion": "understated_liver",
+      "lean": "under",
+      "why": "Chronic liver failure is documented (HCC 63).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.962,
+        "gap": -0.962,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "63"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.962,
+    "hccs": [
+      {
+        "hcc": "63",
+        "label": "Chronic Liver Failure/End-Stage Liver Disorders",
+        "from": [
+          "K7210"
+        ],
+        "weight": 0.962
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:18+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

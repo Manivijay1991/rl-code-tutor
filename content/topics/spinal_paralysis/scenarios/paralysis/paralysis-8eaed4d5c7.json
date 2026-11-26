@@ -1,0 +1,85 @@
+{
+  "id": "paralysis-8eaed4d5c7",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "quad_c5c7_incomplete"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint: Follow-up for spinal cord injury and mobility.\n\nHPI: Pt is a 90-year-old male presenting for routine follow-up of chronic mobility issues. Pt has a long-standing history of an incomplete quadriplegia resulting from a spinal cord injury that occurred many years ago. Pt reports stable condition with no new acute concerns. He remains dependent on a power wheelchair for all mobility and activities of daily living. He reports manageable pain levels and no new skin integrity issues.\n\nMedication List:\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Gabapentin 300mg TID\n- Meloxicam 15mg QD\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.4 F\nSpO2: 96% on RA\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 65\nNa: 138\nK: 4.2\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change.\nResp: No SOB or cough.\nCV: No chest pain or palpitations.\nMSK: Chronic pain related to spinal injury; no new acute pain.\nNeuro: Stable sensory and motor deficits.\nGU: No dysuria or incontinence issues.\n\nSocial History: Pt lives at home with family support. Retired. Uses power wheelchair for all transport.\n\nFamily History: Father had hypertension. Mother had Type 2 DM.\n\nExam:\nGen: Alert, oriented x3. Appears in no acute distress.\nCV: RRR, regular rhythm. CTAB.\nLungs: Clear to auscultation bilaterally.\nMSK/Neuro: Pt has stable incomplete quadriplegia at the C5-C7 level. Limited motor function in upper and lower extremities. Sensation is diminished distal to the level of injury. No new changes noted in muscle tone or spasms.\n\nAssessment:\n1. Chronic incomplete quadriplegia, C5-C7 level.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue use of power wheelchair for mobility.\n3. Follow up in 6 months for routine monitoring.\n4. Encouraged continued physical therapy for range of motion.\n\nElectronically signed, \nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "G82.54"
+  ],
+  "explanations": [
+    "Quadriplegia, C5-C7, incomplete: G82.54 (HCC 180)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G82.50"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The level and completeness are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.125,
+        "correct": 1.125,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G82.53"
+      ],
+      "confusion": "wrong_completeness",
+      "lean": "neutral",
+      "why": "It is documented as incomplete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.125,
+        "correct": 1.125,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.125,
+    "hccs": [
+      {
+        "hcc": "180",
+        "label": "Quadriplegia",
+        "from": [
+          "G8254"
+        ],
+        "weight": 1.125
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:03+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

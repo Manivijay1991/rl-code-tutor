@@ -1,0 +1,68 @@
+{
+  "id": "personality_eating-096efd25ad",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "borderline"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nFollow-up for emotional regulation.\n\nHPI\nPt is a 46 y/o female presenting for scheduled follow-up of borderline personality disorder. Pt reports ongoing struggles with mood lability and interpersonal conflicts but notes improved coping skills since starting DBT. Denies any acute crises this week. Reports consistent attendance at weekly dialectical behavior therapy sessions. Pt reports stable mood and improved ability to manage triggers.\n\nMedication List\nQuetiapine 50mg PO QHS\n\nExam\nPt is a 46 y/o female. Alert and oriented x3. Cooperative and engaged. Affect is full range, congruent to mood. Speech is clear and normal rate/tone. Insight and judgment fair. No acute distress noted.\n\nAssessment\n1. Borderline personality disorder. Pt is currently engaged in weekly dialectical behavior therapy and showing moderate progress with emotional regulation.\n\nPlan\n1. Continue current medication regimen.\n2. Continue weekly dialectical behavior therapy.\n3. Follow up in 4 weeks.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "F60.3"
+  ],
+  "explanations": [
+    "Borderline personality disorder: F60.3 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F60.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (borderline) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F603"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:18+00:00",
+    "style": {
+      "age": 46,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

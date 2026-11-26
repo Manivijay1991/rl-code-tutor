@@ -1,0 +1,8 @@
+{
+  "id": "lung_disease",
+  "title": "Asthma, fibrosis, cystic fibrosis and pneumonia",
+  "kind": "hcc",
+  "description": "Asthma severity and exacerbation, cystic fibrosis, idiopathic vs unspecified pulmonary fibrosis, tracheostomy and ventilator status, and pneumonia types in the hospital.",
+  "order": 81,
+  "enabled": true
+}

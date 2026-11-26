@@ -1,0 +1,72 @@
+{
+  "id": "fibrosis_airway-1908c1b5d1",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "ipf"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint\nFollow-up for pulmonary fibrosis.\n\nHPI\nPt is a 75 y.o. female presenting for routine follow-up of idiopathic pulmonary fibrosis. She reports she has been feeling stable since the last visit. Denies increased dyspnea on exertion or new cough. Compliant with current antifibrotic medication. Reports good activity level at home.\n\nMedication List\nNintedanib 150 mg BID.\n\nExam\nGen: Well-appearing, in no acute distress.\nResp: CTAB, RRR. Breath sounds diminished at bases, no wheezing/crackles.\nCV: RRR, no murmurs.\nExt: No cyanosis, good capillary refill.\n\nAssessment\n1. Idiopathic pulmonary fibrosis. Stable. Pulmonary function tests (PFTs) remain stable since last evaluation. Patient tolerating current antifibrotic therapy well.\n\nPlan\n1. Continue current antifibrotic dosing.\n2. F/u in 6 months for repeat PFTs and clinical assessment.\n3. Encouraged continued activity as tolerated.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "J84.112"
+  ],
+  "explanations": [
+    "Idiopathic pulmonary fibrosis: J84.112 (HCC 278)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J84.10"
+      ],
+      "confusion": "understated_fibrosis",
+      "lean": "under",
+      "why": "IPF is documented (HCC 278, not 280).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.818,
+        "gap": -0.499,
+        "direction": "under",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": [
+          "278"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "278",
+        "label": "Idiopathic Pulmonary Fibrosis and Lung Involvement in Systemic Sclerosis",
+        "from": [
+          "J84112"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:37+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

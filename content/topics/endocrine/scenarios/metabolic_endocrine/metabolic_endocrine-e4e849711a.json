@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-e4e849711a",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "fabry"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nBurning pain in the hands and feet.\n\nHPI\nThe patient is a 77-year-old female presenting for a follow-up evaluation of her Fabry disease. She reports persistent burning sensations in both hands and feet, which she describes as a constant tingling and stinging feeling. She notes that these symptoms have been slightly more intense over the past two weeks. She is currently adherent to her prescribed enzyme replacement therapy. She denies any new episodes of acute neuropathic flares or significant changes in her mobility. She reports that the burning sensation is most prominent during the evening and does not significantly interfere with her sleep, though it is bothersome during daily activities. She denies any associated numbness or weakness in the extremities.\n\nMedication List\n- Agalsidase beta (enzyme replacement therapy)\n- Gabapentin 300mg TID\n- Multivitamin daily\n\nReview of Systems\nConstitutional: Denies fever, chills, or unintended weight loss.\nNeurological: Reports burning sensations in hands and feet; denies focal weakness or tremors.\nMusculoskeletal: Denies joint swelling or severe muscle aches.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath or cough.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She enjoys gardening and walking in the park. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension; Father had a history of early-onset heart disease.\n\nVitals\nBP: 128/82 mmHg\nHR: 72 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\neGFR: 72 mL/min/1.73m2\nALT: 24 U/L\nAST: 28 U/L\nCreatinine: 1.1 mg/dL\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nExtremities: No visible edema or erythema. Sensation is intact to light touch. No focal motor deficits noted.\nNeurological: Normal gait and steady balance.\n\nAssessment\n1. Fabry disease: The patient is experiencing symptomatic neuropathic pain typical of her condition. She is currently stable on enzyme replacement therapy.\n\nPlan\n1. Continue current enzyme replacement therapy as prescribed.\n2. Continue Gabapentin for management of burning sensations in the extremities.\n3. Follow up in 3 months for routine monitoring of Fabry disease progression and labs.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "E75.21"
+  ],
+  "explanations": [
+    "Fabry (-Anderson) disease: E75.21 (HCC 49)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E88.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The specific storage disorder is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 9.256,
+        "gap": -9.256,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "49"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 9.256,
+    "hccs": [
+      {
+        "hcc": "49",
+        "label": "Specified Lysosomal Storage Disorders",
+        "from": [
+          "E7521"
+        ],
+        "weight": 9.256
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:09+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "mi_angina-84b1103661",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "cad_angina"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Chest discomfort.\n\nHPI: (Copied Forward) Patient is an 89-year-old female with a history of coronary artery disease of the native arteries. She reports experiencing angina on exertion during her daily walks. She denies any associated shortness of breath or palpitations. She manages symptoms with sublingual nitroglycerin as needed.\n\nUpdate: Patient reports that her symptoms remain well-controlled with current therapy. She denies any recent increase in the frequency or severity of her angina. She continues to maintain her activity level.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nCardiovascular: Positive (angina on exertion)\nRespiratory: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\n- Nitroglycerin 0.4 mg SL as needed\n- Atorvastatin 40 mg daily\n- Aspirin 81 mg daily\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard, no murmurs, rubs, or gallops.\nPulmonary: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Coronary artery disease of the native arteries with angina on exertion.\n\nPlan:\n1. Continue current medications.\n2. Renew prescription for nitroglycerin for use during episodes of angina.\n3. Follow up in 6 months.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "I25.119"
+  ],
+  "explanations": [
+    "Coronary artery disease with angina of unstated type: combination code I25.119 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.9.b"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.110"
+      ],
+      "confusion": "overstated_angina",
+      "lean": "over",
+      "why": "Unstable angina is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.24,
+        "correct": 0,
+        "gap": 0.24,
+        "direction": "over",
+        "extra_hccs": [
+          "229"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.10",
+        "I20.9"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code I25.119, not two codes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:07:37+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

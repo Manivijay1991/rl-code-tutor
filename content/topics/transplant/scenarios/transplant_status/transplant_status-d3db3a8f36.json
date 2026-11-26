@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-d3db3a8f36",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "stem_cell"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up after allogeneic stem cell transplant.\n\nHPI:\nThe patient is a 73-year-old male who presented today for a routine outpatient follow-up. He underwent an allogeneic stem cell transplant two years ago. He reports feeling well and states that he has remained in remission since the procedure. He denies any new symptoms, including fevers, night sweats, or significant fatigue. He reports that his energy levels are stable and he is able to perform his daily activities without difficulty. He has not experienced any significant complications since the time of his allogeneic stem cell transplant.\n\nReview of Systems:\nThe patient reports no recent fevers, chills, or cough. He denies any unintentional weight loss or night sweats. He reports no joint pain or skin rashes. He denies any shortness of breath or chest pain. He reports no changes in bowel habits or urinary frequency.\n\nSocial History:\nThe patient is retired and lives with his wife. He enjoys gardening and walking for exercise. He reports he does not smoke and consumes alcohol only occasionally.\n\nFamily History:\nFather: Deceased, history of hypertension.\nMother: Deceased, history of type 2 diabetes.\nSiblings: One brother, healthy.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs:\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 6.5 x 10^9/L\nPlatelets: 150 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nMedication List:\n- Aspirin 81 mg daily\n- Multivitamin daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nSkin: No rashes or lesions noted.\nNeck: No lymphadenopathy.\nLungs: Clear to auscultation bilaterally.\nHeart: Regular rate and rhythm; no murmurs.\nAbdomen: Soft, non-tender, no organomegaly.\n\nAssessment:\n1. Status post allogeneic stem cell transplant, currently in remission. The patient is stable and asymptomatic.\n\nPlan:\n1. Continue current surveillance and follow-up schedule.\n2. Continue current medication regimen.\n3. Return to clinic in six months for routine evaluation.\n\nElectronically signed,\nH. Tanaka, NP\nMay 14, 2026",
+  "answer": [
+    "Z94.84"
+  ],
+  "explanations": [
+    "Stem cell transplant status: Z94.84 (HCC 454)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.81"
+      ],
+      "confusion": "bone_marrow_vs_stem_cell",
+      "lean": "neutral",
+      "why": "A stem cell transplant is documented, not bone marrow.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.068,
+        "correct": 1.068,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.068,
+    "hccs": [
+      {
+        "hcc": "454",
+        "label": "Stem Cell/Including Bone Marrow/Transplant Status/Complications",
+        "from": [
+          "Z9484"
+        ],
+        "weight": 1.068
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:17+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

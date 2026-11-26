@@ -1,0 +1,68 @@
+{
+  "id": "cp_ataxia_brain-65bc8c1caa",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "friedreich"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint: Evaluation of gait instability and progressive ataxia.\n\nHPI:\nThe patient is a 57-year-old male presenting for a follow-up evaluation of his neurological condition. He reports ongoing challenges with balance and coordination, noting that his symptoms have continued to progress over the last six months. He currently requires the use of a walker for all ambulation to maintain safety and prevent falls. He describes his gait as increasingly unsteady, particularly when navigating uneven surfaces or turning quickly. He denies any new onset of severe neuropathic pain or significant changes in his visual acuity. He reports that while the ataxia is more pronounced, he is still able to perform most activities of daily living with the assistance of mobility aids.\n\nMedication List:\n- Gabapentin 300mg TID\n- Sertraline 50mg QD\n- Multivitamin daily\n\nReview of Systems:\nNegative for chest pain, shortness of breath, or palpitations. Negative for recent weight changes. Negative for new-onset tremors or focal weakness. Negative for changes in bowel or bladder habits.\n\nSocial History:\nThe patient is married and lives with his wife in a single-story home. He is retired and spends most of his time engaging in hobbies and light walking. He denies tobacco or alcohol use.\n\nFamily History:\nFather had high blood pressure and hypertension. Mother had type 2 diabetes. No known family history of similar neurological conditions.\n\nVitals:\nBP: 132/84 mmHg\nHR: 72 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs:\nHemoglobin: 14.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: >90 mL/min/1.73m2\n\nExam:\nThe patient is alert and oriented x3. He appears in no acute distress. Gait is significantly impaired and wide-based, requiring the use of a front-wheeled walker for stability. Coordination is diminished in the upper and lower extremities. Deep tendon reflexes are diminished throughout. No focal sensory loss noted.\n\nAssessment:\nThe patient is a 57-year-old male with a confirmed diagnosis of Friedreich ataxia. He continues to demonstrate progressive gait ataxia, necessitating the constant use of a mobility aid. His condition remains stable but shows expected progression of motor symptoms.\n\nPlan:\n1. Continue current medication regimen.\n2. Physical therapy to continue twice weekly for gait training and balance exercises.\n3. Follow up in three months to monitor progression of Friedreich's ataxia.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "G11.11"
+  ],
+  "explanations": [
+    "Friedreich ataxia: G11.11 (HCC 200)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G11.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type of hereditary ataxia is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.279,
+        "correct": 0.279,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.279,
+    "hccs": [
+      {
+        "hcc": "200",
+        "label": "Friedreich and Other Hereditary Ataxias; Huntington Disease",
+        "from": [
+          "G1111"
+        ],
+        "weight": 0.279
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:16+00:00",
+    "style": {
+      "age": 57,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

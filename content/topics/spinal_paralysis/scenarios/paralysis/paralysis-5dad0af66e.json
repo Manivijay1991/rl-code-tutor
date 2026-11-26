@@ -1,0 +1,86 @@
+{
+  "id": "paralysis-5dad0af66e",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "monoplegia_right_leg"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint: Right lower limb weakness.\n\nHPI: Copied Forward: Patient is a 77-year-old female presenting for evaluation of motor deficits. She reports a progressive loss of movement in the right lower extremity. She denies any recent falls or acute trauma. She reports that the weakness is localized specifically to the right side of the lower body.\nUpdate: Patient reports that the monoplegia of the right lower limb remains stable since the last evaluation. She notes no new sensory changes or significant changes in gait stability today.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nNeurological: Positive (motor deficit)\nMusculoskeletal: Negative\nCardiovascular: Negative\nRespiratory: Negative\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nNeurological: Patient demonstrates clear monoplegia of the right lower limb. Strength is 2/5 in the right leg. Sensation is intact to light touch. Reflexes are diminished on the affected side.\n\nAssessment:\n1. Monoplegia of the right lower limb.\n\nPlan:\n1. Continue current medications.\n2. Maintain current physical therapy regimen.\n3. Follow up in 3 months for reassessment of motor function.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "G83.11"
+  ],
+  "explanations": [
+    "Monoplegia of the right lower limb with dominance not documented: the right side defaults to dominant, G83.11 (HCC 254)."
+  ],
+  "refs": [
+    "OCG I.C.6.a",
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G83.13"
+      ],
+      "confusion": "wrong_dominance_default",
+      "lean": "neutral",
+      "why": "Right side + dominance unknown = dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.321,
+        "correct": 0.321,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G83.10"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The side is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.321,
+        "correct": 0.321,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.321,
+    "hccs": [
+      {
+        "hcc": "254",
+        "label": "Monoplegia/Other Paralytic Syndromes",
+        "from": [
+          "G8311"
+        ],
+        "weight": 0.321
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:14:54+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

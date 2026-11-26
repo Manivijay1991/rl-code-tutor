@@ -1,0 +1,68 @@
+{
+  "id": "liver_failure_biliary-0db2569589",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pbc"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Follow-up for primary biliary cholangitis.\n\nHPI: Patient is a 51-year-old male who presents for follow-up of primary biliary cholangitis. Patient was first diagnosed several years ago and has been managed with ursodeoxycholic acid. He reports stable symptoms and denies any new-onset pruritus, significant fatigue, or jaundice. He reports consistent compliance with his current medication regimen.\n(Copied forward from previous visit)\nUpdate: The patient reports feeling well today and notes that his energy levels have been consistent over the last three months. He denies any new symptoms or changes in his skin condition.\n\nMedication List:\n- Ursodeoxycholic acid 350mg TID\n- Vitamin D3 2000 IU daily\n\nVitals: BP 128/82, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F, BMI 27.4.\n\nRecent Labs:\n- ALT: 45 U/L\n- AST: 38 U/L\n- ALP: 180 U/L\n- Bilirubin: 0.8 mg/dL\n- eGFR: 88 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change, or fatigue.\nSkin: Negative for pruritus or rashes.\nGastrointestinal: Negative for abdominal pain, nausea, or vomiting.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for confusion or tremors.\n\nSocial History: Patient is a non-smoker. He works as a software engineer and lives with his wife and two children. He exercises three times a week.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes. No family history of autoimmune diseases.\n\nExam: The patient is a well-appearing male in no acute distress. He is alert and oriented x3. Skin is clear without jaundice or visible lesions. Abdomen is soft, non-tender, and non-distended. No hepatosplenomegaly noted.\n\nAssessment:\n1. Primary biliary cholangitis: The patient is showing improving liver tests on ursodiol. He remains clinically stable.\n\nPlan:\n1. Continue ursodeoxycholic acid as prescribed.\n2. Routine lab work to monitor liver enzymes and ALP levels in 3 months.\n3. Patient instructed to report any new itching or significant fatigue immediately.\n\nElectronically signed,\nJ. Lindqvist, NP\nMay 14, 2026",
+  "answer": [
+    "K74.3"
+  ],
+  "explanations": [
+    "Primary biliary cholangitis (formerly primary biliary cirrhosis): K74.3 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K83.01"
+      ],
+      "confusion": "wrong_cholangitis",
+      "lean": "neutral",
+      "why": "Primary biliary, not primary sclerosing.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.388,
+        "correct": 0.388,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K743"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:59+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

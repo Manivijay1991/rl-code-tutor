@@ -1,0 +1,310 @@
+{
+  "id": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note_age": {
+    "min": 40,
+    "max": 85
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "chronic_liver_failure",
+        "cirrhosis_portal_htn",
+        "pbc",
+        "psc",
+        "bile_obstruction"
+      ],
+      "labels": {
+        "chronic_liver_failure": "Chronic liver failure, no coma",
+        "cirrhosis_portal_htn": "Cirrhosis with portal hypertension",
+        "pbc": "Primary biliary cholangitis",
+        "psc": "Primary sclerosing cholangitis",
+        "bile_obstruction": "Bile duct obstruction, no gallstones"
+      },
+      "evidence": {
+        "chronic_liver_failure": [
+          [
+            "chronic liver failure",
+            "chronic hepatic failure"
+          ]
+        ],
+        "cirrhosis_portal_htn": [
+          [
+            "cirrhosis"
+          ],
+          [
+            "portal hypertension"
+          ]
+        ],
+        "pbc": [
+          [
+            "primary biliary cholangitis",
+            "primary biliary cirrhosis",
+            "PBC"
+          ]
+        ],
+        "psc": [
+          [
+            "primary sclerosing cholangitis",
+            "PSC"
+          ]
+        ],
+        "bile_obstruction": [
+          [
+            "bile duct"
+          ],
+          [
+            "obstruction",
+            "stricture"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "chronic_liver_failure": "The hepatologist documents chronic hepatic (liver) failure without coma or encephalopathy, listed for transplant evaluation; the cause is not discussed.",
+        "cirrhosis_portal_htn": "The provider documents cirrhosis of the liver (cause not stated) with portal hypertension, on a nonselective beta blocker.",
+        "pbc": "The hepatologist documents primary biliary cholangitis (PBC), on ursodiol with improving liver tests.",
+        "psc": "The hepatologist documents primary sclerosing cholangitis (PSC), monitored with yearly imaging.",
+        "bile_obstruction": "The provider documents obstruction of the common bile duct from a benign stricture; imaging shows no gallstones. A stent exchange is planned."
+      }
+    }
+  },
+  "note_forbid": [
+    "alcohol",
+    "hepatitis",
+    "fatty liver",
+    "NASH",
+    "MASH",
+    "ascites",
+    "varices",
+    "bleeding",
+    "encephalopathy",
+    "coma",
+    "cancer",
+    "carcinoma",
+    "tumor",
+    "transplanted liver",
+    "liver transplant status",
+    "cholecystitis",
+    "gallstone pancreatitis",
+    "pancreatitis"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "chronic_liver_failure"
+      },
+      "forbid": [
+        "cirrhosis",
+        "acute liver failure",
+        "acute hepatic",
+        "portal hypertension",
+        "cholangitis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cirrhosis_portal_htn"
+      },
+      "forbid": [
+        "liver failure",
+        "hepatic failure",
+        "cholangitis",
+        "biliary"
+      ]
+    },
+    {
+      "when": {
+        "condition": "pbc"
+      },
+      "forbid": [
+        "sclerosing",
+        "PSC",
+        "liver failure",
+        "hepatic failure",
+        "portal hypertension",
+        "obstruction"
+      ]
+    },
+    {
+      "when": {
+        "condition": "psc"
+      },
+      "forbid": [
+        "primary biliary",
+        "PBC",
+        "liver failure",
+        "hepatic failure",
+        "portal hypertension",
+        "ulcerative colitis",
+        "Crohn"
+      ]
+    },
+    {
+      "when": {
+        "condition": "bile_obstruction"
+      },
+      "forbid": [
+        "gallstones were",
+        "choledocholithiasis",
+        "stone in",
+        "cholangitis",
+        "cirrhosis",
+        "liver failure"
+      ]
+    }
+  ],
+  "confusions": {
+    "understated_liver": {
+      "description": "Coded cirrhosis or unspecified liver disease when chronic liver failure is documented.",
+      "lean": "under"
+    },
+    "missed_portal_htn": {
+      "description": "Left out portal hypertension (HCC 63, which outranks cirrhosis).",
+      "lean": "under"
+    },
+    "wrong_cholangitis": {
+      "description": "Confused primary biliary and primary sclerosing cholangitis, or used other cholangitis.",
+      "lean": "neutral"
+    },
+    "assumed_stones": {
+      "description": "Coded a gallstone code for bile duct obstruction without stones.",
+      "lean": "under"
+    },
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the specific condition is documented.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "liv",
+      "rules": [
+        {
+          "when": {
+            "condition": "chronic_liver_failure"
+          },
+          "codes": [
+            "K72.10"
+          ],
+          "explain": "Chronic hepatic failure without coma: K72.10 (HCC 63).",
+          "refs": [
+            "ICD-10-CM Tabular: K72-K83"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K72.90"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Chronic is documented."
+            },
+            {
+              "codes": [
+                "K76.9"
+              ],
+              "confusion": "understated_liver",
+              "why": "Chronic liver failure is documented (HCC 63)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cirrhosis_portal_htn"
+          },
+          "codes": [
+            "K74.60",
+            "K76.6"
+          ],
+          "explain": "Cirrhosis, K74.60 (HCC 64), plus portal hypertension, K76.6 (HCC 63, which outranks 64).",
+          "refs": [
+            "ICD-10-CM Tabular: K72-K83"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K74.60"
+              ],
+              "confusion": "missed_portal_htn",
+              "why": "Portal hypertension is documented and coded separately."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "pbc"
+          },
+          "codes": [
+            "K74.3"
+          ],
+          "explain": "Primary biliary cholangitis (formerly primary biliary cirrhosis): K74.3 (HCC 68).",
+          "refs": [
+            "ICD-10-CM Tabular: K72-K83"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K83.01"
+              ],
+              "confusion": "wrong_cholangitis",
+              "why": "Primary biliary, not primary sclerosing."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "psc"
+          },
+          "codes": [
+            "K83.01"
+          ],
+          "explain": "Primary sclerosing cholangitis: K83.01 (HCC 68).",
+          "refs": [
+            "ICD-10-CM Tabular: K72-K83"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K83.09"
+              ],
+              "confusion": "wrong_cholangitis",
+              "why": "Primary sclerosing cholangitis has its own code."
+            },
+            {
+              "codes": [
+                "K74.3"
+              ],
+              "confusion": "wrong_cholangitis",
+              "why": "Primary sclerosing, not primary biliary."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "bile_obstruction"
+          },
+          "codes": [
+            "K83.1"
+          ],
+          "explain": "Obstruction of bile duct without gallstones: K83.1 (HCC 68).",
+          "refs": [
+            "ICD-10-CM Tabular: K72-K83"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "K80.51"
+              ],
+              "confusion": "assumed_stones",
+              "why": "No gallstones: K83.1, not a calculus code (which has no HCC)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

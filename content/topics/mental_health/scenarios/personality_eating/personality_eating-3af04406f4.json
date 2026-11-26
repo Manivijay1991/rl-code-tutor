@@ -1,0 +1,86 @@
+{
+  "id": "personality_eating-3af04406f4",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "anorexia_restricting_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint: Follow-up for weight maintenance.\n\nVitals: BP 118/76, HR 74, SpO2 99% on room air, Height 66 in, Weight 122 lbs.\n\nReview of Systems:\nConstitutional: Negative\nEyes: Negative\nEENT: Negative\nCardiovascular: Negative\nRespiratory: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\nPsychiatric: Negative\nIntegumentary: Negative\n\nHPI: [Copied Forward] Patient is a 21-year-old female presenting for ongoing management of anorexia nervosa. She has a history of the restricting type and has shown significant improvement in nutritional status and weight gain over the previous year. She reports consistent adherence to a meal plan and stable energy levels.\n\nToday's Update: The patient reports continued stability in her weight and appetite. She denies any recent setbacks or significant cravings for food restriction. She feels well-supported by her current routine.\n\nMedication List: Multivitamin, Vitamin D3.\n\nExam: Alert and oriented x3. Appearance is healthy. Skin is clear. Heart sounds regular, no murmurs. Lungs clear to auscultation. Abdomen soft, non-tender. BMI is within the target range.\n\nAssessment:\n1. Anorexia nervosa, restricting type, in remission. Weight has been stable for over a year.\n\nPlan:\n1. Continue current nutritional plan.\n2. Follow up in 3 months for weight and progress check.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "F50.014"
+  ],
+  "explanations": [
+    "Anorexia nervosa, restricting type, in remission: F50.014 (HCC 153)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F50.011"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "neutral",
+      "why": "The provider documents remission.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F50.019"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Remission is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F50014"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:35+00:00",
+    "style": {
+      "age": 21,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

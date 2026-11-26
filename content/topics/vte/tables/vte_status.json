@@ -1,0 +1,388 @@
+{
+  "id": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note_age": {
+    "min": 30
+  },
+  "slots": {
+    "condition": {
+      "label": "Clot documented",
+      "values": [
+        "acute_dvt",
+        "chronic_dvt",
+        "dvt_history",
+        "acute_pe",
+        "chronic_pe",
+        "pe_history"
+      ],
+      "labels": {
+        "acute_dvt": "Acute DVT, right femoral vein",
+        "chronic_dvt": "Chronic DVT, right femoral vein",
+        "dvt_history": "Past DVT, treatment completed",
+        "acute_pe": "Acute pulmonary embolism",
+        "chronic_pe": "Chronic pulmonary embolism",
+        "pe_history": "Past pulmonary embolism, treatment completed"
+      },
+      "evidence": {
+        "acute_dvt": [
+          [
+            "deep vein thrombosis",
+            "DVT"
+          ],
+          [
+            "right femoral vein"
+          ],
+          [
+            "acute"
+          ]
+        ],
+        "chronic_dvt": [
+          [
+            "deep vein thrombosis",
+            "DVT"
+          ],
+          [
+            "right femoral vein"
+          ],
+          [
+            "chronic"
+          ]
+        ],
+        "dvt_history": [
+          [
+            "deep vein thrombosis",
+            "DVT"
+          ],
+          [
+            "completed",
+            "resolved"
+          ]
+        ],
+        "acute_pe": [
+          [
+            "pulmonary embolism"
+          ],
+          [
+            "acute"
+          ]
+        ],
+        "chronic_pe": [
+          [
+            "chronic pulmonary embolism",
+            "chronic thromboembolic"
+          ]
+        ],
+        "pe_history": [
+          [
+            "pulmonary embolism"
+          ],
+          [
+            "completed",
+            "resolved"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "acute_dvt": "An acute deep vein thrombosis (DVT) of the right femoral vein was found on ultrasound three weeks ago; the patient is in the first months of anticoagulant treatment.",
+        "chronic_dvt": "The provider documents chronic deep vein thrombosis (DVT) of the right femoral vein with residual clot on ultrasound; long-term anticoagulation continues.",
+        "dvt_history": "The patient had a deep vein thrombosis (DVT) of the right leg two years ago; anticoagulation was completed and it has resolved, with no current clot.",
+        "acute_pe": "An acute pulmonary embolism was diagnosed two weeks ago on CT, without strain on the right heart; the patient is in the first months of anticoagulant treatment.",
+        "chronic_pe": "The provider documents chronic pulmonary embolism with persistent clot on imaging; long-term anticoagulation continues.",
+        "pe_history": "The patient had a pulmonary embolism three years ago; anticoagulation was completed and it has resolved."
+      }
+    }
+  },
+  "note_forbid": [
+    "left leg",
+    "left femoral",
+    "both legs",
+    "bilateral",
+    "upper extremity",
+    "superficial",
+    "IVC filter",
+    "vena cava filter",
+    "cancer",
+    "malignancy",
+    "pregnan",
+    "postpartum",
+    "COVID",
+    "cor pulmonale",
+    "right heart strain",
+    "saddle",
+    "septic",
+    "pulmonary hypertension",
+    "atrial fibrillation",
+    "AFib"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "acute_dvt",
+          "chronic_dvt",
+          "dvt_history"
+        ]
+      },
+      "forbid": [
+        "pulmonary embolism",
+        "PE"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "acute_pe",
+          "chronic_pe",
+          "pe_history"
+        ]
+      },
+      "forbid": [
+        "deep vein thrombosis",
+        "DVT"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "acute_dvt",
+          "acute_pe"
+        ]
+      },
+      "forbid": [
+        "chronic",
+        "history of",
+        "resolved",
+        "completed",
+        "years ago"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "chronic_dvt",
+          "chronic_pe"
+        ]
+      },
+      "forbid": [
+        "acute DVT",
+        "acute deep vein",
+        "acute pulmonary embolism",
+        "acute PE",
+        "acute thrombosis",
+        "acute clot",
+        "new clot",
+        "resolved",
+        "completed",
+        "history of"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "dvt_history",
+          "pe_history"
+        ]
+      },
+      "forbid": [
+        "acute DVT",
+        "acute deep vein",
+        "acute pulmonary embolism",
+        "acute PE",
+        "acute thrombosis",
+        "acute clot",
+        "chronic",
+        "anticoagulant",
+        "apixaban",
+        "rivaroxaban",
+        "warfarin",
+        "Eliquis",
+        "Xarelto"
+      ]
+    }
+  ],
+  "confusions": {
+    "acute_coded_history": {
+      "description": "Coded history of a clot while the acute clot is still being treated.",
+      "lean": "under"
+    },
+    "history_coded_active": {
+      "description": "Coded an active clot after treatment was completed and it resolved.",
+      "lean": "over"
+    },
+    "acute_chronic_confused": {
+      "description": "Confused acute and chronic thrombosis or embolism.",
+      "lean": "neutral"
+    },
+    "chronic_coded_history": {
+      "description": "Coded history when chronic thrombosis or embolism is documented.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "vte",
+      "rules": [
+        {
+          "when": {
+            "condition": "acute_dvt"
+          },
+          "codes": [
+            "I82.411"
+          ],
+          "explain": "Acute DVT of the right femoral vein, still under initial treatment: I82.411 (HCC 267).",
+          "refs": [
+            "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z86.718"
+              ],
+              "confusion": "acute_coded_history",
+              "why": "The clot is acute and still being treated."
+            },
+            {
+              "codes": [
+                "I82.511"
+              ],
+              "confusion": "acute_chronic_confused",
+              "why": "The DVT is documented as acute."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "chronic_dvt"
+          },
+          "codes": [
+            "I82.511"
+          ],
+          "explain": "Chronic DVT of the right femoral vein: I82.511 (HCC 267).",
+          "refs": [
+            "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I82.411"
+              ],
+              "confusion": "acute_chronic_confused",
+              "why": "The DVT is documented as chronic."
+            },
+            {
+              "codes": [
+                "Z86.718"
+              ],
+              "confusion": "chronic_coded_history",
+              "why": "Chronic DVT is a current condition, not history."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "dvt_history"
+          },
+          "codes": [
+            "Z86.718"
+          ],
+          "explain": "A DVT that resolved after completed treatment: personal history, Z86.718 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4",
+            "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I82.401"
+              ],
+              "confusion": "history_coded_active",
+              "why": "There is no current clot: code the history."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "acute_pe"
+          },
+          "codes": [
+            "I26.99"
+          ],
+          "explain": "Acute pulmonary embolism without acute cor pulmonale, under initial treatment: I26.99 (HCC 267).",
+          "refs": [
+            "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z86.711"
+              ],
+              "confusion": "acute_coded_history",
+              "why": "The embolism is acute and still being treated."
+            },
+            {
+              "codes": [
+                "I27.82"
+              ],
+              "confusion": "acute_chronic_confused",
+              "why": "The embolism is documented as acute."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "chronic_pe"
+          },
+          "codes": [
+            "I27.82"
+          ],
+          "explain": "Chronic pulmonary embolism: I27.82 (HCC 267).",
+          "refs": [
+            "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I26.99"
+              ],
+              "confusion": "acute_chronic_confused",
+              "why": "The embolism is documented as chronic."
+            },
+            {
+              "codes": [
+                "Z86.711"
+              ],
+              "confusion": "chronic_coded_history",
+              "why": "Chronic embolism is a current condition, not history."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "pe_history"
+          },
+          "codes": [
+            "Z86.711"
+          ],
+          "explain": "A pulmonary embolism that resolved after completed treatment: personal history, Z86.711 (no HCC).",
+          "refs": [
+            "OCG I.C.21.c.4",
+            "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I26.99"
+              ],
+              "confusion": "history_coded_active",
+              "why": "There is no current embolism: code the history."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

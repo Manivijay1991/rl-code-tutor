@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-441a09e0a9",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "gaucher"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for Gaucher disease.\n\nHPI\nPt is a 75-year-old female presenting for routine genetics f/u. She is currently managed for Gaucher disease. Pt reports she is adherent to her enzyme replacement therapy (ERT) regimen, receiving infusions every two weeks. She denies any new systemic symptoms, bone pain, or significant fatigue since last visit. She reports stable activity levels and feels well overall.\n\nMedication List\n- Enzyme replacement therapy (ERT) every 2 weeks.\n\nExam\nPt is a well-appearing female in no acute distress. Alert and oriented x3. Skin is clear without new lesions. Musculoskeletal exam shows no new joint swelling or acute tenderness. Vital signs are stable and within normal limits.\n\nAssessment\n1. Gaucher disease: Stable on current ERT schedule.\n\nPlan\n1. Continue current enzyme replacement therapy every two weeks.\n2. Continue monitoring for any systemic symptoms.\n3. Follow up in clinic as scheduled.\n\nElectronically signed, \nE. Castillo, DO\nMay 14, 2026",
+  "answer": [
+    "E75.22"
+  ],
+  "explanations": [
+    "Gaucher disease: E75.22 (HCC 49, one of the highest V28 weights)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E88.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The specific storage disorder is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 9.256,
+        "gap": -9.256,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "49"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 9.256,
+    "hccs": [
+      {
+        "hcc": "49",
+        "label": "Specified Lysosomal Storage Disorders",
+        "from": [
+          "E7522"
+        ],
+        "weight": 9.256
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:33+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

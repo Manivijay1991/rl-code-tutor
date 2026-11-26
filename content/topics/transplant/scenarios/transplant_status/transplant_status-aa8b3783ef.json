@@ -1,0 +1,73 @@
+{
+  "id": "transplant_status-aa8b3783ef",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "kidney_pancreas"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up for transplant status.\n\nHPI: Pt is a 40 y.o. female presenting for routine surveillance of her combined kidney and pancreas transplant. Procedure was performed several years ago for type 1 diabetes. Pt reports she feels excellent and denies any recent symptoms of malaise, fever, or localized pain. She reports stable glucose levels and states that she is currently off all exogenous insulin. She denies any signs of graft dysfunction. She is here for routine monitoring of her renal and pancreatic function.\n\nMedication List:\n- Cyclosporine 100mg BID\n- Mycophenolate mofetil 500mg BID\n- Prednisone 5mg daily\n- Azathioprine 50mg daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nGI: Denies abdominal pain, nausea, vomiting, diarrhea.\nGU: Denies dysuria, urgency.\nMSK: Denies joint pain or swelling.\nNeuro: Denies headaches, numbness.\n\nSocial History: Works full-time as a teacher. Non-smoker. Lives with husband and two children. Denies alcohol use.\n\nFamily History: Mother has hypertension. Father has type 2 diabetes. Siblings healthy.\n\nVitals:\nBP: 118/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 99% on RA\nWt: 155 lbs\n\nRecent Labs:\neGFR: 82 mL/min/1.73m2\nCreatinine: 1.1 mg/dL\nGlucose: 110 mg/dL\nHbA1c: 6.2%\nWBC: 7.4 K/uL\nPlatelets: 210 K/uL\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or crackles.\nAbdomen: Soft, non-tender, non-distended. No masses.\nSkin: No rashes or new lesions.\nNeuro: NAD.\n\nAssessment:\n1. Status post combined kidney and pancreas transplant. Organs are functioning well. No evidence of rejection at this time.\n2. Type 1 diabetes, well-controlled post-transplant.\n\nPlan:\n1. Continue current immunosuppressive regimen.\n2. Continue monitoring renal function and glucose levels.\n3. F/u in 6 months for routine labs and clinic visit.\n4. Pt instructed to call immediately if any new symptoms develop.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "Z94.0",
+    "Z94.83"
+  ],
+  "explanations": [
+    "A combined kidney-pancreas transplant: kidney transplant status Z94.0 (no HCC in V28) plus pancreas transplant status Z94.83 (HCC 35)."
+  ],
+  "refs": [
+    "OCG I.C.14.a.2",
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.0"
+      ],
+      "confusion": "missed_second_organ",
+      "lean": "under",
+      "why": "The pancreas transplant is documented too (HCC 35).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.949,
+        "gap": -0.949,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "35"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.949,
+    "hccs": [
+      {
+        "hcc": "35",
+        "label": "Pancreas Transplant Status",
+        "from": [
+          "Z9483"
+        ],
+        "weight": 0.949
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:03+00:00",
+    "style": {
+      "age": 40,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

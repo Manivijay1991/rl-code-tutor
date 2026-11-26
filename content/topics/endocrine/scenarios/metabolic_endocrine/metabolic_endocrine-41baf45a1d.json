@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-41baf45a1d",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "acromegaly"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for management of acromegaly.\n\nHPI\nThe patient is a 73-year-old male presenting for a scheduled follow-up visit to evaluate the status of his acromegaly. His condition is secondary to a known pituitary adenoma. He has been receiving long-term treatment with octreotide. The patient reports that his symptoms have remained stable over the last three months. He denies any new headaches, visual field changes, or significant joint pain. He notes that his energy levels are consistent and he has not experienced any excessive sweating or tremors since his last appointment. He continues to tolerate his current medication regimen well without any notable side effects.\n\nMedication List\n- Octreotide injection\n- Lisinopril 10 mg daily\n- Atorvastatin 20 mg daily\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, or palpitations. He denies any recent weight changes, fever, or chills. He reports no changes in vision, hearing, or coordination. He denies numbness, tingling, or muscle weakness.\n\nSocial History\nThe patient is retired and lives with his wife. He enjoys gardening and walking. He denies tobacco use and reports social alcohol consumption.\n\nFamily History\nFather had hypertension. Mother had a history of osteoarthritis. No family history of pituitary tumors.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\nHeight: 5'10\"\nWeight: 195 lbs\n\nRecent Labs\nIGF-1: 140 ng/mL\nGlucose: 104 mg/dL\nHbA1c: 5.7%\neGFR: 78 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented x3. Skin is warm and dry. Cranial nerves II-XII are intact. Extraocular movements are full and symmetric. No new masses or lesions noted on the extremities. Heart sounds are regular with no murmurs. Lungs are clear to auscultation.\n\nAssessment\n1. Acromegaly secondary to pituitary adenoma. The patient’s IGF-1 levels remain within the target range, indicating that the current dose of octreotide is effective in managing his acromegaly.\n\nPlan\n1. Continue current dose of octreotide.\n2. Monitor for any changes in symptoms or side effects.\n3. Follow up in 6 months for repeat laboratory work, including IGF-1 and glucose levels.\n\nElectronically signed, H. Tanaka, NP, 10/14/2026",
+  "answer": [
+    "E22.0"
+  ],
+  "explanations": [
+    "Acromegaly: E22.0 (HCC 51)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E23.7"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Acromegaly has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.51,
+        "gap": -0.51,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "51"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.51,
+    "hccs": [
+      {
+        "hcc": "51",
+        "label": "Addisons and Cushings Diseases/Acromegaly/and Other Specified Endocrine Disorders",
+        "from": [
+          "E220"
+        ],
+        "weight": 0.51
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:48+00:00",
+    "style": {
+      "age": 73,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "H. Tanaka"
+    }
+  }
+}

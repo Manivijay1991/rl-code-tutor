@@ -1,0 +1,87 @@
+{
+  "id": "bone_lupus_skin-a9069d6853",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pemphigus"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: Follow-up for skin lesions.\n\nHPI: Pt is an 85 y.o. female presenting for scheduled follow-up of pemphigus vulgaris. She reports that her skin lesions have remained stable since her last visit. She denies new blisters, intense pruritus, or systemic symptoms such as fever or chills. She is currently adhering to her medication regimen, including rituximab infusions and a gradual steroid taper. She reports good tolerance to current medications with no significant side effects noted.\n\nMedication List:\n- Rituximab (infusion schedule)\n- Prednisone (tapering)\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nIntegumentary: Denies new lesions or itching.\nRespiratory: Denies SOB or cough.\nMusculoskeletal: Denies joint pain.\nNeurological: Denies headache or dizziness.\n\nSocial History: Lives at home with family. Retired. Non-smoker.\n\nFamily History: Mother had hypertension. Father had heart disease.\n\nRecent Labs:\n- WBC: 7.2\n- Hb: 12.5\n- Plt: 210\n- Creatinine: 0.9\n- eGFR: >60\n\nVitals:\nBP: 132/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 34%\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nSkin: Multiple areas of previous blistering noted; currently well-healed with minimal new activity. No acute inflammatory lesions.\nNeck: NAD.\nLungs: CTAB.\nHeart: RRR, no murmurs.\n\nAssessment:\n1. Pemphigus vulgaris: Currently stable and controlled on rituximab and a steroid taper.\n\nPlan:\n- Continue current rituximab maintenance schedule.\n- Continue prednisone taper as previously directed.\n- Pt to call if new blisters or systemic symptoms develop.\n- F/u in 3 months for routine evaluation.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "L10.0"
+  ],
+  "explanations": [
+    "Pemphigus vulgaris: L10.0 (HCC 387)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L12.0"
+      ],
+      "confusion": "pemphigus_pemphigoid_confused",
+      "lean": "neutral",
+      "why": "Pemphigus, not pemphigoid.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.406,
+        "correct": 0.406,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "L13.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The disease is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.406,
+        "gap": -0.406,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "387"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.406,
+    "hccs": [
+      {
+        "hcc": "387",
+        "label": "Pemphigus/Pemphigoid/and Other Specified Autoimmune Skin Disorders",
+        "from": [
+          "L100"
+        ],
+        "weight": 0.406
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:51+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

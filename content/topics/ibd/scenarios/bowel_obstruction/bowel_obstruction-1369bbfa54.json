@@ -1,0 +1,69 @@
+{
+  "id": "bowel_obstruction-1369bbfa54",
+  "table": "bowel_obstruction",
+  "title": "Bowel obstruction and ileus in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "obstruction_unknown"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the bowel obstruction or ileus (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Partial small bowel obstruction.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\n\nRecent Labs:\nWBC: 8.4 x 10^9/L\nHemoglobin: 12.2 g/dL\nHematocrit: 37%\nCreatinine: 0.9 mg/dL\neGFR: 72 mL/min/1.73m2\nElectrolytes: Sodium 138 mEq/L, Potassium 4.1 mEq/L\n\nReview of Systems:\nThe patient reports abdominal pain and bloating. She denies fever, chills, nausea, or vomiting. She denies any changes in bowel habits or urinary symptoms. She denies shortness of breath or chest pain.\n\nSocial History:\nThe patient lives at home with her spouse. She is a former smoker (quit 20 years ago). She denies alcohol or illicit drug use.\n\nFamily History:\nMother had hypertension. Father had a history of heart disease.\n\nHospital Course:\nThe patient is a 79-year-old woman who presented to the emergency department with progressive abdominal discomfort and distension. Imaging confirmed a partial obstruction of the small bowel. The etiology of the obstruction was not identified during the evaluation. She was admitted for conservative management and was started on strict bowel rest and intravenous fluids. During the hospitalization, her symptoms improved significantly. She was able to tolerate a transition to a clear liquid diet and eventually progressed to a soft diet without further complications. The partial obstruction resolved while she was in our care. She was discharged in stable condition.\n\nDischarge Diagnoses:\nPartial small bowel obstruction.\n\nDischarge Medications:\n1. Lisinopril 10 mg daily\n2. Atorvastatin 20 mg daily\n3. Multivitamin daily\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a routine evaluation and to monitor for any recurrence of symptoms.\n\nElectronically signed,\nD. Kowalski, MD\n05/15/2026",
+  "answer": [
+    "K56.600"
+  ],
+  "explanations": [
+    "Partial intestinal obstruction, cause not stated: K56.600 (HCC 78)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K56"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K56.51"
+      ],
+      "confusion": "assumed_cause",
+      "lean": "neutral",
+      "why": "Adhesions are not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.326,
+    "hccs": [
+      {
+        "hcc": "78",
+        "label": "Intestinal Obstruction/Perforation",
+        "from": [
+          "K56600"
+        ],
+        "weight": 0.326
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:05+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

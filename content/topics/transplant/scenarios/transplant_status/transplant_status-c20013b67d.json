@@ -1,0 +1,73 @@
+{
+  "id": "transplant_status-c20013b67d",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "kidney_pancreas"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up for transplant status.\n\nVitals: BP 128/74, HR 68, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nRecent Labs: Serum Creatinine: 1.1 mg/dL, eGFR: 72 mL/min/1.73m², HbA1c: 5.8%, Potassium: 4.2 mEq/L.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Aspirin 81mg daily\n- Mycophenolate mofetil 500mg twice daily\n\nFamily History: Mother had hypertension; Father had myocardial infarction at age 65.\n\nSocial History: Retired teacher, lives with husband, non-smoker, occasional social drinking.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for abdominal pain or changes in bowel habits.\nGenitourinary: Negative for dysuria or changes in urinary frequency.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for numbness or tingling.\n\nHPI: Patient is a 72-year-old female who underwent a combined kidney and pancreas transplant several years ago for the management of type 1 diabetes. She reports feeling well today and denies any acute symptoms. She notes that she is no longer requiring any insulin and that her blood sugar levels have remained stable. She reports no significant concerns regarding her renal function or her pancreatic graft.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No rashes or new lesions noted.\nAbdomen: Soft, non-tender, non-distended. No masses palpated.\nMusculoskeletal: Normal range of motion in all extremities.\n\nAssessment:\n1. Status post combined kidney and pancreas transplant. The transplant is functioning well.\n2. Type 1 diabetes, well-controlled. Patient is currently off insulin.\n\nPlan:\n1. Continue current immunosuppressive and maintenance medications as prescribed.\n2. Continue routine monitoring of renal function and glycemic control.\n3. Follow up in 6 months for routine laboratory work and clinical evaluation.\n\nElectronically signed, \nA. Rivera, MD\nOctober 14, 2026",
+  "answer": [
+    "Z94.0",
+    "Z94.83"
+  ],
+  "explanations": [
+    "A combined kidney-pancreas transplant: kidney transplant status Z94.0 (no HCC in V28) plus pancreas transplant status Z94.83 (HCC 35)."
+  ],
+  "refs": [
+    "OCG I.C.14.a.2",
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.0"
+      ],
+      "confusion": "missed_second_organ",
+      "lean": "under",
+      "why": "The pancreas transplant is documented too (HCC 35).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.949,
+        "gap": -0.949,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "35"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.949,
+    "hccs": [
+      {
+        "hcc": "35",
+        "label": "Pancreas Transplant Status",
+        "from": [
+          "Z9483"
+        ],
+        "weight": 0.949
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:02+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

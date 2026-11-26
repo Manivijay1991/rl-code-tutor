@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-3a12fe7227",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_hhs"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Hyperglycemic hyperosmolar state\n\nReview of Systems:\nThe patient reports generalized weakness and significant dehydration. She denies chest pain, shortness of breath, or abdominal pain. She notes increased thirst and frequent urination prior to admission. She denies any recent changes in vision or focal neurological deficits.\n\nSocial History:\nThe patient lives at home with her daughter. She is retired and enjoys gardening. She reports a balanced diet and occasional light exercise. She denies tobacco or any recreational substance use.\n\nFamily History:\nMother had type 2 diabetes and hypertension. Father had a history of coronary artery disease.\n\nVitals:\nTemperature: 98.4 F\nBlood Pressure: 138/82 mmHg\nHeart Rate: 82 bpm\nRespiratory Rate: 18 breaths/min\nSpO2: 96% on room air\n\nRecent Labs:\nGlucose: 650 mg/dL (Admission)\nBUN: 24 mg/dL\nCreatinine: 1.1 mg/dL\nSodium: 155 mEq/L\nPotassium: 4.2 mEq/L\nHemoglobin A1c: 9.4%\n\nHospital Course:\nThe patient is a 79-year-old woman who presented to the emergency department with profound dehydration and elevated blood glucose levels. She was diagnosed with a hyperosmolar state secondary to her known type 2 diabetes. During the hospitalization, she was managed with aggressive intravenous fluid resuscitation and a sliding scale insulin regimen. Her glucose levels stabilized within 48 hours, and her serum sodium levels normalized. She remained hemodynamically stable and alert throughout her stay. She tolerated her diet well and was able to ambulate in the hallway without distress. She was discharged in stable condition with instructions for home management.\n\nDischarge Diagnoses:\n1. Hyperosmolar state\n2. Type 2 diabetes\n\nDischarge Medications:\n1. Metformin 500mg BID\n2. Lisinopril 10mg daily\n3. Atorvastatin 20mg daily\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a laboratory review and to adjust her insulin regimen. She was instructed to monitor her blood glucose levels daily.\n\nElectronically signed,\nD. Kowalski, MD\n05/15/2026",
+  "answer": [
+    "E11.00"
+  ],
+  "explanations": [
+    "Type 2 diabetes with hyperosmolarity without coma: E11.00 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "dka_coded_hyperglycemia",
+      "lean": "under",
+      "why": "A hyperosmolar state is a severe acute complication (HCC 36).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E1100"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:26:33+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

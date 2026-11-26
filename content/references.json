@@ -11,40 +11,148 @@
     "title": "Alphabetic Index, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
+  "ICD-10-CM Tabular: A41, R65, R78": {
+    "title": "Tabular List: sepsis, severe sepsis and bacteremia, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: B25, B37, B59": {
+    "title": "Tabular List: cytomegalovirus, candidiasis and pneumocystosis, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: C81-C90, D46, Z85.7": {
+    "title": "Tabular List: lymphoma, multiple myeloma, myelodysplastic syndromes and history of blood cancers, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: D57-D70": {
+    "title": "Tabular List: sickle cell disorders, hemolytic and aplastic anemias, coagulation defects and neutropenia, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
   "ICD-10-CM Tabular: D57-D84": {
     "title": "Tabular List: sickle cell disorders, thrombocytopenia and immunodeficiency, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: E10-E11 (acute complications)": {
+    "title": "Tabular List: diabetes with ketoacidosis, hyperosmolarity and hypoglycemia, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: E22-E27, E75, E85": {
+    "title": "Tabular List: pituitary, adrenal, lysosomal storage and amyloidosis disorders, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: F10-F19": {
+    "title": "Tabular List: mental and behavioral disorders due to psychoactive substance use, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: F20-F31": {
+    "title": "Tabular List: schizophrenia, schizoaffective and bipolar disorders, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
   "ICD-10-CM Tabular: F32-F33": {
     "title": "Tabular List: major depressive disorder, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
+  "ICD-10-CM Tabular: F50, F60": {
+    "title": "Tabular List: eating and personality disorders, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: G10-G11, G80, G93": {
+    "title": "Tabular List: Huntington's disease, hereditary ataxia, cerebral palsy and anoxic brain damage, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: G12, G61-G62, G70-G71": {
+    "title": "Tabular List: motor neuron disease, polyneuropathies, myasthenia gravis and muscular dystrophies, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
   "ICD-10-CM Tabular: G20-G40": {
     "title": "Tabular List: Parkinson's disease, MS and epilepsy, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: G45, I60-I63": {
+    "title": "Tabular List: TIA and nontraumatic cerebral hemorrhage and infarction, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: G82-G83, G95, M47": {
+    "title": "Tabular List: paralytic syndromes, spinal cord diseases and spondylosis with myelopathy, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
   "ICD-10-CM Tabular: H35, E11.3": {
     "title": "Tabular List: macular degeneration and diabetic retinopathy, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
+  "ICD-10-CM Tabular: I20-I25": {
+    "title": "Tabular List: ischemic heart disease, angina and myocardial infarction, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: I26-I27, I82, Z86.7": {
+    "title": "Tabular List: pulmonary embolism, venous thrombosis and history codes, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: I42, I25.5": {
+    "title": "Tabular List: cardiomyopathy and ischemic cardiomyopathy, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
   "ICD-10-CM Tabular: I48": {
     "title": "Tabular List: atrial fibrillation and flutter, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: I50": {
+    "title": "Tabular List: heart failure, including end-stage (code also the type), in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
   "ICD-10-CM Tabular: I70-I73": {
     "title": "Tabular List: atherosclerosis and peripheral vascular disease, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
+  "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09": {
+    "title": "Tabular List: pneumonia, aspiration pneumonitis, lung abscess, empyema and respiratory arrest, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: J45, E84": {
+    "title": "Tabular List: asthma and cystic fibrosis, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: J84, M34, Z93, Z99": {
+    "title": "Tabular List: interstitial lung disease, systemic sclerosis, tracheostomy and ventilator status, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
   "ICD-10-CM Tabular: K50-K86": {
     "title": "Tabular List: Crohn's disease, ulcerative colitis, IBS and pancreatitis, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: K56": {
+    "title": "Tabular List: paralytic ileus and intestinal obstruction, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
   "ICD-10-CM Tabular: K70-K77": {
     "title": "Tabular List: diseases of the liver, in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
+  "ICD-10-CM Tabular: K72-K83": {
+    "title": "Tabular List: liver failure, portal hypertension, cholangitis and bile duct obstruction, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: L97, T31": {
+    "title": "Tabular List: non-pressure chronic ulcers and burn extent, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
   "ICD-10-CM Tabular: M05-M06": {
     "title": "Tabular List: rheumatoid arthritis, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: M32, M86, L10-L12, L93": {
+    "title": "Tabular List: lupus, osteomyelitis and bullous skin disorders, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: S06": {
+    "title": "Tabular List: intracranial injury and concussion by loss of consciousness, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: S32, M80, S88, Z89": {
+    "title": "Tabular List: vertebral fractures, osteoporotic fractures and amputations, in the FY 2027 ICD-10-CM files",
+    "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
+  },
+  "ICD-10-CM Tabular: T86, Z94": {
+    "title": "Tabular List: transplant status (Z94) and complications of transplanted organs (T86), in the FY 2027 ICD-10-CM files",
     "url": "https://www.cdc.gov/nchs/icd/comprehensive-listing-of-icd-10-cm-files.htm"
   },
   "OCG I.A.13": {
@@ -63,6 +171,10 @@
     "title": "HIV infections (confirmed cases, Z21, R75, previous HIV-related illness)",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=19"
   },
+  "OCG I.C.1.d": {
+    "title": "Sepsis, severe sepsis and septic shock (urosepsis, organ dysfunction)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=23"
+  },
   "OCG I.C.10.a": {
     "title": "COPD and asthma",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=56"
@@ -70,6 +182,10 @@
   "OCG I.C.12.a": {
     "title": "Pressure ulcer stage codes (unstageable, unspecified, healed)",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=58"
+  },
+  "OCG I.C.13.d.2": {
+    "title": "Osteoporosis with current pathological fracture (minor fall in known osteoporosis)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=62"
   },
   "OCG I.C.14.a": {
     "title": "Chronic kidney disease",
@@ -79,6 +195,10 @@
     "title": "Stages of chronic kidney disease",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=62"
   },
+  "OCG I.C.14.a.2": {
+    "title": "Chronic kidney disease and kidney transplant status",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=62"
+  },
   "OCG I.C.19.a": {
     "title": "7th characters for injuries: initial, subsequent, sequela",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=77"
@@ -86,6 +206,14 @@
   "OCG I.C.19.c": {
     "title": "Coding of traumatic fractures",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=79"
+  },
+  "OCG I.C.19.d": {
+    "title": "Burns: depth, site and extent of body surface (T31)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=80"
+  },
+  "OCG I.C.19.g.3": {
+    "title": "Transplant complications (only when the complication affects the transplanted organ)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=86"
   },
   "OCG I.C.2.d": {
     "title": "Primary malignancy previously excised",
@@ -135,9 +263,17 @@
     "title": "Hypertensive chronic kidney disease",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=50"
   },
+  "OCG I.C.9.b": {
+    "title": "Atherosclerotic coronary artery disease and angina (combination codes)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=52"
+  },
   "OCG I.C.9.d": {
     "title": "Sequelae of cerebrovascular disease",
     "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=53"
+  },
+  "OCG I.C.9.e": {
+    "title": "Acute myocardial infarction (4 weeks / 28 days; NSTEMI)",
+    "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/ICD-10-CM-October-1-2026-FY27-Guidelines.pdf#page=54"
   },
   "OCG IV.I": {
     "title": "Outpatient: chronic diseases",

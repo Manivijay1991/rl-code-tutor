@@ -1,0 +1,63 @@
+{
+  "id": "ulcer_burn-a0119d38cc",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "burn_minor"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Scald burns\n\nVitals: BP 128/82, HR 76, SpO2 98% on room air, Temp 98.6 F\nRecent Labs: WBC 8.4 x 10^9/L, Hemoglobin 12.1 g/dL, Hematocrit 37%, Sodium 139 mEq/L, Potassium 4.0 mEq/L, Creatinine 0.9 mg/dL, eGFR 82 mL/min/1.73m2.\n\nSocial History: Retired teacher, lives with her spouse. Non-smoker. Occasional alcohol consumption.\nFamily History: Mother had hypertension; father had a myocardial infarction at age 65.\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nIntegumentary: Positive for localized pain, erythema, and blistering.\nNeurological: Negative for dizziness or confusion.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\n\nHistory of Present Illness:\nPatient is a 72-year-old female who presented to the emergency department after sustaining scald burns while cooking in her kitchen. The patient reports that boiling water spilled onto her torso and upper extremities. She was evaluated for acute thermal injury and admitted for specialized wound management and fluid resuscitation.\n\nHospital Course:\nThe patient was admitted for the management of scald burns covering 15% of the body surface area. Clinical examination revealed that of the total area involved, 5% are third degree (full thickness) injuries located on the anterior torso. The patient was started on aggressive fluid resuscitation and transitioned to a specialized burn dressing regimen. Wound care was performed daily to maintain sterility and promote healing of the full thickness areas. The patient tolerated the treatment well, with no signs of infection. Pain was managed with scheduled analgesics. She was transitioned to oral medications for pain and transitioned to a plan for outpatient dressing care.\n\nDischarge Diagnoses:\n- Scald burns (15% total body surface area)\n- Third-degree burns (5% total body surface area)\n\nDischarge Medications:\n- Acetaminophen 650mg every 6 hours as needed for pain\n- Bacitracin ointment to be applied to dressings twice daily\n\nFollow-up:\nFollow up with the outpatient burn clinic in 7 days for wound assessment and dressing change.\n\nElectronically signed, A. Rivera, MD, 05/18/2026",
+  "answer": [
+    "T31.10"
+  ],
+  "explanations": [
+    "Burns of 10-19% of the body with under 10% third degree: T31.10 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.d",
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "T31.11"
+      ],
+      "confusion": "wrong_burn_extent",
+      "lean": "neutral",
+      "why": "Third degree is under 10%: T31.10.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.291,
+        "correct": 0,
+        "gap": 1.291,
+        "direction": "over",
+        "extra_hccs": [
+          "385"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:00+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

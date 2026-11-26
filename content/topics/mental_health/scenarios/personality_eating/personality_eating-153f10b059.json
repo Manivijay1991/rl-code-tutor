@@ -1,0 +1,68 @@
+{
+  "id": "personality_eating-153f10b059",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "personality_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nFollow-up for mood and behavioral concerns.\n\nHPI\nPt is a 39 y/o female presenting for f/u regarding ongoing emotional dysregulation and interpersonal difficulties. Pt reports frequent mood swings and difficulty maintaining stable relationships over the last 6 months. She describes feeling overwhelmed by social interactions and expresses frustration with lack of progress in self-management. No acute physical complaints. She is seeking guidance on managing behavioral patterns.\n\nMedication List\n- Sertraline 50mg PO QD\n- Lorazepam 0.5mg PO PRN anxiety\n\nReview of Systems\nGeneral: Denies fever, chills, weight change.\nHEENT: Denies vision changes, headaches.\nCV: Denies chest pain, palpitations.\nResp: Denies SOB, cough.\nGI: Denies nausea, diarrhea.\nMSK: Denies joint pain.\nNeuro: Denies tremors, seizures.\nPsych: Reports mood lability.\n\nSocial History\nPt is married with two children. Works as a part-time administrative assistant. Non-smoker. No illicit drug use.\n\nFamily History\nMother: Hypertension, anxiety.\nFather: Type 2 Diabetes.\nSiblings: One brother, healthy.\n\nVitals\nBP: 122/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 145 lbs, 5'6\"\n\nRecent Labs\nHbA1c: 5.6%\nTSH: 2.1 mIU/L\nCMP: WNL\n\nExam\nGeneral: Pt is alert and oriented x3. Appears anxious but cooperative.\nPsych: Speech is normal rate/volume. Affect is labile. Mood is \"stressed.\" Insight and judgment are fair.\nPhysical: CTAB. Heart RRR. Lungs clear. No acute distress.\n\nAssessment\n1. Personality disorder, type not stated. Pt continues to exhibit symptoms of emotional instability and difficulty with impulse control.\n\nPlan\n1. Referral to psychiatry for specialized management of personality disorder.\n2. Continue current medication regimen as prescribed.\n3. Encouraged engagement with outpatient therapy.\n4. F/u in 4 weeks for monitoring.\n\nElectronically signed, T. Haddad, NP, 10/14/2026",
+  "answer": [
+    "F60.9"
+  ],
+  "explanations": [
+    "Personality disorder without a stated type: F60.9 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F60.3"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "Borderline personality disorder is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F609"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:24+00:00",
+    "style": {
+      "age": 39,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

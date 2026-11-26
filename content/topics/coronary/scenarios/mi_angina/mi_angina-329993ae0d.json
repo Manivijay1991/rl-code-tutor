@@ -1,0 +1,88 @@
+{
+  "id": "mi_angina-329993ae0d",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "cad_unstable"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint\nChest pain.\n\nHPI\nThe patient is a 79-year-old female who presents to the clinic today for evaluation of worsening chest discomfort. She reports a history of coronary artery disease and has been stable until this week. She describes a new onset of rest pain that began three days ago. She characterizes the sensation as a dull, heavy pressure in her chest that occurs even when she is sedentary. The pain is not currently associated with exertion but persists for several minutes at a time. She denies any radiation to the jaw or left arm, shortness of breath, or syncope. She states the intensity is moderate but concerning. She has been taking her prescribed medications but notes that the new rest pain has not responded to her usual regimen.\n\nReview of Systems\nConstitutional: Denies fever, chills, or fatigue.\nCardiovascular: Positive for chest pain at rest. Denies palpitations.\nRespiratory: Denies cough or wheezing.\nGastrointestinal: Denies nausea, vomiting, or abdominal pain.\nMusculoskeletal: Denies joint pain or swelling.\nNeurological: Denies dizziness or weakness.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She retired five years ago and enjoys gardening. She denies tobacco and alcohol use.\n\nFamily History\nMother had a history of coronary artery disease. Father had a history of stroke.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 40mg daily\nAspirin 81mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 155 lbs\n\nRecent Labs\neGFR: 74 mL/min/1.73m2\nHbA1c: 6.4%\nTotal Cholesterol: 185 mg/dL\nLDL: 88 mg/dL\nHDL: 52 mg/dL\nGlucose: 110 mg/dL\n\nExam\nGeneral: The patient appears in no acute distress but appears anxious.\nCardiovascular: Regular rate and rhythm. S1 and S2 are distinct. No murmurs or gallops noted.\nPulmonary: Lungs are clear to auscultation bilaterally.\nExtremities: No edema noted. Capillary refill is less than 2 seconds.\n\nAssessment\nThe patient has coronary artery disease complicated by unstable angina. This is evidenced by the new onset of resting chest pain. Given the change in clinical status, she requires immediate further evaluation.\n\nPlan\n1. Arrange for an urgent cardiology review today.\n2. Patient instructed to go to the nearest emergency department immediately if pain worsens or becomes severe.\n3. Continue current medications until seen by the specialist.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "I25.110"
+  ],
+  "explanations": [
+    "Coronary artery disease with unstable angina has a combination code: I25.110 (HCC 229). Angina is not coded separately."
+  ],
+  "refs": [
+    "OCG I.C.9.b"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.10",
+        "I20.0"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code I25.110, not two codes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.24,
+        "correct": 0.24,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.119"
+      ],
+      "confusion": "understated_angina",
+      "lean": "under",
+      "why": "Unstable angina is documented (HCC 229).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.24,
+        "gap": -0.24,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "229"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.24,
+    "hccs": [
+      {
+        "hcc": "229",
+        "label": "Unstable Angina and Other Acute Ischemic Heart Disease",
+        "from": [
+          "I25110"
+        ],
+        "weight": 0.24
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:06:32+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

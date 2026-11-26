@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-cd69c69633",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_hhs"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\n\nReason for Admission: Hyperglycemic hyperosmolar state\n\nVitals: BP 138/84, HR 82, SpO2 98% on room air, Temp 98.6 F, Weight 215 lbs.\n\nRecent Labs:\nGlucose: 640 mg/dL (Admission)\nBUN: 24 mg/dL\nCreatinine: 1.1 mg/dL\nSodium: 152 mEq/L\nPotassium: 4.2 mEq/L\nHemoglobin A1c: 9.4%\n\nReview of Systems:\nConstitutional: Positive for fatigue, polyuria, and polydipsia. Negative for chills or fever.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea, vomiting, or abdominal pain.\nNeurological: Negative for confusion or weakness.\nGenitourinary: Positive for increased urinary frequency.\n\nSocial History: Patient resides in a single-family home with his spouse. He works as a warehouse supervisor. He reports an occasional sedentary lifestyle and a diet high in processed carbohydrates. He denies tobacco use and reports moderate caffeine consumption.\n\nFamily History: Father had hypertension and a history of T2DM. Mother had a history of coronary artery disease.\n\nHistory of Present Illness: [Copied Forward] Patient is a 51-year-old male with a known history of type 2 diabetes who presents to the emergency department complaining of extreme thirst and decreased urine output over the last 48 hours. He reports feeling increasingly lethargic and noted significant blurred vision. He denies any recent changes to his medication regimen or acute illness.\n\nHospital Course: The patient was admitted for management of a hyperglycemic hyperosmolar state. Upon presentation, the patient was alert and oriented but showed significant dehydration and elevated serum glucose. Treatment was initiated with aggressive intravenous fluid resuscitation and a continuous insulin infusion. The patient responded well to the fluid boluses, and his serum sodium levels began to normalize. Insulin and fluid therapy were titrated based on serial glucose monitoring. By the third day of admission, the patient achieved stable glycemic control and showed significant improvement in hydration status. He was transitioned to subcutaneous insulin and oral medications for his type 2 diabetes.\n\nDischarge Diagnoses:\n1. Hyperglycemic hyperosmolar state\n2. Type 2 diabetes\n\nDischarge Medications:\n- Metformin 500mg PO BID\n- Lisinopril 10mg PO daily\n- Insulin Glargine 20 units subcutaneous daily\n- Insulin Lispro as needed for mealtime coverage\n\nFollow-up: Patient to follow up with primary care provider in 7 days for a medication reconciliation and blood glucose monitoring.\n\nElectronically signed, J. Lindqvist, MD, 05/15/2026",
+  "answer": [
+    "E11.00"
+  ],
+  "explanations": [
+    "Type 2 diabetes with hyperosmolarity without coma: E11.00 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "dka_coded_hyperglycemia",
+      "lean": "under",
+      "why": "A hyperosmolar state is a severe acute complication (HCC 36).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E1100"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:12+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

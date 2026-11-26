@@ -1,0 +1,79 @@
+{
+  "id": "transplant_status-d2a67b6512",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "heart_lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up on heart-lung transplant status.\n\nHPI: Patient is a 51-year-old male who underwent a combined heart-lung transplant several years ago. He is currently stable on a maintenance regimen of immunosuppressants. He reports feeling well overall with no acute complaints. He denies any shortness of breath, chest pain, or fatigue. He reports consistent adherence to his medication schedule and regular monitoring of his laboratory values.\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCardiovascular: Denies palpitations, chest pain.\nRespiratory: Denies cough, wheezing, shortness of breath.\nGastrointestinal: Denies nausea, abdominal pain.\nNeurological: Denies dizziness, numbness, weakness.\nMusculoskeletal: Denies joint pain, swelling.\n\nSocial History: Patient works full-time as a consultant. He lives with his spouse and two children. He denies tobacco use and reports social alcohol consumption only.\n\nFamily History: Father had a history of hypertension. Mother had type 2 diabetes.\n\nVitals: BP 128/82, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F.\n\nRecent Labs: WBC 6.2, Hemoglobin 14.1, Platelets 210, Creatinine 1.1, eGFR 88, Glucose 105.\n\nMedication List:\n- Tacrolimus 2mg BID\n- Mycophenolate mofetil 500mg BID\n- Prednisone 5mg daily\n- Lisinopril 10mg daily\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. In no acute distress.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs, rubs, or gallops. Capillary refill <2 seconds.\nRespiratory: Clear to auscultation bilaterally. No wheezes, rales, or rhonchi. Good effort, symmetric chest expansion.\nSkin: No rashes or signs of skin breakdown.\n\nAssessment:\n1. Status post heart-lung transplant. Patient is clinically stable and tolerating his current immunosuppressive regimen well. No signs of transplant complications.\n\nPlan:\n1. Continue current medication regimen as prescribed.\n2. Continue routine laboratory monitoring as scheduled.\n3. Patient instructed to report any new symptoms, such as fever or significant fatigue, immediately.\n4. Follow up in 3 months for routine surveillance.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "Z94.3"
+  ],
+  "explanations": [
+    "Heart and lungs transplant status: one code, Z94.3, which maps to two HCCs (221 and 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.1"
+      ],
+      "confusion": "missed_second_organ",
+      "lean": "under",
+      "why": "Both heart and lungs were transplanted: Z94.3.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.053,
+        "correct": 3.584,
+        "gap": -2.531,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "276"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 3.584,
+    "hccs": [
+      {
+        "hcc": "221",
+        "label": "Heart Transplant Status/Complications",
+        "from": [
+          "Z943"
+        ],
+        "weight": 1.053
+      },
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "Z943"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:52+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

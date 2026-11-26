@@ -1,0 +1,68 @@
+{
+  "id": "liver_failure_biliary-f1f965223c",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pbc"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Follow-up for liver disease.\n\nHPI:\nThe patient is a 77-year-old male who presents today for a scheduled follow-up evaluation of his primary biliary cholangitis. He is currently managed on ursodiol for his condition. The patient reports feeling well overall and denies any new symptoms of pruritus, extreme fatigue, or jaundice. He notes that he has been consistently adherent to his medication regimen. He is here to review his recent laboratory trends and continue his current management plan.\n\nMedication List:\n- Ursodiol 300mg daily\n- Vitamin D3 supplement\n- Calcium carbonate\n\nReview of Systems:\nThe patient denies fever, chills, or night sweats. He denies recent weight loss or changes in appetite. He denies joint pain or skin rashes. He denies any shortness of breath or chest pain. He denies changes in bowel habits or urinary symptoms.\n\nSocial History:\nThe patient is retired and lives at home with his wife. He enjoys gardening and walking for exercise. He denies tobacco use and reports a sedentary social life.\n\nFamily History:\nFather had hypertension and type 2 diabetes. Mother had osteoarthritis. No family history of autoimmune diseases was reported.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nWeight: 185 lbs\n\nRecent Labs:\nALT: 42 U/L\nAST: 38 U/L\nALP: 150 U/L\nTotal Bilirubin: 0.9 mg/dL\nAlbumin: 4.1 g/dL\nINR: 1.0\n\nExam:\nThe patient is a well-appearing, alert, and oriented male in no acute distress. Skin is clear without jaundice or significant itching. Abdomen is soft, non-tender, and non-distended. Liver and spleen are not palpable. No signs of chronic liver disease were noted on physical exam.\n\nAssessment:\nThe patient is a 77-year-old male with primary biliary cholangitis. He is demonstrating clinical stability and biochemical improvement. His liver tests are improving on his current dosage of ursodiol.\n\nPlan:\n1. Continue current dose of ursodiol.\n2. Routine laboratory monitoring of liver enzymes and bilirubin in three months.\n3. Patient instructed to call the clinic if he develops new symptoms of itching or jaundice.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "K74.3"
+  ],
+  "explanations": [
+    "Primary biliary cholangitis (formerly primary biliary cirrhosis): K74.3 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K83.01"
+      ],
+      "confusion": "wrong_cholangitis",
+      "lean": "neutral",
+      "why": "Primary biliary, not primary sclerosing.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.388,
+        "correct": 0.388,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K743"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:35+00:00",
+    "style": {
+      "age": 77,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

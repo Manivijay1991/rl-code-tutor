@@ -1,0 +1,72 @@
+{
+  "id": "nerve_muscle-7bbec7dba4",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "mg_stable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint: Follow-up for myasthenia gravis.\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on room air, Weight 185 lbs.\n\nRecent Labs: HbA1c: 5.4, Sodium: 140, Potassium: 4.2, Creatinine: 0.9, TSH: 2.1.\n\nMedication List:\n- Pyridostigmine 60mg\n- Multivitamin\n\nFamily History: Father has hypertension; mother has hyperlipidemia.\n\nSocial History: Patient is a non-smoker. He works as a consultant and lives with his wife. He reports regular exercise and a balanced diet.\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nNeurological: Denies double vision, ptosis, or difficulty swallowing.\nMusculoskeletal: Denies joint pain or muscle weakness.\nRespiratory: Denies shortness of breath.\nCardiovascular: Denies chest pain or palpitations.\nGastrointestinal: Denies abdominal pain or nausea.\n\nHPI: (Copied forward from previous visit) Patient is a 51-year-old male presenting for management of myasthenia gravis. He reports consistent adherence to his pyridostigmine regimen. He denies any recent changes in muscle strength or respiratory effort.\n\nUpdate: The patient returns today for a routine follow-up. He reports that his symptoms remain consistent with his baseline. He denies any new onset of drooping eyelids or difficulty speaking. He states that his energy levels are good and his mobility remains intact. He is satisfied with the current dosage of pyridostigmine.\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished and in no acute distress.\nNeurological: Cranial nerves II-XII intact. Extraocular movements are full and symmetrical. No ptosis noted. Strength is 5/5 in all major muscle groups. Reflexes are 2+ throughout. Coordination is intact.\nMusculoskeletal: No joint swelling or erythema. Gait is steady and purposeful.\n\nAssessment:\n1. Myasthenia gravis: The patient's condition is stable and well controlled on his current medication.\n\nPlan:\n1. Continue current dose of pyridostigmine as prescribed.\n2. Patient instructed to report any new symptoms of muscle weakness immediately.\n3. Follow-up in 6 months for routine evaluation.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "G70.00"
+  ],
+  "explanations": [
+    "Myasthenia gravis without (acute) exacerbation: G70.00 (HCC 196)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G70.01"
+      ],
+      "confusion": "assumed_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.909,
+        "correct": 0.516,
+        "gap": 2.393,
+        "direction": "over",
+        "extra_hccs": [
+          "195"
+        ],
+        "missing_hccs": [
+          "196"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.516,
+    "hccs": [
+      {
+        "hcc": "196",
+        "label": "Myasthenia Gravis without (Acute) Exacerbation and Other Myoneural Disorders",
+        "from": [
+          "G7000"
+        ],
+        "weight": 0.516
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:08+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

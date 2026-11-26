@@ -1,0 +1,86 @@
+{
+  "id": "fibrosis_airway-77a60cfb67",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "trach_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint: Tracheostomy maintenance and follow-up.\n\nVitals: BP 128/82, HR 74, SpO2 96% on room air, Temp 98.6 F, RR 18.\n\nRecent Labs: Hemoglobin 12.4 g/dL, White Blood Cell Count 7.2 x 10^9/L, Platelets 210 x 10^9/L, eGFR 68 mL/min/1.73m2.\n\nMedication List:\n- Levofloxacin 500mg daily\n- Pantoprazole 40mg daily\n- Guaifenesin 600mg every 4 hours as needed\n- Saline spray as needed\n\nSocial History: Retired teacher. Lives at home with her daughter. Non-smoker.\n\nFamily History: Mother had hypertension; Father had type 2 diabetes.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or night sweats.\nRespiratory: Denies productive cough or shortness of breath.\nENT: Denies sore throat or ear pain.\nNeck/Throat: Denies excessive drainage or pain at the site.\nNeurological: No new weakness or numbness.\nGastrointestinal: Denies nausea or abdominal pain.\n\nHPI: [Copied Forward from previous visit]: Patient is a 72-year-old female with a long-standing tracheostomy who presents for routine evaluation. She reports stable status and denies any acute respiratory distress or significant changes in her ability to tolerate her current routine. She maintains her own activities of daily living and reports compliance with her current medication regimen.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: Clear breath sounds bilaterally. No wheezing or adventitious sounds noted.\nNeck/Stoma: Tracheostomy site is clean, dry, and intact. No signs of erythema, purulent drainage, or skin breakdown around the stoma.\nIntegumentary: Skin is warm and dry. No signs of pressure injury.\n\nAssessment:\n1. Long-standing tracheostomy.\n2. Stable respiratory status.\n\nPlan:\n1. Tracheostomy Care: Reviewed stoma care and hygiene. Patient and daughter demonstrated proper cleaning techniques.\n2. Supplies: Reviewed and replenished tracheostomy tubes, ties, and inner cannula supplies.\n3. Medications: Continue current medications as prescribed.\n4. Follow-up: Return to clinic in 3 months for routine evaluation or sooner if any signs of infection or stoma irritation occur.\n\nElectronically signed,\nA. Rivera, MD\nMay 14, 2026",
+  "answer": [
+    "Z93.0"
+  ],
+  "explanations": [
+    "Tracheostomy status without ventilator dependence: Z93.0 (HCC 211)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_trach_status",
+      "lean": "under",
+      "why": "Tracheostomy status is reportable (HCC 211).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.879,
+        "gap": -0.879,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "211"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z93.0",
+        "Z99.11"
+      ],
+      "confusion": "missed_vent_status",
+      "lean": "neutral",
+      "why": "No ventilator dependence is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.879,
+        "correct": 0.879,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.879,
+    "hccs": [
+      {
+        "hcc": "211",
+        "label": "Respirator Dependence/Tracheostomy Status/Complications",
+        "from": [
+          "Z930"
+        ],
+        "weight": 0.879
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:07+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

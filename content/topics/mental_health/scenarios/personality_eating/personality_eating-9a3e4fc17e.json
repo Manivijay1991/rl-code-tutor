@@ -1,0 +1,68 @@
+{
+  "id": "personality_eating-9a3e4fc17e",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "borderline"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nFollow-up for mood and personality management.\n\nHPI\nPt is a 30-year-old male presenting for scheduled psychiatric follow-up. Pt reports ongoing symptoms of emotional dysregulation and interpersonal instability consistent with his diagnosis of borderline personality disorder. He notes that his mood fluctuates significantly based on social interactions but reports that his symptoms are currently manageable. He remains actively engaged in weekly dialectical behavior therapy (DBT) to develop coping mechanisms and emotional regulation skills. Pt denies any recent hospitalizations or acute crises since the last visit. He reports adhering to his current medication regimen.\n\nMedication List\n- Quetiapine 50mg PO QHS\n- Escitalopram 10mg PO daily\n\nReview of Systems\nNegative for chest pain, shortness of breath, or palpitations. Negative for visual or auditory hallucinations. Negative for recent weight changes or appetite changes. Negative for sleep disturbances.\n\nSocial History\nPt lives with his partner. Works as a freelance graphic designer. No tobacco use. No history of illicit drug use.\n\nFamily History\nMother: History of anxiety and hypertension.\nFather: History of hypertension.\nSiblings: One sister, healthy.\n\nVitals\nBP: 122/80 mmHg\nHR: 74 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 98% on room air\n\nRecent Labs\nHbA1c: 5.4%\nTSH: 2.1 mIU/L\nCMP: Within normal limits.\n\nExam\nGeneral: Well-appearing, cooperative, and alert.\nSpeech: Clear, normal rate and volume.\nMood: Euthymic.\nAffect: Congruent, full range.\nThought Process: Linear and goal-directed.\nInsight/Judgment: Fair.\nNeurological: Cranial nerves II-XII intact. No tremors or gait abnormalities noted.\n\nAssessment\n1. Borderline personality disorder. Pt is showing steady progress with DBT.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue weekly dialectical behavior therapy sessions.\n3. Follow up in 4 weeks for medication management.\n\nElectronically signed,\nL. Moreau, DO\n10/14/2026",
+  "answer": [
+    "F60.3"
+  ],
+  "explanations": [
+    "Borderline personality disorder: F60.3 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F60.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (borderline) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F603"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:43+00:00",
+    "style": {
+      "age": 30,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

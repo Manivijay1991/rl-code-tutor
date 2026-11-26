@@ -1,0 +1,73 @@
+{
+  "id": "ulcer_burn-db89068888",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_fat"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint\nFollow-up for non-pressure chronic ulcer.\n\nHPI\nPt is a 75-year-old female presenting for evaluation of a chronic wound on the right heel. Pt reports the wound has been present for several months. She notes minimal drainage and reports adherence to current wound care regimen. No new systemic symptoms or signs of infection reported.\n\nMedication List\nLisinopril 10mg QD\nAtorvastatin 20mg QD\nAspirin 81mg QD\n\nExam\nGeneral: Well-appearing, alert, and oriented.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6 F, SpO2 98% on RA.\nSkin: Exam of the right heel reveals a non-pressure chronic ulcer. The fat layer is exposed. No signs of surrounding erythema or purulent drainage. No bone involvement noted.\n\nAssessment\n1. Non-pressure chronic ulcer of the right heel with fat layer exposed.\n\nPlan\n1. Wound care: Continue current dressing protocol.\n2. Follow-up: Return to clinic in 4 weeks for wound assessment.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "L97.412"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot with fat layer exposed: L97.412 (HCC 383)."
+  ],
+  "refs": [
+    "OCG I.B.14",
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.414"
+      ],
+      "confusion": "assumed_depth",
+      "lean": "neutral",
+      "why": "Bone necrosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.078,
+        "correct": 0.646,
+        "gap": 0.432,
+        "direction": "over",
+        "extra_hccs": [
+          "380"
+        ],
+        "missing_hccs": [
+          "383"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.646,
+    "hccs": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "from": [
+          "L97412"
+        ],
+        "weight": 0.646
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:45+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "pneumonia_inpatient-95f9f655fa",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "lung_abscess"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/24/2026\nReason for Admission: Right lower lobe lung abscess\n\nVitals: BP 128/82, HR 76, SpO2 96% on RA, Temp 98.6 F\n\nReview of Systems:\nConstitutional: Positive for fever, chills, and fatigue.\nRespiratory: Positive for productive cough and shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea or vomiting.\nNeurological: Negative for dizziness or confusion.\n\nHistory of Present Illness:\n[Copied Forward]: Patient is a 77-year-old female who presented to the emergency department with a three-day history of productive cough, fever, and pleuritic chest pain. She reported a dull ache in her right side and significant malaise.\n\nHospital Course:\nThe patient was admitted for management of a right lower lobe lung abscess identified on CT imaging. Imaging showed a localized abscess of the lung without evidence of pneumonia in other lobes. She was started on a prolonged course of intravenous antibiotics. She tolerated the treatment well, showing significant improvement in systemic symptoms and stabilization of vital signs. She was transitioned to oral medications prior to discharge.\n\nDischarge Diagnoses:\n- Lung abscess\n\nDischarge Medications:\n- Amoxicillin-clavulanate 875mg/125mg BID\n- Guaifenesin 600mg every 4 hours as needed\n\nFollow-up:\nFollow up with primary care physician in 10 days for wound check and repeat imaging.\n\nElectronically signed,\nR. Mensah, MD\n05/24/2026",
+  "answer": [
+    "J85.2"
+  ],
+  "explanations": [
+    "Lung abscess without pneumonia: J85.2 (HCC 283)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J18.9"
+      ],
+      "confusion": "wrong_lung_condition",
+      "lean": "neutral",
+      "why": "A lung abscess is documented, not pneumonia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.204,
+        "gap": -0.204,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "283"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.204,
+    "hccs": [
+      {
+        "hcc": "283",
+        "label": "Empyema/Lung Abscess",
+        "from": [
+          "J852"
+        ],
+        "weight": 0.204
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:29+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "R. Mensah",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

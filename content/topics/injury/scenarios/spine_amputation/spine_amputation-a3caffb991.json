@@ -1,0 +1,62 @@
+{
+  "id": "spine_amputation-a3caffb991",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_followup"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint\nFollow-up for L1 compression fracture.\n\nHPI\nThe patient is a 73-year-old woman presenting for a routine follow-up eight weeks after sustaining a traumatic closed wedge compression fracture of the L1 vertebra following a fall from a ladder. She reports that her back pain has significantly improved since the initial injury. She is currently able to perform most activities of daily living with minimal discomfort. She denies any new neurological symptoms or increased localized pain.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is alert and oriented. She is in no acute distress. Physical examination of the spine reveals stable alignment. There is no evidence of spinal deformity or tender point changes. Movement is within functional limits. Bone density remains within normal limits.\n\nAssessment\nThe patient is progressing well. The L1 compression fracture is healing as expected. Her recovery is consistent with a routine healing trajectory for this type of injury.\n\nPlan\nContinue current activity modifications. Follow up in another 4 weeks for continued monitoring of the healing site.\n\nElectronically signed, L. Moreau, DO, 10/15/2026",
+  "answer": [
+    "S32.010D"
+  ],
+  "explanations": [
+    "Routine follow-up while the L1 fracture heals: 7th character D, S32.010D (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine healing follow-up.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.522,
+        "correct": 0,
+        "gap": 0.522,
+        "direction": "over",
+        "extra_hccs": [
+          "401"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:06+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

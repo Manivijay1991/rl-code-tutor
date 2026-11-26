@@ -1,0 +1,88 @@
+{
+  "id": "transplant_status-18a93d9f60",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for stable status after double lung transplant.\n\nHPI\nThe patient is a 77-year-old female who presents today for a routine follow-up evaluation. She underwent a double lung transplant four years ago. Since the procedure, she has been doing well and maintains a stable clinical course. She reports feeling good overall and denies any shortness of breath, chest pain, or persistent cough. She has been adherent to her immunosuppressive regimen and reports no side effects from her current medications. There have been no signs of transplant complications or any issues related to her lung transplant.\n\nMedication List\n- Tacrolimus\n- Mycophenolate mofetil\n- Prednisone\n- Azathioprine\n\nReview of Systems\nThe patient reports no current fevers, chills, or night sweats. She denies any new respiratory symptoms, joint pain, or skin rashes. She reports normal appetite and bowel habits. No recent episodes of dizziness or syncope.\n\nSocial History\nThe patient resides in a private home with her spouse. She is a retired teacher. She reports limited physical activity but enjoys walking in her garden. She denies tobacco or alcohol use.\n\nFamily History\nMother: Deceased, history of hypertension.\nFather: Deceased, history of coronary artery disease.\nSiblings: One brother, healthy.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 97% on room air\nWeight: 155 lbs\n\nRecent Labs\nWhite Blood Cell Count: 5.2 x 10^9/L\nHemoglobin: 12.4 g/dL\nPlatelet Count: 180 x 10^9/L\nCreatinine: 1.0 mg/dL\neGFR: 82 mL/min/1.73m2\nTacrolimus trough level: 8.5 ng/mL\n\nExam\nGeneral: Well-appearing, alert, and oriented x3.\nRespiratory: Breath sounds are clear bilaterally. No wheezes, rales, or rhonchi. Good chest expansion.\nCardiovascular: Regular rate and rhythm. S1 and S2 are distinct. No murmurs or gallops.\nIntegumentary: Skin is intact without rashes or lesions.\n\nAssessment\nThe patient is a 77-year-old female who is four years post-double lung transplant. She is currently stable on her maintenance immunosuppression therapy. She shows no signs of transplant-related complications.\n\nPlan\n1. Continue current immunosuppressive medication regimen as prescribed.\n2. Monitor tacrolimus trough levels every 3 to 6 months.\n3. Routine laboratory monitoring for CBC and metabolic panel.\n4. Follow up in 4 months for repeat evaluation.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "Z94.2"
+  ],
+  "explanations": [
+    "Lung transplant status: Z94.2 (HCC 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.3"
+      ],
+      "confusion": "wrong_organ",
+      "lean": "neutral",
+      "why": "Only the lungs were transplanted.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 3.584,
+        "correct": 2.531,
+        "gap": 1.053,
+        "direction": "over",
+        "extra_hccs": [
+          "221"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Lung transplant status carries HCC 276.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.531,
+        "gap": -2.531,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "276"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.531,
+    "hccs": [
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "Z942"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:44+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

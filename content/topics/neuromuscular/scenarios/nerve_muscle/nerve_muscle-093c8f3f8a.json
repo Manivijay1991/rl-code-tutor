@@ -1,0 +1,61 @@
+{
+  "id": "nerve_muscle-093c8f3f8a",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "polyneuropathy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nNumbness in both feet.\n\nHPI\nPt is a 61 y.o. male presenting for evaluation of bilateral foot numbness. Pt reports sensation is dull and persistent. No acute trauma reported. Pt states symptoms are constant and not associated with sharp pain. Cause of symptoms is currently unknown. Labs are pending to further evaluate etiology.\n\nMedication List\nMultivitamin daily.\n\nExam\nGen: Well appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: CTA.\nNeuro: Sensation diminished in bilateral feet. Strength 5/5 throughout. Reflexes 2+ bilaterally.\nSkin: Intact, no ulcers noted on feet.\n\nAssessment\n1. Polyneuropathy. Etiology undetermined at this time; awaiting lab results for further clarification.\n\nPlan\n1. Order labs to evaluate for underlying causes of peripheral neuropathy.\n2. Follow up after lab results are finalized to discuss findings and further management.\n3. Pt to monitor for any new weakness or worsening of sensation.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "G62.9"
+  ],
+  "explanations": [
+    "Polyneuropathy without a documented cause or type: G62.9 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G61.81"
+      ],
+      "confusion": "polyneuropathy_coded_cidp",
+      "lean": "over",
+      "why": "CIDP is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.692,
+        "correct": 0,
+        "gap": 1.692,
+        "direction": "over",
+        "extra_hccs": [
+          "193"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:35+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

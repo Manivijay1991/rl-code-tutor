@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-48f949fa7a",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "lung_rejection"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Shortness of breath and increased cough.\n\nHPI: The patient is a 52-year-old male who presents for a follow-up evaluation regarding his lung transplant. He reports a progressive increase in shortness of breath over the past three weeks, noting that he is becoming more fatigued during light physical activity. He also describes a persistent, non-productive cough. He denies any fever, chills, or night sweats. He notes that his exercise tolerance has significantly decreased compared to his previous baseline.\n\nReview of Systems: Positive for shortness of breath and non-productive cough. Negative for fever, chills, chest pain, weight loss, or night sweats.\n\nSocial History: The patient works as a consultant and lives with his spouse. He reports being a non-smoker and denies any recent travel or significant changes in his social environment.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes. No known history of autoimmune disorders in the immediate family.\n\nVitals:\nBP: 128/82 mmHg\nHR: 76 bpm\nRR: 18 breaths/min\nSpO2: 93% on room air\nTemp: 98.6 F\nWeight: 195 lbs\n\nRecent Labs:\nWBC: 6.2 x 10^9/L\nHemoglobin: 13.4 g/dL\nPlatelets: 155 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 82 mL/min/1.73m2\n\nMedication List:\n- Tacrolimus 2mg PO BID\n- Mycophenolate mofetil 500mg BID\n- Prednisone 40mg daily\n- Azathioprine 50mg daily\n\nExam: The patient appears in mild respiratory distress. Lung auscultation reveals bilateral expiratory wheezing and diminished breath sounds in the lower lobes. No peripheral edema is noted. No new rashes or signs of bruising are observed on the skin.\n\nAssessment: The patient is presenting with clinical and laboratory indicators suggestive of chronic lung allograft dysfunction. Based on the current clinical presentation and the progression of symptoms, the patient is experiencing a rejection of the transplanted lungs.\n\nPlan: We will initiate a titration of his current immunosuppressive regimen to address the rejection. The dose of tacrolimus will be increased, and the mycophenolate mofetil dose will be adjusted. The patient will be instructed to monitor his symptoms closely and report any acute changes immediately. We will repeat laboratory work in one week to monitor drug levels and renal function.\n\nElectronically signed,\nL. Moreau, PA-C\nMay 14, 2026",
+  "answer": [
+    "T86.810"
+  ],
+  "explanations": [
+    "Rejection of transplanted lungs: lung transplant rejection, T86.810 (HCC 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.2"
+      ],
+      "confusion": "status_for_complication",
+      "lean": "neutral",
+      "why": "A complication (rejection) is documented: use T86.810.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.531,
+        "correct": 2.531,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.531,
+    "hccs": [
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "T86810"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:29+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "L. Moreau"
+    }
+  }
+}

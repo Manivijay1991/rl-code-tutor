@@ -1,0 +1,73 @@
+{
+  "id": "pneumonia_inpatient-c7857d4d2f",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "resp_arrest"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Dysphagia and acute choking episode.\n\nVitals: BP 135/82, HR 78, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever or chills.\nRespiratory: Positive for choking episode; negative for shortness of breath.\nGastrointestinal: Positive for dysphagia.\nNeurological: Negative for weakness or confusion.\n\nHPI: Patient is a 78-year-old male who presented to the emergency department after an episode of choking on a piece of meat. He reported a brief period of respiratory arrest which was managed by first responders. He was transported to the hospital for observation and evaluation of his swallowing function.\n\nHospital Course: The patient was admitted for observation. During his stay, he experienced a brief respiratory arrest while attempting to consume liquids. The medical team intervened immediately to clear the airway. Bag-mask breathing was initiated and successfully restored oxygenation. He made a full recovery from this event. No further complications occurred. He was cleared for a modified diet.\n\nDischarge Diagnoses:\n1. Choking episode\n2. Dysphagia\n\nDischarge Medications:\n- Atrovent inhaler as needed\n- Multivitamin daily\n\nFollow-up: Speech therapy appointment scheduled for 05/20/2026.\n\nElectronically signed,\nR. Mensah, MD\n05/15/2026",
+  "answer": [
+    "R09.2"
+  ],
+  "explanations": [
+    "Respiratory arrest: R09.2 (HCC 212)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J96.01"
+      ],
+      "confusion": "arrest_coded_failure",
+      "lean": "neutral",
+      "why": "Respiratory failure is not documented; the arrest is.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.37,
+        "correct": 0.37,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": [
+          "212"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.37,
+    "hccs": [
+      {
+        "hcc": "212",
+        "label": "Respiratory Arrest",
+        "from": [
+          "R092"
+        ],
+        "weight": 0.37
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:37+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "R. Mensah",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

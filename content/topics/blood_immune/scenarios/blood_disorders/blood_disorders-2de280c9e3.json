@@ -1,0 +1,91 @@
+{
+  "id": "blood_disorders-2de280c9e3",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "hemophilia_a"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for hemophilia A.\n\nHPI\nThe patient is a 69-year-old male who presents today for a scheduled follow-up regarding his hemophilia A. He reports that he has been adherent to his prophylactic factor VIII deficiency management regimen. He reports that his joint mobility remains stable and he has not experienced any significant issues with his current treatment schedule. He notes that the prophylactic factor infusions are effective in maintaining his baseline status. He denies any new concerns regarding his mobility or coagulopathy.\n\nMedication List\n- Factor VIII concentrate (prophylactic infusions)\n\nExam\nThe patient appears well-nourished and is in no acute distress. He is alert and oriented x3. Physical examination of the upper and lower extremities reveals no joint swelling, erythema, or decreased range of motion. Skin is intact without bruising.\n\nAssessment\n1. Hemophilia A (hereditary factor VIII deficiency). The patient is currently stable on his prophylactic factor infusions.\n\nPlan\n1. Continue current prophylactic factor VIII deficiency infusions as prescribed.\n2. Follow up in the clinic in six months for routine monitoring.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "D66"
+  ],
+  "explanations": [
+    "Hemophilia A, hereditary factor VIII deficiency: D66 (HCC 111, the 'male' hemophilia HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D68.2"
+      ],
+      "confusion": "hemophilia_coded_other_factor",
+      "lean": "neutral",
+      "why": "Factor VIII deficiency is hemophilia A: D66.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.45,
+        "correct": 4.639,
+        "gap": -4.189,
+        "direction": "under",
+        "extra_hccs": [
+          "112"
+        ],
+        "missing_hccs": [
+          "111"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "D68.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The factor is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 4.639,
+        "gap": -4.639,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "111"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 4.639,
+    "hccs": [
+      {
+        "hcc": "111",
+        "label": "Hemophilia/Male",
+        "from": [
+          "D66"
+        ],
+        "weight": 4.639
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:55+00:00",
+    "style": {
+      "age": 69,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

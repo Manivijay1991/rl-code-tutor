@@ -1,0 +1,70 @@
+{
+  "id": "blood_disorders-ae8214c83b",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "pancytopenia_other"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for low blood counts.\n\nHPI\nPt is a 65 y.o. female presenting for hematology f/u. Pt reports mild fatigue and generalized weakness over the last 3 months. Denies any acute symptoms. Review of labs reveals persistent pancytopenia. Pt denies any new medications or recent illnesses. Cause of pancytopenia is currently unclear and not drug-related.\n\nMedication List\nMultivitamin daily\nVitamin D supplement\n\nExam\nGen: Alert, oriented x3. CTAB.\nSkin: No pallor or petechiae.\nCV: RRR, no murmurs.\nResp: CTAB.\nMSK: No joint swelling.\nNeuro: NAD.\n\nAssessment\n1. Pancytopenia, etiology unclear.\n\nPlan\n1. Proceed with bone marrow biopsy to further evaluate pancytopenia.\n2. F/u with hematology once biopsy results are available.\n3. Continue current vitamins.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "D61.818"
+  ],
+  "explanations": [
+    "Pancytopenia not caused by chemotherapy: other pancytopenia, D61.818 (HCC 109)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D61.810"
+      ],
+      "confusion": "assumed_drug_cause",
+      "lean": "under",
+      "why": "No chemotherapy cause is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.144,
+        "gap": -1.144,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "109"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.144,
+    "hccs": [
+      {
+        "hcc": "109",
+        "label": "Acquired Hemolytic/Aplastic/and Sideroblastic Anemias",
+        "from": [
+          "D61818"
+        ],
+        "weight": 1.144
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:34+00:00",
+    "style": {
+      "age": 65,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

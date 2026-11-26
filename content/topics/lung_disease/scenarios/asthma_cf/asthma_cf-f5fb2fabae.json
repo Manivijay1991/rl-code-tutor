@@ -1,0 +1,68 @@
+{
+  "id": "asthma_cf-f5fb2fabae",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cf_pulmonary"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint\nFollow-up for cystic fibrosis.\n\nHPI\nPt is a 45 y.o. female with known cystic fibrosis presenting for routine f/u. Pt reports stable symptoms overall but notes a persistent chronic cough and occasional increased sputum production. Denies fever, chills, or acute shortness of breath. Currently compliant with airway clearance and CFTR modulator therapy. Reports good adherence to daily regimen.\n\nMedication List\n- CFTR modulator (daily)\n- Albuterol inhaler PRN\n- Saline nebulizer treatments\n\nExam\nGen: Well-appearing, in no acute distress.\nResp: CTAB. Lungs clear to auscultation bilaterally. No wheezing or crackles.\nCV: RRR, regular rhythm.\nExt: No edema noted.\n\nAssessment\n1. Cystic fibrosis with pulmonary manifestations, including bronchiectasis and chronic cough. Pt is stable on current CFTR modulator and airway clearance protocols.\n\nPlan\n- Continue current CFTR modulator dosage.\n- Continue daily airway clearance.\n- Monitor cough severity.\n- F/u in 3 months.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "E84.0"
+  ],
+  "explanations": [
+    "Cystic fibrosis with pulmonary manifestations: E84.0 (HCC 277)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E84.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The pulmonary manifestations are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.998,
+        "correct": 0.998,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.998,
+    "hccs": [
+      {
+        "hcc": "277",
+        "label": "Cystic Fibrosis",
+        "from": [
+          "E840"
+        ],
+        "weight": 0.998
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:56+00:00",
+    "style": {
+      "age": 45,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

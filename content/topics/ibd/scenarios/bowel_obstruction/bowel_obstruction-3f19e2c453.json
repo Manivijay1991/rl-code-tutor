@@ -1,0 +1,69 @@
+{
+  "id": "bowel_obstruction-3f19e2c453",
+  "table": "bowel_obstruction",
+  "title": "Bowel obstruction and ileus in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "adhesions_complete"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the bowel obstruction or ileus (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Acute abdominal pain and vomiting.\n\nHospital Course:\nThe patient is a 68-year-old woman who presented to the emergency department with severe abdominal distention and inability to pass gas. Imaging confirmed a complete small bowel obstruction. The clinical team determined that the cause was internal adhesions resulting from a prior abdominal surgery. She was taken to the operating room for a surgical release of adhesions to alleviate the obstruction. Following the procedure, she was managed conservatively with intravenous fluids and enteral nutrition. Her symptoms improved significantly post-operatively. She remained stable for observation and was cleared for discharge once she could tolerate a regular diet and demonstrate adequate bowel function.\n\nDischarge Diagnoses:\n- Complete small bowel obstruction\n- Adhesions from prior surgery\n\nDischarge Medications:\n- Oxycodone 5mg every 6 hours as needed for pain\n- Docusate sodium 100mg daily\n\nFollow-up:\nThe patient will follow up with the general surgery clinic in two weeks for a routine postoperative evaluation.\n\nElectronically signed, L. Moreau, MD, 05/18/2026",
+  "answer": [
+    "K56.52"
+  ],
+  "explanations": [
+    "Intestinal adhesions with complete obstruction: K56.52 (HCC 78)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K56"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K56.51"
+      ],
+      "confusion": "wrong_extent",
+      "lean": "neutral",
+      "why": "The obstruction is complete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.326,
+    "hccs": [
+      {
+        "hcc": "78",
+        "label": "Intestinal Obstruction/Perforation",
+        "from": [
+          "K5652"
+        ],
+        "weight": 0.326
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:58+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

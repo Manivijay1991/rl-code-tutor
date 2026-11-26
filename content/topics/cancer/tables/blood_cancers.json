@@ -1,0 +1,371 @@
+{
+  "id": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note_age": {
+    "min": 50,
+    "max": 88
+  },
+  "slots": {
+    "condition": {
+      "label": "Diagnosis documented",
+      "values": [
+        "myeloma_active",
+        "myeloma_remission",
+        "mds",
+        "nhl_active",
+        "nhl_history",
+        "hodgkin_active"
+      ],
+      "labels": {
+        "myeloma_active": "Multiple myeloma, on treatment, not in remission",
+        "myeloma_remission": "Multiple myeloma in remission",
+        "mds": "Myelodysplastic syndrome",
+        "nhl_active": "Non-Hodgkin lymphoma, under treatment",
+        "nhl_history": "Non-Hodgkin lymphoma treated years ago, no disease",
+        "hodgkin_active": "Hodgkin lymphoma, under treatment"
+      },
+      "evidence": {
+        "myeloma_active": [
+          [
+            "multiple myeloma"
+          ]
+        ],
+        "myeloma_remission": [
+          [
+            "multiple myeloma"
+          ],
+          [
+            "in remission",
+            "complete remission"
+          ]
+        ],
+        "mds": [
+          [
+            "myelodysplastic syndrome",
+            "MDS"
+          ]
+        ],
+        "nhl_active": [
+          [
+            "non-Hodgkin lymphoma"
+          ]
+        ],
+        "nhl_history": [
+          [
+            "non-Hodgkin lymphoma"
+          ],
+          [
+            "years ago"
+          ]
+        ],
+        "hodgkin_active": [
+          [
+            "Hodgkin lymphoma"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "myeloma_active": "The oncologist documents multiple myeloma that has not achieved remission; the patient is on active chemotherapy.",
+        "myeloma_remission": "The oncologist documents multiple myeloma in remission after treatment; the patient continues maintenance lenalidomide.",
+        "mds": "The hematologist documents myelodysplastic syndrome with low blood counts, managed with periodic transfusions.",
+        "nhl_active": "The oncologist documents non-Hodgkin lymphoma under active chemotherapy; the type and site are not stated.",
+        "nhl_history": "The patient had non-Hodgkin lymphoma treated with chemotherapy years ago; treatment is complete and there is no evidence of disease.",
+        "hodgkin_active": "The oncologist documents Hodgkin lymphoma under active chemotherapy; the type and site are not stated."
+      }
+    }
+  },
+  "note_forbid": [
+    "leukemia",
+    "metasta",
+    "breast cancer",
+    "prostate cancer",
+    "lung cancer",
+    "colon cancer",
+    "neutropen",
+    "sepsis",
+    "fever",
+    "pancytopenia",
+    "stem cell transplant",
+    "bone marrow transplant",
+    "kidney failure",
+    "CKD",
+    "relapse",
+    "large B-cell",
+    "follicular",
+    "mantle cell"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "myeloma_active",
+          "myeloma_remission",
+          "mds"
+        ]
+      },
+      "forbid": [
+        "lymphoma"
+      ]
+    },
+    {
+      "when": {
+        "condition": "myeloma_active"
+      },
+      "forbid": [
+        "remission",
+        "myelodysplastic",
+        "MDS"
+      ]
+    },
+    {
+      "when": {
+        "condition": "myeloma_remission"
+      },
+      "forbid": [
+        "not achieved remission",
+        "active chemotherapy",
+        "myelodysplastic",
+        "MDS"
+      ]
+    },
+    {
+      "when": {
+        "condition": "mds"
+      },
+      "forbid": [
+        "myeloma",
+        "remission"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "nhl_active",
+          "nhl_history"
+        ]
+      },
+      "forbid": [
+        "myeloma",
+        "myelodysplastic",
+        "MDS",
+        "Hodgkin lymphoma,",
+        "classical Hodgkin"
+      ]
+    },
+    {
+      "when": {
+        "condition": "nhl_active"
+      },
+      "forbid": [
+        "years ago",
+        "history of",
+        "no evidence of disease",
+        "remission"
+      ]
+    },
+    {
+      "when": {
+        "condition": "nhl_history"
+      },
+      "forbid": [
+        "active chemotherapy",
+        "current chemotherapy",
+        "remission",
+        "recurrence"
+      ]
+    },
+    {
+      "when": {
+        "condition": "hodgkin_active"
+      },
+      "forbid": [
+        "non-Hodgkin",
+        "myeloma",
+        "myelodysplastic",
+        "MDS",
+        "years ago",
+        "remission"
+      ]
+    }
+  ],
+  "confusions": {
+    "assumed_remission": {
+      "description": "Coded remission that is not documented.",
+      "lean": "neutral"
+    },
+    "missed_remission": {
+      "description": "Coded myeloma without remission when remission is documented.",
+      "lean": "neutral"
+    },
+    "active_coded_history": {
+      "description": "Coded personal history while the cancer is still being treated.",
+      "lean": "under"
+    },
+    "history_coded_active": {
+      "description": "Coded an active cancer after treatment is complete with no evidence of disease.",
+      "lean": "over"
+    },
+    "symptom_for_disease": {
+      "description": "Coded the anemia instead of the documented myelodysplastic syndrome.",
+      "lean": "under"
+    },
+    "wrong_lymphoma_type": {
+      "description": "Confused Hodgkin and non-Hodgkin lymphoma.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "heme",
+      "rules": [
+        {
+          "when": {
+            "condition": "myeloma_active"
+          },
+          "codes": [
+            "C90.00"
+          ],
+          "explain": "Multiple myeloma not having achieved remission: C90.00 (HCC 19).",
+          "refs": [
+            "OCG I.C.2.d",
+            "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C90.01"
+              ],
+              "confusion": "assumed_remission",
+              "why": "Remission is not documented."
+            },
+            {
+              "codes": [
+                "Z85.79"
+              ],
+              "confusion": "active_coded_history",
+              "why": "The myeloma is under active treatment."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "myeloma_remission"
+          },
+          "codes": [
+            "C90.01"
+          ],
+          "explain": "Multiple myeloma in remission: C90.01 (HCC 19). It is not a history code.",
+          "refs": [
+            "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C90.00"
+              ],
+              "confusion": "missed_remission",
+              "why": "Remission is documented."
+            },
+            {
+              "codes": [
+                "Z85.79"
+              ],
+              "confusion": "active_coded_history",
+              "why": "Myeloma in remission is coded with the remission code, not history."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "mds"
+          },
+          "codes": [
+            "D46.9"
+          ],
+          "explain": "Myelodysplastic syndrome, unspecified: D46.9 (HCC 19).",
+          "refs": [
+            "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D64.9"
+              ],
+              "confusion": "symptom_for_disease",
+              "why": "The cause of the low counts (MDS) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "nhl_active"
+          },
+          "codes": [
+            "C85.90"
+          ],
+          "explain": "Non-Hodgkin lymphoma under treatment, type and site not stated: C85.90 (HCC 21).",
+          "refs": [
+            "OCG I.C.2.d",
+            "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z85.72"
+              ],
+              "confusion": "active_coded_history",
+              "why": "The lymphoma is under active treatment."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "nhl_history"
+          },
+          "codes": [
+            "Z85.72"
+          ],
+          "explain": "Lymphoma treated in the past with no current disease or treatment: personal history, Z85.72 (no HCC).",
+          "refs": [
+            "OCG I.C.2.d",
+            "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C85.90"
+              ],
+              "confusion": "history_coded_active",
+              "why": "Treatment is complete and there is no evidence of disease."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "hodgkin_active"
+          },
+          "codes": [
+            "C81.90"
+          ],
+          "explain": "Hodgkin lymphoma under treatment, type and site not stated: C81.90 (HCC 21).",
+          "refs": [
+            "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "C85.90"
+              ],
+              "confusion": "wrong_lymphoma_type",
+              "why": "Hodgkin lymphoma is documented, not non-Hodgkin."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

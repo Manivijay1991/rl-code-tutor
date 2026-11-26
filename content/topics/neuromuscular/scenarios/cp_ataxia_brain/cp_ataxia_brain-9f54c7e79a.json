@@ -1,0 +1,93 @@
+{
+  "id": "cp_ataxia_brain-9f54c7e79a",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "cp_quadriplegic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint: Follow-up for spastic quadriplegic cerebral palsy management.\n\nHPI: Pt is a 32 y/o male with a known hx of spastic quadriplegic cerebral palsy since birth. He presents today for routine management of muscle tone and mobility. Pt utilizes a power wheelchair for all mobility. He reports that his muscle spasms are currently well-controlled on his current dose of baclofen. No new concerns regarding contractures or skin integrity reported today. He denies any recent falls or significant changes in his baseline physical status.\n\nMedication List:\n- Baclofen 10mg BID\n- Gabapentin 300mg TID\n- Multivitamin daily\n\nVitals:\nBP: 124/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 185 lbs\n\nRecent Labs:\nHbA1c: 5.4%\neGFR: >90\nCMP: WNL\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nMSK: Reports mild stiffness in lower extremities but no new pain.\nNeuro: No new tremors or changes in tone.\nSkin: No signs of pressure ulcers.\n\nSocial History: Pt lives with parents and a primary caregiver. He is non-working due to physical limitations.\n\nFamily History: Father has hypertension. Mother has type 2 diabetes.\n\nExam:\nGen: Alert, oriented x3. Appears in no acute distress.\nNeuro: Spasticity noted in all four extremities, consistent with spastic quadriplegia. Reflexes 3+ throughout.\nMSK: Contractures noted in hamstrings and gastrocnemius muscles. Skin intact without redness or breakdown.\nMobility: Pt seated in power wheelchair, stable and comfortable.\n\nAssessment:\n1. Spastic quadriplegic cerebral palsy - stable on current meds.\n2. Muscle spasticity - well-controlled.\n\nPlan:\n- Continue current baclofen dosage.\n- Continue PT/OT as scheduled.\n- Follow up in 6 months for routine evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "G80.0"
+  ],
+  "explanations": [
+    "Spastic quadriplegic cerebral palsy: G80.0 (HCC 191). G82 excludes congenital cerebral palsy."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G80.9"
+      ],
+      "confusion": "cp_type_confused",
+      "lean": "neutral",
+      "why": "The type (spastic quadriplegic) is documented and changes the HCC (191).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.314,
+        "correct": 0.855,
+        "gap": -0.541,
+        "direction": "under",
+        "extra_hccs": [
+          "192"
+        ],
+        "missing_hccs": [
+          "191"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G82.50"
+      ],
+      "confusion": "cp_coded_as_quadriplegia",
+      "lean": "neutral",
+      "why": "Cerebral palsy is coded in G80, not as quadriplegia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.125,
+        "correct": 0.855,
+        "gap": 0.27,
+        "direction": "over",
+        "extra_hccs": [
+          "180"
+        ],
+        "missing_hccs": [
+          "191"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.855,
+    "hccs": [
+      {
+        "hcc": "191",
+        "label": "Quadriplegic Cerebral Palsy",
+        "from": [
+          "G800"
+        ],
+        "weight": 0.855
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:52+00:00",
+    "style": {
+      "age": 32,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

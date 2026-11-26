@@ -1,0 +1,426 @@
+{
+  "id": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note_age": {
+    "min": 25,
+    "max": 85
+  },
+  "slots": {
+    "condition": {
+      "label": "Diagnosis documented",
+      "values": [
+        "gaucher",
+        "fabry",
+        "attr",
+        "amyloid_unspecified",
+        "addison",
+        "adrenal_unspecified",
+        "acromegaly",
+        "cushing_drug"
+      ],
+      "labels": {
+        "gaucher": "Gaucher disease",
+        "fabry": "Fabry disease",
+        "attr": "Wild-type transthyretin amyloidosis",
+        "amyloid_unspecified": "Amyloidosis, type not stated",
+        "addison": "Addison's disease (primary adrenal insufficiency)",
+        "adrenal_unspecified": "Adrenal insufficiency, type not stated",
+        "acromegaly": "Acromegaly",
+        "cushing_drug": "Cushing's syndrome from steroid medication"
+      },
+      "evidence": {
+        "gaucher": [
+          [
+            "Gaucher disease"
+          ]
+        ],
+        "fabry": [
+          [
+            "Fabry disease"
+          ]
+        ],
+        "attr": [
+          [
+            "amyloidosis"
+          ],
+          [
+            "wild-type",
+            "transthyretin",
+            "ATTR"
+          ]
+        ],
+        "amyloid_unspecified": [
+          [
+            "amyloidosis"
+          ]
+        ],
+        "addison": [
+          [
+            "Addison's disease",
+            "Addison disease",
+            "primary adrenal insufficiency"
+          ]
+        ],
+        "adrenal_unspecified": [
+          [
+            "adrenal insufficiency"
+          ]
+        ],
+        "acromegaly": [
+          [
+            "acromegaly"
+          ]
+        ],
+        "cushing_drug": [
+          [
+            "Cushing"
+          ],
+          [
+            "steroid",
+            "prednisone",
+            "glucocorticoid"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "gaucher": "The geneticist documents Gaucher disease, on enzyme replacement therapy every two weeks.",
+        "fabry": "The provider documents Fabry disease, on enzyme replacement therapy, with burning pain in the hands and feet.",
+        "attr": "The cardiologist documents wild-type transthyretin (ATTR) amyloidosis, on tafamidis.",
+        "amyloid_unspecified": "The provider documents amyloidosis found on a biopsy; the type is not yet determined and a hematology referral is placed.",
+        "addison": "The endocrinologist documents Addison's disease (primary adrenal insufficiency), on hydrocortisone and fludrocortisone.",
+        "adrenal_unspecified": "The provider documents adrenal insufficiency on hydrocortisone; whether it is primary or secondary is not stated.",
+        "acromegaly": "The endocrinologist documents acromegaly from a pituitary adenoma, on octreotide.",
+        "cushing_drug": "The provider documents Cushing's syndrome caused by long-term prednisone for a lung condition; a slow taper is planned."
+      }
+    }
+  },
+  "note_forbid": [
+    "diabetes",
+    "multiple myeloma",
+    "kidney failure",
+    "CKD",
+    "dialysis",
+    "heart failure",
+    "cancer",
+    "adrenal crisis",
+    "Niemann",
+    "Pompe",
+    "hypothyroid",
+    "hyperthyroid",
+    "pituitary-dependent Cushing"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "gaucher",
+          "fabry"
+        ]
+      },
+      "forbid": [
+        "amyloid",
+        "adrenal",
+        "acromegaly",
+        "Cushing"
+      ]
+    },
+    {
+      "when": {
+        "condition": "gaucher"
+      },
+      "forbid": [
+        "Fabry"
+      ]
+    },
+    {
+      "when": {
+        "condition": "fabry"
+      },
+      "forbid": [
+        "Gaucher"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "attr",
+          "amyloid_unspecified"
+        ]
+      },
+      "forbid": [
+        "Gaucher",
+        "Fabry",
+        "adrenal",
+        "acromegaly",
+        "Cushing",
+        "light chain",
+        "AL amyloidosis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "amyloid_unspecified"
+      },
+      "forbid": [
+        "wild-type",
+        "transthyretin",
+        "ATTR",
+        "tafamidis"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "addison",
+          "adrenal_unspecified"
+        ]
+      },
+      "forbid": [
+        "Gaucher",
+        "Fabry",
+        "amyloid",
+        "acromegaly",
+        "Cushing"
+      ]
+    },
+    {
+      "when": {
+        "condition": "adrenal_unspecified"
+      },
+      "forbid": [
+        "Addison",
+        "primary adrenal",
+        "secondary adrenal",
+        "fludrocortisone",
+        "autoimmune adrenal"
+      ]
+    },
+    {
+      "when": {
+        "condition": "acromegaly"
+      },
+      "forbid": [
+        "Gaucher",
+        "Fabry",
+        "amyloid",
+        "adrenal",
+        "Cushing"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cushing_drug"
+      },
+      "forbid": [
+        "Gaucher",
+        "Fabry",
+        "amyloid",
+        "acromegaly",
+        "Addison",
+        "adrenal insufficiency",
+        "pituitary"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the specific disorder or type is documented.",
+      "lean": "neutral"
+    },
+    "assumed_type": {
+      "description": "Coded a specific type the provider did not document.",
+      "lean": "neutral"
+    },
+    "understated_adrenal": {
+      "description": "Coded unspecified adrenal insufficiency (no HCC) for documented Addison's disease (HCC 51).",
+      "lean": "under"
+    },
+    "overstated_adrenal": {
+      "description": "Coded Addison's disease when only adrenal insufficiency is documented.",
+      "lean": "over"
+    },
+    "drug_cushing_coded_disease": {
+      "description": "Coded pituitary Cushing's disease (HCC 51) for drug-induced Cushing's syndrome (no HCC).",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "endo",
+      "rules": [
+        {
+          "when": {
+            "condition": "gaucher"
+          },
+          "codes": [
+            "E75.22"
+          ],
+          "explain": "Gaucher disease: E75.22 (HCC 49, one of the highest V28 weights).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E88.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The specific storage disorder is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "fabry"
+          },
+          "codes": [
+            "E75.21"
+          ],
+          "explain": "Fabry (-Anderson) disease: E75.21 (HCC 49).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E88.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The specific storage disorder is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "attr"
+          },
+          "codes": [
+            "E85.82"
+          ],
+          "explain": "Wild-type transthyretin-related amyloidosis: E85.82 (HCC 50).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E85.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (wild-type ATTR) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "amyloid_unspecified"
+          },
+          "codes": [
+            "E85.9"
+          ],
+          "explain": "Amyloidosis without a documented type: E85.9 (HCC 50).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E85.82"
+              ],
+              "confusion": "assumed_type",
+              "why": "The type is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "addison"
+          },
+          "codes": [
+            "E27.1"
+          ],
+          "explain": "Addison's disease = primary adrenocortical insufficiency: E27.1 (HCC 51).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E27.40"
+              ],
+              "confusion": "understated_adrenal",
+              "why": "Primary (Addison's) is documented; unspecified has no HCC."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "adrenal_unspecified"
+          },
+          "codes": [
+            "E27.40"
+          ],
+          "explain": "Adrenal insufficiency, type not stated: E27.40 (no HCC in V28).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E27.1"
+              ],
+              "confusion": "overstated_adrenal",
+              "why": "Primary (Addison's) is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "acromegaly"
+          },
+          "codes": [
+            "E22.0"
+          ],
+          "explain": "Acromegaly: E22.0 (HCC 51).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E23.7"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Acromegaly has its own code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cushing_drug"
+          },
+          "codes": [
+            "E24.2"
+          ],
+          "explain": "Drug-induced Cushing's syndrome: E24.2 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: E22-E27, E75, E85"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E24.0"
+              ],
+              "confusion": "drug_cushing_coded_disease",
+              "why": "It is caused by steroid medication, not the pituitary."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

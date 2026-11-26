@@ -1,0 +1,68 @@
+{
+  "id": "personality_eating-d261799678",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "personality_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nFollow-up for behavioral health concerns.\n\nHPI\nThe patient is a 36-year-old woman presenting for a follow-up evaluation regarding her ongoing behavioral health status. She reports experiencing significant difficulties with interpersonal relationships and emotional regulation over the past several months. She describes frequent mood swings and persistent patterns of behavior that impact her daily functioning and social interactions. She states she is seeking more specialized support to manage these symptoms.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is a well-groomed woman who appears her stated age. She is cooperative and maintains good eye contact throughout the encounter. Her speech is clear and coherent. Mood is described as anxious; affect is congruent. She demonstrates adequate insight into her current difficulties. Vital signs are stable and within normal limits.\n\nAssessment\nThe patient presents with a personality disorder, type not stated. She continues to experience significant emotional and social challenges.\n\nPlan\nThe patient will be referred to psychiatry for a comprehensive evaluation and specialized management of her personality disorder. We will monitor her progress and coordinate care with the psychiatric team.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "F60.9"
+  ],
+  "explanations": [
+    "Personality disorder without a stated type: F60.9 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F60.3"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "Borderline personality disorder is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F609"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:20+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

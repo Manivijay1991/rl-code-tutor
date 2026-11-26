@@ -1,0 +1,306 @@
+{
+  "id": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note_age": {
+    "min": 20,
+    "max": 65
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "cp_quadriplegic",
+        "cp_diplegic",
+        "friedreich",
+        "huntington",
+        "anoxic_brain"
+      ],
+      "labels": {
+        "cp_quadriplegic": "Spastic quadriplegic cerebral palsy",
+        "cp_diplegic": "Spastic diplegic cerebral palsy",
+        "friedreich": "Friedreich ataxia",
+        "huntington": "Huntington's disease",
+        "anoxic_brain": "Anoxic brain damage after a past cardiac arrest"
+      },
+      "evidence": {
+        "cp_quadriplegic": [
+          [
+            "cerebral palsy"
+          ],
+          [
+            "spastic quadriplegic",
+            "spastic quadriplegia"
+          ]
+        ],
+        "cp_diplegic": [
+          [
+            "cerebral palsy"
+          ],
+          [
+            "spastic diplegic",
+            "spastic diplegia"
+          ]
+        ],
+        "friedreich": [
+          [
+            "Friedreich ataxia",
+            "Friedreich's ataxia"
+          ]
+        ],
+        "huntington": [
+          [
+            "Huntington's disease",
+            "Huntington disease"
+          ]
+        ],
+        "anoxic_brain": [
+          [
+            "anoxic brain injury",
+            "anoxic brain damage"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "cp_quadriplegic": "The provider documents spastic quadriplegic cerebral palsy since birth; uses a power wheelchair and baclofen.",
+        "cp_diplegic": "The provider documents spastic diplegic cerebral palsy since birth affecting both legs; walks with forearm crutches.",
+        "friedreich": "The neurologist documents Friedreich ataxia with progressive gait ataxia; uses a walker.",
+        "huntington": "The neurologist documents Huntington's disease with chorea, managed with tetrabenazine.",
+        "anoxic_brain": "The provider documents anoxic brain damage from a cardiac arrest two years ago, with lasting memory and attention deficits; lives with family support."
+      }
+    }
+  },
+  "note_forbid": [
+    "stroke",
+    "CVA",
+    "multiple sclerosis",
+    "Parkinson",
+    "epilepsy",
+    "seizure",
+    "dementia",
+    "ventilator",
+    "tracheostomy",
+    "feeding tube",
+    "gastrostomy",
+    "PEG",
+    "coma",
+    "vegetative",
+    "intellectual disability",
+    "spinal cord injury"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "cp_quadriplegic",
+          "cp_diplegic"
+        ]
+      },
+      "forbid": [
+        "ataxia",
+        "Huntington",
+        "anoxic",
+        "cardiac arrest"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cp_quadriplegic"
+      },
+      "forbid": [
+        "diplegic",
+        "diplegia",
+        "hemiplegic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cp_diplegic"
+      },
+      "forbid": [
+        "quadriplegic",
+        "quadriplegia",
+        "hemiplegic",
+        "paraplegia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "friedreich"
+      },
+      "forbid": [
+        "cerebral palsy",
+        "Huntington",
+        "anoxic",
+        "cardiac arrest",
+        "chorea"
+      ]
+    },
+    {
+      "when": {
+        "condition": "huntington"
+      },
+      "forbid": [
+        "cerebral palsy",
+        "ataxia",
+        "anoxic",
+        "cardiac arrest"
+      ]
+    },
+    {
+      "when": {
+        "condition": "anoxic_brain"
+      },
+      "forbid": [
+        "cerebral palsy",
+        "ataxia",
+        "Huntington",
+        "chorea"
+      ]
+    }
+  ],
+  "confusions": {
+    "cp_type_confused": {
+      "description": "Coded the wrong type of cerebral palsy (quadriplegic is HCC 191; other types are HCC 192).",
+      "lean": "neutral"
+    },
+    "cp_coded_as_quadriplegia": {
+      "description": "Coded quadriplegia (G82.5-) instead of quadriplegic cerebral palsy (G80.0).",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the specific disorder is documented.",
+      "lean": "under"
+    },
+    "symptom_for_disease": {
+      "description": "Coded a symptom (chorea) instead of the documented disease.",
+      "lean": "under"
+    },
+    "history_for_current": {
+      "description": "Coded only the past event (cardiac arrest) and missed the lasting brain damage.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "cp_quadriplegic"
+          },
+          "codes": [
+            "G80.0"
+          ],
+          "explain": "Spastic quadriplegic cerebral palsy: G80.0 (HCC 191). G82 excludes congenital cerebral palsy.",
+          "refs": [
+            "ICD-10-CM Tabular: G10-G11, G80, G93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G80.9"
+              ],
+              "confusion": "cp_type_confused",
+              "why": "The type (spastic quadriplegic) is documented and changes the HCC (191)."
+            },
+            {
+              "codes": [
+                "G82.50"
+              ],
+              "confusion": "cp_coded_as_quadriplegia",
+              "why": "Cerebral palsy is coded in G80, not as quadriplegia."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cp_diplegic"
+          },
+          "codes": [
+            "G80.1"
+          ],
+          "explain": "Spastic diplegic cerebral palsy: G80.1 (HCC 192).",
+          "refs": [
+            "ICD-10-CM Tabular: G10-G11, G80, G93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G80.0"
+              ],
+              "confusion": "cp_type_confused",
+              "why": "Diplegic, not quadriplegic."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "friedreich"
+          },
+          "codes": [
+            "G11.11"
+          ],
+          "explain": "Friedreich ataxia: G11.11 (HCC 200).",
+          "refs": [
+            "ICD-10-CM Tabular: G10-G11, G80, G93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G11.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type of hereditary ataxia is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "huntington"
+          },
+          "codes": [
+            "G10"
+          ],
+          "explain": "Huntington's disease: G10 (HCC 200). Chorea is part of the disease, not coded separately.",
+          "refs": [
+            "ICD-10-CM Tabular: G10-G11, G80, G93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G25.5"
+              ],
+              "confusion": "symptom_for_disease",
+              "why": "The disease is documented: code Huntington's, not the chorea."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "anoxic_brain"
+          },
+          "codes": [
+            "G93.1"
+          ],
+          "explain": "Anoxic brain damage: G93.1 (HCC 202).",
+          "refs": [
+            "ICD-10-CM Tabular: G10-G11, G80, G93"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z86.74"
+              ],
+              "confusion": "history_for_current",
+              "why": "The lasting brain damage is a current condition: G93.1."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

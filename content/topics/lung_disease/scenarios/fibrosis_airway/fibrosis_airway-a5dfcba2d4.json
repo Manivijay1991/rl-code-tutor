@@ -1,0 +1,72 @@
+{
+  "id": "fibrosis_airway-a5dfcba2d4",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "pf_unspecified"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint\nShortness of breath.\n\nHPI\nPt is an 80 y.o. female presenting for f/u of respiratory symptoms. Pt reports progressive dyspnea on exertion over the last 3 months. She notes she is now unable to walk more than one block without stopping to rest. Denies acute chest pain, productive cough, or fevers. Pt states she has felt more fatigued lately. She reports a dry, non-productive cough that is worse at night. No recent travel or exposure to environmental irritants reported.\n\nReview of Systems\nConstitutional: Fatigue. Respiratory: Dyspnea on exertion, dry cough. Cardiovascular: No chest pain, no palpitations. MSK: No joint pain. Neuro: No dizziness, no focal weakness. GI: No changes in bowel habits.\n\nSocial History\nRetired. Lives in a single-story home with her daughter. Non-smoker. Denies alcohol or illicit drug use.\n\nFamily History\nMother: Hypertension, age 85.\nFather: Type 2 Diabetes, age 78.\n\nVitals\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 94% on RA\nHt: 12.2\nWeight: 145 lbs\n\nRecent Labs\nCBC: WNL\nBMP: Na 138, K 4.1, Cr 1.1, eGFR 72\nChest CT: Imaging reveals interstitial changes consistent with pulmonary fibrosis. The etiology of the pulmonary fibrosis is not determined.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nMultivitamin daily\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: CTAB. Breath sounds diminished in bilateral bases. No wheezes or crackles noted on auscultation.\nCardiovascular: RRR, S1, S2. No murmurs.\nMusculoskeletal: Normal gait.\nSkin: No rashes or lesions.\n\nAssessment\n1. Pulmonary fibrosis: Imaging shows pulmonary fibrosis; however, the specific cause is not determined at this time. Pt is symptomatic with exertional dyspnea.\n\nPlan\n1. Pulmonology Referral: Place referral to pulmonology for further evaluation of pulmonary fibrosis and diagnostic workup.\n2. Follow-up: Pt to f/u in clinic after pulmonology evaluation.\n3. Education: Discussed symptoms and importance of specialist follow-up.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "J84.10"
+  ],
+  "explanations": [
+    "Pulmonary fibrosis without a documented cause: J84.10 (HCC 280)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J84.112"
+      ],
+      "confusion": "assumed_idiopathic",
+      "lean": "over",
+      "why": "Idiopathic is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0.319,
+        "gap": 0.499,
+        "direction": "over",
+        "extra_hccs": [
+          "278"
+        ],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J8410"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:45+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

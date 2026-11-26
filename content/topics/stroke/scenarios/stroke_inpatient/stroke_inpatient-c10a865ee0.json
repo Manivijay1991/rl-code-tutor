@@ -1,0 +1,73 @@
+{
+  "id": "stroke_inpatient-c10a865ee0",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "hemorrhage"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Acute neurological deficit.\n\nVitals:\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\n\nLabs:\nWBC: 8.2\nHgb: 12.4\nPlt: 210\nNa: 138\nK: 4.0\nCr: 1.1\neGFR: 65\nGlucose: 110\n\nReview of Systems:\nNeuro: Pt c/o sudden onset headache and acute weakness. No seizures. No vision changes.\nCV: No chest pain. No palpitations.\nResp: No SOB. No cough.\nGI: No nausea/vomiting.\nMSK: No joint pain.\n\nSocial History:\nRetired. Lives with daughter. Non-smoker. Occasional alcohol.\n\nFamily History:\nMother: Hypertension.\nFather: Type 2 DM.\n\nHospital Course:\nPt is an 80-year-old female admitted for acute neurological symptoms. Initial CT head showed a spontaneous intracerebral hemorrhage. Managed medically with strict BP control and neuro checks. Pt remained stable throughout stay. Neurological exam showed gradual improvement. Significant deficits resolved prior to discharge. No complications during stay. Pt is ambulatory and stable for home.\n\nDischarge Diagnoses:\n1. Spontaneous intracerebral hemorrhage\n2. Hypertension\n\nDischarge Medications:\nLisinopril 10mg PO QD\nAspirin 81mg PO QD\nAtorvastatin 20mg PO HS\n\nFollow-up:\nF/u with Neurology in 1 week. F/u with PCP in 2 weeks.\n\nElectronically signed, T. Haddad, MD, 05/18/2026",
+  "answer": [
+    "I61.9"
+  ],
+  "explanations": [
+    "Nontraumatic intracerebral hemorrhage, location not named: I61.9 (HCC 248)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "wrong_stroke_type",
+      "lean": "neutral",
+      "why": "It is a hemorrhage, not an infarction.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0.239,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": [
+          "248"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.239,
+    "hccs": [
+      {
+        "hcc": "248",
+        "label": "Intracranial Hemorrhage",
+        "from": [
+          "I619"
+        ],
+        "weight": 0.239
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:14:23+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

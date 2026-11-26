@@ -1,0 +1,91 @@
+{
+  "id": "diabetes_acute-c67c3d4357",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t1_dka"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Diabetic ketoacidosis\n\nHospital Course:\nThe patient is a 36-year-old woman with a known history of type 1 diabetes who presented to the emergency department with altered mental status and signs of metabolic derangement. Laboratory testing confirmed a diagnosis of ketoacidosis secondary to several missed doses of her prescribed insulin. She was admitted to the acute care unit for stabilization. Management included aggressive intravenous fluid resuscitation and the initiation of a continuous insulin drip. Her metabolic status improved steadily over the course of her stay. Her electrolyte levels and blood glucose concentrations normalized, and her acid-base balance was restored. She tolerated the treatment well and was able to transition to subcutaneous insulin prior to discharge.\n\nDischarge Diagnoses:\n1. Type 1 diabetes\n2. Diabetic ketoacidosis (DKA)\n\nDischarge Medications:\n- Insulin aspart subcutaneous injections\n- Potassium chloride oral solution\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a review of her insulin regimen and glucose monitoring.\n\nElectronically signed, L. Moreau, MD, 05/15/2026",
+  "answer": [
+    "E10.10"
+  ],
+  "explanations": [
+    "Type 1 diabetes with ketoacidosis without coma: E10.10 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.10"
+      ],
+      "confusion": "wrong_dm_type",
+      "lean": "neutral",
+      "why": "Type 1 diabetes is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.65"
+      ],
+      "confusion": "dka_coded_hyperglycemia",
+      "lean": "under",
+      "why": "Ketoacidosis is documented (HCC 36).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E1010"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:18+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

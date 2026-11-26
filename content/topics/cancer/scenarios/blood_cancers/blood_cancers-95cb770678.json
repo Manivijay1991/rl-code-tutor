@@ -1,0 +1,62 @@
+{
+  "id": "blood_cancers-95cb770678",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "nhl_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint\nFollow-up for history of malignancy.\n\nHPI\nThe patient is a 59-year-old woman presenting for a routine follow-up. She was diagnosed with non-Hodgkin lymphoma and underwent a full course of chemotherapy years ago. She reports feeling well and states she has been asymptomatic since the completion of her treatment. She denies any new lumps, night sweats, or persistent fatigue. She is here today for a scheduled check-up to monitor her overall health and confirm her current status.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is alert and oriented. Her skin is clear and no lymphadenopathy is noted in the cervical, axillary, or inguinal regions. The abdomen is soft and non-tender. Lungs are clear to auscultation. Vital signs are stable and within normal limits.\n\nAssessment\nThe patient is a 59-year-old female with a history of non-Hodgkin lymphoma. Her treatment was completed years ago, and she currently shows no evidence of disease. She remains clinically stable.\n\nPlan\nContinue current observation and routine monitoring. Follow up in 6 months for a repeat physical examination.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "Z85.72"
+  ],
+  "explanations": [
+    "Lymphoma treated in the past with no current disease or treatment: personal history, Z85.72 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C85.90"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment is complete and there is no evidence of disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.671,
+        "correct": 0,
+        "gap": 0.671,
+        "direction": "over",
+        "extra_hccs": [
+          "21"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:08+00:00",
+    "style": {
+      "age": 59,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

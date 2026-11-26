@@ -1,0 +1,85 @@
+{
+  "id": "bipolar_schizophrenia-8886d43005",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "schizophrenia_paranoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint: Follow-up for psychiatric management.\n\nHPI: 90-year-old male presents for scheduled follow-up of paranoid schizophrenia. Pt is currently managed on a long-acting injectable (LAI) antipsychotic. He reports feeling stable and denies any significant distressing symptoms since the last dose. He notes good sleep and adequate appetite. No concerns regarding mobility or cognitive changes reported by pt or family. He reports adherence to all other medications and no side effects from the LAI.\n\nMedication List:\n- Long-acting injectable antipsychotic\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n- Multivitamin daily\n\nReview of Systems:\nGeneral: Denies fever, chills, or weight changes.\nHEENT: Denies vision changes or hearing loss.\nCV: Denies chest pain or palpitations.\nResp: Denies SOB or cough.\nGI: Denies abdominal pain or diarrhea.\nMSK: Denies joint pain or stiffness.\nNeuro: Denies tremors or dizziness.\n\nSocial History: Lives at home with his daughter. Retired. No tobacco use.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 165 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 65\nTSH: 2.1\nNa: 138\nK: 4.0\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nPsych: Cooperative, good eye contact. Speech is coherent and at a normal rate/volume. Mood is stable; affect is congruent. Thought process is linear and goal-oriented. No acute distress noted.\nPhysical: NAD.\n\nAssessment:\n1. Paranoid schizophrenia: Pt remains stable on current LAI regimen. No acute exacerbation of symptoms noted today.\n\nPlan:\n1. Continue current LAI antipsychotic as scheduled.\n2. Continue current medications for hypertension and hyperlipidemia.\n3. Follow up in 3 months for routine psychiatric evaluation.\n\nElectronically signed,\nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "F20.0"
+  ],
+  "explanations": [
+    "Paranoid schizophrenia: F20.0 (HCC 151)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F20.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (paranoid) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F25.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "Schizophrenia is documented, not schizoaffective disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.511,
+    "hccs": [
+      {
+        "hcc": "151",
+        "label": "Schizophrenia",
+        "from": [
+          "F200"
+        ],
+        "weight": 0.511
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:38+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "fibrosis_airway-9290d15ac4",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "ipf"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint\nFollow-up for idiopathic pulmonary fibrosis.\n\nHPI\nPt is a 56-year-old female presenting for scheduled f/u of idiopathic pulmonary fibrosis. She reports she has been feeling stable and denies any acute shortness of breath or increased cough since the last visit. She is adherent to her current antifibrotic medication. She reports no new side effects.\n\nMedication List\nNintedanib 150mg BID.\n\nExam\nPt in no acute distress. CTAB. RRR. Lungs: diminished breath sounds at bases, no adventitious sounds. Heart: regular rhythm, no murmurs. Extremities: no edema.\n\nAssessment\n1. Idiopathic pulmonary fibrosis: Stable. Recent PFTs show stable lung function tests. Pt tolerating antifibrotic therapy well.\n\nPlan\n1. Continue current antifibrotic medication.\n2. Continue monitoring of lung function.\n3. F/u in 3 months.\n\nElectronically signed,\nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "J84.112"
+  ],
+  "explanations": [
+    "Idiopathic pulmonary fibrosis: J84.112 (HCC 278)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J84.10"
+      ],
+      "confusion": "understated_fibrosis",
+      "lean": "under",
+      "why": "IPF is documented (HCC 278, not 280).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.319,
+        "correct": 0.818,
+        "gap": -0.499,
+        "direction": "under",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": [
+          "278"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "278",
+        "label": "Idiopathic Pulmonary Fibrosis and Lung Involvement in Systemic Sclerosis",
+        "from": [
+          "J84112"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:33+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "ulcer_burn-e3b1a95bf3",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_depth_unknown"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint: Follow-up on right heel ulcer.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 215 lbs.\n\nRecent Labs: HbA1c: 7.4%, eGFR: 88 mL/min/1.73m2, WBC: 8.2 x 10^9/L.\n\nMedication List:\n- Lisinopril 10mg daily\n- Metformin 500mg twice daily\n- Atorvastatin 20mg daily\n\nFamily History: Father had hypertension and a myocardial infarction at age 62. Mother has a history of hyperlipidemia.\n\nSocial History: Patient is a non-smoker. He works as a warehouse supervisor and reports moderate daily activity. He lives with his wife and two children.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nIntegumentary: Positive for a chronic ulcer on the right heel.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for numbness or tingling.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for abdominal pain or diarrhea.\nGenitourinary: Negative for dysuria.\n\nHPI: Patient is a 51-year-old male who presents for a follow-up regarding a chronic ulcer on the right heel. He reports that the wound has been present for several months. He states that the ulcer is slow to heal and occasionally experiences mild discomfort. He denies any new drainage, foul odor, or increased redness around the site. He reports compliance with his current medications.\n\nExam: Patient is alert and oriented x3. Skin is intact except for a non-pressure chronic ulcer of the right heel. The wound appears stable with no signs of acute infection. No surrounding erythema or warmth noted. Capillary refill is <2 seconds.\n\nAssessment:\n1. Chronic ulcer of the right heel.\n\nPlan:\n1. Wound care: The patient will continue current dressing protocols. I will provide a new supply of sterile gauze and antimicrobial ointment.\n2. Monitoring: Patient instructed to monitor for any increased drainage or systemic symptoms.\n3. Follow-up: Return to clinic in 4 weeks for a wound assessment.\n\nElectronically signed, J. Lindqvist, NP, 10/14/2026",
+  "answer": [
+    "L97.419"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot, severity not stated: L97.419 (HCC 383)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.412"
+      ],
+      "confusion": "assumed_depth",
+      "lean": "neutral",
+      "why": "The depth is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.646,
+        "correct": 0.646,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.646,
+    "hccs": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "from": [
+          "L97419"
+        ],
+        "weight": 0.646
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:37+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

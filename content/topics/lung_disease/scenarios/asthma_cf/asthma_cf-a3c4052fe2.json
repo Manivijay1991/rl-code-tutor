@@ -1,0 +1,89 @@
+{
+  "id": "asthma_cf-a3c4052fe2",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "severe_persistent"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint: Follow-up for asthma.\n\nHPI: Pt is a 26-year-old male presenting for a scheduled follow-up of severe persistent asthma. He reports that his symptoms are currently well-managed with his current regimen of high-dose inhaled steroid and a biologic. He denies any current wheezing, shortness of breath, or increased cough. He reports good exercise tolerance and no nighttime awakenings. Pt states he is adherent to all medications and inhaler techniques are correct.\n\nMedication List:\n- Inhaled corticosteroid (High-dose)\n- Biologic injection\n- Albuterol HFA PRN\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nRespiratory: Denies cough, wheeze, or dyspnea.\nAll other systems reviewed and negative.\n\nSocial History: Pt works full-time in an office setting. Non-smoker. Occasional alcohol use. No recreational drug use.\n\nFamily History: Mother has asthma; Father has hypertension.\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'11\"\nWeight: 175 lbs\n\nRecent Labs:\neGFR: 95\nHbA1c: 5.4%\nCBC: WNL\n\nExam:\nGeneral: Pt appears well-appearing, in no acute distress.\nRespiratory: CTAB. Breath sounds clear bilaterally. No wheezes, rhonchi, or diminished breath sounds noted.\nCardiovascular: RRR, no murmurs heard.\nSkin: No rashes or lesions.\n\nAssessment:\n1. Severe persistent asthma: Currently stable and well-controlled on high-dose inhaled steroid and biologic. No signs of acute distress or respiratory compromise.\n\nPlan:\n- Continue current medications as prescribed.\n- Continue biologic injections as scheduled.\n- Pt instructed to use albuterol PRN for any breakthrough symptoms.\n- Follow up in 4 months for routine monitoring or sooner if symptoms worsen.\n\nElectronically signed, \nL. Moreau, DO\n05/14/2026",
+  "answer": [
+    "J45.50"
+  ],
+  "explanations": [
+    "Severe persistent asthma, uncomplicated: J45.50 (HCC 279)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.40"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Severe persistent is documented (HCC 279); moderate has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.818,
+        "gap": -0.818,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "279"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J45.909"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "The severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.818,
+        "gap": -0.818,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "279"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "279",
+        "label": "Severe Persistent Asthma",
+        "from": [
+          "J4550"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:37+00:00",
+    "style": {
+      "age": 26,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "nerve_muscle-0ff009e419",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "mg_stable"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for myasthenia gravis.\n\nHPI\nThe patient is a 33-year-old female who presents today for a scheduled follow-up regarding her history of myasthenia gravis. She reports that she has been feeling well and notes that her symptoms have remained consistent with her baseline. She denies any new onset of double vision, ptosis, or generalized muscle weakness. She states that she is adherent to her current medication regimen and has not experienced any significant side effects. She feels that her condition is currently well controlled.\n\nMedication List\n- Pyridostigmine 60mg every 4 hours PO\n\nSocial History\nThe patient lives in a private residence with her spouse and two children. She works as a freelance graphic designer and reports no tobacco or illicit substance use. She enjoys hiking and swimming on weekends.\n\nFamily History\nMother has hypertension. Father has hyperlipidemia. Siblings are healthy.\n\nReview of Systems\nThe patient reports no recent changes in vision, speech, or swallowing. She denies any shortness of breath, chest pain, or palpitations. She reports no joint pain or rashes. She denies headaches or fever.\n\nVitals\nBlood Pressure: 118/76 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\nComplete Blood Count (CBC): Within normal limits.\nComprehensive Metabolic Panel (CMP): Within normal limits.\n\nExam\nThe patient is alert and oriented x3. She appears in no acute distress. Cranial nerves II-XII are intact. Extraocular movements are full and symmetric without evidence of diplopia. Facial symmetry is maintained. Strength is 5/5 in all major muscle groups and extremities. Reflexes are 2+ throughout. No tremors or gait abnormalities noted.\n\nAssessment\n1. Myasthenia gravis: The patient's condition is stable and well controlled on her current dose of pyridostigmine. She shows no signs of clinical decline.\n\nPlan\n1. Continue current dosage of pyridostigmine.\n2. Maintain current activity level.\n3. Return to clinic in 6 months for routine follow-up or sooner if symptoms change.\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "G70.00"
+  ],
+  "explanations": [
+    "Myasthenia gravis without (acute) exacerbation: G70.00 (HCC 196)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G70.01"
+      ],
+      "confusion": "assumed_exacerbation",
+      "lean": "over",
+      "why": "No exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.909,
+        "correct": 0.516,
+        "gap": 2.393,
+        "direction": "over",
+        "extra_hccs": [
+          "195"
+        ],
+        "missing_hccs": [
+          "196"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.516,
+    "hccs": [
+      {
+        "hcc": "196",
+        "label": "Myasthenia Gravis without (Acute) Exacerbation and Other Myoneural Disorders",
+        "from": [
+          "G7000"
+        ],
+        "weight": 0.516
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:47+00:00",
+    "style": {
+      "age": 33,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

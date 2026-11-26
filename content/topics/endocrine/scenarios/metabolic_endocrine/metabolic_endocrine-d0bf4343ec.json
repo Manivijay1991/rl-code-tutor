@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-d0bf4343ec",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "fabry"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nBurning pain in hands and feet.\n\nHPI\nThe patient is a 36-year-old woman presenting for a follow-up evaluation of her Fabry disease. She reports experiencing persistent burning sensations in both her hands and feet over the past month. She describes the discomfort as constant but fluctuates in intensity, occasionally worsening at night. She is currently adherent to her prescribed enzyme replacement therapy. She denies any new neurological deficits, significant skin changes, or systemic fevers.\n\nMedication List\n- Enzyme replacement therapy (ERT)\n- Gabapentin 300mg TID\n\nExam\nThe patient is alert and oriented. She appears in no acute distress. Physical exam reveals intact sensation to light touch in all extremities, though she reports localized burning. No visible skin ulcers or lesions are noted on the hands or feet. Strength is 5/5 throughout.\n\nAssessment\n1. Fabry disease: The patient is experiencing symptomatic neuropathic pain despite being on enzyme replacement therapy.\n\nPlan\n1. Continue current enzyme replacement therapy.\n2. Increase Gabapentin dosage to manage burning sensations in extremities.\n3. Follow up in four weeks to monitor pain levels.\n\nElectronically signed, L. Moreau, DO, 05/12/2026",
+  "answer": [
+    "E75.21"
+  ],
+  "explanations": [
+    "Fabry (-Anderson) disease: E75.21 (HCC 49)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E88.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The specific storage disorder is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 9.256,
+        "gap": -9.256,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "49"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 9.256,
+    "hccs": [
+      {
+        "hcc": "49",
+        "label": "Specified Lysosomal Storage Disorders",
+        "from": [
+          "E7521"
+        ],
+        "weight": 9.256
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:18+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "blood_cancers-6860b9a0fc",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "hodgkin_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint\nFollow-up for Hodgkin lymphoma.\n\nHPI\nPt is a 61-year-old male presenting for routine oncology follow-up. Pt currently undergoing active chemotherapy for Hodgkin lymphoma. He reports feeling well today. Denies significant fatigue or shortness of breath. Tolerating current regimen well with no major side effects reported since last visit.\n\nMedication List\n- Chemotherapy (current regimen)\n- Prednisone 20mg QD\n- Ondansetron 8mg PRN\n- Multivitamin daily\n\nExam\nGen: Well-appearing, no acute distress.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6 F.\nHEENT: Normocephalic, pupils equal and reactive.\nNeck: No palpable lymphadenopathy.\nLungs: CTAB, no wheezes/crackles.\nHeart: RRR, no murmurs.\nAbdomen: Soft, non-tender, no masses.\nExt: No edema.\n\nAssessment\n1. Hodgkin lymphoma - active chemotherapy.\n\nPlan\n- Continue current chemotherapy protocol as scheduled.\n- Monitor lab work weekly.\n- F/u in clinic in 2 weeks.\n- Pt instructed to call immediately if any new symptoms occur.\n\nElectronically signed, K. Nguyen, DO, 05/12/2026",
+  "answer": [
+    "C81.90"
+  ],
+  "explanations": [
+    "Hodgkin lymphoma under treatment, type and site not stated: C81.90 (HCC 21)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C85.90"
+      ],
+      "confusion": "wrong_lymphoma_type",
+      "lean": "neutral",
+      "why": "Hodgkin lymphoma is documented, not non-Hodgkin.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.671,
+        "correct": 0.671,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.671,
+    "hccs": [
+      {
+        "hcc": "21",
+        "label": "Lymphoma and Other Cancers",
+        "from": [
+          "C8190"
+        ],
+        "weight": 0.671
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:28+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

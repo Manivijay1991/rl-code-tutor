@@ -1,0 +1,295 @@
+{
+  "id": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note_age": {
+    "min": 25
+  },
+  "slots": {
+    "condition": {
+      "label": "Injury documented",
+      "values": [
+        "tbi_loc_long",
+        "tbi_loc_short",
+        "tbi_no_loc",
+        "concussion_loc"
+      ],
+      "labels": {
+        "tbi_loc_long": "Diffuse brain injury, unconscious over 24 hours, recovered",
+        "tbi_loc_short": "Diffuse brain injury, unconscious 30 minutes or less",
+        "tbi_no_loc": "Diffuse brain injury, never unconscious",
+        "concussion_loc": "Concussion, unconscious 30 minutes or less"
+      },
+      "evidence": {
+        "tbi_loc_long": [
+          [
+            "diffuse"
+          ],
+          [
+            "brain injury",
+            "axonal injury"
+          ],
+          [
+            "more than 24 hours",
+            "over 24 hours",
+            "three days"
+          ]
+        ],
+        "tbi_loc_short": [
+          [
+            "diffuse"
+          ],
+          [
+            "brain injury",
+            "axonal injury"
+          ],
+          [
+            "minutes"
+          ]
+        ],
+        "tbi_no_loc": [
+          [
+            "diffuse"
+          ],
+          [
+            "brain injury",
+            "axonal injury"
+          ],
+          [
+            "no loss of consciousness",
+            "did not lose consciousness"
+          ]
+        ],
+        "concussion_loc": [
+          [
+            "concussion"
+          ],
+          [
+            "minutes"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "tbi_loc_long": "Admitted after a car crash with a diffuse traumatic brain injury (diffuse axonal injury); unconscious for three days (more than 24 hours), then returned to his or her usual level of consciousness.",
+        "tbi_loc_short": "Admitted after a fall from a ladder with a diffuse traumatic brain injury on MRI; unconscious for about 10 minutes at the scene.",
+        "tbi_no_loc": "Admitted after a fall from a ladder with a diffuse traumatic brain injury on MRI; the patient did not lose consciousness at any time.",
+        "concussion_loc": "Admitted overnight for observation after a concussion from a fall; unconscious for about 5 minutes; CT and MRI of the brain are normal."
+      }
+    }
+  },
+  "note_forbid": [
+    "hematoma",
+    "hemorrhage",
+    "bleed",
+    "contusion",
+    "skull fracture",
+    "laceration",
+    "spinal",
+    "seizure",
+    "dementia",
+    "alcohol",
+    "intoxicat",
+    "anticoagula",
+    "subsequent",
+    "sequela",
+    "prior head injury",
+    "coma scale",
+    "GCS"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD"
+    },
+    {
+      "when": {
+        "condition": [
+          "tbi_loc_long",
+          "tbi_loc_short",
+          "tbi_no_loc"
+        ]
+      },
+      "forbid": [
+        "concussion"
+      ]
+    },
+    {
+      "when": {
+        "condition": "tbi_loc_long"
+      },
+      "forbid": [
+        "10 minutes",
+        "5 minutes",
+        "did not lose consciousness",
+        "no loss of consciousness"
+      ]
+    },
+    {
+      "when": {
+        "condition": "tbi_loc_short"
+      },
+      "forbid": [
+        "more than 24 hours",
+        "over 24 hours",
+        "unconscious for hours",
+        "unconscious for days",
+        "for three days",
+        "did not lose consciousness",
+        "no loss of consciousness"
+      ]
+    },
+    {
+      "when": {
+        "condition": "tbi_no_loc"
+      },
+      "forbid": [
+        "minutes",
+        "unconscious for",
+        "lost consciousness for"
+      ]
+    },
+    {
+      "when": {
+        "condition": "concussion_loc"
+      },
+      "forbid": [
+        "diffuse",
+        "axonal",
+        "traumatic brain injury",
+        "TBI",
+        "more than 24 hours",
+        "over 24 hours",
+        "unconscious for hours",
+        "unconscious for days",
+        "for three days"
+      ]
+    }
+  ],
+  "confusions": {
+    "wrong_loc_duration": {
+      "description": "Used the wrong loss-of-consciousness duration (it decides HCC 397, 398 or 399).",
+      "lean": "neutral"
+    },
+    "unspecified_loc": {
+      "description": "Used unspecified loss of consciousness when the duration is documented.",
+      "lean": "neutral"
+    },
+    "concussion_coded_tbi": {
+      "description": "Coded a diffuse brain injury (HCC 398) for a concussion (no HCC).",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "head",
+      "rules": [
+        {
+          "when": {
+            "condition": "tbi_loc_long"
+          },
+          "codes": [
+            "S06.2X5A"
+          ],
+          "explain": "Diffuse traumatic brain injury with loss of consciousness over 24 hours and return to the prior conscious level, initial encounter: S06.2X5A (HCC 397).",
+          "refs": [
+            "OCG I.C.19.a",
+            "ICD-10-CM Tabular: S06"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S06.2X9A"
+              ],
+              "confusion": "unspecified_loc",
+              "why": "The duration (over 24 hours) is documented."
+            },
+            {
+              "codes": [
+                "S06.2X1A"
+              ],
+              "confusion": "wrong_loc_duration",
+              "why": "Unconscious for days, not minutes."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "tbi_loc_short"
+          },
+          "codes": [
+            "S06.2X1A"
+          ],
+          "explain": "Diffuse traumatic brain injury with loss of consciousness of 30 minutes or less, initial encounter: S06.2X1A (HCC 398).",
+          "refs": [
+            "OCG I.C.19.a",
+            "ICD-10-CM Tabular: S06"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S06.2X0A"
+              ],
+              "confusion": "wrong_loc_duration",
+              "why": "There was a brief loss of consciousness."
+            },
+            {
+              "codes": [
+                "S06.2X9A"
+              ],
+              "confusion": "unspecified_loc",
+              "why": "The duration is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "tbi_no_loc"
+          },
+          "codes": [
+            "S06.2X0A"
+          ],
+          "explain": "Diffuse traumatic brain injury without loss of consciousness, initial encounter: S06.2X0A (HCC 399).",
+          "refs": [
+            "OCG I.C.19.a",
+            "ICD-10-CM Tabular: S06"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S06.2X1A"
+              ],
+              "confusion": "wrong_loc_duration",
+              "why": "No loss of consciousness is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "concussion_loc"
+          },
+          "codes": [
+            "S06.0X1A"
+          ],
+          "explain": "Concussion with loss of consciousness of 30 minutes or less, initial encounter: S06.0X1A (no HCC).",
+          "refs": [
+            "OCG I.C.19.a",
+            "ICD-10-CM Tabular: S06"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "S06.2X1A"
+              ],
+              "confusion": "concussion_coded_tbi",
+              "why": "A concussion is documented with normal imaging, not a diffuse injury."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

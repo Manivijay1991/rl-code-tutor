@@ -1,0 +1,95 @@
+{
+  "id": "head_injury-4e411fa6f0",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "tbi_loc_long"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/22/2026\nReason for Admission: Traumatic brain injury following MVC.\n\nHospital Course:\nPt is a 75 y/o female admitted via EMS status post MVC. Initial presentation showed diffuse axonal injury. Pt was unconscious for three days prior to arrival. During hospitalization, pt was monitored for neurological status and stable vitals. Pt showed gradual improvement in cognitive function and returned to her usual level of consciousness. Stable RRR, CTAB, and WNL on physical exam. Neuro exams showed improvement in orientation and motor skills. No acute distress noted. Transitioned to rehab for physical and occupational therapy.\n\nDischarge Diagnoses:\n1. Diffuse axonal injury\n2. Traumatic brain injury\n\nDischarge Medications:\n- Gabapentin 300mg BID\n- Meloxicam 15mg QD\n\nFollow-up:\nF/u with neurology in 1 week for neuro assessment. F/u with PT/OT daily.\n\nElectronically signed,\nE. Castillo, MD\n05/22/2026",
+  "answer": [
+    "S06.2X5A"
+  ],
+  "explanations": [
+    "Diffuse traumatic brain injury with loss of consciousness over 24 hours and return to the prior conscious level, initial encounter: S06.2X5A (HCC 397)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X9A"
+      ],
+      "confusion": "unspecified_loc",
+      "lean": "neutral",
+      "why": "The duration (over 24 hours) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": [
+          "397"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "wrong_loc_duration",
+      "lean": "neutral",
+      "why": "Unconscious for days, not minutes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": [
+          "397"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.199,
+    "hccs": [
+      {
+        "hcc": "397",
+        "label": "Major Head Injury with Loss of Consciousness > 1 Hour",
+        "from": [
+          "S062X5A"
+        ],
+        "weight": 0.199
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:45+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

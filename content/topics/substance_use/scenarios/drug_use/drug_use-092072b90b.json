@@ -1,0 +1,73 @@
+{
+  "id": "drug_use-092072b90b",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for substance use management.\n\nHPI\nThe patient is a 36-year-old woman presenting today to establish a treatment plan for her opioid use disorder. She reports a history of regular use and expresses a desire to stabilize her condition. She describes her current status as moderate and seeks pharmacological support to assist with maintenance. She denies any recent complications related to her use. She is motivated to begin a medication-assisted treatment protocol.\n\nMedication List\nNone currently.\n\nExam\nThe patient is a well-appearing 36-year-old female. She is alert and oriented to person, place, and time. Her speech is clear, and her mood is stable. Vital signs are within normal limits. No acute physical distress is noted.\n\nAssessment\n1. Opioid use disorder, moderate, with no complications.\n\nPlan\n1. Initiated buprenorphine therapy to manage opioid use disorder. \n2. Patient will be monitored for efficacy and side effects.\n3. Follow-up scheduled in two weeks to assess tolerance and stability.\n\nElectronically signed, L. Moreau, DO, 05/12/2026",
+  "answer": [
+    "F11.20"
+  ],
+  "explanations": [
+    "A moderate or severe use disorder is coded as dependence: F11.20 (HCC 137)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.10"
+      ],
+      "confusion": "moderate_coded_abuse",
+      "lean": "under",
+      "why": "Moderate = dependence (F11.2-).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.423,
+        "correct": 0.424,
+        "gap": -0.001,
+        "direction": "under",
+        "extra_hccs": [
+          "138"
+        ],
+        "missing_hccs": [
+          "137"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "137",
+        "label": "Drug Use Disorder/Moderate/Severe/Drug Use with Non-Psychotic Complications",
+        "from": [
+          "F1120"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:44+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

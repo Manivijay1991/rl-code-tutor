@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-33b6d05b87",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_pe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for pulmonary embolism.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nHPI: [Copied Forward] Patient is an 89-year-old female presenting with shortness of breath and chest pain. Imaging confirmed an acute pulmonary embolism two weeks ago. No signs of heart strain were noted on the initial CT. Patient was started on anticoagulation.\n\n[Update] The patient reports she is feeling much better today. She denies any new shortness of breath or worsening chest pain. She is tolerating her current medication well and has not experienced any bleeding.\n\nReview of Systems:\nConstitutional: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\n- Apixaban 5mg twice daily\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nRespiratory: Lungs clear to auscultation bilaterally. No wheezes or rales.\nCardiovascular: Regular rate and rhythm. No murmurs.\nExtremities: No edema noted.\n\nAssessment:\n1. Acute pulmonary embolism. Patient is in the first months of anticoagulant treatment and is currently stable.\n\nPlan:\n1. Continue Apixaban as prescribed.\n2. Follow up in 4 weeks for routine monitoring.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "I26.99"
+  ],
+  "explanations": [
+    "Acute pulmonary embolism without acute cor pulmonale, under initial treatment: I26.99 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.711"
+      ],
+      "confusion": "acute_coded_history",
+      "lean": "under",
+      "why": "The embolism is acute and still being treated.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I27.82"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The embolism is documented as acute.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I2699"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:09:42+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "bipolar_schizophrenia-0cd2d510ec",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_depressed_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for mood stability.\n\nHPI\nThe patient is an 86-year-old male who presents today for a follow-up evaluation of his bipolar disorder. He reports that his mood has been consistently low over the past several weeks. He describes feeling persistently depressed and mentions a significant lack of interest in his usual hobbies and social activities. He notes that his energy levels are low and he finds it difficult to initiate daily tasks. He denies any thoughts of self-harm or harm to others. He reports that while his mood is low, he remains oriented and has not experienced any significant changes in his perception of reality. He reports that his current symptoms are moderate in intensity and have persisted despite his current regimen. He is seeking an adjustment to his medication to help stabilize his mood.\n\nMedication List\n- Lamotrigine 200 mg daily\n- Quetiapine 50 mg at bedtime\n\nReview of Systems\nThe patient reports a positive history for low mood and fatigue. He denies any chest pain, shortness of breath, or recent weight changes. He denies any tremors, insomnia, or changes in appetite. He denies any significant neurological complaints.\n\nSocial History\nThe patient lives at home with his wife. He is retired and spends most of his time gardening and reading. He does not smoke and does not drink alcohol.\n\nFamily History\nHis father had a history of hypertension and his mother had a history of heart disease. There is no known family history of psychiatric conditions.\n\nVitals\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs\nHbA1c: 6.2%\nTSH: 2.1 mIU/L\neGFR: 65 mL/min/1.73m2\n\nExam\nThe patient appears well-groomed and is dressed appropriately for the weather. He is cooperative and maintains good eye contact. His speech is normal in rate, volume, and tone. His affect is congruent with his reported mood. He demonstrates a moderate level of psychomotor slowing. He is alert and oriented to person, place, and time.\n\nAssessment\nThe patient is an 86-year-old male with bipolar disorder who is currently experiencing a depressed mood. His symptoms are moderate in severity. He has shown limited response to his current dose of lamotrigine.\n\nPlan\n1. Increase lamotrigine dosage to 300 mg daily to address current symptoms.\n2. Continue current dose of quetiapine.\n3. Follow up in four weeks to monitor response to the medication increase and assess for any side effects.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "F31.32"
+  ],
+  "explanations": [
+    "Bipolar disorder, current episode depressed, moderate: F31.32 (HCC 154)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "bipolar_coded_as_depression",
+      "lean": "neutral",
+      "why": "A depressed episode of bipolar disorder is coded in F31, not as major depression.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.351,
+        "gap": -0.052,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "154"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F31.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The episode and severity are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.351,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.351,
+    "hccs": [
+      {
+        "hcc": "154",
+        "label": "Bipolar Disorders without Psychosis",
+        "from": [
+          "F3132"
+        ],
+        "weight": 0.351
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:11:08+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

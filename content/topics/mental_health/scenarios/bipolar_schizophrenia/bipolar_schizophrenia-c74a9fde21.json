@@ -1,0 +1,88 @@
+{
+  "id": "bipolar_schizophrenia-c74a9fde21",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_partial_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for mood stability.\n\nHPI\nPt is an 83 y.o. female presenting for scheduled psychiatric f/u. Pt reports stable mood over the last month but notes persistent fatigue and occasional lack of motivation. Psychiatrist notes bipolar disorder in partial remission. Pt describes feeling somewhat depressed at times but denies any acute crisis. She reports adherence to current lithium regimen with no significant side effects noted.\n\nMedication List\nLithium carbonate 300mg BID\n\nExam\nPt is alert and oriented x3. Appears well-groomed. Speech is normal rate/tone. Mood is stable; affect is somewhat constricted. Thought process is linear and goal-directed. No acute distress noted.\n\nAssessment\n1. Bipolar disorder in partial remission. Pt remains depressed but stable on current lithium dose.\n\nPlan\n1. Continue lithium carbonate 300mg BID.\n2. Continue monitoring mood and side effects.\n3. F/u in 4 weeks for next psychiatric evaluation.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "F31.75"
+  ],
+  "explanations": [
+    "Bipolar disorder in partial remission, most recent episode depressed: F31.75 (HCC 154)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F31.76"
+      ],
+      "confusion": "full_partial_confused",
+      "lean": "neutral",
+      "why": "Partial remission is documented (it keeps HCC 154).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.351,
+        "gap": -0.351,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "154"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F31.32"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents remission, not an active episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.351,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.351,
+    "hccs": [
+      {
+        "hcc": "154",
+        "label": "Bipolar Disorders without Psychosis",
+        "from": [
+          "F3175"
+        ],
+        "weight": 0.351
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:48+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

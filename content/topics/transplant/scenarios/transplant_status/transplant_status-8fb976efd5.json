@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-8fb976efd5",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "heart"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for post-heart transplant status.\n\nHPI\nPt is a 75-year-old female seen for routine follow-up status post heart transplant performed 6 years ago. Pt reports feeling well overall. Denies any symptoms of rejection or other transplant complications. Tolerating tacrolimus well without significant side effects. No complaints of fatigue, dyspnea, or chest pain.\n\nMedication List\n- Tacrolimus 1mg BID\n- Lisinopril 10mg QD\n- Aspirin 81mg QD\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or rales.\nSkin: Intact, no rashes.\nVitals: BP 128/82, HR 72, RR 16, SpO2 98% on RA.\n\nAssessment\n1. Status post heart transplant. Doing well on tacrolimus. No evidence of rejection.\n\nPlan\n- Continue current tacrolimus dose.\n- Routine labs to monitor tacrolimus levels.\n- F/u in 3 months.\n\nElectronically signed,\nE. Castillo, DO\n05/14/2026",
+  "answer": [
+    "Z94.1"
+  ],
+  "explanations": [
+    "Heart transplant status: Z94.1 (HCC 221)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Heart transplant status carries HCC 221.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.053,
+        "gap": -1.053,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "221"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.053,
+    "hccs": [
+      {
+        "hcc": "221",
+        "label": "Heart Transplant Status/Complications",
+        "from": [
+          "Z941"
+        ],
+        "weight": 1.053
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:35+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

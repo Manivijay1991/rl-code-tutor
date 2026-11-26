@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-8c5d990d50",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_hyperglycemia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Hyperglycemia\n\nVitals:\nBP: 138/84\nHR: 76 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 152 lbs\n\nRecent Labs:\nGlucose: 412 mg/dL (on admission)\nHbA1c: 8.4%\nNa: 138\nK: 4.2\nCr: 0.9\neGFR: >90\n\nReview of Systems:\n(+) Polydipsia, polyuria. (-) Chest pain, SOB, syncope, numbness, vision changes.\n\nSocial History:\nLives with daughter. Retired. No tobacco use.\n\nFamily History:\nMother had type 2 diabetes. Father had HTN.\n\nHospital Course:\nPt is an 85-year-old female with a known hx of T2DM admitted with severe hyperglycemia. On admission, BG was >400 mg/dL. Pt was stable and did not meet criteria for acute metabolic crises. Management focused on fluid resuscitation and insulin adjustment. Pt responded well to sliding scale insulin and dose titration. BG stabilized within target range during stay. Diet was adjusted to consistent carb counts. Pt tolerated oral intake well and was ready for discharge.\n\nDischarge Diagnoses:\n1. Hyperglycemia\n2. Type 2 diabetes\n\nDischarge Medications:\n1. Metformin 500mg BID\n2. Lisinopril 10mg daily\n3. Atorvastatin 20mg daily\n4. Insulin glargine and lispro as directed\n\nFollow-up:\nF/u with PCP in 1 week for lab work and medication reconciliation.\n\nElectronically signed,\nD. Kowalski, MD\n05/15/2026",
+  "answer": [
+    "E11.65"
+  ],
+  "explanations": [
+    "Type 2 diabetes with hyperglycemia only: E11.65 (HCC 38)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.10"
+      ],
+      "confusion": "hyperglycemia_coded_dka",
+      "lean": "over",
+      "why": "Ketoacidosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "36"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:27+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

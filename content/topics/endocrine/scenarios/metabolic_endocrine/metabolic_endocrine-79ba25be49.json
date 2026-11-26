@@ -1,0 +1,68 @@
+{
+  "id": "metabolic_endocrine-79ba25be49",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "attr"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for transthyretin amyloidosis.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a follow-up evaluation regarding her diagnosis of wild-type transthyretin amyloidosis. She is currently managed by a cardiologist and is taking tafamidis as part of her maintenance therapy. She reports that her symptoms have been stable over the last few months. She denies any significant increase in shortness of breath, chest pain, or worsening of peripheral neuropathy. She notes some occasional fatigue but states it is consistent with her baseline. She is here today primarily for a routine check of her clinical status and medication tolerance.\n\nMedication List\n- Tafamidis 20mg daily\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems\nThe patient denies fever, chills, or night sweats. She denies chest pain, palpitations, or syncope. She reports no new-onset shortness of breath or orthopnea. She denies any changes in her peripheral sensation or motor strength. She reports no significant weight changes or recent falls. She denies any changes in appetite or bowel habits.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She is retired and enjoys gardening and light walking. She denies tobacco use and reports social alcohol consumption.\n\nFamily History\nHer mother had hypertension and a history of heart disease. Her father lived to age 85 and had a history of high cholesterol.\n\nVitals\nBlood Pressure: 128/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nTemperature: 98.6 F\nWeight: 145 lbs\n\nRecent Labs\neGFR: 68 mL/min/1.73m2\nHbA1c: 5.4%\nTSH: 2.1 mIU/L\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\n\nExam\nThe patient is a well-appearing, alert, and oriented 79-year-old woman. She is in no acute distress. Cardiovascular exam reveals a regular rate and rhythm with an S1 and S2 heard clearly. No murmurs, rubs, or gallops were noted. Lungs are clear to auscultation bilaterally. Extremities show no significant edema. Peripheral pulses are palpable and symmetric.\n\nAssessment\nThe patient is a 79-year-old woman with a stable course of wild-type ATTR amyloidosis. She is tolerating her current regimen of tafamidis well without significant side effects.\n\nPlan\n1. Continue current medication regimen including tafamidis.\n2. Continue to monitor for any progression of symptoms.\n3. Follow up with her cardiologist as scheduled.\n4. Return to the clinic in 3 months for a repeat evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "E85.82"
+  ],
+  "explanations": [
+    "Wild-type transthyretin-related amyloidosis: E85.82 (HCC 50)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E85.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (wild-type ATTR) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.648,
+        "correct": 0.648,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.648,
+    "hccs": [
+      {
+        "hcc": "50",
+        "label": "Amyloidosis/Porphyria/and Other Specified Metabolic Disorders",
+        "from": [
+          "E8582"
+        ],
+        "weight": 0.648
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:24+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

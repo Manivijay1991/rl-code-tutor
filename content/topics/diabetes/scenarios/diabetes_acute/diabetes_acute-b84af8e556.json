@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-b84af8e556",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_dka"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Diabetic ketoacidosis\n\nVitals:\nBP: 138/82\nHR: 88 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 165 lbs\n\nRecent Labs:\nGlucose: 450 mg/dL (on admission)\nBUN: 18 mg/dL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min\npH: 7.22\nBicarb: 14 mEq/L\nKetones: Positive (urine)\nHbA1c: 9.4%\n\nReview of Systems:\nConstitutional: Fatigue, mild polyuria.\nRespiratory: NAD.\nCV: No chest pain, no SOB.\nGI: Mild nausea, no vomiting.\nNeuro: Alert and oriented x3.\n\nSocial History:\nRetired. Lives with spouse. No tobacco use.\n\nFamily History:\nFather: T2DM.\nMother: HTN.\n\nHospital Course:\nPt is a 90-year-old male with known T2DM admitted for DKA. Pt presented with signs of metabolic derangement. Initial management included aggressive IV fluid resuscitation and initiation of a continuous insulin drip. Patient responded well to treatment. Metabolic status stabilized; pH and bicarb improved significantly over 72 hours. Insulin drip was tapered and discontinued once patient was euvolumetric and ketone-negative. Transitioned to subcutaneous insulin regimen.\n\nDischarge Diagnoses:\n- Diabetic ketoacidosis\n- Type 2 diabetes\n\nDischarge Medications:\n- Insulin Glargine 20 units daily\n- Insulin Lispro 5 units before meals\n- Metformin 500mg BID\n\nFollow-up:\nF/u with primary care and endocrinology in 1 week for glucose monitoring and medication titration.\n\nElectronically signed,\nL. Moreau, MD\n05/15/2026",
+  "answer": [
+    "E11.10"
+  ],
+  "explanations": [
+    "Type 2 diabetes with ketoacidosis without coma: E11.10 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "dka_coded_hyperglycemia",
+      "lean": "under",
+      "why": "Ketoacidosis is a severe acute complication (HCC 36).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E1110"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:58+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

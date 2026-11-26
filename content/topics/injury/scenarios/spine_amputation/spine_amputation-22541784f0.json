@@ -1,0 +1,88 @@
+{
+  "id": "spine_amputation-22541784f0",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_osteoporotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint: Back pain.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, HR 74.\nRecent Labs: Vitamin D: 32 ng/mL, Calcium: 9.4 mg/dL, eGFR: 88 mL/min/1.73m2.\n\nMedication List:\n- Alendronate 70mg once weekly\n- Calcium carbonate 600mg daily\n- Vitamin D3 1000 IU daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight loss.\nMusculoskeletal: Positive for acute localized back pain and stiffness. Negative for joint swelling or redness.\nNeurological: Negative for numbness, tingling, or weakness.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for nausea or abdominal pain.\n\nSocial History: 51-year-old male, non-smoker, occasional alcohol use. Works as a warehouse manager. Lives with spouse and two children.\n\nFamily History: Father had a history of osteoporosis; Mother had hypertension.\n\nFamily History: Mother had hypertension. Father had osteoporosis.\n\nHPI: (Copied Forward) Patient is a 51-year-old male with known osteoporosis who reports persistent low-level aching in the lumbar region. He reports occasional stiffness in the morning but denies any acute trauma. He is currently compliant with his bone-strengthening medications.\n\nUpdate: The patient presents today reporting a sudden, sharp onset of severe mid-back pain. He states the pain began yesterday after he bent over to lift a laundry basket. He notes that while the strain was minor, the pain was immediate and intense. He describes the sensation as a \"sharp pop\" followed by a dull, constant ache. He has been unable to stand fully upright for several hours.\n\nExam: Patient is in moderate distress due to pain. Physical exam reveals localized tenderness over the T12-L1 region. Palpation reveals a palpable step-off. No neurological deficits noted in lower extremities. Reflexes are 2+ and symmetric. Gait is slightly guarded but steady.\n\nAssessment:\n1. New vertebral fracture secondary to age-related osteoporosis.\n\nPlan:\n1. Initiate conservative management for the vertebral fracture.\n2. Prescribed physical therapy for core strengthening and postural correction.\n3. Advised patient to avoid heavy lifting and repetitive bending for the next 6 weeks.\n4. Follow up in 4 weeks to monitor progress.\n\nElectronically signed, J. Lindqvist, NP, 10/14/2026",
+  "answer": [
+    "M80.08XA"
+  ],
+  "explanations": [
+    "Known osteoporosis + fracture from a minor strain = osteoporosis with current pathological fracture, vertebra, initial encounter: M80.08XA (HCC 401)."
+  ],
+  "refs": [
+    "OCG I.C.13.d.2",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010A"
+      ],
+      "confusion": "osteoporotic_coded_traumatic",
+      "lean": "neutral",
+      "why": "A minor strain in known osteoporosis: M80, not an injury code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.522,
+        "correct": 0.522,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M81.0"
+      ],
+      "confusion": "missed_fracture",
+      "lean": "under",
+      "why": "There is a current fracture: M80, not M81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.522,
+        "gap": -0.522,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "401"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.522,
+    "hccs": [
+      {
+        "hcc": "401",
+        "label": "Vertebral Fractures without Spinal Cord Injury",
+        "from": [
+          "M8008XA"
+        ],
+        "weight": 0.522
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:28+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

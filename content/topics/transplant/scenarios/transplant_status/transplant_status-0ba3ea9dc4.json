@@ -1,0 +1,88 @@
+{
+  "id": "transplant_status-0ba3ea9dc4",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for lung transplant status.\n\nHPI\nPt is a 73-year-old female presenting for routine outpatient follow-up regarding her double lung transplant performed 4 years ago. Pt reports feeling well overall and states she is doing well on her current immunosuppressant regimen. She denies any shortness of breath, chest pain, or significant fatigue. She notes no issues with medication side effects at this time. She is here for monitoring of transplant stability and maintenance of current medications.\n\nMedication List\n1. Tacrolimus 2mg BID\n2. Mycophenolate mofetil 500mg BID\n3. Prednisone 5mg daily\n\nReview of Systems\nConstitutional: No fever, chills, or weight changes.\nRespiratory: No cough, dyspnea, or wheezing.\nCardiovascular: No palpitations or edema.\nGastrointestinal: No nausea or diarrhea.\nNeurological: No tremors or headaches.\nMusculoskeletal: No joint pain.\nAll other systems reviewed and negative.\n\nSocial History\nPt lives at home with her spouse. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History\nMother: Hypertension.\nFather: Type 2 Diabetes.\nSiblings: Healthy.\n\nVitals\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt: 5'4\"\nWt: 145 lbs\n\nRecent Labs\nWBC: 5.2\nHgb: 12.1\nPlt: 150k\nCreatinine: 1.0\neGFR: 82\nTacrolimus trough level: 8.5 ng/mL\n\nExam\nGeneral: Alert, oriented x3, in no acute distress.\nRespiratory: CTAB. Breath sounds clear bilaterally. No adventitious sounds.\nCardiovascular: RRR, S1, S2 noted. No murmurs.\nSkin: No rashes or lesions.\nExtremities: No edema.\n\nAssessment\n1. Status post double lung transplant (4 years ago). Pt is stable on current immunosuppression. No signs of transplant complication.\n\nPlan\n1. Continue current immunosuppressant medications as prescribed.\n2. Continue monitoring tacrolimus trough levels.\n3. Routine f/u in 3 months.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "Z94.2"
+  ],
+  "explanations": [
+    "Lung transplant status: Z94.2 (HCC 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.3"
+      ],
+      "confusion": "wrong_organ",
+      "lean": "neutral",
+      "why": "Only the lungs were transplanted.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 3.584,
+        "correct": 2.531,
+        "gap": 1.053,
+        "direction": "over",
+        "extra_hccs": [
+          "221"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Lung transplant status carries HCC 276.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.531,
+        "gap": -2.531,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "276"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.531,
+    "hccs": [
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "Z942"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:41+00:00",
+    "style": {
+      "age": 73,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

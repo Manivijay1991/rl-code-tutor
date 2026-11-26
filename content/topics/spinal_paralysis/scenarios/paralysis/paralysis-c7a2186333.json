@@ -1,0 +1,68 @@
+{
+  "id": "paralysis-c7a2186333",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "para_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for management of paraplegia.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a routine follow-up regarding her chronic paraplegia. She suffered a spinal cord injury many years ago, which resulted in the loss of motor and sensory function in her lower extremities. She reports that her condition has remained stable over the past six months. She denies any new onset of localized pain, significant changes in skin integrity, or new neurological deficits. She currently uses a manual wheelchair for all mobility and requires assistance with several activities of daily living. She states she is managing well with her current regimen and is not experiencing any new complications related to her paraplegia.\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, chills, or unintended weight loss. She denies any new headaches or dizziness. She denies any changes in bowel or bladder function since her last visit.\n\nSocial History\nThe patient lives at home with her daughter and husband. She is retired and spends most of her time engaging in hobbies and watching television. She does not smoke and drinks alcohol occasionally.\n\nFamily History\nHer mother had hypertension and her father had type 2 diabetes. Her siblings are all healthy.\n\nMedication List\n1. Gabapentin 300mg TID\n2. Oxycodone 5mg every 6 hours as needed for breakthrough pain\n3. Lisinopril 10mg daily\n4. Meloxicam 15mg daily\n\nVitals\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 155 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^3/uL\nGlucose: 108 mg/dL\neGFR: 72 mL/min/1.73m2\n\nExam\nThe patient is alert and oriented to person, place, and time. She is seated in her wheelchair. Skin is intact and dry. She demonstrates no new motor weakness or sensory changes in the areas affected by her paraplegia. Heart sounds are regular with no murmurs. Lungs are clear to auscultation bilaterally.\n\nAssessment\n1. Chronic paraplegia secondary to old spinal cord injury. The patient is stable and well-managed.\n\nPlan\n1. Continue current medications for pain management and hypertension.\n2. Continue routine skin checks to ensure integrity.\n3. Follow up in six months for a repeat evaluation of her paraplegia and general health.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "G82.20"
+  ],
+  "explanations": [
+    "Paraplegia without completeness: G82.20 (HCC 181)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G82.21"
+      ],
+      "confusion": "assumed_completeness",
+      "lean": "neutral",
+      "why": "Completeness is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.942,
+    "hccs": [
+      {
+        "hcc": "181",
+        "label": "Paraplegia",
+        "from": [
+          "G8220"
+        ],
+        "weight": 0.942
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:14:51+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

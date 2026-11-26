@@ -1,0 +1,72 @@
+{
+  "id": "heart_failure_advanced-b6129eed73",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "end_stage"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Shortness of breath and fatigue.\n\nHPI: Pt is an 85-year-old male presenting for a follow-up visit. Pt reports increased dyspnea on exertion over the past week. He notes significant fatigue and decreased activity tolerance. He denies chest pain, palpitations, or orthopnea. Pt currently managed by cardiology for end-stage heart failure with a focus on palliative care goals. Pt states he is prioritizing comfort and quality of life. He reports mild peripheral edema in lower extremities, which he attributes to his baseline condition.\n\nMedication List:\n- Furosemide 40mg BID\n- Lisinopril 5mg QD\n- Carvedilol 12.5mg BID\n- Morphine 5mg PRN for pain\n\nReview of Systems:\nConstitutional: Fatigue, mild weakness.\nRespiratory: Shortness of breath on exertion.\nCardiovascular: No chest pain, no palpitations.\nMusculoskeletal: Mild lower extremity edema.\nAll other systems reviewed and negative.\n\nSocial History: Pt lives at home with his wife. Retired. Non-smoker.\n\nFamily History: Father had coronary artery disease. Mother had stroke.\n\nVitals:\nBP: 112/74\nHR: 72 (RRR)\nRR: 18\nSpO2: 93% on RA\nTemp: 98.4 F\nWeight: 165 lbs\n\nRecent Labs:\neGFR: 58\nNa: 138\nK: 4.5\nHbA1c: 6.8%\n\nExam:\nGeneral: Pt appears comfortable but mildly fatigued. Alert and oriented x3.\nRespiratory: Lung sounds diminished in bases, crackles noted.\nCardiovascular: RRR, regular S1/S2. No murmurs.\nExtremities: 1+ pitting edema to mid-calf bilaterally.\nSkin: Intact, dry.\n\nAssessment:\n1. End-stage heart failure. Pt is stable on current palliative regimen but experiencing increased symptomatic dyspnea.\n\nPlan:\n1. Continue current medications for symptom management.\n2. Adjust Furosemide dose if edema worsens.\n3. Continue palliative care coordination for comfort measures.\n4. F/u in 4 weeks or sooner if symptoms worsen.\n\nElectronically signed,\nA. Rivera, PA-C\n05/14/2026",
+  "answer": [
+    "I50.84"
+  ],
+  "explanations": [
+    "End-stage heart failure: I50.84 (HCC 222). The type is not documented, so there is no second code."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.9"
+      ],
+      "confusion": "unspecified_hf",
+      "lean": "under",
+      "why": "End-stage heart failure has its own code (HCC 222).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "222"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "222",
+        "label": "End-Stage Heart Failure",
+        "from": [
+          "I5084"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:33+00:00",
+    "style": {
+      "age": 85,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "A. Rivera"
+    }
+  }
+}

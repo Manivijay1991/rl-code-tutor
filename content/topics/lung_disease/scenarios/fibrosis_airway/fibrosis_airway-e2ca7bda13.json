@@ -1,0 +1,70 @@
+{
+  "id": "fibrosis_airway-e2ca7bda13",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "trach_vent"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint\nFollow-up for tracheostomy and ventilator management.\n\nHPI\nPt is an 83y female seen for routine follow-up of tracheostomy and home ventilator use. Pt has been dependent on the ventilator at night and during parts of the day following a past illness. She reports stable status and no acute distress today. Trach care was reviewed with pt and caregiver. Pt denies any recent infections or equipment malfunctions.\n\nMedication List\n1. Levofloxacin 500mg QD\n2. Pantoprazole 40mg QD\n3. Guaifenesin 600mg PRN\n\nExam\nVitals: BP 128/82, HR 76, RR 18, SpO2 95% on ventilator.\nGen: Alert, well-appearing, in no acute distress.\nRespiratory: Tracheostomy site clean, no signs of infection or irritation. Breath sounds clear.\nNeuro: Oriented x3.\n\nAssessment\n1. Tracheostomy status.\n2. Home ventilator dependence.\n\nPlan\n- Continue current ventilator settings as prescribed.\n- Continue trach care as reviewed today.\n- F/u in 3 months or PRN.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "Z93.0",
+    "Z99.11"
+  ],
+  "explanations": [
+    "Tracheostomy status, Z93.0, plus dependence on a ventilator, Z99.11 (both HCC 211)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.0"
+      ],
+      "confusion": "missed_vent_status",
+      "lean": "neutral",
+      "why": "Ventilator dependence is documented: add Z99.11.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.879,
+        "correct": 0.879,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.879,
+    "hccs": [
+      {
+        "hcc": "211",
+        "label": "Respirator Dependence/Tracheostomy Status/Complications",
+        "from": [
+          "Z930",
+          "Z9911"
+        ],
+        "weight": 0.879
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:25+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

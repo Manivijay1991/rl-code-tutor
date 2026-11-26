@@ -1,0 +1,88 @@
+{
+  "id": "transplant_status-7f8f34a781",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for stable status post-lung transplant.\n\nHPI\nThe patient is a 36-year-old woman who presented for a routine follow-up regarding her status four years after a double lung transplant. She reports feeling well and maintains a good quality of life. She denies any respiratory distress, significant fatigue, or new symptoms. She remains stable on her current immunosuppressive regimen with no reported side effects. She reports compliance with all medications and attends regular monitoring appointments.\n\nMedication List\nTacrolimus 2mg daily\nMycophenolate mofetil 500mg twice daily\nPrednisone 5mg daily\n\nExam\nThe patient appears well-nourished and in no acute distress. She is alert and oriented. Breath sounds are clear bilaterally. Respiratory effort is normal. Pulse is 72, blood pressure is 118/76, and oxygen saturation is 98% on room air.\n\nAssessment\nThe patient is a 36-year-old woman who is doing well four years following a double lung transplant. She shows no signs of transplant complication or rejection.\n\nPlan\nContinue current immunosuppressant medications as prescribed. Schedule follow-up in three months for routine monitoring.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "Z94.2"
+  ],
+  "explanations": [
+    "Lung transplant status: Z94.2 (HCC 276)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.3"
+      ],
+      "confusion": "wrong_organ",
+      "lean": "neutral",
+      "why": "Only the lungs were transplanted.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 3.584,
+        "correct": 2.531,
+        "gap": 1.053,
+        "direction": "over",
+        "extra_hccs": [
+          "221"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Lung transplant status carries HCC 276.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 2.531,
+        "gap": -2.531,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "276"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.531,
+    "hccs": [
+      {
+        "hcc": "276",
+        "label": "Lung Transplant Status/Complications",
+        "from": [
+          "Z942"
+        ],
+        "weight": 2.531
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:46+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

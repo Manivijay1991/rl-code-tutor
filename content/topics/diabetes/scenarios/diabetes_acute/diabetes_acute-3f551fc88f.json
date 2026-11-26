@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-3f551fc88f",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_hypo_coma"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Unresponsive and hypoglycemi coma.\n\nHospital Course:\nPt is an 83 y.o. female with hx of T2DM. Found unresponsive at home; arrived via EMS in a hypoglycemi coma. Initial labs confirmed severe hypoglycemia. Managed with IV dextrose bolus and continuous infusion. Pt stabilized and regained consciousness within 2 hours. Remained stable for observation. No acute neurological deficits noted. Transitioned to oral intake. Pt stable for discharge.\n\nDischarge Diagnoses:\n1. Hypoglycemi coma\n2. T2DM\n\nDischarge Medications:\n1. Metformin 500mg BID\n2. Glipizide 5mg daily\n3. Multivitamin daily\n\nFollow-up:\nPt to f/u with PCP in 1 week for glucose monitoring and medication reconciliation.\n\nElectronically signed\nP. O'Brien, MD\n05/15/2026",
+  "answer": [
+    "E11.641"
+  ],
+  "explanations": [
+    "Type 2 diabetes with hypoglycemia with coma: E11.641 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "missed_coma",
+      "lean": "under",
+      "why": "The coma is documented (HCC 36, not 38).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E11641"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:27:19+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

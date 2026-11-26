@@ -1,0 +1,68 @@
+{
+  "id": "metabolic_endocrine-7e668374e1",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "amyloid_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for biopsy results.\n\nHPI\nPt is an 83 y.o. female presenting for review of recent biopsy results. Pt reports mild fatigue and generalized weakness over the past few months. No acute distress. Denies fever, chills, or acute pain. Pt here to discuss findings.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nMultivitamin daily\n\nExam\nGen: Well-appearing, alert and oriented x3.\nVitals: BP 132/78, HR 72, RR 16, Temp 98.6F, SpO2 97% on RA.\nCV: RRR, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or rales.\nExt: No edema, pulses palpable.\nNeuro: Alert, coherent, no focal deficits.\n\nAssessment\n1. Amyloidosis: Confirmed via biopsy. Type of amyloidosis is not yet determined.\n\nPlan\n1. Referral to hematology for further workup to determine the specific type of amyloidosis.\n2. Continue current medications.\n3. F/u in clinic after hematology consultation.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "E85.9"
+  ],
+  "explanations": [
+    "Amyloidosis without a documented type: E85.9 (HCC 50)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E85.82"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "The type is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.648,
+        "correct": 0.648,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.648,
+    "hccs": [
+      {
+        "hcc": "50",
+        "label": "Amyloidosis/Porphyria/and Other Specified Metabolic Disorders",
+        "from": [
+          "E859"
+        ],
+        "weight": 0.648
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:15+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

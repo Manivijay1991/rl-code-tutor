@@ -1,0 +1,87 @@
+{
+  "id": "liver_failure_biliary-f8f631374c",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_liver_failure"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Follow-up for liver condition.\n\nHPI: 52-year-old male pt presents for scheduled follow-up with hepatology. Pt reports feeling stable overall. Denies any acute distress or new systemic symptoms. Pt is currently being monitored for chronic hepatic failure and is on the list for transplant evaluation. No new concerns voiced today.\n\nMedication List:\n- Lisinopril 10mg daily\n- Spironolactone 25mg daily\n- Lactulose 15g BID\n\nReview of Systems:\nConstitutional: No fever, chills, or weight change.\nHEENT: No vision changes, no sore throat.\nRespiratory: No SOB, no cough.\nGI: No nausea, no vomiting, no change in appetite.\nMSK: No joint pain.\nNeuro: No dizziness, no headaches.\n\nSocial History: Pt lives with spouse. Works as a consultant. Non-smoker. Occasional social drinking.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 210 lbs\n\nRecent Labs:\nALT: 45 U/L\nAST: 52 U/L\nBilirubin: 1.8 mg/dL\nAlbumin: 3.1 g/dL\nINR: 1.4\nCreatinine: 1.1 mg/dL\neGFR: 72\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nSkin: No new rashes or lesions.\nAbdomen: Soft, non-tender, no masses noted.\nCV: RRR, CTAB.\nResp: CTAB.\nNeuro: NAD.\n\nAssessment:\n1. Chronic liver failure. Pt stable at this time. Currently awaiting transplant evaluation.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue monitoring labs and clinical status.\n3. Pt to remain on transplant evaluation list.\n4. F/u in 3 months or sooner if symptoms arise.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "K72.10"
+  ],
+  "explanations": [
+    "Chronic hepatic failure without coma: K72.10 (HCC 63)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K72.90"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Chronic is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.962,
+        "correct": 0.962,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K76.9"
+      ],
+      "confusion": "understated_liver",
+      "lean": "under",
+      "why": "Chronic liver failure is documented (HCC 63).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.962,
+        "gap": -0.962,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "63"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.962,
+    "hccs": [
+      {
+        "hcc": "63",
+        "label": "Chronic Liver Failure/End-Stage Liver Disorders",
+        "from": [
+          "K7210"
+        ],
+        "weight": 0.962
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:46+00:00",
+    "style": {
+      "age": 52,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

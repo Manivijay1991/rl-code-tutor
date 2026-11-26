@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-a077c3f8fe",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "fabry"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Burning pain in hands and feet.\n\nHPI: Pt is an 80-year-old female presenting for f/u of Fabry disease. Pt reports persistent burning sensation in bilateral hands and feet over the last 2 weeks. Describes the pain as constant but fluctuates in intensity. Denies any new numbness or sudden weakness. Pt is currently on enzyme replacement therapy for management of her Fabry disease. She reports compliance with the current regimen but notes that the burning sensation has been more prominent during the evening hours. No recent trauma or changes in activity levels reported.\n\nMedication List: \n- Enzyme replacement therapy (scheduled)\n- Gabapentin 300mg BID\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nNeurological: Positive for burning sensation in extremities. Denies syncope, seizures.\nMSK: Denies joint swelling or severe muscle weakness.\nCV: Denies chest pain or palpitations.\nRespiratory: Denies SOB or cough.\n\nSocial History: Pt lives at home with her daughter. Retired. Non-smoker. Occasional social outings.\n\nFamily History: Mother had hypertension. Father had hyperlipidemia. No known history of Fabry disease in siblings.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt/Wbc: WNL\n\nRecent Labs:\neGFR: 68\nCreatinine: 1.1\nHbA1c: 5.8%\nCMP: Within normal limits.\n\nExam:\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, regular S1, S2. No murmurs.\nResp: CTAB.\nExt: No visible edema or erythema. Decreased sensation to light touch noted in distal digits of both hands and feet.\n\nAssessment:\n1. Fabry disease: Pt is currently experiencing symptomatic burning pain in extremities despite being on enzyme replacement therapy.\n\nPlan:\n1. Continue current enzyme replacement therapy for Fabry disease.\n2. Increase Gabapentin to 600mg BID for neuropathic pain management.\n3. Pt to monitor pain levels and f/u in 4 weeks to assess effectiveness of medication adjustment.\n4. Continue routine monitoring of renal function and labs.\n\nElectronically signed, T. Haddad, NP, 05/14/2026",
+  "answer": [
+    "E75.21"
+  ],
+  "explanations": [
+    "Fabry (-Anderson) disease: E75.21 (HCC 49)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E88.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The specific storage disorder is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 9.256,
+        "gap": -9.256,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "49"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 9.256,
+    "hccs": [
+      {
+        "hcc": "49",
+        "label": "Specified Lysosomal Storage Disorders",
+        "from": [
+          "E7521"
+        ],
+        "weight": 9.256
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:41+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

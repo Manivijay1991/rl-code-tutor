@@ -1,0 +1,72 @@
+{
+  "id": "fibrosis_airway-1b55ad9ec4",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "pf_unspecified"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint\nShortness of breath and persistent dry cough.\n\nHPI\nThe patient is a 77-year-old female who presents today for a follow-up evaluation of progressive exertional dyspnea. She reports that over the last several months, she has noticed increased difficulty catching her breath during routine activities such as walking to her mailbox or gardening. She describes her cough as non-productive and persistent. She denies any chest pain, night sweats, or unintentional weight loss. She notes that she feels more fatigued than usual but denies any significant joint pain or skin changes. She has been using a pulse oximeter at home and notes occasional readings in the low 90s during exertion.\n\nReview of Systems\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: Positive for shortness of breath and dry cough. Negative for wheezing or sputum production.\nCardiovascular: Negative for palpitations or chest pain.\nMusculoskeletal: Negative for joint pain or swelling.\nNeurological: Negative for numbness or tingling.\n\nSocial History\nThe patient is retired and lives in a single-story home with her spouse. She enjoys gardening and light walking. She denies current tobacco or alcohol use.\n\nFamily History\nMother had hypertension and arthritis. Father had a history of high cholesterol. No known family history of significant genetic respiratory disorders.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nMultivitamin daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/78 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 18 breaths/min\nOxygen Saturation: 96% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nPlatelets: 210 x 10^9/L\neGFR: 68 mL/min/1.73m2\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress but shows mild effort during conversation.\nRespiratory: Breath sounds are diminished in the lower lobes. No audible wheezes or crackles noted on auscultation.\nCardiovascular: Regular rate and rhythm. S1 and S2 are distinct. No murmurs.\nExtremities: No edema noted.\n\nAssessment\nThe patient presents with symptoms of progressive dyspnea. A recent chest CT scan was reviewed and demonstrated evidence of pulmonary fibrosis. The underlying cause of this pulmonary fibrosis is not determined at this time.\n\nPlan\n1. Pulmonary fibrosis: A referral to pulmonology has been placed to further evaluate the extent of the pulmonary fibrosis and to discuss management options.\n2. Follow-up: Patient to return to the clinic in 4 weeks to review the specialist's findings.\n3. Education: Discussed the need for activity modification while awaiting specialist consultation.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "J84.10"
+  ],
+  "explanations": [
+    "Pulmonary fibrosis without a documented cause: J84.10 (HCC 280)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J84.112"
+      ],
+      "confusion": "assumed_idiopathic",
+      "lean": "over",
+      "why": "Idiopathic is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0.319,
+        "gap": 0.499,
+        "direction": "over",
+        "extra_hccs": [
+          "278"
+        ],
+        "missing_hccs": [
+          "280"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.319,
+    "hccs": [
+      {
+        "hcc": "280",
+        "label": "Chronic Obstructive Pulmonary Disease/Interstitial Lung Disorders/and Other Chronic Lung Disorders",
+        "from": [
+          "J8410"
+        ],
+        "weight": 0.319
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:13+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

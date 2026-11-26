@@ -1,0 +1,62 @@
+{
+  "id": "blood_cancers-aee6ddea6c",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "nhl_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Follow-up for history of lymphoma.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 155 lbs.\n\nRecent Labs: Hemoglobin 13.2 g/dL, WBC 6.5 x 10^9/L, Platelets 210 x 10^9/L, Creatinine 0.9 mg/dL, eGFR 82 mL/min/1.73m2.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nFamily History:\nMother: Type 2 Diabetes, deceased.\nFather: Hypertension, deceased.\nSibling: Healthy.\n\nSocial History:\nRetired school teacher. Lives with husband. Non-smoker. Occasional alcohol use.\n\nReview of Systems:\nConstitutional: Negative for chills, fatigue, or weight loss.\nHEENT: Negative for vision changes or sore throat.\nRespiratory: Negative for cough or shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for abdominal pain or changes in bowel habits.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for headaches or numbness.\n\nHPI:\n[Copied Forward]\nPatient is a 72-year-old female with a history of non-Hodgkin lymphoma. She underwent treatment years ago. She reports that she feels well overall and has not experienced any new symptoms since her last evaluation.\n\n[Update]\nThe patient returns today for a routine follow-up. She states she continues to feel healthy and has no new concerns. She notes that she has been adhering to her blood pressure and cholesterol medications. She confirms she has no new lumps, no night sweats, and no persistent fatigue.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nNeck: No lymphadenopathy noted.\nLungs: Clear to auscultation bilaterally.\nHeart: Regular rate and rhythm, no murmurs.\nAbdomen: Soft, non-tender, no masses.\nSkin: No new lesions or changes noted.\n\nAssessment:\n1. History of non-Hodgkin lymphoma: Treatment was completed years ago. Currently stable with no evidence of disease.\n2. Hypertension: Well-controlled on medication.\n3. Hyperlipidemia: Stable on medication.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Routine follow-up in 6 months.\n3. Patient instructed to call the office immediately if she develops any new symptoms.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "Z85.72"
+  ],
+  "explanations": [
+    "Lymphoma treated in the past with no current disease or treatment: personal history, Z85.72 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C85.90"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment is complete and there is no evidence of disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.671,
+        "correct": 0,
+        "gap": 0.671,
+        "direction": "over",
+        "extra_hccs": [
+          "21"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:22+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "heart_failure_advanced-8643dbde81",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "lvad"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Follow-up for heart failure and LVAD management.\n\nVitals: BP 118/74, HR 68, SpO2 98% on room air, Temp 98.6 F, Weight 162 lbs.\n\nRecent Labs: Sodium 138 mEq/L, Potassium 4.2 mEq/L, Creatinine 1.1 mg/dL, BUN 18 mg/dL, BNP 340 pg/mL.\n\nMedication List:\n- Lisinopril 10mg daily\n- Carvedilol 12.5mg twice daily\n- Spironolactone 25mg daily\n- Furosemide 40mg daily as needed\n- Aspirin 81mg daily\n\nFamily History: Mother had coronary artery disease; Father had a history of stroke.\n\nSocial History: Retired teacher, lives with her daughter and son-in-law. Non-smoker. Independent with activities of daily living.\n\nReview of Systems:\nGeneral: Denies fever, chills, or fatigue.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies shortness of breath at rest or cough.\nGastrointestinal: Denies nausea or abdominal pain.\nMusculoskeletal: Denies joint pain or swelling.\nNeurological: Denies dizziness or syncope.\n\nHPI: Patient is a 77-year-old female with a history of chronic systolic heart failure (HFrEF) who presents for a scheduled follow-up. Patient has a history of LVAD placement. Patient reports she has been feeling stable over the last month. She denies any significant increase in shortness of breath or swelling in her lower extremities. She reports adherence to her current medication regimen. \n\nUpdate from today: The patient reports she has been feeling well today and denies any new symptoms since the last visit. She states that she is maintaining a stable weight and has not required any additional doses of her diuretic.\n\nExam: General: Well-appearing, alert, and in no acute distress. Cardiovascular: Regular rhythm, no murmurs, rubs, or gallops. LVAD: Left ventricular assist device is audible and functioning normally; site is clean with no signs of infection or drainage. Pulmonary: Clear to auscultation bilaterally. Extremities: No edema noted. Skin: Intact, no rashes.\n\nAssessment:\n1. Chronic systolic heart failure (HFrEF) - Stable.\n2. LVAD - Stable and functioning well.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Monitor weight daily and report any gain of more than 2 lbs in a day or 5 lbs in a week.\n3. Follow up in 3 months for routine check.\n\nElectronically signed, \nL. Moreau, NP\nOctober 14, 2026",
+  "answer": [
+    "I50.22",
+    "Z95.811"
+  ],
+  "explanations": [
+    "Chronic systolic heart failure, I50.22, plus presence of a heart assist device, Z95.811 (HCC 223, which outranks HCC 226)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "missed_device_status",
+      "lean": "under",
+      "why": "The LVAD is documented: add Z95.811 (HCC 223).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "223"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "223",
+        "label": "Heart Failure with Heart Assist Device/Artificial Heart",
+        "from": [
+          "Z95811"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "223"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:39+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "L. Moreau"
+    }
+  }
+}

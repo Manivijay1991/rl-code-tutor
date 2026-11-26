@@ -1,0 +1,72 @@
+{
+  "id": "drug_use-ea3e1fcad2",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "alcohol_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for alcohol use disorder.\n\nHPI\nPt is a 61-year-old male presenting for follow-up of severe alcohol use disorder. Pt reports significant improvement in symptoms since achieving abstinence. He reports that the alcohol-induced psychotic disorder, specifically the auditory hallucinations, have diminished in frequency and intensity over the last month. Pt states he feels more stable and is motivated to maintain sobriety. No acute distress noted during the encounter.\n\nMedication List\nNone.\n\nExam\nPt is a 61-year-old male, alert and oriented x3. Appears well-groomed. Speech is clear and coherent. Mood is stable, affect is congruent. No evidence of active hallucinations during exam. Vitals stable. CTAB, RRR, WNL.\n\nAssessment\n1. Severe alcohol use disorder.\n2. Alcohol-induced psychotic disorder with hallucinations.\nPt is showing clinical improvement with continued abstinence.\n\nPlan\n1. Continue current abstinence.\n2. Monitor for recurrence of hallucinations.\n3. F/u in 4 weeks for continued management.\n\nElectronically signed, K. Nguyen, DO, 05/12/2026",
+  "answer": [
+    "F10.251"
+  ],
+  "explanations": [
+    "Severe alcohol use disorder with alcohol-induced psychotic disorder with hallucinations: combination code F10.251 (HCC 136)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.20"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "The psychotic disorder is part of the combination code (HCC 136).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0.424,
+        "gap": -0.182,
+        "direction": "under",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": [
+          "136"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "136",
+        "label": "Alcohol Use with Psychotic Complications",
+        "from": [
+          "F10251"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:33+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

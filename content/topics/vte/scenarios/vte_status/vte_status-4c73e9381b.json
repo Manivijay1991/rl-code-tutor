@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-4c73e9381b",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_dvt"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for leg swelling.\n\nHPI: Pt is an 80-year-old female presenting for routine follow-up of chronic deep vein thrombosis. Pt reports stable symptoms and no recent increase in discomfort or swelling. She continues long-term anticoagulation as prescribed. Denies calf pain, shortness of breath, or chest pain. Reports good compliance with medication.\n\nMedication List:\n- Warfarin 5 mg QD\n- Lisinopril 10 mg QD\n- Atorvastatin 20 mg QD\n\nReview of Systems:\nGeneral: No fatigue, no fever.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nMSK: No joint pain.\nSkin: No rashes.\nNeuro: No dizziness, no numbness.\n\nSocial History: Retired. Lives with daughter. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had stroke.\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWeight: 155 lbs\n\nRecent Labs:\nHbA1c: 6.2%\neGFR: 65\nTSH: 2.1\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nResp: CTAB, no wheezes.\nSkin: No erythema or warmth noted to lower extremities.\nMSK: Right lower extremity shows mild residual swelling. No tenderness to palpation.\nNeuro: No deficits noted.\n\nAssessment:\n1. Chronic DVT of the right femoral vein. Ultrasound confirms residual clot. Pt is stable on current anticoagulation regimen.\n\nPlan:\n1. Continue long-term anticoagulation.\n2. Monitor INR regularly.\n3. Pt to f/u in 3 months for routine check.\n4. Continue current medications as prescribed.\n\nElectronically signed,\nT. Haddad, NP\n10/14/2026",
+  "answer": [
+    "I82.511"
+  ],
+  "explanations": [
+    "Chronic DVT of the right femoral vein: I82.511 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I82.411"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The DVT is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.718"
+      ],
+      "confusion": "chronic_coded_history",
+      "lean": "under",
+      "why": "Chronic DVT is a current condition, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I82511"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-26T15:09:32+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

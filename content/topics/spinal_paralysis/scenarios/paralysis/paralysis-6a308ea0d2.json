@@ -1,0 +1,61 @@
+{
+  "id": "paralysis-6a308ea0d2",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "spondylotic_myelopathy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for cervical spine status.\n\nHPI\nPt is a 61 y.o. male presenting for f/u regarding cervical spondylosis with myelopathy. Pt reports stable symptoms since surgery. Denies new onset of weakness or numbness. Reports good mobility and ability to perform ADLs. No new complaints since last visit.\n\nMedication List\n1. Gabapentin 300mg BID\n2. Meloxicam 15mg QD\n\nExam\nGen: Well appearing, in no acute distress.\nNeuro: Alert and oriented x3. Grossly intact motor strength in all extremities. Sensation intact to light touch. Gait steady.\nMSK: Mild neck stiffness noted. No new focal deficits.\nVitals: BP 128/82, HR 72, RR 16, Temp 98.6.\n\nAssessment\n1. Cervical spondylotic myelopathy. Status post surgery. Pt is stable and progressing well.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue home exercise program for neck stability.\n3. F/u in 3 months for routine progress check.\n\nElectronically signed,\nK. Nguyen, DO\n05/14/2026",
+  "answer": [
+    "M47.12"
+  ],
+  "explanations": [
+    "Cervical spondylosis with myelopathy has a combination code: M47.12 (no HCC). Unspecified spinal cord disease (G95.9) would add HCC 182."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G95.9"
+      ],
+      "confusion": "myelopathy_coded_separately",
+      "lean": "over",
+      "why": "Use the combination code M47.12.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.478,
+        "correct": 0,
+        "gap": 0.478,
+        "direction": "over",
+        "extra_hccs": [
+          "182"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:39+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

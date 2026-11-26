@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-d6184b9cda",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "stem_cell"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up after stem cell transplant.\n\nHPI: 68 y.o. female pt presents for routine surveillance following an allogeneic stem cell transplant performed 2 years ago. Pt reports feeling well overall. Denies any significant symptoms, fatigue, or new concerns since last visit. Current status is in remission. Pt reports adherence to all current medications. No concerns regarding physical activity or appetite.\n\nMedication List:\n- Aspirin 81mg daily\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight changes.\nRespiratory: No cough or shortness of breath.\nGI: No nausea, vomiting, or abdominal pain.\nMSK: No joint pain or stiffness.\nSkin: No rashes or lesions.\nNeuro: No headaches or dizziness.\n\nSocial History: Retired; lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 155 lbs\n\nRecent Labs:\nWBC: 4.2 (WNL)\nHgb: 12.8 (WNL)\nPlt: 145 (WNL)\nCreatinine: 0.9 (WNL)\neGFR: >90\n\nExam:\nGeneral: Pt alert and oriented x3. Appears well-nourished and in no acute distress.\nSkin: No notable rashes or lesions.\nHEENT: Normocephalic, atraumatic. Pupils equal, round, reactive to light.\nNeck: Supple, no lymphadenopathy.\nLungs: CTAB.\nHeart: RRR, no murmurs, rubs, or gallops.\nAbdomen: Soft, non-tender, non-distended.\nExtremities: No edema, full ROM.\nNeurological: NAD.\n\nAssessment:\n1. Status post allogeneic stem cell transplant. Pt is currently in remission. No complications noted at this time.\n\nPlan:\n1. Continue current surveillance schedule.\n2. Continue current medications.\n3. Follow up in 6 months for routine labs and physical exam.\n\nElectronically signed, S. Patel, DO, 05/14/2026",
+  "answer": [
+    "Z94.84"
+  ],
+  "explanations": [
+    "Stem cell transplant status: Z94.84 (HCC 454)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.81"
+      ],
+      "confusion": "bone_marrow_vs_stem_cell",
+      "lean": "neutral",
+      "why": "A stem cell transplant is documented, not bone marrow.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.068,
+        "correct": 1.068,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.068,
+    "hccs": [
+      {
+        "hcc": "454",
+        "label": "Stem Cell/Including Bone Marrow/Transplant Status/Complications",
+        "from": [
+          "Z9484"
+        ],
+        "weight": 1.068
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:17+00:00",
+    "style": {
+      "age": 68,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "S. Patel"
+    }
+  }
+}

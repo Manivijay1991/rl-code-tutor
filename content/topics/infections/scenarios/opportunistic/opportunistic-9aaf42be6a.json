@@ -1,0 +1,61 @@
+{
+  "id": "opportunistic-9aaf42be6a",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "oral_thrush"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint\nOral white patches and discomfort.\n\nHPI\nThe patient is an 86-year-old male who presents today for an evaluation of white patches on his tongue. He reports that the spots appeared several weeks ago following the initiation of a long-term inhaled steroid regimen for respiratory management. He notes that the patches are mildly irritating but does not report any significant difficulty with his diet. He states that he is able to swallow his food and liquids normally without any obstruction or discomfort. He is seeking treatment to clear the white plaques.\n\nMedication List\n- Inhaled corticosteroid\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nReview of Systems\nConstitutional: No fever, chills, or fatigue.\nHEENT: Reports white patches on the tongue; no sore throat or ear pain.\nRespiratory: Occasional wheezing; no shortness of breath.\nGI: No nausea, vomiting, or changes in bowel habits.\nMusculoskeletal: No joint pain or swelling.\nNeurological: No dizziness or numbness.\n\nSocial History\nThe patient resides at home with his wife. He is a retired engineer and enjoys gardening. He denies tobacco or alcohol use.\n\nFamily History\nFather had hypertension. Mother had a history of heart disease.\n\nVitals\nBlood Pressure: 138/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 97% on room air\nTemperature: 98.4 F\nHeight: 5'10\"\nWeight: 175 lbs\n\nRecent Labs\neGFR: 72 mL/min/1.73m2\nHbA1c: 5.8%\nTSH: 2.1 mIU/L\n\nExam\nGeneral: The patient is alert and in no acute distress.\nOral Cavity: Examination of the oral mucosa reveals prominent white plaques on the tongue and inner buccal mucosa. The plaques are consistent with oral candidiasis. The mucosa is otherwise healthy.\nNeck: No lymphadenopathy noted.\nLungs: Clear to auscultation bilaterally.\n\nAssessment\nThe patient has developed thrush as a side effect of his chronic inhaled steroid use. His swallowing remains intact and functional.\n\nPlan\n1. Prescribe Nystatin oral rinse to be used four times daily for 7 to 14 days.\n2. Instruct the patient to rinse and spit after each use.\n3. Monitor for resolution of the white plaques.\n4. Continue current medications as prescribed.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "B37.0"
+  ],
+  "explanations": [
+    "Oral thrush: candidal stomatitis, B37.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B37.81"
+      ],
+      "confusion": "thrush_coded_esophagitis",
+      "lean": "over",
+      "why": "Only the mouth is involved.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.381,
+        "correct": 0,
+        "gap": 0.381,
+        "direction": "over",
+        "extra_hccs": [
+          "6"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:02+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

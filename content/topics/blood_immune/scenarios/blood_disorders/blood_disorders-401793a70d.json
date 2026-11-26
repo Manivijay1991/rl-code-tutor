@@ -1,0 +1,70 @@
+{
+  "id": "blood_disorders-401793a70d",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "cyclic_neutropenia"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for cyclic neutropenia.\n\nHPI: (Copied Forward) Patient is a 62-year-old male with a known history of cyclic neutropenia. He reports recurring low neutrophil counts occurring every few weeks. He is currently managed with G-CSF injections. He denies any acute symptoms between cycles.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 190 lbs.\n\nReview of Systems:\nConstitutional: Negative\nIntegumentary: Negative\nHEENT: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\n- Filgrastim (G-CSF) subcutaneous injection\n- Multivitamin\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No rashes or lesions noted.\nLymphatics: No cervical, axillary, or inguinal lymphadenopathy.\nAbdomen: Soft, non-tender, no organomegaly.\n\nAssessment:\n1. Cyclic neutropenia: Patient remains stable on his current G-CSF regimen. Neutrophil counts continue to fluctuate every few weeks as expected.\n\nPlan:\n- Continue current G-CSF dosing schedule.\n- Monitor complete blood count (CBC) every 4 weeks to track neutrophil trends.\n- Patient to call the office if he notices increased frequency of symptoms between cycles.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "D70.4"
+  ],
+  "explanations": [
+    "Cyclic neutropenia: D70.4 (HCC 115)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D70.9"
+      ],
+      "confusion": "neutropenia_unspecified",
+      "lean": "under",
+      "why": "The type (cyclic) is documented and carries HCC 115.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.565,
+        "gap": -0.565,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "115"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.565,
+    "hccs": [
+      {
+        "hcc": "115",
+        "label": "Specified Immunodeficiencies and White Blood Cell Disorders",
+        "from": [
+          "D704"
+        ],
+        "weight": 0.565
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:00+00:00",
+    "style": {
+      "age": 62,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "pneumonia_inpatient-eae9639769",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "aspiration"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/16/2026\n\nReason for Admission: 75 y.o. female pt admitted with aspiration pneumonia following choking episode on food at home.\n\nHospital Course: Pt presented with cough, fever, and dyspnea. Dx aspiration pneumonia confirmed via CXR and clinical presentation. Started on IV antibiotics. Pt remained stable on room air. Swallow evaluation performed by SLP; results indicate mild dysphagia. Pt tolerated oral intake and showed improvement in respiratory status. Afebrile and stable at time of discharge.\n\nDischarge Diagnoses:\n- Aspiration pneumonia\n\nDischarge Medications:\n- Amoxicillin 500mg BID\n- Guaifenesin 600mg PRN\n- Multivitamin daily\n\nFollow-up: F/u with primary care physician in 1 week for wound check and pneumonia monitoring. See SLP for continued swallow therapy.\n\nElectronically signed,\nE. Castillo, MD\n05/16/2026",
+  "answer": [
+    "J69.0"
+  ],
+  "explanations": [
+    "Aspiration pneumonia: pneumonitis due to inhalation of food and vomit, J69.0 (HCC 282)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J18.9"
+      ],
+      "confusion": "missed_specific_pneumonia",
+      "lean": "under",
+      "why": "Aspiration pneumonia has its own code (HCC 282).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.44,
+        "gap": -0.44,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "282"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.44,
+    "hccs": [
+      {
+        "hcc": "282",
+        "label": "Aspiration and Specified Bacterial Pneumonias",
+        "from": [
+          "J690"
+        ],
+        "weight": 0.44
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:14+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

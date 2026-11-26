@@ -1,0 +1,61 @@
+{
+  "id": "asthma_cf-9d4b6c2463",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "moderate_persistent"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint: Follow-up for asthma.\n\nHPI: Patient is a 39-year-old male with a history of moderate persistent asthma. He reports that his symptoms have been well-managed over the last several months. He denies any acute episodes of wheezing, shortness of breath, or chest tightness since his last evaluation. He remains consistent with his daily maintenance medications and reports good exercise tolerance.\n\nMedication List:\n- Fluticasone/Salmeterol inhaler, daily\n- Albuterol HFA, as needed\n\nVitals: BP 128/82, HR 68, Temp 98.6 F, SpO2 98% on room air, RR 16.\n\nRecent Labs:\n- Pulmonary Function Test (PFT): FEV1/FVC ratio stable within expected limits for his age.\n- CBC: Within normal limits.\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nRespiratory: Denies cough, wheezing, or shortness of breath.\nCardiovascular: Denies palpitations or chest pain.\nGastrointestinal: Denies nausea, vomiting, or abdominal pain.\nMusculoskeletal: Denies joint pain or swelling.\nNeurological: Denies dizziness or numbness.\n\nSocial History: Patient works full-time in an office environment. He is a non-smoker and denies any history of illicit drug use. He lives with his spouse and two children.\n\nFamily History: Father has a history of hypertension. Mother has a history of asthma.\n\nExam: Patient appears in no acute distress. Breath sounds are clear bilaterally. No audible wheezing or stridor noted. Chest expansion is symmetric. No signs of respiratory distress.\n\nAssessment: 39-year-old male with moderate persistent asthma. The condition is currently well-controlled on his current daily inhaled steroid-LABA regimen. No acute respiratory issues reported today.\n\nPlan: \n1. Continue current maintenance medication: Fluticasone/Salmeterol daily.\n2. Continue Albuterol HFA as needed for symptoms.\n3. Patient instructed to continue using a peak flow meter as tolerated.\n4. Follow up in 6 months for routine monitoring or sooner if symptoms worsen.\n\nElectronically signed, J. Lindqvist, NP, 10/14/2026",
+  "answer": [
+    "J45.40"
+  ],
+  "explanations": [
+    "Moderate persistent asthma, uncomplicated: J45.40 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.50"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Severe persistent asthma is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0,
+        "gap": 0.818,
+        "direction": "over",
+        "extra_hccs": [
+          "279"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:49+00:00",
+    "style": {
+      "age": 39,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "drug_use-403198cd6e",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cocaine_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for psychiatric evaluation.\n\nHPI\nThe patient is an 89-year-old woman presenting for a follow-up appointment regarding her substance use and associated psychiatric symptoms. She has a history of severe cocaine use disorder. During the previous encounter, she experienced a cocaine-induced psychotic disorder characterized by auditory and visual hallucinations. She reports that these symptoms are now improving significantly since starting her current treatment regimen. She denies any new episodes of acute distress or recent use.\n\nMedication List\n- Quetiapine 50mg daily\n- Hydroxyzazine 25mg as needed for anxiety\n\nExam\nThe patient is an elderly female who appears well-groomed and is cooperative. She is alert and oriented to person, place, and time. Speech is clear and at a normal rate. Mood is stable and affect is congruent. No active hallucinations were observed during the interview.\n\nAssessment\n1. Severe cocaine use disorder.\n2. Cocaine-induced psychotic disorder with hallucinations, currently improving.\n\nPlan\nContinue current medication regimen. The patient will continue to attend weekly therapy sessions to address substance use. Follow up in two weeks for continued monitoring of psychiatric stability.\n\nElectronically signed, P. O'Brien, MD, 05/12/2026",
+  "answer": [
+    "F14.251"
+  ],
+  "explanations": [
+    "Severe cocaine use disorder with cocaine-induced psychotic disorder with hallucinations: combination code F14.251 (HCC 135)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F14.20"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "The psychotic disorder is part of the combination code (HCC 135).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.424,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": [
+          "135"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "135",
+        "label": "Drug Use with Psychotic Complications",
+        "from": [
+          "F14251"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:52+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

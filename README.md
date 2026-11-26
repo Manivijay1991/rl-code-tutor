@@ -239,6 +239,33 @@ One table per topic folder (`content/topics/<topic>/tables/`); `coding-tutor-che
 | Blood and immune | `blood_immune` | 5 | sickle cell disease vs trait, ITP vs thrombocytopenia, CVID | draft |
 | Eye: AMD and retinopathy | `eye_conditions` | 5 | wet vs dry AMD, active vs scar, proliferative vs mild NPDR | draft |
 | Hip fracture encounters | `hip_fracture` | 6 | 7th character A vs D, healed = Z87.81, side | draft |
+| Heart failure, advanced | `heart_failure_advanced` | 5 | end-stage (code also the type), LVAD status, first acute episode | draft |
+| Cardiomyopathy | `cardiomyopathy` | 4 | obstructive vs nonobstructive HCM, ischemic cardiomyopathy is I25.5 (no HCC) | draft |
+| Heart attack and angina | `mi_angina` | 4 | the 4-week MI rule, old MI, CAD + angina combination codes | draft |
+| DVT and pulmonary embolism | `vte_status` | 6 | acute vs chronic vs history | draft |
+| Schizophrenia and bipolar | `bipolar_schizophrenia` | 6 | schizoaffective, bipolar episode, full (no HCC) vs partial remission | draft |
+| Personality and eating disorders | `personality_eating` | 5 | type, severity and remission | draft |
+| Drug use disorders | `drug_use` | 6 | mild = abuse, moderate/severe = dependence, cannabis abuse has no HCC, induced psychosis | draft |
+| Stroke in the hospital | `stroke_inpatient` | 3 | ischemic vs hemorrhage vs TIA (discharge summaries) | draft |
+| Paralysis and spinal cord | `paralysis` | 6 | level and completeness, dominance default, spondylotic myelopathy (no HCC) | draft |
+| ALS, myasthenia, CIDP | `nerve_muscle` | 6 | myasthenia with vs without exacerbation, CIDP vs polyneuropathy | draft |
+| Cerebral palsy, ataxia, anoxic brain | `cp_ataxia_brain` | 5 | quadriplegic CP (HCC 191) vs other types, Huntington's, anoxic damage | draft |
+| Asthma and cystic fibrosis | `asthma_cf` | 4 | severe persistent (HCC 279) vs moderate (no HCC), exacerbation | draft |
+| Fibrosis and airway status | `fibrosis_airway` | 5 | IPF vs unspecified, scleroderma lung (two HCCs), trach and ventilator | draft |
+| Pneumonia in the hospital | `pneumonia_inpatient` | 6 | aspiration, MRSA, no organism, abscess, empyema, respiratory arrest | draft |
+| Sepsis in the hospital | `sepsis_inpatient` | 6 | severe sepsis needs organ dysfunction, septic shock, urosepsis, bacteremia | draft |
+| Opportunistic infections | `opportunistic` | 4 | Pneumocystis, Candida esophagitis vs thrush, CMV | draft |
+| Diabetes emergencies | `diabetes_acute` | 5 | DKA, HHS, hypoglycemic coma (HCC 36) vs hyperglycemia (HCC 38) | draft |
+| Transplant status | `transplant_status` | 9 | which organs carry an HCC (kidney does not), heart-lung, rejection | draft |
+| Blood cancers | `blood_cancers` | 6 | myeloma remission, MDS, lymphoma active vs history | draft |
+| Blood disorders | `blood_disorders` | 6 | Hb SC, hemolytic anemia, chemo vs other pancytopenia, hemophilia A, cyclic neutropenia | draft |
+| Liver failure and bile ducts | `liver_failure_biliary` | 5 | chronic liver failure, portal hypertension, PBC vs PSC, obstruction without stones | draft |
+| Bowel obstruction | `bowel_obstruction` | 4 | adhesions, partial vs complete, ileus (discharge summaries) | draft |
+| Rare metabolic and endocrine | `metabolic_endocrine` | 8 | Gaucher, Fabry, amyloidosis type, Addison's vs unspecified, drug-induced Cushing's | draft |
+| Bone infection, lupus, blisters | `bone_lupus_skin` | 6 | acute vs chronic osteomyelitis, SLE vs discoid lupus, pemphigus vs pemphigoid | draft |
+| Ulcer depth and burn extent | `ulcer_burn` | 5 | ulcer to bone (HCC 380) vs fat (383), T31 third-degree percentage | draft |
+| Head injury | `head_injury` | 4 | loss of consciousness decides HCC 397/398/399, concussion has no HCC | draft |
+| Vertebral fracture and amputation | `spine_amputation` | 5 | 7th character A vs D, osteoporotic fracture (M80), traumatic amputation vs status | draft |
 | MEAT documentation | `meat_support` | 9 | problem list or medication list only | draft |
 | Acceptable sources | `acceptable_sources` | 4 | radiology report, nurse visit or unsigned note cannot support a code | draft |
 

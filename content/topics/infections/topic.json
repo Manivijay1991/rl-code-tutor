@@ -1,0 +1,8 @@
+{
+  "id": "infections",
+  "title": "Sepsis and opportunistic infections",
+  "kind": "hcc",
+  "description": "Sepsis vs severe sepsis vs septic shock, urosepsis and bacteremia, and opportunistic infections.",
+  "order": 95,
+  "enabled": true
+}

@@ -1,0 +1,68 @@
+{
+  "id": "personality_eating-fd8849db84",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "personality_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nFollow-up for behavioral health concerns.\n\nHPI\nThe patient is a 21-year-old female who presents today for a follow-up evaluation regarding her ongoing mental health concerns. She reports significant difficulty maintaining stable relationships and frequently experiences intense emotional fluctuations. She describes periods of irritability and difficulty managing her reactions to interpersonal stress. She states that these behaviors have begun to impact her academic performance and social life. She denies any thoughts of self-harm or harm to others. She is seeking a more structured management plan to address these behavioral patterns.\n\nReview of Systems\nThe patient denies any chest pain, shortness of breath, or fever. She denies any neurological deficits or visual changes. She reports occasional sleep disturbances related to stress but denies significant changes in appetite. She denies any recent physical injuries or acute physical symptoms.\n\nSocial History\nThe patient is a full-time college student. She lives in an apartment with two roommates. She reports that she enjoys hiking and playing the guitar. She denies any tobacco use and reports moderate caffeine intake.\n\nFamily History\nHer mother has a history of generalized anxiety. Her father has hypertension. There is no known family history of significant behavioral health conditions.\n\nMedication List\n1. Sertraline 50mg daily\n2. Melatonin 3mg at bedtime\n\nVitals\nBlood Pressure: 118/76 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nSpO2: 99% on room air\nWeight: 130 lbs\nHeight: 5'6\"\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.5 x 10^9/L\nPlatelets: 250 x 10^9/L\nGlucose: 92 mg/dL\neGFR: >90 mL/min/1.73m2\n\nExam\nThe patient is a well-developed, well-nourished 21-year-old female who appears her stated age. She is cooperative and alert. Her speech is clear and coherent. Her mood is described as anxious, and her affect is congruent with her reported mood. She is oriented to person, place, and time. No physical abnormalities noted during the brief exam.\n\nAssessment\nThe patient meets the clinical criteria for a personality disorder, type not stated. She continues to struggle with emotional regulation and interpersonal dynamics.\n\nPlan\n1. Referred to psychiatry for a comprehensive diagnostic evaluation and specialized behavioral therapy.\n2. Continue current medication regimen as prescribed.\n3. Follow up in four weeks to monitor progress and coordination of care with the psychiatric specialist.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "F60.9"
+  ],
+  "explanations": [
+    "Personality disorder without a stated type: F60.9 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F60.3"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "Borderline personality disorder is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F609"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:52+00:00",
+    "style": {
+      "age": 21,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

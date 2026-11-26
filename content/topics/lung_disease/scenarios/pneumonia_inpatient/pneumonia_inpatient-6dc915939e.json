@@ -1,0 +1,79 @@
+{
+  "id": "pneumonia_inpatient-6dc915939e",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "unspecified_organism"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/10/2026\nDischarge Date: 05/15/2026\nReason for Admission: Shortness of breath and productive cough.\n\nReview of Systems:\nThe patient reports productive cough, fever, and generalized malaise. She denies chest pain, palpitations, or lower extremity edema. She denies any history of recent travel or known exposure to contagious illnesses.\n\nSocial History:\nThe patient lives at home with her spouse. She is a retired teacher and enjoys gardening. She denies any tobacco or alcohol use.\n\nFamily History:\nHer mother had hypertension. Her father had a history of early-onset stroke.\n\nVitals:\nTemperature: 101.4 F, Heart Rate: 88 bpm, Blood Pressure: 132/84 mmHg, Respiratory Rate: 20 breaths/min, SpO2: 94% on room air.\n\nRecent Labs:\nWBC: 13.5 x 10^9/L, Hemoglobin: 12.2 g/dL, Platelets: 210 x 10^9/L, Creatinine: 1.0 mg/dL, eGFR: 72 mL/min/1.73m2. Sputum culture: Negative. Blood cultures: Negative.\n\nHospital Course:\nThe patient is a 79-year-old woman who presented to the emergency department with symptoms of pneumonia. Upon admission, she was febrile and reported significant fatigue. She was started on intravenous antibiotics and monitored for clinical improvement. Laboratory evaluation and sputum cultures were performed; however, no specific organism was identified, and all cultures remained negative. The patient showed a positive response to the antibiotic therapy, with a gradual decrease in temperature and improvement in oxygen saturation. She tolerated her diet well and was eventually deemed stable for transition to outpatient care.\n\nDischarge Diagnoses:\nCommunity-acquired pneumonia.\n\nDischarge Medications:\nAmoxicillin 500mg every 8 hours for 7 days.\nAcetaminophen 650mg as needed for fever or discomfort.\n\nFollow-up:\nThe patient is instructed to follow up with her primary care physician in one week for a reassessment of her respiratory status and to monitor for any recurrence of symptoms.\n\nElectronically signed, D. Kowalski, MD, 05/15/2026",
+  "answer": [
+    "J18.9"
+  ],
+  "explanations": [
+    "Pneumonia with no organism identified: J18.9 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J69.0"
+      ],
+      "confusion": "assumed_organism",
+      "lean": "over",
+      "why": "Aspiration is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.44,
+        "correct": 0,
+        "gap": 0.44,
+        "direction": "over",
+        "extra_hccs": [
+          "282"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J15.9"
+      ],
+      "confusion": "assumed_organism",
+      "lean": "over",
+      "why": "A bacterial cause is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:22+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

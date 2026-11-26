@@ -1,0 +1,90 @@
+{
+  "id": "stroke_inpatient-a7a37a0f22",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "ischemic"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Acute neurological deficit, sudden onset.\n\nVitals:\nBP: 145/88\nHR: 72 (RRR)\nTemp: 98.6 F\nO2 Sat: 97% on RA\n\nRecent Labs:\nWBC: 8.2\nHgb: 13.4\nPlt: 210\nNa: 138\nK: 4.1\nCreatinine: 1.1\neGFR: 72\nGlucose: 110\n\nReview of Systems:\nNeuro: Sudden onset focal deficit. No headache, no vision changes.\nCV: No chest pain, no SOB.\nResp: No cough, no wheezing.\nGI: No nausea, no diarrhea.\nMSK: No joint pain.\n\nSocial History: Retired. Lives with wife. Non-smoker.\n\nFamily History: Father had hypertension. Mother had diabetes.\n\nHospital Course:\nPt is a 90 y/o male admitted with acute ischemic stroke. Initial presentation showed acute focal neurological deficits. MRI brain confirmed cerebral infarction. Pt was managed in the neuro ward for monitoring and stabilization. Treatment included aggressive BP management and neuroprotective measures. Serial neurological exams performed every 4 hours. Pt showed steady improvement over 6 days. Deficits resolved prior to discharge. Pt is now alert and oriented x3. CTAB WNL. Stable on current medications.\n\nDischarge Diagnoses:\n1. Acute ischemic stroke\n2. Cerebral infarction\n\nDischarge Medications:\n1. Aspirin 81mg daily\n2. Atorvastatin 40mg daily\n3. Lisinopril 10mg daily\n\nFollow-up:\nF/u with neurology in 1 week for outpatient evaluation. F/u with PCP in 2 weeks.\n\nElectronically signed, L. Moreau, MD, 05/18/2026",
+  "answer": [
+    "I63.9"
+  ],
+  "explanations": [
+    "Acute ischemic stroke during the admission, artery not named: cerebral infarction, unspecified, I63.9 (HCC 249)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G45.9"
+      ],
+      "confusion": "stroke_coded_tia",
+      "lean": "under",
+      "why": "MRI confirms an infarction: it is a stroke, not a TIA.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.239,
+        "gap": -0.239,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "249"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "acute_coded_history",
+      "lean": "under",
+      "why": "This is the acute stroke itself, treated during this stay.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.239,
+        "gap": -0.239,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "249"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.239,
+    "hccs": [
+      {
+        "hcc": "249",
+        "label": "Ischemic or Unspecified Stroke",
+        "from": [
+          "I639"
+        ],
+        "weight": 0.239
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:13:56+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "id": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note_age": {
+    "min": 25
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "quad_c5c7_incomplete",
+        "para_complete",
+        "para_unspecified",
+        "monoplegia_right_leg",
+        "cauda_equina",
+        "spondylotic_myelopathy"
+      ],
+      "labels": {
+        "quad_c5c7_incomplete": "Quadriplegia, C5-C7, incomplete",
+        "para_complete": "Paraplegia, complete",
+        "para_unspecified": "Paraplegia, completeness not stated",
+        "monoplegia_right_leg": "Monoplegia of the right leg, dominance not stated",
+        "cauda_equina": "Cauda equina syndrome",
+        "spondylotic_myelopathy": "Cervical spondylosis with myelopathy"
+      },
+      "evidence": {
+        "quad_c5c7_incomplete": [
+          [
+            "quadriplegia",
+            "tetraplegia"
+          ],
+          [
+            "C5-C7",
+            "C6"
+          ],
+          [
+            "incomplete"
+          ]
+        ],
+        "para_complete": [
+          [
+            "paraplegia"
+          ],
+          [
+            "complete"
+          ]
+        ],
+        "para_unspecified": [
+          [
+            "paraplegia"
+          ]
+        ],
+        "monoplegia_right_leg": [
+          [
+            "monoplegia"
+          ],
+          [
+            "right leg",
+            "right lower limb",
+            "right lower extremity"
+          ]
+        ],
+        "cauda_equina": [
+          [
+            "cauda equina syndrome"
+          ]
+        ],
+        "spondylotic_myelopathy": [
+          [
+            "cervical spondylosis",
+            "cervical spondylotic"
+          ],
+          [
+            "myelopathy"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "quad_c5c7_incomplete": "The provider documents incomplete quadriplegia at the C5-C7 level from a spinal cord injury many years ago; uses a power wheelchair.",
+        "para_complete": "The provider documents complete paraplegia from a spinal cord injury many years ago; manual wheelchair user, independent with transfers.",
+        "para_unspecified": "The provider documents paraplegia from a spinal cord injury many years ago; whether it is complete or incomplete is not stated.",
+        "monoplegia_right_leg": "The neurologist documents monoplegia of the right lower limb; hand dominance is not documented and the cause is not discussed at this visit.",
+        "cauda_equina": "The provider documents chronic cauda equina syndrome with saddle numbness and bladder retention managed with catheterization.",
+        "spondylotic_myelopathy": "The provider documents cervical spondylosis with myelopathy (cervical spondylotic myelopathy), followed by spine surgery."
+      }
+    }
+  },
+  "note_forbid": [
+    "stroke",
+    "cerebral",
+    "CVA",
+    "hemiplegia",
+    "hemiparesis",
+    "multiple sclerosis",
+    "ALS",
+    "cerebral palsy",
+    "pressure ulcer",
+    "pressure injury",
+    "fracture",
+    "acute injury",
+    "tumor",
+    "cancer",
+    "ventilator",
+    "tracheostomy",
+    "left leg",
+    "left lower"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "quad_c5c7_incomplete"
+      },
+      "forbid": [
+        "paraplegia",
+        "complete quadriplegia",
+        "C1-C4",
+        "C4",
+        "monoplegia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "para_complete"
+      },
+      "forbid": [
+        "incomplete",
+        "quadriplegia",
+        "tetraplegia",
+        "monoplegia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "para_unspecified"
+      },
+      "forbid": [
+        "complete",
+        "incomplete",
+        "quadriplegia",
+        "tetraplegia",
+        "monoplegia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "monoplegia_right_leg"
+      },
+      "forbid": [
+        "right-handed",
+        "left-handed",
+        "dominant",
+        "nondominant",
+        "ambidextrous",
+        "paraplegia",
+        "quadriplegia",
+        "spinal cord injury"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cauda_equina"
+      },
+      "forbid": [
+        "myelopathy",
+        "paraplegia",
+        "quadriplegia",
+        "monoplegia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "spondylotic_myelopathy"
+      },
+      "forbid": [
+        "cauda equina",
+        "paraplegia",
+        "quadriplegia",
+        "monoplegia",
+        "spinal cord injury"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_specified": {
+      "description": "Used unspecified paralysis when the level or completeness is documented.",
+      "lean": "neutral"
+    },
+    "wrong_completeness": {
+      "description": "Confused complete and incomplete paralysis.",
+      "lean": "neutral"
+    },
+    "assumed_completeness": {
+      "description": "Coded complete or incomplete when the provider did not say.",
+      "lean": "neutral"
+    },
+    "wrong_dominance_default": {
+      "description": "Used the wrong side default: when dominance is not documented, the right side is dominant.",
+      "lean": "neutral"
+    },
+    "myelopathy_coded_separately": {
+      "description": "Coded unspecified spinal cord disease for myelopathy that has a combination code with spondylosis.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "para",
+      "rules": [
+        {
+          "when": {
+            "condition": "quad_c5c7_incomplete"
+          },
+          "codes": [
+            "G82.54"
+          ],
+          "explain": "Quadriplegia, C5-C7, incomplete: G82.54 (HCC 180).",
+          "refs": [
+            "ICD-10-CM Tabular: G82-G83, G95, M47"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G82.50"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The level and completeness are documented."
+            },
+            {
+              "codes": [
+                "G82.53"
+              ],
+              "confusion": "wrong_completeness",
+              "why": "It is documented as incomplete."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "para_complete"
+          },
+          "codes": [
+            "G82.21"
+          ],
+          "explain": "Paraplegia, complete: G82.21 (HCC 181).",
+          "refs": [
+            "ICD-10-CM Tabular: G82-G83, G95, M47"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G82.20"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Complete is documented."
+            },
+            {
+              "codes": [
+                "G82.22"
+              ],
+              "confusion": "wrong_completeness",
+              "why": "It is documented as complete."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "para_unspecified"
+          },
+          "codes": [
+            "G82.20"
+          ],
+          "explain": "Paraplegia without completeness: G82.20 (HCC 181).",
+          "refs": [
+            "ICD-10-CM Tabular: G82-G83, G95, M47"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G82.21"
+              ],
+              "confusion": "assumed_completeness",
+              "why": "Completeness is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "monoplegia_right_leg"
+          },
+          "codes": [
+            "G83.11"
+          ],
+          "explain": "Monoplegia of the right lower limb with dominance not documented: the right side defaults to dominant, G83.11 (HCC 254).",
+          "refs": [
+            "OCG I.C.6.a",
+            "ICD-10-CM Tabular: G82-G83, G95, M47"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G83.13"
+              ],
+              "confusion": "wrong_dominance_default",
+              "why": "Right side + dominance unknown = dominant."
+            },
+            {
+              "codes": [
+                "G83.10"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The side is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cauda_equina"
+          },
+          "codes": [
+            "G83.4"
+          ],
+          "explain": "Cauda equina syndrome: G83.4 (HCC 182).",
+          "refs": [
+            "ICD-10-CM Tabular: G82-G83, G95, M47"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G95.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Cauda equina syndrome has its own code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "spondylotic_myelopathy"
+          },
+          "codes": [
+            "M47.12"
+          ],
+          "explain": "Cervical spondylosis with myelopathy has a combination code: M47.12 (no HCC). Unspecified spinal cord disease (G95.9) would add HCC 182.",
+          "refs": [
+            "ICD-10-CM Tabular: G82-G83, G95, M47"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G95.9"
+              ],
+              "confusion": "myelopathy_coded_separately",
+              "why": "Use the combination code M47.12."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

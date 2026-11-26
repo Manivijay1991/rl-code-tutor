@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-187e2c9eeb",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_hyperglycemia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\n\nReason for Admission:\nThe patient is an 89-year-old female admitted for acute hyperglycemia associated with her known history of type 2 diabetes.\n\nHospital Course:\nUpon admission, the patient presented with blood glucose levels exceeding 400 mg/dL. She was stable and did not exhibit signs of severe metabolic derangement. During the hospitalization, she received intravenous fluids and a gradual titration of her insulin regimen to manage the hyperglycemia. Her glucose levels stabilized over several days, and she remained clinically stable throughout her stay. She was educated on dietary management and insulin administration before being deemed safe for discharge.\n\nDischarge Diagnoses:\n1. Hyperglycemia\n2. Type 2 diabetes\n\nDischarge Medications:\n1. Insulin glargine daily\n2. Metformin 500mg twice daily\n3. Lisinopril 10mg daily\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a routine check of her glucose levels and medication tolerance.\n\nElectronically signed, P. O'Brien, MD, 05/15/2026",
+  "answer": [
+    "E11.65"
+  ],
+  "explanations": [
+    "Type 2 diabetes with hyperglycemia only: E11.65 (HCC 38)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.10"
+      ],
+      "confusion": "hyperglycemia_coded_dka",
+      "lean": "over",
+      "why": "Ketoacidosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "36"
+        ],
+        "missing_hccs": [
+          "38"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "38",
+        "label": "Diabetes with Glycemic/Unspecified/No Complications",
+        "from": [
+          "E1165"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:51+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

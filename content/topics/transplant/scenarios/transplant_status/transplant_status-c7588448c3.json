@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-c7588448c3",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Routine follow-up for liver transplant.\n\nHPI: [Copied Forward] Patient is a 77-year-old female who underwent a liver transplant five years ago. She has been stable on tacrolimus with normal liver function tests. She denies any transplant complications or symptoms of rejection.\n\nUpdate: Patient presents today for her scheduled follow-up. She reports feeling well and denies any new symptoms or concerns regarding her liver transplant. She continues to tolerate her current medication regimen without issues.\n\nMedication List:\n- Tacrolimus 2mg daily\n- Amlodipine 5mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F, Weight 155 lbs.\n\nReview of Systems:\n- Constitutional: Negative\n- HEENT: Negative\n- Respiratory: Negative\n- Cardiovascular: Negative\n- Gastrointestinal: Negative\n- Musculoskeletal: Negative\n- Neurological: Negative\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nAbdomen: Soft, non-tender, no hepatomegaly.\nSkin: No notable changes.\n\nAssessment:\n1. Status post liver transplant. Stable on current tacrolimus dose with normal labs.\n\nPlan:\n1. Continue current tacrolimus dosage.\n2. Follow up in 6 months for repeat liver function tests and monitoring.\n\nElectronically signed,\nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "Z94.4"
+  ],
+  "explanations": [
+    "Liver transplant status: Z94.4 (HCC 62)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Liver transplant status carries HCC 62.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.376,
+        "gap": -0.376,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "62"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.376,
+    "hccs": [
+      {
+        "hcc": "62",
+        "label": "Liver Transplant Status/Complications",
+        "from": [
+          "Z944"
+        ],
+        "weight": 0.376
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:58+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

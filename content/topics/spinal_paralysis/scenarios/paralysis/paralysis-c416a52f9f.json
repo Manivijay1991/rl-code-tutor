@@ -1,0 +1,61 @@
+{
+  "id": "paralysis-c416a52f9f",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "spondylotic_myelopathy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint: Follow-up for spine surgery and neck pain.\n\nHPI: [Copied Forward] Patient is a 78-year-old male who presented with progressive gait instability, hand clumsiness, and upper extremity numbness. Imaging revealed cervical spondylosis with myelopathy. The patient underwent surgical intervention to address the cervical spondylotic changes.\n\n[Update] The patient returns today for a post-operative evaluation. He reports that his neck pain has significantly improved since the surgery. He notes that his balance feels more stable, though he continues to experience occasional tingling in his fingers. He denies any new weakness or loss of bowel/bladder control.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Gabapentin 300mg twice daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Neurological: Positive for tingling\n- Musculoskeletal: Positive for neck pain\n- All other systems: Negative\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished.\nNeck: Surgical incision site is well-healed with no signs of infection or drainage.\nNeurological: Grossly intact motor strength in upper and lower extremities. Sensation is intact to light touch. Reflexes are 2+ throughout.\n\nAssessment:\n1. Cervical spondylotic myelopathy, post-operative status.\n\nPlan:\n1. Continue current medication regimen.\n2. Physical therapy 2x weekly for gait stability.\n3. Follow up in 4 weeks for repeat neurological exam.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "M47.12"
+  ],
+  "explanations": [
+    "Cervical spondylosis with myelopathy has a combination code: M47.12 (no HCC). Unspecified spinal cord disease (G95.9) would add HCC 182."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G95.9"
+      ],
+      "confusion": "myelopathy_coded_separately",
+      "lean": "over",
+      "why": "Use the combination code M47.12.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.478,
+        "correct": 0,
+        "gap": 0.478,
+        "direction": "over",
+        "extra_hccs": [
+          "182"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:14:59+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

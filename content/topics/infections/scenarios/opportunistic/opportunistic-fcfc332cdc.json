@@ -1,0 +1,70 @@
+{
+  "id": "opportunistic-fcfc332cdc",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "pcp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint\nFollow-up for Pneumocystis jirovecii pneumonia.\n\nHPI\nPt is a 56 y.o. female presenting for f/u of Pneumocystis jirovecii pneumonia. Pt has been on long-term high-dose steroids for chronic lung condition. Currently undergoing treatment with trimethoprim-sulfamethoxazole. Pt reports mild persistent cough but denies fever, chills, or increased SOB. Tolerating meds well.\n\nMedication List\n- Trimethoprim-sulfamethoxazole\n- Prednisone (high-dose)\n\nExam\nGen: Well-appearing, in no acute distress.\nResp: CTAB, RRR. Breath sounds clear bilaterally.\nCV: RRR, no murmurs.\nExt: WNL.\n\nAssessment\n1. Pneumocystis jirovecii pneumonia: Pt is currently on trimethoprim-sulfamethoxazole and continuing high-dose steroids for underlying lung pathology. Progressing well on current regimen.\n\nPlan\n- Continue trimethoprim-sulfamethoxazole as prescribed.\n- Continue high-dose steroids.\n- F/u in 2 weeks to monitor progress and pulmonary status.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "B59"
+  ],
+  "explanations": [
+    "Pneumocystis pneumonia: pneumocystosis, B59 (HCC 6)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J18.9"
+      ],
+      "confusion": "missed_specific_infection",
+      "lean": "under",
+      "why": "The organism (Pneumocystis) is documented and has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.381,
+        "gap": -0.381,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "6"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.381,
+    "hccs": [
+      {
+        "hcc": "6",
+        "label": "Opportunistic Infections",
+        "from": [
+          "B59"
+        ],
+        "weight": 0.381
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:01+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

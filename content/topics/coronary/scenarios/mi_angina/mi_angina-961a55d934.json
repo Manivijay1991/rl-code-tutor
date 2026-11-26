@@ -1,0 +1,70 @@
+{
+  "id": "mi_angina-961a55d934",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "nstemi_recent"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Chest pain follow-up.\n\nHPI: Pt is a 90-year-old male presenting for follow-up of an NSTEMI that occurred 2 weeks ago. Pt was treated medically for the event. He reports feeling generally better but notes occasional mild shortness of breath with exertion. Denies any recurrent chest pain, pressure, or radiating discomfort to the jaw or left arm. No syncope or palpitations reported since the acute episode. Denies any new-onset dizziness or fainting.\n\nMedication List:\n- Aspirin 81mg daily\n- Clopidogrel 75mg daily\n| - Metoprolol 25mg daily\n- Atorvastatin 40mg daily\n\nVitals:\nBP: 132/78\nHR: 68 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 175 lbs\n\nRecent Labs:\nTroponin I: 0.04 ng/mL (Baseline)\neGFR: 62 mL/min\nHbA1c: 6.8%\nLipid Panel: LDL 72, HDL 45, Trig 120\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations, edema.\nResp: Denies cough, SOB.\nGI: Denies nausea, diarrhea.\nNeuro: Denies headache, weakness, confusion.\n\nSocial History: Lives with wife. Retired. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had coronary artery disease. Mother had stroke.\n\nExam:\nGeneral: Alert and oriented x3. Well-appearing, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs, rubs, or gallops.\nResp: CTAB, no wheezes or rales.\nExt: No peripheral edema.\n\nAssessment:\n1. NSTEMI, status post medical management 2 weeks ago. Pt is stable and recovering well.\n\nPlan:\n1. Continue current dual antiplatelet therapy and statin.\n2. Continue beta-blocker as tolerated.\n3. F/u in 2 weeks for repeat labs and clinical assessment.\n4. Pt instructed to seek immediate ER care for any return of acute chest pain or severe SOB.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "I21.4"
+  ],
+  "explanations": [
+    "An MI is coded as acute (I21) for 4 weeks (28 days) from onset, including follow-up visits: NSTEMI, I21.4 (HCC 228)."
+  ],
+  "refs": [
+    "OCG I.C.9.e"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.2"
+      ],
+      "confusion": "acute_mi_coded_old",
+      "lean": "under",
+      "why": "It is within 4 weeks: still I21.4.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.252,
+        "gap": -0.252,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "228"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.252,
+    "hccs": [
+      {
+        "hcc": "228",
+        "label": "Acute Myocardial Infarction",
+        "from": [
+          "I214"
+        ],
+        "weight": 0.252
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:06:43+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

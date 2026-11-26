@@ -1,0 +1,73 @@
+{
+  "id": "sepsis_inpatient-eb4766d711",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "septic_shock"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/22/2026\n\nReason for Admission: Sepsis and pneumonia.\n\nVitals: BP 118/72, HR 88, SpO2 96% on room air, Temp 98.6 F.\nRecent Labs: WBC 14.5 x 10^9/L, Lactate 2.1 mmol/L, Creatinine 1.1 mg/dL, BUN 18 mg/dL, Hemoglobin 14.2 g/dL.\n\nHPI: Patient is a 55-year-old male who presented to the emergency department with a three-day history of productive cough, shortness of breath, and high-grade fever. He reported significant pleuritic chest pain and generalized malaise. He denied any recent travel or known exposures. He was started on initial fluids and broad-spectrum antibiotics.\n\nReview of Systems:\nConstitutional: Positive for fever, chills, and fatigue.\nRespiratory: Positive for cough and dyspnea. Negative for wheezing.\nCardiovascular: Negative for palpitations or edema.\nGastrointestinal: Negative for nausea or diarrhea.\nNeurological: Negative for headache or confusion.\nMusculoskeletal: Negative for joint pain.\n\nSocial History: Lives with wife in a private residence. Works as a technician. Non-smoker. Occasional alcohol use.\nFamily History: Father had hypertension. Mother had type 2 diabetes.\nHospital Course: The patient was admitted for severe pneumonia. His clinical status deteriorated rapidly, leading to the development of septic shock. He required the initiation of vasopressors to maintain adequate mean arterial pressure. He was treated with aggressive fluid resuscitation and intravenous antibiotics. Despite the severity of the septic shock, he responded well to treatment. Cultures remained negative for specific growth. His oxygen requirements decreased steadily, and he was successfully weaned off vasopressors. He remained stable for 48 hours before being cleared for discharge.\n\nDischarge Diagnoses:\nPneumonia\nSepsis\nSeptic shock\n\nDischarge Medications:\nAmoxicillin 875mg every 8 hours (7 days)\nAlbuterol inhaler as needed\nAcetaminophen 650mg every 6 hours as needed for fever\n\nFollow-up: Patient to follow up with primary care physician in 7 days for wound check and respiratory status.\n\nElectronically signed, J. Lindqvist, MD, 05/22/2026",
+  "answer": [
+    "A41.9",
+    "R65.21"
+  ],
+  "explanations": [
+    "Septic shock is severe sepsis with circulatory failure: A41.9 plus R65.21."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9",
+        "R65.20"
+      ],
+      "confusion": "missed_shock",
+      "lean": "under",
+      "why": "Septic shock is documented: R65.21, not R65.20.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.5,
+    "hccs": [
+      {
+        "hcc": "2",
+        "label": "Septicemia/Sepsis/Systemic Inflammatory Response Syndrome/Shock",
+        "from": [
+          "A419",
+          "R6521"
+        ],
+        "weight": 0.5
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:26+00:00",
+    "style": {
+      "age": 55,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

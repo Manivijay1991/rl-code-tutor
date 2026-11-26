@@ -1,0 +1,81 @@
+{
+  "id": "fibrosis_airway-a965d8bf83",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "ssc_lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint: Follow-up for scleroderma and lung symptoms.\n\nHPI: The patient is a 79-year-old male presenting for a scheduled follow-up evaluation of his systemic sclerosis. He reports that his primary symptoms remain related to his lung involvement. He describes a persistent dry cough and occasional shortness of breath during moderate exertion. He denies any recent fevers, chills, or significant changes in his activities of daily living. He reports consistent adherence to his mycophenolate regimen. He notes that his skin thickening remains stable, and he denies any new joint pain or significant gastrointestinal distress at this time.\n\nMedication List:\n- Mycophenolate mofetil 500mg twice daily\n- Prednisone 5mg daily\n- Omeprazole 20mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or unintended weight loss.\nRespiratory: Positive for dry cough and exertional dyspnea. Negative for productive cough or wheezing.\nMusculoskeletal: Negative for new joint swelling or severe stiffness.\nIntegumentary: No new skin ulcers or significant changes in skin texture.\nNeurological: No numbness or tingling in extremities.\n\nSocial History: The patient resides in a single-story home with his wife. He is a retired engineer. He denies current tobacco or alcohol use. He reports walking for exercise three times a week.\n\nFamily History: Father had hypertension. Mother had osteoarthritis. No known history of autoimmune disease in first-degree relatives.\n\nVitals:\nBP: 132/82 mmHg\nHR: 74 bpm\nRR: 18 breaths/min\nTemp: 98.6 F\nSpO2: 95% on room air\n\nRecent Labs:\nHbA1c: 6.2%\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nCBC: Within normal limits.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nRespiratory: Lungs clear to auscultation bilaterally. No adventitious sounds noted.\nIntegumentary: Diffuse skin thickening noted on hands and face consistent with his diagnosis.\nMusculoskeletal: No joint erythema or significant edema in the small joints of the hands.\n\nAssessment:\n1. Systemic sclerosis with interstitial lung disease: The patient is currently stable on mycophenolate. He continues to experience exertional dyspnea consistent with his lung involvement.\n\nPlan:\n1. Continue mycophenolate mofetil as prescribed.\n2. Continue prednisone for symptom management.\n3. Order repeat pulmonary function tests to monitor the progression of interstitial lung disease.\n4. Follow up in four weeks for a repeat clinical evaluation.\n\nElectronically signed, P. O'Brien, PA-C, 05/14/2026",
+  "answer": [
+    "M34.81"
+  ],
+  "explanations": [
+    "Systemic sclerosis with lung involvement has a combination code: M34.81, which maps to two HCCs (93 and 278)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M34.9",
+        "J84.10"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code M34.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.936,
+        "correct": 1.435,
+        "gap": -0.499,
+        "direction": "under",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": [
+          "278"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.435,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M3481"
+        ],
+        "weight": 0.617
+      },
+      {
+        "hcc": "278",
+        "label": "Idiopathic Pulmonary Fibrosis and Lung Involvement in Systemic Sclerosis",
+        "from": [
+          "M3481"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:54+00:00",
+    "style": {
+      "age": 79,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

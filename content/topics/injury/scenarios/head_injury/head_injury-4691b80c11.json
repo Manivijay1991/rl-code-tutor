@@ -1,0 +1,74 @@
+{
+  "id": "head_injury-4691b80c11",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "tbi_no_loc"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Fall from a ladder with head trauma.\n\nVitals:\nBP: 138/84 mmHg\nHR: 78 bpm\nRR: 16 breaths/min\nTemp: 98.6 F\nSpO2: 97% on room air\n\nRecent Labs:\nWBC: 8.4 x 10^9/L\nHemoglobin: 12.4 g/dL\nPlatelets: 210 x 10^9/L\neGFR: 62 mL/min/1.73m2\nSodium: 139 mEq/L\nPotassium: 4.1 mEq/L\n\nReview of Systems:\nThe patient reports mild headaches and some fatigue. She denies any dizziness, visual disturbances, or difficulty with balance. She denies any nausea or vomiting.\n\nSocial History:\nThe patient is retired and lives at home with her daughter. She does not smoke and does not use any recreational substances.\n\nFamily History:\nMother had hypertension. Father had a history of heart disease.\n\nHospital Course:\nThe patient is a 79-year-old woman who presented to the emergency department following a fall from a ladder. She reported that she did not lose consciousness at any time during the event. Initial evaluation was significant for mild disorientation. Imaging revealed a diffuse brain injury on the MRI. The patient was admitted for observation and management of neurological symptoms. Over the course of her stay, she showed steady improvement in cognitive clarity and physical mobility. She was able to participate in physical therapy and successfully completed a bedside mobility assessment. She tolerated her diet well and remained stable throughout her admission. She is now cleared for discharge to home with supportive care.\n\nDischarge Diagnoses:\n- Diffuse brain injury\n- Fall from ladder\n\nDischarge Medications:\n- Acetaminophen 650mg every 6 hours as needed for pain.\n- Multivitamin daily.\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a routine neurological check. She was instructed to seek immediate medical attention if she experiences worsening headaches or confusion.\n\nElectronically signed,\nD. Kowalski, MD\n05/18/2026",
+  "answer": [
+    "S06.2X0A"
+  ],
+  "explanations": [
+    "Diffuse traumatic brain injury without loss of consciousness, initial encounter: S06.2X0A (HCC 399)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "wrong_loc_duration",
+      "lean": "neutral",
+      "why": "No loss of consciousness is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": [
+          "399"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.199,
+    "hccs": [
+      {
+        "hcc": "399",
+        "label": "Major Head Injury without Loss of Consciousness",
+        "from": [
+          "S062X0A"
+        ],
+        "weight": 0.199
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:07+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

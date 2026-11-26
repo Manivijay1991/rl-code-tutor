@@ -1,0 +1,85 @@
+{
+  "id": "personality_eating-a2055712b0",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "bulimia_severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint: \"I feel out of control with my eating habits.\"\n\nHPI: 28 y/o female pt presents for f/u regarding bulimia nervosa. Pt reports persistent struggles with disordered eating patterns. She describes frequent binge-purge episodes occurring multiple times per week. Pt states she feels unable to stop herself during bingeing phases, followed by compensatory behaviors. Pt expresses distress over the cycle and seeks more structured support. No acute physical complaints today.\n\nMedication List:\n- Fluoxetine 40mg daily\n- Multivitamin daily\n\nVitals:\nBP: 118/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 99% on RA\nHt/Wt: 5'6\", 135 lbs\n\nRecent Labs:\n- CBC: WNL\n- CMP: WNL\n- Electrolytes: Na+ 140, K+ 4.0, Cl- 102, HCO3- 22\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nHEENT: No vision changes, headaches, or sore throat.\nCV: No chest pain, palpitations, or syncope.\nResp: No SOB or cough.\nGI: Occasional abdominal discomfort after purging.\nMSK: No joint pain or swelling.\nNeuro: No tremors, dizziness, or numbness.\nPsych: Reports high anxiety regarding food intake.\n\nSocial History: Pt lives with roommate. Works full-time in marketing. Non-smoker. Denies any illicit drug use.\n\nFamily History: Mother has history of generalized anxiety. Father healthy.\n\nExam:\nGen: Alert, cooperative, well-nourished.\nPsych: Normal affect, slightly anxious. Speech clear. Mood \"stressed.\"\nCV: RRR, regular rhythm.\nLungs: CTAB.\nAbdomen: Soft, non-tender, no masses.\nExt: No edema, pulses palpable.\n\nAssessment:\n1. Bulimia nervosa, severe. Pt continues to experience frequent binge-purge episodes despite current management.\n\nPlan:\n1. Intensive outpatient treatment (IOP) arranged. Pt to begin weekly sessions and group therapy.\n2. Continue current medication.\n3. F/u in 2 weeks to monitor progress in IOP and medication efficacy.\n4. Encouraged pt to maintain regular meal schedule.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "F50.23"
+  ],
+  "explanations": [
+    "Bulimia nervosa, severe: F50.23 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F50.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F50.022"
+      ],
+      "confusion": "wrong_eating_type",
+      "lean": "neutral",
+      "why": "Bulimia nervosa is documented, not anorexia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F5023"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:12+00:00",
+    "style": {
+      "age": 28,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "sepsis_inpatient-56275bf0a8",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "mssa_sepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Sepsis and skin infection\n\nVitals: BP 128/74, HR 82, SpO2 96% on RA, Temp 98.6 F\n\nReview of Systems:\nConstitutional: Positive for fever, malaise\nIntegumentary: Positive for erythema, localized pain\nRespiratory: Negative for shortness of breath\nCardiovascular: Negative for chest pain\n\nHPI: Patient is an 89-year-old female who presented to the emergency department with a painful, erythematous area on her left lower extremity. She reported a history of minor skin abrasions and noted increasing warmth and drainage over the last 48 hours. She denies any systemic symptoms prior to the onset of fever.\n\nHospital Course:\nThe patient was admitted for treatment of sepsis originating from a skin infection. Cultures were positive for methicillin-susceptible Staphylococcus aureus (MSSA). She was started on intravenous cefazolin. She responded well to antibiotic therapy, remaining hemodynamically stable throughout her stay. She was transitioned to oral medications before discharge.\n\nDischarge Diagnoses:\nSepsis\nMSSA skin infection\n\nDischarge Medications:\nCefazolin 500mg every 8 hours (complete course)\nAcetaminophen 650mg every 6 hours as needed for pain\n\nFollow-up:\nFollow up with primary care physician in 7 days for wound evaluation.\n\nElectronically signed, \nP. O'Brien, MD\n05/15/2026",
+  "answer": [
+    "A41.01"
+  ],
+  "explanations": [
+    "Sepsis due to methicillin-susceptible Staphylococcus aureus: A41.01 (HCC 2)."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "unspecified_organism",
+      "lean": "neutral",
+      "why": "The organism (MSSA) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.5,
+    "hccs": [
+      {
+        "hcc": "2",
+        "label": "Septicemia/Sepsis/Systemic Inflammatory Response Syndrome/Shock",
+        "from": [
+          "A4101"
+        ],
+        "weight": 0.5
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:42+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

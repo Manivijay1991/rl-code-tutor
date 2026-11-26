@@ -1,0 +1,70 @@
+{
+  "id": "blood_disorders-0bd2f79a13",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "pancytopenia_other"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for pancytopenia.\n\nVitals: BP 118/74, HR 76, SpO2 99% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for chills, fatigue.\nHEENT: Negative for sore throat.\nRespiratory: Negative for shortness of breath.\nCardiovascular: Negative for palpitations.\nGastrointestinal: Negative for abdominal pain.\nMusculoskeletal: Negative for joint pain.\n\nHPI: (Copied Forward) Patient is a 23-year-old female presenting with persistent fatigue and generalized malaise. Laboratory workup revealed a significant decrease in red blood cell count, white blood cell count, and platelet count. Initial screening did not identify an obvious source of the hematologic abnormalities.\n\n(Today's Update) The patient returns today for a follow-up regarding her pancytopenia of unclear cause. She reports feeling slightly more tired but denies new symptoms. She confirms that she has not started any new medications recently.\n\nMedication List:\nMultivitamin daily.\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nSkin: No pallor or petechiae noted.\nLymphatics: No cervical, axillary, or inguinal lymphadenopathy.\nAbdomen: Soft, non-tender, no hepatosplenomegaly.\n\nAssessment:\n1. Pancytopenia of unclear cause.\n\nPlan:\n1. Proceed with a bone marrow biopsy to further evaluate the etiology of the pancytopenia.\n2. Monitor CBC weekly.\n3. Follow up in the clinic after biopsy results are available.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "D61.818"
+  ],
+  "explanations": [
+    "Pancytopenia not caused by chemotherapy: other pancytopenia, D61.818 (HCC 109)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D61.810"
+      ],
+      "confusion": "assumed_drug_cause",
+      "lean": "under",
+      "why": "No chemotherapy cause is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.144,
+        "gap": -1.144,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "109"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.144,
+    "hccs": [
+      {
+        "hcc": "109",
+        "label": "Acquired Hemolytic/Aplastic/and Sideroblastic Anemias",
+        "from": [
+          "D61818"
+        ],
+        "weight": 1.144
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:05+00:00",
+    "style": {
+      "age": 23,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

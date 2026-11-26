@@ -1,0 +1,60 @@
+{
+  "id": "sepsis_inpatient-25cc3573fd",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "urosepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Fever and urinary tract infection.\n\nVitals: BP 128/82, HR 88, SpO2 98% on RA, Temp 99.1 F.\nRecent Labs: WBC 14.5 x 10^3/uL, Creatinine 1.1 mg/dL, BUN 22 mg/dL, Urinalysis: Positive for nitrites and leukocyte esterase.\n\nSocial History: Retired teacher, lives with husband in a single-story home. Non-smoker. Occasional alcohol use.\nFamily History: Mother had hypertension; Father had type 2 diabetes.\nReview of Systems:\nConstitutional: Positive for fever, chills.\nGenitourinary: Positive for dysuria, frequency.\nRespiratory: Negative for cough or shortness of breath.\nNeurological: Negative for confusion or dizziness.\nCardiovascular: Negative for chest pain.\n\nHistory of Present Illness: (Copied Forward) Patient is a 72-year-old female who presents with a 3-day history of increased urinary frequency and burning during urination. She reports subjective fevers and generalized malaise. She denies any recent travel or known exposures.\n\nHospital Course:\nThe patient was admitted for evaluation of a urinary tract infection complicated by systemic symptoms. Upon admission, she was febrile and reported significant discomfort. She was started on intravenous fluids and broad-spectrum antibiotics. During the stay, she remained hemodynamically stable and showed clinical improvement as the infection resolved. The physician documents \"urosepsis\" as the primary clinical driver for the acute admission. She tolerated the treatment well and was afebrile for 48 hours prior to discharge.\n\nDischarge Diagnoses:\n1. Urosepsis\n\nDischarge Medications:\n1. Nitrofurantoin 100 mg twice daily for 7 days.\n2. Lisinopril 10 mg daily.\n3. Atorvastatin 20 mg daily.\n\nFollow-up:\nPatient to follow up with primary care physician in 10 days for a repeat urinalysis and a wound check if necessary. Patient instructed to return to the emergency department if she develops worsening fever or inability to tolerate oral fluids.\n\nElectronically signed, \nA. Rivera, MD\n05/15/2026",
+  "answer": [],
+  "explanations": [
+    "'Urosepsis' is a nonspecific term with no default code and is not the same as sepsis: query the provider. No sepsis code."
+  ],
+  "refs": [
+    "OCG I.C.1.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "urosepsis_coded_sepsis",
+      "lean": "over",
+      "why": "Urosepsis is not sepsis; it needs a provider query.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0,
+        "gap": 0.5,
+        "direction": "over",
+        "extra_hccs": [
+          "2"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:49+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

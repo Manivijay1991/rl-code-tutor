@@ -1,0 +1,61 @@
+{
+  "id": "opportunistic-aad050f880",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "oral_thrush"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint: White patches on the tongue.\n\nVitals: BP 128/82, HR 74, RR 16, SpO2 98% on room air, Temp 98.6 F.\n\nRecent Labs: eGFR 88 mL/min/1.73m², HbA1c 5.4%, WBC 7.2, Platelets 210k.\n\nSocial History: Patient is a 51-year-old male who works as an office manager. He is a non-smoker and drinks alcohol socially. He lives with his spouse and two children.\n\nFamily History: Father had hypertension. Mother had hyperlipidemia. No history of significant genetic disorders.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nHEENT: Positive for white plaques on the tongue. Negative for ear pain or vision changes.\nRespiratory: Negative for cough or shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\nGastrointestinal: Negative for abdominal pain or nausea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or numbness.\n\nHPI: Patient is a 51-year-old male who presents for a follow-up regarding his chronic respiratory condition. He has been using an inhaled corticosteroid for several months. He reports good control of his baseline symptoms but notes a new development of white patches on his tongue. He denies any difficulty with swallowing.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nHEENT: Oral cavity exam reveals prominent white plaques on the tongue and inner cheeks. These are consistent with oral candidiasis. No signs of active infection or bleeding.\nRespiratory: Lungs clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm.\n\nAssessment:\n1. Oral candidiasis: The patient presents with visible thrush on the tongue, likely secondary to the prolonged use of his inhaled corticosteroid medication. Swallowing remains normal.\n\nPlan:\n1. Prescribed Nystatin oral rinse to be used several times daily for 7-10 days.\n2. Patient instructed to rinse his mouth with water after each use of his inhaled steroid inhaler to reduce the risk of recurrence.\n3. Follow up in 2 weeks to assess resolution of the plaques.\n\nElectronically signed,\nJ. Lindqvist, NP\nOctober 14, 2026",
+  "answer": [
+    "B37.0"
+  ],
+  "explanations": [
+    "Oral thrush: candidal stomatitis, B37.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B37.81"
+      ],
+      "confusion": "thrush_coded_esophagitis",
+      "lean": "over",
+      "why": "Only the mouth is involved.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.381,
+        "correct": 0,
+        "gap": 0.381,
+        "direction": "over",
+        "extra_hccs": [
+          "6"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:39+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "metabolic_endocrine-2059f2e396",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "cushing_drug"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for weight gain and moon face.\n\nHPI\n70 y/o female pt presents for f/u of Cushing's syndrome. Pt has been on long-term prednisone for chronic lung condition. Pt reports gradual weight gain and truncal obesity over the last 6 months. Denies acute respiratory distress or fever. Pt aware of the link between long-term glucocorticoid use and current symptoms.\n\nMedication List\nPrednisone 20mg daily\nAlbuterol inhaler PRN\nSalbutamol (maintenance)\n\nExam\nGeneral: Alert, oriented x3. Appearance: notable for moon face and truncal obesity.\nVitals: BP 138/88, HR 72, RR 16, Temp 98.6F.\nLungs: CTAB.\nHeart: RRR.\nSkin: Thin skin, wide face.\nExtremities: No edema.\n\nAssessment\n1. Cushing's syndrome secondary to long-term prednisone use for pulmonary disease.\n\nPlan\n1. Initiate slow taper of prednisone to minimize risk of flares. \n2. Monitor weight and blood pressure weekly.\n3. F/u in 4 weeks to reassess.\n\nElectronically signed,\nR. Mensah, DO\n10/14/2026",
+  "answer": [
+    "E24.2"
+  ],
+  "explanations": [
+    "Drug-induced Cushing's syndrome: E24.2 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E24.0"
+      ],
+      "confusion": "drug_cushing_coded_disease",
+      "lean": "over",
+      "why": "It is caused by steroid medication, not the pituitary.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.51,
+        "correct": 0,
+        "gap": 0.51,
+        "direction": "over",
+        "extra_hccs": [
+          "51"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:29+00:00",
+    "style": {
+      "age": 70,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "R. Mensah"
+    }
+  }
+}

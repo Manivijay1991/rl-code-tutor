@@ -1,0 +1,61 @@
+{
+  "id": "bone_lupus_skin-c1bbce357e",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "discoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: Follow-up for discoid lupus.\n\nHPI: Patient is a 33-year-old female presenting for follow-up of discoid lupus. She reports that the lesions on her face have been stable since the last visit. She denies any new rashes, itching, or joint pain. She has been adherent to her topical medication regimen and notes that the inflammation appears reduced.\n(Copied forward from prior visit)\nUpdate: Patient reports continued stability of the discoid lupus. She has not experienced any flares or systemic symptoms since the previous evaluation.\n\nMedication List:\n- Clobetasol propionate 0.05% ointment (topical)\n\nVitals: BP 118/76, HR 74, SpO2 99%\n\nReview of Systems:\nConstitutional: Negative\nSkin: Positive (localized discoid lupus)\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam:\nSkin: Multiple well-demarcated, erythematous plaques with overlying scale and follicular plugging are noted on the cheeks. These are consistent with discoid lupus. No systemic involvement is noted.\n\nAssessment:\n1. Discoid lupus limited to the skin. No evidence of systemic involvement.\n\nPlan:\n1. Continue current topical steroid regimen as directed.\n2. Patient to return in 3 months for follow-up.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "L93.0"
+  ],
+  "explanations": [
+    "Discoid lupus erythematosus of the skin only: L93.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M32.9"
+      ],
+      "confusion": "discoid_coded_sle",
+      "lean": "over",
+      "why": "Systemic lupus is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.268,
+        "correct": 0,
+        "gap": 0.268,
+        "direction": "over",
+        "extra_hccs": [
+          "94"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:06+00:00",
+    "style": {
+      "age": 33,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

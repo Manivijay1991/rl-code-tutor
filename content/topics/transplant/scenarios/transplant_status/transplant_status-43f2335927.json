@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-43f2335927",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up for liver transplant.\n\nHPI: [Copied Forward] Patient is a 33-year-old woman who underwent a liver transplant five years ago. She has been stable on maintenance immunosuppression. She reports no new symptoms and denies any acute concerns.\n\nUpdate: The patient returns today for a routine follow-up. She reports feeling well and states she has had no issues with her medication adherence. She continues to maintain a stable health status following her liver transplant.\n\nVitals: BP 118/74, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nSkin: Negative\nHEENT: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\nPsychiatric: Negative\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nAbdomen: Soft, non-tender, no organomegaly.\nSkin: No new rashes or lesions.\n\nAssessment:\n1. Liver transplant: Stable on tacrolimus. Liver function tests remain within normal limits. No evidence of transplant complications.\n\nPlan:\n1. Continue current tacrolimus dosage.\n2. Routine laboratory monitoring of liver enzymes and tacrolimus trough levels.\n3. Follow up in 6 months.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "Z94.4"
+  ],
+  "explanations": [
+    "Liver transplant status: Z94.4 (HCC 62)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Liver transplant status carries HCC 62.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.376,
+        "gap": -0.376,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "62"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.376,
+    "hccs": [
+      {
+        "hcc": "62",
+        "label": "Liver Transplant Status/Complications",
+        "from": [
+          "Z944"
+        ],
+        "weight": 0.376
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:56+00:00",
+    "style": {
+      "age": 33,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

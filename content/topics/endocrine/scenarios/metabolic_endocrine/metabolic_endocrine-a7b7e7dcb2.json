@@ -1,0 +1,61 @@
+{
+  "id": "metabolic_endocrine-a7b7e7dcb2",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "cushing_drug"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Weight gain and facial rounding.\n\nHPI: Pt is a 78-year-old male presenting for evaluation of physical changes. Pt reports gradual weight gain over the last 6 months and notes increasing \"moon face\" appearance. Pt has a history of chronic lung disease, for which he has been on long-term prednisone. He denies recent changes in his respiratory status or acute symptoms. He notes some easy bruising and muscle weakness in his upper extremities. No history of tremors or palpitations.\n\nMedication List:\n- Prednisone 40mg daily\n- Albuterol HFA PRN\n- Lisinopril 10mg daily\n\nVitals:\nBP: 138/84\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nHeight: 5'10\"\nWeight: 210 lbs\n\nRecent Labs:\nGlucose: 108 mg/dL\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\neGFR: 72 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nRespiratory: Denies SOB, cough.\nMSK: Reports mild proximal muscle weakness.\nSkin: Positive for easy bruising.\nNeuro: Denies headache, dizziness.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol.\n\nFamily History: Father had hypertension. Mother had arthritis.\n\nExam:\nGeneral: Alert, oriented x3. Appears well-nourished.\nNeck: No thyromegaly, no lymphadenopathy.\nFace: Rounded facial appearance (\"moon face\").\nChest: CTAB. Lung sounds clear.\nExtremities: No edema. Mild wasting of proximal muscles noted.\nSkin: Multiple ecchymoses on forearms.\n\nAssessment:\n1. Cushing's syndrome secondary to exogenous glucocorticoid administration. Pt is currently on high-dose prednisone for chronic lung disease.\n\nPlan:\n- Initiate slow taper of prednisone.\n- Reduce dose by 5mg every 2 weeks until reaching minimum effective dose for lung condition.\n- Monitor for symptoms of steroid withdrawal and respiratory stability.\n- F/u in 4 weeks to assess weight and facial changes.\n\nElectronically signed, T. Haddad, MD, 05/14/2026",
+  "answer": [
+    "E24.2"
+  ],
+  "explanations": [
+    "Drug-induced Cushing's syndrome: E24.2 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E24.0"
+      ],
+      "confusion": "drug_cushing_coded_disease",
+      "lean": "over",
+      "why": "It is caused by steroid medication, not the pituitary.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.51,
+        "correct": 0,
+        "gap": 0.51,
+        "direction": "over",
+        "extra_hccs": [
+          "51"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:15+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad"
+    }
+  }
+}

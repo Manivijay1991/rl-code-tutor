@@ -1,0 +1,86 @@
+{
+  "id": "paralysis-4906b320fe",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "monoplegia_right_leg"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint: Follow-up for right lower limb weakness.\n\nHPI: Copied forward from previous visit: Patient is an 89-year-old female presenting for evaluation of neurological deficits. She reports persistent difficulty with mobility and significant weakness in the right lower extremity. The patient notes that the weakness is isolated to the lower limb, with no reported symptoms in the upper extremities.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 138/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Neurological: Positive (right lower limb weakness)\n- Musculoskeletal: Negative\n- Cardiovascular: Negative\n- Respiratory: Negative\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nNeurological: Focused exam reveals monoplegia of the right lower limb. Strength is 2/5 in the right leg. Sensation is intact to light touch. Reflexes are diminished on the affected side.\n\nAssessment:\n1. Monoplegia of the right lower extremity.\n\nPlan:\n1. Continue current medication regimen.\n2. Physical therapy referral for gait training and strengthening of the right lower limb.\n3. Follow up in 4 weeks for progress assessment.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "G83.11"
+  ],
+  "explanations": [
+    "Monoplegia of the right lower limb with dominance not documented: the right side defaults to dominant, G83.11 (HCC 254)."
+  ],
+  "refs": [
+    "OCG I.C.6.a",
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G83.13"
+      ],
+      "confusion": "wrong_dominance_default",
+      "lean": "neutral",
+      "why": "Right side + dominance unknown = dominant.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.321,
+        "correct": 0.321,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G83.10"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The side is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.321,
+        "correct": 0.321,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.321,
+    "hccs": [
+      {
+        "hcc": "254",
+        "label": "Monoplegia/Other Paralytic Syndromes",
+        "from": [
+          "G8311"
+        ],
+        "weight": 0.321
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:33+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

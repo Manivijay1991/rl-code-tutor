@@ -1,0 +1,62 @@
+{
+  "id": "stroke_inpatient-f5332ad0fc",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "tia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/14/2026\n\nReason for Admission:\nThe patient is a 79-year-old woman who presented to the emergency department following a brief episode of neurological deficits. She reported a sudden onset of sensory changes and motor coordination issues that resolved completely within one hour. She was admitted for further evaluation of a transient ischemic attack.\n\nReview of Systems:\nThe patient reports no chest pain, shortness of breath, or palpitations. She denies any recent falls or head injuries. She reports no visual changes or persistent numbness. She denies headaches or fever.\n\nSocial History:\nThe patient resides in a private residence with her spouse. She is a retired teacher and is a non-smoker. She denies any history of alcohol or illicit drug use.\n\nFamily History:\nHer mother had hypertension and a history of heart disease. Her father had a history of high cholesterol. There is no known family history of neurological disorders.\n\nVitals:\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\n\nRecent Labs:\nWBC: 7.4 K/uL\nHemoglobin: 12.8 g/dL\nPlatelets: 210 K/uL\nGlucose: 105 mg/dL\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nHospital Course:\nThe patient was admitted for a suspected transient ischemic attack. A neurological examination was performed upon arrival, which showed no focal deficits at the time of evaluation. Imaging, including a brain MRI, was conducted to assess for any structural changes. The MRI demonstrated no evidence of a permanent area of tissue death. The patient remained stable throughout her stay. She was educated on the importance of recognizing early warning signs and the necessity of blood pressure management.\n\nDischarge Diagnoses:\nTransient ischemic attack (TIA)\n\nDischarge Medications:\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAspirin 81mg daily\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a repeat neurological assessment and blood pressure monitoring. She was instructed to seek immediate emergency care if she experiences a recurrence of symptoms.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "G45.9"
+  ],
+  "explanations": [
+    "Transient ischemic attack: G45.9 (no HCC). There is no infarction, so it is not a stroke."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "tia_coded_stroke",
+      "lean": "over",
+      "why": "Symptoms resolved and MRI shows no infarction: TIA, not stroke.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-26T15:13:49+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

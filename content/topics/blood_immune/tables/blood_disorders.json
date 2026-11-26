@@ -1,0 +1,354 @@
+{
+  "id": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note_age": {
+    "min": 20,
+    "max": 70
+  },
+  "slots": {
+    "condition": {
+      "label": "Diagnosis documented",
+      "values": [
+        "hb_sc",
+        "aiha_warm",
+        "pancytopenia_chemo",
+        "pancytopenia_other",
+        "hemophilia_a",
+        "cyclic_neutropenia"
+      ],
+      "labels": {
+        "hb_sc": "Sickle cell-hemoglobin C disease, no crisis",
+        "aiha_warm": "Warm autoimmune hemolytic anemia",
+        "pancytopenia_chemo": "Pancytopenia caused by chemotherapy",
+        "pancytopenia_other": "Pancytopenia, not from chemotherapy",
+        "hemophilia_a": "Hemophilia A (factor VIII deficiency)",
+        "cyclic_neutropenia": "Cyclic neutropenia"
+      },
+      "evidence": {
+        "hb_sc": [
+          [
+            "hemoglobin SC",
+            "Hb SC",
+            "HbSC",
+            "sickle cell-hemoglobin C"
+          ]
+        ],
+        "aiha_warm": [
+          [
+            "warm autoimmune hemolytic anemia"
+          ]
+        ],
+        "pancytopenia_chemo": [
+          [
+            "pancytopenia"
+          ],
+          [
+            "chemotherapy"
+          ]
+        ],
+        "pancytopenia_other": [
+          [
+            "pancytopenia"
+          ]
+        ],
+        "hemophilia_a": [
+          [
+            "hemophilia A",
+            "factor VIII deficiency"
+          ]
+        ],
+        "cyclic_neutropenia": [
+          [
+            "cyclic neutropenia"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "hb_sc": "The hematologist documents sickle cell-hemoglobin C (Hb SC) disease, stable with no pain crisis.",
+        "aiha_warm": "The hematologist documents warm autoimmune hemolytic anemia, controlled on prednisone taper.",
+        "pancytopenia_chemo": "The oncologist documents pancytopenia caused by the patient's current chemotherapy for breast cancer; the next cycle is delayed.",
+        "pancytopenia_other": "The hematologist documents pancytopenia of unclear cause (not drug-related); a bone marrow biopsy is planned.",
+        "hemophilia_a": "The hematologist documents hemophilia A (hereditary factor VIII deficiency), on prophylactic factor infusions.",
+        "cyclic_neutropenia": "The hematologist documents cyclic neutropenia with recurring low neutrophil counts every few weeks, managed with G-CSF."
+      }
+    }
+  },
+  "note_forbid": [
+    "crisis",
+    "leukemia",
+    "lymphoma",
+    "myeloma",
+    "myelodysplastic",
+    "HIV",
+    "sepsis",
+    "fever",
+    "bleeding episode",
+    "hemarthrosis",
+    "inhibitor",
+    "von Willebrand",
+    "thalassemia",
+    "transfusion dependent",
+    "aplastic"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "hb_sc"
+      },
+      "forbid": [
+        "Hb SS",
+        "HbSS",
+        "sickle cell anemia",
+        "trait",
+        "hemolytic",
+        "pancytopenia",
+        "hemophilia",
+        "neutropenia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "aiha_warm"
+      },
+      "forbid": [
+        "cold agglutinin",
+        "cold autoimmune",
+        "sickle",
+        "pancytopenia",
+        "hemophilia",
+        "neutropenia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "pancytopenia_chemo"
+      },
+      "forbid": [
+        "sickle",
+        "hemolytic",
+        "hemophilia",
+        "cyclic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "pancytopenia_other"
+      },
+      "forbid": [
+        "chemotherapy",
+        "drug-induced",
+        "medication-induced",
+        "cancer",
+        "sickle",
+        "hemolytic",
+        "hemophilia",
+        "cyclic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "hemophilia_a"
+      },
+      "sex": "man",
+      "forbid": [
+        "factor IX",
+        "hemophilia B",
+        "sickle",
+        "hemolytic",
+        "pancytopenia",
+        "neutropenia"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cyclic_neutropenia"
+      },
+      "forbid": [
+        "chemotherapy",
+        "drug-induced",
+        "sickle",
+        "hemolytic",
+        "pancytopenia",
+        "hemophilia"
+      ]
+    }
+  ],
+  "confusions": {
+    "wrong_sickle_type": {
+      "description": "Coded Hb-SS sickle cell disease or trait instead of the documented sickle cell variant.",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the specific disorder is documented.",
+      "lean": "neutral"
+    },
+    "drug_cause_missed": {
+      "description": "Coded other pancytopenia (HCC 109) for pancytopenia caused by chemotherapy (no HCC).",
+      "lean": "over"
+    },
+    "assumed_drug_cause": {
+      "description": "Coded chemotherapy-induced pancytopenia when no drug cause is documented.",
+      "lean": "under"
+    },
+    "hemophilia_coded_other_factor": {
+      "description": "Coded another clotting factor deficiency instead of hemophilia A or B.",
+      "lean": "neutral"
+    },
+    "neutropenia_unspecified": {
+      "description": "Used unspecified neutropenia when cyclic neutropenia is documented.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "hb_sc"
+          },
+          "codes": [
+            "D57.20"
+          ],
+          "explain": "Sickle cell-hemoglobin C disease without crisis: D57.20 (HCC 108).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D84",
+            "ICD-10-CM Tabular: D57-D70"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D57.1"
+              ],
+              "confusion": "wrong_sickle_type",
+              "why": "Hb SC is a separate sickle cell disorder (HCC 108), not Hb-SS."
+            },
+            {
+              "codes": [
+                "D57.3"
+              ],
+              "confusion": "wrong_sickle_type",
+              "why": "It is a disease, not the trait."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "aiha_warm"
+          },
+          "codes": [
+            "D59.11"
+          ],
+          "explain": "Warm autoimmune hemolytic anemia: D59.11 (HCC 109).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D70"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D59.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (warm autoimmune) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "pancytopenia_chemo"
+          },
+          "codes": [
+            "D61.810"
+          ],
+          "explain": "Antineoplastic chemotherapy-induced pancytopenia: D61.810 (no HCC in V28).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D70"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D61.818"
+              ],
+              "confusion": "drug_cause_missed",
+              "why": "The chemotherapy cause is documented; D61.810 has no HCC."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "pancytopenia_other"
+          },
+          "codes": [
+            "D61.818"
+          ],
+          "explain": "Pancytopenia not caused by chemotherapy: other pancytopenia, D61.818 (HCC 109).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D70"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D61.810"
+              ],
+              "confusion": "assumed_drug_cause",
+              "why": "No chemotherapy cause is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "hemophilia_a"
+          },
+          "codes": [
+            "D66"
+          ],
+          "explain": "Hemophilia A, hereditary factor VIII deficiency: D66 (HCC 111, the 'male' hemophilia HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D70"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D68.2"
+              ],
+              "confusion": "hemophilia_coded_other_factor",
+              "why": "Factor VIII deficiency is hemophilia A: D66."
+            },
+            {
+              "codes": [
+                "D68.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The factor is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cyclic_neutropenia"
+          },
+          "codes": [
+            "D70.4"
+          ],
+          "explain": "Cyclic neutropenia: D70.4 (HCC 115).",
+          "refs": [
+            "ICD-10-CM Tabular: D57-D70"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "D70.9"
+              ],
+              "confusion": "neutropenia_unspecified",
+              "why": "The type (cyclic) is documented and carries HCC 115."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "vte",
+  "title": "DVT and pulmonary embolism",
+  "kind": "hcc",
+  "description": "Acute vs chronic vs history of deep vein thrombosis and pulmonary embolism.",
+  "order": 85,
+  "enabled": true
+}

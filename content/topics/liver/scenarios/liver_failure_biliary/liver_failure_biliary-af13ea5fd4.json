@@ -1,0 +1,70 @@
+{
+  "id": "liver_failure_biliary-af13ea5fd4",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "bile_obstruction"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Jaundice and abdominal discomfort.\n\nHPI: Pt is an 85 y.o. female presenting for f/u of jaundice and epigastric pain. She reports a gradual increase in yellowing of the skin and sclera over the last 2 weeks. Denies fever, chills, or acute severe pain. She notes some dull aching in the RUQ but denies nausea or vomiting. Pt has a known history of biliary issues. Recent imaging confirms a benign stricture causing obstruction of the common bile duct. Imaging specifically shows no gallstones present. Pt is stable but seeks intervention for biliary drainage.\n\nMedication List:\n- Atorvastatin 20mg daily\n- Lisinopril 10mg daily\n- Multivitamin daily\n\nVitals:\nBP: 138/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nWeight: 145 lbs\n\nRecent Labs:\nALT: 62 U/L\nAST: 58 U/L\nTotal Bilirubin: 4.2 mg/dL\nALP: 310 U/L\neGFR: 65 mL/min\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nGI: Positive for jaundice and RUQ discomfort. Negative for vomiting or diarrhea.\nCV: Negative for chest pain or palpitations.\nResp: Negative for SOB or cough.\nNeuro: Negative for confusion or weakness.\n\nSocial History: Retired. Lives with daughter. Non-smoker.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nExam:\nGeneral: Well-appearing, alert and oriented x3.\nSkin: Generalized jaundice noted.\nAbdomen: Soft, non-tender, non-distended. Mild RUQ tenderness to palpation. No guarding or rebound.\nMSK: Normal range of motion.\nNeuro: Alert, coherent, no focal deficits.\n\nAssessment:\n1. Obstruction of the common bile duct due to a benign stricture.\n2. Jaundice.\n\nPlan:\n1. Proceed with stent exchange for the common bile duct to resolve the stricture and improve drainage.\n2. Monitor bilirubin levels post-procedure.\n3. Follow up with radiology for imaging after stent placement.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "K83.1"
+  ],
+  "explanations": [
+    "Obstruction of bile duct without gallstones: K83.1 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K80.51"
+      ],
+      "confusion": "assumed_stones",
+      "lean": "under",
+      "why": "No gallstones: K83.1, not a calculus code (which has no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.388,
+        "gap": -0.388,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "68"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K831"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:09+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

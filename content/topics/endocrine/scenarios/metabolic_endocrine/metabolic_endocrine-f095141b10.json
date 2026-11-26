@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-f095141b10",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "addison"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for Addison's disease.\n\nHPI\nThe patient is a 74-year-old woman presenting today for a routine follow-up of her primary adrenal insufficiency. She reports feeling stable overall and denies any recent episodes of extreme fatigue, severe weakness, or dizziness. She states that she has been adherent to her current medication regimen and has not experienced any significant changes in her energy levels or physical well-being since her last appointment. She denies any nausea, vomiting, or significant changes in blood pressure.\n\nMedication List\nHydrocortisone, Fludrocortisone.\n\nExam\nThe patient is alert and oriented to person, place, and time. Her skin is clear with no new lesions or discolorations noted. Vital signs are stable and within normal limits. She is in no acute distress and appears well-nourished.\n\nAssessment\nThe patient is a 74-year-old woman with Addison's disease who is currently stable on her maintenance therapy. She shows no signs of physiological instability or medication intolerance at this time.\n\nPlan\nContinue current dosages of hydrocortisone and fludrocortisone. The patient was instructed to continue monitoring for symptoms of adrenal insufficiency and to seek immediate care if she feels acutely unwell. Follow up in three months.\n\nElectronically signed, P. O'Brien, MD, 10/14/2026",
+  "answer": [
+    "E27.1"
+  ],
+  "explanations": [
+    "Addison's disease = primary adrenocortical insufficiency: E27.1 (HCC 51)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E27.40"
+      ],
+      "confusion": "understated_adrenal",
+      "lean": "under",
+      "why": "Primary (Addison's) is documented; unspecified has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.51,
+        "gap": -0.51,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "51"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.51,
+    "hccs": [
+      {
+        "hcc": "51",
+        "label": "Addisons and Cushings Diseases/Acromegaly/and Other Specified Endocrine Disorders",
+        "from": [
+          "E271"
+        ],
+        "weight": 0.51
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:34+00:00",
+    "style": {
+      "age": 74,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "pneumonia_inpatient-a0aac7f9da",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "resp_arrest"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/10/2026\nDischarge Date: 05/14/2026\nReason for Admission: Dysphagia and choking episode.\n\nHospital Course:\nPt is a 61 y/o male admitted for evaluation of acute choking episode. During stay, pt experienced a brief respiratory arrest after choking on food. Airway was cleared and bag-mask breathing restored promptly. Pt showed full recovery from the event. No further respiratory distress noted. Pt stable throughout remainder of stay. Vitals WNL. Exam showed clear lungs, CTAB. Pt tolerated diet as tolerated.\n\nDischarge Diagnoses:\n- Choking episode\n- Dysphagia\n\nDischarge Medications:\n- Multivitamin 1 tab daily\n- Meloxicam 15mg daily\n\nFollow-up:\nF/u with primary care provider in 1 week for swallow eval and monitoring.\n\nElectronically signed\nK. Nguyen, MD\n05/14/2026",
+  "answer": [
+    "R09.2"
+  ],
+  "explanations": [
+    "Respiratory arrest: R09.2 (HCC 212)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J96.01"
+      ],
+      "confusion": "arrest_coded_failure",
+      "lean": "neutral",
+      "why": "Respiratory failure is not documented; the arrest is.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.37,
+        "correct": 0.37,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "213"
+        ],
+        "missing_hccs": [
+          "212"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.37,
+    "hccs": [
+      {
+        "hcc": "212",
+        "label": "Respiratory Arrest",
+        "from": [
+          "R092"
+        ],
+        "weight": 0.37
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:48+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "K. Nguyen",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "bipolar_schizophrenia-9bf4e1e58d",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "schizoaffective_bipolar"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for psychiatric management.\n\nHPI\nPt is an 80-year-old female presenting for scheduled follow-up of schizoaffective disorder, bipolar type. Pt reports she has been feeling stable over the past month. Denies significant mood swings or sleep disturbances. Adherent to current medication regimen. No acute distress noted during interview.\n\nMedication List\n1. Quetiapine 100mg PO QHS\n2. Lithium Carbonate 300mg PO BID\n3. Multivitamin daily\n\nReview of Systems\nConstitutional: Denies fever, chills, weight change.\nPsychiatric: Denies mood instability, sleep issues.\nNeurological: Denies tremors, dizziness.\nOther: Denies any acute complaints.\n\nSocial History\nPt lives at home with her daughter. Retired. No tobacco or recreational drug use.\n\nFamily History\nMother: Hypertension, stroke.\nFather: Type 2 Diabetes.\n\nVitals\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 145 lbs\n\nRecent Labs\nLithium level: 0.8 mEq/L\nTSH: 2.1 mIU/L\nHbA1c: 5.8%\neGFR: 65 mL/min/1.73m2\n\nExam\nGeneral: Pt is alert and oriented x3. Cooperative.\nAppearance: Well-groomed, appropriate dress.\nPsych: Affect is full and congruent. Speech is clear and normal rate/volume. Thought process is linear and goal-directed. Insight and judgment are fair.\nPhysical: CTAB. Heart: RRR. Lungs: Clear to auscultation. Extremities: No edema.\n\nAssessment\n1. Schizoaffective disorder, bipolar type. Pt is currently stable on her antipsychotic and mood stabilizer.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue monitoring lithium levels and renal function.\n3. Follow up in 3 months for routine psychiatric evaluation.\n\nElectronically signed, T. Haddad, NP, 10/14/2026",
+  "answer": [
+    "F25.0"
+  ],
+  "explanations": [
+    "Schizoaffective disorder, bipolar type: F25.0 (HCC 151)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F20.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "Schizoaffective disorder is a separate category (F25).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "'Bipolar type' describes the schizoaffective disorder; it is not bipolar disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.511,
+        "gap": -0.16,
+        "direction": "under",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": [
+          "151"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.511,
+    "hccs": [
+      {
+        "hcc": "151",
+        "label": "Schizophrenia",
+        "from": [
+          "F250"
+        ],
+        "weight": 0.511
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:00+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

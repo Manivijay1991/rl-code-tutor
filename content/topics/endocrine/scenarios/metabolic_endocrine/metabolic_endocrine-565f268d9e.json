@@ -1,0 +1,61 @@
+{
+  "id": "metabolic_endocrine-565f268d9e",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "adrenal_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for adrenal insufficiency.\n\nHPI: Patient is a 78-year-old male presenting for follow-up of adrenal insufficiency. He has been managed on a stable dose of hydrocortisone. He reports feeling well and denies any episodes of significant fatigue or weakness since the last evaluation. He notes consistent energy levels and no issues with electrolyte balance. \n\nVitals: BP 128/80, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change.\nNeurological: Negative for dizziness, tremors.\nMusculoskeletal: Negative for joint pain.\nIntegumentary: Negative for rashes.\n\nExam: Patient is alert and oriented x3. Appearance is healthy and well-nourished. Skin is warm and dry. No acute distress noted.\n\nMedication List:\n- Hydrocortisone 10mg daily\n\nAssessment: \n1. Adrenal insufficiency: Patient remains stable on current hydrocortisone regimen with no reported adverse effects or symptoms of insufficiency.\n\nPlan: \n- Continue current hydrocortisone dosage.\n- Patient to continue monitoring for any symptoms of adrenal insufficiency.\n- Follow up in 3 months for routine evaluation.\n\nElectronically signed,\nR. Mensah, NP\nOctober 14, 2026",
+  "answer": [
+    "E27.40"
+  ],
+  "explanations": [
+    "Adrenal insufficiency, type not stated: E27.40 (no HCC in V28)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E27.1"
+      ],
+      "confusion": "overstated_adrenal",
+      "lean": "over",
+      "why": "Primary (Addison's) is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.51,
+        "correct": 0,
+        "gap": 0.51,
+        "direction": "over",
+        "extra_hccs": [
+          "51"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:40+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

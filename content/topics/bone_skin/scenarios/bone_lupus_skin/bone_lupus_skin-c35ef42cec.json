@@ -1,0 +1,68 @@
+{
+  "id": "bone_lupus_skin-c35ef42cec",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "osteo_acute"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for right foot pain.\n\nHPI\nThe patient is a 36-year-old woman presenting for a follow-up evaluation of her right foot. She was diagnosed with acute osteomyelitis of the calcaneus last week following an MRI study. She reports that the pain has remained stable since her last visit. She is currently completing a course of IV antibiotics as directed. She denies any new fevers, chills, or systemic symptoms. She reports that the localized swelling and tenderness have not worsened over the last several days.\n\nMedication List\n1. Ceftriaxone 1g IV every 24 hours\n2. Ibuprofen 400mg every 6 hours as needed for pain\n\nExam\nThe patient is alert and oriented. Physical examination of the right foot reveals localized edema and tenderness over the calcaneus. No new erythema or drainage is noted. Range of motion of the ankle and toes is intact. Neurovascular status is stable with palpable pedal pulses and brisk capillary refill.\n\nAssessment\n1. Acute osteomyelitis of the right foot.\n\nPlan\nContinue current course of IV antibiotics. The patient will be monitored for clinical improvement and repeat imaging as indicated by the clinical team. Follow-up in one week for reassessment of the right foot.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "M86.171"
+  ],
+  "explanations": [
+    "Other acute osteomyelitis, right ankle and foot: M86.171 (HCC 92)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M86.671"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "It is documented as acute.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.479,
+    "hccs": [
+      {
+        "hcc": "92",
+        "label": "Bone/Joint/Muscle/Severe Soft Tissue Infections/Necrosis",
+        "from": [
+          "M86171"
+        ],
+        "weight": 0.479
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:23+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

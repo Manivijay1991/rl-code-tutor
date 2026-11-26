@@ -1,0 +1,79 @@
+{
+  "id": "liver_failure_biliary-4e3fe91b38",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "cirrhosis_portal_htn"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint\nFollow-up for liver disease management.\n\nHPI\nThe patient is a 63-year-old woman presenting for a scheduled follow-up regarding her chronic liver condition. She reports feeling generally stable today and denies any acute symptoms or significant changes in her baseline status. She is currently managed for cirrhosis and associated portal hypertension. She reports consistent adherence to her prescribed medications and states that she has not experienced any new complications since her last evaluation.\n\nMedication List\nPropranolol 40mg daily\n\nExam\nThe patient is alert and oriented. She appears in no acute distress. Skin is clear without jaundice. Abdomen is soft and non-tender with no palpable masses. Vital signs are within normal limits for her baseline.\n\nAssessment\n1. Cirrhosis.\n2. Portal hypertension.\n\nPlan\nThe patient will continue her current regimen of a nonselective beta blocker to manage portal hypertension. We will continue to monitor her condition and schedule a follow-up appointment in three months to assess for any changes in clinical status.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "K74.60",
+    "K76.6"
+  ],
+  "explanations": [
+    "Cirrhosis, K74.60 (HCC 64), plus portal hypertension, K76.6 (HCC 63, which outranks 64)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K74.60"
+      ],
+      "confusion": "missed_portal_htn",
+      "lean": "under",
+      "why": "Portal hypertension is documented and coded separately.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.447,
+        "correct": 0.962,
+        "gap": -0.515,
+        "direction": "under",
+        "extra_hccs": [
+          "64"
+        ],
+        "missing_hccs": [
+          "63"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.962,
+    "hccs": [
+      {
+        "hcc": "63",
+        "label": "Chronic Liver Failure/End-Stage Liver Disorders",
+        "from": [
+          "K766"
+        ],
+        "weight": 0.962
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "64",
+        "label": "Cirrhosis of Liver",
+        "by": "63"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:22+00:00",
+    "style": {
+      "age": 63,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

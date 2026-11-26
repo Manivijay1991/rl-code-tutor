@@ -1,0 +1,71 @@
+{
+  "id": "pneumonia_inpatient-af95df8857",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "lung_abscess"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/20/2026\nReason for Admission: Shortness of breath, productive cough, fever.\n\nHospital Course:\nPt is an 83 y/o F admitted for evaluation of respiratory symptoms. CT imaging revealed a lung abscess. No evidence of pneumonia elsewhere. Pt started on prolonged course of IV antibiotics. Pt tolerated treatment well; afebrile x48 hrs. Lungs clear to auscultation. Vitals stable. Transitioned to oral meds prior to discharge.\n\nDischarge Diagnoses:\n- lung abscess\n- Acute respiratory infection\n\nDischarge Medications:\n- Amoxicillin-clavulanate 875/125mg BID x10 days\n- Guaifenesin 600mg PRN\n- Acetaminophen 650mg PRN\n\nFollow-up:\nF/u with PCP in 1 week for wound check and symptom review. Repeat imaging in 6 weeks to monitor abscess resolution.\n\nElectronically signed\nP. O'Brien, MD\n05/20/2026",
+  "answer": [
+    "J85.2"
+  ],
+  "explanations": [
+    "Lung abscess without pneumonia: J85.2 (HCC 283)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J18.9"
+      ],
+      "confusion": "wrong_lung_condition",
+      "lean": "neutral",
+      "why": "A lung abscess is documented, not pneumonia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.204,
+        "gap": -0.204,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "283"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.204,
+    "hccs": [
+      {
+        "hcc": "283",
+        "label": "Empyema/Lung Abscess",
+        "from": [
+          "J852"
+        ],
+        "weight": 0.204
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:00+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

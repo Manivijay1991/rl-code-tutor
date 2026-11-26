@@ -1,0 +1,68 @@
+{
+  "id": "bone_lupus_skin-7ca59c956b",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "sle_nephritis"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: Follow-up for lupus nephritis.\n\nHPI: Patient is a 51-year-old male with a history of systemic lupus erythematosus (SLE) and associated lupus nephritis. He reports stable symptoms since his last evaluation. He denies any new joint pain, rashes, or significant fatigue. He reports adherence to his current medication regimen, including mycophenolate. He denies any new symptoms of urinary tract infection or changes in urine output. He reports no new episodes of fever or chills. He notes that his overall energy levels have remained consistent.\n\nVitals: BP 128/82, HR 68, Temp 98.6 F, SpO2 98% on room air, BMI 27.4.\n\nRecent Labs: Serum creatinine 1.4 mg/dL, eGFR 54 mL/min/1.73m2, Urinalysis: trace protein, no RBCs, no WBCs.\n\nMedication List:\n- Mycophenolate mofetil 1000mg twice daily\n- Hydroxychloroquine 200mg daily\n- Prednisone 5mg daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, weight change, or fatigue.\nSkin: Negative for new rashes or lesions.\nMusculoskeletal: Negative for joint pain or swelling.\nRenal: Negative for dysuria, hematuria, or oliguria.\nNeurological: Negative for headaches or numbness.\nRespiratory: Negative for shortness of breath or cough.\n\nSocial History: Patient is married and works as a software engineer. He denies tobacco or alcohol use. He reports regular exercise and a balanced diet.\n\nFamily History: Mother has hypertension. Father has a history of hyperlipidemia. No family history of autoimmune disease.\n\nExam: Patient appears well-nourished and in no acute distress. Skin is clear without evidence of active rashes or malar distribution. No joint swelling or erythema noted in the hands or knees. Lungs are clear to auscultation. Heart sounds are regular with no murmurs. No peripheral edema noted.\n\nAssessment: 51-year-old male with stable systemic lupus erythematosus and lupus nephritis. Current glomerular disease is managed with mycophenolate and hydroxychloroquine. Patient is currently stable on his current dosage.\n\nPlan: \n1. Continue current medication regimen.\n2. Monitor renal function and proteinuria with follow-up labs in 3 months.\n3. Patient to call if new symptoms of fever or acute joint pain develop.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "M32.14"
+  ],
+  "explanations": [
+    "Glomerular disease in systemic lupus erythematosus: M32.14 (HCC 94)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M32.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The kidney involvement is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.268,
+        "correct": 0.268,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.268,
+    "hccs": [
+      {
+        "hcc": "94",
+        "label": "Systemic Lupus Erythematosus and Other Specified Systemic Connective Tissue Disorders",
+        "from": [
+          "M3214"
+        ],
+        "weight": 0.268
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:46+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

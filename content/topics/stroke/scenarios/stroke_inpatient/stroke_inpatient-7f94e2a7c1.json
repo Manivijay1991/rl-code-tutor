@@ -1,0 +1,73 @@
+{
+  "id": "stroke_inpatient-7f94e2a7c1",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "hemorrhage"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Spontaneous intracerebral hemorrhage\n\nHospital Course:\nThe patient is a 78-year-old woman who presented to the emergency department with acute neurological symptoms. Imaging confirmed a nontraumatic intracerebral hemorrhage. She was admitted for conservative medical management, including blood pressure stabilization and close neurological monitoring. During her stay, she remained hemodynamically stable. The patient showed significant improvement over the course of the hospitalization. All neurological deficits were fully resolved prior to her discharge. She was able to participate in physical therapy and successfully met all criteria for safe discharge to her home.\n\nDischarge Diagnoses:\n1. Spontaneous intracerebral hemorrhage\n\nDischarge Medications:\n1. Lisinopril 10mg daily\n2. Atorvastatin 40mg daily\n\nFollow-up:\nThe patient is instructed to follow up with her primary care physician in one week and with neurology in two weeks for continued monitoring.\n\nElectronically signed, L. Moreau, MD, 05/18/2026",
+  "answer": [
+    "I61.9"
+  ],
+  "explanations": [
+    "Nontraumatic intracerebral hemorrhage, location not named: I61.9 (HCC 248)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "wrong_stroke_type",
+      "lean": "neutral",
+      "why": "It is a hemorrhage, not an infarction.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0.239,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": [
+          "248"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.239,
+    "hccs": [
+      {
+        "hcc": "248",
+        "label": "Intracranial Hemorrhage",
+        "from": [
+          "I619"
+        ],
+        "weight": 0.239
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:37+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

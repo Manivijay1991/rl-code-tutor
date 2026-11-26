@@ -1,0 +1,95 @@
+{
+  "id": "head_injury-5c713356e2",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "tbi_loc_long"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/24/2026\nReason for Admission: Motor vehicle accident with head trauma.\n\nVitals:\nT: 98.4 F, HR: 78 (RRR), BP: 132/80, RR: 16, SpO2: 96% on RA.\n\nRecent Labs:\nWBC: 8.2, Hgb: 13.4, Plt: 210, Na: 138, K: 4.1, Cr: 1.1, eGFR: 68.\n\nReview of Systems:\nNeuro: Positive for altered mental status, positive for diffuse axonal injury. Negative for focal deficits.\nCV: NAD.\nResp: NAD.\nGI: NAD.\nMSK: Positive for minor bruising on extremities.\n\nSocial History: Retired. Lives with spouse. No tobacco use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nHospital Course:\nPt is a 90-year-old male admitted following a car crash. Initial assessment revealed a diffuse brain injury. Pt was unconscious for three days following the impact. During the acute phase, neuro status was monitored closely. Pt eventually returned to his usual level of consciousness. Imaging and clinical monitoring confirmed diffuse axonal injury. During the stay, pt was stable, and there were no major complications. Pt showed gradual improvement in orientation and mobility. Transitioned to physical therapy and nursing care.\n\nDischarge Diagnoses:\n1. Diffuse axonal injury.\n2. Traumatic brain injury.\n3. Status post motor vehicle accident.\n\nDischarge Medications:\n1. Acetaminophen 650mg BID PRN for pain.\n2. Meloxicam 7.5mg daily.\n3. Multivitamin daily.\n\nFollow-up:\nPt to f/u with neurology in 1 week. Pt to f/u with primary care physician in 2 weeks. Pt instructed to monitor for any changes in mental status or increased headache.\n\nElectronically signed, L. Moreau, MD, 05/24/2026",
+  "answer": [
+    "S06.2X5A"
+  ],
+  "explanations": [
+    "Diffuse traumatic brain injury with loss of consciousness over 24 hours and return to the prior conscious level, initial encounter: S06.2X5A (HCC 397)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X9A"
+      ],
+      "confusion": "unspecified_loc",
+      "lean": "neutral",
+      "why": "The duration (over 24 hours) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": [
+          "397"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "wrong_loc_duration",
+      "lean": "neutral",
+      "why": "Unconscious for days, not minutes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": [
+          "397"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.199,
+    "hccs": [
+      {
+        "hcc": "397",
+        "label": "Major Head Injury with Loss of Consciousness > 1 Hour",
+        "from": [
+          "S062X5A"
+        ],
+        "weight": 0.199
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:21+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "mi_angina-445d1d51b0",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "old_mi"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Follow-up for general health.\n\nHPI: Pt is a 76-year-old female presenting for a routine follow-up. She reports feeling well overall. Pt had a myocardial infarction eight months ago. She states the event has healed and she currently has no symptoms. She is not currently receiving any ongoing care or specific interventions for that event. She denies any shortness of breath, dizziness, or palpitations.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 40mg daily\n- Aspirin 81mg daily\n\nVitals:\nBP: 122/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 82\nTSH: 2.1\nLDL: 74\nHDL: 52\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nCV: No palpitations, no syncope.\nResp: No cough, no SOB.\nGI: No nausea, no diarrhea.\nMSK: No joint pain.\nNeuro: No tremors, no numbness.\n\nSocial History: Retired. Lives with husband. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had stroke at age 75. Father had stroke at age 80.\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, S1, S2. No murmurs.\nLungs: CTAB.\nAbdomen: Soft, non-tender.\nExtremities: WNL, no edema.\n\nAssessment:\n1. Status post myocardial infarction 8 months ago. Pt is asymptomatic and stable at this time.\n2. Well-controlled lipids.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue routine monitoring.\n3. Return to clinic in 6 months for f/u.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "I25.2"
+  ],
+  "explanations": [
+    "An MI more than 4 weeks ago that needs no further care: old myocardial infarction, I25.2 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.9.e"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I21.4"
+      ],
+      "confusion": "old_mi_coded_acute",
+      "lean": "over",
+      "why": "After 4 weeks with no ongoing care, the MI is old: I25.2.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.252,
+        "correct": 0,
+        "gap": 0.252,
+        "direction": "over",
+        "extra_hccs": [
+          "228"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:02+00:00",
+    "style": {
+      "age": 76,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

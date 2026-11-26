@@ -1,0 +1,86 @@
+{
+  "id": "fibrosis_airway-fb12d4e0bc",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "trach_only"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint: Follow-up for tracheostomy care.\n\nHPI: 85y female pt presents for scheduled f/u of long-standing tracheostomy. Pt is currently stable and breathes without a ventilator. Pt reports no new issues with stoma site, no signs of infection, and no difficulty with secretions. Pt reports adequate supplies at home.\n\nMedication List:\n1. Lisinopril 10mg daily\n2. Atorvastatin 20mg daily\n3. Multivitamin daily\n\nReview of Systems:\nConstitutional: No fever, chills, or weight loss.\nRespiratory: No shortness of breath, no cough, no sputum production.\nHEENT: No sore throat, no drainage from stoma.\nMusculoskeletal: No joint pain or swelling.\nNeurological: No weakness or numbness.\n\nSocial History: Lives at home with family. Independent in most ADLs. No tobacco use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nRecent Labs:\nHbA1c: 5.8%\neGFR: 62 mL/min/1.73m2\nTSH: 2.1 mIU/L\nWBC: 7.2 x 10^9/L\nHgb: 12.4 g/dL\n\nVitals:\nBP: 128/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 96% on room air\nWeight: 145 lbs\n\nExam:\nGeneral: Alert and oriented x3. Appears well-nourished. In no acute distress.\nRespiratory: Chest is clear to auscultation. No wheezing or crackles.\nStoma: Long-standing tracheostomy site is clean, dry, and intact. No erythema, purulent drainage, or crusting noted. Stoma and supplies reviewed with pt and caregiver.\nSkin: WNL.\nNeuro: Alert, responsive.\n\nAssessment:\n1. Long-standing tracheostomy: Stable. Pt is breathing without a ventilator.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue stoma care as instructed.\n3. Supplies reviewed and confirmed adequate.\n4. F/u in 3 months or PRN for any stoma site issues.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "Z93.0"
+  ],
+  "explanations": [
+    "Tracheostomy status without ventilator dependence: Z93.0 (HCC 211)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_trach_status",
+      "lean": "under",
+      "why": "Tracheostomy status is reportable (HCC 211).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.879,
+        "gap": -0.879,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "211"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z93.0",
+        "Z99.11"
+      ],
+      "confusion": "missed_vent_status",
+      "lean": "neutral",
+      "why": "No ventilator dependence is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.879,
+        "correct": 0.879,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.879,
+    "hccs": [
+      {
+        "hcc": "211",
+        "label": "Respirator Dependence/Tracheostomy Status/Complications",
+        "from": [
+          "Z930"
+        ],
+        "weight": 0.879
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:19:33+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

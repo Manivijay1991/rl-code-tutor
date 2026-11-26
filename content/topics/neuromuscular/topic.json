@@ -1,0 +1,8 @@
+{
+  "id": "neuromuscular",
+  "title": "Nerve and muscle disorders",
+  "kind": "hcc",
+  "description": "Motor neuron disease, myasthenia with or without exacerbation, CIDP vs polyneuropathy, muscular dystrophy, cerebral palsy type, hereditary ataxia, Huntington's and anoxic brain damage.",
+  "order": 67,
+  "enabled": true
+}

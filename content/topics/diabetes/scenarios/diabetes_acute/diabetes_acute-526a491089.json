@@ -1,0 +1,91 @@
+{
+  "id": "diabetes_acute-526a491089",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t1_dka"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Diabetic ketoacidosis\n\nVitals:\nT: 98.2 F, HR: 88, RR: 18, BP: 132/84, SpO2: 97% on RA.\n\nRecent Labs:\nGlucose: 450 mg/dL (admission), 140 mg/dL (discharge)\nBicarb: 12 mEq/L (admission), 22 mEq/L (discharge)\nAnion Gap: 18 (admission), 10 (discharge)\nKetones: Positive (admission), Negative (discharge)\nHbA1c: 9.4%\neGFR: 72 mL/min\n\nReview of Systems:\nConstitutional: Fatigue, polyuria.\nRespiratory: NAD.\nCV: No chest pain.\nGI: Nausea reported on admission.\nNeuro: Alert and oriented x3.\n\nSocial History:\nLives with daughter. Retired. Non-smoker.\n\nFamily History:\nMother: Type 1 diabetes.\nFather: Hypertension.\n\nHospital Course:\nPt is an 80-year-old female with a known hx of type 1 diabetes. Presented to ED with altered mental status and fruity breath. Labs confirmed DKA. Pt admitted for stabilization. Initiated aggressive IV fluid resuscitation and continuous insulin drip. Managed for metabolic derangements. Pt responded well to treatment. Bicarb normalized, ketones cleared, and glucose stabilized. Pt tolerated oral intake well before discharge.\n\nDischarge Diagnoses:\n1. Diabetic ketoacidosis\n2. Type 1 diabetes\n\nDischarge Medications:\n1. Insulin Lispro: 10 units subcutaneous before meals\n2. Insulin Glargine: 20 units subcutaneous at bedtime\n3. Metformin: 500 mg BID\n\nFollow-up:\nF/u with primary care physician in 1 week for labs and insulin titration. Pt instructed to call if severe symptoms return.\n\nElectronically signed, T. Haddad, MD, 05/15/2026",
+  "answer": [
+    "E10.10"
+  ],
+  "explanations": [
+    "Type 1 diabetes with ketoacidosis without coma: E10.10 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.10"
+      ],
+      "confusion": "wrong_dm_type",
+      "lean": "neutral",
+      "why": "Type 1 diabetes is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "E10.65"
+      ],
+      "confusion": "dka_coded_hyperglycemia",
+      "lean": "under",
+      "why": "Ketoacidosis is documented (HCC 36).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E1010"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:38+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

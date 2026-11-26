@@ -1,0 +1,352 @@
+{
+  "id": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note_age": {
+    "min": 55
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "aspiration",
+        "mrsa",
+        "unspecified_organism",
+        "lung_abscess",
+        "empyema",
+        "resp_arrest"
+      ],
+      "labels": {
+        "aspiration": "Aspiration pneumonia",
+        "mrsa": "MRSA pneumonia",
+        "unspecified_organism": "Pneumonia, organism not identified",
+        "lung_abscess": "Lung abscess",
+        "empyema": "Empyema",
+        "resp_arrest": "Respiratory arrest, recovered"
+      },
+      "evidence": {
+        "aspiration": [
+          [
+            "aspiration pneumonia"
+          ]
+        ],
+        "mrsa": [
+          [
+            "pneumonia"
+          ],
+          [
+            "MRSA",
+            "methicillin-resistant"
+          ]
+        ],
+        "unspecified_organism": [
+          [
+            "pneumonia"
+          ]
+        ],
+        "lung_abscess": [
+          [
+            "lung abscess",
+            "abscess of the lung"
+          ]
+        ],
+        "empyema": [
+          [
+            "empyema"
+          ]
+        ],
+        "resp_arrest": [
+          [
+            "respiratory arrest"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "aspiration": "Admitted with aspiration pneumonia after choking on food at home; treated with antibiotics; a swallow evaluation was done.",
+        "mrsa": "Admitted with pneumonia; sputum culture grew MRSA (methicillin-resistant Staphylococcus aureus); treated with vancomycin.",
+        "unspecified_organism": "Admitted with community-acquired pneumonia; cultures were negative and no organism was identified; treated with antibiotics.",
+        "lung_abscess": "Admitted with a lung abscess seen on CT, without pneumonia elsewhere; treated with prolonged antibiotics.",
+        "empyema": "Admitted with an empyema (pus in the pleural space) drained by chest tube; treated with antibiotics.",
+        "resp_arrest": "During the stay the patient had a brief respiratory arrest after choking on food; the airway was cleared and bag-mask breathing restored, with full recovery. No respiratory failure is documented."
+      }
+    }
+  },
+  "note_forbid": [
+    "COPD",
+    "chronic obstructive",
+    "emphysema",
+    "chronic bronchitis",
+    "lung cancer",
+    "heart failure",
+    "COVID",
+    "sepsis",
+    "septic",
+    "respiratory failure",
+    "ventilator",
+    "intubat",
+    "ICU",
+    "COVID",
+    "influenza",
+    "tuberculosis",
+    "cancer",
+    "pleural effusion",
+    "fistula",
+    "cardiac arrest",
+    "CPR"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD"
+    },
+    {
+      "when": {
+        "condition": "aspiration"
+      },
+      "forbid": [
+        "MRSA",
+        "Staphylococcus",
+        "Streptococcus",
+        "Klebsiella",
+        "Pseudomonas",
+        "abscess",
+        "empyema",
+        "arrest"
+      ]
+    },
+    {
+      "when": {
+        "condition": "mrsa"
+      },
+      "forbid": [
+        "aspiration",
+        "MSSA",
+        "methicillin-sensitive",
+        "abscess",
+        "empyema",
+        "arrest"
+      ]
+    },
+    {
+      "when": {
+        "condition": "unspecified_organism"
+      },
+      "forbid": [
+        "aspiration",
+        "MRSA",
+        "Staphylococcus",
+        "Streptococcus",
+        "bacterial pneumonia",
+        "abscess",
+        "empyema",
+        "arrest"
+      ]
+    },
+    {
+      "when": {
+        "condition": "lung_abscess"
+      },
+      "forbid": [
+        "aspiration",
+        "MRSA",
+        "empyema",
+        "arrest"
+      ]
+    },
+    {
+      "when": {
+        "condition": "empyema"
+      },
+      "forbid": [
+        "aspiration",
+        "MRSA",
+        "lung abscess",
+        "arrest"
+      ]
+    },
+    {
+      "when": {
+        "condition": "resp_arrest"
+      },
+      "forbid": [
+        "pneumonia",
+        "abscess",
+        "empyema",
+        "aspiration"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_specific_pneumonia": {
+      "description": "Coded pneumonia with unspecified organism when a specific type or organism is documented.",
+      "lean": "under"
+    },
+    "assumed_organism": {
+      "description": "Coded a specific pneumonia type or organism that is not documented.",
+      "lean": "over"
+    },
+    "wrong_staph": {
+      "description": "Confused MRSA and MSSA pneumonia.",
+      "lean": "neutral"
+    },
+    "wrong_lung_condition": {
+      "description": "Coded a different lung condition than the one documented.",
+      "lean": "neutral"
+    },
+    "arrest_coded_failure": {
+      "description": "Coded respiratory failure for a respiratory arrest.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "aspiration"
+          },
+          "codes": [
+            "J69.0"
+          ],
+          "explain": "Aspiration pneumonia: pneumonitis due to inhalation of food and vomit, J69.0 (HCC 282).",
+          "refs": [
+            "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J18.9"
+              ],
+              "confusion": "missed_specific_pneumonia",
+              "why": "Aspiration pneumonia has its own code (HCC 282)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "mrsa"
+          },
+          "codes": [
+            "J15.212"
+          ],
+          "explain": "Pneumonia due to MRSA: J15.212 (HCC 282).",
+          "refs": [
+            "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J15.9"
+              ],
+              "confusion": "missed_specific_pneumonia",
+              "why": "The organism (MRSA) is documented."
+            },
+            {
+              "codes": [
+                "J15.211"
+              ],
+              "confusion": "wrong_staph",
+              "why": "Methicillin-resistant, not susceptible."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "unspecified_organism"
+          },
+          "codes": [
+            "J18.9"
+          ],
+          "explain": "Pneumonia with no organism identified: J18.9 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J69.0"
+              ],
+              "confusion": "assumed_organism",
+              "why": "Aspiration is not documented."
+            },
+            {
+              "codes": [
+                "J15.9"
+              ],
+              "confusion": "assumed_organism",
+              "why": "A bacterial cause is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "lung_abscess"
+          },
+          "codes": [
+            "J85.2"
+          ],
+          "explain": "Lung abscess without pneumonia: J85.2 (HCC 283).",
+          "refs": [
+            "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J18.9"
+              ],
+              "confusion": "wrong_lung_condition",
+              "why": "A lung abscess is documented, not pneumonia."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "empyema"
+          },
+          "codes": [
+            "J86.9"
+          ],
+          "explain": "Empyema without fistula (pyothorax): J86.9 (HCC 283).",
+          "refs": [
+            "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J90"
+              ],
+              "confusion": "wrong_lung_condition",
+              "why": "Pus in the pleural space is empyema, not a plain effusion."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "resp_arrest"
+          },
+          "codes": [
+            "R09.2"
+          ],
+          "explain": "Respiratory arrest: R09.2 (HCC 212).",
+          "refs": [
+            "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J96.01"
+              ],
+              "confusion": "arrest_coded_failure",
+              "why": "Respiratory failure is not documented; the arrest is."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

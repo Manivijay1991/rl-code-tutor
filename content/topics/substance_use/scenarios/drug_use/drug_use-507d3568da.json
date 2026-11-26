@@ -1,0 +1,62 @@
+{
+  "id": "drug_use-507d3568da",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cannabis_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for cannabis use.\n\nHPI\nPt is an 83 y.o. female presenting for f/u regarding cannabis use disorder. Pt reports she is currently cutting down on her intake. She notes she is motivated to reduce usage but finds it difficult at times. She denies any acute concerns or recent complications related to use. She reports stable mood and functioning.\n\nMedication List\nMultivitamin daily\nMelatonin 3mg PRN for sleep\n\nExam\nGen: Well-appearing, alert and oriented x3.\nVitals: BP 128/78, HR 72, RR 16, Temp 98.6 F.\nCV: RRR, CTAB.\nResp: CTAB.\nNeuro: NAD.\nPsych: Appropriate affect, cooperative.\n\nAssessment\n1. Cannabis use disorder, mild. Pt is currently in the process of cutting down.\n\nPlan\n1. Continue to monitor cannabis use disorder. Pt to continue current efforts to cut down.\n2. F/u in 4 weeks to monitor progress and provide support.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "F12.10"
+  ],
+  "explanations": [
+    "Mild cannabis use disorder = cannabis abuse, uncomplicated: F12.10 (no HCC; V28 excludes cannabis abuse)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F12.20"
+      ],
+      "confusion": "cannabis_hcc_assumed",
+      "lean": "over",
+      "why": "Mild = abuse (F12.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0,
+        "gap": 0.424,
+        "direction": "over",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:09+00:00",
+    "style": {
+      "age": 83,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

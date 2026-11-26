@@ -1,0 +1,81 @@
+{
+  "id": "fibrosis_airway-fc7613b029",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "ssc_lung"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint\nFollow-up for systemic sclerosis and lung involvement.\n\nHPI\nThe patient is a 79-year-old woman who presents today for a scheduled follow-up to manage her systemic sclerosis. She is currently being treated with mycophenolate to address the associated interstitial lung disease. She reports that she has been feeling stable overall since her last visit. She notes that her exercise tolerance remains consistent with her baseline, and she denies any acute increase in shortness of breath or new episodes of productive coughing. She reports no significant skin changes or new joint pain since the previous encounter. She continues to manage her daily activities independently but acknowledges some fatigue on days with high activity levels.\n\nMedication List\n- Mycophenolate mofetil: 1000mg twice daily\n- Lisinopril: 10mg daily\n- Calcium carbonate: 500mg daily\n\nReview of Systems\nConstitutional: Denies fever, chills, or significant weight changes.\nRespiratory: Denies acute shortness of breath, wheezing, or chest pain.\nMusculoskeletal: Denies new joint swelling or severe stiffness.\nIntegumentary: Denies new skin ulcers or severe itching.\nNeurological: Denies numbness or tingling in extremities.\n\nSocial History\nThe patient lives at home with her spouse. She enjoys gardening and light walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension. Father had a history of osteoarthritis.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 96% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nHbA1c: 5.7%\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nCBC and CMP within normal limits.\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: Clear to auscultation bilaterally. No adventitious sounds noted.\nMusculoskeletal: Mild symmetric joint stiffness in hands, no acute erythema.\nIntegumentary: Skin shows moderate thickening on fingers and face.\n\nAssessment\n1. Systemic sclerosis with interstitial lung disease, stable on current mycophenolate regimen.\n\nPlan\n1. Continue current dose of mycophenolate mofetil.\n2. Continue Lisinopril for blood pressure management.\n3. Monitor respiratory function with repeat pulmonary function tests in 6 months.\n4. Patient instructed to report any sudden increase in dyspnea or new skin lesions.\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "M34.81"
+  ],
+  "explanations": [
+    "Systemic sclerosis with lung involvement has a combination code: M34.81, which maps to two HCCs (93 and 278)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M34.9",
+        "J84.10"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code M34.81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.936,
+        "correct": 1.435,
+        "gap": -0.499,
+        "direction": "under",
+        "extra_hccs": [
+          "280"
+        ],
+        "missing_hccs": [
+          "278"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.435,
+    "hccs": [
+      {
+        "hcc": "93",
+        "label": "Rheumatoid Arthritis and Other Specified Inflammatory Rheumatic Disorders",
+        "from": [
+          "M3481"
+        ],
+        "weight": 0.617
+      },
+      {
+        "hcc": "278",
+        "label": "Idiopathic Pulmonary Fibrosis and Lung Involvement in Systemic Sclerosis",
+        "from": [
+          "M3481"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:48+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

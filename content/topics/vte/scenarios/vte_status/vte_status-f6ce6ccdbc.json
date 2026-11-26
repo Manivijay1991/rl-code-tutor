@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-f6ce6ccdbc",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_dvt"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint\nFollow-up for DVT.\n\nHPI\nPt is a 56 y/o female presenting for f/u of acute deep vein thrombosis of the right femoral vein. Diagnosis made via ultrasound 3 weeks ago. Pt currently in the first months of anticoagulant treatment. Denies calf pain, swelling, or shortness of breath since starting meds. Tolerating therapy well. No bleeding episodes reported.\n\nMedication List\nRivaroxaban 20mg daily.\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: Clear, no wheezes.\nExt: Right lower extremity shows mild swelling compared to other side. No erythema or warmth noted. Distal pulses palpable.\n\nAssessment\n1. Acute DVT of the right femoral vein. Pt is stable on current anticoagulation.\n\nPlan\n1. Continue Rivaroxaban as prescribed.\n2. Continue monitoring for any signs of bleeding or worsening symptoms.\n3. F/u in 4 weeks for re-evaluation.\n\nElectronically signed,\nD. Kowalski, MD\n05/14/2026",
+  "answer": [
+    "I82.411"
+  ],
+  "explanations": [
+    "Acute DVT of the right femoral vein, still under initial treatment: I82.411 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.718"
+      ],
+      "confusion": "acute_coded_history",
+      "lean": "under",
+      "why": "The clot is acute and still being treated.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I82.511"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The DVT is documented as acute.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I82411"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:07:39+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

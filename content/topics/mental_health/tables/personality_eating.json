@@ -1,0 +1,341 @@
+{
+  "id": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note_age": {
+    "min": 18,
+    "max": 60
+  },
+  "slots": {
+    "condition": {
+      "label": "Diagnosis documented",
+      "values": [
+        "borderline",
+        "personality_unspecified",
+        "anorexia_restricting_moderate",
+        "anorexia_restricting_remission",
+        "bulimia_severe"
+      ],
+      "labels": {
+        "borderline": "Borderline personality disorder",
+        "personality_unspecified": "Personality disorder, type not stated",
+        "anorexia_restricting_moderate": "Anorexia nervosa, restricting type, moderate",
+        "anorexia_restricting_remission": "Anorexia nervosa, restricting type, in remission",
+        "bulimia_severe": "Bulimia nervosa, severe"
+      },
+      "evidence": {
+        "borderline": [
+          [
+            "borderline personality disorder"
+          ]
+        ],
+        "personality_unspecified": [
+          [
+            "personality disorder"
+          ]
+        ],
+        "anorexia_restricting_moderate": [
+          [
+            "anorexia nervosa"
+          ],
+          [
+            "restricting type"
+          ],
+          [
+            "moderate"
+          ]
+        ],
+        "anorexia_restricting_remission": [
+          [
+            "anorexia nervosa"
+          ],
+          [
+            "restricting type"
+          ],
+          [
+            "in remission"
+          ]
+        ],
+        "bulimia_severe": [
+          [
+            "bulimia nervosa"
+          ],
+          [
+            "severe"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "borderline": "The psychiatrist documents borderline personality disorder, engaged in weekly dialectical behavior therapy.",
+        "personality_unspecified": "The provider documents a personality disorder, type not stated, and refers to psychiatry.",
+        "anorexia_restricting_moderate": "The provider documents anorexia nervosa, restricting type, moderate severity, followed with a dietitian and therapist.",
+        "anorexia_restricting_remission": "The provider documents anorexia nervosa, restricting type, in remission; weight has been stable for over a year.",
+        "bulimia_severe": "The provider documents bulimia nervosa, severe, with frequent binge-purge episodes; intensive outpatient treatment is arranged."
+      }
+    }
+  },
+  "note_forbid": [
+    "alcohol use disorder",
+    "alcohol abuse",
+    "alcohol dependence",
+    "opioid",
+    "cocaine",
+    "cannabis",
+    "marijuana",
+    "methamphetamine",
+    "heroin",
+    "substance use",
+    "bipolar",
+    "schizophrenia",
+    "psychotic",
+    "suicid",
+    "major depressive disorder",
+    "MDD",
+    "PTSD",
+    "binge eating disorder",
+    "ARFID",
+    "obesity"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "borderline",
+          "personality_unspecified"
+        ]
+      },
+      "forbid": [
+        "anorexia",
+        "bulimia",
+        "eating disorder"
+      ]
+    },
+    {
+      "when": {
+        "condition": "personality_unspecified"
+      },
+      "forbid": [
+        "borderline",
+        "antisocial",
+        "narcissistic",
+        "avoidant",
+        "schizotypal",
+        "paranoid"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "anorexia_restricting_moderate",
+          "anorexia_restricting_remission",
+          "bulimia_severe"
+        ]
+      },
+      "forbid": [
+        "personality disorder"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "anorexia_restricting_moderate",
+          "anorexia_restricting_remission"
+        ]
+      },
+      "forbid": [
+        "bulimia",
+        "binge",
+        "purg"
+      ]
+    },
+    {
+      "when": {
+        "condition": "anorexia_restricting_moderate"
+      },
+      "forbid": [
+        "remission",
+        "mild",
+        "severe",
+        "extreme"
+      ]
+    },
+    {
+      "when": {
+        "condition": "anorexia_restricting_remission"
+      },
+      "forbid": [
+        "mild",
+        "moderate",
+        "severe",
+        "extreme"
+      ]
+    },
+    {
+      "when": {
+        "condition": "bulimia_severe"
+      },
+      "forbid": [
+        "anorexia",
+        "remission",
+        "mild",
+        "moderate",
+        "extreme"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the type, severity or remission is documented.",
+      "lean": "neutral"
+    },
+    "assumed_type": {
+      "description": "Coded a type the provider did not document.",
+      "lean": "neutral"
+    },
+    "remission_coded_active": {
+      "description": "Coded an active severity when the provider documents remission.",
+      "lean": "neutral"
+    },
+    "wrong_eating_type": {
+      "description": "Confused the type of anorexia (restricting vs binge-purge) or anorexia vs bulimia.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "borderline"
+          },
+          "codes": [
+            "F60.3"
+          ],
+          "explain": "Borderline personality disorder: F60.3 (HCC 153).",
+          "refs": [
+            "ICD-10-CM Tabular: F50, F60"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F60.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (borderline) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "personality_unspecified"
+          },
+          "codes": [
+            "F60.9"
+          ],
+          "explain": "Personality disorder without a stated type: F60.9 (HCC 153).",
+          "refs": [
+            "ICD-10-CM Tabular: F50, F60"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F60.3"
+              ],
+              "confusion": "assumed_type",
+              "why": "Borderline personality disorder is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "anorexia_restricting_moderate"
+          },
+          "codes": [
+            "F50.011"
+          ],
+          "explain": "Anorexia nervosa, restricting type, moderate: F50.011 (HCC 153).",
+          "refs": [
+            "ICD-10-CM Tabular: F50, F60"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F50.00"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type and severity are documented."
+            },
+            {
+              "codes": [
+                "F50.021"
+              ],
+              "confusion": "wrong_eating_type",
+              "why": "The restricting type is documented, not binge-purge."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "anorexia_restricting_remission"
+          },
+          "codes": [
+            "F50.014"
+          ],
+          "explain": "Anorexia nervosa, restricting type, in remission: F50.014 (HCC 153).",
+          "refs": [
+            "OCG I.C.5.b.1",
+            "ICD-10-CM Tabular: F50, F60"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F50.011"
+              ],
+              "confusion": "remission_coded_active",
+              "why": "The provider documents remission."
+            },
+            {
+              "codes": [
+                "F50.019"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "Remission is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "bulimia_severe"
+          },
+          "codes": [
+            "F50.23"
+          ],
+          "explain": "Bulimia nervosa, severe: F50.23 (HCC 153).",
+          "refs": [
+            "ICD-10-CM Tabular: F50, F60"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "F50.20"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The severity is documented."
+            },
+            {
+              "codes": [
+                "F50.022"
+              ],
+              "confusion": "wrong_eating_type",
+              "why": "Bulimia nervosa is documented, not anorexia."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

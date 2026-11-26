@@ -1,0 +1,74 @@
+{
+  "id": "head_injury-0b2dcf2d52",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "tbi_no_loc"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Fall from ladder with head trauma.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\nRecent Labs: WBC 8.4, Hgb 14.2, Plt 210, Na 139, K 4.1, Creatinine 0.9.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nNeurological: Positive for headache and dizziness. Negative for focal weakness, numbness, or vision changes.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath or cough.\nMusculoskeletal: Positive for neck pain. Negative for joint swelling.\n\nSocial History: Patient works as a construction foreman. He lives with his spouse and two children. He denies tobacco use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes. No family history of neurological disorders.\n\nHistory of Present Illness:\n[Copied Forward]: The patient is a 51-year-old male who presented to the emergency department following a fall from a ladder at a job site. He reports that he struck his head during the descent. He stated he did not lose consciousness at any time during the event. He complained of a persistent headache and mild disorientation immediately following the fall.\n\nHospital Course:\nThe patient was admitted for observation and neuroimaging following a fall. Initial neurological examinations were stable. MRI of the head revealed a diffuse axonal injury. The patient remained stable throughout the stay, with no evidence of worsening neurological status. He was managed with headache management and activity restrictions. He tolerated a transition to a regular diet and was able to ambulate with minimal assistance. He is cleared for discharge with instructions to monitor for worsening symptoms.\n\nDischarge Diagnoses:\n- Diffuse axonal injury\n- Traumatic brain injury\n\nDischarge Medications:\n- Acetaminophen 650mg every 6 hours as needed for pain.\n- Multivitamin daily.\n\nFollow-up:\nFollow-up with neurology in 14 days for a repeat neurological exam and assessment of cognitive function.\n\nElectronically signed, J. Lindqvist, MD, 05/18/2026",
+  "answer": [
+    "S06.2X0A"
+  ],
+  "explanations": [
+    "Diffuse traumatic brain injury without loss of consciousness, initial encounter: S06.2X0A (HCC 399)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "wrong_loc_duration",
+      "lean": "neutral",
+      "why": "No loss of consciousness is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0.199,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": [
+          "399"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.199,
+    "hccs": [
+      {
+        "hcc": "399",
+        "label": "Major Head Injury without Loss of Consciousness",
+        "from": [
+          "S062X0A"
+        ],
+        "weight": 0.199
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:31:42+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

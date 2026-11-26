@@ -1,0 +1,85 @@
+{
+  "id": "personality_eating-f10070c636",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "bulimia_severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint\nEvaluation of eating habits and weight fluctuations.\n\nHPI\nThe patient is a 27-year-old woman who presents for evaluation of her eating behaviors. She reports a history of bulimia nervosa characterized by frequent binge-purge episodes. She describes the situation as severe, noting that these behaviors have become increasingly difficult to manage independently. She expresses a desire for more structured support to address her nutritional intake and psychological triggers.\n\nMedication List\nMultivitamin daily.\n\nExam\nThe patient is alert and oriented. She appears thin and shows signs of dental erosion. Her mood is anxious, and she is cooperative during the interview. Vital signs are within normal limits.\n\nAssessment\n1. Bulimia nervosa, severe. The patient's symptoms are significant and require a higher level of care than standard outpatient monitoring.\n\nPlan\nThe patient will be enrolled in an intensive outpatient treatment program to address her bulimia nervosa. This program will focus on behavioral interventions and nutritional stabilization. We will monitor her progress weekly.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "F50.23"
+  ],
+  "explanations": [
+    "Bulimia nervosa, severe: F50.23 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F50.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F50.022"
+      ],
+      "confusion": "wrong_eating_type",
+      "lean": "neutral",
+      "why": "Bulimia nervosa is documented, not anorexia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F5023"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:11:35+00:00",
+    "style": {
+      "age": 27,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

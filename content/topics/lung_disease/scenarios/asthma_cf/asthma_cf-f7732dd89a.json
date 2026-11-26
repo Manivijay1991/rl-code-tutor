@@ -1,0 +1,68 @@
+{
+  "id": "asthma_cf-f7732dd89a",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "severe_persistent_exac"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint\nShortness of breath and wheezing.\n\nHPI\nThe patient is a 36-year-old woman presenting for an evaluation of her severe persistent asthma. She reports a significant exacerbation that began earlier this week. She describes increased difficulty breathing, a productive cough, and audible wheezing at rest. She has attempted to manage these symptoms with her maintenance inhaler, but she reports that her symptoms have not improved. She denies any fever or chills.\n\nMedication List\n1. Fluticasone/Salmeterol inhaler\n2. Albuterol and ipratropium bromide nebulizer\n\nExam\nThe patient appears in mild respiratory distress. Oxygen saturation is 94% on room air. Auscultation reveals bilateral expiratory wheezing throughout all lung fields. No accessory muscle use is noted at this time.\n\nAssessment\n1. Severe persistent asthma with an acute exacerbation.\n\nPlan\nThe patient will begin a course of a prednisone burst to manage the acute exacerbation. She was instructed to use her rescue inhaler every 4 hours as needed for symptoms. She will follow up in one week for a reassessment of her respiratory status.\n\nElectronically signed, L. Moreau, DO, 10/14/2026",
+  "answer": [
+    "J45.51"
+  ],
+  "explanations": [
+    "Severe persistent asthma with (acute) exacerbation: J45.51 (HCC 279)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.50"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "neutral",
+      "why": "The exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0.818,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "279",
+        "label": "Severe Persistent Asthma",
+        "from": [
+          "J4551"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:27+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

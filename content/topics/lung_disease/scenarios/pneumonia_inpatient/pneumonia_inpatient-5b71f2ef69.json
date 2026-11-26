@@ -1,0 +1,71 @@
+{
+  "id": "pneumonia_inpatient-5b71f2ef69",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "aspiration"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Aspiration pneumonia\n\nVitals:\nT: 98.4 F, HR: 78, BP: 132/84, RR: 18, SpO2: 95% on RA.\n\nLabs:\nWBC: 12.4, Hgb: 13.2, Hct: 39.5, Cr: 1.1, BUN: 18, Na: 138, K: 4.0.\n\nReview of Systems:\nResp: Productive cough, SOB. Chest: Clear to auscultation. GI: No nausea, no diarrhea. Neuro: Alert and oriented x3.\n\nSocial History:\nLives at home with spouse. Former smoker (quit 20 years ago). No alcohol use.\n\nFamily History:\nFather: Hypertension. Mother: Type 2 DM.\n\nHospital Course:\nPt is a 90-year-old male admitted for aspiration pneumonia after a choking episode involving food at home. Pt presented with fever, tachypnea, and productive cough. Started on IV antibiotics and supplemental oxygen as needed. Chest X-ray confirmed infiltrate. Pt tolerated oral intake but showed signs of dysphagia. Speech therapy and a swallow evaluation were performed. Pt showed improvement in clinical status and was able to tolerate thickened liquids. Antibiotics completed. Pt stable for discharge to home with outpatient follow-up.\n\nDischarge Diagnoses:\n1. Aspiration pneumonia\n2. Dysphagia\n\nDischarge Medications:\n1. Amoxicillin 500mg BID x 7 days\n2. Acetaminophen 650mg PRN for pain/fever\n3. Thickened liquids diet per SL\n\nFollow-up:\nF/u with Primary Care Physician in 1 week. F/u with Speech Therapy in 10 days.\n\nElectronically signed, L. Moreau, MD, 05/18/2026",
+  "answer": [
+    "J69.0"
+  ],
+  "explanations": [
+    "Aspiration pneumonia: pneumonitis due to inhalation of food and vomit, J69.0 (HCC 282)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J18.9"
+      ],
+      "confusion": "missed_specific_pneumonia",
+      "lean": "under",
+      "why": "Aspiration pneumonia has its own code (HCC 282).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.44,
+        "gap": -0.44,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "282"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.44,
+    "hccs": [
+      {
+        "hcc": "282",
+        "label": "Aspiration and Specified Bacterial Pneumonias",
+        "from": [
+          "J690"
+        ],
+        "weight": 0.44
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:43+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

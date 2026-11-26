@@ -1,0 +1,85 @@
+{
+  "id": "bone_lupus_skin-31fa48b2eb",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pemphigoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: Skin rash and blisters\n\nVitals: BP 135/82, HR 74, SpO2 98% on room air, Temp 98.6 F\n\nHPI: [Copied Forward] Patient is a 78-year-old male presenting with a widespread itchy rash characterized by tense blisters. He reports significant discomfort and itching over the torso and extremities. He has been adherent to the prescribed regimen of doxycycline and topical steroids. \n\n[Current Update] The patient reports that the itching has decreased since starting the current treatment. He notes that the tense blisters are beginning to flatten, though some remain intact. He denies any new areas of involvement or signs of secondary infection.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nIntegumentary: Positive for bullous pemphigoid symptoms; negative for drainage or pus.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for numbness or tingling.\n\nMedication List:\n- Doxycycline 100mg PO BID\n- Topical steroid cream as directed\n\nExam:\nSkin: Multiple tense blisters consistent with bullous pemphigoid across the trunk and upper extremities. No signs of purulent drainage or cellulitis.\n\nAssessment:\n1. Bullous pemphigoid\n\nPlan:\n- Continue current course of doxycycline and topical steroids.\n- Follow up in 4 weeks for re-evaluation of skin integrity.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "L12.0"
+  ],
+  "explanations": [
+    "Bullous pemphigoid: L12.0 (HCC 387)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L10.0"
+      ],
+      "confusion": "pemphigus_pemphigoid_confused",
+      "lean": "neutral",
+      "why": "Pemphigoid, not pemphigus.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.406,
+        "correct": 0.406,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "L12.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (bullous) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.406,
+        "correct": 0.406,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.406,
+    "hccs": [
+      {
+        "hcc": "387",
+        "label": "Pemphigus/Pemphigoid/and Other Specified Autoimmune Skin Disorders",
+        "from": [
+          "L120"
+        ],
+        "weight": 0.406
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:34+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-9e2d7bdf81",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_dvt"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for leg swelling.\n\nHPI: Pt is an 87-year-old male presenting for f/u of known deep vein thrombosis. Pt reports stable symptoms with no new calf pain or significant swelling noted today. He is currently on long-term anticoagulation therapy. He denies any shortness of breath or chest pain. He reports compliance with medications.\n\nMedication List:\n- Warfarin 5mg QD\n- Lisinopril 10mg QD\n- Atorvastatin 20mg QD\n\nVitals:\nBP: 132/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWt: 175 lbs\n\nRecent Labs:\nINR: 2.4\nHbA1c: 6.8%\neGFR: 65\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nCV: No palpitations, orthopnea, or chest pain.\nResp: No cough or SOB.\nMSK: No new calf pain or swelling.\nGI: No abdominal pain or changes in bowel habits.\nGU: No dysuria.\nSkin: No rashes or lesions.\n\nSocial History: Retired. Lives with wife. Non-smoker. Occasional alcohol.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nExam:\nGeneral: Alert, oriented x3, in no acute distress.\nCV: RRR, regular rhythm, no murmurs.\nLungs: CTAB.\nExtremities: Exam of lower extremities shows stable findings. Right lower extremity shows mild residual swelling. No erythema or warmth. Pedal pulses 2+ bilaterally.\n\nAssessment:\n1. Chronic DVT of the right femoral vein. Ultrasound confirms residual clot. Pt is stable on current anticoagulation.\n\nPlan:\n1. Continue long-term anticoagulation.\n2. Monitor INR regularly.\n3. Pt to call if new calf pain or swelling develops.\n4. F/u in 3 months.\n\nElectronically signed, M. Okafor, PA-C, 05/14/2026",
+  "answer": [
+    "I82.511"
+  ],
+  "explanations": [
+    "Chronic DVT of the right femoral vein: I82.511 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I82.411"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The DVT is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.718"
+      ],
+      "confusion": "chronic_coded_history",
+      "lean": "under",
+      "why": "Chronic DVT is a current condition, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I82511"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:16+00:00",
+    "style": {
+      "age": 87,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "M. Okafor"
+    }
+  }
+}

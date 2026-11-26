@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-d3667d4c23",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_dka"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Diabetic ketoacidosis (DKA)\n\nHospital Course:\nPt is a 75 y/o female with hx of type 2 diabetes. Presented to ED with altered mental status and fruity breath. Labs confirmed DKA. Pt was admitted to med-surg floor for stabilization. Managed with aggressive IV fluid resuscitation and continuous insulin drip. Blood glucose and electrolytes monitored Q1H. Pt showed prompt response to treatment; anion gap closed, and metabolic state stabilized. Pt tolerated diet and was able to ambulate. No acute distress noted prior to discharge.\n\nDischarge Diagnoses:\n- Diabetic ketoacidosis (DKA)\n- Type 2 diabetes\n\nDischarge Medications:\n- Insulin glargine subcutaneous daily\n- Metformin 500mg BID\n- Oral fluids encouraged\n\nFollow-up:\nF/u with primary care in 1 week for lab work and DM management.\n\nElectronically signed,\nE. Castillo, MD\n05/15/2026",
+  "answer": [
+    "E11.10"
+  ],
+  "explanations": [
+    "Type 2 diabetes with ketoacidosis without coma: E11.10 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.65"
+      ],
+      "confusion": "dka_coded_hyperglycemia",
+      "lean": "under",
+      "why": "Ketoacidosis is a severe acute complication (HCC 36).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E1110"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:32+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "E. Castillo",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

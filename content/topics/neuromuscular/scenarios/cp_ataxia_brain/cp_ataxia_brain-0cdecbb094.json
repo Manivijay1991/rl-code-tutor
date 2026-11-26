@@ -1,0 +1,72 @@
+{
+  "id": "cp_ataxia_brain-0cdecbb094",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "cp_diplegic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for mobility and gait assessment.\n\nHPI\nThe patient is a 36-year-old woman who presents for a scheduled follow-up regarding her chronic mobility issues. She has had spastic diplegic cerebral palsy since birth, which primarily affects both of her legs. She currently utilizes forearm crutches to assist with ambulation. She reports that her mobility remains stable, though she experiences occasional muscle tightness in her lower extremities. She denies any recent falls or acute changes in her functional status.\n\nMedication List\nBaclofen 10mg orally twice daily.\n\nExam\nThe patient is alert and oriented. She is mobile in the room using her forearm crutches. Physical examination of the lower extremities reveals hypertonicity and increased muscle tone in the bilateral legs consistent with her spastic diplegia. Strength is graded as 4/5 in the lower extremities. No new skin breakdown or pressure sores are noted.\n\nAssessment\n1. Spastic diplegic cerebral palsy: Stable. The patient continues to maintain mobility with the use of forearm crutches.\n\nPlan\n1. Continue current Baclofen regimen for muscle tone management.\n2. Continue use of forearm crutches for daily mobility.\n3. Follow up in 6 months for routine evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "G80.1"
+  ],
+  "explanations": [
+    "Spastic diplegic cerebral palsy: G80.1 (HCC 192)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G80.0"
+      ],
+      "confusion": "cp_type_confused",
+      "lean": "neutral",
+      "why": "Diplegic, not quadriplegic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.855,
+        "correct": 0.314,
+        "gap": 0.541,
+        "direction": "over",
+        "extra_hccs": [
+          "191"
+        ],
+        "missing_hccs": [
+          "192"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.314,
+    "hccs": [
+      {
+        "hcc": "192",
+        "label": "Cerebral Palsy/Except Quadriplegic",
+        "from": [
+          "G801"
+        ],
+        "weight": 0.314
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:39+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

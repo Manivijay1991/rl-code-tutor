@@ -1,0 +1,62 @@
+{
+  "id": "spine_amputation-3c0b6481d2",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_followup"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint\nFollow-up for L1 compression fracture.\n\nHPI\nThe patient is a 77-year-old female presenting for a routine follow-up eight weeks after sustaining a traumatic closed wedge compression fracture of the first lumbar vertebra. This injury occurred following a fall from a ladder. Since the initial injury, the patient has reported steady improvement in her back pain levels. She currently reports that her mobility is returning to baseline and she is able to perform her activities of daily living without significant discomfort. She denies any new radicular symptoms, numbness, or weakness in her extremities. She is here today to monitor the healing of the site.\n\nMedication List\nMultivitamin daily\nAcetaminophen 500mg as needed for pain\n\nReview of Systems\nThe patient denies any recent fevers, chills, or unintended weight loss. She denies any chest pain or shortness of breath. She denies any urinary incontinence or bowel changes. She denies any focal neurological deficits.\n\nSocial History\nThe patient lives in a single-story home with her spouse. She is retired and enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension. Father had a history of heart disease.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs\nBone density scan: Results within normal limits for her age.\nComplete Blood Count (CBC): Within normal limits.\nBasic Metabolic Panel (BMP): Within normal limits.\n\nExam\nThe patient is alert and oriented x3. She is in no acute distress. Physical exam reveals a stable gait and normal range of motion of the hips and knees. There is no palpable deformity or tenderness over the L1 area. Neurological exam shows intact sensation and motor strength in all four extremities. Reflexes are symmetric and 2+.\n\nAssessment\n1. Traumatic compression fracture of the L1 vertebra. The site is healing as expected. The patient demonstrates stable progress and normal bone density.\n\nPlan\n1. Continue current activity level as tolerated.\n2. Continue as needed use of acetaminophen for breakthrough discomfort.\n3. Follow up in 4 weeks for continued monitoring of the fracture site.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "S32.010D"
+  ],
+  "explanations": [
+    "Routine follow-up while the L1 fracture heals: 7th character D, S32.010D (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010A"
+      ],
+      "confusion": "initial_for_subsequent",
+      "lean": "over",
+      "why": "Active treatment is complete; this is routine healing follow-up.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.522,
+        "correct": 0,
+        "gap": 0.522,
+        "direction": "over",
+        "extra_hccs": [
+          "401"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:23+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

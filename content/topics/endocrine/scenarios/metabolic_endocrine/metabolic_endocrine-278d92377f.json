@@ -1,0 +1,68 @@
+{
+  "id": "metabolic_endocrine-278d92377f",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "attr"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for amyloidosis.\n\nHPI: Patient is a 51-year-old male with a history of wild-type transthyretin amyloidosis. He is currently managed with tafamidis for cardiac symptoms and systemic progression. He reports stable symptoms since the last evaluation, with no significant increase in shortness of breath or peripheral edema. He continues to manage his fatigue levels.\n\nVitals: BP 128/82, HR 74, Temp 98.6 F, SpO2 98% on room air, BMI 27.4.\n\nMedication List:\n- Tafamidis 20mg daily\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nRecent Labs:\n- HbA1c: 5.4%\n- eGFR: 82 mL/min/1.73m2\n- Serum Creatinine: 1.1 mg/dL\n- Troponin T: 0.01 ng/mL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nCardiovascular: Denies chest pain or palpitations.\nRespiratory: Denies cough or wheezing.\nGastrointestinal: Denies nausea or abdominal pain.\nMusculoskeletal: Reports mild stiffness in hands but no new weakness.\nNeurological: Denies tremors or seizures.\n\nSocial History: Works as a software engineer. Non-smoker. Occasional alcohol use. Lives with his spouse.\n\nFamily History: Father had hypertension. Mother had hyperlipidemia. No known history of hereditary amyloidosis.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs, rubs, or gallops.\nPulmonary: Clear to auscultation bilaterally. No rales or rhonchi.\nMusculoskeletal: Mild symmetric swelling of the small joints of the hands noted. Strength 5/5 in upper and lower extremities.\nSkin: No new rashes or lesions.\n\nAssessment:\n1. Wild-type transthyretin amyloidosis: Stable on current tafamidis regimen.\n\nPlan:\n1. Continue tafamidis 20mg daily.\n2. Continue current blood pressure and lipid medications.\n3. Follow up in 3 months for repeat laboratory work and clinical assessment.\n4. Patient instructed to report any sudden increase in dyspnea or peripheral edema immediately.\n\nElectronically signed,\nJ. Lindqvist, NP\nOctober 14, 2026",
+  "answer": [
+    "E85.82"
+  ],
+  "explanations": [
+    "Wild-type transthyretin-related amyloidosis: E85.82 (HCC 50)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E85.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (wild-type ATTR) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.648,
+        "correct": 0.648,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.648,
+    "hccs": [
+      {
+        "hcc": "50",
+        "label": "Amyloidosis/Porphyria/and Other Specified Metabolic Disorders",
+        "from": [
+          "E8582"
+        ],
+        "weight": 0.648
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:13+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

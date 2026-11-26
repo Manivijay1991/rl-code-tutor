@@ -1,0 +1,88 @@
+{
+  "id": "blood_cancers-56a9a6d9ca",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "myeloma_active"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Fatigue and bone pain.\n\nHPI: Pt is a 62 y/o male presenting for follow-up of multiple myeloma. Pt reports persistent generalized fatigue and aching in the lumbar spine and ribs over the past 3 weeks. Denies acute shortness of breath or chest pain. Pt currently on active chemotherapy. Reports mild nausea but denies vomiting. Appetite remains stable. Reports some sleep disturbance due to discomfort. He states he is continuing to follow all treatment protocols as directed by oncology.\n\nMedication List:\n- Revlimid 100mg QD\n- Dexamethasone 40mg QD\n- Prednisone 20mg QD\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Positive for fatigue. Negative for weight loss or chills.\nMusculoskeletal: Positive for back and rib pain.\nGI: Negative for nausea, vomiting, or diarrhea.\nCV: Negative for chest pain or palpitations.\nRespiratory: Negative for SOB or cough.\nNeuro: Negative for headache or dizziness.\n\nSocial History: Retired construction worker. Lives with wife. Non-smoker. Occasional alcohol use.\n\nFamily History: Father had hypertension and stroke. Mother had type 2 diabetes.\n\nVitals:\nBP: 132/84\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHeight: 5'11\"\nWeight: 195 lbs\n\nRecent Labs:\nWBC: 4.2\nHgb: 10.1\nPlt: 110k\nAlbumin: 3.4\nCa: 10.4\nCr: 1.1\neGFR: 78\n\nExam:\nGen: Alert, oriented x3, in no acute distress.\nCV: RRR, regular S1, S2. No murmurs.\nResp: CTAB.\nMSK: Tenderness noted over lumbar spine and bilateral ribs. No focal neuro deficits.\nSkin: No new lesions noted.\n\nAssessment:\n1. Multiple myeloma. Pt is currently undergoing active chemotherapy. Showing signs of persistent bone pain and anemia.\n\nPlan:\n1. Continue current chemotherapy regimen as prescribed by oncology.\n2. Continue supportive medications for pain and steroids.\n3. Monitor CBC and calcium levels weekly.\n4. Pt to f/u with oncology in 2 weeks.\n5. Return to clinic sooner if symptoms worsen.\n\nElectronically signed,\nL. Moreau, DO\n10/14/2026",
+  "answer": [
+    "C90.00"
+  ],
+  "explanations": [
+    "Multiple myeloma not having achieved remission: C90.00 (HCC 19)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C90.01"
+      ],
+      "confusion": "assumed_remission",
+      "lean": "neutral",
+      "why": "Remission is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.798,
+        "correct": 1.798,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z85.79"
+      ],
+      "confusion": "active_coded_history",
+      "lean": "under",
+      "why": "The myeloma is under active treatment.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.798,
+        "gap": -1.798,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "19"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.798,
+    "hccs": [
+      {
+        "hcc": "19",
+        "label": "Myelodysplastic Syndromes/Multiple Myeloma/and Other Cancers",
+        "from": [
+          "C9000"
+        ],
+        "weight": 1.798
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:18+00:00",
+    "style": {
+      "age": 62,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

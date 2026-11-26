@@ -1,0 +1,85 @@
+{
+  "id": "bone_lupus_skin-48910fb85d",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "pemphigoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nEvaluation of skin lesions and blistering.\n\nHPI\nThe patient is a 68-year-old man who presents today for a follow-up evaluation of bullous pemphigoid. He reports that the tense blisters have been persisting for several weeks. He describes the itching as moderate but notes that the lesions are beginning to crust over in some areas. He has been adherent to his current medication regimen and reports no new systemic symptoms or fever.\n\nMedication List\nDoxycycline 100mg oral daily\nTriamcinolone acetonide 0.1% topical ointment\n\nExam\nPhysical examination reveals multiple tense blisters distributed across the torso and upper extremities. There is evidence of some crusting on older lesions. No signs of secondary infection are noted at this time. The patient appears in no acute distress.\n\nAssessment\n1. Bullous pemphigoid.\n\nPlan\nThe patient will continue his current course of doxycycline and topical steroids. We will monitor the progression of the bullous pemphigoid and assess for any signs of infection. He is instructed to return to the clinic in four weeks for a re-evaluation or sooner if symptoms worsen significantly.\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "L12.0"
+  ],
+  "explanations": [
+    "Bullous pemphigoid: L12.0 (HCC 387)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L10.0"
+      ],
+      "confusion": "pemphigus_pemphigoid_confused",
+      "lean": "neutral",
+      "why": "Pemphigoid, not pemphigus.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.406,
+        "correct": 0.406,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "L12.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type (bullous) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.406,
+        "correct": 0.406,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.406,
+    "hccs": [
+      {
+        "hcc": "387",
+        "label": "Pemphigus/Pemphigoid/and Other Specified Autoimmune Skin Disorders",
+        "from": [
+          "L120"
+        ],
+        "weight": 0.406
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:54+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

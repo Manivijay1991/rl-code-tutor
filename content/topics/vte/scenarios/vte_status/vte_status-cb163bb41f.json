@@ -1,0 +1,62 @@
+{
+  "id": "vte_status-cb163bb41f",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "pe_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for history of pulmonary embolism.\n\nHPI: (Copied Forward) Patient is a 78-year-old male who presented three years ago with a pulmonary embolism. He was started on a course of medications which was completed. He reports no shortness of breath or chest pain since the initial episode. He states the condition has resolved.\n\nUpdate: The patient reports he feels well today and denies any new respiratory symptoms. He is here for a routine check-up.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nConstitutional: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam:\nGeneral: Well-appearing, alert, and oriented.\nRespiratory: Lungs clear to auscultation bilaterally. No wheezes or crackles.\nCardiovascular: Regular rate and rhythm. No murmurs.\n\nAssessment:\n1. History of pulmonary embolism, resolved.\n\nPlan:\n1. Continue current medications.\n2. Return to clinic in 6 months for routine follow-up.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "Z86.711"
+  ],
+  "explanations": [
+    "A pulmonary embolism that resolved after completed treatment: personal history, Z86.711 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4",
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I26.99"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "There is no current embolism: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0,
+        "gap": 0.294,
+        "direction": "over",
+        "extra_hccs": [
+          "267"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:08:12+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

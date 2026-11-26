@@ -1,0 +1,69 @@
+{
+  "id": "drug_use-b49f8149f0",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "opioid_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Follow-up for maintenance therapy.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, Weight 205 lbs.\n\nRecent Labs:\neGFR: 88 mL/min/1.73m2\nHbA1c: 5.8%\nWBC: 7.2 x 10^9/L\nPlatelets: 240 x 10^9/L\n\nMedication List:\n- Buprenorphine 16mg sublingual daily\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nNeurological: Negative for tremors, dizziness.\nPsychiatric: Negative for anxiety, depression.\nRespiratory: Negative for shortness of breath, cough.\nGastrointestinal: Negative for nausea, abdominal pain.\nMusculoskeletal: Negative for joint pain.\n\nSocial History: Lives with spouse and two children. Works as a construction supervisor. Denies any recent substance use.\n\nFamily History: Father had hypertension. Mother had type 2 diabetes.\n\nFamily History: History of hypertension and diabetes in parents.\n\nHPI: Patient is a 51-year-old male who presented for management of opioid use disorder. He has been on a stable maintenance regimen. Patient reports consistent adherence to the prescribed buprenorphine. He reports feeling stable and productive at work. He states he has remained in remission for a period of 5 months without any cravings or return to use.\n\nExam:\nGeneral: Alert and oriented x3. Well-groomed and in no acute distress.\nPsychiatric: Cooperative, normal affect, congruent mood. Speech is clear and coherent.\nPhysical: Lungs clear to auscultation. Heart sounds regular and and S1, S2 present. Abdomen soft, non-tender. Extremities are intact with no edema.\n\nAssessment:\n1. Opioid use disorder, severe. The patient is currently in early remission and has maintained stability for 5 months on buprenorphine.\n\nPlan:\n1. Continue current buprenorphine maintenance dose.\n2. Continue to monitor for any signs of relapse.\n3. Follow up in 3 months for routine check.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "F11.21"
+  ],
+  "explanations": [
+    "Severe opioid use disorder in early remission: opioid dependence, in remission, F11.21 (HCC 137)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F11.20"
+      ],
+      "confusion": "missed_remission",
+      "lean": "neutral",
+      "why": "The provider documents remission.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.424,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "137",
+        "label": "Drug Use Disorder/Moderate/Severe/Drug Use with Non-Psychotic Complications",
+        "from": [
+          "F1121"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:07+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

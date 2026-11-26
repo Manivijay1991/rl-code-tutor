@@ -1,0 +1,89 @@
+{
+  "id": "bipolar_schizophrenia-a3282298a4",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "schizoaffective_bipolar"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for management of schizoaffective disorder.\n\nHPI\nThe patient is a 77-year-old woman who presents today for a scheduled psychiatric follow-up. She is currently being treated for schizoaffective disorder, bipolar type. She reports feeling stable over the past month and denies any significant fluctuations in her mood or behavior. She notes that her current medication regimen has been effective in maintaining her baseline and has not experienced any notable side effects. She reports consistent sleep patterns and a regular appetite. She denies any recent stressors or significant changes in her social environment.\n\nMedication List\n- Quetiapine 100 mg orally twice daily\n- Lithium Carbonate 300 mg orally twice daily\n\nReview of Systems\nThe patient reports no recent headaches, fevers, chills, or weight changes. She denies any visual or auditory disturbances, tremors, or changes in coordination. She denies any chest pain, shortness of breath, or joint pain.\n\nSocial History\nThe patient lives at home with her daughter. She enjoys gardening and listening to classical music. She does not smoke and does not consume alcohol.\n\nFamily History\nHer mother had a history of hypertension and her father had a history of heart disease. There is no known family history of psychiatric conditions.\n\nVitals\nBlood Pressure: 128/82 mmHg\nHeart Rate: 74 bpm\nTemperature: 98.6 F\nRespiratory Rate: 16 breaths/min\nWeight: 145 lbs\n\nRecent Labs\nLithium Level: 0.8 mEq/L\nTSH: 2.1 mIU/L\nHbA1c: 5.8%\neGFR: 72 mL/min/1.73m²\n\nExam\nThe patient is a well-groomed 77-year-old woman who appears her stated age. She is alert and oriented to person, place, and time. Her speech is clear and at a normal rate and volume. Her mood is stable and her affect is congruent with her reported mood. She demonstrates good eye contact and cooperative behavior throughout the encounter. Motor activity is normal with no evidence of tremors or involuntary movements.\n\nAssessment\nThe patient is a 77-year-old woman with schizoaffective disorder, bipolar type. She is currently stable on her current regimen of an antipsychotic and a mood stabilizer. Her lithium level is within the therapeutic range.\n\nPlan\n1. Continue current medications as prescribed.\n2. Follow up in 4 weeks for continued monitoring of mood stability.\n3. Encouraged continued engagement in social activities and hobbies.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "F25.0"
+  ],
+  "explanations": [
+    "Schizoaffective disorder, bipolar type: F25.0 (HCC 151)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F20.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "Schizoaffective disorder is a separate category (F25).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.511,
+        "correct": 0.511,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.9"
+      ],
+      "confusion": "schizo_vs_schizoaffective",
+      "lean": "neutral",
+      "why": "'Bipolar type' describes the schizoaffective disorder; it is not bipolar disorder.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.511,
+        "gap": -0.16,
+        "direction": "under",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": [
+          "151"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.511,
+    "hccs": [
+      {
+        "hcc": "151",
+        "label": "Schizophrenia",
+        "from": [
+          "F250"
+        ],
+        "weight": 0.511
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:42+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

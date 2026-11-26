@@ -1,0 +1,87 @@
+{
+  "id": "cardiomyopathy-033fb2b061",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint: \"Follow-up on heart test results\"\n\nHPI: [Copied Forward] Patient is a 77-year-old female presenting for evaluation of persistent fatigue and shortness of breath on exertion. She reports a gradual decrease in exercise tolerance over the past three months. She denies chest pain, syncope, or palpitations. \n\n[Today's Update] The patient returns today to discuss the results of her recent echocardiogram. She reports feeling stable today but notes some mild fatigue. She denies any new acute symptoms since the last visit.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F\n\nReview of Systems:\nConstitutional: Positive for fatigue.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Positive for shortness of breath on exertion.\nNeurological: Negative for dizziness or syncope.\n\nMedication List:\n- Lisinopril 10mg daily\n- Furosemide 40mg daily\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nCardiovascular: Regular rate and rhythm, S1 and S2 heard, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\nExtremities: No edema noted.\n\nAssessment:\n1. Cardiomyopathy: Recent echocardiogram results confirm the presence of cardiomyopathy. The specific type is not stated in the report.\n\nPlan:\n1. Cardiology referral: Place a referral to a cardiologist for further diagnostic workup and management of the cardiomyopathy.\n2. Follow-up: Patient to return after seeing the specialist.\n\nElectronically signed, \nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "I42.9"
+  ],
+  "explanations": [
+    "Cardiomyopathy without a stated type: I42.9 (HCC 227)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.2"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "Hypertrophic cardiomyopathy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.5"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "Ischemic cardiomyopathy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.189,
+        "gap": -0.189,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "227"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.189,
+    "hccs": [
+      {
+        "hcc": "227",
+        "label": "Cardiomyopathy/Myocarditis",
+        "from": [
+          "I429"
+        ],
+        "weight": 0.189
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:05:45+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "liver_failure_biliary-e622d2637f",
+  "table": "liver_failure_biliary",
+  "title": "Liver failure, portal hypertension and bile duct disease",
+  "status": "draft",
+  "slots": {
+    "condition": "bile_obstruction"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's liver or bile duct condition.",
+  "note": "Chief Complaint: Abdominal pain and jaundice.\n\nHPI: Patient is a 72-year-old female presenting for follow-up of biliary symptoms. [Copied Forward from previous visit]: Patient reports persistent right upper quadrant discomfort and yellowing of the skin and sclera. She describes a dull ache that has persisted for several weeks, worsening after meals. She denies fever or chills. She has been managed conservatively with pain medication but reports that the discomfort is not improving.\n\nMedication List:\n- Linaclotide 244 mcg daily\n- Atorvastatin 40 mg daily\n- Lisinopril 10 mg daily\n\nVitals: BP 128/82, HR 76, Temp 98.6 F, SpO2 98% on room air, Weight 165 lbs.\n\nRecent Labs:\n- ALT: 42 U/L\n- AST: 38 U/L\n- Total Bilirubin: 3.4 mg/dL\n- ALP: 210 U/L\n- eGFR: 72 mL/min/1.73m2\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nEyes: Positive for scleral icterus.\nGastrointestinal: Positive for RUQ pain and nausea. Negative for change in bowel habits.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for confusion or dizziness.\n\nSocial History: Retired teacher. Lives with her husband. Non-smoker.\n\nFamily History: Mother had hypertension. Father had a history of myocardial infarction.\n\nExam: Patient is a well-appearing 72-year-old female in no acute distress. Skin shows visible jaundice. Abdomen is soft, non-distended, with mild tenderness to palpation in the right upper quadrant. No guarding or rebound tenderness. Murphy's sign is negative.\n\nAssessment: The patient presents with obstructive jaundice. Imaging, including an MRCP and ultrasound, confirms an obstruction of the common bile duct caused by a benign stricture. Notably, imaging shows no stones.\n\nPlan: Proceed with a planned stent exchange to relieve the biliary obstruction. The patient will be scheduled for a procedure to place a stent across the site of the stricture. Follow-up will be coordinated post-procedure to monitor bile flow and bilirubin levels.\n\nElectronically signed,\nA. Rivera, MD\nMay 14, 2026",
+  "answer": [
+    "K83.1"
+  ],
+  "explanations": [
+    "Obstruction of bile duct without gallstones: K83.1 (HCC 68)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K72-K83"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K80.51"
+      ],
+      "confusion": "assumed_stones",
+      "lean": "under",
+      "why": "No gallstones: K83.1, not a calculus code (which has no HCC).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.388,
+        "gap": -0.388,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "68"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.388,
+    "hccs": [
+      {
+        "hcc": "68",
+        "label": "Cholangitis and Obstruction of Bile Duct Without Gallstones",
+        "from": [
+          "K831"
+        ],
+        "weight": 0.388
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:48+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "nerve_muscle-5b2d5e1192",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "mg_exacerbation"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nWorsening of ptosis and difficulty swallowing.\n\nHPI\nThe patient is a 36-year-old woman presenting for a follow-up regarding her myasthenia gravis. She reports a significant exacerbation of symptoms occurring over the past week. Specifically, she notes that her ptosis has become more pronounced and she is experiencing increased difficulty with swallowing. She denies any new onset of severe respiratory distress or significant changes in her baseline motor function outside of these areas. She has been compliant with her current medication regimen but notes the symptoms have progressed despite her efforts.\n\nMedication List\nPrednisone 40mg daily\nPyridostigmine 60mg four times daily\n\nExam\nThe patient is alert and oriented. Physical examination reveals bilateral ptosis, which is more severe on the right side. Oropharyngeal exam shows slight difficulty with coordinated swallowing. Muscle strength in the upper extremities is intact. No new focal neurological deficits were observed during today's evaluation.\n\nAssessment\nMyasthenia gravis with acute exacerbation.\n\nPlan\nThe patient's prednisone dose will be increased to 60mg daily to manage the current flare. She was instructed to monitor her swallowing closely and return immediately if she experiences significant respiratory distress. Follow-up in two weeks.\n\nElectronically signed, L. Moreau, DO, 10/14/2026",
+  "answer": [
+    "G70.01"
+  ],
+  "explanations": [
+    "Myasthenia gravis with (acute) exacerbation: G70.01 (HCC 195, weight about 2.9)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G70.00"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "under",
+      "why": "An acute exacerbation is documented (HCC 195, not 196).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.516,
+        "correct": 2.909,
+        "gap": -2.393,
+        "direction": "under",
+        "extra_hccs": [
+          "196"
+        ],
+        "missing_hccs": [
+          "195"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.909,
+    "hccs": [
+      {
+        "hcc": "195",
+        "label": "Myasthenia Gravis with (Acute) Exacerbation",
+        "from": [
+          "G7001"
+        ],
+        "weight": 2.909
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:44+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

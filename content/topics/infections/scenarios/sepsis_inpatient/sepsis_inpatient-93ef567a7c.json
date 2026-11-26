@@ -1,0 +1,60 @@
+{
+  "id": "sepsis_inpatient-93ef567a7c",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "urosepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Fever, malaise, and urinary symptoms.\n\nVitals:\nT: 102.1 F, HR: 98, BP: 118/74, RR: 20, SpO2: 96% on RA.\n\nRecent Labs:\nWBC: 14.5 x 10^9/L, Hgb: 11.2 g/dL, Plt: 210 x 10^9/L, Cr: 1.1 mg/dL, eGFR: 52 mL/min. Urinalysis: Positive for nitrites and leukocyte esterase.\n\nReview of Systems:\nConstitutional: Positive for fever and chills. Respiratory: NAD. GI: No nausea/vomiting. GU: Dysuria and urgency. Neuro: Alert and oriented x3. Skin: No rashes.\n\nSocial History: Lives with daughter. Retired. No tobacco use.\n\nFamily History: Mother had hypertension. Father had diabetes.\n\nHospital Course:\nPt is an 85-year-old female admitted with acute febrile illness. Initial assessment revealed urinary symptoms and elevated temperature. Diagnosis of urosepsis was established. Pt was started on IV fluids and broad-spectrum antibiotics. Patient tolerated treatment well. Fever resolved by day 3. Renal function remained stable throughout stay. Transitioned to oral medications on day 4. Patient met criteria for discharge with stable vitals and improved clinical status.\n\nDischarge Diagnoses:\n1. urosepsis\n2. Urinary tract infection\n\nDischarge Medications:\n1. Nitrofurantoin 100mg BID for 7 days.\n2. Acetaminophen 650mg PRN for fever.\n3. Continue home medications.\n\nFollow-up:\nF/u with PCP in 1 week for wound check and labs. Pt instructed to call if fever returns or symptoms worsen.\n\nElectronically signed,\nD. Kowalski, MD\n05/15/2026",
+  "answer": [],
+  "explanations": [
+    "'Urosepsis' is a nonspecific term with no default code and is not the same as sepsis: query the provider. No sepsis code."
+  ],
+  "refs": [
+    "OCG I.C.1.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "urosepsis_coded_sepsis",
+      "lean": "over",
+      "why": "Urosepsis is not sepsis; it needs a provider query.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0,
+        "gap": 0.5,
+        "direction": "over",
+        "extra_hccs": [
+          "2"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:23:56+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "ulcer_burn-7a5bfa6b89",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_fat"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint\nFollow-up for wound care.\n\nHPI\nPt is a 56 y/o female presenting for scheduled wound care of a chronic ulcer on the right heel. Pt reports the wound has been slow to heal but denies increased pain, fever, or drainage. No systemic symptoms reported.\n\nMedication List\nAcetaminophen 500mg BID PRN.\n\nExam\nGeneral: Pt in no acute distress. CTAB.\nSkin: Chronic ulcer noted on the right heel. Wound bed shows fat layer exposed. No signs of infection or purulence. Surrounding skin intact.\nVitals: BP 122/78, HR 72, RR 16, Temp 98.6F, SpO2 98% on RA.\n\nAssessment\n1. Chronic ulcer of the right heel.\n\nPlan\nWound care nurse and provider evaluated the site. Confirmed fat layer exposed. No evidence of deep tissue involvement. Continue current dressing regimen. F/u in 2 weeks for debridement and wound progress.\n\nElectronically signed,\nD. Kowalski, MD\n10/14/2026",
+  "answer": [
+    "L97.412"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot with fat layer exposed: L97.412 (HCC 383)."
+  ],
+  "refs": [
+    "OCG I.B.14",
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.414"
+      ],
+      "confusion": "assumed_depth",
+      "lean": "neutral",
+      "why": "Bone necrosis is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.078,
+        "correct": 0.646,
+        "gap": 0.432,
+        "direction": "over",
+        "extra_hccs": [
+          "380"
+        ],
+        "missing_hccs": [
+          "383"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.646,
+    "hccs": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "from": [
+          "L97412"
+        ],
+        "weight": 0.646
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:14+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

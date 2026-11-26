@@ -1,0 +1,286 @@
+{
+  "id": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note_age": {
+    "min": 45
+  },
+  "slots": {
+    "condition": {
+      "label": "Coronary condition documented",
+      "values": [
+        "nstemi_recent",
+        "old_mi",
+        "cad_unstable",
+        "cad_angina"
+      ],
+      "labels": {
+        "nstemi_recent": "NSTEMI two weeks ago",
+        "old_mi": "Heart attack 8 months ago, healed",
+        "cad_unstable": "Coronary artery disease with unstable angina",
+        "cad_angina": "Coronary artery disease with angina, type not stated"
+      },
+      "evidence": {
+        "nstemi_recent": [
+          [
+            "NSTEMI",
+            "non-ST elevation myocardial infarction"
+          ],
+          [
+            "two weeks ago",
+            "2 weeks ago"
+          ]
+        ],
+        "old_mi": [
+          [
+            "myocardial infarction",
+            "heart attack"
+          ],
+          [
+            "8 months ago",
+            "eight months ago"
+          ]
+        ],
+        "cad_unstable": [
+          [
+            "coronary artery disease",
+            "CAD"
+          ],
+          [
+            "unstable angina"
+          ]
+        ],
+        "cad_angina": [
+          [
+            "coronary artery disease",
+            "CAD"
+          ],
+          [
+            "angina"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "nstemi_recent": "Two weeks ago the patient had an NSTEMI (non-ST elevation myocardial infarction), treated medically; this is the follow-up visit, still within the 4 weeks of care for it.",
+        "old_mi": "The patient had a myocardial infarction (heart attack) 8 months ago that has healed; no current symptoms and no ongoing care for it.",
+        "cad_unstable": "The provider documents coronary artery disease of the native arteries with unstable angina (new rest pain this week); urgent cardiology review is arranged.",
+        "cad_angina": "The provider documents coronary artery disease of the native arteries with angina on exertion; the type of angina is not stated, and nitroglycerin is renewed."
+      }
+    }
+  },
+  "note_forbid": [
+    "hypertension",
+    "HTN",
+    "hypertensive",
+    "CKD",
+    "chronic kidney",
+    "kidney disease",
+    "renal failure",
+    "dialysis",
+    "atrial fibrillation",
+    "AFib",
+    "NSAID",
+    "ibuprofen",
+    "naproxen",
+    "heart failure",
+    "cardiomyopathy",
+    "stent",
+    "PCI",
+    "angioplasty",
+    "bypass",
+    "CABG",
+    "graft",
+    "transplant",
+    "STEMI",
+    "ST elevation",
+    "type 2",
+    "demand ischemia",
+    "vasospas",
+    "Prinzmetal",
+    "microvascular"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "nstemi_recent"
+      },
+      "forbid": [
+        "months ago",
+        "old myocardial infarction",
+        "healed",
+        "angina",
+        "history of myocardial"
+      ]
+    },
+    {
+      "when": {
+        "condition": "old_mi"
+      },
+      "forbid": [
+        "NSTEMI",
+        "weeks ago",
+        "acute myocardial",
+        "acute MI",
+        "acute coronary",
+        "angina",
+        "chest pain"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cad_unstable"
+      },
+      "forbid": [
+        "myocardial infarction",
+        "heart attack",
+        "NSTEMI",
+        "stable angina"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cad_angina"
+      },
+      "forbid": [
+        "myocardial infarction",
+        "heart attack",
+        "NSTEMI",
+        "unstable",
+        "stable angina",
+        "rest pain"
+      ]
+    }
+  ],
+  "confusions": {
+    "acute_mi_coded_old": {
+      "description": "Coded old myocardial infarction (I25.2) within 4 weeks of the infarction.",
+      "lean": "under"
+    },
+    "old_mi_coded_acute": {
+      "description": "Coded an acute myocardial infarction (I21) more than 4 weeks after it, with no ongoing care.",
+      "lean": "over"
+    },
+    "missed_combination": {
+      "description": "Coded coronary disease and angina separately instead of the I25.11- combination code.",
+      "lean": "neutral"
+    },
+    "understated_angina": {
+      "description": "Coded unspecified angina when unstable angina is documented.",
+      "lean": "under"
+    },
+    "overstated_angina": {
+      "description": "Coded unstable angina when the type of angina is not documented.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "cad",
+      "rules": [
+        {
+          "when": {
+            "condition": "nstemi_recent"
+          },
+          "codes": [
+            "I21.4"
+          ],
+          "explain": "An MI is coded as acute (I21) for 4 weeks (28 days) from onset, including follow-up visits: NSTEMI, I21.4 (HCC 228).",
+          "refs": [
+            "OCG I.C.9.e"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I25.2"
+              ],
+              "confusion": "acute_mi_coded_old",
+              "why": "It is within 4 weeks: still I21.4."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "old_mi"
+          },
+          "codes": [
+            "I25.2"
+          ],
+          "explain": "An MI more than 4 weeks ago that needs no further care: old myocardial infarction, I25.2 (no HCC).",
+          "refs": [
+            "OCG I.C.9.e"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I21.4"
+              ],
+              "confusion": "old_mi_coded_acute",
+              "why": "After 4 weeks with no ongoing care, the MI is old: I25.2."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cad_unstable"
+          },
+          "codes": [
+            "I25.110"
+          ],
+          "explain": "Coronary artery disease with unstable angina has a combination code: I25.110 (HCC 229). Angina is not coded separately.",
+          "refs": [
+            "OCG I.C.9.b"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I25.10",
+                "I20.0"
+              ],
+              "confusion": "missed_combination",
+              "why": "Use the combination code I25.110, not two codes."
+            },
+            {
+              "codes": [
+                "I25.119"
+              ],
+              "confusion": "understated_angina",
+              "why": "Unstable angina is documented (HCC 229)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cad_angina"
+          },
+          "codes": [
+            "I25.119"
+          ],
+          "explain": "Coronary artery disease with angina of unstated type: combination code I25.119 (no HCC in V28).",
+          "refs": [
+            "OCG I.C.9.b"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I25.110"
+              ],
+              "confusion": "overstated_angina",
+              "why": "Unstable angina is not documented."
+            },
+            {
+              "codes": [
+                "I25.10",
+                "I20.9"
+              ],
+              "confusion": "missed_combination",
+              "why": "Use the combination code I25.119, not two codes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

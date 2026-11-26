@@ -1,0 +1,70 @@
+{
+  "id": "opportunistic-79321600a5",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "cmv"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint: Follow-up for CMV infection.\n\nVitals: BP 128/82, HR 76, SpO2 98% on room air, Temp 98.4 F.\n\nReview of Systems:\nConstitutional: Positive for fever (resolved).\nHEENT: Negative for sore throat or cough.\nRespiratory: Negative for shortness of breath.\nGastrointestinal: Negative for nausea or vomiting.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for headache or confusion.\n\nHPI:\n(Copied Forward) Patient is a 77-year-old woman who presented with a persistent fever and elevated liver enzymes. Laboratory testing confirmed a cytomegalovirus infection. The patient was started on an antiviral regimen and advised on supportive care.\n\n(Today's Update) The patient returns for follow-up while still on her current treatment for CMV disease. She reports that her fever has subsided and she is feeling stronger. She notes mild fatigue but denies any new symptoms or worsening of liver function. She remains compliant with her medication schedule.\n\nMedication List:\n- Valganciclovir 450mg TID\n- Acetaminophen 650mg PRN\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nSkin: No new rashes noted.\nAbdomen: Soft, non-tender, no hepatomegaly.\n\nAssessment:\n1. CMV infection, stable on current treatment.\n\nPlan:\n1. Continue Valganciclovir as prescribed.\n2. Monitor liver function tests and repeat labs in two weeks.\n3. Follow up in 14 days.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "B25.9"
+  ],
+  "explanations": [
+    "Cytomegalovirus disease, site not specified: B25.9 (HCC 6)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "B34.9"
+      ],
+      "confusion": "missed_specific_infection",
+      "lean": "under",
+      "why": "The virus (CMV) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.381,
+        "gap": -0.381,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "6"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.381,
+    "hccs": [
+      {
+        "hcc": "6",
+        "label": "Opportunistic Infections",
+        "from": [
+          "B259"
+        ],
+        "weight": 0.381
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:18+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

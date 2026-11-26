@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-5877dca9cb",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "chronic_pe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for pulmonary embolism.\n\nHPI: [Copied Forward] Patient is a 79-year-old female who presented with symptoms of shortness of breath and chest pain following a confirmed pulmonary embolism. She has been managed on long-term anticoagulation therapy. She reports stable symptoms with no recent acute exacerbations.\n\nUpdate: The patient reports she feels well today. She denies any new shortness of breath or chest pain. She remains compliant with her medication regimen.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\nConstitutional: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\n- Rivaroxaban 20mg daily\n- Lisinopril 10mg daily\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished.\nRespiratory: Lungs clear to auscultation bilaterally. No wheezing or rales.\nCardiovascular: Regular rate and rhythm. No murmurs.\nExtremities: No edema noted.\n\nAssessment:\n1. Chronic pulmonary embolism with persistent clot on imaging.\n\nPlan:\n1. Continue long-term anticoagulation with Rivaroxaban as prescribed.\n2. Patient instructed to monitor for any signs of bleeding or increased respiratory distress.\n3. Follow up in 6 months for routine monitoring.\n\nElectronically signed,\nK. Nguyen, NP\nMay 14, 2026",
+  "answer": [
+    "I27.82"
+  ],
+  "explanations": [
+    "Chronic pulmonary embolism: I27.82 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I26.99"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The embolism is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "Z86.711"
+      ],
+      "confusion": "chronic_coded_history",
+      "lean": "under",
+      "why": "Chronic embolism is a current condition, not history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I2782"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:20+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "K. Nguyen"
+    }
+  }
+}

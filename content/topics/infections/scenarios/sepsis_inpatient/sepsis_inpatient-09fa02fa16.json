@@ -1,0 +1,60 @@
+{
+  "id": "sepsis_inpatient-09fa02fa16",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "urosepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/16/2026\n\nReason for Admission:\nThe patient is an 89-year-old female who presented to the emergency department with a fever and symptoms of a urinary tract infection.\n\nHospital Course:\nDuring her stay, the patient was evaluated for urosepsis. She was started on intravenous fluids and broad-spectrum antibiotics to manage her systemic symptoms and localized infection. She remained stable throughout her hospitalization, with clinical improvement noted over several days. She tolerated her medications well and maintained adequate hydration. She was transitioned to oral therapy prior to discharge.\n\nDischarge Diagnoses:\n1. Urosepsis\n2. Urinary tract infection\n\nDischarge Medications:\n- Nitrofurantoin 100 mg twice daily\n- Acetaminophen 650 mg as needed for fever\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a reassessment of her urinary symptoms and to monitor her progress.\n\nElectronically signed,\nP. O'Brien, MD\n05/16/2026",
+  "answer": [],
+  "explanations": [
+    "'Urosepsis' is a nonspecific term with no default code and is not the same as sepsis: query the provider. No sepsis code."
+  ],
+  "refs": [
+    "OCG I.C.1.d"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "urosepsis_coded_sepsis",
+      "lean": "over",
+      "why": "Urosepsis is not sepsis; it needs a provider query.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0,
+        "gap": 0.5,
+        "direction": "over",
+        "extra_hccs": [
+          "2"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:35+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

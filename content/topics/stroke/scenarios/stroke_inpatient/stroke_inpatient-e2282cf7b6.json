@@ -1,0 +1,90 @@
+{
+  "id": "stroke_inpatient-e2282cf7b6",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "ischemic"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/10/2026\nDischarge Date: 05/14/2026\nReason for Admission: Acute ischemic stroke\n\nHospital Course:\nPt is a 56 y/o F admitted with acute ischemic stroke. Initial presentation included acute neurological deficits. MRI brain confirmed cerebral infarction. Pt was managed on inpatient telemetry. Neurology consult performed. Pt showed steady improvement in neurological status over several days. Physical exam and neuro checks showed resolution of deficits prior to discharge. Pt is currently stable, alert, and oriented. Vitals remain WNL. No new neuro deficits noted on exam. Pt cleared for discharge to home with outpatient follow-up.\n\nDischarge Diagnoses:\nCerebral infarction\n\nDischarge Medications:\n- Aspirin 81mg daily\n- Atorvastatin 40mg daily\n\nFollow-up:\nF/u with Neurology in 1 week and Primary Care in 2 weeks.\n\nElectronically signed,\nD. Kowalski, MD\n05/14/2026",
+  "answer": [
+    "I63.9"
+  ],
+  "explanations": [
+    "Acute ischemic stroke during the admission, artery not named: cerebral infarction, unspecified, I63.9 (HCC 249)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G45.9"
+      ],
+      "confusion": "stroke_coded_tia",
+      "lean": "under",
+      "why": "MRI confirms an infarction: it is a stroke, not a TIA.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.239,
+        "gap": -0.239,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "249"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "Z86.73"
+      ],
+      "confusion": "acute_coded_history",
+      "lean": "under",
+      "why": "This is the acute stroke itself, treated during this stay.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.239,
+        "gap": -0.239,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "249"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.239,
+    "hccs": [
+      {
+        "hcc": "249",
+        "label": "Ischemic or Unspecified Stroke",
+        "from": [
+          "I639"
+        ],
+        "weight": 0.239
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:35+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

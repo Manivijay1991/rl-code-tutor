@@ -151,7 +151,10 @@ button { font: inherit; color: inherit; }
 .chip-btn {
   border: 1px solid var(--line); background: var(--surface); color: var(--ink-2);
   border-radius: 999px; padding: 5px 12px; font-size: 13px; white-space: nowrap; cursor: pointer;
+  max-width: 100%;
 }
+/* A topic name longer than a narrow screen wraps inside its chip instead of widening the page. */
+@media (max-width: 480px) { .chip-btn { white-space: normal; text-align: left; border-radius: 14px; } }
 .chip-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .chip-btn.focus-chip { border-style: dashed; border-color: var(--accent); color: var(--accent); }
 .topic-select {

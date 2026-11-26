@@ -1,0 +1,68 @@
+{
+  "id": "ulcer_burn-1b3afbbf97",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_depth_unknown"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint\nFollow-up for a non-pressure chronic ulcer of the right heel.\n\nHPI\nThe patient is a 79-year-old woman presenting today for a scheduled evaluation of a non-pressure chronic ulcer of the right heel. She reports that the wound has been present for several months. She describes the area as having some drainage but notes that it does not cause significant pain at rest. She has been attempting to manage the site at home but feels the wound is not healing as quickly as she would like. She denies any fever, chills, or systemic malaise. She reports no new areas of concern or changes in the appearance of the site since her last visit.\n\nReview of Systems\nThe patient reports no fevers, chills, or night sweats. She denies cough, shortness of breath, or chest pain. She denies recent weight changes or polyuria. There is no report of joint pain or generalized weakness.\n\nSocial History\nThe patient lives at home with her spouse. She is retired and enjoys gardening and knitting. She denies tobacco or alcohol use.\n\nFamily History\nHer mother had hypertension. Her father had a history of heart disease.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 20mg daily\nAspirin 81mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/82 mmHg\nHeart Rate: 74 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 145 lbs\n\nRecent Labs\nHemoglobin: 12.4 g/dL\nWhite Blood Cell Count: 7.2 x 10^9/L\nGlucose: 110 mg/dL\neGFR: 68 mL/min/1.73m2\n\nExam\nThe patient is a well-appearing 79-year-old woman in no acute distress. Physical exam of the right lower extremity reveals a non-pressure chronic ulcer of the right heel. The wound bed is visible and shows signs of chronic change. There is no surrounding erythema or warmth noted. Capillary refill is less than 3 seconds. The rest of the skin is intact.\n\nAssessment\n1. Non-pressure chronic ulcer of the right heel.\n\nPlan\n1. Wound care: The patient will continue regular dressing changes to the non-pressure chronic ulcer of the right heel. \n2. Follow-up: The patient will return in two weeks for a follow-up evaluation of the right heel.\n3. Education: Encouraged proper hygiene and keeping the area clean and dry.\n\nElectronically signed,\nD. Kowalski, NP\nMay 14, 2026",
+  "answer": [
+    "L97.419"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot, severity not stated: L97.419 (HCC 383)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.412"
+      ],
+      "confusion": "assumed_depth",
+      "lean": "neutral",
+      "why": "The depth is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.646,
+        "correct": 0.646,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.646,
+    "hccs": [
+      {
+        "hcc": "383",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Not Specified as Through to Bone or Muscle",
+        "from": [
+          "L97419"
+        ],
+        "weight": 0.646
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:20+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "spine_amputation-649ef7ab4a",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "amputation_acute"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/20/2026\nReason for Admission: Traumatic amputation of the right lower leg\n\nVitals: BP 118/74, HR 88, SpO2 98% on room air\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nMusculoskeletal: Positive for right lower extremity pain and loss of function.\nNeurological: Negative for numbness or tingling in upper extremities.\nSkin: Positive for surgical site incision.\n\nHPI: Patient is a 77-year-old female who presented to the emergency department following a farm machinery accident. She sustained a complete traumatic amputation of the right lower leg between the knee and ankle. Initial stabilization included hemorrhage control and irrigation.\n\nHospital Course: The patient was admitted for surgical revision and wound management. She underwent a surgical revision of the right lower leg site. Postoperative monitoring showed stable vitals and adequate perfusion to the remaining tissues. Pain management was titrated with intravenous and then oral analgesics. Wound care was provided daily, and the patient remained hemodynamically stable throughout the stay.\n\nDischarge Diagnoses:\n- Traumatic amputation of the right lower leg between the knee and ankle\n\nDischarge Medications:\n- Acetaminophen 650mg every 6 hours as needed for pain\n- Cephalexin 500mg every 8 hours for 7 days\n\nFollow-up: Scheduled for wound check and surgical review in 10 days.\n\nElectronically signed, R. Mensah, MD, 05/20/2026",
+  "answer": [
+    "S88.111A"
+  ],
+  "explanations": [
+    "Complete traumatic amputation of the right lower leg between knee and ankle, initial encounter: S88.111A (HCC 405)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z89.511"
+      ],
+      "confusion": "acute_status_confused",
+      "lean": "neutral",
+      "why": "This is the new injury, not status after an old amputation.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "409"
+        ],
+        "missing_hccs": [
+          "405"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "405",
+        "label": "Traumatic Amputations and Complications",
+        "from": [
+          "S88111A"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:13+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "R. Mensah",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

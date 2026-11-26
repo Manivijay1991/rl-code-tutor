@@ -1,0 +1,61 @@
+{
+  "id": "bone_lupus_skin-1866a42303",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "discoid"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint: \"Skin rash on face and arms.\"\n\nHPI: (Copied Forward) Patient is a 77-year-old female who first presented with erythematous, scaly plaques on the facial region and bilateral forearms. The patient reports the lesions are itchy and occasionally tender. She has been using topical medications as directed. \n\n(Today's Update) The patient returns for a follow-up regarding her discoid lupus. She reports that the lesions on her face have improved in redness but remain slightly scaly. She denies any new flares or systemic symptoms like joint pain or fatigue.\n\nMedication List: \n- Clobetasol propionate ointment (topical)\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nIntegumentary: Positive (scaly plaques)\nMusculoskeletal: Negative\nNeurological: Negative\n\nExam:\nSkin: Multiple well-demarcated, erythematous, scaly plaques noted on the cheeks and forearms, consistent with discoid lupus. No evidence of systemic involvement noted.\n\nAssessment:\n1. Discoid lupus limited to the skin.\n\nPlan:\n1. Continue current topical steroid regimen.\n2. Patient instructed to apply medication twice daily.\n3. Return to clinic in 3 months for reassessment.\n\nElectronically signed,\nR. Mensah, PA-C\n05/14/2026",
+  "answer": [
+    "L93.0"
+  ],
+  "explanations": [
+    "Discoid lupus erythematosus of the skin only: L93.0 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M32.9"
+      ],
+      "confusion": "discoid_coded_sle",
+      "lean": "over",
+      "why": "Systemic lupus is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.268,
+        "correct": 0,
+        "gap": 0.268,
+        "direction": "over",
+        "extra_hccs": [
+          "94"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:29+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

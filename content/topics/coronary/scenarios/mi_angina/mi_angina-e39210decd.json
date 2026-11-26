@@ -1,0 +1,88 @@
+{
+  "id": "mi_angina-e39210decd",
+  "table": "mi_angina",
+  "title": "Myocardial infarction and angina",
+  "status": "draft",
+  "slots": {
+    "condition": "cad_unstable"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's coronary disease, angina or myocardial infarction.",
+  "note": "Chief Complaint: Chest pain.\n\nHPI: (Copied Forward) Patient is a 51-year-old male with a known history of coronary artery disease. He reports intermittent chest pressure during strenuous physical activity over the last six months. Symptoms are typically relieved by rest. He denies shortness of breath, palpitations, or syncope. \n\n(Today's Update) The patient returns today reporting a significant change in his symptoms. He describes new-onset rest pain this week, characterized as a dull ache in the center of his chest that occurs without any physical exertion. The pain is persistent but not sharp. He is experiencing increased anxiety regarding these symptoms. He denies any radiation to the jaw or left arm.\n\nMedication List:\n- Atorvastatin 40mg daily\n- Aspirin 81mg daily\n- Metoprolol succinate 50mg daily\n\nVitals:\nBP: 128/82\nHR: 74 bpm\nSpO2: 98% on room air\nTemp: 98.6 F\nWeight: 215 lbs\n\nRecent Labs:\neGFR: 88 mL/min/1.73m2\nHbA1c: 6.4%\nLDL: 88 mg/dL\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nCardiovascular: Positive for chest pain at rest. Negative for palpitations or edema.\nRespiratory: Negative for cough or wheezing.\nGastrointestinal: Negative for nausea or abdominal pain.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for dizziness or numbness.\n\nSocial History: Patient works as a project manager. He reports a non-smoking status and drinks alcohol socially (1-2 beers on weekends). He lives with his wife and two children.\n\nFamily History: Father had a history of early coronary artery disease. Mother has a history of hyperlipidemia.\n\nExam:\nGeneral: Alert and oriented x3. Appears in mild distress due to chest discomfort.\nCardiovascular: Regular rhythm, S1 and S2 heard. No murmurs, rubs, or gallops.\nPulmonary: Clear to auscultation bilaterally.\nExtremities: No cyanosis or edema noted.\n\nAssessment:\n1. Coronary artery disease with unstable angina. The patient is presenting with new rest pain, necessitating an urgent evaluation of his cardiac status.\n\nPlan:\n1. Urgent cardiology review arranged for today.\n2. Patient instructed to go to the nearest emergency department immediately if chest pain worsens or becomes severe.\n3. Continue current medications as prescribed.\n4. Follow up with cardiology and this office after the specialist consultation.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "I25.110"
+  ],
+  "explanations": [
+    "Coronary artery disease with unstable angina has a combination code: I25.110 (HCC 229). Angina is not coded separately."
+  ],
+  "refs": [
+    "OCG I.C.9.b"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I25.10",
+        "I20.0"
+      ],
+      "confusion": "missed_combination",
+      "lean": "neutral",
+      "why": "Use the combination code I25.110, not two codes.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.24,
+        "correct": 0.24,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.119"
+      ],
+      "confusion": "understated_angina",
+      "lean": "under",
+      "why": "Unstable angina is documented (HCC 229).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.24,
+        "gap": -0.24,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "229"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.24,
+    "hccs": [
+      {
+        "hcc": "229",
+        "label": "Unstable Angina and Other Acute Ischemic Heart Disease",
+        "from": [
+          "I25110"
+        ],
+        "weight": 0.24
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:07:07+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

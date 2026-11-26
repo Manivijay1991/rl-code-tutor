@@ -1,0 +1,79 @@
+{
+  "id": "pneumonia_inpatient-323fdd3c51",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "unspecified_organism"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/16/2026\nReason for Admission: Community-acquired pneumonia\n\nVitals:\nTemperature: 101.4 F\nHeart Rate: 88 bpm\nBlood Pressure: 132/84 mmHg\nRespiratory Rate: 20 breaths/min\nSpO2: 94% on room air\n\nRecent Labs:\nWBC: 12.5 x 10^9/L\nHemoglobin: 13.4 g/dL\nPlatelets: 210 x 10^9/L\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\nChest X-ray: Right lower lobe infiltrates noted.\n\nReview of Systems:\nThe patient reports productive cough, shortness of breath, and generalized malaise. He denies chest pain, night sweats, or changes in vision. He denies any recent travel or known exposures to sick individuals.\n\nSocial History:\nThe patient lives in a private residence with his wife. He retired five years ago and enjoys gardening and walking. He denies tobacco or alcohol use.\n\nFamily History:\nFather deceased at age 82 due to natural causes. Mother deceased at age 88. No known history of hereditary respiratory conditions in the immediate family.\n\nHospital Course:\nThe patient is an 86-year-old man who presented to the emergency department with a three-day history of cough and fever. He was admitted for management of community-acquired pneumonia. During the hospitalization, he was started on a broad-spectrum antibiotic regimen. Microbiology and cultures were obtained upon admission; however, the cultures remained negative and no specific organism was identified. Despite the lack of a specific pathogen, the patient showed a positive clinical response to the antibiotics. His oxygen saturation remained stable on room air. He tolerated his diet well and was able to ambulate in the hallways. He was transitioned to oral medications on the final day of admission.\n\nDischarge Diagnoses:\nCommunity-acquired pneumonia\n\nDischarge Medications:\nAmoxicillin 500mg every 8 hours (complete 7-day course)\nAcetaminophen 650mg every 6 hours as needed for fever\nMultivitamin daily\n\nFollow-up:\nThe patient should follow up with his primary care physician in one week for a repeat physical examination and a follow-up chest X-ray to ensure resolution of the pneumonia.\n\nElectronically signed, P. O'Brien, MD, 05/16/2026",
+  "answer": [
+    "J18.9"
+  ],
+  "explanations": [
+    "Pneumonia with no organism identified: J18.9 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J69.0"
+      ],
+      "confusion": "assumed_organism",
+      "lean": "over",
+      "why": "Aspiration is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.44,
+        "correct": 0,
+        "gap": 0.44,
+        "direction": "over",
+        "extra_hccs": [
+          "282"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "J15.9"
+      ],
+      "confusion": "assumed_organism",
+      "lean": "over",
+      "why": "A bacterial cause is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0,
+        "gap": 0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:30+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

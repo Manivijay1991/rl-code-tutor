@@ -1,0 +1,62 @@
+{
+  "id": "blood_cancers-3064f4fe8a",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "nhl_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Follow-up for history of malignancy.\n\nHPI: Pt is an 85-year-old female presenting for a routine follow-up. Pt was diagnosed with non-Hodgkin lymphoma and completed treatment years ago. She reports she feels well overall. No new symptoms, no weight loss, and no night sweats. Pt states she has had no issues since her treatment was finished. She is here today for a standard check-up and to monitor her general health status.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nReview of Systems:\nGeneral: No fatigue, no weight changes.\nCV: No chest pain, no palpitations.\nResp: No SOB, no cough.\nGI: No abdominal pain, no changes in bowel habits.\nMSK: No joint pain, no decreased mobility.\nNeuro: No dizziness, no headaches.\n\nSocial History: Retired. Lives with her spouse. Denies tobacco or alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nBP: 128/76\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHeight: 5'4\"\nWeight: 145 lbs\n\nRecent Labs:\nHb: 12.4 g/dL\nWBC: 7.2 x 10^9/L\nPlt: 210 x 10^3/uL\nGlucose: 105 mg/dL\neGFR: 72 mL/min\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3. CTAB.\nNeck: No lymphadenopathy.\nLungs: Clear to auscultation bilaterally.\nHeart: RRR, no murmurs.\nAbdomen: Soft, non-tender, no masses.\nExtremities: No edema, pulses intact.\nSkin: No new lesions.\n\nAssessment:\n1. History of non-Hodgkin lymphoma. Treatment completed years ago. No evidence of disease at this time.\n2. Hypertension.\n3. Hyperlipidemia.\n\nPlan:\n1. Continue current medications.\n2. Routine labs to be repeated in 6 months.\n3. Return to clinic as needed or for scheduled follow-up.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "Z85.72"
+  ],
+  "explanations": [
+    "Lymphoma treated in the past with no current disease or treatment: personal history, Z85.72 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.2.d",
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "C85.90"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "Treatment is complete and there is no evidence of disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.671,
+        "correct": 0,
+        "gap": 0.671,
+        "direction": "over",
+        "extra_hccs": [
+          "21"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:46+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

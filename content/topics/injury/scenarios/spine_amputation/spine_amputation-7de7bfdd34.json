@@ -1,0 +1,88 @@
+{
+  "id": "spine_amputation-7de7bfdd34",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_osteoporotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint\nMid-back pain following a lifting incident.\n\nHPI\nThe patient is a 79-year-old woman with a known history of osteoporosis who presents today for evaluation of acute back pain. She reports that the pain began suddenly after she bent over to lift a laundry basket. She describes the pain as sharp and localized to the mid-thoracic region, rated as a 7 out of 10. She notes that the strain was minor and would not typically cause a break in a healthy bone. However, she experienced immediate discomfort and has had difficulty sitting upright comfortably since the incident. She denies any radiating pain, numbness, or weakness in her extremities.\n\nReview of Systems\nNegative for fever, chills, or unintentional weight loss. Negative for bowel or bladder incontinence. Denies numbness or tingling in the lower extremities. Positive for localized mid-back pain and stiffness.\n\nSocial History\nThe patient lives at home with her spouse. She is retired and enjoys gardening and walking. She does not smoke and drinks caffeine occasionally.\n\nFamily History\nMother had osteoporosis and hip fracture at age 82. Father had hypertension.\n\nMedication List\nCalcium carbonate 500mg, Vitamin D3 1000 IU, Alendronate 70mg.\n\nVitals\nBP: 132/84\nHR: 72\nRR: 16\nTemp: 98.6 F\nSpO2: 98% on room air\n\nRecent Labs\neGFR: 68 mL/min/1.73m2\nVitamin D: 32 ng/mL\nCalcium: 9.4 mg/dL\n\nExam\nThe patient appears in no acute distress but demonstrates a guarded posture. Physical exam reveals point tenderness over the T11 and T12 spinous processes. There is a visible deformity in the mid-thoracic spine. Range of motion is limited by pain. Neurological exam is intact with normal sensation and motor strength in all four limbs.\n\nAssessment\n1. New vertebral compression fracture.\n2. Age-related osteoporosis.\n\nPlan\nTreatment for the new vertebral fracture begins today. The patient will be started on a course of scheduled analgesics for pain management. We will discuss physical therapy for core strengthening and posture correction. She was instructed to avoid heavy lifting or repetitive bending. Follow-up in two weeks to monitor progress and adjust pain management as needed.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "M80.08XA"
+  ],
+  "explanations": [
+    "Known osteoporosis + fracture from a minor strain = osteoporosis with current pathological fracture, vertebra, initial encounter: M80.08XA (HCC 401)."
+  ],
+  "refs": [
+    "OCG I.C.13.d.2",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010A"
+      ],
+      "confusion": "osteoporotic_coded_traumatic",
+      "lean": "neutral",
+      "why": "A minor strain in known osteoporosis: M80, not an injury code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.522,
+        "correct": 0.522,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M81.0"
+      ],
+      "confusion": "missed_fracture",
+      "lean": "under",
+      "why": "There is a current fracture: M80, not M81.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.522,
+        "gap": -0.522,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "401"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.522,
+    "hccs": [
+      {
+        "hcc": "401",
+        "label": "Vertebral Fractures without Spinal Cord Injury",
+        "from": [
+          "M8008XA"
+        ],
+        "weight": 0.522
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:10+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

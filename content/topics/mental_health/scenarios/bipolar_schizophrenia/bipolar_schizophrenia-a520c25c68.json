@@ -1,0 +1,89 @@
+{
+  "id": "bipolar_schizophrenia-a520c25c68",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_depressed_moderate"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for mood stabilization.\n\nHPI\nThe patient is a 79-year-old woman presenting today for a scheduled psychiatric evaluation. She reports that her mood has remained consistently low over the past several weeks. She describes feeling very depressed and lacks interest in her usual hobbies. She notes that while her energy levels are low, she is still able to perform basic daily activities, though she finds it difficult to initiate tasks. She denies any recent significant life stressors. She reports that her current symptoms are persistent and she feels a sense of heaviness. She continues to manage her bipolar disorder with medication but feels the current dosage is not providing adequate symptom control.\n\nReview of Systems\nNegative for changes in sleep, appetite, or weight. No reports of tremors, palpitations, or dizziness. No reports of neurological changes.\n\nSocial History\nThe patient lives at home with her daughter. She is retired and enjoys gardening. She does not smoke and drinks caffeine occasionally.\n\nFamily History\nMother had hypertension. Father had a history of cardiovascular disease.\n\nMedication List\nLamotrigine 200 mg daily.\n\nVitals\nBlood Pressure: 132/84 mmHg\nHeart Rate: 72 bpm\nTemperature: 98.6 F\nSpO2: 97% on room air\nWeight: 145 lbs\n\nRecent Labs\neGFR: 68 mL/min\nTSH: 2.1 mIU/L\nHbA1c: 5.8%\n\nExam\nThe patient is a well-groomed, neatly dressed 79-year-old woman who appears her stated age. She is cooperative and maintains good eye contact. Her affect is flat and her mood is reported as depressed. Speech is normal in rate and volume. Cognition is intact. No acute physical distress is noted.\n\nAssessment\nThe patient is a 79-year-old woman with a history of bipolar disorder. She is currently experiencing a moderate episode of depression. Her symptoms have not improved sufficiently on her current regimen.\n\nPlan\n1. Increase lamotrigine dosage to improve stabilization of her bipolar disorder.\n2. Continue monitoring for mood fluctuations.\n3. Follow up in four weeks to assess the efficacy of the dose increase.\n\nElectronically signed, D. Kowalski, NP, 10/14/2026",
+  "answer": [
+    "F31.32"
+  ],
+  "explanations": [
+    "Bipolar disorder, current episode depressed, moderate: F31.32 (HCC 154)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F33.1"
+      ],
+      "confusion": "bipolar_coded_as_depression",
+      "lean": "neutral",
+      "why": "A depressed episode of bipolar disorder is coded in F31, not as major depression.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.299,
+        "correct": 0.351,
+        "gap": -0.052,
+        "direction": "under",
+        "extra_hccs": [
+          "155"
+        ],
+        "missing_hccs": [
+          "154"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "F31.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The episode and severity are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0.351,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.351,
+    "hccs": [
+      {
+        "hcc": "154",
+        "label": "Bipolar Disorders without Psychosis",
+        "from": [
+          "F3132"
+        ],
+        "weight": 0.351
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:27+00:00",
+    "style": {
+      "age": 79,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

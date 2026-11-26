@@ -1,0 +1,61 @@
+{
+  "id": "sepsis_inpatient-b0d22872d3",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "bacteremia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Fever and chills\n\nHospital Course:\nThe patient is a 68-year-old man who presented to the hospital with a high fever and associated chills. Laboratory work and diagnostic testing were initiated promptly. A blood culture was performed, which subsequently returned positive for bacteremia. Based on the clinical presentation and stable vital signs, the physician determined that the patient does not have sepsis. The patient remained stable throughout the stay and was managed conservatively. He responded well to the initiation of oral antibiotics. He was cleared for discharge once he remained afebrile for 48 hours and tolerated his oral intake.\n\nDischarge Diagnoses:\nBacteremia\n\nDischarge Medications:\nAmoxicillin 875mg orally every 8 hours for 10 days.\n\nFollow-up:\nThe patient should follow up with his primary care physician in one week for a review of his clinical status and to monitor the completion of his antibiotic course.\n\nElectronically signed, K. Nguyen, MD, 05/15/2026",
+  "answer": [],
+  "explanations": [
+    "Bacteremia without sepsis is coded R78.81 (no HCC), which is not a sepsis code: no sepsis code applies."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "bacteremia_coded_sepsis",
+      "lean": "over",
+      "why": "The provider documents bacteremia without sepsis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0,
+        "gap": 0.5,
+        "direction": "over",
+        "extra_hccs": [
+          "2"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:02+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "K. Nguyen",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

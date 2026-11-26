@@ -1,0 +1,68 @@
+{
+  "id": "metabolic_endocrine-9b206aadc6",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "amyloid_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Follow-up on biopsy results.\n\nHPI: [Copied Forward] Patient is a 28-year-old woman presenting for evaluation of systemic symptoms and localized findings. She reports progressive fatigue and joint discomfort over the last several months. Initial workup was performed to investigate these constitutional symptoms.\n\n[Today's Update] The patient returns today to discuss the results of her recent tissue biopsy. The pathology report confirms the presence of amyloidosis. The specific subtype of amyloidosis has not yet been determined by the laboratory. The patient expresses concern regarding the diagnosis and the next steps for management.\n\nMedication List:\n- Multivitamin daily\n- Naproxen 500mg as needed for joint pain\n\nVitals: BP 118/76, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- General: Positive for fatigue.\n- Musculoskeletal: Positive for joint pain.\n- Cardiovascular: Negative.\n- Respiratory: Negative.\n- Neurological: Negative.\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nMusculoskeletal: Mild joint swelling noted in bilateral hands.\nCardiovascular: Regular rate and rhythm, no murmurs.\nRespiratory: Clear to auscultation bilaterally.\n\nAssessment:\n1. Amyloidosis: Confirmed via biopsy. Type currently unknown.\n\nPlan:\n1. Refer to hematology for further diagnostic workup to determine the specific type of amyloidosis.\n2. Follow up with hematology specialist for ongoing management.\n3. Continue current medications as needed.\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "E85.9"
+  ],
+  "explanations": [
+    "Amyloidosis without a documented type: E85.9 (HCC 50)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E85.82"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "The type is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.648,
+        "correct": 0.648,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.648,
+    "hccs": [
+      {
+        "hcc": "50",
+        "label": "Amyloidosis/Porphyria/and Other Specified Metabolic Disorders",
+        "from": [
+          "E859"
+        ],
+        "weight": 0.648
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:56+00:00",
+    "style": {
+      "age": 28,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

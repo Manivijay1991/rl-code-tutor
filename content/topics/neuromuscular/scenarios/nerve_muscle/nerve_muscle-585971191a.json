@@ -1,0 +1,68 @@
+{
+  "id": "nerve_muscle-585971191a",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "becker"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint: Leg weakness\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F\n\nHPI: (Copied Forward) Patient is a 54-year-old male with a known history of Becker muscular dystrophy. He presents for a follow-up regarding slowly progressive leg weakness. He reports that his mobility has decreased over the last six months, noting increased difficulty with stairs and longer distances. He currently utilizes a cane for stability during ambulation. He denies any new onset of upper extremity weakness or significant changes in his respiratory status.\n\nReview of Systems:\nConstitutional: Negative\nNeuromuscular: Positive (lower extremity weakness)\nRespiratory: Negative\nMusculoskeletal: Positive (lower extremity gait changes)\nAll other systems: Negative\n\nMedication List:\n- Physical therapy exercises (daily)\n- Multivitamin\n\nExam:\nGeneral: Well-appearing male in no acute distress.\nNeuromuscular: Notable for proximal muscle weakness in bilateral lower extremities. Gait is steady but slow, requiring a cane for support. Strength is 4/5 in hip flexion and knee extension. No significant changes in upper extremity strength noted.\n\nAssessment:\n1. Becker muscular dystrophy presenting with slowly progressive leg weakness.\n\nPlan:\n1. Continue current physical therapy regimen focusing on lower extremity mobility.\n2. Patient to continue using cane for safety during ambulation.\n3. Return to clinic in 6 months for reassessment of motor function.\n\nElectronically signed, R. Mensah, PA-C, 05/14/2026",
+  "answer": [
+    "G71.01"
+  ],
+  "explanations": [
+    "Becker muscular dystrophy shares a code with Duchenne: G71.01 (HCC 197)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G71.00"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type (Becker) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.426,
+        "correct": 0.426,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.426,
+    "hccs": [
+      {
+        "hcc": "197",
+        "label": "Muscular Dystrophy",
+        "from": [
+          "G7101"
+        ],
+        "weight": 0.426
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:50+00:00",
+    "style": {
+      "age": 54,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

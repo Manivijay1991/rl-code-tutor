@@ -1,0 +1,72 @@
+{
+  "id": "spine_amputation-e58874fe74",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "vert_initial"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint\nBack pain following fall.\n\nHPI\nPt is a 56 y.o. female presenting for evaluation of back pain. Pt reports fall from a ladder 2 days ago. Imaging reveals a closed wedge compression fracture of the first lumbar vertebra (L1). Pt denies any neurological deficits. Bone density is reported as normal. Pt reports localized pain and discomfort.\n\nMedication List\nMultimodal analgesia as needed.\n\nExam\nPt in no acute distress. Back is stable. Neuro exam intact. Strength 5/5 throughout. Reflexes WNL.\n\nAssessment\n1. Closed wedge compression fracture of L1.\n\nPlan\nStart active treatment with a back brace today. Pt instructed on brace usage and activity restrictions. Pt to monitor for increased pain or neurological changes.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "S32.010A"
+  ],
+  "explanations": [
+    "Wedge compression fracture of L1, initial encounter for closed fracture: S32.010A (HCC 401)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "OCG I.C.19.c",
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S32.010D"
+      ],
+      "confusion": "subsequent_for_initial",
+      "lean": "under",
+      "why": "New fracture under active treatment: 7th character A.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.522,
+        "gap": -0.522,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "401"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.522,
+    "hccs": [
+      {
+        "hcc": "401",
+        "label": "Vertebral Fractures without Spinal Cord Injury",
+        "from": [
+          "S32010A"
+        ],
+        "weight": 0.522
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:04+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

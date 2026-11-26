@@ -1,0 +1,68 @@
+{
+  "id": "paralysis-9f7c4cdb93",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "cauda_equina"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint: Bladder retention and saddle numbness.\n\nHPI: Pt is an 85 y.o. female presenting for f/u of chronic cauda equina syndrome. Pt reports persistent saddle numbness and ongoing issues with bladder retention. She continues to require intermittent catheterization for management of urinary retention. She denies any new acute changes to sensation or motor function. No new bowel incontinence reported. Pt reports stable mobility with assistance.\n\nMedication List:\n- Oxycodone 5mg BID PRN for pain\n- Gabapentin 300mg TID\n- Quinine sulfate 200mg BID\n- Normal Saline for catheterization\n\nReview of Systems:\nConstitutional: No fevers or chills.\nNeurological: Positive for saddle numbness. Denies new weakness or tremors.\nGenitourinary: Positive for bladder retention. Denies dysuria.\nMSK: Chronic back pain.\n\nSocial History: Lives at home with daughter. Retired. No tobacco use. Occasional alcohol.\n\nFamily History: Mother had hypertension. Father had arthritis.\n\nVitals:\nBP: 132/82\nHR: 78 (RRR)\nTemp: 98.6 F\nSpO2: 96% on RA\nHeight: 5'2\"\nWeight: 145 lbs\n\nRecent Labs:\neGFR: 68\nHbA1c: 6.4%\nNa: 138\nK: 4.0\nWBC: 7.2\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nNeurological: Sensation diminished in saddle area. Motor strength 4/5 in lower extremities.\nGenitourinary: Bladder retention confirmed.\n\nAssessment:\n1. Chronic cauda equina syndrome. Pt remains stable on current management.\n2. Bladder retention. Managed with intermittent catheterization.\n\nPlan:\n1. Continue current management for chronic cauda equina syndrome.\n2. Continue intermittent catheterization for bladder retention.\n3. Continue current medications for pain and nerve discomfort.\n4. F/u in 3 months or PRN for worsening of symptoms.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "G83.4"
+  ],
+  "explanations": [
+    "Cauda equina syndrome: G83.4 (HCC 182)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G95.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Cauda equina syndrome has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.478,
+        "correct": 0.478,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.478,
+    "hccs": [
+      {
+        "hcc": "182",
+        "label": "Spinal Cord Disorders/Injuries",
+        "from": [
+          "G834"
+        ],
+        "weight": 0.478
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:18+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

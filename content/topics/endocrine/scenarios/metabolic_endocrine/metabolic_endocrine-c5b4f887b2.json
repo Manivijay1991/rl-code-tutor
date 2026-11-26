@@ -1,0 +1,68 @@
+{
+  "id": "metabolic_endocrine-c5b4f887b2",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "amyloid_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint:\nFollow-up on biopsy results.\n\nHPI:\n[Copied Forward]\nPatient is a 77-year-old female presenting for evaluation of systemic symptoms. She reports persistent fatigue and joint discomfort. Initial laboratory workup was inconclusive, leading to a tissue biopsy to investigate suspected amyloidosis.\n\n[Current Update]\nThe patient returns today for the review of her biopsy results. She reports that her fatigue remains stable but she is anxious regarding the findings. She denies any new acute symptoms or significant changes in her functional status since the last encounter.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n\nVitals:\nBP: 128/82, HR: 74, SpO2: 98% on room air, Temp: 98.6 F, Weight: 155 lbs.\n\nReview of Systems:\nConstitutional: Positive for fatigue.\nMusculoskeletal: Positive for joint discomfort.\nNeurological: Negative for numbness or tingling.\nCardiovascular: Negative for chest pain or palpitations.\nRespiratory: Negative for shortness of breath.\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nSkin: No visible lesions or rashes.\nMusculoskeletal: Mild joint tenderness noted in bilateral hands.\nCardiovascular: Regular rate and rhythm.\n\nAssessment:\n1. Amyloidosis: Biopsy confirmed the presence of amyloidosis. The specific type of amyloidosis is not yet determined from the current pathology report.\n\nPlan:\n1. Referral to hematology for further diagnostic testing to determine the specific type of amyloidosis.\n2. Follow up with hematology specialist.\n3. Continue current medications.\n\nElectronically signed, \nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "E85.9"
+  ],
+  "explanations": [
+    "Amyloidosis without a documented type: E85.9 (HCC 50)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E85.82"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "The type is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.648,
+        "correct": 0.648,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.648,
+    "hccs": [
+      {
+        "hcc": "50",
+        "label": "Amyloidosis/Porphyria/and Other Specified Metabolic Disorders",
+        "from": [
+          "E859"
+        ],
+        "weight": 0.648
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:27:30+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

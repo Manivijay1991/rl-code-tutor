@@ -1,0 +1,72 @@
+{
+  "id": "drug_use-13e548c558",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cocaine_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Follow-up for psychiatric symptoms and substance use.\n\nVitals: BP 128/82, HR 76, SpO2 98% on room air, Temp 98.6 F, BMI 28.4.\n\nRecent Labs: CBC: WBC 7.2, Hb 13.5, Plt 210. CMP: Na 140, K 4.2, Cl 102, BUN 18, Cr 0.9, Glu 105, eGFR 85. UA: Negative for glucose, protein, or nitrites.\n\nMedication List:\n- Quetiapine 100mg PO at bedtime\n- Hydroxyzzine 25mg PO PRN for anxiety\n\nSocial History: Retired; lives with her daughter; denies any history of illicit substance use prior to 5 years ago.\n\nFamily History: Mother had hypertension; father had type 2 diabetes.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight changes.\nNeurological: Negative for tremors or seizures.\nPsychiatric: Positive for hallucinations (improving). Negative for suicidal ideation.\nIntegumentary: Negative for rashes or lesions.\nRespiratory: Negative for shortness of breath or cough.\n\nHPI: (Copied forward) Patient is a 72-year-old female presenting for management of severe cocaine use disorder. She reports significant cocaine-induced psychotic disorder characterized by auditory and visual hallucinations. She has been adherent to her current medication regimen but continues to struggle with cravings and impulse control.\n\nUpdate: The patient reports feeling significantly better since the last visit. She notes that the hallucinations are no longer persistent and she feels more grounded. She denies any recent use of illicit substances. She reports improved sleep patterns and decreased anxiety.\n\nExam: Alert and oriented x3. Appears well-groomed with a stable affect. Speech is clear and coherent. Mood is described as \"calmer.\" No tremors noted. Motor activity is normal.\n\nAssessment:\n1. Severe cocaine use disorder: The patient is showing progress in stabilization and has reported a decrease in cravings.\n2. Cocaine-induced psychotic disorder: The patient reports that her hallucinations are now improving.\n\nPlan:\n1. Continue current medication regimen.\n2. Continue weekly psychotherapy sessions focusing on coping mechanisms.\n3. Patient to return in two weeks for follow-up.\n\nElectronically signed, A. Rivera, MD, 10/14/2026",
+  "answer": [
+    "F14.251"
+  ],
+  "explanations": [
+    "Severe cocaine use disorder with cocaine-induced psychotic disorder with hallucinations: combination code F14.251 (HCC 135)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F14.20"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "The psychotic disorder is part of the combination code (HCC 135).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0.424,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": [
+          "135"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "135",
+        "label": "Drug Use with Psychotic Complications",
+        "from": [
+          "F14251"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:31+00:00",
+    "style": {
+      "age": 72,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

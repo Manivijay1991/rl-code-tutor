@@ -1,0 +1,87 @@
+{
+  "id": "vte_status-c1b2367453",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_pe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Shortness of breath and follow-up.\n\nHPI: [Copied Forward] Patient is a 77-year-old female who presented with sudden onset shortness of breath and pleuritic chest pain. Imaging confirmed an acute pulmonary embolism. Patient was started on anticoagulation therapy.\n\n[Update] The patient returns today for a follow-up regarding her acute pulmonary embolism diagnosed two weeks ago via CT imaging. She reports that her breathing has significantly improved since starting her medication. She denies any new chest pain or increased shortness of breath. She states she has been compliant with her anticoagulation regimen and denies any unusual bleeding or bruising.\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative\nRespiratory: Positive (improved shortness of breath)\nCardiovascular: Negative\nGastrointestinal: Negative\nMusculoskeletal: Negative\nNeurological: Negative\n\nMedication List:\nRivaroxaban 15 mg daily\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nRespiratory: Clear to auscultation bilaterally. No wheezing or crackles.\nCardiovascular: Regular rate and rhythm. No murmurs.\n\nAssessment:\n1. Acute pulmonary embolism. Patient is in the first months of anticoagulant treatment.\n\nPlan:\nContinue current dose of Rivaroxaban. Follow up in 4 weeks for continued monitoring of respiratory status.\n\nElectronically signed,\nR. Mensah, PA-C\nOctober 14, 2026",
+  "answer": [
+    "I26.99"
+  ],
+  "explanations": [
+    "Acute pulmonary embolism without acute cor pulmonale, under initial treatment: I26.99 (HCC 267)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z86.711"
+      ],
+      "confusion": "acute_coded_history",
+      "lean": "under",
+      "why": "The embolism is acute and still being treated.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.294,
+        "gap": -0.294,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "267"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I27.82"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "The embolism is documented as acute.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0.294,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.294,
+    "hccs": [
+      {
+        "hcc": "267",
+        "label": "Deep Vein Thrombosis and Pulmonary Embolism",
+        "from": [
+          "I2699"
+        ],
+        "weight": 0.294
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:07:57+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

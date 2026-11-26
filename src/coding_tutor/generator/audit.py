@@ -56,6 +56,13 @@ HEADINGS = {
     "assessment and plan": "ap", "assessment & plan": "ap", "a/p": "ap",
     "assessment": "ap", "plan": "ap", "impression": "ap",
     "problem list": "pl", "active problem list": "pl", "problems": "pl",
+    # hospital discharge summaries, radiology reports and nurse visits (other `document` kinds)
+    "reason for admission": "cc", "indication": "cc",
+    "hospital course": "hpi", "brief hospital course": "hpi",
+    "admission diagnosis": "ap", "admitting diagnosis": "ap", "discharge diagnoses": "ap", "discharge diagnosis": "ap",
+    "final diagnoses": "ap", "follow-up": "ap", "follow up": "ap", "patient education": "ap",
+    "discharge medications": "meds",
+    "findings": "exam", "nursing assessment": "exam",
 }  # fmt: skip
 _HEAD_RE = re.compile(
     r"^\s*(?:#+\s*)?(" + "|".join(sorted(map(re.escape, HEADINGS), key=len, reverse=True)) + r")\s*:?",

@@ -93,7 +93,7 @@ Pipeline inside `src/coding_tutor/`:
   unless I approve a test change.
 
 ## Next tasks
-1. Certified-coder review of all 25 topics' tables, expected answers and generated scenarios (all `draft`).
-2. More topics (one folder each; `coding-tutor-coverage`: 47 of 115 HCCs, all 22 groups touched): DVT/PE, transplant status, sepsis/infections beyond HIV, more injury, telehealth/audio-only in acceptable sources (needs a current CMS citation).
+1. Certified-coder review of every topic's tables, expected answers and generated scenarios (all `draft`).
+2. All 115 V28 HCCs now have at least one table answer (`coding-tutor-coverage`). Next content: deeper variety per HCC, telehealth/audio-only in acceptable sources (needs a current CMS citation). Dilated cardiomyopathy waits for a V28 mapping of the FY2027 I42.0- codes.
 3. Deploy: `vercel.json`, `api/index.py` and `live/stores/redis.py` (Upstash REST, env vars only) are ready and tested locally; connect the Upstash integration and deploy. Then offline evaluation in `rl/` from the event log, and a separate private metrics app (read-only DB credentials; no stats in the student site).
 4. Exam mode in the web UI (sections, flag for review, countdown timer); real-student testing of coach mode.

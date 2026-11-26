@@ -1,0 +1,8 @@
+{
+  "id": "bone_skin",
+  "title": "Bone, lupus, ulcers and burns",
+  "kind": "hcc",
+  "description": "Osteomyelitis, lupus vs discoid lupus, non-pressure ulcer depth, burn extent (T31) and pemphigus/pemphigoid.",
+  "order": 89,
+  "enabled": true
+}

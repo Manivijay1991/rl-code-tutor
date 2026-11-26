@@ -1,0 +1,254 @@
+{
+  "id": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Dilated cardiomyopathy is left out: FY2027 split I42.0 into I42.00-I42.09, which the PY2026 V28 mapping does not list yet.",
+  "note_age": {
+    "min": 40
+  },
+  "slots": {
+    "condition": {
+      "label": "Cardiomyopathy documented",
+      "values": [
+        "hcm_obstructive",
+        "hcm_nonobstructive",
+        "ischemic",
+        "unspecified"
+      ],
+      "labels": {
+        "hcm_obstructive": "Obstructive hypertrophic cardiomyopathy",
+        "hcm_nonobstructive": "Hypertrophic cardiomyopathy without obstruction",
+        "ischemic": "Ischemic cardiomyopathy",
+        "unspecified": "Cardiomyopathy, type not stated"
+      },
+      "evidence": {
+        "hcm_obstructive": [
+          [
+            "obstructive hypertrophic cardiomyopathy",
+            "HOCM"
+          ]
+        ],
+        "hcm_nonobstructive": [
+          [
+            "nonobstructive hypertrophic cardiomyopathy",
+            "non-obstructive hypertrophic cardiomyopathy"
+          ]
+        ],
+        "ischemic": [
+          [
+            "ischemic cardiomyopathy"
+          ]
+        ],
+        "unspecified": [
+          [
+            "cardiomyopathy"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "hcm_obstructive": "The cardiologist documents obstructive hypertrophic cardiomyopathy (HOCM) on echocardiogram, managed with a beta blocker.",
+        "hcm_nonobstructive": "The cardiologist documents nonobstructive hypertrophic cardiomyopathy on echocardiogram, monitored yearly.",
+        "ischemic": "The cardiologist documents ischemic cardiomyopathy (from coronary disease), stable on medical therapy.",
+        "unspecified": "The provider documents cardiomyopathy found on a recent echocardiogram; the type is not stated and a cardiology referral is placed."
+      }
+    }
+  },
+  "note_forbid": [
+    "hypertension",
+    "HTN",
+    "hypertensive",
+    "CKD",
+    "chronic kidney",
+    "kidney disease",
+    "renal failure",
+    "dialysis",
+    "atrial fibrillation",
+    "AFib",
+    "NSAID",
+    "ibuprofen",
+    "naproxen",
+    "heart failure",
+    "HFrEF",
+    "HFpEF",
+    "dilated",
+    "alcoholic",
+    "takotsubo",
+    "peripartum",
+    "restrictive",
+    "myocarditis",
+    "amyloid",
+    "sarcoid",
+    "chemotherapy",
+    "defibrillator",
+    "ICD device",
+    "transplant"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "hcm_obstructive"
+      },
+      "forbid": [
+        "nonobstructive",
+        "non-obstructive",
+        "ischemic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "hcm_nonobstructive"
+      },
+      "forbid": [
+        "HOCM",
+        "obstructive hypertrophic",
+        "ischemic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "ischemic"
+      },
+      "forbid": [
+        "hypertrophic",
+        "HOCM"
+      ]
+    },
+    {
+      "when": {
+        "condition": "unspecified"
+      },
+      "forbid": [
+        "hypertrophic",
+        "HOCM",
+        "ischemic",
+        "coronary"
+      ]
+    }
+  ],
+  "confusions": {
+    "ischemic_coded_as_i42": {
+      "description": "Coded a cardiomyopathy from category I42 for ischemic cardiomyopathy (I42 excludes it: I25.5).",
+      "lean": "over"
+    },
+    "missed_obstruction": {
+      "description": "Missed that the hypertrophic cardiomyopathy is obstructive (or assumed obstruction).",
+      "lean": "neutral"
+    },
+    "assumed_type": {
+      "description": "Coded a specific type of cardiomyopathy the provider did not document.",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used unspecified cardiomyopathy when the type is documented.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "cm",
+      "rules": [
+        {
+          "when": {
+            "condition": "hcm_obstructive"
+          },
+          "codes": [
+            "I42.1"
+          ],
+          "explain": "Obstructive hypertrophic cardiomyopathy: I42.1 (HCC 227).",
+          "refs": [
+            "ICD-10-CM Tabular: I42, I25.5"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I42.2"
+              ],
+              "confusion": "missed_obstruction",
+              "why": "The cardiomyopathy is documented as obstructive."
+            },
+            {
+              "codes": [
+                "I42.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "hcm_nonobstructive"
+          },
+          "codes": [
+            "I42.2"
+          ],
+          "explain": "Nonobstructive hypertrophic cardiomyopathy: I42.2, other hypertrophic cardiomyopathy (HCC 227).",
+          "refs": [
+            "ICD-10-CM Tabular: I42, I25.5"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I42.1"
+              ],
+              "confusion": "missed_obstruction",
+              "why": "It is documented as nonobstructive."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "ischemic"
+          },
+          "codes": [
+            "I25.5"
+          ],
+          "explain": "Ischemic cardiomyopathy: I25.5 (no HCC in V28). Category I42 excludes it, so I42.9 would be wrong and would add HCC 227.",
+          "refs": [
+            "ICD-10-CM Tabular: I42, I25.5"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I42.9"
+              ],
+              "confusion": "ischemic_coded_as_i42",
+              "why": "I42 excludes ischemic cardiomyopathy: use I25.5."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "unspecified"
+          },
+          "codes": [
+            "I42.9"
+          ],
+          "explain": "Cardiomyopathy without a stated type: I42.9 (HCC 227).",
+          "refs": [
+            "ICD-10-CM Tabular: I42, I25.5"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I42.2"
+              ],
+              "confusion": "assumed_type",
+              "why": "Hypertrophic cardiomyopathy is not documented."
+            },
+            {
+              "codes": [
+                "I25.5"
+              ],
+              "confusion": "assumed_type",
+              "why": "Ischemic cardiomyopathy is not documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

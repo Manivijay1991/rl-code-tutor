@@ -1,0 +1,70 @@
+{
+  "id": "blood_cancers-05445a964b",
+  "table": "blood_cancers",
+  "title": "Myeloma, myelodysplastic syndrome and lymphoma",
+  "status": "draft",
+  "slots": {
+    "condition": "mds"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood cancer or its history (only that code).",
+  "note": "Chief Complaint: Follow-up for myelodysplastic syndrome and blood count monitoring.\n\nVitals: BP 128/82, HR 74, Temp 98.6F, SpO2 98% on room air, Weight 195 lbs.\n\nRecent Labs: Hemoglobin 9.2 g/dL, White Blood Cell Count 3.1 x 10^9/L, Platelet Count 88 x 10^9/L.\n\nReview of Systems:\nConstitutional: Negative for fatigue, weight changes.\nIntegumentary: Negative for rashes or bruising.\nCardiovascular: Negative for palpitations or chest pain.\nRespiratory: Negative for shortness of breath.\nNeurological: Negative for dizziness or numbness.\nMusculoskeletal: Negative for joint pain.\n\nSocial History: The patient is a non-smoker. He works as a consultant and lives with his spouse. He reports regular exercise three times per week.\n\nFamily History: Father had hypertension; Mother had type 2 diabetes. No known family history of hematologic malignancies.\n\nHPI: [Copied Forward from previous visit] Patient is a 51-year-old male who presented for management of myelodysplastic syndrome. He reports chronic fatigue and occasional shortness of breath on exertion. He has been receiving periodic transfusions to maintain stable blood counts. He denies any acute chest pain or significant syncope.\n\nUpdate: The patient reports that he has felt stable since the last visit. He continues to experience mild fatigue but notes that his activity level has remained consistent. He denies any new symptoms or complications related to his MDS.\n\nMedication List:\n- Erythropoietin stimulating agent (weekly injection)\n- Aspirin 81mg daily\n- Multivitamin daily\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs.\nRespiratory: Clear to auscultation bilaterally.\nSkin: No visible petechiae or ecchymosis.\nMusculoskeletal: Normal strength and range of motion in all extremities.\n\nAssessment:\n1. Myelodysplastic syndrome (MDS) with low blood counts.\n\nPlan:\n1. Continue current management of MDS with periodic transfusions as needed to maintain hemoglobin levels.\n2. Monitor CBC every 4 weeks to track blood counts.\n3. Patient instructed to report any significant increase in fatigue or signs of bleeding.\n4. Follow up in 3 months for routine lab work and clinical evaluation.\n\nElectronically signed, J. Lindqvist, NP, 05/14/2026",
+  "answer": [
+    "D46.9"
+  ],
+  "explanations": [
+    "Myelodysplastic syndrome, unspecified: D46.9 (HCC 19)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: C81-C90, D46, Z85.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D64.9"
+      ],
+      "confusion": "symptom_for_disease",
+      "lean": "under",
+      "why": "The cause of the low counts (MDS) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.798,
+        "gap": -1.798,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "19"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.798,
+    "hccs": [
+      {
+        "hcc": "19",
+        "label": "Myelodysplastic Syndromes/Multiple Myeloma/and Other Cancers",
+        "from": [
+          "D469"
+        ],
+        "weight": 1.798
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:21:34+00:00",
+    "style": {
+      "age": 51,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "J. Lindqvist"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-29a0f46e5d",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "intestine"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up for status post intestinal transplant.\n\nHPI: (Copied Forward) Patient is a 78-year-old male who underwent a small bowel transplant several years ago. He has been stable on his current immunosuppressive regimen with excellent nutritional status and no signs of graft issues. He reports feeling well today with no new gastrointestinal symptoms or significant weight changes.\n\nVitals: BP 128/76, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 24.2.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nGastrointestinal: Negative for abdominal pain, diarrhea, or nausea.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nNeurological: Negative for headaches or dizziness.\n\nExam: Patient is alert and oriented x3. Appearance is healthy and well-nourished. Abdomen is soft, non-tender, and non-distended. Bowel sounds are present in all quadrants. No masses noted. Skin is intact without lesions.\n\nAssessment:\n1. Status post small bowel transplant. Patient remains stable and well-tolerated on current medications.\n\nPlan:\n1. Continue current immunosuppressive medications as prescribed.\n2. Continue current nutritional plan.\n3. Follow up in 6 months for routine monitoring.\n\nElectronically signed,\nR. Mensah, NP\nMay 14, 2026",
+  "answer": [
+    "Z94.82"
+  ],
+  "explanations": [
+    "Intestine transplant status: Z94.82 (HCC 77)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Intestine transplant status carries HCC 77.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 1.172,
+        "gap": -1.172,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "77"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.172,
+    "hccs": [
+      {
+        "hcc": "77",
+        "label": "Intestine Transplant Status/Complications",
+        "from": [
+          "Z9482"
+        ],
+        "weight": 1.172
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:09+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

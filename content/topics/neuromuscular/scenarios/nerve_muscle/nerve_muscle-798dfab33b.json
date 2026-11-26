@@ -1,0 +1,72 @@
+{
+  "id": "nerve_muscle-798dfab33b",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "mg_exacerbation"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for myasthenia gravis and worsening of symptoms.\n\nHPI\nThe patient is a 28-year-old woman who presents today for a follow-up evaluation of her myasthenia gravis. She reports a significant exacerbation of her symptoms occurring over the past week. Specifically, she notes a marked increase in the severity of her ptosis, which has become more pronounced and persistent. Additionally, she reports significant difficulty with swallowing, noting that she feels a sensation of heaviness in her throat and experiences frequent coughing while consuming liquids. She states that her muscle weakness is more noticeable in the evening and after periods of activity. She has been compliant with her current medication regimen but feels that the current dosage is no longer sufficient to manage her symptoms effectively.\n\nMedication List\n- Prednisone 40mg daily\n- Pyridostigmine 60mg every 4 hours\n\nReview of Systems\nThe patient denies chest pain, shortness of breath, fever, or chills. She reports generalized muscle weakness and difficulty swallowing. She denies any changes in vision, headaches, or palpitations. She denies any recent falls or loss of consciousness.\n\nSocial History\nThe patient works full-time in a sedentary office environment. She lives with her spouse and a dog. She reports a healthy diet and regular exercise.\n\nFamily History\nMother has hypertension. Father has a history of hyperlipidemia. No family history of autoimmune disorders is reported.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 118/76 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nSpO2: 98% on room air\nHeight: 5'6\"\nWeight: 135 lbs\n\nRecent Labs\nComplete Blood Count (CBC): Within normal limits.\nComprehensive Metabolic Panel (CMP): Within normal limits.\nCreatinine: 0.9 mg/dL.\n\nExam\nThe patient is alert and oriented x3. She appears in mild distress due to facial weakness. Notable bilateral ptosis is observed, more pronounced on the right side. Extraocular movements are intact but slow. She demonstrates mild dysphagia during the clinical encounter. Strength is 4/5 in the proximal upper extremities and 5/5 in the lower extremities. Reflexes are 2+ and symmetric.\n\nAssessment\n1. Myasthenia gravis with acute exacerbation.\n\nPlan\nThe patient's symptoms of ptosis and dysphagia have worsened significantly this week. To address the exacerbation, her prednisone dosage will be increased from 40mg to 60mg daily. She was instructed to monitor her symptoms closely and report any further difficulty breathing or severe swallowing issues immediately. She will return to the clinic in two weeks for a follow-up evaluation of her response to the increased steroid dose.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "G70.01"
+  ],
+  "explanations": [
+    "Myasthenia gravis with (acute) exacerbation: G70.01 (HCC 195, weight about 2.9)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G70.00"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "under",
+      "why": "An acute exacerbation is documented (HCC 195, not 196).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.516,
+        "correct": 2.909,
+        "gap": -2.393,
+        "direction": "under",
+        "extra_hccs": [
+          "196"
+        ],
+        "missing_hccs": [
+          "195"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.909,
+    "hccs": [
+      {
+        "hcc": "195",
+        "label": "Myasthenia Gravis with (Acute) Exacerbation",
+        "from": [
+          "G7001"
+        ],
+        "weight": 2.909
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:04+00:00",
+    "style": {
+      "age": 28,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

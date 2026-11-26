@@ -1,0 +1,72 @@
+{
+  "id": "spine_amputation-4ac5efe007",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "amputation_status"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint: Follow-up for right below-knee amputation status.\n\nHPI: 85 y.o. female presents for scheduled follow-up of right BKA. Patient reports she is doing well and remains mobile with her prosthesis. She notes no current issues with the prosthetic fit or skin integrity. She denies any new pain or discomfort in the stump area. Pt states she continues to walk independently using the device. No concerns voiced regarding mobility or activity level.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Denies fever, chills, fatigue.\nMSK: Denies joint pain.\nSkin: No rashes or drainage noted at site.\nNeuro: Denies numbness or tingling.\nAll other systems reviewed and negative.\n\nSocial History: Lives at home with spouse. Retired. Non-smoker. Occasional social outings.\n\nFamily History: Mother had hypertension. Father had coronary artery disease.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nHt: 34.2\nWBC: 7.2\nHbA1c: 5.8%\neGFR: 68\n\nExam:\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: CTAB.\nCardiovascular: RRR, no murmurs.\nSkin/Extremities: Right below-knee amputation site is well-healed. Stump appearance is healthy with no erythema, warmth, or drainage. Prosthesis is in place and functional.\n\nAssessment:\n1. Right below-knee amputation: Status post-surgical site is stable and healthy. Pt remains mobile.\n\nPlan:\n1. Continue current medications as prescribed.\n2. Continue use of prosthesis for mobility.\n3. Follow up in 6 months or as needed for any changes in skin integrity or mobility.\n\nElectronically signed, D. Kowalski, DO, 05/14/2026",
+  "answer": [
+    "Z89.511"
+  ],
+  "explanations": [
+    "Acquired absence of the right leg below the knee: Z89.511 (HCC 409)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S88.111A"
+      ],
+      "confusion": "acute_status_confused",
+      "lean": "neutral",
+      "why": "The amputation was years ago: use the status code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "405"
+        ],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89511"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:32:33+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

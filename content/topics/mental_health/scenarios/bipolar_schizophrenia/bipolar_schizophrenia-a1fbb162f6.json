@@ -1,0 +1,81 @@
+{
+  "id": "bipolar_schizophrenia-a1fbb162f6",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_full_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint\nFollow-up for mood stability.\n\nHPI\nThe patient is an 89-year-old woman presenting for a routine psychiatric evaluation. She has a history of bipolar disorder and was previously depressed during her last acute phase. She reports feeling stable and consistent for over a year while maintained on her current regimen. She denies any recent mood swings or significant distress.\n\nMedication List\nLithium 300 mg daily.\n\nExam\nThe patient is alert and oriented. She appears well-groomed with a stable affect and congruent mood. Speech is clear and normal in rate and volume. Insight and judgment are intact.\n\nAssessment\nThe patient is currently in full remission. Her history of being depressed has been well-managed. She remains stable on her current lithium dosage.\n\nPlan\nContinue current lithium prescription. Follow up in three months for continued monitoring of mood stability.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "F31.76"
+  ],
+  "explanations": [
+    "Bipolar disorder in full remission, most recent episode depressed: F31.76 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F31.75"
+      ],
+      "confusion": "full_partial_confused",
+      "lean": "neutral",
+      "why": "Full remission is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0,
+        "gap": 0.351,
+        "direction": "over",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.32"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents full remission, not an active episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0,
+        "gap": 0.351,
+        "direction": "over",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:32+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

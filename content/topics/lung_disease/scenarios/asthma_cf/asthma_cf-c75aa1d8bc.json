@@ -1,0 +1,61 @@
+{
+  "id": "asthma_cf-c75aa1d8bc",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "moderate_persistent"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint\nFollow-up for asthma management.\n\nHPI\nThe patient is a 38-year-old male presenting for a routine follow-up of his moderate persistent asthma. He reports that his symptoms have been well-managed over the last several months. He denies any recent increases in wheezing, shortness of breath, or nighttime coughing. He reports that he is able to perform his daily activities without restriction and does not require his rescue inhaler on a regular basis. He notes that his current maintenance therapy is effective in keeping his symptoms under control. He denies any recent upper respiratory infections or environmental triggers.\n\nMedication List\n- Fluticasone/Salmeterol inhaler, daily\n- Albuterol HFA inhaler, as needed\n\nReview of Systems\nThe patient reports no fevers, chills, or night sweats. He denies chest pain, palpitations, or orthopnea. He reports no recent weight changes. He denies any joint pain, rashes, or neurological symptoms. He denies any changes in appetite or bowel habits.\n\nSocial History\nThe patient works as a software engineer and is a non-smoker. He denies any history of illicit drug use. He lives with his spouse and two children. He reports a regular exercise routine of walking and swimming.\n\nFamily History\nFather has hypertension. Mother has a history of asthma. Siblings are healthy.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 122/78 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nHeight: 5'11\"\nWeight: 185 lbs\n\nRecent Labs\nComplete Blood Count (CBC): Within normal limits.\nComprehensive Metabolic Panel (CMP): Within normal limits.\nPulmonary Function Test (PFT): FEV1/FVC ratio and FEV1 values are stable and consistent with his baseline.\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented. Chest is clear to auscultation bilaterally with no wheezing, rhonchi, or diminished breath sounds. Normal effort of breathing. No use of accessory muscles. Heart sounds are regular with no murmurs.\n\nAssessment\n1. Moderate persistent asthma: The patient's condition is currently stable. He is well-controlled on his daily inhaled steroid-LABA. He shows no evidence of an acute increase in symptoms.\n\nPlan\n1. Continue current maintenance therapy of daily inhaled steroid-LABA.\n2. Continue as needed use of Albuterol HFA for acute symptoms.\n3. Patient instructed to continue avoiding known allergens.\n4. Follow up in 6 months for routine monitoring.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "J45.40"
+  ],
+  "explanations": [
+    "Moderate persistent asthma, uncomplicated: J45.40 (no HCC)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.50"
+      ],
+      "confusion": "overstated_severity",
+      "lean": "over",
+      "why": "Severe persistent asthma is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0,
+        "gap": 0.818,
+        "direction": "over",
+        "extra_hccs": [
+          "279"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:21+00:00",
+    "style": {
+      "age": 38,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

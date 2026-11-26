@@ -1,0 +1,61 @@
+{
+  "id": "metabolic_endocrine-8889c8199c",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "adrenal_unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for adrenal insufficiency.\n\nHPI\nThe patient is a 68-year-old male presenting for a routine follow-up regarding his known adrenal insufficiency. He reports that he has been feeling stable on his current regimen of hydrocortisone. He denies any episodes of extreme fatigue, dizziness, or significant weight changes since his last visit. He reports consistent adherence to his medication schedule and states he has not experienced any adverse side effects.\n\nMedication List\nHydrocortisone oral and hydrocortisone injection.\n\nExam\nThe patient appears well-nourished and in no acute distress. He is alert and oriented to person, place, and time. Vital signs are stable. Skin is warm and dry with no rashes or lesions noted. Cardiovascular and respiratory examinations are unremarkable.\n\nAssessment\nThe patient is a 68-year-old male with a stable history of adrenal insufficiency. He is tolerating his current hydrocortisone therapy well without complications.\n\nPlan\nContinue current hydrocortisone dosage as prescribed. The patient will continue to monitor for any symptoms of insufficiency and will return to the clinic in three months for a follow-up evaluation.\n\nElectronically signed, K. Nguyen, PA-C, 10/14/2026",
+  "answer": [
+    "E27.40"
+  ],
+  "explanations": [
+    "Adrenal insufficiency, type not stated: E27.40 (no HCC in V28)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E27.1"
+      ],
+      "confusion": "overstated_adrenal",
+      "lean": "over",
+      "why": "Primary (Addison's) is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.51,
+        "correct": 0,
+        "gap": 0.51,
+        "direction": "over",
+        "extra_hccs": [
+          "51"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:21+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

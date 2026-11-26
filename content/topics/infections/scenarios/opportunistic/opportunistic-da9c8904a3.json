@@ -1,0 +1,70 @@
+{
+  "id": "opportunistic-da9c8904a3",
+  "table": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "slots": {
+    "condition": "pcp"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note": "Chief Complaint: Follow-up for pneumonia.\n\nHPI: Pt is a 75 y.o. female with a hx of chronic lung condition requiring long-term high-dose steroids. Pt presents for f/u of Pneumocystis jirovecii pneumonia. Currently on trimethoprim-sulfamethoxazole. Pt reports improved respiratory status and decreased cough since starting treatment. Denies fever, chills, or acute shortness of breath.\n\nMedication List:\n- Prednisone 40mg daily\n- Trimethoprim-sulfamethoxazole 160/800mg BID\n\nExam:\nGen: Well-appearing, in no acute distress.\nVitals: Temp 98.6F, BP 132/84, HR 78 (RRR), RR 16, SpO2 96% on RA.\nLungs: CTAB. No adventitious sounds.\nHeart: RRR, no murmurs.\nExt: No edema.\n\nAssessment:\n1. Pneumocystis jirovecii pneumonia. Pt is responding well to trimethoprim-sulfamethoxazole.\n2. Chronic lung condition on high-dose steroids.\n\nPlan:\n- Continue trimethoprim-sulfamethoxazole as prescribed.\n- Continue current steroid regimen.\n- F/u in 2 weeks for repeat clinical assessment.\n\nElectronically signed,\nE. Castillo, DO\n10/15/2026",
+  "answer": [
+    "B59"
+  ],
+  "explanations": [
+    "Pneumocystis pneumonia: pneumocystosis, B59 (HCC 6)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: B25, B37, B59"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J18.9"
+      ],
+      "confusion": "missed_specific_infection",
+      "lean": "under",
+      "why": "The organism (Pneumocystis) is documented and has its own code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.381,
+        "gap": -0.381,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "6"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.381,
+    "hccs": [
+      {
+        "hcc": "6",
+        "label": "Opportunistic Infections",
+        "from": [
+          "B59"
+        ],
+        "weight": 0.381
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:25:50+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

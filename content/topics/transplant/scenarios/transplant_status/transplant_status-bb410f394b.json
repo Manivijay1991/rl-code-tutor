@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-bb410f394b",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "stem_cell"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint: Follow-up for remission status.\n\nHPI: (Copied Forward) Patient is a 57-year-old female who underwent an allogeneic stem cell transplant two years ago. She is currently in remission. She reports feeling well with no new symptoms since the last visit.\n\nUpdate: The patient reports continued stability and denies any new concerns. She maintains a regular exercise routine and feels her energy levels are consistent.\n\nMedication List:\n- Multivitamin daily\n- Vitamin D3 2000 IU daily\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6 F, BMI 26.4\n\nReview of Systems:\nConstitutional: Negative\nRespiratory: Negative\nCardiovascular: Negative\nGastrointestinal: Negative\nGenitourinary: Negative\nMusculoskeletal: Negative\nNeurological: Negative\nSkin: Negative\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: No new lesions noted.\nLymphatic: No lymphadenopathy.\nRespiratory: Clear to auscultation bilaterally.\nCardiovascular: Regular rate and rhythm, no murmurs.\n\nAssessment:\n1. Status post allogeneic stem cell transplant, currently in remission.\n\nPlan:\n1. Continue current surveillance and routine follow-up.\n2. Return to clinic in 6 months for scheduled monitoring.\n\nElectronically signed, S. Patel, NP, 05/14/2026",
+  "answer": [
+    "Z94.84"
+  ],
+  "explanations": [
+    "Stem cell transplant status: Z94.84 (HCC 454)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z94.81"
+      ],
+      "confusion": "bone_marrow_vs_stem_cell",
+      "lean": "neutral",
+      "why": "A stem cell transplant is documented, not bone marrow.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.068,
+        "correct": 1.068,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.068,
+    "hccs": [
+      {
+        "hcc": "454",
+        "label": "Stem Cell/Including Bone Marrow/Transplant Status/Complications",
+        "from": [
+          "Z9484"
+        ],
+        "weight": 1.068
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:13+00:00",
+    "style": {
+      "age": 57,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "S. Patel"
+    }
+  }
+}

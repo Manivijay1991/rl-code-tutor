@@ -1,0 +1,81 @@
+{
+  "id": "bipolar_schizophrenia-fcd37f1e5a",
+  "table": "bipolar_schizophrenia",
+  "title": "Schizophrenia, schizoaffective and bipolar disorder",
+  "status": "draft",
+  "slots": {
+    "condition": "bipolar_full_remission"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's psychiatric condition.",
+  "note": "Chief Complaint: Follow-up for mood stability.\n\nHPI: Pt is an 85-year-old female presenting for routine psychiatric follow-up. Pt has a history of bipolar disorder. She reports feeling stable and well. She notes that while her most recent episode depressed occurred over a year ago, she has remained stable since. Pt reports no significant mood swings or sleep disturbances for over a year on lithium. She denies any current distress or functional impairment.\n\nMedication List:\n- Lithium Carbonate 300mg BID\n- Lisinopril 10mg daily\n- Amlodipine 5mg daily\n\nReview of Systems:\nConstitutional: No fatigue, no weight changes.\nPsychiatric: Denies mood swings, denied sleep issues.\nNeurological: No tremors or dizziness.\nAll other systems reviewed and negative.\n\nSocial History: Pt lives with her daughter. Retired. No tobacco use.\n\nFamily History: Mother had hypertension. Father had heart disease.\n\nVitals:\nBP: 128/82\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 145 lbs\n\nRecent Labs:\nLithium level: 0.8 mEq/L\nTSH: 2.1 mIU/L\nBMP: Na 138, K 4.2, Cr 0.9, eGFR 78\n\nExam:\nGeneral: Alert and oriented x3. Appears well-groomed.\nPsych: Affect is congruent and stable. Speech is clear and normal rate. Thought process is linear and goal-directed. Mood is euthymic. No signs of distress.\nPhysical: CTAB. RRR. Lungs clear.\n\nAssessment:\n1. Bipolar disorder, currently in full remission.\n2. Stable on current lithium regimen.\n\nPlan:\n- Continue lithium carbonate 300mg BID.\n- Continue current antihypertensives.\n- Continue monitoring mood stability.\n- Pt to return in 3 months for routine follow-up.\n\nElectronically signed,\nD. Kowalski, DO\n10/14/2026",
+  "answer": [
+    "F31.76"
+  ],
+  "explanations": [
+    "Bipolar disorder in full remission, most recent episode depressed: F31.76 (no HCC in V28)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.1",
+    "ICD-10-CM Tabular: F20-F31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F31.75"
+      ],
+      "confusion": "full_partial_confused",
+      "lean": "neutral",
+      "why": "Full remission is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0,
+        "gap": 0.351,
+        "direction": "over",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F31.32"
+      ],
+      "confusion": "remission_coded_active",
+      "lean": "over",
+      "why": "The provider documents full remission, not an active episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.351,
+        "correct": 0,
+        "gap": 0.351,
+        "direction": "over",
+        "extra_hccs": [
+          "154"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:10:52+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

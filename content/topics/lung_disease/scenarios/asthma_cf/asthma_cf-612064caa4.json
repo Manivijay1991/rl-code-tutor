@@ -1,0 +1,89 @@
+{
+  "id": "asthma_cf-612064caa4",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "severe_persistent"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint\nFollow-up for asthma.\n\nHPI\nPt is a 25 y.o. female presenting for routine f/u of severe persistent asthma. Pt reports stable symptoms since last visit. Denies any recent respiratory distress or increased wheezing. Currently managed with high-dose inhaled steroid and biologic therapy. Pt reports good adherence to maintenance meds and no recent issues with side effects.\n\nMedication List\n1. High-dose inhaled corticosteroid\n2. Biologic therapy (injectable)\n3. Albuterol HFA PRN\n\nExam\nGen: alert, well-appearing, in no acute distress.\nRespiratory: CTAB. Breath sounds clear bilaterally. No wheezes, rhonchi, or diminished breath sounds.\nCV: RRR, regular rhythm.\nExt: No cyanosis or clubbing.\n\nAssessment\n1. Severe persistent asthma: Currently well-controlled on high-dose inhaled steroid plus a biologic. Pt is asymptomatic today.\n\nPlan\n1. Continue current maintenance medications.\n2. Continue biologic therapy as scheduled.\n3. F/u in 4 months for routine monitoring.\n\nElectronically signed,\nD. Kowalski, MD\nMay 14, 2026",
+  "answer": [
+    "J45.50"
+  ],
+  "explanations": [
+    "Severe persistent asthma, uncomplicated: J45.50 (HCC 279)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.40"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "Severe persistent is documented (HCC 279); moderate has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.818,
+        "gap": -0.818,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "279"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J45.909"
+      ],
+      "confusion": "understated_severity",
+      "lean": "under",
+      "why": "The severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.818,
+        "gap": -0.818,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "279"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "279",
+        "label": "Severe Persistent Asthma",
+        "from": [
+          "J4550"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:25+00:00",
+    "style": {
+      "age": 25,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

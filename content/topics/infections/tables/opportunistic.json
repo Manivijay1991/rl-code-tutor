@@ -1,0 +1,238 @@
+{
+  "id": "opportunistic",
+  "title": "Opportunistic infections",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's infection (only that code).",
+  "note_age": {
+    "min": 40
+  },
+  "slots": {
+    "condition": {
+      "label": "Infection documented",
+      "values": [
+        "pcp",
+        "candida_esophagitis",
+        "oral_thrush",
+        "cmv"
+      ],
+      "labels": {
+        "pcp": "Pneumocystis pneumonia",
+        "candida_esophagitis": "Candida esophagitis",
+        "oral_thrush": "Oral thrush only",
+        "cmv": "Cytomegalovirus disease"
+      },
+      "evidence": {
+        "pcp": [
+          [
+            "Pneumocystis"
+          ]
+        ],
+        "candida_esophagitis": [
+          [
+            "esophagitis"
+          ],
+          [
+            "Candida",
+            "candidal"
+          ]
+        ],
+        "oral_thrush": [
+          [
+            "thrush",
+            "oral candidiasis"
+          ]
+        ],
+        "cmv": [
+          [
+            "cytomegalovirus",
+            "CMV"
+          ],
+          [
+            "disease",
+            "infection"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "pcp": "The patient, on long-term high-dose steroids for a lung condition, is treated for Pneumocystis jirovecii pneumonia with trimethoprim-sulfamethoxazole; seen in follow-up while still on treatment.",
+        "candida_esophagitis": "Endoscopy confirmed Candida esophagitis with painful swallowing; the patient is on fluconazole and seen in follow-up while still on treatment.",
+        "oral_thrush": "The provider documents oral thrush (white plaques on the tongue) after inhaled steroid use; nystatin rinse is prescribed. Swallowing is normal.",
+        "cmv": "The provider documents cytomegalovirus (CMV) disease with fever and abnormal liver tests; the patient is on valganciclovir and seen in follow-up while still on treatment."
+      }
+    }
+  },
+  "note_forbid": [
+    "HIV",
+    "AIDS",
+    "transplant",
+    "cancer",
+    "chemotherapy",
+    "leukemia",
+    "lymphoma",
+    "sepsis",
+    "pneumonia due to",
+    "COVID",
+    "tuberculosis",
+    "retinitis",
+    "colitis",
+    "hepatitis",
+    "diabetes"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "pcp"
+      },
+      "forbid": [
+        "Candida",
+        "candidal",
+        "thrush",
+        "esophagitis",
+        "CMV",
+        "cytomegalovirus"
+      ]
+    },
+    {
+      "when": {
+        "condition": "candida_esophagitis"
+      },
+      "forbid": [
+        "Pneumocystis",
+        "CMV",
+        "cytomegalovirus"
+      ]
+    },
+    {
+      "when": {
+        "condition": "oral_thrush"
+      },
+      "forbid": [
+        "esophag",
+        "odynophagia",
+        "painful swallowing",
+        "Pneumocystis",
+        "CMV",
+        "cytomegalovirus",
+        "endoscopy"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cmv"
+      },
+      "forbid": [
+        "Candida",
+        "candidal",
+        "thrush",
+        "Pneumocystis"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_specific_infection": {
+      "description": "Coded a general pneumonia or infection code instead of the opportunistic infection.",
+      "lean": "under"
+    },
+    "thrush_coded_esophagitis": {
+      "description": "Coded Candida esophagitis for oral thrush (thrush has no HCC).",
+      "lean": "over"
+    },
+    "esophagitis_coded_thrush": {
+      "description": "Coded oral thrush when Candida esophagitis is documented.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "oi",
+      "rules": [
+        {
+          "when": {
+            "condition": "pcp"
+          },
+          "codes": [
+            "B59"
+          ],
+          "explain": "Pneumocystis pneumonia: pneumocystosis, B59 (HCC 6).",
+          "refs": [
+            "ICD-10-CM Tabular: B25, B37, B59"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J18.9"
+              ],
+              "confusion": "missed_specific_infection",
+              "why": "The organism (Pneumocystis) is documented and has its own code."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "candida_esophagitis"
+          },
+          "codes": [
+            "B37.81"
+          ],
+          "explain": "Candida esophagitis: B37.81 (HCC 6).",
+          "refs": [
+            "ICD-10-CM Tabular: B25, B37, B59"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "B37.0"
+              ],
+              "confusion": "esophagitis_coded_thrush",
+              "why": "Esophagitis, not only the mouth, is documented (HCC 6)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "oral_thrush"
+          },
+          "codes": [
+            "B37.0"
+          ],
+          "explain": "Oral thrush: candidal stomatitis, B37.0 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: B25, B37, B59"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "B37.81"
+              ],
+              "confusion": "thrush_coded_esophagitis",
+              "why": "Only the mouth is involved."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cmv"
+          },
+          "codes": [
+            "B25.9"
+          ],
+          "explain": "Cytomegalovirus disease, site not specified: B25.9 (HCC 6).",
+          "refs": [
+            "ICD-10-CM Tabular: B25, B37, B59"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "B34.9"
+              ],
+              "confusion": "missed_specific_infection",
+              "why": "The virus (CMV) is documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

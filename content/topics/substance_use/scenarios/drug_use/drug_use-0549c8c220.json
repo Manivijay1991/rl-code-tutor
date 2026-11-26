@@ -1,0 +1,72 @@
+{
+  "id": "drug_use-0549c8c220",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "alcohol_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint\nFollow-up for alcohol use disorder and associated psychotic symptoms.\n\nHPI\nThe patient is a 68-year-old man presenting for a follow-up evaluation of his severe alcohol use disorder. He was previously diagnosed with alcohol-induced psychotic disorder characterized by auditory and visual hallucinations. The patient reports that he has remained abstinent from alcohol since the last visit. He notes that the hallucinations have significantly diminished in frequency and intensity since he stopped drinking. He denies any current acute distress or new episodes of psychosis. He reports improved clarity of thought and better sleep patterns.\n\nMedication List\nNone.\n\nExam\nThe patient is a well-groomed male who appears calm and cooperative. He is alert and oriented to person, place, and time. Speech is clear and coherent. Mood is stable; affect is congruent. No current evidence of active hallucinations during the interview. Motor activity is normal without tremors.\n\nAssessment\n1. Severe alcohol use disorder.\n2. Alcohol-induced psychotic disorder with hallucinations. The patient is showing significant improvement with continued abstinence.\n\nPlan\n1. Continue current course of abstinence from alcohol.\n2. Follow up in four weeks for continued monitoring of psychiatric stability.\n\nElectronically signed, K. Nguyen, PA-C, 05/14/2026",
+  "answer": [
+    "F10.251"
+  ],
+  "explanations": [
+    "Severe alcohol use disorder with alcohol-induced psychotic disorder with hallucinations: combination code F10.251 (HCC 136)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.20"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "The psychotic disorder is part of the combination code (HCC 136).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0.424,
+        "gap": -0.182,
+        "direction": "under",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": [
+          "136"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "136",
+        "label": "Alcohol Use with Psychotic Complications",
+        "from": [
+          "F10251"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:15+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

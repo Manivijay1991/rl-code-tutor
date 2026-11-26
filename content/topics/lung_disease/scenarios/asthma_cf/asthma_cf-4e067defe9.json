@@ -1,0 +1,68 @@
+{
+  "id": "asthma_cf-4e067defe9",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "severe_persistent_exac"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint\nShortness of breath and wheezing.\n\nHPI\nThe patient is a 21-year-old woman with a history of severe persistent asthma who presents today for an acute exacerbation of her symptoms. She reports that her symptoms began approximately three days ago, characterized by progressive shortness of breath, increased mucus production, and a persistent cough. She notes that she has been using her rescue inhaler every 2 to 4 hours with only minimal relief. She describes her symptoms as significantly worse than her usual baseline and states that she is struggling to perform daily activities due to chest tightness. She denies any fever, chills, or recent upper respiratory infections.\n\nReview of Systems\nConstitutional: Negative for fever or chills.\nRespiratory: Positive for shortness of breath and wheezing. Negative for hemoptysis.\nCardiovascular: Negative for palpitations or chest pain.\nAll other systems reviewed and are negative.\n\nSocial History\nThe patient is a full-time student. She lives in an apartment with roommates. She reports no tobacco use and no history of illicit drug use. She denies exposure to environmental triggers at home or school.\n\nFamily History\nMother has a history of asthma and seasonal allergies. Father has hypertension.\n\nMedication List\n1. Albuterol HFA inhaler, 2 puffs every 4 hours as needed.\n2. Fluticasone/Salmeterol inhaler, 2 puffs twice daily.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 118/76 mmHg\nHeart Rate: 94 bpm\nRespiratory Rate: 22 breaths/min\nSpO2: 94% on room air\n\nRecent Labs\nComplete Blood Count (CBC): WBC 8.5 x 10^9/L, Hemoglobin 12.4 g/dL, Platelets 210 x 10^3/L.\nComprehensive Metabolic Panel (CMP): Sodium 140 mEq/L, Potassium 4.0 mEq/L, Creatinine 0.8 mg/dL, eGFR 95 mL/min/1.73m2.\n\nExam\nThe patient appears in mild respiratory distress. Auscultation reveals diffuse expiratory wheezing throughout both lung fields with decreased air entry at the bases. No accessory muscle use is noted at this time. Heart sounds are regular with no murmurs.\n\nAssessment\n1. Severe persistent asthma with an acute exacerbation.\n\nPlan\n1. Initiate a prednisone burst of 40mg daily for 5 days to manage the current flare-up.\n2. Continue current maintenance inhaler regimen.\n3. Increase frequency of rescue inhaler use as needed.\n4. Patient instructed to seek emergency care if symptoms worsen or if she experiences severe difficulty breathing.\n5. Follow up in two weeks for a reassessment of asthma control.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "J45.51"
+  ],
+  "explanations": [
+    "Severe persistent asthma with (acute) exacerbation: J45.51 (HCC 279)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J45.50"
+      ],
+      "confusion": "missed_exacerbation",
+      "lean": "neutral",
+      "why": "The exacerbation is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.818,
+        "correct": 0.818,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.818,
+    "hccs": [
+      {
+        "hcc": "279",
+        "label": "Severe Persistent Asthma",
+        "from": [
+          "J4551"
+        ],
+        "weight": 0.818
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:44+00:00",
+    "style": {
+      "age": 21,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

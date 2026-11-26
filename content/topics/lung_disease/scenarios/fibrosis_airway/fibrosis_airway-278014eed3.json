@@ -1,0 +1,70 @@
+{
+  "id": "fibrosis_airway-278014eed3",
+  "table": "fibrosis_airway",
+  "title": "Pulmonary fibrosis, scleroderma lung, tracheostomy and ventilator",
+  "status": "draft",
+  "slots": {
+    "condition": "trach_vent"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's lung fibrosis or airway status.",
+  "note": "Chief Complaint: Routine follow-up for tracheostomy care and ventilator management.\n\nHPI: [Copied Forward] Patient is a 77-year-old female who underwent a tracheostomy following a period of severe respiratory distress. She requires a home ventilator for nocturnal use and intermittent daytime support. She reports stable breathing and no new issues with equipment.\n\nUpdate: The patient reports she has been managing her home ventilator well. She denies any new secretions or difficulty with the trach site. She continues to use the ventilator as prescribed.\n\nMedication List:\n- Acetylcholinesterase inhibitor (dosage not specified)\n- Saline spray\n\nVitals: BP 128/82, HR 74, SpO2 95% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Respiratory: Positive (tracheostomy care)\n- Cardiovascular: Negative\n- Neurological: Negative\n- Integumentary: Negative\n\nExam:\nGeneral: Alert and well-nourished.\nRespiratory: Tracheostomy site is clean with no signs of infection or redness. Breath sounds are clear bilaterally.\nEquipment: Home ventilator is functional and properly fitted.\n\nAssessment:\n1. Tracheostomy care status.\n2. Ventilator dependence.\n\nPlan:\n1. Continue current home ventilator regimen.\n2. Reviewed tracheostomy site care and hygiene.\n3. Follow up in 4 weeks for routine check.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z93.0",
+    "Z99.11"
+  ],
+  "explanations": [
+    "Tracheostomy status, Z93.0, plus dependence on a ventilator, Z99.11 (both HCC 211)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J84, M34, Z93, Z99"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "Z93.0"
+      ],
+      "confusion": "missed_vent_status",
+      "lean": "neutral",
+      "why": "Ventilator dependence is documented: add Z99.11.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.879,
+        "correct": 0.879,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.879,
+    "hccs": [
+      {
+        "hcc": "211",
+        "label": "Respirator Dependence/Tracheostomy Status/Complications",
+        "from": [
+          "Z930",
+          "Z9911"
+        ],
+        "weight": 0.879
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:54+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

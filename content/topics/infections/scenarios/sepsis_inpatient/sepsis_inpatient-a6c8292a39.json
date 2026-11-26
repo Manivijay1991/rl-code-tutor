@@ -1,0 +1,61 @@
+{
+  "id": "sepsis_inpatient-a6c8292a39",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "bacteremia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Fever and chills\n\nVitals: BP 128/82, HR 78, SpO2 98% on room air, Temp 99.1 F\n\nReview of Systems:\nConstitutional: Positive for fever, chills, malaise.\nRespiratory: Negative for cough, shortness of breath.\nCardiovascular: Negative for chest pain, palpitations.\nGastrointestinal: Negative for nausea, diarrhea.\nGenitourinary: Negative for dysuria.\n\nHistory of Present Illness: (Copied Forward) Patient is a 78-year-old male presenting with a three-day history of subjective fevers and associated rigors. He reports generalized fatigue but denies any significant shortness of breath or localized pain.\n\nHospital Course: The patient was admitted for evaluation of a persistent fever. Blood cultures were obtained upon arrival. Results confirmed the presence of bacteremia. Clinical assessment indicates that the patient does not have sepsis. He remained stable throughout the stay and was transitioned to oral antibiotics for continued management of the bacteremia. He tolerated the transition well and was cleared for discharge.\n\nDischarge Diagnoses: \n1. Bacteremia\n2. Fever\n\nDischarge Medications:\n- Amoxicillin 875mg TID\n- Acetaminophen 650mg every 6 hours as needed for fever\n\nFollow-up: Follow up with primary care physician in 7 days.\n\nElectronically signed, \nR. Mensah, MD\n05/15/2026",
+  "answer": [],
+  "explanations": [
+    "Bacteremia without sepsis is coded R78.81 (no HCC), which is not a sepsis code: no sepsis code applies."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "bacteremia_coded_sepsis",
+      "lean": "over",
+      "why": "The provider documents bacteremia without sepsis.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0,
+        "gap": 0.5,
+        "direction": "over",
+        "extra_hccs": [
+          "2"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:39+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "R. Mensah",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

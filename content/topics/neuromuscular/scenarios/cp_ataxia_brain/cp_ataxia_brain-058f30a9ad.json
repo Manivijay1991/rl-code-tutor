@@ -1,0 +1,68 @@
+{
+  "id": "cp_ataxia_brain-058f30a9ad",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "friedreich"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for gait instability.\n\nHPI\nThe patient is a 28-year-old woman presenting for a follow-up evaluation regarding her diagnosis of Friedreich ataxia. She reports that her mobility remains a significant concern, as she experiences progressive gait ataxia that has worsened over the last six months. She currently requires the use of a walker for all ambulation to maintain balance and safety. She notes occasional episodes of lower extremity weakness and describes a steady decline in her ability to navigate uneven surfaces without assistance. She denies any recent falls, acute chest pain, or shortness of breath. She is currently managing her symptoms with physical therapy and is seeking to optimize her mobility and quality of life.\n\nReview of Systems\nThe patient denies fever, chills, weight changes, or palpitations. She reports mild lower extremity tingling but denies numbness. She denies any changes in vision, hearing, or speech. She denies any recent changes in bowel or bladder function.\n\nSocial History\nThe patient lives with her parents and a younger sibling. She is currently unemployed due to her mobility limitations but enjoys listening to music and reading. She does not use tobacco or alcohol.\n\nFamily History\nMother has hypertension. Father has type 2 diabetes. No family history of neurological disorders was reported.\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 118/76 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nHeight: 5'5\"\nWeight: 130 lbs\n\nRecent Labs\nHemoglobin: 13.2 g/dL\nWhite Blood Cell Count: 7.4 x 10^9/L\nPlatelet Count: 210 x 10^3/uL\neGFR: 88 mL/min/1.73m2\n\nMedication List\nVitamin E: 800 IU daily\nPhysical Therapy: 2 sessions per week\n\nExam\nThe patient is alert and oriented x3. She is seated in a chair and appears in no acute distress. Gait is characterized by significant wide-based ataxia; she is steady only when utilizing her walker. Coordination is impaired, noted by a positive finger-to-nose test. Lower extremity strength is 4/5 throughout. Reflexes are diminished in the lower extremities. No focal sensory deficits were noted during the skin exam.\n\nAssessment\n1. Friedreich ataxia with progressive gait ataxia.\n\nPlan\n1. Continue current physical therapy regimen focused on gait stability and core strengthening.\n2. Maintain current vitamin supplementation.\n3. Patient will continue to use a walker for all ambulation to ensure safety.\n4. Follow up in three months for a repeat neurological evaluation.\n\nElectronically signed, D. Kowalski, NP, 05/14/2026",
+  "answer": [
+    "G11.11"
+  ],
+  "explanations": [
+    "Friedreich ataxia: G11.11 (HCC 200)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G11.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type of hereditary ataxia is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.279,
+        "correct": 0.279,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.279,
+    "hccs": [
+      {
+        "hcc": "200",
+        "label": "Friedreich and Other Hereditary Ataxias; Huntington Disease",
+        "from": [
+          "G1111"
+        ],
+        "weight": 0.279
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:44+00:00",
+    "style": {
+      "age": 28,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "D. Kowalski"
+    }
+  }
+}

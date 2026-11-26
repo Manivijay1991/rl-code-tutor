@@ -1,0 +1,62 @@
+{
+  "id": "stroke_inpatient-05d706881d",
+  "table": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "slots": {
+    "condition": "tia"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/14/2026\n\nReason for Admission:\nEvaluation for transient ischemic attack.\n\nHPI:\n[Copied Forward] Patient is a 55-year-old male who presented to the emergency department following a sudden onset of sensory and motor deficits in the right upper extremity. Symptoms were reported to have resolved spontaneously within one hour. The patient denies any preceding headache, dizziness, or vision changes. He denies any history of similar episodes.\n\nHospital Course:\nThe patient was admitted for a transient ischemic attack to undergo neurological workup and risk factor modification. A non-contrast head MRI was performed, which demonstrated no evidence of acute brain injury or permanent tissue damage. Neurological examinations were performed repeatedly during the admission period, with all findings remaining within normal limits. Laboratory work showed no evidence of metabolic derangements. The patient was started on an aspirin regimen and counseled on blood pressure management and lifestyle modifications to reduce the risk of future neurological events. He was stable for discharge.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nNeurological: Positive for transient ischemic attack (resolved). Negative for seizures or tremors.\nCardiovascular: Negative for palpitations or chest pain.\nRespiratory: Negative for shortness of breath or cough.\nGastrointestinal: Negative for nausea or diarrhea.\nMusculoskeletal: Negative for joint pain or swelling.\n\nSocial History:\nLives with spouse and two children. Non-smoker. Occasional alcohol consumption. Works as a project manager.\n\nFamily History:\nFather had hypertension and hypertension-related complications. Mother had type 2 diabetes.\n\nVitals:\nBP: 128/82, HR: 74, SpO2: 98% on room air, Temp: 98.6 F.\n\nRecent Labs:\nSodium: 139 mEq/L, Potassium: 4.2 mEq/L, Creatinine: 1.1 mg/dL, Glucose: 105 mg/dL, WBC: 7.5 x 10^3/uL.\n\nDischarge Diagnoses:\n1. Transient ischemic attack\n2. Hypertension\n\nDischarge Medications:\n1. Aspirin 81 mg daily\n2. Lisinopril 10 mg daily\n\nFollow-up:\nFollow up with primary care physician in 1 week for blood pressure monitoring and continued risk factor management.\n\nElectronically signed, J. Lindqvist, MD, 05/14/2026",
+  "answer": [
+    "G45.9"
+  ],
+  "explanations": [
+    "Transient ischemic attack: G45.9 (no HCC). There is no infarction, so it is not a stroke."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G45, I60-I63"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I63.9"
+      ],
+      "confusion": "tia_coded_stroke",
+      "lean": "over",
+      "why": "Symptoms resolved and MRI shows no infarction: TIA, not stroke.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.239,
+        "correct": 0,
+        "gap": 0.239,
+        "direction": "over",
+        "extra_hccs": [
+          "249"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-26T15:14:14+00:00",
+    "style": {
+      "age": 55,
+      "sex": "man",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "J. Lindqvist",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

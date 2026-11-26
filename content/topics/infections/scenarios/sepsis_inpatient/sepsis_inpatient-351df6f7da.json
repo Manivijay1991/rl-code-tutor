@@ -1,0 +1,90 @@
+{
+  "id": "sepsis_inpatient-351df6f7da",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "severe_sepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/20/2026\nReason for Admission: Severe sepsis secondary to community-acquired pneumonia.\n\nReview of Systems:\nGeneral: Fatigue, generalized weakness.\nRespiratory: Productive cough, dyspnea on exertion.\nGenitourinary: Decreased urine output.\nMusculoskeletal: Generalized malaise.\nOther: NAD.\n\nSocial History: Retired. Lives in assisted living facility. Non-smoker. No alcohol use.\n\nFamily History: Mother had hypertension. Father had type 2 diabetes.\n\nVitals:\nT: 99.1 F\nBP: 118/74\nHR: 88 (RRR)\nRR: 18\nSpO2: 94% on RA\n\nRecent Labs:\nWBC: 14.5\nHgb: 11.2\nHct: 34%\nBUN: 42\nCr: 2.1 (Baseline 1.0)\neGFR: 35\nLactate: 2.4\n\nHospital Course:\nPt is an 80 y/o female admitted with severe sepsis due to pneumonia. Pt presented with productive cough, fever, and tachypnea. Initial labs revealed elevated WBC and significant acute kidney injury (AKI) secondary to sepsis. Cultures were obtained but remained negative for growth. Pt was started on empiric broad-spectrum antibiotics. During hospitalization, pt remained stable and did not progress to hemodynamic instability. Management focused on hydration and infection control. Renal function showed steady improvement over the course of the stay. AKI resolved, with Cr returning toward baseline. Pt tolerated oral intake and was able to ambulate with minimal assistance.\n\nDischarge Diagnoses:\n1. Severe sepsis\n2. Pneumonia\n3. Acute kidney injury (AKI)\n\nDischarge Medications:\n1. Amoxicillin 500mg BID (complete 7-day course)\n2. Lasix 40mg daily\n3. Acetaminophen 650mg PRN for pain/fever\n\nFollow-up:\nF/u with primary care provider in 1 week for renal function check and wound care.\n\nElectronically signed,\nT. Haddad, MD\n05/20/2026",
+  "answer": [
+    "A41.9",
+    "R65.20"
+  ],
+  "explanations": [
+    "Severe sepsis: the sepsis code A41.9, plus R65.20 because an acute organ dysfunction (kidney injury) is caused by the sepsis; no shock."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "missed_severe",
+      "lean": "under",
+      "why": "The sepsis caused an acute organ dysfunction: add R65.20.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "A41.9",
+        "R65.21"
+      ],
+      "confusion": "overstated_severe",
+      "lean": "over",
+      "why": "There was no shock.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.5,
+    "hccs": [
+      {
+        "hcc": "2",
+        "label": "Septicemia/Sepsis/Systemic Inflammatory Response Syndrome/Shock",
+        "from": [
+          "A419",
+          "R6520"
+        ],
+        "weight": 0.5
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:24:31+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "T. Haddad",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

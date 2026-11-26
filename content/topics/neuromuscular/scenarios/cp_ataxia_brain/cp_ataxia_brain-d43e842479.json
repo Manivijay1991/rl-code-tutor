@@ -1,0 +1,93 @@
+{
+  "id": "cp_ataxia_brain-d43e842479",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "cp_quadriplegic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for cerebral palsy.\n\nHPI\nPt is a 63 y/o female with a long-standing hx of spastic quadriplegic cerebral palsy since birth. Pt presents today for routine f/u. She reports stable condition with no acute changes in mobility or muscle tone. Pt continues to use a power wheelchair for all ambulation. Reports good compliance with baclofen for management of spasticity. Denies any new complications or significant pain.\n\nMedication List\nBaclofen - oral\n\nExam\nPt seated in power wheelchair. Alert and oriented. Good skin turgor. RRR, CTAB. Muscle tone is consistent with hx of spastic quadriplegia. Movement is limited by underlying condition. NAD.\n\nAssessment\n1. Spastic quadriplegic cerebral palsy. Stable and well-controlled on current regimen.\n\nPlan\n1. Continue current baclofen dosage.\n2. Continue use of power wheelchair.\n3. F/u in 6 months for routine evaluation.\n\nElectronically signed,\nE. Castillo, DO\n10/14/2026",
+  "answer": [
+    "G80.0"
+  ],
+  "explanations": [
+    "Spastic quadriplegic cerebral palsy: G80.0 (HCC 191). G82 excludes congenital cerebral palsy."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G80.9"
+      ],
+      "confusion": "cp_type_confused",
+      "lean": "neutral",
+      "why": "The type (spastic quadriplegic) is documented and changes the HCC (191).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.314,
+        "correct": 0.855,
+        "gap": -0.541,
+        "direction": "under",
+        "extra_hccs": [
+          "192"
+        ],
+        "missing_hccs": [
+          "191"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "G82.50"
+      ],
+      "confusion": "cp_coded_as_quadriplegia",
+      "lean": "neutral",
+      "why": "Cerebral palsy is coded in G80, not as quadriplegia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.125,
+        "correct": 0.855,
+        "gap": 0.27,
+        "direction": "over",
+        "extra_hccs": [
+          "180"
+        ],
+        "missing_hccs": [
+          "191"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.855,
+    "hccs": [
+      {
+        "hcc": "191",
+        "label": "Quadriplegic Cerebral Palsy",
+        "from": [
+          "G800"
+        ],
+        "weight": 0.855
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:08+00:00",
+    "style": {
+      "age": 63,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

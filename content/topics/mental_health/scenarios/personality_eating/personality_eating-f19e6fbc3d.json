@@ -1,0 +1,85 @@
+{
+  "id": "personality_eating-f19e6fbc3d",
+  "table": "personality_eating",
+  "title": "Personality and eating disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "bulimia_severe"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's personality or eating disorder.",
+  "note": "Chief Complaint: \"I'm struggling to keep my eating habits under control.\"\n\nHPI: \n[Copied Forward from previous visit]\nPatient is a 54-year-old female presenting for follow-up regarding bulimia nervosa. She reports a pattern of cycles involving periods of restricted intake followed by episodes of bingeing and subsequent purging. She expresses significant distress regarding her body image and the frequency of these behaviors.\n\n[Current Visit Update]\nThe patient reports that her symptoms have persisted and she feels her condition is severe. She describes frequent binge-purge episodes over the last month. She notes that the cycle feels increasingly difficult to manage independently and she feels her current self-monitoring is insufficient. She expresses a desire for a more structured support system.\n\nMedication List:\n- Fluoxetine 60mg daily\n- Multivitamin daily\n\nVitals:\nBP: 128/82, HR: 76, Temp: 98.6 F, SpO2: 98% on room air, Weight: 142 lbs.\n\nRecent Labs:\n- BMP: Sodium 138, Potassium 3.9, Chloride 102, BUN 14, Creatinine 0.8, Glucose 95, eGFR 92.\n- CBC: WBC 7.2, Hemoglobin 13.4, Hematocrit 40.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or fatigue.\nEyes: Negative for vision changes.\nENT: Negative for congestion or hearing loss.\nRespiratory: Negative for shortness of breath or cough.\nCardiovascular: Negative for palpitations or chest pain.\nGastrointestinal: Positive for abdominal discomfort after purging.\nGenitourinary: Negative for dysuria.\nMusculoskeletal: Negative for joint pain.\nSkin: Negative for rashes.\nNeurological: Negative for dizziness or tremors.\nPsychiatric: Positive for anxiety regarding food intake.\n\nSocial History:\nPatient is married and works as a part-time administrative assistant. She lives in a single-story home with her spouse. She reports no tobacco use.\n\nFamily History:\nMother: History of hypertension.\nFather: History of Type 2 Diabetes.\nSiblings: One sister, healthy.\n\nExam:\nGeneral: Alert and oriented x3. Well-nourished appearance.\nPsychiatric: Cooperative, slightly anxious affect. Speech is normal in rate and volume.\nPhysical: Vital signs stable. No acute distress noted.\n\nAssessment:\n1. Bulimia nervosa, severe. The patient continues to experience frequent binge-purge episodes despite current pharmacological management.\n\nPlan:\n1. Arrange for intensive outpatient treatment to provide a structured environment for behavioral modification.\n2. Continue current medication regimen.\n3. Follow up in two weeks to coordinate transition to intensive outpatient services.\n\nElectronically signed, A. Rivera, MD, 05/14/2026",
+  "answer": [
+    "F50.23"
+  ],
+  "explanations": [
+    "Bulimia nervosa, severe: F50.23 (HCC 153)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F50, F60"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F50.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The severity is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "F50.022"
+      ],
+      "confusion": "wrong_eating_type",
+      "lean": "neutral",
+      "why": "Bulimia nervosa is documented, not anorexia.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.396,
+        "correct": 0.396,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.396,
+    "hccs": [
+      {
+        "hcc": "153",
+        "label": "Personality Disorders; Anorexia/Bulimia Nervosa",
+        "from": [
+          "F5023"
+        ],
+        "weight": 0.396
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:39+00:00",
+    "style": {
+      "age": 54,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera"
+    }
+  }
+}

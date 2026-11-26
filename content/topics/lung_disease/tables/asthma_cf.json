@@ -1,0 +1,252 @@
+{
+  "id": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note_age": {
+    "min": 20,
+    "max": 50
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "severe_persistent",
+        "severe_persistent_exac",
+        "moderate_persistent",
+        "cf_pulmonary"
+      ],
+      "labels": {
+        "severe_persistent": "Severe persistent asthma, no exacerbation",
+        "severe_persistent_exac": "Severe persistent asthma with acute exacerbation",
+        "moderate_persistent": "Moderate persistent asthma, no exacerbation",
+        "cf_pulmonary": "Cystic fibrosis with lung involvement"
+      },
+      "evidence": {
+        "severe_persistent": [
+          [
+            "severe persistent asthma"
+          ]
+        ],
+        "severe_persistent_exac": [
+          [
+            "severe persistent asthma"
+          ],
+          [
+            "exacerbation"
+          ]
+        ],
+        "moderate_persistent": [
+          [
+            "moderate persistent asthma"
+          ]
+        ],
+        "cf_pulmonary": [
+          [
+            "cystic fibrosis"
+          ],
+          [
+            "pulmonary",
+            "lung"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "severe_persistent": "The provider documents severe persistent asthma, controlled on high-dose inhaled steroid plus a biologic, with no exacerbation now.",
+        "severe_persistent_exac": "The provider documents severe persistent asthma with an acute exacerbation this week; a prednisone burst is started.",
+        "moderate_persistent": "The provider documents moderate persistent asthma, controlled on a daily inhaled steroid-LABA, with no exacerbation.",
+        "cf_pulmonary": "The pulmonologist documents cystic fibrosis with pulmonary manifestations (chronic cough, bronchiectasis), on airway clearance and a CFTR modulator."
+      }
+    }
+  },
+  "note_forbid": [
+    "COPD",
+    "chronic obstructive",
+    "emphysema",
+    "chronic bronchitis",
+    "lung cancer",
+    "heart failure",
+    "COVID",
+    "status asthmaticus",
+    "respiratory failure",
+    "pneumonia",
+    "intubat",
+    "mild intermittent",
+    "mild persistent",
+    "diabetes",
+    "pancreatic insufficiency",
+    "intestinal",
+    "liver"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "severe_persistent",
+          "severe_persistent_exac",
+          "moderate_persistent"
+        ]
+      },
+      "forbid": [
+        "cystic fibrosis",
+        "bronchiectasis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "severe_persistent"
+      },
+      "forbid": [
+        "exacerbation",
+        "flare",
+        "prednisone burst",
+        "moderate persistent"
+      ]
+    },
+    {
+      "when": {
+        "condition": "severe_persistent_exac"
+      },
+      "forbid": [
+        "moderate persistent"
+      ]
+    },
+    {
+      "when": {
+        "condition": "moderate_persistent"
+      },
+      "forbid": [
+        "exacerbation",
+        "flare",
+        "severe persistent",
+        "biologic"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cf_pulmonary"
+      },
+      "forbid": [
+        "asthma"
+      ]
+    }
+  ],
+  "confusions": {
+    "understated_severity": {
+      "description": "Coded a milder or unspecified asthma when severe persistent asthma is documented.",
+      "lean": "under"
+    },
+    "overstated_severity": {
+      "description": "Coded severe persistent asthma when moderate persistent is documented.",
+      "lean": "over"
+    },
+    "missed_exacerbation": {
+      "description": "Left out the documented acute exacerbation.",
+      "lean": "neutral"
+    },
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the manifestation is documented.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "dx",
+      "rules": [
+        {
+          "when": {
+            "condition": "severe_persistent"
+          },
+          "codes": [
+            "J45.50"
+          ],
+          "explain": "Severe persistent asthma, uncomplicated: J45.50 (HCC 279).",
+          "refs": [
+            "ICD-10-CM Tabular: J45, E84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J45.40"
+              ],
+              "confusion": "understated_severity",
+              "why": "Severe persistent is documented (HCC 279); moderate has no HCC."
+            },
+            {
+              "codes": [
+                "J45.909"
+              ],
+              "confusion": "understated_severity",
+              "why": "The severity is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "severe_persistent_exac"
+          },
+          "codes": [
+            "J45.51"
+          ],
+          "explain": "Severe persistent asthma with (acute) exacerbation: J45.51 (HCC 279).",
+          "refs": [
+            "ICD-10-CM Tabular: J45, E84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J45.50"
+              ],
+              "confusion": "missed_exacerbation",
+              "why": "The exacerbation is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "moderate_persistent"
+          },
+          "codes": [
+            "J45.40"
+          ],
+          "explain": "Moderate persistent asthma, uncomplicated: J45.40 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: J45, E84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "J45.50"
+              ],
+              "confusion": "overstated_severity",
+              "why": "Severe persistent asthma is not documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cf_pulmonary"
+          },
+          "codes": [
+            "E84.0"
+          ],
+          "explain": "Cystic fibrosis with pulmonary manifestations: E84.0 (HCC 277).",
+          "refs": [
+            "ICD-10-CM Tabular: J45, E84"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "E84.9"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The pulmonary manifestations are documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

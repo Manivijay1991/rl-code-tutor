@@ -1,0 +1,71 @@
+{
+  "id": "sepsis_inpatient-5640cdda2a",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "sepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/16/2026\nReason for Admission: Sepsis and pneumonia.\n\nVitals:\nT: 101.2 F, HR: 92, BP: 118/74, RR: 20, SpO2: 94% on RA.\n\nRecent Labs:\nWBC: 14.5k, Hgb: 13.2, Plt: 210k, Cr: 1.1, Na: 138, K: 4.0.\n\nReview of Systems:\nResp: Productive cough, SOB. Fev: + (crackles).\nCV: + (tachycardia).\nGI: - (no N/V).\nNeuro: - (alert/oriented).\nSkin: - (no rashes).\n\nSocial History:\nRetired. Lives with wife. Non-smoker. No alcohol.\n\nFamily History:\nFather: HTN. Mother: DM2.\n\nHospital Course:\nPt is an 85-year-old male admitted with sepsis secondary to pneumonia. Pt presented with productive cough and fever. Initial workup showed elevated WBC. Blood cultures were performed; however, they grew no organism. Pt remained stable throughout admission. No acute organ dysfunction occurred during the stay. Managed with IV antibiotics and supplemental oxygen as needed. Pt showed significant improvement in respiratory status and afebrile on day 4. Transitioned to oral medications before discharge.\n\nDischarge Diagnoses:\n1. Sepsis\n2. Pneumonia\n\nDischarge Medications:\n1. Amoxicillin 500mg TID x 7 days\n2. Guaifenesin 600mg PRN cough\n3. Acetaminophen 650mg every 6 hours PRN fever/pain\n\nFollow-up:\nF/u with primary care physician in 1 week for re-evaluation of respiratory status and repeat labs.\n\nElectronically signed, A. Rivera, MD, 05/16/2026",
+  "answer": [
+    "A41.9"
+  ],
+  "explanations": [
+    "Sepsis with no organism identified and no organ dysfunction: A41.9 only (HCC 2)."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9",
+        "R65.20"
+      ],
+      "confusion": "overstated_severe",
+      "lean": "over",
+      "why": "No acute organ dysfunction is documented: no R65.2- code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.5,
+    "hccs": [
+      {
+        "hcc": "2",
+        "label": "Septicemia/Sepsis/Systemic Inflammatory Response Syndrome/Shock",
+        "from": [
+          "A419"
+        ],
+        "weight": 0.5
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:37+00:00",
+    "style": {
+      "age": 85,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

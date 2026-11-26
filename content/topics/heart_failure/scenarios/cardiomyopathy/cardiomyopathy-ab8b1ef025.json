@@ -1,0 +1,87 @@
+{
+  "id": "cardiomyopathy-ab8b1ef025",
+  "table": "cardiomyopathy",
+  "title": "Cardiomyopathy: hypertrophic, ischemic or unspecified",
+  "status": "draft",
+  "slots": {
+    "condition": "unspecified"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's cardiomyopathy (only that code).",
+  "note": "Chief Complaint: Follow-up for shortness of breath.\n\nHPI: Patient is an 89-year-old female presenting for a scheduled follow-up. \n(Copied Forward): Patient reports progressive exertional dyspnea over the last three months. She notes increased fatigue and occasional orthopnea. She denies chest pain, syncope, or palpitations. She reports mild swelling in her lower extremities after long periods of standing. She has been compliant with her current medication regimen.\n(Today's Update): The patient reports that her shortness of breath has remained stable since the last visit. She denies any new episodes of dizziness or acute worsening of symptoms.\n\nVitals: BP 128/82, HR 74, SpO2 96% on room air, Temp 98.6 F.\n\nMedication List:\n- Lisinopril 10mg daily\n- Furosemide 40mg daily\n- Metoprolol 25mg daily\n\nReview of Systems:\n- Constitutional: Negative for fever, chills, or weight changes.\n- Respiratory: Positive for exertional dyspnea.\n- Cardiovascular: Negative for chest pain or palpitations.\n- Musculoskeletal: Negative for joint pain.\n- Neurological: Negative for dizziness or syncope.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm. S1, S2 heard. No murmurs, rubs, or gallops.\nPulmonary: Clear to auscultation bilaterally. No wheezing or rales.\nExtremities: 1+ pitting edema noted in bilateral ankles.\n\nAssessment:\n1. Cardiomyopathy: Recent echocardiogram results indicate the presence of cardiomyopathy. The specific type was not specified on the report.\n\nPlan:\n1. Cardiology Referral: Place a referral to a cardiologist for further evaluation of the cardiomyopathy and management of symptoms.\n2. Follow-up: Patient to return to the clinic after seeing the specialist to review findings and adjust medications as needed.\n\nElectronically signed,\nP. O'Brien, MD\nOctober 14, 2026",
+  "answer": [
+    "I42.9"
+  ],
+  "explanations": [
+    "Cardiomyopathy without a stated type: I42.9 (HCC 227)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I42, I25.5"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I42.2"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "Hypertrophic cardiomyopathy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.189,
+        "correct": 0.189,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I25.5"
+      ],
+      "confusion": "assumed_type",
+      "lean": "neutral",
+      "why": "Ischemic cardiomyopathy is not documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.189,
+        "gap": -0.189,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "227"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.189,
+    "hccs": [
+      {
+        "hcc": "227",
+        "label": "Cardiomyopathy/Myocarditis",
+        "from": [
+          "I429"
+        ],
+        "weight": 0.189
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:06:12+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

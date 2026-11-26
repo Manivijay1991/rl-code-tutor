@@ -1,0 +1,68 @@
+{
+  "id": "asthma_cf-8cb502a882",
+  "table": "asthma_cf",
+  "title": "Asthma severity and cystic fibrosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cf_pulmonary"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's asthma or cystic fibrosis (only that code).",
+  "note": "Chief Complaint: Follow-up for cystic fibrosis.\n\nVitals: BP 118/76, HR 74, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: Positive for chronic cough. Negative for dyspnea or wheezing.\nCardiovascular: Negative for palpitations or chest pain.\nGastrointestinal: Negative for abdominal pain or nausea.\nMusculoskeletal: Negative for joint pain or weakness.\n\nHPI: Copied forward from previous visit: Patient is a 34-year-old female with a known history of cystic fibrosis. She reports frequent pulmonary symptoms, specifically a persistent chronic cough and history of bronchiectasis. She is currently adherent to her airway clearance therapy and takes a CFTR modulator daily. She reports stable symptoms over the last month with no acute exacerbations.\n\nMedication List:\n- CFTR modulator\n- Hypertonic saline (for airway clearance)\n\nExam:\nGeneral: Well-appearing, in no acute distress.\nRespiratory: Clear to auscultation bilaterally. No adventitious sounds.\nCardiovascular: Regular rate and rhythm.\nSkin: No visible signs of infection.\n\nAssessment:\n1. Cystic fibrosis with pulmonary manifestations.\n2. Bronchiectasis.\n\nPlan:\n1. Continue current CFTR modulator dosage.\n2. Continue prescribed airway clearance protocol.\n3. Follow up in 3 months for routine evaluation.\n\nElectronically signed,\nR. Mensah, PA-C\nMay 14, 2026",
+  "answer": [
+    "E84.0"
+  ],
+  "explanations": [
+    "Cystic fibrosis with pulmonary manifestations: E84.0 (HCC 277)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J45, E84"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E84.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The pulmonary manifestations are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.998,
+        "correct": 0.998,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.998,
+    "hccs": [
+      {
+        "hcc": "277",
+        "label": "Cystic Fibrosis",
+        "from": [
+          "E840"
+        ],
+        "weight": 0.998
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:34+00:00",
+    "style": {
+      "age": 34,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

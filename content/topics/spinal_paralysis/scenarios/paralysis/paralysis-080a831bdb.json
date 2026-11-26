@@ -1,0 +1,61 @@
+{
+  "id": "paralysis-080a831bdb",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "spondylotic_myelopathy"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for cervical spondylotic myelopathy.\n\nHPI\nThe patient is a 68-year-old man presenting for a follow-up evaluation regarding his cervical spondylosis with myelopathy. He reports that his symptoms have been stable since his recent spine surgery. He denies any new episodes of numbness, tingling, or significant motor weakness in his upper extremities. He notes that his gait feels steady and he is managing well with his current rehabilitation routine. He reports minimal persistent discomfort following the surgical intervention.\n\nMedication List\nLisinopril 10mg daily\nAtorvastatin 40mg daily\nGabapentin 300mg twice daily\n\nExam\nThe patient is alert and oriented. He appears in no acute distress. Neurological exam shows intact sensation to light touch and pinprick in all four extremities. Motor strength is 5/5 in the upper and lower extremities. Reflexes are symmetric and 2+ throughout. No new gait abnormalities noted during observation.\n\nAssessment\n1. Cervical spondylotic myelopathy status post spine surgery.\n\nPlan\nThe patient will continue his current medication regimen and physical therapy. He is instructed to monitor for any new neurological deficits. We will follow up in six weeks for a repeat clinical evaluation.\n\nElectronically signed, K. Nguyen, PA-C, 10/14/2026",
+  "answer": [
+    "M47.12"
+  ],
+  "explanations": [
+    "Cervical spondylosis with myelopathy has a combination code: M47.12 (no HCC). Unspecified spinal cord disease (G95.9) would add HCC 182."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G95.9"
+      ],
+      "confusion": "myelopathy_coded_separately",
+      "lean": "over",
+      "why": "Use the combination code M47.12.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.478,
+        "correct": 0,
+        "gap": 0.478,
+        "direction": "over",
+        "extra_hccs": [
+          "182"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:20+00:00",
+    "style": {
+      "age": 68,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "K. Nguyen"
+    }
+  }
+}

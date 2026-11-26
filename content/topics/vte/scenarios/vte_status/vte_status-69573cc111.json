@@ -1,0 +1,62 @@
+{
+  "id": "vte_status-69573cc111",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "dvt_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for history of deep vein thrombosis.\n\nHPI: The patient is an 86-year-old male who presents today for a routine follow-up regarding a history of deep vein thrombosis in his right leg. This event occurred approximately two years ago. He reports that he underwent a course of medication to treat the condition. He states that the treatment was successfully completed and that the clot has since resolved. He currently reports no pain, swelling, or discomfort in the right leg. He denies any shortness of breath or chest pain. He is here today to ensure everything is stable and to discuss any further monitoring.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nVitals:\nBP: 132/78 mmHg\nHR: 72 bpm\nTemp: 98.6 F\nRR: 16 breaths/min\nSpO2: 97% on room air\nWeight: 175 lbs\n\nRecent Labs:\nHbA1c: 6.4%\neGFR: 65 mL/min/1.73m2\nTSH: 2.1 mIU/L\n\nReview of Systems:\nConstitutional: Denies fever, chills, or fatigue.\nCardiovascular: Denies palpitations or chest pain.\nRespiratory: Denies cough or shortness of breath.\nMusculoskeletal: Denies joint pain or swelling.\nSkin: No rashes or lesions noted.\n\nSocial History: The patient lives at home with his wife. He enjoys gardening and watching television. He retired five years ago. He denies tobacco or alcohol use.\n\nFamily History: Father had hypertension and a history of stroke. Mother had type 2 diabetes.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nCardiovascular: Regular rate and rhythm. No murmurs heard.\nRespiratory: Clear to auscultation bilaterally.\nMusculoskeletal: Right leg is stable without edema, erythema, or tenderness. Full range of motion is preserved.\n\nAssessment:\n1. History of deep vein thrombosis of the right leg. The patient is stable and the previous condition is resolved.\n\nPlan:\n1. Continue current medications as prescribed.\n2. No further anticoagulation is required at this time as the previous treatment was completed.\n3. Follow up in 6 months for routine monitoring.\n\nElectronically signed,\nP. O'Brien, PA-C\nMay 14, 2026",
+  "answer": [
+    "Z86.718"
+  ],
+  "explanations": [
+    "A DVT that resolved after completed treatment: personal history, Z86.718 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4",
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I82.401"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "There is no current clot: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0,
+        "gap": 0.294,
+        "direction": "over",
+        "extra_hccs": [
+          "267"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:09:39+00:00",
+    "style": {
+      "age": 86,
+      "sex": "man",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

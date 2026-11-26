@@ -1,0 +1,63 @@
+{
+  "id": "head_injury-cca7839b49",
+  "table": "head_injury",
+  "title": "Traumatic brain injury and concussion in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "concussion_loc"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the head injury (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/13/2026\nReason for Admission: Evaluation of concussion after fall.\n\nVitals:\nBP: 132/78\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\n\nLabs:\nWBC: 8.2\nHgb: 14.1\nPlt: 210k\nNa: 139\nK: 4.0\nCreatinine: 1.1 (eGFR: 72)\n\nReview of Systems:\nPt c/o headache and mild dizziness following fall. Denies nausea, vomiting, vision changes, or focal weakness. No confusion noted.\n\nSocial History:\nLives with wife in private residence. Retired. Non-smoker.\n\nFamily History:\nFather: HTN. Mother: Type 2 DM.\n\nHospital Course:\nPt is an 85-year-old male admitted for overnight observation following a fall at home. Pt was unconscious for about 5 minutes. Initial neuro exam showed mild somnolence but pt was alert and oriented to person, place, and time by admission. CT head and MRI brain were both normal. No acute changes noted during observation. Pt remained stable throughout the stay. Neuro checks were WNL. Pt voiced no new complaints and was cleared for discharge to home with safety precautions.\n\nDischarge Diagnoses:\nConcussion\n\nDischarge Medications:\nAcetaminophen 500mg BID PRN for headache.\n\nFollow-up:\nPt to f/u with PCP in 1 week for routine check.\n\nElectronically signed,\nA. Rivera, MD\n05/13/2026",
+  "answer": [
+    "S06.0X1A"
+  ],
+  "explanations": [
+    "Concussion with loss of consciousness of 30 minutes or less, initial encounter: S06.0X1A (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.19.a",
+    "ICD-10-CM Tabular: S06"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S06.2X1A"
+      ],
+      "confusion": "concussion_coded_tbi",
+      "lean": "over",
+      "why": "A concussion is documented with normal imaging, not a diffuse injury.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.199,
+        "correct": 0,
+        "gap": 0.199,
+        "direction": "over",
+        "extra_hccs": [
+          "398"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:33:18+00:00",
+    "style": {
+      "age": 85,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "A. Rivera",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

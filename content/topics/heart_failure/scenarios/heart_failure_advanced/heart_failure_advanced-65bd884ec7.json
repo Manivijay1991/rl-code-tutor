@@ -1,0 +1,89 @@
+{
+  "id": "heart_failure_advanced-65bd884ec7",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_systolic"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Shortness of breath and leg swelling.\n\nHPI: [Copied Forward] Patient is a 77-year-old female who presented with progressive dyspnea on exertion and bilateral lower extremity edema over the past two weeks. She reports increased fatigue and orthopnea. She denies chest pain or syncope.\n[Today's Update] Patient returns for follow-up after being diagnosed with acute systolic heart failure. She reports that she has been taking her prescribed diuretics daily. She notes a significant improvement in her breathing and a decrease in the swelling of her ankles. She denies any new chest pain or worsening of symptoms since the start of treatment.\n\nMedication List:\n- Furosemide 40mg daily\n- Lisinopril 10mg daily\n\nVitals: BP 128/74, HR 76, SpO2 96% on room air, Temp 98.6F, RR 18.\n\nReview of Systems:\n- Cardiovascular: Positive for peripheral edema. Negative for chest pain.\n- Respiratory: Positive for improved dyspnea. Negative for cough.\n- Gastrointestinal: Negative for nausea or abdominal pain.\n- Musculoskeletal: Negative for joint pain.\n\nExam:\nGeneral: Alert and oriented x3, in no acute distress.\nCardiovascular: Regular rhythm, S1 and S2 heard. No murmurs, rubs, or gallops noted.\nPulmonary: Clear to auscultation bilaterally. No crackles or wheezes.\nExtremities: 1+ pitting edema noted in bilateral lower extremities.\n\nAssessment: \n1. Acute systolic heart failure (new diagnosis).\n\nPlan:\n1. Continue current diuretic regimen.\n2. Monitor weight daily and report any gains of more than 2 lbs in a day.\n3. Follow up in two weeks for reassessment of fluid status.\n\nElectronically signed, R. Mensah, PA-C, 10/14/2026",
+  "answer": [
+    "I50.21"
+  ],
+  "explanations": [
+    "A first, acute episode of systolic heart failure: I50.21 (HCC 225)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.23"
+      ],
+      "confusion": "acute_coded_chronic",
+      "lean": "neutral",
+      "why": "There is no chronic heart failure: this is the first episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "225"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.31"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "Systolic heart failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "225",
+        "label": "Acute Heart Failure (Excludes Acute on Chronic)",
+        "from": [
+          "I5021"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:03:43+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "R. Mensah"
+    }
+  }
+}

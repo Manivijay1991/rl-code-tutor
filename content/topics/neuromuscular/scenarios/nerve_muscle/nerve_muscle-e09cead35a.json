@@ -1,0 +1,68 @@
+{
+  "id": "nerve_muscle-e09cead35a",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "als"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint: Progressive limb weakness.\n\nHPI: Pt is a 37-year-old male with a known diagnosis of amyotrophic lateral sclerosis. He presents today for a routine neurology follow-up to monitor disease progression. Pt reports gradual worsening of weakness in bilateral upper and lower extremities over the last 3 months. He notes increased difficulty with manual dexterity but states he is still eating by mouth without assistance. No acute respiratory distress reported. No new changes in speech clarity noted today.\n\nMedication List:\n- Riluzole 50mg BID\n- Gabapentin 300mg TID\n\nReview of Systems:\nConstitutional: Negative for fever, chills, or weight loss.\nRespiratory: No shortness of breath or cough.\nNeuromuscular: Positive for progressive limb weakness. Negative for dysphagia or aspiration.\nOther: Negative for vision changes or sensory loss.\n\nSocial History: Pt lives with spouse. Works part-time from home. Non-smoker. No illicit drug use.\n\nFamily History: Father had progressive motor neuron disease in his 50s. Mother healthy.\n\nFamily History: No history of chronic neurological conditions in immediate family members.\n\nVitals:\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nWeight: 185 lbs\n\nRecent Labs:\neGFR: 92 mL/min\nNa: 138\nK: 4.2\nHbA1c: 5.4%\n\nExam:\nGeneral: Pt alert, oriented x3. Appears in no acute distress.\nRespiratory: CTAB. No use of accessory muscles.\nNeuromuscular: Significant weakness noted in bilateral upper extremities; 4/5 strength in deltoids and biceps. Lower extremities 4/5 strength. Reflexes 1+ bilaterally. Muscle atrophy noted in first dorsal interosseous. No fasciculations noted during exam.\nSpeech: Clear, coherent.\n\nAssessment:\n1. Amyotrophic lateral sclerosis - Pt continues to show progressive motor decline. Strength is decreasing but stable enough for independent oral intake.\n\nPlan:\n1. Continue Riluzole 50mg BID.\n2. Monitor strength and swallow function.\n3. F/u in 3 months for further neurological evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "G12.21"
+  ],
+  "explanations": [
+    "Amyotrophic lateral sclerosis: G12.21 (HCC 190)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G12.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "ALS is documented, not an unspecified motor neuron disease.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 1.175,
+        "correct": 1.175,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.175,
+    "hccs": [
+      {
+        "hcc": "190",
+        "label": "Amyotrophic Lateral Sclerosis and Other Motor Neuron Disease/Spinal Muscular Atrophy",
+        "from": [
+          "G1221"
+        ],
+        "weight": 1.175
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:15:59+00:00",
+    "style": {
+      "age": 37,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

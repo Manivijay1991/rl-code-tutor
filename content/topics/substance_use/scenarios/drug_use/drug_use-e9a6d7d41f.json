@@ -1,0 +1,72 @@
+{
+  "id": "drug_use-e9a6d7d41f",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "alcohol_psychotic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Follow-up for psychiatric concerns.\n\nHPI: (Copied Forward) Patient is a 78-year-old male presenting for management of severe alcohol use disorder. Patient reports frequent consumption of spirits, leading to significant functional impairment and associated alcohol-induced psychotic disorder. Patient reports frequent auditory hallucinations.\n\nUpdate: Patient reports he has remained abstinent from alcohol for the past three weeks. He notes that the hallucinations have decreased in frequency and intensity since he stopped drinking. He feels more grounded and is able to complete basic daily tasks more consistently.\n\nMedication List:\n- Quetiapine 50mg PO at bedtime\n\nVitals: BP 138/84, HR 76, SpO2 98% on room air, Temp 98.6 F.\n\nReview of Systems:\n- Constitutional: Negative\n- Neurological: Positive (hallucinations, improving)\n- Psychiatric: Positive (severe alcohol use disorder, alcohol-induced psychotic disorder)\n- General: Negative\n\nExam: Patient is alert and oriented. Speech is clear and coherent. Mood is stable; affect is congruent. No acute distress noted.\n\nAssessment:\n1. Severe alcohol use disorder.\n2. Alcohol-induced psychotic disorder with hallucinations.\n\nPlan:\n1. Continue current medication regimen.\n2. Encourage continued abstinence from alcohol.\n3. Follow up in four weeks for continued monitoring of symptoms.\n\nElectronically signed, R. Mensah, NP, 05/14/2026",
+  "answer": [
+    "F10.251"
+  ],
+  "explanations": [
+    "Severe alcohol use disorder with alcohol-induced psychotic disorder with hallucinations: combination code F10.251 (HCC 136)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F10.20"
+      ],
+      "confusion": "missed_psychotic",
+      "lean": "under",
+      "why": "The psychotic disorder is part of the combination code (HCC 136).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.242,
+        "correct": 0.424,
+        "gap": -0.182,
+        "direction": "under",
+        "extra_hccs": [
+          "139"
+        ],
+        "missing_hccs": [
+          "136"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.424,
+    "hccs": [
+      {
+        "hcc": "136",
+        "label": "Alcohol Use with Psychotic Complications",
+        "from": [
+          "F10251"
+        ],
+        "weight": 0.424
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:12:55+00:00",
+    "style": {
+      "age": 78,
+      "sex": "man",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "NP",
+      "signer": "R. Mensah"
+    }
+  }
+}

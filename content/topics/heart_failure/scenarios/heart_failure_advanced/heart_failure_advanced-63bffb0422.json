@@ -1,0 +1,89 @@
+{
+  "id": "heart_failure_advanced-63bffb0422",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_diastolic"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint\nShortness of breath and increased swelling in the lower extremities.\n\nHPI\nThe patient is an 89-year-old female presenting for a follow-up visit regarding a new diagnosis of acute diastolic heart failure. She reports that she experienced a first episode of significant shortness of breath and fluid retention over the past two weeks. She denies any prior history of heart failure. She has been started on a diuretic regimen and is being monitored for symptom improvement and weight changes. She reports improved breathing since beginning the medication but notes continued mild swelling in her ankles.\n\nMedication List\nFurosemide 40mg daily.\n\nExam\nThe patient appears in no acute distress. Vital signs are stable. Chest is clear to auscultation. Heart sounds are regular with no murmurs. Lower extremities show 1+ pitting edema bilaterally.\n\nAssessment\nAcute diastolic heart failure, first episode.\n\nPlan\nContinue current diuretic dosage. The patient will monitor her daily weight and report any increase of more than 2 pounds in a 24-hour period. Follow-up will occur in one week to assess fluid status.\n\nElectronically signed, P. O'Brien, MD, 05/14/2026",
+  "answer": [
+    "I50.31"
+  ],
+  "explanations": [
+    "A first, acute episode of diastolic heart failure: I50.31 (HCC 225)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.33"
+      ],
+      "confusion": "acute_coded_chronic",
+      "lean": "neutral",
+      "why": "There is no chronic heart failure: this is the first episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "225"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.21"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "Diastolic heart failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "225",
+        "label": "Acute Heart Failure (Excludes Acute on Chronic)",
+        "from": [
+          "I5031"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:03:45+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

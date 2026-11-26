@@ -1,0 +1,70 @@
+{
+  "id": "metabolic_endocrine-b2e7def14e",
+  "table": "metabolic_endocrine",
+  "title": "Gaucher, Fabry, amyloidosis, adrenal and pituitary disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "addison"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's metabolic or endocrine disorder (only that code).",
+  "note": "Chief Complaint: Follow-up for Addison's disease.\n\nHPI: 85 y.o. female pt presents for routine f/u of primary adrenal insufficiency. Pt reports feeling stable overall. Denies recent episodes of extreme fatigue, dizziness, or syncopal episodes. Pt reports adherence to current steroid regimen. No new complaints of salt cravings or orthostatic lightheadedness since last visit. Appetite is stable. Pt reports good energy levels for her age.\n\nMedication List:\n- Hydrocortisone 100mg daily\n- Fludrocortisone 100mg daily\n\nVitals:\nBP: 118/74\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 97% on RA\nWt: 135 lbs\n\nRecent Labs:\nNa: 136 mEq/L\nK: 4.2 mEq/L\nGlucose: 102 mg/dL\neGFR: 68 mL/min\n\nReview of Systems:\nConstitutional: Denies fever, chills, weight change.\nCV: Denies chest pain, palpitations, SOB.\nResp: Denies cough, wheezing.\nGI: Denies nausea, vomiting, diarrhea, constipation.\nMSK: Denies joint pain, swelling.\nNeuro: Denies headache, confusion, tremors.\n\nSocial History: Pt lives at home with spouse. Retired. Non-smoker. Occasional alcohol.\n\nFamily History: Mother had hypertension. Father had history of stroke.\n\nExam:\nGen: Well-appearing, pleasant, alert & oriented x3.\nCV: RRR, no murmurs, rubs, or gallops.\nResp: CTAB, no wheezes/crackles.\nAbdomen: Soft, non-tender, non-distended.\nExt: No edema, pulses palpable.\nSkin: No new lesions or rashes.\n\nAssessment:\n1. Addison's disease - Pt is stable on current hydrocortisone and fludrocortisone. Electrolytes are within normal limits.\n\nPlan:\n- Continue current medication regimen as prescribed.\n- Continue to monitor for signs of fatigue or hypotension.\n- F/u in 6 months for routine labs and clinical assessment.\n- Pt instructed to seek immediate ER care for signs of acute illness or severe symptoms.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "E27.1"
+  ],
+  "explanations": [
+    "Addison's disease = primary adrenocortical insufficiency: E27.1 (HCC 51)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: E22-E27, E75, E85"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E27.40"
+      ],
+      "confusion": "understated_adrenal",
+      "lean": "under",
+      "why": "Primary (Addison's) is documented; unspecified has no HCC.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.51,
+        "gap": -0.51,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "51"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.51,
+    "hccs": [
+      {
+        "hcc": "51",
+        "label": "Addisons and Cushings Diseases/Acromegaly/and Other Specified Endocrine Disorders",
+        "from": [
+          "E271"
+        ],
+        "weight": 0.51
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:19+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

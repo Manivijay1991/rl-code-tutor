@@ -1,0 +1,92 @@
+{
+  "id": "blood_disorders-63ddc9c0d5",
+  "table": "blood_disorders",
+  "title": "Sickle cell variants, hemolytic and aplastic anemia, hemophilia, neutropenia",
+  "status": "draft",
+  "slots": {
+    "condition": "hb_sc"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's blood disorder (only that code).",
+  "note": "Chief Complaint\nFollow-up for sickle cell-hemoglobin C disease.\n\nHPI\nPt is a 56 y.o. female presenting for scheduled follow-up of sickle cell-hemoglobin C disease. Pt reports feeling well today. Denies any acute episodes or complications since last visit. Stable symptoms. No new concerns reported.\n\nMedication List\nHydroxyurea 500mg BID\nFolic acid 1mg daily\n\nExam\nGen: Well-appearing, in no acute distress.\nCV: RRR, CTAB.\nResp: CTAB.\nExt: No new areas of skin discoloration noted.\nNeuro: Alert and oriented x3.\n\nAssessment\n1. Sickle cell-hemoglobin C disease: Stable. Pt is asymptomatic and tolerating current regimen well.\n\nPlan\n1. Continue current medications as prescribed.\n2. Routine labs to be ordered.\n3. F/u in 6 months.\n\nElectronically signed\nD. Kowalski, MD\n05/14/2026",
+  "answer": [
+    "D57.20"
+  ],
+  "explanations": [
+    "Sickle cell-hemoglobin C disease without crisis: D57.20 (HCC 108)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: D57-D84",
+    "ICD-10-CM Tabular: D57-D70"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "D57.1"
+      ],
+      "confusion": "wrong_sickle_type",
+      "lean": "neutral",
+      "why": "Hb SC is a separate sickle cell disorder (HCC 108), not Hb-SS.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.457,
+        "correct": 0.146,
+        "gap": 0.311,
+        "direction": "over",
+        "extra_hccs": [
+          "107"
+        ],
+        "missing_hccs": [
+          "108"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "D57.3"
+      ],
+      "confusion": "wrong_sickle_type",
+      "lean": "neutral",
+      "why": "It is a disease, not the trait.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.146,
+        "gap": -0.146,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "108"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.146,
+    "hccs": [
+      {
+        "hcc": "108",
+        "label": "Sickle Cell Disorders/Except Sickle Cell Anemia (Hb-SS) and Thalassemia Beta Zero; Beta Thalassemia Major",
+        "from": [
+          "D5720"
+        ],
+        "weight": 0.146
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:22:33+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

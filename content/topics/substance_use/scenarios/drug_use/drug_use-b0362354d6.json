@@ -1,0 +1,62 @@
+{
+  "id": "drug_use-b0362354d6",
+  "table": "drug_use",
+  "title": "Drug use disorders and substance-induced psychosis",
+  "status": "draft",
+  "slots": {
+    "condition": "cannabis_mild"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's substance use disorder.",
+  "note": "Chief Complaint: Follow-up for cannabis use.\n\nHPI: [Copied Forward] Patient is an 89-year-old female presenting for management of cannabis use disorder. She reports regular use of cannabis products. She expresses a desire to reduce her consumption.\n\n[Current Update] The patient reports she has been making active efforts to cut down on her daily intake. She reports a decrease in the frequency of use over the last month but continues to use occasionally. She denies any recent adverse events or acute issues.\n\nMedication List:\n- Multivitamin, daily\n- Melatonin, 3mg at bedtime\n\nVitals: BP 128/82, HR 74, SpO2 98% on room air, Temp 98.6F.\n\nReview of Systems:\n- Constitutional: Negative\n- Neurological: Negative\n- Psychiatric: Negative\n- Respiratory: Negative\n- Cardiovascular: Negative\n\nExam:\nGeneral: Well-appearing, pleasant, and cooperative.\nPsychiatric: Alert and oriented x3. Speech is clear. Mood is stable, affect is congruent. Thought process is linear. No signs of distress.\nPhysical: No acute distress noted.\n\nAssessment:\n1. Cannabis use disorder, mild, without complications. The patient is currently in the process of cutting down.\n\nPlan:\n1. Continue current plan of monitoring cannabis use.\n2. Patient will continue to work on reducing frequency of use.\n3. Follow up in 4 weeks.\n\nElectronically signed,\nP. O'Brien, MD\nMay 14, 2026",
+  "answer": [
+    "F12.10"
+  ],
+  "explanations": [
+    "Mild cannabis use disorder = cannabis abuse, uncomplicated: F12.10 (no HCC; V28 excludes cannabis abuse)."
+  ],
+  "refs": [
+    "OCG I.C.5.b.2",
+    "ICD-10-CM Tabular: F10-F19"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "F12.20"
+      ],
+      "confusion": "cannabis_hcc_assumed",
+      "lean": "over",
+      "why": "Mild = abuse (F12.1-), not dependence.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.424,
+        "correct": 0,
+        "gap": 0.424,
+        "direction": "over",
+        "extra_hccs": [
+          "137"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:13:27+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien"
+    }
+  }
+}

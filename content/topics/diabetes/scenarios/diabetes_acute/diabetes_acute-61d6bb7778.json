@@ -1,0 +1,74 @@
+{
+  "id": "diabetes_acute-61d6bb7778",
+  "table": "diabetes_acute",
+  "title": "Diabetes emergencies in the hospital: DKA, HHS and hypoglycemia",
+  "status": "draft",
+  "slots": {
+    "condition": "t2_hypo_coma"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the patient's diabetes (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Hypoglycemic coma\n\nVitals: BP 128/82, HR 74, SpO2 98% on RA, Temp 98.6 F.\n\nReview of Systems:\nConstitutional: Positive for lethargy.\nNeurological: Positive for altered mental status.\nEndocrine: Positive for T2DM.\nAll other systems reviewed and negative.\n\nHistory of Present Illness: \n(Copied Forward): Patient is an 89-year-old female with a history of type 2 diabetes. She was brought to the emergency department by EMS after being found unresponsive. Initial assessment revealed a state of hypoglycemi and a deep coma. \n\nHospital Course:\nThe patient was admitted to the intensive care unit for management of a hypoglycemic coma. Laboratory results confirmed a severe drop in blood glucose levels secondary to sulfonylurea toxicity. Treatment was initiated with immediate IV dextrose. The patient responded well to the intervention, with blood glucose levels stabilizing and consciousness returning. She remained for observation to ensure metabolic stability. She was transitioned to oral intake and met all criteria for discharge.\n\nDischarge Diagnoses:\n1. Hypoglycemi\n2. Coma\n3. Type 2 diabetes\n\nDischarge Medications:\n1. Metformin 500mg BID\n2. Glipizide 5mg daily (adjusted)\n\nFollow-up:\nFollow-up with primary care physician in 7 days.\n\nElectronically signed, \nP. O'Brien, MD\n05/15/2026",
+  "answer": [
+    "E11.641"
+  ],
+  "explanations": [
+    "Type 2 diabetes with hypoglycemia with coma: E11.641 (HCC 36)."
+  ],
+  "refs": [
+    "OCG I.C.4.a",
+    "ICD-10-CM Tabular: E10-E11 (acute complications)"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "E11.649"
+      ],
+      "confusion": "missed_coma",
+      "lean": "under",
+      "why": "The coma is documented (HCC 36, not 38).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.166,
+        "correct": 0.166,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "38"
+        ],
+        "missing_hccs": [
+          "36"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.166,
+    "hccs": [
+      {
+        "hcc": "36",
+        "label": "Diabetes with Severe Acute Complications",
+        "from": [
+          "E11641"
+        ],
+        "weight": 0.166
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:27:57+00:00",
+    "style": {
+      "age": 89,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "P. O'Brien",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "id": "heart_failure_advanced-69f7710b60",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "end_stage_systolic"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Shortness of breath and fatigue.\n\nHPI: The patient is a 77-year-old female who presents for a follow-up evaluation of her heart failure. She reports persistent shortness of breath during minimal exertion and increased feelings of fatigue over the past two weeks. She notes that her symptoms have become increasingly difficult to manage despite her current regimen. She denies any recent chest pain or new-onset syncope. She is currently receiving palliative care to manage her symptoms and maintain her quality of life. She reports that she is experiencing some peripheral edema in her lower extremities, which she notes has worsened recently.\n\nMedication List: \n- Furosemide 40mg daily\n- Lisinopril 10mg daily\n- Carvedilol 25mg twice daily\n- Spironolactone 25mg daily\n\nReview of Systems:\nConstitutional: Reports fatigue and mild shortness of breath.\nCardiovascular: Denies chest pain. Reports palpitations.\nRespiratory: Reports dyspnea on exertion. Denies cough.\nMusculoskeletal: Reports mild lower extremity swelling.\nNeurological: Denies dizziness or syncope.\n\nSocial History: The patient lives at home with her spouse. She is retired and enjoys gardening and spending time with her grandchildren. She denies tobacco use and social alcohol consumption.\n\nFamily History: Mother had a history of heart disease. Father had a history of stroke.\n\nVitals:\nBlood Pressure: 118/74 mmHg\nHeart Rate: 72 bpm\nRespiratory Rate: 18 breaths/min\nOxygen Saturation: 95% on room air\nTemperature: 98.6 F\nWeight: 165 lbs\n\nRecent Labs:\nSodium: 138 mEq/L\nPotassium: 4.2 mEq/L\nCreatinine: 1.2 mg/dL\neGFR: 62 mL/min\nBNP: 850 pg/mL\n\nExam: The patient appears in mild distress due to dyspnea. She is alert and oriented to person, place, and time. Heart rate is regular with a S1 and S2 sound. Lungs show bilateral crackles at the bases. There is 1+ pitting edema noted in the bilateral ankles.\n\nAssessment: \n1. End-stage heart failure due to chronic systolic heart failure (HFrEF).\n\nPlan:\n1. Continue current palliative care medications to manage symptoms.\n2. Continue Furosemide for fluid management.\n3. Monitor weight daily and report any gain of more than 2 pounds in a day.\n4. Follow up in two weeks for symptom reassessment.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "I50.84",
+    "I50.22"
+  ],
+  "explanations": [
+    "End-stage heart failure: I50.84 (HCC 222), plus the type, because I50.84 says to code also the type when known: chronic systolic, I50.22."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The type (chronic systolic) is documented: code it as well.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.505,
+        "correct": 2.505,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "understated_end_stage",
+      "lean": "under",
+      "why": "End-stage heart failure is documented: I50.84 is needed (HCC 222).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "222"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "222",
+        "label": "End-Stage Heart Failure",
+        "from": [
+          "I5084"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "222"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 3,
+    "created": "2026-11-26T15:04:20+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

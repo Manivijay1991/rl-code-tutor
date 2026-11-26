@@ -1,0 +1,62 @@
+{
+  "id": "vte_status-929a03273a",
+  "table": "vte_status",
+  "title": "DVT and PE: acute, chronic or history",
+  "status": "draft",
+  "slots": {
+    "condition": "pe_history"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's deep vein thrombosis or pulmonary embolism (only that code).",
+  "note": "Chief Complaint: Follow-up for history of pulmonary embolism.\n\nHPI: Pt is a 61 y/o male presenting for routine follow-up. Hx of pulmonary embolism three years ago. Pt states that his course of anticoagulation was completed and the condition has resolved. He currently denies shortness of breath, chest pain, or any respiratory distress. He reports stable activity levels and no recurrence of symptoms.\n\nMedication List: Multivitamin daily.\n\nExam: Pt alert and oriented x3. CTAB. RRR. Lungs clear to auscultation. No edema. NAD.\n\nAssessment: 61 y/o male with history of pulmonary embolism. Condition is resolved. Pt is currently asymptomatic and stable.\n\nPlan: Continue to monitor. Pt advised to seek immediate care if new symptoms develop. F/u in 1 year.\n\nElectronically signed, K. Nguyen, DO, 05/14/2026",
+  "answer": [
+    "Z86.711"
+  ],
+  "explanations": [
+    "A pulmonary embolism that resolved after completed treatment: personal history, Z86.711 (no HCC)."
+  ],
+  "refs": [
+    "OCG I.C.21.c.4",
+    "ICD-10-CM Tabular: I26-I27, I82, Z86.7"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I26.99"
+      ],
+      "confusion": "history_coded_active",
+      "lean": "over",
+      "why": "There is no current embolism: code the history.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.294,
+        "correct": 0,
+        "gap": 0.294,
+        "direction": "over",
+        "extra_hccs": [
+          "267"
+        ],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0,
+    "hccs": [],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:09:57+00:00",
+    "style": {
+      "age": 61,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "K. Nguyen"
+    }
+  }
+}

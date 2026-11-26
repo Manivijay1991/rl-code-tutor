@@ -1,0 +1,72 @@
+{
+  "id": "ulcer_burn-ed1a3a4269",
+  "table": "ulcer_burn",
+  "title": "Non-pressure ulcer depth and burn extent",
+  "status": "draft",
+  "slots": {
+    "condition": "ulcer_bone"
+  },
+  "question": "Assign the ICD-10-CM code for the ulcer, or for the burn extent (T31) when the note is about a burn (only that code).",
+  "note": "Chief Complaint\nFollow-up of right heel ulcer.\n\nHPI\nThe patient is a 36-year-old woman presenting for a follow-up evaluation of a chronic ulcer located on the right heel. She reports that the wound has not shown significant improvement in size or drainage over the last month. She denies any new systemic symptoms such as fever or chills. She notes that the area remains painful and has a persistent odor.\n\nMedication List\n1. Acetaminophen 650mg every 6 hours as needed for pain.\n\nExam\nPhysical exam reveals a chronic ulcer on the right heel. The wound bed shows significant tissue loss with visible necrosis of bone at the base of the site. There is moderate surrounding erythema and purulent drainage. Distal pulses are palpable and capillary refill is less than 3 seconds.\n\nAssessment\nChronic ulcer of the right heel with necrosis of bone.\n\nPlan\nThe patient will be scheduled for surgical debridement of the right heel to address the necrotic tissue. She was instructed to keep the area clean and covered with a sterile dressing until the procedure. Follow-up will be scheduled following the surgical intervention.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "L97.414"
+  ],
+  "explanations": [
+    "Non-pressure chronic ulcer of right heel and midfoot with necrosis of bone: L97.414 (HCC 380)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: L97, T31"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "L97.412"
+      ],
+      "confusion": "understated_depth",
+      "lean": "under",
+      "why": "Necrosis of bone is documented (HCC 380).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.646,
+        "correct": 1.078,
+        "gap": -0.432,
+        "direction": "under",
+        "extra_hccs": [
+          "383"
+        ],
+        "missing_hccs": [
+          "380"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 1.078,
+    "hccs": [
+      {
+        "hcc": "380",
+        "label": "Chronic Ulcer of Skin/Except Pressure/Through to Bone or Muscle",
+        "from": [
+          "L97414"
+        ],
+        "weight": 1.078
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:30:16+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

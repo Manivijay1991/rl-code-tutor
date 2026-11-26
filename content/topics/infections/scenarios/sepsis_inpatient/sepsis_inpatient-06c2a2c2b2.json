@@ -1,0 +1,70 @@
+{
+  "id": "sepsis_inpatient-06c2a2c2b2",
+  "table": "sepsis_inpatient",
+  "title": "Sepsis, severe sepsis, septic shock, urosepsis and bacteremia",
+  "status": "draft",
+  "slots": {
+    "condition": "mssa_sepsis"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM codes for the sepsis, severe sepsis or septic shock only (not the local infection or the organ dysfunction). If none applies, choose 'no code'.",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Sepsis from skin infection\n\nVitals: BP 118/74, HR 88, SpO2 98% on room air, Temp 99.1 F.\n\nReview of Systems:\nConstitutional: Positive for fever, chills, and malaise.\nIntegumentary: Positive for localized erythema and warmth of a skin lesion.\nRespiratory: Negative for cough or shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\nGenitourinary: Negative for dysuria.\n\nHPI: Patient is a 58-year-old woman who presented with a rapidly progressing skin infection on her left forearm. She reports increased pain, swelling, and drainage. She describes feeling systemically ill with tremors and fatigue over the last 48 hours.\n\nHospital Course:\nThe patient was admitted for sepsis originating from a localized skin infection. Cultures were positive for MSSA. She showed no signs of acute organ dysfunction during her stay. She was treated with cefazolin intravenously for the methicillin-sensitive infection. She responded well to antibiotics, with clinical improvement and stabilization of vital signs.\n\nDischarge Diagnoses:\nSepsis due to methicillin-susceptible Staphylococcus aureus (MSSA) from a skin infection.\n\nDischarge Medications:\nCefazolin 750mg every 8 hours (transition to oral)\nIbuprofen 400mg every 6 hours as needed for pain.\n\nFollow-up:\nFollow up with primary care physician in 7 days for wound assessment.\n\nElectronically signed, K. Nguyen, MD, 05/15/2026",
+  "answer": [
+    "A41.01"
+  ],
+  "explanations": [
+    "Sepsis due to methicillin-susceptible Staphylococcus aureus: A41.01 (HCC 2)."
+  ],
+  "refs": [
+    "OCG I.C.1.d",
+    "ICD-10-CM Tabular: A41, R65, R78"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "A41.9"
+      ],
+      "confusion": "unspecified_organism",
+      "lean": "neutral",
+      "why": "The organism (MSSA) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.5,
+        "correct": 0.5,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.5,
+    "hccs": [
+      {
+        "hcc": "2",
+        "label": "Septicemia/Sepsis/Systemic Inflammatory Response Syndrome/Shock",
+        "from": [
+          "A4101"
+        ],
+        "weight": 0.5
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:28:58+00:00",
+    "style": {
+      "age": 58,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "K. Nguyen",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

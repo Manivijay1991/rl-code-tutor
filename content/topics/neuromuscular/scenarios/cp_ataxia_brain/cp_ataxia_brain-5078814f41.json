@@ -1,0 +1,72 @@
+{
+  "id": "cp_ataxia_brain-5078814f41",
+  "table": "cp_ataxia_brain",
+  "title": "Cerebral palsy, hereditary ataxia, Huntington's and anoxic brain damage",
+  "status": "draft",
+  "slots": {
+    "condition": "cp_diplegic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neurological condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for mobility and gait.\n\nHPI\nPt is a 63-year-old female presenting for routine f/u of long-standing spastic diplegic cerebral palsy since birth. Pt reports stable condition with no acute changes in mobility or coordination. She continues to use forearm crutches for ambulation. Denies new falls, severe contractures, or increased pain in lower extremities. Reports adherence to current physical therapy regimen.\n\nMedication List\n1. Gabapentin 300mg BID\n2. Baclofen 10mg TID\n3. Vitamin D3 1000 IU daily\n\nReview of Systems\nConstitutional: No fever, chills, or weight changes.\nMusculoskeletal: Chronic stiffness in lower extremities. No acute joint pain.\nNeurological: No new tremors or weakness.\nSkin: No breakdown or pressure sores.\nAll other systems reviewed and negative.\n\nSocial History\nPt lives in a single-story home with her spouse. Retired. No tobacco use. Occasional social outings with crutches.\n\nFamily History\nMother: Hypertension.\nFather: Type 2 Diabetes.\nSiblings: No known chronic conditions.\n\nVitals\nBP: 128/82\nHR: 74 (RRR)\nTemp: 98.6 F\nSpO2: 98% on RA\nHt/Wt: 5'4\", 155 lbs\n\nRecent Labs\nHbA1c: 5.4%\neGFR: >90 mL/min\nTSH: 2.1 mIU/L\n\nExam\nGeneral: Alert and oriented x3. Appears in no acute distress.\nRespiratory: CTAB.\nMusculoskeletal: Spastic diplegic gait noted. Good strength in upper extremities. Moderate hypertonicity in bilateral lower extremities. No new skin breakdown over heels.\nNeurological: Normal sensation to light touch. Reflexes 3+ in lower extremities.\n\nAssessment\n1. Spastic diplegic cerebral palsy. Stable.\n\nPlan\n1. Continue current medications as prescribed.\n2. Continue PT for gait maintenance and stretching.\n3. F/u in 6 months or as needed for acute issues.\n\nElectronically signed,\nT. Haddad, NP\nMay 14, 2026",
+  "answer": [
+    "G80.1"
+  ],
+  "explanations": [
+    "Spastic diplegic cerebral palsy: G80.1 (HCC 192)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G10-G11, G80, G93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G80.0"
+      ],
+      "confusion": "cp_type_confused",
+      "lean": "neutral",
+      "why": "Diplegic, not quadriplegic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.855,
+        "correct": 0.314,
+        "gap": 0.541,
+        "direction": "over",
+        "extra_hccs": [
+          "191"
+        ],
+        "missing_hccs": [
+          "192"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.314,
+    "hccs": [
+      {
+        "hcc": "192",
+        "label": "Cerebral Palsy/Except Quadriplegic",
+        "from": [
+          "G801"
+        ],
+        "weight": 0.314
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:17:12+00:00",
+    "style": {
+      "age": 63,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

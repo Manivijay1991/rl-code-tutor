@@ -1,0 +1,89 @@
+{
+  "id": "heart_failure_advanced-2ff88a471d",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "acute_diastolic"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Shortness of breath.\n\nHPI: Pt is an 85 y.o. female presenting for f/u of new onset shortness of breath and peripheral edema. Pt reports symptoms began approximately 2 weeks ago, worsening with exertion. Denies chest pain, palpitations, or syncope. Pt notes increased weight gain over the last few days. No cough or fever reported. Pt is a first-time presentation for heart failure. Diagnosis of acute diastolic heart failure was established during initial evaluation. Pt is currently on a diuretic regimen and presents today for assessment of symptoms and fluid status.\n\nMedication List:\n- Furosemide 40mg PO BID\n- Lisinopril 10mg PO daily\n\nReview of Systems:\nConstitutional: No fever, chills, or fatigue.\nCV: Positive for dyspnea on exertion and pedal edema. Denies chest pain.\nResp: Positive for mild shortness of breath. Denies productive cough.\nGI: Denies nausea, vomiting, or abdominal pain.\nMSK: No joint pain or swelling.\nNeuro: No dizziness or focal weakness.\n\nSocial History: Retired. Lives with her daughter. Non-smoker. Denies alcohol use.\n\nFamily History: Mother had history of heart disease. Father had history of stroke.\n\nVitals:\nBP: 128/78\nHR: 72 (RRR)\nTemp: 98.6 F\nSpO2: 95% on RA\nWeight: 162 lbs\n\nRecent Labs:\neGFR: 65\nNa: 136\nK: 4.2\nCr: 1.1\nBNP: 450\n\nExam:\nGen: Alert, oriented x3. Appears in no acute distress.\nCV: RRR, regular S1, S2. No murmurs, rubs, or gallops.\nResp: CTAB. Mild crackles at bases.\nExt: 2+ pitting edema to mid-calf bilaterally.\n\nAssessment:\n1. Acute diastolic heart failure. This is the patient's first episode of heart failure.\n\nPlan:\n1. Continue Furosemide 40mg PO BID.\n2. Instructed pt on daily weight monitoring.\n3. Pt to call office if weight increases >2 lbs in 24 hours or >5 lbs in a week.\n4. Follow up in 1 week for repeat assessment of fluid status.\n\nElectronically signed,\nD. Kowalski, DO\n05/14/2026",
+  "answer": [
+    "I50.31"
+  ],
+  "explanations": [
+    "A first, acute episode of diastolic heart failure: I50.31 (HCC 225)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.33"
+      ],
+      "confusion": "acute_coded_chronic",
+      "lean": "neutral",
+      "why": "There is no chronic heart failure: this is the first episode.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "224"
+        ],
+        "missing_hccs": [
+          "225"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "I50.21"
+      ],
+      "confusion": "wrong_hf_type",
+      "lean": "neutral",
+      "why": "Diastolic heart failure is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 0.36,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.36,
+    "hccs": [
+      {
+        "hcc": "225",
+        "label": "Acute Heart Failure (Excludes Acute on Chronic)",
+        "from": [
+          "I5031"
+        ],
+        "weight": 0.36
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:04:49+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "D. Kowalski"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "bone_lupus_skin-1a64a49125",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "osteo_chronic"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for chronic osteomyelitis.\n\nHPI\nPt is a 56 y.o. female presenting for scheduled f/u of chronic osteomyelitis of the right foot. Pt reports stable status over the last month. Condition originated from an old puncture wound to the calcaneus. Pt reports minimal discomfort and no new drainage or systemic symptoms. Adherent to current antibiotic regimen.\n\nMedication List\nAmoxicillin-clavulanate 875/125mg BID\nAcetaminophen 650mg PRN\n\nExam\nGeneral: Alert and oriented x3, in no acute distress.\nVitals: BP 128/82, HR 74, RR 16, Temp 98.6F, SpO2 98% RA.\nRight foot: Site of chronic osteomyelitis shows stable appearance. No new erythema, warmth, or fluctuance noted. Skin intact.\nMusculoskeletal: ROM of right foot within normal limits.\n\nAssessment\n1. Chronic osteomyelitis of the right foot (calcaneus) secondary to old puncture wound. Currently stable on long-term antibiotics.\n\nPlan\n1. Continue current antibiotic regimen as prescribed.\n2. F/u in 4 weeks for clinical reassessment.\n3. Pt instructed to notify office immediately if fever or increased drainage occurs.\n\nElectronically signed, D. Kowalski, MD, 05/14/2026",
+  "answer": [
+    "M86.671"
+  ],
+  "explanations": [
+    "Other chronic osteomyelitis, right ankle and foot: M86.671 (HCC 92)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M86.171"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "It is documented as chronic.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "M86.9"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "The type and site are documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.479,
+    "hccs": [
+      {
+        "hcc": "92",
+        "label": "Bone/Joint/Muscle/Severe Soft Tissue Infections/Necrosis",
+        "from": [
+          "M86671"
+        ],
+        "weight": 0.479
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:21+00:00",
+    "style": {
+      "age": 56,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "D. Kowalski"
+    }
+  }
+}

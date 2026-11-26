@@ -1,0 +1,96 @@
+{
+  "id": "heart_failure_advanced-8627c20e55",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "end_stage_systolic"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint: Shortness of breath and fatigue.\n\nHPI: 80 y.o. female presents for f/u of known chronic systolic heart failure. Pt reports progressive dyspnea on exertion over the last month. She notes increased fatigue and feels \"weaker\" than usual. Denies chest pain, palpitations, or syncope. Pt admits to occasional orthopnea but states she is managing with current palliative care approach. She reports compliance with medications but notes some weight gain of 3 lbs over the last week.\n\nMedication List:\n- Furosemide 40mg BID\n- Lisinopril 10mg daily\n- Carvedilol 25mg BID\n- Spironolactone 25mg daily\n\nReview of Systems:\nConstitutional: Fatigue, mild weight gain.\nRespiratory: Dyspnea on exertion. Denies cough or wheezing.\nCardiovascular: No chest pain. No palpitations.\nGastrointestinal: No nausea, no diarrhea.\nMusculoskeletal: Mild generalized weakness.\nNeurological: No dizziness or focal weakness.\n\nSocial History: Retired. Lives at home with her daughter. Non-smoker. Occasional alcohol use.\n\nFamily History: Mother had heart disease. Father had stroke.\n\nVitals:\nBP: 118/74\nHR: 72 (RRR)\nRR: 18\nTemp: 98.6 F\nSpO2: 94% on RA\nWt: 145 lbs\n\nRecent Labs:\nNa: 136\nK: 4.2\nCr: 1.1\neGFR: 65\nBNP: 1200\n\nExam:\nGen: Well-appearing, pleasant.\nCV: RRR, S1, S2 heard. No murmurs, rubs, or gallops.\nResp: CTAB. Mild crackles at bilateral bases.\nExt: No edema noted in lower extremities.\nNeuro: Alert and oriented x3. NAD.\n\nAssessment:\n1. End-stage heart failure secondary to chronic systolic HFrEF. Currently stable on palliative management.\n\nPlan:\n1. Continue current medication regimen.\n2. Increase Furosemide dose slightly to address recent weight gain and crackles.\n3. Continue palliative care coordination.\n4. F/u in 2 weeks to monitor weight and symptoms.\n\nElectronically signed,\nT. Haddad, NP\nMay 14, 2026",
+  "answer": [
+    "I50.84",
+    "I50.22"
+  ],
+  "explanations": [
+    "End-stage heart failure: I50.84 (HCC 222), plus the type, because I50.84 says to code also the type when known: chronic systolic, I50.22."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The type (chronic systolic) is documented: code it as well.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.505,
+        "correct": 2.505,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "understated_end_stage",
+      "lean": "under",
+      "why": "End-stage heart failure is documented: I50.84 is needed (HCC 222).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "222"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "222",
+        "label": "End-Stage Heart Failure",
+        "from": [
+          "I5084"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "222"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 2,
+    "created": "2026-11-26T15:05:04+00:00",
+    "style": {
+      "age": 80,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "NP",
+      "signer": "T. Haddad"
+    }
+  }
+}

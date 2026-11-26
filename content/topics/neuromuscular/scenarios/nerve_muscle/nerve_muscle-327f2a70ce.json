@@ -1,0 +1,68 @@
+{
+  "id": "nerve_muscle-327f2a70ce",
+  "table": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "slots": {
+    "condition": "becker"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for leg weakness.\n\nHPI\nPt is a 70-year-old male presenting for follow-up of Becker muscular dystrophy. Pt reports slowly progressive leg weakness over the last several months. He notes increased difficulty with stairs and balance. Currently uses a cane for steady ambulation. Denies any acute falls or sudden changes in mobility.\n\nMedication List\n1. Cane for ambulation\n\nExam\nGeneral: Alert, oriented x3. CTAB.\nMusculoskeletal: Mild wasting of quadriceps and gastrocnemius bilaterally. Strength 4/5 in lower extremities. Gait is slow but steady with cane.\nNeurological: RRR. Reflexes 2+ throughout. No focal sensory deficits.\n\nAssessment\n1. Becker muscular dystrophy: Pt is showing expected slowly progressive leg weakness associated with his primary diagnosis.\n\nPlan\n1. Continue current activity level.\n2. Maintain use of cane for safety.\n3. F/u in 6 months to monitor progression of weakness.\n\nElectronically signed,\nP. O'Brien, PA-C\n05/14/2026",
+  "answer": [
+    "G71.01"
+  ],
+  "explanations": [
+    "Becker muscular dystrophy shares a code with Duchenne: G71.01 (HCC 197)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G71.00"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "under",
+      "why": "The type (Becker) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.426,
+        "correct": 0.426,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.426,
+    "hccs": [
+      {
+        "hcc": "197",
+        "label": "Muscular Dystrophy",
+        "from": [
+          "G7101"
+        ],
+        "weight": 0.426
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:16:10+00:00",
+    "style": {
+      "age": 70,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

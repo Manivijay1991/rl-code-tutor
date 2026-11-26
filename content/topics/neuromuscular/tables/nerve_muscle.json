@@ -1,0 +1,346 @@
+{
+  "id": "nerve_muscle",
+  "title": "ALS, myasthenia gravis, CIDP and muscular dystrophy",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM code for the patient's neuromuscular condition (only that code).",
+  "note_age": {
+    "min": 25,
+    "max": 70
+  },
+  "slots": {
+    "condition": {
+      "label": "Condition documented",
+      "values": [
+        "als",
+        "mg_exacerbation",
+        "mg_stable",
+        "becker",
+        "cidp",
+        "polyneuropathy"
+      ],
+      "labels": {
+        "als": "Amyotrophic lateral sclerosis",
+        "mg_exacerbation": "Myasthenia gravis with acute exacerbation",
+        "mg_stable": "Myasthenia gravis, stable",
+        "becker": "Becker muscular dystrophy",
+        "cidp": "Chronic inflammatory demyelinating polyneuropathy",
+        "polyneuropathy": "Polyneuropathy, cause not stated"
+      },
+      "evidence": {
+        "als": [
+          [
+            "amyotrophic lateral sclerosis",
+            "ALS"
+          ]
+        ],
+        "mg_exacerbation": [
+          [
+            "myasthenia gravis"
+          ],
+          [
+            "exacerbation"
+          ]
+        ],
+        "mg_stable": [
+          [
+            "myasthenia gravis"
+          ],
+          [
+            "stable",
+            "well controlled"
+          ]
+        ],
+        "becker": [
+          [
+            "Becker muscular dystrophy"
+          ]
+        ],
+        "cidp": [
+          [
+            "chronic inflammatory demyelinating",
+            "CIDP"
+          ]
+        ],
+        "polyneuropathy": [
+          [
+            "polyneuropathy",
+            "peripheral neuropathy"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "als": "The neurologist documents amyotrophic lateral sclerosis (ALS), on riluzole, with progressive limb weakness; still eating by mouth.",
+        "mg_exacerbation": "The neurologist documents myasthenia gravis with an acute exacerbation (worsening ptosis and swallowing this week); prednisone increased.",
+        "mg_stable": "The neurologist documents myasthenia gravis, stable and well controlled on pyridostigmine, with no exacerbation.",
+        "becker": "The neurologist documents Becker muscular dystrophy with slowly progressive leg weakness; walks with a cane.",
+        "cidp": "The neurologist documents chronic inflammatory demyelinating polyneuropathy (CIDP), treated with monthly immunoglobulin infusions.",
+        "polyneuropathy": "The provider documents polyneuropathy with numbness in both feet; the cause is not determined and labs are pending."
+      }
+    }
+  },
+  "note_forbid": [
+    "stroke",
+    "CVA",
+    "multiple sclerosis",
+    "Parkinson",
+    "epilepsy",
+    "seizure",
+    "dementia",
+    "diabetes",
+    "diabetic",
+    "spinal cord injury",
+    "ventilator",
+    "tracheostomy",
+    "feeding tube",
+    "gastrostomy",
+    "PEG",
+    "respiratory failure",
+    "BiPAP",
+    "myasthenic crisis",
+    "thymoma",
+    "Lambert-Eaton",
+    "Guillain",
+    "alcohol",
+    "B12",
+    "chemotherapy",
+    "kidney disease",
+    "CKD"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": "als"
+      },
+      "forbid": [
+        "myasthenia",
+        "muscular dystrophy",
+        "neuropathy",
+        "CIDP"
+      ]
+    },
+    {
+      "when": {
+        "condition": [
+          "mg_exacerbation",
+          "mg_stable"
+        ]
+      },
+      "forbid": [
+        "ALS",
+        "amyotrophic",
+        "muscular dystrophy",
+        "neuropathy",
+        "CIDP"
+      ]
+    },
+    {
+      "when": {
+        "condition": "mg_stable"
+      },
+      "forbid": [
+        "exacerbation",
+        "flare",
+        "worsening",
+        "crisis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "becker"
+      },
+      "sex": "man",
+      "forbid": [
+        "Duchenne",
+        "ALS",
+        "amyotrophic",
+        "myasthenia",
+        "neuropathy",
+        "CIDP"
+      ]
+    },
+    {
+      "when": {
+        "condition": "cidp"
+      },
+      "forbid": [
+        "ALS",
+        "amyotrophic",
+        "myasthenia",
+        "muscular dystrophy"
+      ]
+    },
+    {
+      "when": {
+        "condition": "polyneuropathy"
+      },
+      "forbid": [
+        "CIDP",
+        "demyelinating",
+        "inflammatory",
+        "immunoglobulin",
+        "IVIG",
+        "ALS",
+        "amyotrophic",
+        "myasthenia",
+        "muscular dystrophy"
+      ]
+    }
+  ],
+  "confusions": {
+    "unspecified_when_specified": {
+      "description": "Used an unspecified code when the specific disorder is documented.",
+      "lean": "under"
+    },
+    "missed_exacerbation": {
+      "description": "Coded myasthenia gravis without exacerbation when an acute exacerbation is documented.",
+      "lean": "under"
+    },
+    "assumed_exacerbation": {
+      "description": "Coded an exacerbation of myasthenia gravis that is not documented.",
+      "lean": "over"
+    },
+    "cidp_coded_unspecified": {
+      "description": "Coded unspecified polyneuropathy for CIDP.",
+      "lean": "under"
+    },
+    "polyneuropathy_coded_cidp": {
+      "description": "Coded CIDP when the provider documents only polyneuropathy.",
+      "lean": "over"
+    }
+  },
+  "components": [
+    {
+      "id": "nm",
+      "rules": [
+        {
+          "when": {
+            "condition": "als"
+          },
+          "codes": [
+            "G12.21"
+          ],
+          "explain": "Amyotrophic lateral sclerosis: G12.21 (HCC 190).",
+          "refs": [
+            "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G12.20"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "ALS is documented, not an unspecified motor neuron disease."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "mg_exacerbation"
+          },
+          "codes": [
+            "G70.01"
+          ],
+          "explain": "Myasthenia gravis with (acute) exacerbation: G70.01 (HCC 195, weight about 2.9).",
+          "refs": [
+            "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G70.00"
+              ],
+              "confusion": "missed_exacerbation",
+              "why": "An acute exacerbation is documented (HCC 195, not 196)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "mg_stable"
+          },
+          "codes": [
+            "G70.00"
+          ],
+          "explain": "Myasthenia gravis without (acute) exacerbation: G70.00 (HCC 196).",
+          "refs": [
+            "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G70.01"
+              ],
+              "confusion": "assumed_exacerbation",
+              "why": "No exacerbation is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "becker"
+          },
+          "codes": [
+            "G71.01"
+          ],
+          "explain": "Becker muscular dystrophy shares a code with Duchenne: G71.01 (HCC 197).",
+          "refs": [
+            "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G71.00"
+              ],
+              "confusion": "unspecified_when_specified",
+              "why": "The type (Becker) is documented."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "cidp"
+          },
+          "codes": [
+            "G61.81"
+          ],
+          "explain": "Chronic inflammatory demyelinating polyneuritis: G61.81 (HCC 193).",
+          "refs": [
+            "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G62.9"
+              ],
+              "confusion": "cidp_coded_unspecified",
+              "why": "CIDP has its own code (HCC 193)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "polyneuropathy"
+          },
+          "codes": [
+            "G62.9"
+          ],
+          "explain": "Polyneuropathy without a documented cause or type: G62.9 (no HCC).",
+          "refs": [
+            "ICD-10-CM Tabular: G12, G61-G62, G70-G71"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G61.81"
+              ],
+              "confusion": "polyneuropathy_coded_cidp",
+              "why": "CIDP is not documented."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

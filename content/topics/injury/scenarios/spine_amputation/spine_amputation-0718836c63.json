@@ -1,0 +1,72 @@
+{
+  "id": "spine_amputation-0718836c63",
+  "table": "spine_amputation",
+  "title": "Vertebral fracture and amputation",
+  "status": "draft",
+  "slots": {
+    "condition": "amputation_status"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's vertebral fracture or amputation (only that code).",
+  "note": "Chief Complaint: Follow-up for prosthetic use and stump integrity.\n\nHPI: Patient is an 85-year-old female who presents for a routine follow-up of her right below-knee amputation. She underwent the procedure several years ago and utilizes a prosthesis for mobility. She reports that she is able to ambulate independently with her prosthesis and expresses no issues with the fit or stability of the device. She notes that the skin on her stump remains healthy and intact. She denies any new-onset pain, irritation, or skin breakdown at the surgical site. No concerns were voiced regarding her gait or balance today.\n\nVitals: BP 128/76, HR 74, SpO2 98% on room air, Temp 98.4 F, Weight 142 lbs.\n\nRecent Labs: Hemoglobin 13.2 g/dL, White Blood Cell Count 7.4 x 10^9/L, Platelets 210 x 10^9/L, eGFR 78 mL/min/1.73m2.\n\nMedication List:\n- Lisinopril 10mg daily\n- Atorvastatin 20mg daily\n- Multivitamin daily\n\nReview of Systems:\nConstitutional: Negative for fever, chills, fatigue.\nSkin: Negative for rash, drainage, or redness.\nMusculoskeletal: Negative for joint pain or stiffness.\nNeurological: Negative for numbness or tingling.\nRespiratory: Negative for shortness of breath.\nCardiovascular: Negative for chest pain or palpitations.\n\nSocial History: Retired, lives at home with her spouse. She enjoys gardening and walking in her neighborhood. She does not smoke and drinks alcohol occasionally.\n\nFamily History: Mother had hypertension. Father had a history of heart disease.\n\nExam:\nGeneral: Well-appearing, alert, and oriented x3.\nSkin: Right below-knee amputation site is well-healed. Skin is smooth, dry, and healthy. No erythema, warmth, or drainage noted.\nMusculoskeletal: Patient is able to stand and walk with her prosthesis. Gait is steady.\nNeurological: Sensation is intact to light touch over the stump.\n\nAssessment:\n1. Right below-knee amputation status: Stable. Stump integrity remains excellent.\n2. Prosthetic use: Patient is functional and mobile.\n\nPlan:\n1. Continue current medication regimen.\n2. Continue use of current prosthesis.\n3. Follow up in 6 months for routine evaluation.\n\nElectronically signed, D. Kowalski, PA-C, 05/14/2026",
+  "answer": [
+    "Z89.511"
+  ],
+  "explanations": [
+    "Acquired absence of the right leg below the knee: Z89.511 (HCC 409)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: S32, M80, S88, Z89"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "S88.111A"
+      ],
+      "confusion": "acute_status_confused",
+      "lean": "neutral",
+      "why": "The amputation was years ago: use the status code.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.598,
+        "correct": 0.598,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [
+          "405"
+        ],
+        "missing_hccs": [
+          "409"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.598,
+    "hccs": [
+      {
+        "hcc": "409",
+        "label": "Amputation Status/Lower Limb/Amputation Complications",
+        "from": [
+          "Z89511"
+        ],
+        "weight": 0.598
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:33:12+00:00",
+    "style": {
+      "age": 85,
+      "sex": "woman",
+      "voice": "templated",
+      "length": "long",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "D. Kowalski"
+    }
+  }
+}

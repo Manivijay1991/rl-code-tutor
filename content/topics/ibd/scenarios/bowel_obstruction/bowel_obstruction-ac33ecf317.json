@@ -1,0 +1,86 @@
+{
+  "id": "bowel_obstruction-ac33ecf317",
+  "table": "bowel_obstruction",
+  "title": "Bowel obstruction and ileus in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "adhesions_partial"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the bowel obstruction or ileus (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/15/2026\nReason for Admission: Abdominal pain, nausea, vomiting.\n\nVitals:\nT: 98.4 F, HR: 78, BP: 132/80, RR: 16, SpO2: 96% RA.\n\nRecent Labs:\nWBC: 11.2, Hgb: 13.4, Hct: 40.2, Na: 138, K: 4.1, Cr: 1.1, eGFR: 52, Glucose: 115.\n\nReview of Systems:\nConstitutional: Fatigue. GI: Nausea, vomiting, diffuse abdominal pain. MSK: Mild lower back pain. Neuro: Alert and oriented x3. No chest pain, SOB, or focal neuro deficits.\n\nSocial History: Retired, lives with wife. Non-smoker. Occasional alcohol.\n\nFamily History: Father had HTN. Mother had T2DM.\n\nHospital Course:\nPt is a 90 y.o. male admitted for acute abdominal symptoms. Imaging confirmed a partial small bowel obstruction. The etiology of the obstruction is identified as adhesions from a prior abdominal surgery. Pt was started on NPO status and serial abdominal exams. A nasogastric tube was placed for decompression. Pt tolerated bowel rest well. Serial exams showed decreased distension and improved bowel sounds. Transitioned to clear liquids, then advanced diet as tolerated. Obstruction resolved. Pt stable for discharge.\n\nDischarge Diagnoses:\nPartial small bowel obstruction, adhesions.\n\nDischarge Medications:\n1. Metformin 500mg BID\n2. Lisinopril 10mg QD\n3. Multivitamin QD\n\nFollow-up:\nF/u with PCP in 1 week for wound check and symptom monitoring.\n\nElectronically signed,\nL. Moreau, MD\n05/15/2026",
+  "answer": [
+    "K56.51"
+  ],
+  "explanations": [
+    "Intestinal adhesions with partial obstruction: K56.51 (HCC 78)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: K56"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "K56.600"
+      ],
+      "confusion": "missed_cause",
+      "lean": "neutral",
+      "why": "The cause (adhesions) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "K56.52"
+      ],
+      "confusion": "wrong_extent",
+      "lean": "neutral",
+      "why": "The obstruction is partial.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.326,
+        "correct": 0.326,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.326,
+    "hccs": [
+      {
+        "hcc": "78",
+        "label": "Intestinal Obstruction/Perforation",
+        "from": [
+          "K5651"
+        ],
+        "weight": 0.326
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:26:16+00:00",
+    "style": {
+      "age": 90,
+      "sex": "man",
+      "voice": "shorthand",
+      "length": "long",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "id": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note_age": {
+    "min": 30,
+    "max": 78
+  },
+  "slots": {
+    "condition": {
+      "label": "Transplant documented",
+      "values": [
+        "heart",
+        "lung",
+        "heart_lung",
+        "liver",
+        "kidney_pancreas",
+        "intestine",
+        "stem_cell",
+        "liver_rejection",
+        "lung_rejection"
+      ],
+      "labels": {
+        "heart": "Heart transplant, doing well",
+        "lung": "Lung transplant, doing well",
+        "heart_lung": "Combined heart and lung transplant",
+        "liver": "Liver transplant, doing well",
+        "kidney_pancreas": "Kidney-pancreas transplant, doing well",
+        "intestine": "Intestine transplant, doing well",
+        "stem_cell": "Stem cell transplant, in follow-up",
+        "liver_rejection": "Liver transplant rejection",
+        "lung_rejection": "Lung transplant rejection"
+      },
+      "evidence": {
+        "heart": [
+          [
+            "heart transplant"
+          ]
+        ],
+        "lung": [
+          [
+            "lung transplant"
+          ]
+        ],
+        "heart_lung": [
+          [
+            "heart-lung transplant",
+            "heart and lung transplant"
+          ]
+        ],
+        "liver": [
+          [
+            "liver transplant"
+          ]
+        ],
+        "kidney_pancreas": [
+          [
+            "kidney",
+            "renal"
+          ],
+          [
+            "pancreas"
+          ],
+          [
+            "transplant"
+          ]
+        ],
+        "intestine": [
+          [
+            "intestine transplant",
+            "intestinal transplant",
+            "small bowel transplant"
+          ]
+        ],
+        "stem_cell": [
+          [
+            "stem cell transplant"
+          ]
+        ],
+        "liver_rejection": [
+          [
+            "liver transplant"
+          ],
+          [
+            "rejection"
+          ]
+        ],
+        "lung_rejection": [
+          [
+            "lung transplant"
+          ],
+          [
+            "rejection"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "heart": "The patient had a heart transplant six years ago and is doing well on tacrolimus; no rejection or other transplant complication.",
+        "lung": "The patient had a double lung transplant four years ago and is doing well on immunosuppressants; no rejection or other transplant complication.",
+        "heart_lung": "The patient had a combined heart-lung transplant years ago and is stable on immunosuppressants; no rejection or other transplant complication.",
+        "liver": "The patient had a liver transplant five years ago with normal liver tests on tacrolimus; no rejection or other transplant complication.",
+        "kidney_pancreas": "The patient had a combined kidney-pancreas transplant for type 1 diabetes years ago; both organs work well and insulin is no longer needed. No rejection.",
+        "intestine": "The patient had a small bowel (intestine) transplant years ago and is stable on immunosuppressants with good nutrition; no rejection.",
+        "stem_cell": "The patient had an allogeneic stem cell transplant two years ago and is in remission follow-up; no graft-versus-host disease or other complication.",
+        "liver_rejection": "The transplant hepatologist documents acute rejection of the transplanted liver, confirmed on biopsy; steroids are given.",
+        "lung_rejection": "The transplant pulmonologist documents rejection of the transplanted lungs (chronic lung allograft dysfunction); immunosuppression is adjusted."
+      }
+    }
+  },
+  "note_forbid": [
+    "graft-versus-host",
+    "GVHD",
+    "infection",
+    "pneumonia",
+    "lymphoma",
+    "PTLD",
+    "cancer",
+    "leukemia",
+    "CKD",
+    "chronic kidney disease",
+    "dialysis",
+    "cirrhosis",
+    "hepatitis",
+    "cystic fibrosis",
+    "COPD",
+    "heart failure",
+    "cytomegalovirus",
+    "CMV",
+    "failure of the transplant",
+    "graft failure"
+  ],
+  "note_rules": [
+    {
+      "when": {
+        "condition": [
+          "heart",
+          "lung",
+          "heart_lung",
+          "liver",
+          "kidney_pancreas",
+          "intestine",
+          "stem_cell"
+        ]
+      },
+      "forbid": [
+        "rejection is suspected",
+        "acute rejection",
+        "chronic rejection",
+        "allograft dysfunction",
+        "biopsy shows rejection"
+      ]
+    },
+    {
+      "when": {
+        "condition": "heart"
+      },
+      "forbid": [
+        "lung transplant",
+        "heart-lung",
+        "liver transplant",
+        "kidney transplant",
+        "pancreas"
+      ]
+    },
+    {
+      "when": {
+        "condition": "lung"
+      },
+      "forbid": [
+        "heart transplant",
+        "heart-lung",
+        "heart and lung",
+        "liver transplant",
+        "kidney transplant"
+      ]
+    },
+    {
+      "when": {
+        "condition": "heart_lung"
+      },
+      "forbid": [
+        "double lung transplant",
+        "liver transplant",
+        "kidney transplant"
+      ]
+    },
+    {
+      "when": {
+        "condition": "liver"
+      },
+      "forbid": [
+        "heart transplant",
+        "lung transplant",
+        "kidney transplant",
+        "pancreas"
+      ]
+    },
+    {
+      "when": {
+        "condition": "kidney_pancreas"
+      },
+      "forbid": [
+        "heart transplant",
+        "lung transplant",
+        "liver transplant",
+        "insulin pump"
+      ]
+    },
+    {
+      "when": {
+        "condition": "intestine"
+      },
+      "forbid": [
+        "heart transplant",
+        "lung transplant",
+        "liver transplant",
+        "kidney transplant",
+        "pancreas"
+      ]
+    },
+    {
+      "when": {
+        "condition": "stem_cell"
+      },
+      "forbid": [
+        "bone marrow transplant",
+        "heart transplant",
+        "lung transplant",
+        "liver transplant",
+        "kidney transplant"
+      ]
+    },
+    {
+      "when": {
+        "condition": "liver_rejection"
+      },
+      "forbid": [
+        "heart transplant",
+        "lung transplant",
+        "kidney transplant",
+        "pancreas"
+      ]
+    },
+    {
+      "when": {
+        "condition": "lung_rejection"
+      },
+      "forbid": [
+        "heart transplant",
+        "heart-lung",
+        "liver transplant",
+        "kidney transplant"
+      ]
+    }
+  ],
+  "confusions": {
+    "missed_status": {
+      "description": "Left out a transplant status code that carries an HCC.",
+      "lean": "under"
+    },
+    "wrong_organ": {
+      "description": "Coded the status for the wrong organ or combination.",
+      "lean": "neutral"
+    },
+    "missed_second_organ": {
+      "description": "Coded only one organ of a combined transplant.",
+      "lean": "under"
+    },
+    "bone_marrow_vs_stem_cell": {
+      "description": "Confused bone marrow and stem cell transplant status.",
+      "lean": "neutral"
+    },
+    "status_for_complication": {
+      "description": "Coded transplant status when a transplant complication (rejection) is documented.",
+      "lean": "neutral"
+    }
+  },
+  "components": [
+    {
+      "id": "tx",
+      "rules": [
+        {
+          "when": {
+            "condition": "heart"
+          },
+          "codes": [
+            "Z94.1"
+          ],
+          "explain": "Heart transplant status: Z94.1 (HCC 221).",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "Heart transplant status carries HCC 221."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "lung"
+          },
+          "codes": [
+            "Z94.2"
+          ],
+          "explain": "Lung transplant status: Z94.2 (HCC 276).",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z94.3"
+              ],
+              "confusion": "wrong_organ",
+              "why": "Only the lungs were transplanted."
+            },
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "Lung transplant status carries HCC 276."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "heart_lung"
+          },
+          "codes": [
+            "Z94.3"
+          ],
+          "explain": "Heart and lungs transplant status: one code, Z94.3, which maps to two HCCs (221 and 276).",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z94.1"
+              ],
+              "confusion": "missed_second_organ",
+              "why": "Both heart and lungs were transplanted: Z94.3."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "liver"
+          },
+          "codes": [
+            "Z94.4"
+          ],
+          "explain": "Liver transplant status: Z94.4 (HCC 62).",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "Liver transplant status carries HCC 62."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "kidney_pancreas"
+          },
+          "codes": [
+            "Z94.0",
+            "Z94.83"
+          ],
+          "explain": "A combined kidney-pancreas transplant: kidney transplant status Z94.0 (no HCC in V28) plus pancreas transplant status Z94.83 (HCC 35).",
+          "refs": [
+            "OCG I.C.14.a.2",
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z94.0"
+              ],
+              "confusion": "missed_second_organ",
+              "why": "The pancreas transplant is documented too (HCC 35)."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "intestine"
+          },
+          "codes": [
+            "Z94.82"
+          ],
+          "explain": "Intestine transplant status: Z94.82 (HCC 77).",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [],
+              "confusion": "missed_status",
+              "why": "Intestine transplant status carries HCC 77."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "stem_cell"
+          },
+          "codes": [
+            "Z94.84"
+          ],
+          "explain": "Stem cell transplant status: Z94.84 (HCC 454).",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z94.81"
+              ],
+              "confusion": "bone_marrow_vs_stem_cell",
+              "why": "A stem cell transplant is documented, not bone marrow."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "liver_rejection"
+          },
+          "codes": [
+            "T86.41"
+          ],
+          "explain": "Rejection of a transplanted liver: liver transplant rejection, T86.41 (HCC 62); the complication code replaces the status code.",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z94.4"
+              ],
+              "confusion": "status_for_complication",
+              "why": "A complication (rejection) is documented: use T86.41."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "lung_rejection"
+          },
+          "codes": [
+            "T86.810"
+          ],
+          "explain": "Rejection of transplanted lungs: lung transplant rejection, T86.810 (HCC 276).",
+          "refs": [
+            "OCG I.C.19.g.3",
+            "ICD-10-CM Tabular: T86, Z94"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "Z94.2"
+              ],
+              "confusion": "status_for_complication",
+              "why": "A complication (rejection) is documented: use T86.810."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

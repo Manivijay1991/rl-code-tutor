@@ -1,0 +1,85 @@
+{
+  "id": "paralysis-4b8d925a23",
+  "table": "paralysis",
+  "title": "Quadriplegia, paraplegia, monoplegia and spinal cord disorders",
+  "status": "draft",
+  "slots": {
+    "condition": "para_complete"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's paralysis or spinal cord condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for spinal cord injury.\n\nHPI\nThe patient is a 36-year-old woman presenting for a routine follow-up regarding her chronic spinal cord injury. She was sustained many years ago and has since achieved stability in her mobility status. She currently utilizes a manual wheelchair for all mobility and reports being independent with all transfers. She denies any new onset of neuropathic pain or changes in her functional status. She remains stable and continues to manage her daily activities successfully with her current equipment.\n\nMedication List\nNone reported.\n\nExam\nThe patient is alert and oriented. She is seated in a manual wheelchair. Physical examination confirms complete paraplegia. Skin is intact and healthy. She demonstrates independent transfer abilities and maintains good upper body strength for wheelchair propulsion.\n\nAssessment\n1. Chronic spinal cord injury with complete paraplegia.\n\nPlan\nThe patient will continue with her current mobility plan. She will continue to use her manual wheelchair and maintain her independence with transfers. She will return to the clinic in six months for a follow-up evaluation.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "G82.21"
+  ],
+  "explanations": [
+    "Paraplegia, complete: G82.21 (HCC 181)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: G82-G83, G95, M47"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "G82.20"
+      ],
+      "confusion": "unspecified_when_specified",
+      "lean": "neutral",
+      "why": "Complete is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "G82.22"
+      ],
+      "confusion": "wrong_completeness",
+      "lean": "neutral",
+      "why": "It is documented as complete.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.942,
+        "correct": 0.942,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.942,
+    "hccs": [
+      {
+        "hcc": "181",
+        "label": "Paraplegia",
+        "from": [
+          "G8221"
+        ],
+        "weight": 0.942
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:14:47+00:00",
+    "style": {
+      "age": 36,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

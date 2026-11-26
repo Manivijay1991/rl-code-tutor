@@ -1,0 +1,68 @@
+{
+  "id": "bone_lupus_skin-ea8c5eb6b7",
+  "table": "bone_lupus_skin",
+  "title": "Osteomyelitis, lupus and blistering skin disease",
+  "status": "draft",
+  "slots": {
+    "condition": "osteo_acute"
+  },
+  "question": "Assign the ICD-10-CM code for the patient's condition (only that code).",
+  "note": "Chief Complaint\nFollow-up for right foot pain.\n\nHPI\nThe patient is a 77-year-old female who presents for a follow-up evaluation regarding a recent diagnosis of acute osteomyelitis of the right foot. She reports that she has been experiencing significant throbbing pain, swelling, and localized warmth in the heel area for several weeks. She was seen for imaging last week, and the MRI results confirmed the presence of acute osteomyelitis in the calcaneus. She has been receiving intravenous antibiotics as part of her current treatment regimen. She reports that the pain is currently a 6/10 and that she is having difficulty with weight-bearing. She denies any systemic fevers, chills, or new-onset drainage.\n\nMedication List\n- Ceftriaxone 1g IV every 24 hours\n- Acetaminophen 650mg every 6 hours as needed for pain\n- Lisinopril 10mg daily\n\nVitals\nTemperature: 98.6 F\nBlood Pressure: 132/84 mmHg\nHeart Rate: 78 bpm\nRespiratory Rate: 16 breaths/min\nOxygen Saturation: 98% on room air\nWeight: 154 lbs\n\nRecent Labs\nWBC: 11.2 x 10^9/L\nHemoglobin: 12.4 g/dL\nHematocrit: 38%\nCreatinine: 1.1 mg/dL\neGFR: 72 mL/min/1.73m2\n\nReview of Systems\nConstitutional: Denies fever, chills, or fatigue.\nMusculoskeletal: Positive for pain and swelling in the right foot. Denies joint pain elsewhere.\nIntegumentary: Denies rashes or new skin lesions.\nNeurological: Denies numbness or tingling.\n\nSocial History\nThe patient lives at home with her spouse. She is retired and enjoys gardening and walking. She denies tobacco or alcohol use.\n\nFamily History\nMother had hypertension. Father had a history of heart disease.\n\nExam\nGeneral: The patient is alert and oriented x3. She appears in no acute distress but is in discomfort while moving her foot.\nRight Foot: There is visible edema and erythema over the calcaneus. Palpation reveals significant tenderness. No fluctuance or purulent drainage noted. Capillary refill is <2 seconds.\nNeurological: Sensation is intact to light touch in the distal extremities.\n\nAssessment\n1. Acute osteomyelitis of the right foot (calcaneus).\n\nPlan\n1. Continue current IV antibiotic regimen as prescribed.\n2. Maintain strict rest and elevation of the right foot.\n3. Monitor for any signs of systemic infection or worsening of local symptoms.\n4. Follow up in one week for a repeat clinical evaluation.\n\nElectronically signed, E. Castillo, DO, 05/14/2026",
+  "answer": [
+    "M86.171"
+  ],
+  "explanations": [
+    "Other acute osteomyelitis, right ankle and foot: M86.171 (HCC 92)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: M32, M86, L10-L12, L93"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "M86.671"
+      ],
+      "confusion": "acute_chronic_confused",
+      "lean": "neutral",
+      "why": "It is documented as acute.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.479,
+        "correct": 0.479,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.479,
+    "hccs": [
+      {
+        "hcc": "92",
+        "label": "Bone/Joint/Muscle/Severe Soft Tissue Infections/Necrosis",
+        "from": [
+          "M86171"
+        ],
+        "weight": 0.479
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:29:42+00:00",
+    "style": {
+      "age": 77,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "long",
+      "background": [],
+      "credential": "DO",
+      "signer": "E. Castillo"
+    }
+  }
+}

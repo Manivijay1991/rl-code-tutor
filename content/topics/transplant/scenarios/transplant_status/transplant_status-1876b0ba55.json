@@ -1,0 +1,69 @@
+{
+  "id": "transplant_status-1876b0ba55",
+  "table": "transplant_status",
+  "title": "Transplant status and rejection",
+  "status": "draft",
+  "slots": {
+    "condition": "liver"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's transplant status or transplant complication only.",
+  "note": "Chief Complaint\nFollow-up for liver transplant.\n\nHPI\nPt is a 75 y.o. female presenting for routine surveillance. She underwent a liver transplant 5 years ago. Pt reports feeling well overall with no complaints of fatigue, jaundice, or abdominal pain. She has remained stable on tacrolimus. History is notable for normal liver tests since transplant. No issues with medication side effects reported.\n\nMedication List\nTacrolimus 1mg BID\nLisinopril 10mg QD\n\nExam\nGen: Well-appearing, alert, and oriented x3.\nCV: RRR, CTAB.\nAbd: Soft, non-tender, no organomegaly.\nSkin: No new lesions.\nVitals: BP 128/78, HR 72, Temp 98.6F, SpO2 98% on RA.\n\nAssessment\n1. Status post liver transplant. Stable.\n2. Tacrolimus maintenance.\n\nPlan\n1. Continue current tacrolimus dose.\n2. Routine labs to monitor liver function and tacrolimus levels.\n3. F/u in 6 months.\n\nElectronically signed,\nP. O'Brien, PA-C\n10/14/2026",
+  "answer": [
+    "Z94.4"
+  ],
+  "explanations": [
+    "Liver transplant status: Z94.4 (HCC 62)."
+  ],
+  "refs": [
+    "OCG I.C.19.g.3",
+    "ICD-10-CM Tabular: T86, Z94"
+  ],
+  "distractors": [
+    {
+      "codes": [],
+      "confusion": "missed_status",
+      "lean": "under",
+      "why": "Liver transplant status carries HCC 62.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.376,
+        "gap": -0.376,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "62"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.376,
+    "hccs": [
+      {
+        "hcc": "62",
+        "label": "Liver Transplant Status/Complications",
+        "from": [
+          "Z944"
+        ],
+        "weight": 0.376
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:18:57+00:00",
+    "style": {
+      "age": 75,
+      "sex": "woman",
+      "voice": "shorthand",
+      "length": "short",
+      "background": [],
+      "credential": "PA-C",
+      "signer": "P. O'Brien"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "pneumonia_inpatient-8c53b56ce2",
+  "table": "pneumonia_inpatient",
+  "title": "Pneumonia, lung abscess, empyema and respiratory arrest in the hospital",
+  "status": "draft",
+  "slots": {
+    "condition": "mrsa"
+  },
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the main lung condition (only that code).",
+  "note": "Admission Date: 05/12/2026\nDischarge Date: 05/18/2026\nReason for Admission: Community-acquired pneumonia\n\nHospital Course:\nThe patient is a 78-year-old woman who presented to the hospital with a productive cough, fever, and shortness of breath. Initial imaging and clinical assessment confirmed a diagnosis of pneumonia. Sputum cultures were subsequently obtained, which revealed the presence of methicillin-resistant Staphylococcus aureus (MRSA). The patient was started on intravenous vancomycin for targeted antibiotic therapy. During her stay, she remained stable and showed significant improvement in oxygen saturation and ability to clear secretions. She tolerated the treatment well and was transitioned to oral medications prior to discharge.\n\nDischarge Diagnoses:\n1. Pneumonia\n2. MRSA infection\n\nDischarge Medications:\n1. Vancomycin (completed in hospital)\n2. Amoxicillin-clavulanate\n3. Acetaminophen for fever\n\nFollow-up:\nThe patient will follow up with her primary care physician in one week for a chest X-ray review and continued monitoring of her respiratory status.\n\nElectronically signed, L. Moreau, MD, 05/18/2026",
+  "answer": [
+    "J15.212"
+  ],
+  "explanations": [
+    "Pneumonia due to MRSA: J15.212 (HCC 282)."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: J15-J18, J69, J85-J86, R09"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "J15.9"
+      ],
+      "confusion": "missed_specific_pneumonia",
+      "lean": "under",
+      "why": "The organism (MRSA) is documented.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0,
+        "correct": 0.44,
+        "gap": -0.44,
+        "direction": "under",
+        "extra_hccs": [],
+        "missing_hccs": [
+          "282"
+        ]
+      }
+    },
+    {
+      "codes": [
+        "J15.211"
+      ],
+      "confusion": "wrong_staph",
+      "lean": "neutral",
+      "why": "Methicillin-resistant, not susceptible.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.44,
+        "correct": 0.44,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 0.44,
+    "hccs": [
+      {
+        "hcc": "282",
+        "label": "Aspiration and Specified Bacterial Pneumonias",
+        "from": [
+          "J15212"
+        ],
+        "weight": 0.44
+      }
+    ],
+    "dropped": []
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:20:15+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "MD",
+      "signer": "L. Moreau",
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note."
+    }
+  }
+}

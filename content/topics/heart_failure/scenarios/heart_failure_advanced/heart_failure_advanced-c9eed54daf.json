@@ -1,0 +1,96 @@
+{
+  "id": "heart_failure_advanced-c9eed54daf",
+  "table": "heart_failure_advanced",
+  "title": "Heart failure: end-stage, assist device and acute",
+  "status": "draft",
+  "slots": {
+    "condition": "end_stage_systolic"
+  },
+  "question": "Assign the ICD-10-CM codes for the patient's heart failure and any heart assist device.",
+  "note": "Chief Complaint\nShortness of breath and fatigue.\n\nHPI\nThe patient is a 78-year-old woman presenting for a follow-up evaluation of her cardiac status. She reports persistent shortness of breath and increased fatigue over the past week. She notes that her symptoms are most pronounced during minimal exertion. She is currently managed by a palliative care team to address her declining functional status. She denies any recent falls or chest pain.\n\nMedication List\nFurosemide 40mg daily\nLisinopril 10mg daily\nCarvedilol 25mg twice daily\nSpironolactone 25mg daily\n\nExam\nThe patient appears pale and is in mild respiratory distress. Heart rate is 88 bpm, blood pressure is 108/64 mmHg, and oxygen saturation is 92% on room air. Lung sounds reveal bilateral crackles at the bases. No peripheral edema is noted today.\n\nAssessment\nThe patient has end-stage heart failure secondary to chronic systolic heart failure (HFrEF). Her condition is currently stable but remains progressive, requiring a focus on symptom management and quality of life.\n\nPlan\nContinue current medications. Maintain palliative care goals of care. Follow up in two weeks for a repeat evaluation of respiratory status.\n\nElectronically signed, L. Moreau, DO, 05/14/2026",
+  "answer": [
+    "I50.84",
+    "I50.22"
+  ],
+  "explanations": [
+    "End-stage heart failure: I50.84 (HCC 222), plus the type, because I50.84 says to code also the type when known: chronic systolic, I50.22."
+  ],
+  "refs": [
+    "ICD-10-CM Tabular: I50"
+  ],
+  "distractors": [
+    {
+      "codes": [
+        "I50.84"
+      ],
+      "confusion": "missed_code_also",
+      "lean": "under",
+      "why": "The type (chronic systolic) is documented: code it as well.",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 2.505,
+        "correct": 2.505,
+        "gap": 0.0,
+        "direction": "none",
+        "extra_hccs": [],
+        "missing_hccs": []
+      }
+    },
+    {
+      "codes": [
+        "I50.22"
+      ],
+      "confusion": "understated_end_stage",
+      "lean": "under",
+      "why": "End-stage heart failure is documented: I50.84 is needed (HCC 222).",
+      "risk_score_gap": {
+        "segment": "CNA",
+        "student": 0.36,
+        "correct": 2.505,
+        "gap": -2.145,
+        "direction": "under",
+        "extra_hccs": [
+          "226"
+        ],
+        "missing_hccs": [
+          "222"
+        ]
+      }
+    }
+  ],
+  "risk_score": {
+    "segment": "CNA",
+    "total": 2.505,
+    "hccs": [
+      {
+        "hcc": "222",
+        "label": "End-Stage Heart Failure",
+        "from": [
+          "I5084"
+        ],
+        "weight": 2.505
+      }
+    ],
+    "dropped": [
+      {
+        "hcc": "226",
+        "label": "Heart Failure/Except End-Stage and Acute",
+        "by": "222"
+      }
+    ]
+  },
+  "generator": {
+    "model": "gemma4:12b",
+    "attempts": 1,
+    "created": "2026-11-26T15:03:19+00:00",
+    "style": {
+      "age": 78,
+      "sex": "woman",
+      "voice": "narrative",
+      "length": "short",
+      "background": [],
+      "credential": "DO",
+      "signer": "L. Moreau"
+    }
+  }
+}

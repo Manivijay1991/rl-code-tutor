@@ -1,0 +1,8 @@
+{
+  "id": "transplant",
+  "title": "Transplant status",
+  "kind": "hcc",
+  "description": "Organ and stem cell transplant status (which organs carry an HCC), combined transplants, and rejection.",
+  "order": 92,
+  "enabled": true
+}

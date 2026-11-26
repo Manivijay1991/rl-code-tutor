@@ -1,0 +1,224 @@
+{
+  "id": "stroke_inpatient",
+  "title": "Stroke in the hospital: ischemic, hemorrhage or TIA",
+  "status": "draft",
+  "code_set": "ICD-10-CM FY2027",
+  "question": "From this hospital discharge summary, assign the ICD-10-CM code for the cerebrovascular event (only that code).",
+  "note_age": {
+    "min": 55
+  },
+  "slots": {
+    "condition": {
+      "label": "Event documented",
+      "values": [
+        "ischemic",
+        "hemorrhage",
+        "tia"
+      ],
+      "labels": {
+        "ischemic": "Acute ischemic stroke",
+        "hemorrhage": "Intracerebral hemorrhage, not due to injury",
+        "tia": "Transient ischemic attack"
+      },
+      "evidence": {
+        "ischemic": [
+          [
+            "acute ischemic stroke",
+            "cerebral infarction"
+          ]
+        ],
+        "hemorrhage": [
+          [
+            "intracerebral hemorrhage"
+          ],
+          [
+            "nontraumatic",
+            "spontaneous"
+          ]
+        ],
+        "tia": [
+          [
+            "transient ischemic attack",
+            "TIA"
+          ]
+        ]
+      },
+      "exclusive": false,
+      "describe": {
+        "ischemic": "Admitted with an acute ischemic stroke (cerebral infarction) confirmed on MRI; the artery involved is not named. Deficits resolved before discharge.",
+        "hemorrhage": "Admitted with a spontaneous (nontraumatic) intracerebral hemorrhage on CT, managed medically; the location is not named. Deficits resolved before discharge.",
+        "tia": "Admitted for a transient ischemic attack (TIA): symptoms resolved within an hour and MRI shows no infarction."
+      }
+    }
+  },
+  "note_forbid": [
+    "hemiplegia",
+    "hemiparesis",
+    "aphasia",
+    "dysarthria",
+    "dysphagia",
+    "neglect",
+    "facial droop",
+    "residual weakness",
+    "arm weakness",
+    "leg weakness",
+    "middle cerebral",
+    "MCA",
+    "carotid",
+    "basilar",
+    "vertebral",
+    "embol",
+    "thromb",
+    "occlusion",
+    "stenosis",
+    "lacunar",
+    "trauma",
+    "head injury",
+    "subarachnoid",
+    "aneurysm",
+    "atrial fibrillation",
+    "AFib",
+    "history of stroke",
+    "prior stroke",
+    "old infarct"
+  ],
+  "note_rules": [
+    {
+      "when": {},
+      "document": "Write a hospital discharge summary with sections: Admission Date, Discharge Date, Reason for Admission, Hospital Course, Discharge Diagnoses, Discharge Medications, Follow-up. It is the inpatient record of this hospital stay, not an office note.",
+      "credential": "MD"
+    },
+    {
+      "when": {
+        "condition": "ischemic"
+      },
+      "forbid": [
+        "hemorrhage",
+        "bleed",
+        "transient ischemic",
+        "TIA"
+      ]
+    },
+    {
+      "when": {
+        "condition": "hemorrhage"
+      },
+      "forbid": [
+        "infarction",
+        "ischemic stroke",
+        "transient ischemic",
+        "TIA",
+        "tPA",
+        "thrombolysis"
+      ]
+    },
+    {
+      "when": {
+        "condition": "tia"
+      },
+      "forbid": [
+        "infarction",
+        "infarct",
+        "stroke",
+        "hemorrhage",
+        "bleed",
+        "tPA"
+      ]
+    }
+  ],
+  "confusions": {
+    "tia_coded_stroke": {
+      "description": "Coded a stroke for a transient ischemic attack (no infarction).",
+      "lean": "over"
+    },
+    "stroke_coded_tia": {
+      "description": "Coded a TIA when an infarction is documented.",
+      "lean": "under"
+    },
+    "wrong_stroke_type": {
+      "description": "Confused ischemic stroke and intracerebral hemorrhage.",
+      "lean": "neutral"
+    },
+    "acute_coded_history": {
+      "description": "Coded history of stroke during the hospital stay for the acute stroke.",
+      "lean": "under"
+    }
+  },
+  "components": [
+    {
+      "id": "cva",
+      "rules": [
+        {
+          "when": {
+            "condition": "ischemic"
+          },
+          "codes": [
+            "I63.9"
+          ],
+          "explain": "Acute ischemic stroke during the admission, artery not named: cerebral infarction, unspecified, I63.9 (HCC 249).",
+          "refs": [
+            "ICD-10-CM Tabular: G45, I60-I63"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "G45.9"
+              ],
+              "confusion": "stroke_coded_tia",
+              "why": "MRI confirms an infarction: it is a stroke, not a TIA."
+            },
+            {
+              "codes": [
+                "Z86.73"
+              ],
+              "confusion": "acute_coded_history",
+              "why": "This is the acute stroke itself, treated during this stay."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "hemorrhage"
+          },
+          "codes": [
+            "I61.9"
+          ],
+          "explain": "Nontraumatic intracerebral hemorrhage, location not named: I61.9 (HCC 248).",
+          "refs": [
+            "ICD-10-CM Tabular: G45, I60-I63"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I63.9"
+              ],
+              "confusion": "wrong_stroke_type",
+              "why": "It is a hemorrhage, not an infarction."
+            }
+          ]
+        },
+        {
+          "when": {
+            "condition": "tia"
+          },
+          "codes": [
+            "G45.9"
+          ],
+          "explain": "Transient ischemic attack: G45.9 (no HCC). There is no infarction, so it is not a stroke.",
+          "refs": [
+            "ICD-10-CM Tabular: G45, I60-I63"
+          ],
+          "wrong": [
+            {
+              "codes": [
+                "I63.9"
+              ],
+              "confusion": "tia_coded_stroke",
+              "why": "Symptoms resolved and MRI shows no infarction: TIA, not stroke."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
