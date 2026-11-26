@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS events(
   action TEXT NOT NULL, reward INTEGER NOT NULL, client TEXT NOT NULL DEFAULT '');
 CREATE TABLE IF NOT EXISTS day_counts(
   day TEXT NOT NULL, arm TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(day, arm));
+CREATE TABLE IF NOT EXISTS feedback(id INTEGER PRIMARY KEY, day TEXT NOT NULL, line TEXT NOT NULL);
 """
 TOTAL = ""  # day_counts row holding the day's total attempts
 
@@ -94,6 +95,17 @@ def reserve(con: sqlite3.Connection, arms: list[str], day: str, per_arm: int, to
     return flags
 
 
+def add_feedback(con: sqlite3.Connection, line: str, day: str) -> None:
+    """Keep one reviewer report (a JSON line from coding_tutor.live.feedback.to_line)."""
+    with con:
+        con.execute("INSERT INTO feedback(day, line) VALUES (?, ?)", (day, line))
+
+
+def read_feedback(con: sqlite3.Connection, since: str) -> list[str]:
+    """Return the reports stored on or after `since` (YYYY-MM-DD), oldest first."""
+    return [r[0] for r in con.execute("SELECT line FROM feedback WHERE day >= ? ORDER BY id", (since,))]
+
+
 def arm_rows(con: sqlite3.Connection) -> list[ArmRow]:
     """Return every arm's running totals, sorted."""
     return con.execute(
@@ -113,4 +125,5 @@ def sqlite_store(con: sqlite3.Connection) -> Store:
         arm_rows=lambda: arm_rows(con),
         total_events=lambda: total_events(con),
         reserve=lambda arms, day, per_arm, total: reserve(con, arms, day, per_arm, total),
+        add_feedback=lambda line, day: add_feedback(con, line, day),
     )

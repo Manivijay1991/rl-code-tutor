@@ -43,7 +43,9 @@ export function debriefCard() {
       `Coaching used: ${ACTION_LABELS[q.action]}. Your next new case with this trap tells your tutor whether it helped.`));
   }
   if (s.refs.length) parts.push(h("div", { class: "section-k" }, "References"), h("div", { class: "refs" }, s.refs.map(ui.refChip)));
-  parts.push(h("div", { class: "actions" }, h("span", { class: "spacer" }),
+  parts.push(h("div", { class: "actions" },
+    h("button", { class: "btn ghost small", type: "button", on: { click: ui.openFeedback } }, icon("bulb", 14), "Report a problem"),
+    h("span", { class: "spacer" }),
     h("button", { class: "btn big", type: "button", on: { click: ui.nextQuestion } }, "Next case", icon("arrow", 16), h("span", { class: "kbd" }, "N"))));
   return h("div", { class: "card debrief", "aria-live": "polite" }, parts);
 }

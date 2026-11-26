@@ -13,7 +13,11 @@ export function showOverlay(content, onClose) {
   };
   mount(ov, h("div", { class: "modal", role: "dialog", "aria-modal": "true" }, content(close)));
   ov.hidden = false;
-  ov.onclick = (e) => e.target === ov && close();
+  // A click on the backdrop closes. Use a block body: an onclick handler that returns false cancels the click's
+  // default action, which would stop checkboxes from toggling and submit buttons from submitting inside the dialog.
+  ov.onclick = (e) => {
+    if (e.target === ov) close();
+  };
   ov.querySelector("button")?.focus();
 }
 

@@ -32,6 +32,7 @@ coding-tutor-experiment = "coding_tutor.rl.experiment:main"
 coding-tutor-export-ui = "coding_tutor.bundle.export:main"
 coding-tutor-serve = "coding_tutor.devserver.serve:main"
 coding-tutor-api = "coding_tutor.live.server:main"
+coding-tutor-feedback = "coding_tutor.live.feedback_report:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

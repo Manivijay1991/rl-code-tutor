@@ -61,6 +61,16 @@ def test_reserve_counts_every_attempt_against_both_caps():
     assert store.reserve([], "2026-11-26", 5, 5) == []
 
 
+def test_feedback_is_kept_and_read_back_by_day():
+    con = storage.connect(":memory:")
+    storage.add_feedback(con, '{"a":1}', "2026-11-24")
+    storage.add_feedback(con, '{"b":2}', "2026-11-26")
+    assert storage.read_feedback(con, "2026-11-25") == ['{"b":2}']
+    assert storage.read_feedback(con, "2026-01-01") == ['{"a":1}', '{"b":2}']
+    storage.sqlite_store(con).add_feedback('{"c":3}', "2026-11-26")
+    assert storage.read_feedback(con, "2026-11-26") == ['{"b":2}', '{"c":3}']
+
+
 def test_reserve_forgets_earlier_days():
     con = storage.connect(":memory:")
     assert storage.reserve(con, ["a|1|x"] * 2, "2026-11-25", 1, 10) == [True, False]

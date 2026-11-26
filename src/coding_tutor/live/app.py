@@ -17,6 +17,7 @@ from collections.abc import Callable, Iterable, Mapping
 from typing import NamedTuple
 from urllib.parse import urlsplit
 
+from coding_tutor.live.feedback import FeedbackError, known_tables, parse_feedback, to_line
 from coding_tutor.live.policy import EventError, arm_key, parse_batch, snapshot
 from coding_tutor.live.stores import Store
 from coding_tutor.live.stores.sqlite import sqlite_store
@@ -54,10 +55,11 @@ class DailyCaps(NamedTuple):
 
     per_arm: int = 50
     total: int = 5000
+    feedback: int = 200  # reviewer reports per day
 
 
 def caps_from_env(env: Mapping[str, str]) -> DailyCaps:
-    """Read CODING_TUTOR_DAILY_ARM_CAP and CODING_TUTOR_DAILY_TOTAL_CAP (defaults 50 and 5000).
+    """Read CODING_TUTOR_DAILY_ARM_CAP, _TOTAL_CAP and _FEEDBACK_CAP (defaults 50, 5000 and 200).
 
     Raises:
         ValueError: A value is not a positive whole number (the message names the variable).
@@ -66,6 +68,7 @@ def caps_from_env(env: Mapping[str, str]) -> DailyCaps:
     for name, default in (
         ("CODING_TUTOR_DAILY_ARM_CAP", DailyCaps().per_arm),
         ("CODING_TUTOR_DAILY_TOTAL_CAP", DailyCaps().total),
+        ("CODING_TUTOR_DAILY_FEEDBACK_CAP", DailyCaps().feedback),
     ):
         raw = env.get(name, "").strip()
         if not raw:
@@ -193,6 +196,40 @@ def post_events(
     return _json("202 Accepted", {"accepted": n, "capped": capped} if guards.caps else {"accepted": n})
 
 
+FEEDBACK_KEY = "feedback"  # daily-cap counter for reviewer reports
+
+
+def post_feedback(
+    environ: Environ,
+    store: Store,
+    confusions: frozenset[str],
+    limiter: RateLimiter,
+    day: Callable[[], str],
+    guards: Guards = NO_GUARDS,
+) -> Response:
+    """Handle POST /v1/feedback: keep one reviewer report (same guards as events; its own daily cap).
+
+    Over the cap the report is acknowledged but not kept (`received: false`).
+    """
+    if store.add_feedback is None:
+        return _json("503 Service Unavailable", {"error": "feedback is not available"})
+    if guards.same_site and not same_site(environ, guards.allowed):
+        return _json("403 Forbidden", {"error": "feedback must come from this site"})
+    try:
+        fb, client = parse_feedback(_read_json(environ), known_tables(confusions))
+    except RequestError as e:
+        return _json(e.status, {"error": str(e)})
+    except FeedbackError as e:
+        return _json("400 Bad Request", {"error": str(e)})
+    if not limiter(environ.get("REMOTE_ADDR", "?"), 5):  # a report costs as much as five events
+        return _json("429 Too Many Requests", {"error": "rate limit exceeded"}, [("Retry-After", "60")])
+    today = day()
+    if guards.caps and not store.reserve([FEEDBACK_KEY], today, guards.caps.feedback, guards.caps.total)[0]:
+        return _json("202 Accepted", {"received": False})
+    store.add_feedback(to_line(fb, today, client), today)
+    return _json("202 Accepted", {"received": True})
+
+
 def get_policy(store: Store) -> Response:
     """Handle GET /v1/policy (cacheable by browsers and by a CDN for POLICY_MAX_AGE seconds)."""
     body = snapshot(store.arm_rows(), store.total_events())
@@ -223,6 +260,7 @@ def route(
         "/v1/health": {"GET": lambda: _json("200 OK", {"ok": True})},
         "/v1/policy": {"GET": lambda: get_policy(store)},
         "/v1/events": {"POST": lambda: post_events(environ, store, confusions, limiter, day, guards)},
+        "/v1/feedback": {"POST": lambda: post_feedback(environ, store, confusions, limiter, day, guards)},
     }
     if path not in routes:
         return _json("404 Not Found", {"error": "not found"})

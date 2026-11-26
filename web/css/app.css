@@ -762,3 +762,17 @@ body[data-view="home"] .topbar { padding-inline: max(20px, calc((100% - 1120px) 
   .flow-svg.wide { display: none; }
   .flow-svg.tall { display: block; }
 }
+
+/* Report a problem (pages/practice/feedback.js) */
+.fb-form { display: grid; gap: 8px; }
+.fb-form label { font-size: 13.5px; color: var(--ink-2); }
+.fb-form input[type="text"], .fb-form textarea {
+  width: 100%; font: inherit; font-size: 14px; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
+}
+.fb-form textarea { resize: vertical; min-height: 90px; }
+.fb-form input[type="text"]:focus-visible, .fb-form textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.fb-kinds { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; margin: 0; display: grid; gap: 4px; }
+.fb-kinds legend { font-size: 13px; font-weight: 600; color: var(--ink); padding: 0 4px; }
+.fb-kinds label { display: flex; gap: 8px; align-items: center; color: var(--ink); }
+.fb-status:empty { display: none; }

@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import {
-  BATCH, OUTBOX_LIMIT, POLICY_REFRESH_MS, enqueue, fetchPolicy, flush, loadConfig, policyIsStale, refreshPolicy, toEvents,
+  BATCH, FEEDBACK_LIMITS, OUTBOX_LIMIT, POLICY_REFRESH_MS, enqueue, feedbackPayload, fetchPolicy, flush, loadConfig, policyIsStale,
+  refreshPolicy, sendFeedback, toEvents,
   upgradeEvent,
 } from "../../../web/js/data/api.js";
 import { SHARED_CAP, combinedCounts } from "../../../web/js/core/bandit.js";
@@ -63,6 +64,29 @@ test("refreshPolicy fetches only when stale and keeps the last good counts on fa
   // offline (no API configured): nothing to do
   assert.equal(await refreshPolicy({ api: null, shared: null, checkedAt: null }, t, ok), null);
   assert.equal(calls, 4);
+});
+
+test("feedback payload: trimmed to the limits, optional fields left out when empty, unknown kind -> other", () => {
+  const p = feedbackPayload("ckd_staging-0123456789", { kind: "note", comment: "  Too short a note.  ", expected: " ", name: "" });
+  assert.deepEqual(p, { scenario: "ckd_staging-0123456789", kind: "note", comment: "Too short a note.", client: "web/0.1" });
+  const long = feedbackPayload("x-0123456789", { kind: "rude", comment: "c".repeat(2000), expected: "E".repeat(80), name: "n".repeat(90) });
+  assert.equal(long.kind, "other");
+  assert.equal(long.comment.length, FEEDBACK_LIMITS.comment);
+  assert.equal(long.expected.length, FEEDBACK_LIMITS.expected);
+  assert.equal(long.name.length, FEEDBACK_LIMITS.name);
+});
+
+test("sendFeedback reports sent, full, rejected or failed", async () => {
+  const seen = [];
+  const ok = async (url, init) => { seen.push([url, JSON.parse(init.body)]); return json({ received: true }, 202); };
+  assert.equal(await sendFeedback("/api", { scenario: "s" }, ok), "sent");
+  assert.deepEqual(seen, [["/api/v1/feedback", { scenario: "s" }]]);
+  assert.equal(await sendFeedback("/api", {}, async () => json({ received: false }, 202)), "full");
+  assert.equal(await sendFeedback("/api", {}, async () => json({ error: "x" }, 400)), "rejected");
+  assert.equal(await sendFeedback("/api", {}, async () => json({ error: "x" }, 403)), "rejected");
+  assert.equal(await sendFeedback("/api", {}, async () => json({}, 503)), "failed");
+  assert.equal(await sendFeedback("/api", {}, async () => { throw new Error("offline"); }), "failed");
+  assert.equal(await sendFeedback(null, {}, ok), "failed");
 });
 
 test("events carry only the four allowed fields", () => {

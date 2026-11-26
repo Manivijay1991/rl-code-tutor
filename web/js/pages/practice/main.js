@@ -10,6 +10,7 @@ import * as references from "./references.js";
 import * as debrief from "./debrief.js";
 import * as drawer from "./drawer.js";
 import * as overlays from "./overlays.js";
+import * as feedback from "./feedback.js";
 
 import { h, icon, mount, trapFocus } from "../../ui/dom.js";
 import { applyTheme, toggleTheme } from "../../ui/theme.js";
@@ -104,6 +105,6 @@ function onKey(e) {
 }
 
 // Every feature module's exported functions, reachable as ui.<name> from any module.
-Object.assign(ui, live, topics, question, note_view, workbench, hint_card, references, debrief, drawer, overlays);
+Object.assign(ui, live, topics, question, note_view, workbench, hint_card, references, debrief, drawer, overlays, feedback);
 
 boot();

@@ -5,6 +5,7 @@ Data (no student identifiers, IP addresses or times finer than a day):
   ct:events          int   total events recorded
   ct:log:<YYYY-MM-DD> list  one JSON event per entry (append-only log for offline evaluation)
   ct:cap:<YYYY-MM-DD>:<arm> / :total   int   today's attempts, for the daily caps (expire after two days)
+  ct:feedback:<YYYY-MM-DD>  list  reviewer reports, one JSON line each (write-only through the API)
 
 Configuration comes only from environment variables (Vercel's Upstash integration sets the KV_* names):
   KV_REST_API_URL / UPSTASH_REDIS_REST_URL       the REST endpoint
@@ -109,6 +110,19 @@ def reserve(pipe: Pipeline, arms: list[str], day: str, per_arm: int, total: int)
     return [int(out[2 * i]) <= per_arm and int(out[2 * i + 1]) <= total for i in range(len(arms))]
 
 
+def add_feedback(pipe: Pipeline, line: str, day: str) -> None:
+    """Keep one reviewer report in that day's list (kept until deleted; reviewers' reports are worth keeping)."""
+    pipe([["RPUSH", f"{PREFIX}feedback:{day}", line]])
+
+
+def read_feedback(pipe: Pipeline, days: list[str]) -> list[str]:
+    """Return the reports of the given days (YYYY-MM-DD), in day order, in one round trip."""
+    if not days:
+        return []
+    out = pipe([["LRANGE", f"{PREFIX}feedback:{d}", 0, -1] for d in days])
+    return [line for lines in out for line in (lines or [])]
+
+
 def parse_arms(flat: list) -> list[ArmRow]:
     """Turn HGETALL's [field, value, field, value, ...] into sorted arm rows (confusion, level, action, s, f)."""
     totals: dict[tuple[str, int, str], list[int]] = {}
@@ -136,6 +150,7 @@ def redis_store(pipe: Pipeline) -> Store:
         arm_rows=lambda: arm_rows(pipe),
         total_events=lambda: total_events(pipe),
         reserve=lambda arms, day, per_arm, total: reserve(pipe, arms, day, per_arm, total),
+        add_feedback=lambda line, day: add_feedback(pipe, line, day),
     )
 
 

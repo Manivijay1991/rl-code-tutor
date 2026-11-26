@@ -122,6 +122,55 @@ def test_total_cap_applies_across_arms(con):
     assert guarded_call(app, events=events) == ("202 Accepted", {"accepted": 3, "capped": 1})
 
 
+FEEDBACK = {"scenario": "dm-0123456789", "kind": "wrong_answer", "comment": "The key should be E11.22."}
+
+
+def feedback_call(app, body=FEEDBACK, origin="http://crc.example"):
+    raw = json.dumps(body).encode()
+    environ = {"REQUEST_METHOD": "POST", "PATH_INFO": "/api/v1/feedback", "CONTENT_TYPE": "application/json",
+               "CONTENT_LENGTH": str(len(raw)), "wsgi.input": io.BytesIO(raw), "REMOTE_ADDR": "10.0.0.7",
+               "HTTP_HOST": "crc.example", **({"HTTP_ORIGIN": origin} if origin else {})}  # fmt: skip
+    out = {}
+    data = b"".join(app(environ, lambda s, h: out.update(status=s)))
+    return out["status"], json.loads(data)
+
+
+def test_feedback_is_stored_privately(con):
+    app = make_app(con, CONFUSIONS, day=lambda: "2026-11-26", check_same_site=True, caps=DailyCaps())
+    assert feedback_call(app) == ("202 Accepted", {"received": True})
+    [line] = storage.read_feedback(con, "2026-11-26")
+    assert json.loads(line)["table"] == "dm" and json.loads(line)["day"] == "2026-11-26"
+    assert call(app, "GET", "/v1/feedback")[0] == "405 Method Not Allowed"  # no way to read reports back
+    assert storage.total_events(con) == 0  # reports are not bandit events
+
+
+def test_feedback_is_guarded_and_validated(con):
+    app = make_app(con, CONFUSIONS, check_same_site=True)
+    assert feedback_call(app, origin="https://evil.example")[0] == "403 Forbidden"
+    assert feedback_call(app, {**FEEDBACK, "scenario": "nope-0123456789"}) == (
+        "400 Bad Request",
+        {"error": "unknown question"},
+    )
+    assert feedback_call(app, {**FEEDBACK, "email": "x@y.z"})[0] == "400 Bad Request"
+    assert storage.read_feedback(con, "") == []
+
+
+def test_feedback_daily_cap_and_rate_limit(con):
+    app = make_app(con, CONFUSIONS, day=lambda: "d", caps=DailyCaps(feedback=1))
+    assert feedback_call(app) == ("202 Accepted", {"received": True})
+    assert feedback_call(app) == ("202 Accepted", {"received": False})  # over today's cap: acknowledged, not kept
+    assert len(storage.read_feedback(con, "")) == 1
+    limited = make_app(con, CONFUSIONS, limiter=make_rate_limiter(capacity=5, per_second=0.0001))
+    assert feedback_call(limited)[0] == "202 Accepted"
+    assert feedback_call(limited)[0] == "429 Too Many Requests"  # a report costs five tokens
+
+
+def test_feedback_needs_a_store_that_keeps_it():
+    plain = Store(record=lambda e, d, c="": 0, arm_rows=list, total_events=lambda: 0)
+    app = make_app(None, CONFUSIONS, store=plain)
+    assert feedback_call(app)[0] == "503 Service Unavailable"
+
+
 def test_caps_need_a_store_that_can_count(con):
     plain = Store(record=lambda e, d, c="": 0, arm_rows=list, total_events=lambda: 0)
     with pytest.raises(ValueError, match="reserve"):

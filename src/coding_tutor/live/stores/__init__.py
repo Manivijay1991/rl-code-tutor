@@ -21,3 +21,5 @@ class Store(NamedTuple):
     # (arm keys, day, per-arm cap, total cap) -> one flag per key: may this event be stored today?
     # Every attempt counts toward the caps, accepted or not, so a flood cannot reset them.
     reserve: Callable[[list[str], str, int, int], list[bool]] | None = None
+    # (JSON line, day) -> None: keep one reviewer report (write-only; the maintainer reads them offline)
+    add_feedback: Callable[[str, str], None] | None = None

@@ -57,6 +57,35 @@ export async function refreshPolicy({ api, shared, checkedAt }, now, fetchFn = f
   return { shared: fresh ?? shared, checkedAt: now };
 }
 
+// Reviewer feedback (schemas/feedback.schema.json): only these fields, trimmed to the schema's limits.
+export const FEEDBACK_KINDS = ["wrong_answer", "explanation", "note", "other"];
+export const FEEDBACK_LIMITS = { expected: 60, comment: 1000, name: 60 };
+
+/** Build a report from the form values; optional fields are left out when empty. */
+export function feedbackPayload(scenarioId, { kind, expected = "", comment = "", name = "" }) {
+  const cut = (s, n) => String(s ?? "").trim().slice(0, n);
+  const out = { scenario: scenarioId, kind: FEEDBACK_KINDS.includes(kind) ? kind : "other", comment: cut(comment, FEEDBACK_LIMITS.comment), client: CLIENT };
+  if (cut(expected, FEEDBACK_LIMITS.expected)) out.expected = cut(expected, FEEDBACK_LIMITS.expected);
+  if (cut(name, FEEDBACK_LIMITS.name)) out.name = cut(name, FEEDBACK_LIMITS.name);
+  return out;
+}
+
+/** POST a report. Returns "sent", "full" (today's limit reached), "rejected" (400/403) or "failed" (offline, other). */
+export async function sendFeedback(api, payload, fetchFn = fetch) {
+  if (!api) return "failed";
+  try {
+    const res = await fetchFn(`${api}/v1/feedback`, {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+    });
+    if (res.status === 400 || res.status === 403) return "rejected";
+    if (!res.ok) return "failed";
+    const body = await res.json().catch(() => ({}));
+    return body.received === false ? "full" : "sent";
+  } catch {
+    return "failed";
+  }
+}
+
 /** Turn settled rewards (from progress.recordOutcome) into API events. */
 export function toEvents(settled) {
   return settled.map((s) => ({ confusion: s.confusion, miss_level: s.missLevel, action: s.action, reward: s.reward }));

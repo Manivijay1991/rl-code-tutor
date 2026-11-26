@@ -4,13 +4,14 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 
 import { ACTIONS } from "../../web/js/core/bandit.js";
-import { CLIENT, toEvents } from "../../web/js/data/api.js";
+import { CLIENT, FEEDBACK_KINDS, FEEDBACK_LIMITS, feedbackPayload, toEvents } from "../../web/js/data/api.js";
 import { exported, readManifest, readTopicFiles } from "./content.mjs";
 import { validate } from "./schema.mjs";
 
 const read = (rel) => JSON.parse(readFileSync(new URL(rel, import.meta.url), "utf-8"));
 const bundleSchema = read("../../schemas/bundle.schema.json");
 const eventSchema = read("../../schemas/event.schema.json");
+const feedbackSchema = read("../../schemas/feedback.schema.json");
 const asManifest = (v) => validate(v, { $ref: "#/$defs/manifest" }, bundleSchema);
 const asTopicFile = (v) => validate(v, { $ref: "#/$defs/topic_file" }, bundleSchema);
 
@@ -46,6 +47,14 @@ test("events the app sends match the event schema", () => {
 
 test("the app's actions are the schema's actions", () => {
   assert.deepEqual(ACTIONS, eventSchema.properties.events.items.properties.action.enum);
+});
+
+test("feedback the app sends matches the feedback schema, and the form's limits are the schema's", () => {
+  const full = feedbackPayload("ckd_staging-0123456789", { kind: "wrong_answer", comment: "Stage 3b, not 3a.", expected: "N18.32", name: "J. Doe, CRC" });
+  assert.deepEqual(validate(full, feedbackSchema), []);
+  assert.deepEqual(validate(feedbackPayload("ckd_staging-0123456789", { kind: "other", comment: "Typo here." }), feedbackSchema), []);
+  assert.deepEqual(FEEDBACK_KINDS, feedbackSchema.properties.kind.enum);
+  for (const [field, max] of Object.entries(FEEDBACK_LIMITS)) assert.equal(max, feedbackSchema.properties[field].maxLength, field);
 });
 
 test("validator basics", () => {

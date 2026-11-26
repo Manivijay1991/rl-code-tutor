@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reviewer feedback on one practice question (POST /v1/feedback)",
+  "description": "Sent by web/js/data/api.js (feedbackPayload), accepted by coding_tutor.live.feedback. No email, account or IP address; `name` is optional and typed by the reviewer. Stored privately; there is no public read endpoint.",
+  "type": "object",
+  "required": ["scenario", "kind", "comment"],
+  "additionalProperties": false,
+  "properties": {
+    "scenario": {"type": "string", "pattern": "^[a-z0-9_]+-[0-9a-f]{10}$", "description": "the question's scenario id, e.g. ckd_staging-0123456789"},
+    "kind": {"enum": ["wrong_answer", "explanation", "note", "other"], "description": "what is wrong: the answer key, the explanation, the clinical note, or something else"},
+    "expected": {"type": "string", "maxLength": 60, "description": "the code(s) the reviewer expected, optional"},
+    "comment": {"type": "string", "minLength": 3, "maxLength": 1000},
+    "name": {"type": "string", "maxLength": 60, "description": "optional, e.g. 'J. Doe, CRC'"},
+    "client": {"type": "string", "maxLength": 32}
+  }
+}

@@ -33,6 +33,8 @@ def fake_redis():
             elif cmd == "GET":
                 v = data["str"].get(key)
                 out.append(None if v is None else str(v))
+            elif cmd == "LRANGE":
+                out.append(list(data["list"].get(key, [])) or None)
             elif cmd == "INCR":
                 data["str"][key] = data["str"].get(key, 0) + 1
                 out.append(data["str"][key])
@@ -83,6 +85,17 @@ def test_reserve_counts_every_attempt_against_both_caps_in_one_round_trip():
     assert store.reserve(["c|1|z", "d|1|w"], "2026-11-26", 5, 5) == [True, False]
     # a new day starts from zero
     assert store.reserve(["a|1|x"], "2026-11-27", 2, 10) == [True]
+
+
+def test_feedback_is_kept_per_day_and_read_in_one_round_trip():
+    pipe, data, sent = fake_redis()
+    redis.redis_store(pipe).add_feedback('{"a":1}', "2026-11-25")
+    redis.add_feedback(pipe, '{"b":2}', "2026-11-26")
+    assert data["list"]["ct:feedback:2026-11-25"] == ['{"a":1}']
+    sent.clear()
+    assert redis.read_feedback(pipe, ["2026-11-24", "2026-11-25", "2026-11-26"]) == ['{"a":1}', '{"b":2}']
+    assert len(sent) == 1
+    assert redis.read_feedback(pipe, []) == []
 
 
 def test_reserve_with_nothing_to_count_sends_nothing():
