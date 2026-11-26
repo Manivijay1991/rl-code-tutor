@@ -35,10 +35,10 @@
   --neutral-soft: #e6eaf0;
   /* topic bubble tints (pages/home/cloud.js) */
   --tint-1: #cdeee7;
-  --tint-2: #d6e6fb;
-  --tint-3: #e6ddfb;
-  --tint-4: #fbe8c8;
-  --tint-5: #fbdbe2;
+  --tint-2: #d2ebf0;
+  --tint-3: #d9efe0;
+  --tint-4: #c2e5dd;
+  --tint-5: #e3f2ee;
   --mark: #fff1a8;
   --mark-ink: #3b2f00;
   --evidence: #b7ebd9;
@@ -75,10 +75,10 @@
     --neutral: #cbd5e1;
     --neutral-soft: #263241;
     --tint-1: #15403a;
-    --tint-2: #172d4a;
-    --tint-3: #2a2148;
-    --tint-4: #3a2c12;
-    --tint-5: #3d1d27;
+    --tint-2: #123a42;
+    --tint-3: #173d2c;
+    --tint-4: #0e4a42;
+    --tint-5: #1b3533;
     --mark: #5c4d0a;
     --mark-ink: #fff4bf;
     --evidence: #145247;
@@ -113,10 +113,10 @@
   --neutral: #cbd5e1;
   --neutral-soft: #263241;
     --tint-1: #15403a;
-    --tint-2: #172d4a;
-    --tint-3: #2a2148;
-    --tint-4: #3a2c12;
-    --tint-5: #3d1d27;
+    --tint-2: #123a42;
+    --tint-3: #173d2c;
+    --tint-4: #0e4a42;
+    --tint-5: #1b3533;
   --mark: #5c4d0a;
   --mark-ink: #fff4bf;
   --evidence: #145247;
@@ -539,8 +539,9 @@ body[data-view="home"] .topbar { justify-content: space-between; }
 }
 .cloud.narrow .cloud-caption:not(:empty) { display: block; }
 .cloud-caption.top { bottom: auto; top: 10px; } /* moves up when the bubble it names is in the lower half */
-.bubble[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.bubble[aria-pressed="true"] .bubble-count { color: var(--bg); }
+/* The chosen topic uses the brand colour, like the Start practice button. */
+.bubble[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.bubble[aria-pressed="true"] .bubble-count { color: var(--accent-ink); }
 @media (prefers-reduced-motion: reduce) { .bubble { transition: none; } }
 .welcome-back { font-size: 13.5px; color: var(--ink-2); margin-top: 14px; }
 .stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
