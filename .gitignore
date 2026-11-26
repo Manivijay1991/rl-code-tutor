@@ -6,6 +6,10 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+# Secrets: environment files (e.g. from `vercel env pull`) and Vercel CLI project links
+.env
+.env.*
+.vercel/
 # CMS downloads and the derived database
 # (recreate with: python -m coding_tutor.cms.fetch && python -m coding_tutor.cms.build_db)
 /data/
