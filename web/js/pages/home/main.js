@@ -116,7 +116,7 @@ function countUp() {
 function trust() {
   const card = (name, title, text) => h("div", { class: "card" }, h("h3", {}, icon(name, 16), title), h("p", {}, text));
   return h("section", { class: "trust reveal" },
-    card("book", "Answers from rules, not AI", "Every answer comes from the official code set and a rules engine. AI only writes the practice notes."),
+    card("book", "Answers from rules, not AI", "Every answer comes from the official code set and a rules engine. AI only writes the practice notes: every patient is fictional, and no real patient data is used."),
     card("check", "Private by design", "No account. Your progress stays in this browser. Sharing anonymous coaching results is optional."),
     card("target", "Draft content", "Cases are drafts until a certified coder reviews them. CRC is an AAPC credential; this tool is not affiliated with AAPC, AHIMA, AMA or CMS."),
     card("bulb", "Not a full exam course", "You need a prior understanding of ICD-10-CM codes. This site covers only about 30% of the CRC exam; use it alongside a complete study plan."));

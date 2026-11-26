@@ -33,6 +33,7 @@ export function renderNote() {
     h("span", { class: "tag reason" }, REASONS[q.reason] ?? "Practice"),
     h("span", { class: "tag", title: q.table.title }, app.manifest.topics.find((tp) => tp.id === q.table.topic)?.title ?? q.table.title),
     q.table.status === "draft" ? h("span", { class: "tag draft", title: "Not yet reviewed by a certified coder" }, "Draft") : null,
+    h("span", { class: "tag", title: "Written by AI for practice. The patient is fictional; no real patient data is used." }, "AI-generated"),
   ];
   mount($("chart-meta"), meta);
   const marker = $("btn-marker");
