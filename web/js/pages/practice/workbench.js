@@ -191,6 +191,7 @@ export function finish(result) {
   ui.renderNote();
   renderBench();
   if (settled.length) ui.sendOutbox(toEvents(settled));
+  ui.refreshPolicy(); // background; the next choice uses whatever is in memory by then
   for (const s of settled) {
     ui.toast(s.reward
       ? `Your tutor learned: "${ACTION_LABELS[s.action]}" helped with this trap.`

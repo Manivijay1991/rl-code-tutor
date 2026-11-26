@@ -38,6 +38,25 @@ export async function fetchPolicy(api, fetchFn = fetch) {
   }
 }
 
+// The shared policy is refreshed in the background at most this often (never at the moment of choosing).
+export const POLICY_REFRESH_MS = 10 * 60 * 1000;
+
+/** True when the policy was never checked or the last check (successful or not) is at least maxAge old. */
+export function policyIsStale(checkedAt, now, maxAge = POLICY_REFRESH_MS) {
+  return checkedAt == null || now - checkedAt >= maxAge;
+}
+
+/**
+ * Re-fetch the policy when it is stale. Returns {shared, checkedAt} to store, or null when it is still fresh.
+ * A failed fetch keeps the last good `shared` (null only if there never was one) and still counts as a
+ * check, so an unreachable API is retried every POLICY_REFRESH_MS, not after every question.
+ */
+export async function refreshPolicy({ api, shared, checkedAt }, now, fetchFn = fetch) {
+  if (!api || !policyIsStale(checkedAt, now)) return null;
+  const fresh = await fetchPolicy(api, fetchFn);
+  return { shared: fresh ?? shared, checkedAt: now };
+}
+
 /** Turn settled rewards (from progress.recordOutcome) into API events. */
 export function toEvents(settled) {
   return settled.map((s) => ({ confusion: s.confusion, miss_level: s.missLevel, action: s.action, reward: s.reward }));

@@ -19,6 +19,7 @@ export const app = {
   prefs: loadPrefs(),
   api: null, // live bandit API base URL from config.json, or null (offline)
   shared: null, // {arms, events} from GET /v1/policy
+  policyCheckedAt: null, // ms timestamp of the last policy fetch attempt (refreshed every POLICY_REFRESH_MS)
   focus: null,
   q: null,
 };

@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { BATCH, OUTBOX_LIMIT, enqueue, fetchPolicy, flush, loadConfig, toEvents, upgradeEvent } from "../../../web/js/data/api.js";
+import {
+  BATCH, OUTBOX_LIMIT, POLICY_REFRESH_MS, enqueue, fetchPolicy, flush, loadConfig, policyIsStale, refreshPolicy, toEvents,
+  upgradeEvent,
+} from "../../../web/js/data/api.js";
 import { SHARED_CAP, combinedCounts } from "../../../web/js/core/bandit.js";
 
 const json = (body, status = 200) => ({ ok: status < 300, status, json: async () => body });
@@ -24,6 +27,42 @@ test("policy fetch returns arms or null", async () => {
   assert.equal(await fetchPolicy("https://a", async () => json({}, 500)), null);
   assert.equal(await fetchPolicy("https://a", async () => { throw new Error("x"); }), null);
   assert.equal(await fetchPolicy(null), null);
+});
+
+test("policy is stale when never checked or at least 10 minutes old", () => {
+  const t = 1_000_000;
+  assert.equal(POLICY_REFRESH_MS, 600_000);
+  assert.equal(policyIsStale(null, t), true);
+  assert.equal(policyIsStale(undefined, t), true);
+  assert.equal(policyIsStale(t, t), false);
+  assert.equal(policyIsStale(t, t + POLICY_REFRESH_MS - 1), false);
+  assert.equal(policyIsStale(t, t + POLICY_REFRESH_MS), true);
+  assert.equal(policyIsStale(t, t + 5, 5), true); // custom max age
+});
+
+test("refreshPolicy fetches only when stale and keeps the last good counts on failure", async () => {
+  const old = { arms: { "t:c|1|walkthrough": [1, 0] }, events: 1 };
+  const fresh = { arms: { "t:c|1|walkthrough": [2, 0] }, events: 2 };
+  let calls = 0;
+  const ok = async () => { calls += 1; return json(fresh); };
+  const down = async () => { calls += 1; throw new Error("offline"); };
+  const t = 5_000_000;
+
+  // fresh: no request at all
+  assert.equal(await refreshPolicy({ api: "/api", shared: old, checkedAt: t }, t + 1000, ok), null);
+  assert.equal(calls, 0);
+  // stale: fetch and replace
+  assert.deepEqual(await refreshPolicy({ api: "/api", shared: old, checkedAt: t }, t + POLICY_REFRESH_MS, ok),
+    { shared: fresh, checkedAt: t + POLICY_REFRESH_MS });
+  // never loaded: fetch
+  assert.deepEqual(await refreshPolicy({ api: "/api", shared: null, checkedAt: null }, t, ok), { shared: fresh, checkedAt: t });
+  // API down: keep the old counts, but record the attempt so it is not retried after every question
+  assert.deepEqual(await refreshPolicy({ api: "/api", shared: old, checkedAt: null }, t, down), { shared: old, checkedAt: t });
+  assert.deepEqual(await refreshPolicy({ api: "/api", shared: null, checkedAt: null }, t, down), { shared: null, checkedAt: t });
+  assert.equal(calls, 4);
+  // offline (no API configured): nothing to do
+  assert.equal(await refreshPolicy({ api: null, shared: null, checkedAt: null }, t, ok), null);
+  assert.equal(calls, 4);
 });
 
 test("events carry only the four allowed fields", () => {
