@@ -32,6 +32,9 @@ const PAIRS = [
   ["ok", "ok-soft", 4.5], ["bad", "bad-soft", 4.5], ["over", "over-soft", 4.5],
   ["under", "under-soft", 4.5], ["neutral", "neutral-soft", 4.5],
   ["mark-ink", "mark", 4.5], ["evidence-ink", "evidence", 4.5],
+  // topic bubbles (pages/home/cloud.js): name and count on the bubble, and the selected bubble
+  ["ink", "accent-soft", 4.5], ["ink-2", "accent-soft", 4.5], ["ink-2", "surface", 4.5], ["bg", "ink", 4.5],
+  ...[1, 2, 3, 4, 5].flatMap((n) => [["ink", `tint-${n}`, 4.5], ["ink-2", `tint-${n}`, 4.5]]),
 ];
 
 const light = tokens(":root {");

@@ -33,6 +33,12 @@
   --under-soft: #ece4fb;
   --neutral: #475569;
   --neutral-soft: #e6eaf0;
+  /* topic bubble tints (pages/home/cloud.js) */
+  --tint-1: #cdeee7;
+  --tint-2: #d6e6fb;
+  --tint-3: #e6ddfb;
+  --tint-4: #fbe8c8;
+  --tint-5: #fbdbe2;
   --mark: #fff1a8;
   --mark-ink: #3b2f00;
   --evidence: #b7ebd9;
@@ -68,6 +74,11 @@
     --under-soft: #2a2145;
     --neutral: #cbd5e1;
     --neutral-soft: #263241;
+    --tint-1: #15403a;
+    --tint-2: #172d4a;
+    --tint-3: #2a2148;
+    --tint-4: #3a2c12;
+    --tint-5: #3d1d27;
     --mark: #5c4d0a;
     --mark-ink: #fff4bf;
     --evidence: #145247;
@@ -101,6 +112,11 @@
   --under-soft: #2a2145;
   --neutral: #cbd5e1;
   --neutral-soft: #263241;
+    --tint-1: #15403a;
+    --tint-2: #172d4a;
+    --tint-3: #2a2148;
+    --tint-4: #3a2c12;
+    --tint-5: #3d1d27;
   --mark: #5c4d0a;
   --mark-ink: #fff4bf;
   --evidence: #145247;
@@ -463,8 +479,69 @@ body[data-view="home"] .topbar { justify-content: space-between; }
   background-repeat: no-repeat; animation: underline 0.9s 0.35s cubic-bezier(.2,.8,.2,1) forwards; padding: 0 2px; }
 .hero .lead { font-size: clamp(16px, 1.6vw, 18px); color: var(--ink-2); margin: 0 0 22px; max-width: 580px; text-wrap: pretty; }
 .cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.topic-pick { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
-.topic-pick .label { font-size: 12.5px; color: var(--ink-3); width: 100%; }
+.topic-line { margin: 16px 0 0; font-size: 14px; color: var(--ink-2); }
+.topic-line a { color: var(--accent); font-weight: 600; }
+
+/* Topic bubbles (pages/home/cloud.js): sizes and positions come from core/bubbles.js; JS moves them. */
+.cloud-help { margin: -6px 0 12px; font-size: 14px; color: var(--ink-2); }
+.cloud-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cloud {
+  position: relative; width: 100%; height: 440px; overflow: hidden; border-radius: 22px;
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+  background:
+    radial-gradient(ellipse 55% 60% at 50% 50%, color-mix(in srgb, var(--surface) 85%, transparent), transparent 75%),
+    linear-gradient(155deg, color-mix(in srgb, var(--tint-2) 75%, var(--surface)), var(--surface) 50%, color-mix(in srgb, var(--tint-3) 70%, var(--surface)));
+}
+@media (max-width: 600px) { .cloud { height: 460px; } }
+.bubble-float { position: absolute; left: 0; top: 0; will-change: transform; }
+.bubble-float:hover, .bubble-float:focus-within { z-index: 3; }
+.bubble {
+  width: 100%; height: 100%; border-radius: 50%; padding: 12%; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; text-align: center;
+  color: var(--ink); font: 600 var(--fs, 12px)/1.12 var(--font);
+  background:
+    radial-gradient(circle at 32% 26%, rgb(255 255 255 / 55%) 0 12%, transparent 36%),
+    color-mix(in srgb, var(--tint, var(--tint-1)) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  box-shadow: inset 0 -6px 14px color-mix(in srgb, var(--accent) 12%, transparent);
+  backdrop-filter: blur(1.5px);
+  transition: transform 220ms cubic-bezier(.2, .8, .2, 1.15), background 160ms ease, box-shadow 220ms ease;
+}
+.bubble[data-kind="documentation"] { border-style: dashed; border-width: 1.5px; }
+.bubble[data-tint="2"] { --tint: var(--tint-2); } .bubble[data-tint="3"] { --tint: var(--tint-3); }
+.bubble[data-tint="4"] { --tint: var(--tint-4); } .bubble[data-tint="5"] { --tint: var(--tint-5); }
+.bubble-name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; overflow-wrap: normal; word-break: normal; }
+.bubble-count { font-size: 0.85em; font-weight: 500; color: var(--ink-2); }
+.bubble:hover, .bubble:focus-visible {
+  transform: scale(var(--grow, 1.3));
+  background: color-mix(in srgb, var(--surface) 88%, var(--accent));
+  box-shadow: 0 8px 26px rgb(20 30 28 / 20%);
+}
+.bubble:hover .bubble-name, .bubble:focus-visible .bubble-name { -webkit-line-clamp: 6; }
+/* Small bubbles show a short name; the full name replaces it on hover or keyboard focus. */
+.bubble-name.short, .small .bubble-name.full { display: none; }
+.small .bubble-name.short { display: block; }
+.small .bubble:hover .bubble-name.short, .small .bubble:focus-visible .bubble-name.short { display: none; }
+.small .bubble:hover .bubble-name.full, .small .bubble:focus-visible .bubble-name.full { display: -webkit-box; font-size: 0.8em; }
+/* Narrow screens: initials only; the name and count replace them on hover, tap or keyboard focus. */
+.bubble-initials { display: none; font-size: var(--fs-i, 14px); font-weight: 750; letter-spacing: 0.02em; }
+.cloud.narrow .bubble-initials { display: block; }
+.cloud.narrow .bubble-name, .cloud.narrow .bubble-count { display: none; }
+.cloud.narrow .bubble:hover, .cloud.narrow .bubble:focus-visible { transform: scale(1.35); }
+.cloud.narrow .bubble:hover .bubble-name.full, .cloud.narrow .bubble:focus-visible .bubble-name.full,
+.cloud.narrow .bubble:hover .bubble-name.short, .cloud.narrow .bubble:focus-visible .bubble-name.short { display: none; }
+.cloud.narrow .bubble:hover .bubble-initials, .cloud.narrow .bubble:focus-visible .bubble-initials { display: block; }
+/* Narrow screens: the hovered, tapped or focused bubble's full name shows in a caption bar inside the box. */
+.cloud-caption {
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 4; max-width: calc(100% - 24px);
+  padding: 6px 12px; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 13px; font-weight: 600;
+  text-align: center; pointer-events: none; display: none;
+}
+.cloud.narrow .cloud-caption:not(:empty) { display: block; }
+.cloud-caption.top { bottom: auto; top: 10px; } /* moves up when the bubble it names is in the lower half */
+.bubble[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.bubble[aria-pressed="true"] .bubble-count { color: var(--bg); }
+@media (prefers-reduced-motion: reduce) { .bubble { transition: none; } }
 .welcome-back { font-size: 13.5px; color: var(--ink-2); margin-top: 14px; }
 .stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .stat-tile { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(14px, 2.4vw, 22px); box-shadow: var(--shadow);

@@ -11,6 +11,7 @@ import { h, icon, mount } from "../../ui/dom.js";
 import { reducedMotion, revealOnScroll } from "../../ui/motion.js";
 import { practiceUrl } from "../../ui/nav.js";
 import { applyTheme, toggleTheme } from "../../ui/theme.js";
+import { topicCloud } from "./cloud.js";
 import { learningLoop } from "./loop.js";
 import { startWalk, walkthrough } from "./walkthrough.js";
 
@@ -33,7 +34,10 @@ async function boot() {
 
 // ---------------------------------------------------------------- page
 function render() {
-  mount($("home"), hero(), walkthrough(), learningLoop(), trust());
+  const cloud = topicCloud({
+    topics: state.manifest.topics, selected: state.prefs.topic, startHref: practiceUrl(state.prefs.topic), onPick: pickTopic,
+  });
+  mount($("home"), hero(), cloud, walkthrough(), learningLoop(), trust());
   countUp();
   startWalk();
   updateStartLinks();
@@ -48,15 +52,7 @@ function hero() {
   const t = progress.totals;
   const returning = t.answered > 0;
   const pct = returning ? Math.round((t.firstTry / t.answered) * 100) : 0;
-  const { topics } = state.manifest;
   const stats = catalogStats(state.manifest);
-
-  const chip = (id, label) =>
-    h("button", {
-      class: "chip-btn", type: "button", "aria-pressed": String(state.prefs.topic === id),
-      on: { click: () => { state.prefs.topic = id; savePrefs(state.prefs); markTopic(); updateStartLinks(); } },
-      dataset: { topic: id ?? "" },
-    }, label);
 
   return h("section", { class: "hero reveal in" },
     h("div", { class: "hero-copy" },
@@ -68,10 +64,9 @@ function hero() {
         h("a", { class: "btn big", href: practiceUrl(state.prefs.topic), dataset: { start: "" } },
           returning ? "Continue assessment" : "Start assessment", icon("arrow", 16)),
         returning ? h("a", { class: "btn ghost", href: "practice.html#progress" }, icon("chart", 16), "Your progress") : null),
-      h("div", { class: "topic-pick", role: "group", "aria-label": "Topic" },
-        h("span", { class: "label" }, "Practice"),
-        chip(null, "All topics"),
-        topics.map((tp) => chip(tp.id, tp.title))),
+      h("p", { class: "topic-line" },
+        "Topic: ", h("strong", { id: "topic-name" }, topicName()), " · ",
+        h("a", { href: "#topics" }, "choose a topic")),
       returning
         ? h("p", { class: "welcome-back" }, `Welcome back: ${t.answered} cases done, ${pct}% right on the first try, best streak ${progress.bestStreak}.`)
         : null),
@@ -82,10 +77,22 @@ function hero() {
       statTile("bulb", ACTIONS.length, "coaching styles", "Ways the tutor can teach you after a miss")));
 }
 
+function topicName() {
+  return state.manifest.topics.find((t) => t.id === state.prefs.topic)?.title ?? "All topics";
+}
+
+function pickTopic(id) {
+  state.prefs.topic = id;
+  savePrefs(state.prefs);
+  markTopic();
+  updateStartLinks();
+}
+
 function markTopic() {
-  for (const b of document.querySelectorAll(".topic-pick .chip-btn")) {
+  for (const b of document.querySelectorAll("#topics [data-topic]")) {
     b.setAttribute("aria-pressed", String((b.dataset.topic || null) === state.prefs.topic));
   }
+  $("topic-name").textContent = topicName();
 }
 
 function statTile(iconName, n, label, explain) {
