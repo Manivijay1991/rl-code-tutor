@@ -7,7 +7,7 @@ import wsgiref.simple_server
 import pytest
 
 from coding_tutor.live import server
-from coding_tutor.live.app import api_path, make_app, make_rate_limiter
+from coding_tutor.live.app import DailyCaps, api_path, caps_from_env, make_app, make_rate_limiter, same_site
 from coding_tutor.live.policy import known_confusions
 from coding_tutor.live.stores import Store
 from coding_tutor.live.stores import sqlite as storage
@@ -41,6 +41,92 @@ def call(app, method="GET", path="/v1/health", body=None, content_type="applicat
 
     data = b"".join(app(environ, start_response))
     return out["status"], out["headers"], json.loads(data) if data else None
+
+
+def env(origin=None, referer=None, host="crc.example", forwarded=None):
+    e = {"HTTP_HOST": host}
+    if origin is not None:
+        e["HTTP_ORIGIN"] = origin
+    if referer is not None:
+        e["HTTP_REFERER"] = referer
+    if forwarded is not None:
+        e["HTTP_X_FORWARDED_HOST"] = forwarded
+    return e
+
+
+@pytest.mark.parametrize(
+    ("environ", "allowed", "ok"),
+    [
+        (env(origin="https://crc.example"), frozenset(), True),  # same host
+        (env(origin="https://CRC.example"), frozenset(), True),  # host names ignore case
+        (env(origin="https://evil.example"), frozenset(), False),  # another site
+        (env(origin="https://evil.example"), frozenset({"https://evil.example"}), True),  # explicitly allowed
+        (env(origin="https://x.example"), frozenset({"*"}), True),
+        (env(), frozenset(), False),  # no Origin, no Referer
+        (env(origin="null"), frozenset(), False),  # sandboxed or file pages
+        (env(referer="https://crc.example/practice.html"), frozenset(), True),  # Referer fallback
+        (env(referer="not a url"), frozenset(), False),
+        (env(origin="https://crc.example", host="internal:8080", forwarded="crc.example"), frozenset(), True),  # proxy
+        (env(origin="https://crc.example", host=""), frozenset(), False),
+    ],
+    ids=["same", "case", "foreign", "allowed", "star", "none", "null", "referer", "bad_referer", "proxy", "no_host"],
+)
+def test_same_site(environ, allowed, ok):
+    assert same_site(environ, allowed) is ok
+
+
+def test_caps_from_env():
+    assert caps_from_env({}) == DailyCaps(50, 5000)
+    assert caps_from_env({"CODING_TUTOR_DAILY_ARM_CAP": " 20 ", "CODING_TUTOR_DAILY_TOTAL_CAP": "900"}) == DailyCaps(
+        20, 900
+    )
+    for bad in ("0", "-1", "ten", "2.5"):
+        with pytest.raises(ValueError, match="CODING_TUTOR_DAILY_ARM_CAP"):
+            caps_from_env({"CODING_TUTOR_DAILY_ARM_CAP": bad})
+
+
+def guarded_call(app, origin="http://crc.example", events=(EVENT,), **kw):
+    raw = json.dumps({"events": list(events)}).encode()
+    environ = {"REQUEST_METHOD": "POST", "PATH_INFO": "/api/v1/events", "CONTENT_TYPE": "application/json",
+               "CONTENT_LENGTH": str(len(raw)), "wsgi.input": io.BytesIO(raw), "REMOTE_ADDR": "10.0.0.9",
+               "HTTP_HOST": "crc.example", **({"HTTP_ORIGIN": origin} if origin else {}), **kw}  # fmt: skip
+    out = {}
+    data = b"".join(app(environ, lambda s, h: out.update(status=s)))
+    return out["status"], json.loads(data)
+
+
+def test_same_site_check_refuses_other_sites_and_stores_nothing(con):
+    app = make_app(con, CONFUSIONS, check_same_site=True)
+    assert guarded_call(app, origin="https://evil.example") == (
+        "403 Forbidden",
+        {"error": "events must come from this site"},
+    )
+    assert guarded_call(app, origin=None)[0] == "403 Forbidden"
+    assert storage.total_events(con) == 0
+    assert guarded_call(app) == ("202 Accepted", {"accepted": 1})
+    assert call(app, "GET", "/v1/policy")[0] == "200 OK"  # reading the policy needs no Origin
+
+
+def test_daily_caps_drop_extra_events_but_acknowledge_them(con):
+    app = make_app(con, CONFUSIONS, day=lambda: "2026-11-26", caps=DailyCaps(per_arm=2, total=100))
+    assert guarded_call(app, events=[EVENT] * 3) == ("202 Accepted", {"accepted": 2, "capped": 1})
+    assert guarded_call(app, events=[EVENT]) == ("202 Accepted", {"accepted": 0, "capped": 1})
+    assert storage.total_events(con) == 2
+    assert call(app, "GET", "/v1/policy")[2]["arms"] == {"dm:missed_with_link|1|contrast_pair": [2, 0]}
+
+
+def test_total_cap_applies_across_arms(con):
+    confusions = frozenset({"dm:a", "dm:b"})
+    app = make_app(con, confusions, day=lambda: "d", caps=DailyCaps(per_arm=10, total=3))
+    events = [{**EVENT, "confusion": c} for c in ("dm:a", "dm:b", "dm:a", "dm:b")]
+    assert guarded_call(app, events=events) == ("202 Accepted", {"accepted": 3, "capped": 1})
+
+
+def test_caps_need_a_store_that_can_count(con):
+    plain = Store(record=lambda e, d, c="": 0, arm_rows=list, total_events=lambda: 0)
+    with pytest.raises(ValueError, match="reserve"):
+        make_app(None, CONFUSIONS, store=plain, caps=DailyCaps())
+    assert make_app(None, CONFUSIONS, store=plain)  # without caps it is fine
 
 
 def test_health(con):

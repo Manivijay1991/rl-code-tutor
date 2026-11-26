@@ -50,5 +50,19 @@ def test_legacy_bucket_columns_are_renamed_and_data_kept(tmp_path):
 
 def test_no_identifier_columns():
     con = storage.connect(":memory:")
-    cols = {r[1] for t in ("arms", "events") for r in con.execute(f"PRAGMA table_info({t})")}
+    cols = {r[1] for t in ("arms", "events", "day_counts") for r in con.execute(f"PRAGMA table_info({t})")}
     assert not cols & {"ip", "user", "user_id", "student", "student_id", "session", "timestamp"}
+
+
+def test_reserve_counts_every_attempt_against_both_caps():
+    store = storage.sqlite_store(storage.connect(":memory:"))
+    assert store.reserve(["a|1|x", "a|1|x", "a|1|x", "b|1|y"], "2026-11-26", 2, 10) == [True, True, False, True]
+    assert store.reserve(["c|1|z", "d|1|w"], "2026-11-26", 5, 5) == [True, False]  # total cap reached
+    assert store.reserve([], "2026-11-26", 5, 5) == []
+
+
+def test_reserve_forgets_earlier_days():
+    con = storage.connect(":memory:")
+    assert storage.reserve(con, ["a|1|x"] * 2, "2026-11-25", 1, 10) == [True, False]
+    assert storage.reserve(con, ["a|1|x"], "2026-11-26", 1, 10) == [True]  # new day, fresh count
+    assert {r[0] for r in con.execute("SELECT day FROM day_counts")} == {"2026-11-26"}

@@ -23,7 +23,10 @@ CREATE TABLE IF NOT EXISTS arms(
 CREATE TABLE IF NOT EXISTS events(
   id INTEGER PRIMARY KEY, day TEXT NOT NULL, confusion TEXT NOT NULL, miss_level INTEGER NOT NULL,
   action TEXT NOT NULL, reward INTEGER NOT NULL, client TEXT NOT NULL DEFAULT '');
+CREATE TABLE IF NOT EXISTS day_counts(
+  day TEXT NOT NULL, arm TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(day, arm));
 """
+TOTAL = ""  # day_counts row holding the day's total attempts
 
 
 def connect(path: Path | str) -> sqlite3.Connection:
@@ -68,6 +71,29 @@ def record(con: sqlite3.Connection, events: Iterable[Event], day: str, client: s
     return len(events)
 
 
+def reserve(con: sqlite3.Connection, arms: list[str], day: str, per_arm: int, total: int) -> list[bool]:
+    """Count today's attempts per arm and in total; return which of them stay within the caps.
+
+    Every attempt is counted (accepted or not). Counts for earlier days are deleted: only today matters.
+    """
+    flags = []
+    with con:
+        con.execute("DELETE FROM day_counts WHERE day < ?", (day,))
+        for arm in arms:
+            counts = []
+            for key in (arm, TOTAL):
+                con.execute(
+                    "INSERT INTO day_counts(day, arm, n) VALUES (?, ?, 1) "
+                    "ON CONFLICT(day, arm) DO UPDATE SET n = n + 1",
+                    (day, key),
+                )
+                counts.append(
+                    con.execute("SELECT n FROM day_counts WHERE day = ? AND arm = ?", (day, key)).fetchone()[0]
+                )
+            flags.append(counts[0] <= per_arm and counts[1] <= total)
+    return flags
+
+
 def arm_rows(con: sqlite3.Connection) -> list[ArmRow]:
     """Return every arm's running totals, sorted."""
     return con.execute(
@@ -86,4 +112,5 @@ def sqlite_store(con: sqlite3.Connection) -> Store:
         record=lambda events, day, client="": record(con, events, day, client),
         arm_rows=lambda: arm_rows(con),
         total_events=lambda: total_events(con),
+        reserve=lambda arms, day, per_arm, total: reserve(con, arms, day, per_arm, total),
     )

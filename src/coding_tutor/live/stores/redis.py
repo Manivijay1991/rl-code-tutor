@@ -4,6 +4,7 @@ Data (no student identifiers, IP addresses or times finer than a day):
   ct:arms            hash  "<confusion>|<miss_level>|<action>|s" / "|f" -> success / failure counts
   ct:events          int   total events recorded
   ct:log:<YYYY-MM-DD> list  one JSON event per entry (append-only log for offline evaluation)
+  ct:cap:<YYYY-MM-DD>:<arm> / :total   int   today's attempts, for the daily caps (expire after two days)
 
 Configuration comes only from environment variables (Vercel's Upstash integration sets the KV_* names):
   KV_REST_API_URL / UPSTASH_REDIS_REST_URL       the REST endpoint
@@ -87,6 +88,27 @@ def record(pipe: Pipeline, events: Iterable[Event], day: str, client: str = "") 
     return len(events)
 
 
+CAP_TTL = 2 * 24 * 3600  # seconds a day's counters live (two days, so they expire on their own)
+
+
+def reserve(pipe: Pipeline, arms: list[str], day: str, per_arm: int, total: int) -> list[bool]:
+    """Count today's attempts per arm and in total (one round trip); return which stay within the caps.
+
+    Counters are atomic INCRs, so parallel serverless instances share them; every attempt counts.
+    """
+    if not arms:
+        return []
+    total_key = f"{PREFIX}cap:{day}:total"
+    commands: list[Command] = []
+    for arm in arms:
+        commands += [["INCR", f"{PREFIX}cap:{day}:{arm}"], ["INCR", total_key]]
+    commands += [
+        ["EXPIRE", key, CAP_TTL] for key in dict.fromkeys([total_key, *(f"{PREFIX}cap:{day}:{a}" for a in arms)])
+    ]
+    out = pipe(commands)
+    return [int(out[2 * i]) <= per_arm and int(out[2 * i + 1]) <= total for i in range(len(arms))]
+
+
 def parse_arms(flat: list) -> list[ArmRow]:
     """Turn HGETALL's [field, value, field, value, ...] into sorted arm rows (confusion, level, action, s, f)."""
     totals: dict[tuple[str, int, str], list[int]] = {}
@@ -113,6 +135,7 @@ def redis_store(pipe: Pipeline) -> Store:
         record=lambda events, day, client="": record(pipe, events, day, client),
         arm_rows=lambda: arm_rows(pipe),
         total_events=lambda: total_events(pipe),
+        reserve=lambda arms, day, per_arm, total: reserve(pipe, arms, day, per_arm, total),
     )
 
 

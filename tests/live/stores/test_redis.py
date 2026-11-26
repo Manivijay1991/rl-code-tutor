@@ -33,6 +33,12 @@ def fake_redis():
             elif cmd == "GET":
                 v = data["str"].get(key)
                 out.append(None if v is None else str(v))
+            elif cmd == "INCR":
+                data["str"][key] = data["str"].get(key, 0) + 1
+                out.append(data["str"][key])
+            elif cmd == "EXPIRE":
+                data.setdefault("ttl", {})[key] = int(args[0])
+                out.append(1)
             else:
                 raise AssertionError(cmd)
         return out
@@ -63,6 +69,26 @@ def test_empty_store_and_empty_batch():
     assert store.arm_rows() == [] and store.total_events() == 0
     assert store.record([], "d") == 0
     assert len(sent) == 2  # the two reads; an empty batch sends nothing
+
+
+def test_reserve_counts_every_attempt_against_both_caps_in_one_round_trip():
+    pipe, data, sent = fake_redis()
+    store = redis.redis_store(pipe)
+    assert store.reserve(["a|1|x", "a|1|x", "a|1|x", "b|1|y"], "2026-11-26", 2, 10) == [True, True, False, True]
+    assert len(sent) == 1
+    assert data["str"]["ct:cap:2026-11-26:a|1|x"] == 3  # the refused attempt still counts
+    assert data["str"]["ct:cap:2026-11-26:total"] == 4
+    assert set(data["ttl"].values()) == {redis.CAP_TTL} and len(data["ttl"]) == 3  # every counter expires on its own
+    # the total cap: one more allowed today, then everything is refused, whatever the arm
+    assert store.reserve(["c|1|z", "d|1|w"], "2026-11-26", 5, 5) == [True, False]
+    # a new day starts from zero
+    assert store.reserve(["a|1|x"], "2026-11-27", 2, 10) == [True]
+
+
+def test_reserve_with_nothing_to_count_sends_nothing():
+    pipe, _, sent = fake_redis()
+    assert redis.redis_store(pipe).reserve([], "d", 1, 1) == []
+    assert sent == []
 
 
 def test_parse_arms_sums_and_sorts():

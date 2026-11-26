@@ -15,7 +15,7 @@ import wsgiref.simple_server
 from pathlib import Path
 
 from coding_tutor.engine.rules import load_tables
-from coding_tutor.live.app import make_app
+from coding_tutor.live.app import DailyCaps, make_app
 from coding_tutor.live.policy import known_confusions
 from coding_tutor.live.stores import sqlite as storage
 from coding_tutor.paths import API_DB_PATH
@@ -57,7 +57,13 @@ def main(argv: list[str] | None = None) -> int:
     """Serve the API until interrupted."""
     args = parse_args(argv)
     con = storage.connect(args.db)
-    app = make_app(con, known_confusions(load_tables()), args.allow_origin or DEFAULT_ORIGINS)
+    app = make_app(
+        con,
+        known_confusions(load_tables()),
+        args.allow_origin or DEFAULT_ORIGINS,
+        check_same_site=True,
+        caps=DailyCaps(),
+    )
     server = wsgiref.simple_server.make_server(HOST, args.port, app, handler_class=request_handler(args.log))
     print(f"Live bandit API at http://{HOST}:{args.port}/v1/policy  (db: {args.db}; Ctrl+C to stop)")
     try:

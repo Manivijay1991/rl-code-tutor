@@ -1,5 +1,6 @@
 import json
 import threading
+import urllib.error
 import urllib.request
 
 import pytest
@@ -49,11 +50,19 @@ def test_dev_server_serves_ui_config_and_api(tmp_path):
             "action": "walkthrough",
             "reward": 1,
         }
+        body = json.dumps({"events": [event]}).encode()
+        # Like a browser on the page: the Origin is this server, so the same-site check lets it through.
         req = urllib.request.Request(
-            f"{base}/api/v1/events", json.dumps({"events": [event]}).encode(), {"Content-Type": "application/json"}
+            f"{base}/api/v1/events", body, {"Content-Type": "application/json", "Origin": base}
         )
         with urllib.request.urlopen(req, timeout=5) as resp:
             assert resp.status == 202
+        foreign = urllib.request.Request(
+            f"{base}/api/v1/events", body, {"Content-Type": "application/json", "Origin": "https://evil.example"}
+        )
+        with pytest.raises(urllib.error.HTTPError) as refused:
+            urllib.request.urlopen(foreign, timeout=5)
+        assert refused.value.code == 403
         with urllib.request.urlopen(f"{base}/api/v1/policy", timeout=5) as resp:
             assert json.loads(resp.read())["events"] == 1
     finally:

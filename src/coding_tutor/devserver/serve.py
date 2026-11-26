@@ -24,7 +24,7 @@ from pathlib import Path
 
 from coding_tutor.devserver.static import Environ, StartResponse, WSGIApp, static_app
 from coding_tutor.engine.rules import load_tables
-from coding_tutor.live.app import PREFIX, make_app
+from coding_tutor.live.app import PREFIX, DailyCaps, make_app
 from coding_tutor.live.policy import known_confusions
 from coding_tutor.live.server import request_handler
 from coding_tutor.live.stores import sqlite as storage
@@ -71,7 +71,10 @@ def make_dev_server(
         db: SQLite file for the API.
         log: Print each request (time, path, status; never the client's address).
     """
-    api = make_app(storage.connect(db), known_confusions(load_tables()), allowed_origins=())
+    # Same protection as on Vercel: events only from this page, within the daily caps.
+    api = make_app(
+        storage.connect(db), known_confusions(load_tables()), allowed_origins=(), check_same_site=True, caps=DailyCaps()
+    )
     return wsgiref.simple_server.make_server(
         HOST, port, dev_app(directory, api), server_class=ThreadingWSGIServer, handler_class=request_handler(log)
     )

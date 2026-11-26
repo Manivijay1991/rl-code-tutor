@@ -2,6 +2,7 @@
 the same security headers as the dev server, immutable topic files and a fresh manifest."""
 
 import importlib.util
+import io
 import json
 from pathlib import PurePosixPath
 
@@ -29,6 +30,22 @@ def test_index_builds_a_wsgi_app_from_the_environment(monkeypatch):
     module = load_index(monkeypatch, ENV)
     assert callable(module.app)
     assert callable(module.build_app({**ENV, "CODING_TUTOR_ALLOWED_ORIGINS": "https://a.org, https://b.org"}))
+
+
+def test_index_turns_on_the_same_site_check(monkeypatch):
+    module = load_index(monkeypatch, ENV)
+    body = b'{"events": []}'
+    environ = {"REQUEST_METHOD": "POST", "PATH_INFO": "/api/v1/events", "CONTENT_TYPE": "application/json",
+               "CONTENT_LENGTH": str(len(body)), "wsgi.input": io.BytesIO(body),
+               "HTTP_HOST": "crc-coding-tutor.vercel.app", "HTTP_ORIGIN": "https://evil.example"}  # fmt: skip
+    out = {}
+    module.app(environ, lambda s, h: out.update(status=s))
+    assert out["status"] == "403 Forbidden"  # refused before the store is touched
+
+
+def test_index_refuses_bad_cap_settings(monkeypatch):
+    with pytest.raises(ValueError, match="CODING_TUTOR_DAILY_TOTAL_CAP"):
+        load_index(monkeypatch, {**ENV, "CODING_TUTOR_DAILY_TOTAL_CAP": "lots"})
 
 
 def test_index_refuses_to_start_without_the_store(monkeypatch):

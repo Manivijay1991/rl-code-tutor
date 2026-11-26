@@ -13,9 +13,11 @@ import json
 import sqlite3
 import threading
 import time
-from collections.abc import Callable, Iterable
+from collections.abc import Callable, Iterable, Mapping
+from typing import NamedTuple
+from urllib.parse import urlsplit
 
-from coding_tutor.live.policy import EventError, parse_batch, snapshot
+from coding_tutor.live.policy import EventError, arm_key, parse_batch, snapshot
 from coding_tutor.live.stores import Store
 from coding_tutor.live.stores.sqlite import sqlite_store
 
@@ -45,6 +47,53 @@ def make_rate_limiter(
         return ok
 
     return allow
+
+
+class DailyCaps(NamedTuple):
+    """Most events kept per arm and in total per UTC day (attempts beyond them are acknowledged but dropped)."""
+
+    per_arm: int = 50
+    total: int = 5000
+
+
+def caps_from_env(env: Mapping[str, str]) -> DailyCaps:
+    """Read CODING_TUTOR_DAILY_ARM_CAP and CODING_TUTOR_DAILY_TOTAL_CAP (defaults 50 and 5000).
+
+    Raises:
+        ValueError: A value is not a positive whole number (the message names the variable).
+    """
+    values = []
+    for name, default in (
+        ("CODING_TUTOR_DAILY_ARM_CAP", DailyCaps().per_arm),
+        ("CODING_TUTOR_DAILY_TOTAL_CAP", DailyCaps().total),
+    ):
+        raw = env.get(name, "").strip()
+        if not raw:
+            values.append(default)
+            continue
+        if not raw.isdigit() or int(raw) < 1:
+            raise ValueError(f"{name} must be a positive whole number (got {raw!r})")
+        values.append(int(raw))
+    return DailyCaps(*values)
+
+
+def same_site(environ: Environ, allowed: frozenset[str]) -> bool:
+    """True when the request comes from a page on this site (or an allowed origin).
+
+    Browsers send `Origin` on POST requests (`Referer` is the fallback). The origin's host must match the host
+    the request was sent to, or the origin must be in `allowed`. A request without either header is refused.
+    This stops other websites and simple scripts; a determined client can still forge the header.
+    """
+    origin = environ.get("HTTP_ORIGIN") or ""
+    if not origin and environ.get("HTTP_REFERER"):
+        ref = urlsplit(environ["HTTP_REFERER"])
+        origin = f"{ref.scheme}://{ref.netloc}" if ref.scheme and ref.netloc else ""
+    if not origin or origin == "null":
+        return False
+    if origin in allowed or "*" in allowed:
+        return True
+    host = (environ.get("HTTP_X_FORWARDED_HOST") or environ.get("HTTP_HOST") or "").split(",")[0].strip().lower()
+    return bool(host) and urlsplit(origin).netloc.lower() == host
 
 
 def utc_day() -> str:
@@ -101,10 +150,32 @@ def _read_json(environ: Environ) -> object:
         raise RequestError("400 Bad Request", "body is not valid JSON") from None
 
 
+class Guards(NamedTuple):
+    """Protection for POST /v1/events: same-site check and daily caps (both off unless the host turns them on)."""
+
+    same_site: bool = False
+    allowed: frozenset[str] = frozenset()
+    caps: DailyCaps | None = None
+
+
+NO_GUARDS = Guards()
+
+
 def post_events(
-    environ: Environ, store: Store, confusions: frozenset[str], limiter: RateLimiter, day: Callable[[], str]
+    environ: Environ,
+    store: Store,
+    confusions: frozenset[str],
+    limiter: RateLimiter,
+    day: Callable[[], str],
+    guards: Guards = NO_GUARDS,
 ) -> Response:
-    """Handle POST /v1/events."""
+    """Handle POST /v1/events.
+
+    Over the daily caps, events are acknowledged (202, so the browser drops them from its outbox) but not stored;
+    the response says how many were `capped`.
+    """
+    if guards.same_site and not same_site(environ, guards.allowed):
+        return _json("403 Forbidden", {"error": "events must come from this site"})
     try:
         events, client = parse_batch(_read_json(environ), confusions)
     except RequestError as e:
@@ -113,8 +184,13 @@ def post_events(
         return _json("400 Bad Request", {"error": str(e)})
     if not limiter(environ.get("REMOTE_ADDR", "?"), len(events)):
         return _json("429 Too Many Requests", {"error": "rate limit exceeded"}, [("Retry-After", "60")])
-    n = store.record(events, day(), client)
-    return _json("202 Accepted", {"accepted": n})
+    today, capped = day(), 0
+    if guards.caps:
+        keep = store.reserve([arm_key(*e[:3]) for e in events], today, guards.caps.per_arm, guards.caps.total)
+        capped = keep.count(False)
+        events = [e for e, ok in zip(events, keep, strict=True) if ok]
+    n = store.record(events, today, client) if events else 0
+    return _json("202 Accepted", {"accepted": n, "capped": capped} if guards.caps else {"accepted": n})
 
 
 def get_policy(store: Store) -> Response:
@@ -133,7 +209,12 @@ def api_path(path: str) -> str:
 
 
 def route(
-    environ: Environ, store: Store, confusions: frozenset[str], limiter: RateLimiter, day: Callable[[], str]
+    environ: Environ,
+    store: Store,
+    confusions: frozenset[str],
+    limiter: RateLimiter,
+    day: Callable[[], str],
+    guards: Guards = NO_GUARDS,
 ) -> Response:
     """Dispatch one request to its handler."""
     method = environ.get("REQUEST_METHOD", "GET")
@@ -141,7 +222,7 @@ def route(
     routes = {
         "/v1/health": {"GET": lambda: _json("200 OK", {"ok": True})},
         "/v1/policy": {"GET": lambda: get_policy(store)},
-        "/v1/events": {"POST": lambda: post_events(environ, store, confusions, limiter, day)},
+        "/v1/events": {"POST": lambda: post_events(environ, store, confusions, limiter, day, guards)},
     }
     if path not in routes:
         return _json("404 Not Found", {"error": "not found"})
@@ -160,31 +241,38 @@ def make_app(
     limiter: RateLimiter | None = None,
     day: Callable[[], str] = utc_day,
     store: Store | None = None,
+    check_same_site: bool = False,
+    caps: DailyCaps | None = None,
 ) -> WSGIApp:
     """Return the WSGI application.
 
     Args:
         con: SQLite connection, used when `store` is not given.
         confusions: Valid confusion ids; events for anything else are rejected.
-        allowed_origins: Browser origins allowed by CORS ("*" for any).
+        allowed_origins: Browser origins allowed by CORS ("*" for any); also accepted by the same-site check.
         limiter: Rate limiter; defaults to 120 events per client, refilled at 1 per second.
         day: Clock returning the UTC day stored with each event.
         store: Storage backend; defaults to SQLite on `con`.
+        check_same_site: Refuse events that do not come from this site or an allowed origin (403).
+        caps: Daily caps on stored events per arm and in total; None = no caps.
 
     Raises:
-        ValueError: Neither `con` nor `store` is given.
+        ValueError: Neither `con` nor `store` is given, or caps are asked of a store that cannot count them.
     """
     if store is None:
         if con is None:
             raise ValueError("make_app needs a SQLite connection or a store")
         store = sqlite_store(con)
+    if caps and store.reserve is None:
+        raise ValueError("daily caps need a store with `reserve`")
     allowed = frozenset(allowed_origins)
+    guards = Guards(check_same_site, allowed, caps)
     limiter = limiter or make_rate_limiter()
     lock = threading.Lock()  # one connection and one limiter shared by every request thread
 
     def app(environ: Environ, start_response: StartResponse) -> Iterable[bytes]:
         with lock:
-            status, body, extra = route(environ, store, confusions, limiter, day)
+            status, body, extra = route(environ, store, confusions, limiter, day, guards)
         data = json.dumps(body).encode() if body or not status.startswith("204") else b""
         headers = [
             ("Content-Type", "application/json"),
